@@ -523,5 +523,243 @@
     "title": "Introduction to Data Bases",
     "section": "SQL",
     "text": "SQL\n\nLas herramientas y plataformas de Business Intelligence con las que contamos actualmente, nos permiten hacer fácilmente consultas como las del ejemplo anterior, simplemente “arrastrando” campos y aplicando filtros en un lienzo de diseño.\nInternamente las herramientas procesan las consultas mediante un lenguaje de manejo de bases de datos que se llama SQL Structured Query Language.\nPara hacer consultas más complejas puede ser necesario que se haga la consulta escribiendo directamente el código de SQL.\nEn este módulo no estudiaremos SQL."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#agenda",
+    "href": "M2_IntroDS/IntrotoDataScience.html#agenda",
+    "title": "Introduction to Data Science",
+    "section": "Agenda",
+    "text": "Agenda\n\n\n¿Qué es la ciencia de datos?\nTipos de aprendizaje: supervisado y no supervisado"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "La ciencia de datos es un campo interdisciplinario que utiliza métodos, procesos, algoritmos y sistemas científicos para extraer conocimientos e ideas de muchos datos estructurados y no estructurados."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#otros-conceptos-parecidos",
+    "href": "M2_IntroDS/IntrotoDataScience.html#otros-conceptos-parecidos",
+    "title": "Introduction to Data Science",
+    "section": "Otros conceptos parecidos",
+    "text": "Otros conceptos parecidos\nLa [minería de datos][datos] es un proceso de descubrimiento de patrones en grandes conjuntos de datos utilizando métodos en la intersección de estadísticas y sistemas de bases de datos\nEl [modelado predictivo][datos] es el proceso de desarrollar un modelo de manera que podamos comprender y cuantificar la precisión de la predicción del modelo en datos futuros aún por ver.\nEl aprendizaje estadístico se refiere a un conjunto de herramientas (modelos estadísticos y métodos de minería de datos) para modelar y comprender conjuntos de datos complejos."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#en-2004",
+    "href": "M2_IntroDS/IntrotoDataScience.html#en-2004",
+    "title": "Introduction to Data Science",
+    "section": "En 2004 …",
+    "text": "En 2004 …\nEl huracán Frances azotaba el Caribe y amenazaba con afectar directamente la costa atlántica de Florida.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLos residentes se dirigieron a terrenos más altos, pero en Arkansas, los ejecutivos de Wal-Mart vieron una gran oportunidad para una de sus más nuevas armas basadas en datos: la tecnología predictiva."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-1",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-1",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "Una semana antes de que la tormenta tocara tierra, Linda M. Dillman, directora de información de Wal-Mart, presionó a su personal para que creara pronósticos basados en lo que había sucedido cuando el huracán Charley azotó la zona varias semanas antes.\n\nCon el respaldo de billones de bytes de historial de compras almacenados en el almacén de datos de Wal-Mart, dijo, la empresa podría “comenzar a predecir lo que va a suceder, en lugar de esperar a que suceda”, como lo expresó."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#the-result",
+    "href": "M2_IntroDS/IntrotoDataScience.html#the-result",
+    "title": "Introduction to Data Science",
+    "section": "The result",
+    "text": "The result\n\n\nEl New York Times informó\n\n\n“… Los expertos analizaron los datos y descubrieron que las tiendas efectivamente necesitarían ciertos productos, y no solo las típicas linternas.\n\n\n\nDillman dijo\n\n\n“No sabíamos en el pasado que las Pop-Tarts de fresa aumentan sus ventas, como siete veces su tasa de ventas normal, antes de un huracán”."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#the-scheme-of-data-science",
+    "href": "M2_IntroDS/IntrotoDataScience.html#the-scheme-of-data-science",
+    "title": "Introduction to Data Science",
+    "section": "The scheme of data science",
+    "text": "The scheme of data science"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#cross-industry-standard-process-crisp-for-data-science",
+    "href": "M2_IntroDS/IntrotoDataScience.html#cross-industry-standard-process-crisp-for-data-science",
+    "title": "Introduction to Data Science",
+    "section": "Cross-Industry Standard Process (CRISP) for Data Science",
+    "text": "Cross-Industry Standard Process (CRISP) for Data Science"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#modelo-crisp",
+    "href": "M2_IntroDS/IntrotoDataScience.html#modelo-crisp",
+    "title": "Introduction to Data Science",
+    "section": "Modelo CRISP",
+    "text": "Modelo CRISP\nComprensión empresarial: ¿qué necesita la empresa?\nComprensión de datos: ¿Qué datos tenemos o necesitamos? ¿Está limpio?\nPreparación de datos: ¿cómo organizamos los datos para el modelado?\nModelado: ¿Qué técnicas de modelado debemos aplicar?\nEvaluación: ¿Qué modelo se adapta mejor a los objetivos comerciales?\nImplementación: ¿Cómo acceden las partes interesadas a los resultados?"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#comprensión-empresarial",
+    "href": "M2_IntroDS/IntrotoDataScience.html#comprensión-empresarial",
+    "title": "Introduction to Data Science",
+    "section": "Comprensión empresarial",
+    "text": "Comprensión empresarial\n\nLa comprensión del negocio se refiere a definir el problema empresarial que se busca resolver.\nEl objetivo es replantear el problema empresarial como un problema de ciencia de datos.\nReplantear el problema y diseñar una solución suele ser un proceso iterativo."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#problemas-en-ciencia-de-datos",
+    "href": "M2_IntroDS/IntrotoDataScience.html#problemas-en-ciencia-de-datos",
+    "title": "Introduction to Data Science",
+    "section": "Problemas en Ciencia de Datos",
+    "text": "Problemas en Ciencia de Datos\nLa clasificación (o estimación de probabilidad de clase) intenta predecir, para cada individuo de una población, a cuál de un (pequeño) conjunto de clases pertenece este individuo. Por ejemplo, “Entre todos los clientes de T-Mobile, ¿cuáles probablemente responderán a una oferta determinada?”\n\nLa regresión intenta estimar o predecir, para cada individuo, el valor numérico de alguna variable para ese individuo. Por ejemplo, “¿Cuánto utilizará el servicio un cliente determinado?”"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-2",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-2",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "La agrupación intenta agrupar a los individuos de una población por su similitud, pero no por ningún propósito específico. Por ejemplo, “¿Nuestros clientes forman grupos o segmentos naturales?”"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#comprensión-de-datos-i",
+    "href": "M2_IntroDS/IntrotoDataScience.html#comprensión-de-datos-i",
+    "title": "Introduction to Data Science",
+    "section": "Comprensión de datos I",
+    "text": "Comprensión de datos I\n\n\n\nSi el objetivo es resolver un problema de negocio, los datos constituyen la materia prima disponible a partir de la cual se construirá la solución.\nLos datos disponibles rara vez coinciden con el problema.\nPor ejemplo, los datos históricos a menudo se recopilan con fines no relacionados con el problema de negocio actual o sin ningún propósito explícito."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#comprensión-de-datos-ii",
+    "href": "M2_IntroDS/IntrotoDataScience.html#comprensión-de-datos-ii",
+    "title": "Introduction to Data Science",
+    "section": "Comprensión de datos II",
+    "text": "Comprensión de datos II\n\n\nLos costos de los datos varían. Algunos datos estarán disponibles de forma gratuita, mientras que otros requerirán esfuerzo para obtenerlos.\n\n:: incremental - Una parte fundamental de la fase de comprensión de datos es estimar los costos y beneficios de cada fuente de datos y decidir si se justifica una mayor inversión.\n\nIncluso después de adquirir todos los conjuntos de datos, recopilarlos puede requerir un esfuerzo adicional. :::"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#ejemplo",
+    "href": "M2_IntroDS/IntrotoDataScience.html#ejemplo",
+    "title": "Introduction to Data Science",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nEn la década de 1980, las tarjetas de crédito tenían esencialmente precios uniformes porque las empresas no tenían sistemas de información adecuados para hacer frente a precios diferenciales a escala masiva.\nAlrededor de 1990, Richard Fairbanks y Nigel Morris se dieron cuenta de que la tecnología de la información era lo suficientemente poderosa como para poder realizar modelos predictivos más sofisticados y ofrecer condiciones diferentes (hoy en día: precios, límites de crédito, transferencias de saldo con tasa inicial baja, devolución de efectivo, y puntos de fidelidad)."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-3",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-3",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "La dirección de Signet Bank estaba convencida de que modelar la rentabilidad, y no sólo la probabilidad de incumplimiento, era la estrategia correcta.\nSabían que una pequeña proporción de clientes en realidad representa más del 100% de las ganancias de un banco por operaciones con tarjetas de crédito (porque el resto está en equilibrio o pierde dinero).\nSi pudieran modelar la rentabilidad, podrían hacer mejores ofertas a los mejores clientes y “desnatar la crema” de la clientela de los grandes bancos."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-4",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-4",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "Pero Signet Bank tuvo un problema realmente grande al implementar esta estrategia.\nNo tenían los datos adecuados para modelar la rentabilidad con el objetivo de ofrecer diferentes condiciones a diferentes clientes!\nDado que el banco ofrecía crédito con un conjunto específico de términos y un modelo de incumplimiento específico, tenía los datos para modelar la rentabilidad (1) para los términos que realmente ofrecieron en el pasado, y (2) para el tipo de cliente que realmente se le ofreció crédito."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-5",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-5",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "¿Qué podría hacer Signet Bank? Pusieron en juego una estrategia fundamental de la ciencia de datos: adquirir los datos necesarios a un costo.\nEn este caso, se podrían generar datos sobre la rentabilidad de los clientes con diferentes condiciones de crédito mediante la realización de experimentos. Se ofrecieron diferentes términos al azar a diferentes clientes.\nEsto puede parecer una tontería fuera del contexto del pensamiento analítico de datos: ¡es probable que pierda dinero!\nEsto es cierto. En este caso, las pérdidas son el costo de adquisición de datos."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#qué-sucedió",
+    "href": "M2_IntroDS/IntrotoDataScience.html#qué-sucedió",
+    "title": "Introduction to Data Science",
+    "section": "¿Qué sucedió?",
+    "text": "¿Qué sucedió?\nComo era de esperar, el número de cuentas malas de Signet se disparó.\nLas pérdidas continuaron durante algunos años mientras los científicos de datos trabajaban para construir modelos predictivos a partir de los datos, evaluarlos e implementarlos para mejorar las ganancias.\nComo la empresa consideraba estas pérdidas como inversiones en datos, persistieron a pesar de las quejas de las partes interesadas.\nCon el tiempo, la operación de tarjetas de crédito de Signet dio un giro y se volvió tan rentable que se escindió para separarla de las otras operaciones del banco, que ahora estaban eclipsando el éxito del crédito al consumo."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#richard-fairbanks-y-nigel-morris",
+    "href": "M2_IntroDS/IntrotoDataScience.html#richard-fairbanks-y-nigel-morris",
+    "title": "Introduction to Data Science",
+    "section": "Richard Fairbanks y Nigel Morris",
+    "text": "Richard Fairbanks y Nigel Morris"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#herramientas-de-ciencia-de-datos-más-utilizadas",
+    "href": "M2_IntroDS/IntrotoDataScience.html#herramientas-de-ciencia-de-datos-más-utilizadas",
+    "title": "Introduction to Data Science",
+    "section": "Herramientas de Ciencia de Datos más utilizadas",
+    "text": "Herramientas de Ciencia de Datos más utilizadas\n\nPython\nR\nSAS\nExcel\nPower BI\nTableau\nApache Spark\n\nhttps://hackr.io/blog/top-data-analytics-tools"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#otras-herramientas-usadas",
+    "href": "M2_IntroDS/IntrotoDataScience.html#otras-herramientas-usadas",
+    "title": "Introduction to Data Science",
+    "section": "Otras herramientas usadas",
+    "text": "Otras herramientas usadas\n\nRapidMiner (https://rapidminer.com/products/studio/)\nJMP (https://www.jmp.com/es_mx/home.html)\nMinitab (https://www.minitab.com/es-mx/products/minitab/)\nTrifacta (https://www.trifacta.com/)\nBigML (https://bigml.com/)\nMLBase (http://www.mlbase.org/)\nGoogle Cloud AutoML (https://cloud.google.com/automl/)"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#terminología",
+    "href": "M2_IntroDS/IntrotoDataScience.html#terminología",
+    "title": "Introduction to Data Science",
+    "section": "Terminología",
+    "text": "Terminología\n\nPredictores. Se representan usando la notación \\(X_1\\) para el primer predictor, \\(X_p\\) para el segundo predictor, …, y \\(X_p\\) para el p-ésimo predictor.\nRespuesta. \\(Y\\) representa la variable de respuesta, que intentaremos predecir.\n\nEn terminos matemáticos, queremos establecer la siguiente relación\n\\[\nY = f(X_1, X_2, \\ldots, X_p) + \\epsilon\n\\]\nDonde \\(f\\) es una función de los predictores y \\(\\epsilon\\) es un error natural (aleatorio)."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#tipos-de-aprendizaje",
+    "href": "M2_IntroDS/IntrotoDataScience.html#tipos-de-aprendizaje",
+    "title": "Introduction to Data Science",
+    "section": "Tipos de Aprendizaje",
+    "text": "Tipos de Aprendizaje\n\nEn ciencia de datos (y machine learning), existen dos tipos principales de aprendizaje:\n\nAprendizaje supervisado (supervised learning)\nAprendizaje sin supervisión (unsupervised learning)"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-6",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-6",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "TBD"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#aprendizaje-supervisado",
+    "href": "M2_IntroDS/IntrotoDataScience.html#aprendizaje-supervisado",
+    "title": "Introduction to Data Science",
+    "section": "Aprendizaje supervisado",
+    "text": "Aprendizaje supervisado\nComprende algoritmos que aprendan a través de ejemplos. El usuario proporciona al algoritmo de aprendizaje automático un conjunto de datos conocidos que incluye las entradas y salidas conocidas correspondientes. El algoritmo debe encontrar un método para determinar cómo llegar a esas entradas y salidas.\nMientras el operador conoce las respuestas correctas al problema, el algoritmo identifica patrones en los datos, aprende de las observaciones y hace predicciones. El algoritmo realiza predicciones y puede ser corregido por el operador, y este proceso sigue hasta que el algoritmo alcanza un alto nivel de precisión y rendimiento."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-7",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-7",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "TBD"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#section-8",
+    "href": "M2_IntroDS/IntrotoDataScience.html#section-8",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "TBD"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#algoritmos-no-supervisados-populares",
+    "href": "M2_IntroDS/IntrotoDataScience.html#algoritmos-no-supervisados-populares",
+    "title": "Introduction to Data Science",
+    "section": "Algoritmos no supervisados populares",
+    "text": "Algoritmos no supervisados populares"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#aprendizaje-sin-supervisión",
+    "href": "M2_IntroDS/IntrotoDataScience.html#aprendizaje-sin-supervisión",
+    "title": "Introduction to Data Science",
+    "section": "Aprendizaje sin supervisión",
+    "text": "Aprendizaje sin supervisión\nEl algoritmo de aprendizaje automático estudia los datos para identificar patrones. No hay una clave de respuesta o un operador humano para proporcionar instrucción. La máquina determina las correlaciones y las relaciones mediante el análisis de los datos disponibles.\nEn este proceso, se deja que el algoritmo de aprendizaje automático interprete grandes conjuntos de datos. El algoritmo intenta organizar esos datos de alguna manera para describir su estructura. A medida que evalúa más datos, su capacidad para tomar decisiones sobre los mismos mejora gradualmente y se vuelve más refinada."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#dos-conjuntos-de-datos",
+    "href": "M2_IntroDS/IntrotoDataScience.html#dos-conjuntos-de-datos",
+    "title": "Introduction to Data Science",
+    "section": "Dos conjuntos de datos",
+    "text": "Dos conjuntos de datos\n\nEn el aprendizaje supervisado, existen varios tipos de datos.\nLos datos de entrenamiento son los que se utilizan para construir \\(\\hat{f}(\\boldsymbol{X})\\).\nLos datos de prueba son los que NO se utilizaron en el proceso de ajuste, pero que se utilizan para comprobar el rendimiento del modelo con datos no analizados."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#yogi-berra",
+    "href": "M2_IntroDS/IntrotoDataScience.html#yogi-berra",
+    "title": "Introduction to Data Science",
+    "section": "Yogi Berra",
+    "text": "Yogi Berra\n\n\nIt’s though to make predictions, especially about the future."
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#lets-play",
+    "href": "M2_IntroDS/IntrotoDataScience.html#lets-play",
+    "title": "Introduction to Data Science",
+    "section": "Let’s Play",
+    "text": "Let’s Play\nVamos a jugar con modelos supervisados\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
+  },
+  {
+    "objectID": "M2_IntroDS/IntrotoDataScience.html#algoritmos-supervisados-populares",
+    "href": "M2_IntroDS/IntrotoDataScience.html#algoritmos-supervisados-populares",
+    "title": "Introduction to Data Science",
+    "section": "Algoritmos Supervisados Populares",
+    "text": "Algoritmos Supervisados Populares"
   }
 ]
