@@ -1,11 +1,40 @@
 ---
-title: "TEC-IN2004B"
+title: "IN2004B Generation of Value with Data Analytics"
+subtitle: "Materials for Semester AD 2025"
+author: 
+  - name: Alan R. Vazquez
+    orcid: 0000-0002-3658-0911
+    affiliations:
+      - name: Tecnologico de Monterrey
 ---
 
-This is a Quarto website.
+## Course topics
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+### Module 1
 
-```{r}
-1 + 1
-```
+1.  Indicators ([slides](/IntroductionDS/Introduction.slides.html))
+2.  Introduction to Data Bases 
+
+### Module 2
+
+1.  Introduction to Data Science ([slides](/LinearRegression/LinearRegression.slides.html)) ([colab](https://colab.research.google.com/drive/1RPIkJNT2fdFB9jLcYGGjUx22G8JmzAPK?usp=sharing))
+2.  Classification Algorithms
+
+### Module 3
+
+1.  Predictive Models 
+2.  Autocorrelation Models
+3.  Nonparametric models
+
+### Module 4
+
+1.  Principal Component Analysis
+2.  Clustering Methods
+
+## About the author
+
+Alan R. Vazquez ([website](https://alanrvazquez.netlify.app/)) is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.
+
+### License
+
+
