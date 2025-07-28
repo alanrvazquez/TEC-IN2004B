@@ -761,5 +761,369 @@
     "title": "Introduction to Data Science",
     "section": "Algoritmos Supervisados Populares",
     "text": "Algoritmos Supervisados Populares"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#agenda",
+    "href": "M2_Classification/Classification.html#agenda",
+    "title": "Classification Methods",
+    "section": "Agenda",
+    "text": "Agenda\n\n\nIntroducción\nClassification and Regression Trees (CART)\nMétricas de Algoritmos de Clasificación\nK vecinos cercanos"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#load-the-libraries",
+    "href": "M2_Classification/Classification.html#load-the-libraries",
+    "title": "Classification Methods",
+    "section": "Load the libraries",
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport statsmodels.api as sm\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score\n\nHere, we will introduce the functions confusion_matrix(), ConfusionMatrixDisplay() and accuracy_score() to evaluate the performance of a logistic regression classifier."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#problemas-principales-de-cienca-de-datos",
+    "href": "M2_Classification/Classification.html#problemas-principales-de-cienca-de-datos",
+    "title": "Classification Methods",
+    "section": "Problemas principales de cienca de datos",
+    "text": "Problemas principales de cienca de datos\nProblemas de regresión. La respuesta es numérica. Por ejemplo, los ingresos de una persona, el valor de una casa, la presión arterial del paciente.\nProblemas de clasificación. La respuesta es categórica e involucra K categorías diferentes. Por ejemplo, la marca de un producto adquirido (A, B, C) o si una persona incumple una deuda (sí o no).\nLos predictores pueden ser numéricos o categóricos."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section",
+    "href": "M2_Classification/Classification.html#section",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Respuesta:\n\n\n\\(Y\\) es una variable categórica que toma 2 categorías o clases.\nPor ejemplo, \\(Y\\) puede tomar 0 o 1, A o B, no o sí, spam o no spam.\n\nCuando las clases son cadenas, se suele codificarlas como 0 y 1.\nLa clase de destino es aquella para la que \\(Y = 1\\). La clase de referencia es aquella para la que \\(Y = 0\\)."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#algoritmos-de-clasificación",
+    "href": "M2_Classification/Classification.html#algoritmos-de-clasificación",
+    "title": "Classification Methods",
+    "section": "Algoritmos de Clasificación",
+    "text": "Algoritmos de Clasificación\nLos algoritmos de clasificación usan los valores de los predictores para predecir la clase de la respuesta (objetivo o referencia).\nEs decir, para un registro no visto, usan los valores de los predictores para predecir si el registro pertenece a la clase objetivo o no.\nTécnicamente, predicen la probabilidad de que el registro pertenece a la clase objetivo."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#ejemplo-1",
+    "href": "M2_Classification/Classification.html#ejemplo-1",
+    "title": "Classification Methods",
+    "section": "Ejemplo 1",
+    "text": "Ejemplo 1\nConsidere un filtro de correo no deseado donde \\(Y\\) es el tipo de correo.\n\nLa clase de destino es spam. En este caso, \\(Y=1\\).\nLa clase de referencia no es spam. En este caso, \\(Y=0\\).\n\n\n\n\n\n\n\n\n\nAmbos correos se clasificarían como spam. Sin embargo, tendríamos mayor confianza en nuestra clasificación para el segundo correo."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#arbol-de-decisión",
+    "href": "M2_Classification/Classification.html#arbol-de-decisión",
+    "title": "Classification Methods",
+    "section": "Arbol de Decisión",
+    "text": "Arbol de Decisión\nEs un algoritmo de aprendizaje supervisado que predice o clasifica observaciones usando una estructura de arbol jerarquica.\n\nSencillo y útil para interpretaciones.\nPuede manejar predictores y respuestas numéricas y categóricas.\nComputacionalmente eficiente.\nTécnica no paramétrica."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#ejemplo-2-identificar-billetes-falsos",
+    "href": "M2_Classification/Classification.html#ejemplo-2-identificar-billetes-falsos",
+    "title": "Classification Methods",
+    "section": "Ejemplo 2: Identificar Billetes Falsos",
+    "text": "Ejemplo 2: Identificar Billetes Falsos\n\n\nConjunto de datos\nLos datos se encuentran en el archivo “banknotes.xlsx”.\n\nbank_data = pd.read_excel(\"banknotes.xlsx\")\n# Set response variable as categorical.\nbank_data['Status'] = pd.Categorical(bank_data['Status'])\nbank_data.head()\n\n\n\n\n\n\n\n\nStatus\nLeft\nRight\nBottom\nTop\n\n\n\n\n0\ngenuine\n131.0\n131.1\n9.0\n9.7\n\n\n1\ngenuine\n129.7\n129.7\n8.1\n9.5\n\n\n2\ngenuine\n129.7\n129.7\n8.7\n9.6\n\n\n3\ngenuine\n129.7\n129.6\n7.5\n10.4\n\n\n4\ngenuine\n129.6\n129.7\n10.4\n7.7\n\n\n\n\n\n\n\nGenerar datos de entrenamiento\nDividimos el conjunto de datos actual en dos conjuntos de datos: de entrenamiento y de validación. Para ello, utilizamos la función train_test_split() de scikit-learn.\n\n# Set full matrix of predictors.\nX_full = bank_data.drop(columns = ['Status'])\n\n# Set full matrix of responses.\nY_full = bank_data['Status']\n\n# Split the dataset.\nX_train, X_val, Y_train, Y_val = train_test_split(X_full, Y_full, \n                                                    test_size=0.3)\n\nEl parámetro test_size establece la parte del conjunto de datos que irá al conjunto de validación."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-1",
+    "href": "M2_Classification/Classification.html#section-1",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "La función realiza una partición inteligente de los datos utilizando la distribución empírica de la respuesta.\nTécnicamente, divide los datos para que la distribución de la respuesta en los conjuntos de entrenamiento y validación sea similar.\nNormalmente, la proporción del conjunto de datos que se destina al conjunto de prueba es del 20 % o 30 %.\nMás adelante, utilizaremos el conjunto de datos de validación para evaluar el rendimiento de clasificación del modelo de regresión logística estimado para clasificar datos no observados."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#idea-básica-de-un-árbol-de-decisión",
+    "href": "M2_Classification/Classification.html#idea-básica-de-un-árbol-de-decisión",
+    "title": "Classification Methods",
+    "section": "Idea básica de un árbol de decisión",
+    "text": "Idea básica de un árbol de decisión\nEstratificar o segmentar el espacio predictor en varias regiones más simples."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#cómo-se-construye-un-árbol-de-decisión",
+    "href": "M2_Classification/Classification.html#cómo-se-construye-un-árbol-de-decisión",
+    "title": "Classification Methods",
+    "section": "¿Cómo se construye un árbol de decisión?",
+    "text": "¿Cómo se construye un árbol de decisión?\nLa construcción de árboles de decisión implica dos procedimientos principales.\n\nCrece un árbol grande.\nPoda el árbol para evitar un ajuste excesivo.\n\nDespués de construir un “buen” árbol, podemos predecir nuevas observaciones que no se encuentran en el conjunto de datos que usamos para construirlo."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#cómo-crecemos-un-arbol",
+    "href": "M2_Classification/Classification.html#cómo-crecemos-un-arbol",
+    "title": "Classification Methods",
+    "section": "¿Cómo crecemos un arbol?",
+    "text": "¿Cómo crecemos un arbol?\nUsando el algoritmo CART!\nEl algoritmo utiliza una estrategia de división binaria recursiva que construye el árbol utilizando un enfoque codicioso de arriba hacia abajo.\nBásicamente, en un nodo determinado, considera todas las variables y todas las posibles divisiones de esa variable. Luego, para la clasificación, elige la mejor variable y la divide que minimiza la llamada impureza."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-13",
+    "href": "M2_Classification/Classification.html#section-13",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Repetimos el proceso de partición hasta que los nodos terminales tengan no menos de 5 observaciones"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#qué-es-impureza",
+    "href": "M2_Classification/Classification.html#qué-es-impureza",
+    "title": "Classification Methods",
+    "section": "¿Qué es impureza?",
+    "text": "¿Qué es impureza?\nLa impureza del nodo se refiere a la homogeneidad de las clases de respuesta en ese nodo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEl algorítmo CART minimiza la impureza entre los nodos del arbol."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#podando-el-arbol",
+    "href": "M2_Classification/Classification.html#podando-el-arbol",
+    "title": "Classification Methods",
+    "section": "Podando el Arbol",
+    "text": "Podando el Arbol\nPara evitar un ajuste excesivo, podamos algunas de las ramas del árbol. Más específicamente, colapsamos dos nodos internos (no terminales)."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-15",
+    "href": "M2_Classification/Classification.html#section-15",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Para podar un arbol usamos un algoritmo avanzado para medir la contribucón de las ramas del arbol.\nEl algoritmo tiene un parametro de ajuste llamado \\(\\alpha\\), que pone mayor peso en el numero de nodos del arbol (o tamaño):\n\nValores grandes de \\(\\alpha\\) resultan en arboles pequeños con pocos nodos.\nValores pequeños de \\(\\alpha\\) resultan en arboles grandes con muchos nodos."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#detalles-de-implementación",
+    "href": "M2_Classification/Classification.html#detalles-de-implementación",
+    "title": "Classification Methods",
+    "section": "Detalles de implementación",
+    "text": "Detalles de implementación\n\nPredictores categóricos con niveles desordenados \\(\\{A, B, C\\}\\). Ordenamos los niveles de una manera específica (funciona para problemas binarios y de regresión).\nPredictores con valores faltantes. Para predictores cuantitativos, usamos imputación múltiple. Para predictores categóricos, creamos un nuevo nivel “NA”.\nDivisiones terciarias o cuartarias. No hay mucha mejora.\nDivisiones en diagonal (usando una combinación lineal para la partición). Pueden conducir a una mejora, pero perjudican la interpretabilidad."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#desventaja-de-los-arboles-de-decisión",
+    "href": "M2_Classification/Classification.html#desventaja-de-los-arboles-de-decisión",
+    "title": "Classification Methods",
+    "section": "Desventaja de los Arboles de Decisión",
+    "text": "Desventaja de los Arboles de Decisión\n\nLos árboles de decisión tienen una gran variación. Un pequeño cambio en los datos de entrenamiento puede dar lugar a un árbol muy diferente.\nTiene problemas para identificar estructuras de datos simples."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#evaluación",
+    "href": "M2_Classification/Classification.html#evaluación",
+    "title": "Classification Methods",
+    "section": "Evaluación",
+    "text": "Evaluación\n\nEvaluamos un clasificador de regresión logística clasificando las observaciones que no se utilizaron para el entrenamiento ni para su estimación.\nEs decir, utilizamos el clasificador para predecir las categorías del conjunto de datos de prueba utilizando únicamente los valores predictores de este conjunto.\nEn Python, usamos los comandos:\n\n# Remove problematic predictor from the test set.\n#X_val = X_val.drop(columns = ['Right'])\n\n# Add constant to the predictor matrix from the test set.\n#X_val = sm.add_constant(X_val)\n\n# Predict probabilities.\n#predicted_probability = logit_model.predict(X_val)"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-16",
+    "href": "M2_Classification/Classification.html#section-16",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "La función predict() genera probabilidades en lugar de las clases reales.\n\n#predicted_probability.head()\n\nEstas son las probabilidades de que un billete sea “falso” según sus características (valores de los predictores).\nPara convertir las probabilidades en clases reales, las redondeamos:\n\n#predicted_classes = round(predicted_probability).astype('int')"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-17",
+    "href": "M2_Classification/Classification.html#section-17",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "#predicted_classes.head()\n\n\nLas observaciones con probabilidades superiores a 0,5 se clasifican como “falsas”.\nLas observaciones con probabilidades inferiores a 0,5 se clasifican como “genuinas”.\n\nAhora, comparamos las predicciones con las categorías reales en el conjunto de datos de validación. Un buen modelo de regresión logística presenta una buena concordancia entre sus predicciones y las categorías reales."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#matriz-de-confusión",
+    "href": "M2_Classification/Classification.html#matriz-de-confusión",
+    "title": "Classification Methods",
+    "section": "Matriz de confusión",
+    "text": "Matriz de confusión\n\nTabla utilizada para evaluar el rendimiento de un clasificador.\nCompara los valores reales con los valores predichos de un clasificador.\nÚtil para problemas de clasificación binaria y multiclase."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#en-python",
+    "href": "M2_Classification/Classification.html#en-python",
+    "title": "Classification Methods",
+    "section": "En Python",
+    "text": "En Python\n\nCalculamos la matriz de confusión utilizando la función homónima scikit-learn.\n\n# Create dummy variables for test set.\n#Y_dummies = pd.get_dummies(Y_val, dtype = 'int')\n\n# Select target variable from test set.\n#Y_target_test = Y_dummies['counterfeit']\n\n# Compute confusion matrix.\n#cm = confusion_matrix(Y_target_test, predicted_classes)\n\n# Show confusion matrix.\n#print(cm)"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-18",
+    "href": "M2_Classification/Classification.html#section-18",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Podemos visualizar la matriz de confusión utilizando la función ConfusionMatrixDisplay().\n\n#ConfusionMatrixDisplay(cm).plot()"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#precisión",
+    "href": "M2_Classification/Classification.html#precisión",
+    "title": "Classification Methods",
+    "section": "Precisión",
+    "text": "Precisión\nUna métrica simple para resumir la información de la matriz de confusión es la precisión. Es la proporción de clasificaciones correctas para ambas clases, del total de clasificaciones realizadas.\nEn Python, calculamos la precisión mediante la función accuracy_score() de scikit-learn.\n\n#accuracy = accuracy_score(Y_target_test, predicted_classes)\n#print( round(accuracy, 2) )\n\n\nCuanto mayor sea la precisión, mejor será el rendimiento del clasificador."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#observaciones",
+    "href": "M2_Classification/Classification.html#observaciones",
+    "title": "Classification Methods",
+    "section": "Observaciones",
+    "text": "Observaciones\n\n\nLa precisión es fácil de calcular e interpretar.\nFunciona bien cuando el conjunto de datos tiene una distribución de clases equilibrada (es decir, casos 1 y 0 aproximadamente iguales).\nSin embargo, hay situaciones en las que identificar la clase objetivo es más importante que la clase de referencia.\nPor ejemplo, no es ideal para conjuntos de datos desequilibrados. Cuando una clase es mucho más frecuente que la otra, la precisión puede ser engañosa."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#un-ejemplo",
+    "href": "M2_Classification/Classification.html#un-ejemplo",
+    "title": "Classification Methods",
+    "section": "Un ejemplo",
+    "text": "Un ejemplo\n\nDigamos que deseamos crear un clasificador que nos diga si un cliente de una empresa de telefonía móvil abandonará el próximo mes.\nLos clientes que abandonan disminuyen significativamente los ingresos de la empresa. Por eso es importante conservar a estos clientes.\nPara retener a ese cliente, la empresa le enviará un mensaje de texto con una oferta para un plan móvil de bajo costo.\nIdealmente, nuestro clasificador identifica correctamente a los clientes que abandonarán, para que obtengan la oferta y, con suerte, se queden."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-19",
+    "href": "M2_Classification/Classification.html#section-19",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "En otras palabras, queremos evitar tomar decisiones equivocadas sobre clientes que abandonarán.\nLas decisiones equivocadas sobre los clientes leales no son tan relevantes.\nPorque si clasificamos a un cliente leal como uno que abandonará, el cliente obtendrá una buena oferta. Probablemente pagará menos pero se quedará de todos modos."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#otro-ejemplo",
+    "href": "M2_Classification/Classification.html#otro-ejemplo",
+    "title": "Classification Methods",
+    "section": "Otro ejemplo",
+    "text": "Otro ejemplo\n\nOtro ejemplo es desarrollar un algoritmo (clasificador) que pueda identificar rápidamente a pacientes que puedan tener una enfermedad rara y necesiten una evaluación médica más exhaustiva y costosa.\nEl clasificador debe tomar decisiones correctas sobre los pacientes con la enfermedad rara, para que sean evaluados y eventualmente tratados.\nUn paciente sano al que se clasifica erróneamente con la enfermedad sólo incurrirá en algunos dólares extra para pagar el siguiente estudio. Sólo para descubrir que el paciente no tiene la enfermedad."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#métricas-especificas-de-clasificación",
+    "href": "M2_Classification/Classification.html#métricas-especificas-de-clasificación",
+    "title": "Classification Methods",
+    "section": "Métricas especificas de clasificación",
+    "text": "Métricas especificas de clasificación\nPara superar esta limitación de exactitud y tasa de error, existen varias métricas específicas de clase. Los más populares son:\n\nSensibilidad o recall\nPresición\nError tipo I\n\nEstas métricas se calculan de la matriz de confusión."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-20",
+    "href": "M2_Classification/Classification.html#section-20",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Sensibilidad o recall = OO/(OO + OR) “¿Cuántos registros de la clase objetivo predijimos correctamente?”"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-21",
+    "href": "M2_Classification/Classification.html#section-21",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Presición = OO/(OO + RO) ¿Cuántos de los registros que predijimos como de clase objetivo fueron clasificados correctamente?"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-22",
+    "href": "M2_Classification/Classification.html#section-22",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Error tipo I = RO/(RO + RR) “¿Cuántos de los registros de referencia predijimos incorrectamente como de objetivo?”"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#discusión",
+    "href": "M2_Classification/Classification.html#discusión",
+    "title": "Classification Methods",
+    "section": "Discusión",
+    "text": "Discusión\n\nGeneralmente existe un compromiso entre sensibilidad y error de tipo I.\nIntuitivamente, aumentar la sensibilidad de un clasificador probablemente genere un aumento del error tipo I, porque se predicen más observaciones como positivas.\nLas posibles compensaciones entre sensibilidad y error de tipo I pueden ser apropiadas cuando existen diferentes sanciones o costos asociados con cada tipo de error."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#ejemplo",
+    "href": "M2_Classification/Classification.html#ejemplo",
+    "title": "Classification Methods",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nAsumiendo que la clase de interés o objetivo es “large”\n\nSensibilidad = 566/(566 + 214) = 0.726\nPrecisión = 566/(566 + 156) = 0.783\nError Tipo 1 = 156/(156+655) = 0.192"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#actividad-2.1-clasificación-y-métricas-cooperative-mode",
+    "href": "M2_Classification/Classification.html#actividad-2.1-clasificación-y-métricas-cooperative-mode",
+    "title": "Classification Methods",
+    "section": "Actividad 2.1: Clasificación y métricas (cooperative mode)",
+    "text": "Actividad 2.1: Clasificación y métricas (cooperative mode)\nJuntate con un compañero.\nUtilizando los datos de la tabla “weight-height.csv” aplica el procedimiento CART para construir un árbol de decisión útil para predecir el sexo de una persona a partir de su peso y su estatura.\nEn este ejemplo las variables predictoras son continuas y la variable a predecir es binaria."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-23",
+    "href": "M2_Classification/Classification.html#section-23",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Interpreta los valores de Precision, Exactitud, Sensibilidad y Error Tipo 1 para el conjunto de validación. Si el software no los reporta haz los cálculos a partir de la matriz de confusión. Utiliza “Female” como clase objetivo.\nDiscute sobre la efectividad del modelo resultante."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#el-algoritmo-tiene-3-pasos",
+    "href": "M2_Classification/Classification.html#el-algoritmo-tiene-3-pasos",
+    "title": "Classification Methods",
+    "section": "El algoritmo tiene 3 pasos",
+    "text": "El algoritmo tiene 3 pasos\n\nElige el numero de vecinos más cercanos (K).\nPara una observación nueva, encuentra las K observaciones más cercanas en los datos de entrenamiento (ignorando la respuesta).\nPara la observación nueva, el algoritmo predice el valor de la respuesta mas común entre las K observaciones más cercanas."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-24",
+    "href": "M2_Classification/Classification.html#section-24",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Supongamos que tenemos dos grupos: el grupo rojo y el grupo verde. La recta numérica muestra el valor de una variable para nuestros datos de entrenamiento.\nLlega una nueva observación y no sabemos a qué grupo pertenece.\n\nSi hubiéramos elegido K=3, entonces los tres vecinos más cercanos votarían a qué grupo pertenece la nueva observación."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-25",
+    "href": "M2_Classification/Classification.html#section-25",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Usando \\(K = 3\\), son 2 votos para “genuino” y 2 para “falso”. Entonces clasificamos como “geniunio”.\n\nLa cercanía se basa en la distancia Euclidiana."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#detalles-de-implementación-1",
+    "href": "M2_Classification/Classification.html#detalles-de-implementación-1",
+    "title": "Classification Methods",
+    "section": "Detalles de implementación",
+    "text": "Detalles de implementación\nEmpates\n\nSi hay más de K vecinos mas cercanos, incluyelos todos.\nSi hay un empate en la votación, fija una regla para romper el empate. Por ejemplo, seleccionar la clase aleatoriamente."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-26",
+    "href": "M2_Classification/Classification.html#section-26",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "KNN utiliza la distancia euclidiana entre puntos. Entonces ignora las unidades.\n\nEjemplo: dos predictores: altura en cm y extensión de brazos en pies. Compare dos personas: (152.4, 1.52) y (182.88, 1.85).\nEstas personas están separadas por 30.48 unidades de distancia en la primera variable, pero sólo por 0.33 unidades en la segunda.\nPor lo tanto, el primer predictor juega un papel mucho más importante en la clasificación y puede impulsar los resultados de modo que la segunda variable se vuelva inútil."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-27",
+    "href": "M2_Classification/Classification.html#section-27",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Como primer paso, ¡debemos de transformar los predictores para que tengan las mismas unidades!\nEsto requiere un proceso de estandarización de los predictores, que se hace en Python."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#estandarización",
+    "href": "M2_Classification/Classification.html#estandarización",
+    "title": "Classification Methods",
+    "section": "Estandarización",
+    "text": "Estandarización\n\nLa estandarización se refiere a centrar y escalar cada predictor numérico individualmente. Esto coloca a todos los predictores en la misma escala.\nPara centrar una variable predictora, se resta el valor promedio del predictor de todos los valores.\nPor lo tanto, el predictor centrado tiene una media cero (es decir, su valor promedio es cero)."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-28",
+    "href": "M2_Classification/Classification.html#section-28",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Para escalar un predictor, cada uno de sus valores se divide entre su desviación estándar.\nAl escalar los datos, los valores tienen una desviación estándar común de uno.\nEn términos matemáticos, estandarizamos un predictor como:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\ncon \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#ejemplo-1-cont.",
+    "href": "M2_Classification/Classification.html#ejemplo-1-cont.",
+    "title": "Classification Methods",
+    "section": "Ejemplo 1 (cont.)",
+    "text": "Ejemplo 1 (cont.)\nUsamos los cinco predictores numéricos del conjunto de datos complete_sbAuto.\n\n#complete_sbAuto.head()"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#dos-predictores-en-unidades-originales",
+    "href": "M2_Classification/Classification.html#dos-predictores-en-unidades-originales",
+    "title": "Classification Methods",
+    "section": "Dos predictores en unidades originales",
+    "text": "Dos predictores en unidades originales\nConsidere el conjunto de datos complete_sbAuto creado previamente. Considere dos puntos en el gráfico: \\((175, 5140)\\) y \\((69, 1613)\\).\n\n\n\n\n\nLa distancia entre estos puntos es \\(\\sqrt{(69 - 175)^2 + (1613-5140)^2}\\) \\(= \\sqrt{11236 + 12439729}\\) \\(= 3528.592\\)."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#estandarización-en-python",
+    "href": "M2_Classification/Classification.html#estandarización-en-python",
+    "title": "Classification Methods",
+    "section": "Estandarización en Python",
+    "text": "Estandarización en Python\n\nPara estandarizar predictores numéricos, usamos la función StandardScaler(). Además, aplicamos la función a las variables mediante la función fit_transform().\n\n\n#scaler = StandardScaler()\n#Xs = scaler.fit_transform(complete_sbAuto)"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-29",
+    "href": "M2_Classification/Classification.html#section-29",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Lamentablemente, el objeto resultante no es un marco de datos de Pandas. Por lo tanto, lo convertimos a este formato.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#dos-predictores-en-unidades-estandarizadas",
+    "href": "M2_Classification/Classification.html#dos-predictores-en-unidades-estandarizadas",
+    "title": "Classification Methods",
+    "section": "Dos predictores en unidades estandarizadas",
+    "text": "Dos predictores en unidades estandarizadas\nEn la nueva escala, los dos puntos ahora son: \\((1.82, 2.53)\\) y \\((-0.91, -1.60)\\).\n\n\n\n\n\nLa distancia entre estos puntos es \\(\\sqrt{(-0.91 - 1.82)^2 + (-1.60-2.53)^2}\\) \\(= \\sqrt{7.45 + 17.05} = 4.95\\)."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#discusión-1",
+    "href": "M2_Classification/Classification.html#discusión-1",
+    "title": "Classification Methods",
+    "section": "Discusión",
+    "text": "Discusión\nK-NN es intuitivo y sencillo y puede producir predicciones decentes. Sin embargo, K-NN tiene algunas desventajas:\n\nCuando el conjunto de datos de entrenamiento es muy grande, K-NN es computacionalmente costoso. Esto se debe a que, para predecir una observación, necesitamos calcular la distancia entre la observación y todas las demás en el conjunto de datos. (“Aprendiz perezoso”).\nEn este caso, un arbol de decisión es mas ventajoso porque es fácil de construir, almacenar, y hacer predicciones con él."
+  },
+  {
+    "objectID": "M2_Classification/Classification.html#section-30",
+    "href": "M2_Classification/Classification.html#section-30",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "El rendimiento predictivo de K-NN se deteriora a medida que aumenta el número de predictores.\nEsto se debe a que la distancia esperada al vecino más cercano aumenta drásticamente con el número de predictores, a menos que el tamaño del conjunto de datos aumente exponencialmente con este número.\nEsto se conoce como la maldición de la dimensionalidad.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
   }
 ]

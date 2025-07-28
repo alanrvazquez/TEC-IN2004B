@@ -157,7 +157,7 @@ La [**clasificación**]{style="color:blue;"} (o estimación de probabilidad de c
 
 . . .
 
-La [**regresión intenta**]{style="color:green;"} estimar o predecir, para cada individuo, el valor numérico de alguna variable para ese individuo. Por ejemplo, "¿Cuánto utilizará el servicio un cliente determinado?"
+La [**regresión**]{style="color:green;"} intenta estimar o predecir, para cada individuo, el valor numérico de alguna variable para ese individuo. Por ejemplo, "¿Cuánto utilizará el servicio un cliente determinado?"
 
 ## 
 
