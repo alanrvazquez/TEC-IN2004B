@@ -13,7 +13,7 @@ author:
 ### Module 1
 
 1.  Indicators ([slides](/IntroductionDS/Introduction.slides.html))
-2.  Introduction to Data Bases 
+2.  Introduction to Data Bases
 
 ### Module 2
 
@@ -22,7 +22,7 @@ author:
 
 ### Module 3
 
-1.  Predictive Models 
+1.  Predictive Models
 2.  Autocorrelation Models
 3.  Nonparametric models
 
@@ -36,5 +36,3 @@ author:
 Alan R. Vazquez ([website](https://alanrvazquez.netlify.app/)) is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.
 
 ### License
-
-

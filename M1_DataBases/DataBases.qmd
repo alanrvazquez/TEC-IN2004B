@@ -1,0 +1,31 @@
+---
+title: "Introduction to Data Bases"
+subtitle: "IN2004B: Generation of Value with Data Analytics"
+author: 
+  - name: Alan R. Vazquez
+    affiliations:
+      - name: Department of Industrial Engineering
+format: 
+  revealjs:
+    chalkboard: false
+    multiplex: true
+    footer: "Tecnologico de Monterrey"
+    logo: IN1002b_logo.png
+    css: style.css
+    slide-number: True
+    html-math-method: mathjax
+editor: visual
+jupyter: python3
+---
+
+## Agenda
+
+</br>
+
+1.  Introduction
+2.  Logistic regression
+3.  Estimating a logistic regression model
+4.  Classification performance
+
+
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
