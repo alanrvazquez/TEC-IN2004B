@@ -132,8 +132,7 @@ Para los $n_t$ los [datos de entrenamiento]{style="color:blue;"}!
 
 ## Ejemplo
 
-
-![](images/Modulo 3 - Modelos predictivos y series de tiempo copy.012.jpeg){fig-align="center"}
+![](images/Modulo%203%20-%20Modelos%20predictivos%20y%20series%20de%20tiempo%20copy.012.jpeg){fig-align="center"}
 
 ## Regresión lineal en Python
 
@@ -423,6 +422,5 @@ A pesar de su simplicidad y versatilidad, los modelos de regresión lineal no so
 Esto es porque no asumen una dependencia entre valores consecutivos de la serie de tiempo. Es decir, no usan el hecho de que, por ejemplo, $Y_1$ puede ayudarnos a predecir $Y_2$, y $Y_2$ puede ayudarnos a predecir $Y_3$, etc.
 
 Modelos que nos ayudan a utilizar observaciones anteriores para predecir valores futuros de la variable de respuesta $Y$ son los **modelos autoregresivos**.
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)

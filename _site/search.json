@@ -1454,5 +1454,236 @@
     "title": "Predictive Models and Time Series",
     "section": "Ejemplo",
     "text": "Ejemplo"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#agenda",
+    "href": "M4_Clustering/Clustering.html#agenda",
+    "title": "Clustering Methods",
+    "section": "Agenda",
+    "text": "Agenda\n\n\nAprendizaje Sin Supervisión\nMétodos de agrupamiento\n\nMétodo de K-Medias\nAgrupación Jerárquica"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#tipos-de-aprendizaje",
+    "href": "M4_Clustering/Clustering.html#tipos-de-aprendizaje",
+    "title": "Clustering Methods",
+    "section": "Tipos de Aprendizaje",
+    "text": "Tipos de Aprendizaje\nEn ciencia de datos, existen dos tipos principales de aprendizaje:\n\nAprendizaje supervisado (supervised learning). En el cual tenemos varios predictores y una respuesta. El objetivo es predecir la respuesta usando los valores de los predictores.\nAprendizaje sin supervisión (unsupervised learning). En el cual solo tenemos varios predictores. El objetivo es descubrir patrones en sus datos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#aprendizaje-sin-supervisión-1",
+    "href": "M4_Clustering/Clustering.html#aprendizaje-sin-supervisión-1",
+    "title": "Clustering Methods",
+    "section": "Aprendizaje Sin Supervisión",
+    "text": "Aprendizaje Sin Supervisión\nSu objetivo es organizar o agrupar datos para obtener información.\nContesta preguntas como:\n\n¿Existe una forma informativa de visualizar los datos?\n¿Podemos descubrir subgrupos entre las variables o entre las observaciones?\n\nEl aprendizaje sin supervisión es más desafiante que el aprendizaje supervisado porque que es subjetivo y no existe un objetivo simple para el análisis, como predecir una respuesta.\nEl aprendizaje sn supervisión también se le conoce como análisis exploratorio de datos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#ejemplos-de-aprendizaje-sin-supervisión",
+    "href": "M4_Clustering/Clustering.html#ejemplos-de-aprendizaje-sin-supervisión",
+    "title": "Clustering Methods",
+    "section": "Ejemplos de aprendizaje sin supervisión",
+    "text": "Ejemplos de aprendizaje sin supervisión\n\nMarketing. Identificar un segmento de clientes que poseen una alta tendencia a adquirir un producto específico.\nRetail. Agrupar clientes según sus preferencias, estilo, elección de ropa y preferencias de tienda.\nCiencia médica. Facilitar el diagnóstico y tratamiento eficiente de sus pacientes así como el descubrimiento de nuevos medicamentos.\nSociología. Clasifique a las personas según su demografía, estilo de vida, nivel socioeconómico, etc."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#métodos-de-aprendizaje-sin-supervisión",
+    "href": "M4_Clustering/Clustering.html#métodos-de-aprendizaje-sin-supervisión",
+    "title": "Clustering Methods",
+    "section": "Métodos de aprendizaje sin supervisión",
+    "text": "Métodos de aprendizaje sin supervisión\nLos Métodos de Agrupamiento tienen como objetivo encontrar subgrupos con datos similares en la base de datos.\nEl Análisis de Componentes Principales busca una representación alternativa de los datos para facilitar su comprensión cuando hay muchos predictores en la base de datos.\nAquí nos usaremos estos métodos en predictores \\(X_1, X_2, \\ldots, X_p\\) que son numéricos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#métodos-de-agrupamiento-1",
+    "href": "M4_Clustering/Clustering.html#métodos-de-agrupamiento-1",
+    "title": "Clustering Methods",
+    "section": "Métodos de agrupamiento",
+    "text": "Métodos de agrupamiento\nDos métodos clásicos de agrupamiento son:\n\nMétodo K-medias. Buscamos dividir las observaciones en K grupos.\nAgrupación jerárquica. Dividimos las n observaciones en 1 grupos, 2 grupos, 3 grupos, …, hasta n grupos. Visualizamos las divisiones usando una gráfica llamada dendrograma."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#ejemplo",
+    "href": "M4_Clustering/Clustering.html#ejemplo",
+    "title": "Clustering Methods",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nLa base de datos “penguins.xlsx” contiene datos sobre 342 pingüinos en la Antártida. Los datos contienen:\n\n\n\n\nLongitud del pico (bill length) en milimetros.\nProfundidad del pico (bill depth) en milimetros.\nLongitud de la aleta (flipper length) en milimetros\nPeso (body mass) en gramos.\n\n\n\n\n\n¿Podemos agrupar los pingüinos en base a estas características?"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#datos",
+    "href": "M4_Clustering/Clustering.html#datos",
+    "title": "Clustering Methods",
+    "section": "Datos",
+    "text": "Datos\nPython"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#visualización-de-datos",
+    "href": "M4_Clustering/Clustering.html#visualización-de-datos",
+    "title": "Clustering Methods",
+    "section": "Visualización de datos",
+    "text": "Visualización de datos\nScatter plots"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#el-método-de-k-medias",
+    "href": "M4_Clustering/Clustering.html#el-método-de-k-medias",
+    "title": "Clustering Methods",
+    "section": "El método de K-medias",
+    "text": "El método de K-medias\nObjetivo: Encontrar K grupos de observaciones tal que cada observación está en un grupo diferente."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#section",
+    "href": "M4_Clustering/Clustering.html#section",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Para esto, el método necesita dos elementos:\nA. Una medida de “cercanía” entre observaciones. B. Un algoritmo que agrupe observaciones que están cercanas entre sí.\nUna buena agrupación es aquella en la que las observaciones dentro de un grupo están cerca y las observaciones en diferentes grupos están lejos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#cómo-medimos-la-distancia-entre-observaciones",
+    "href": "M4_Clustering/Clustering.html#cómo-medimos-la-distancia-entre-observaciones",
+    "title": "Clustering Methods",
+    "section": "¿Cómo medimos la distancia entre observaciones?",
+    "text": "¿Cómo medimos la distancia entre observaciones?\nPara predictores cuantitativos, utilizamos la distancia euclidiana.\nPor ejemplo, si tenemos dos predictores \\(X_1\\) y \\(X_2\\) con observaciones dadas en la tabla:\n\n\n\nObservación\n(X_1)\n(X_2)\n\n\n\n\n1\n(X_{1,1})\n(X_{1,2})\n\n\n2\n(X_{2,1})\n(X_{2,2})"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#section-1",
+    "href": "M4_Clustering/Clustering.html#section-1",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "La distancia euclideana es\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 }\\]"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#section-2",
+    "href": "M4_Clustering/Clustering.html#section-2",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Podemos extender la distancia euclidiana para medir la distancia entre observaciones cuando tenemos más predictores. Por ejemplo, con 3 predictores tenemos\n\n\n\nObservación\n(X_1)\n(X_2)\n(X_3)\n\n\n\n\n1\n(X_{1,1})\n(X_{1,2})\n(X_{1,3})\n\n\n2\n(X_{2,1})\n(X_{2,2})\n(X_{2,3})\n\n\n\nDonde la distancia euclideana es\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^2 }\\]"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#problema-con-la-distancia-euclidiana",
+    "href": "M4_Clustering/Clustering.html#problema-con-la-distancia-euclidiana",
+    "title": "Clustering Methods",
+    "section": "Problema con la distancia euclidiana",
+    "text": "Problema con la distancia euclidiana\n\nLa distancia euclidiana depende de las unidades de medición de los predictores!\nPredictores con ciertas unidades tienen mayor relevancia en el cálculo de la distancia.\nEsto no es bueno ya que queremos que todos los predictores tengan la misma importancia al calcular la distancia euclidiana entre dos observaciones.\nLa solución es estandarizar las unidades de los predictores."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#algoritmo-de-k-medias",
+    "href": "M4_Clustering/Clustering.html#algoritmo-de-k-medias",
+    "title": "Clustering Methods",
+    "section": "Algoritmo de K-medias",
+    "text": "Algoritmo de K-medias\n\n\n\nElige un valor para K, el número de grupos.\n\nAsigna observaciones aleatoriamente a uno de los K grupos.\nEncuentra los centroides (puntos promedio) de cada grupo.\nReasigna observaciones al grupo del centroide más cercano.\nRepite los pasos 3, 4 hasta que no haya más cambios."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#k-medias-en-python",
+    "href": "M4_Clustering/Clustering.html#k-medias-en-python",
+    "title": "Clustering Methods",
+    "section": "K medias en Python",
+    "text": "K medias en Python\nTBD"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#estos-3-grupos-son-3-especies-de-pingüinos",
+    "href": "M4_Clustering/Clustering.html#estos-3-grupos-son-3-especies-de-pingüinos",
+    "title": "Clustering Methods",
+    "section": "Estos 3 grupos son 3 especies de pingüinos",
+    "text": "Estos 3 grupos son 3 especies de pingüinos\n\n\n\nAdelie (Grupo 1)\n\n\nGentoo (Grupo 2)\n\n\nChinstrap (Grupo 3)"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#comentarios",
+    "href": "M4_Clustering/Clustering.html#comentarios",
+    "title": "Clustering Methods",
+    "section": "Comentarios",
+    "text": "Comentarios\n\nSeleccionar el número de grupos K es más un arte que una ciencia. Será mejor que aciertes con K, o estarás detectando patrones donde en verdad no los hay.\nNecesitamos estandarizar todos los predictores.\nEl rendimiento de la agrupación por K-medias se ve afectado por la presencia de valores atípicos.\nLa solución del algoritmo es sensible al punto de partida. Por esto, normalmente se ejecuta varias veces y se reporta la mejor agrupación entre todas las ejecuciones."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#agrupación-jerárquica-1",
+    "href": "M4_Clustering/Clustering.html#agrupación-jerárquica-1",
+    "title": "Clustering Methods",
+    "section": "Agrupación Jerárquica",
+    "text": "Agrupación Jerárquica\n\n\n\n\nComienza con cada observación por sí sola en su propio grupo.\nLuego, fusiona gradualmente los grupos que están cerca unos de otros.\nContinuamos este proceso hasta que todas las observaciones estén en un grupo grande.\nFinalmente, damos un paso atrás y vemos qué agrupación funciona mejor."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#componentes-esenciales",
+    "href": "M4_Clustering/Clustering.html#componentes-esenciales",
+    "title": "Clustering Methods",
+    "section": "Componentes Esenciales",
+    "text": "Componentes Esenciales\n\n\nDistancia entre dos observaciones.\n\n\nUsamos la distancia euclidiana.\nDebemos de estandarizar los predictores!\n\n\nDistancia entre dos grupos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#distancia-entre-grupos.",
+    "href": "M4_Clustering/Clustering.html#distancia-entre-grupos.",
+    "title": "Clustering Methods",
+    "section": "Distancia entre grupos.",
+    "text": "Distancia entre grupos.\n\n\n\nLa distancia entre dos grupos de observaciones se llama vinculación.\nHay varios tipos de vinculación. Los más usados son\n\nVinculación completa\nVinculación promedio"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#vinculación-completa",
+    "href": "M4_Clustering/Clustering.html#vinculación-completa",
+    "title": "Clustering Methods",
+    "section": "Vinculación Completa",
+    "text": "Vinculación Completa\nLa distancia entre grupos se mide utilizando la mayor distancia entre observaciones."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#promedio",
+    "href": "M4_Clustering/Clustering.html#promedio",
+    "title": "Clustering Methods",
+    "section": "Promedio",
+    "text": "Promedio\nLa distancia entre grupos es el promedio de todas las distancias entre observaciones."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#algoritmo-de-agrupamiento-jerárquico",
+    "href": "M4_Clustering/Clustering.html#algoritmo-de-agrupamiento-jerárquico",
+    "title": "Clustering Methods",
+    "section": "Algoritmo de Agrupamiento Jerárquico",
+    "text": "Algoritmo de Agrupamiento Jerárquico\nLos pasos del algoritmo son los siguientes:\n\nAsigna cada observación a un grupo.\nMide el vínculo entre todos los grupos.\nFusiona los dos grupos que sean más similares.\nLuego, fusiona los dos siguientes grupos que sean más similares.\nContinua hasta que todos los grupos hayan sido fusionados."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#ejemplo-1",
+    "href": "M4_Clustering/Clustering.html#ejemplo-1",
+    "title": "Clustering Methods",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nConsideremos un conjunto de datos en el archivo “Cereals.xlsx”. Los datos incluyen información nutricional de 77 cereales, entre otros datos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#en-python",
+    "href": "M4_Clustering/Clustering.html#en-python",
+    "title": "Clustering Methods",
+    "section": "En Python",
+    "text": "En Python"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#resultados-dendrograma",
+    "href": "M4_Clustering/Clustering.html#resultados-dendrograma",
+    "title": "Clustering Methods",
+    "section": "Resultados: Dendrograma",
+    "text": "Resultados: Dendrograma\n\n\n\n\nUn dendrograma es un diagrama de arbol que resume y visualiza el proceso de agrupamiento.\nLas observaciones estan en el eje horizontal y en la parte inferior del diagrama.\nEl eje vertical muestra la distancia entre los grupos.\nSe lee de arriba a abajo."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#qué-hacer-con-un-dendrograma",
+    "href": "M4_Clustering/Clustering.html#qué-hacer-con-un-dendrograma",
+    "title": "Clustering Methods",
+    "section": "¿Qué hacer con un dendrograma?",
+    "text": "¿Qué hacer con un dendrograma?\n\n\n\nDibujamos una linea horizontal a una altura específica para definir los grupos.\nEsta linea define 3 grupos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#section-3",
+    "href": "M4_Clustering/Clustering.html#section-3",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Esta linea define 5 grupos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#dendrograma-en-python",
+    "href": "M4_Clustering/Clustering.html#dendrograma-en-python",
+    "title": "Clustering Methods",
+    "section": "Dendrograma en Python",
+    "text": "Dendrograma en Python"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#comentarios-1",
+    "href": "M4_Clustering/Clustering.html#comentarios-1",
+    "title": "Clustering Methods",
+    "section": "Comentarios",
+    "text": "Comentarios\n\nRecuerda que debemos estandarizar los predictores!\nNo es sencillo elegir el número correcto de grupos usando el dendrograma.\nLos resultados dependen de la medida de vinculación utilizada.\n\nLa vinculación completa resulta en grupos más estrechos.\nLa vinculación promedio logra un equilibrio entre grupos estrechos y más delgados.\n\nLa agrupación jerárquica es útil para detectar valores atípicos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#section-4",
+    "href": "M4_Clustering/Clustering.html#section-4",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Con estos métodos, no existe una única respuesta correcta; se debe considerar cualquier solución que exponga algunos aspectos interesantes de los datos.\n\nJames et al. (2017)"
   }
 ]
