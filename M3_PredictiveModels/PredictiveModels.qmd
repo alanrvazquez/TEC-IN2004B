@@ -130,9 +130,10 @@ $$(Y_1 - (\hat{\beta}_0 + \hat{\beta}_1 X_1 ))^2 + (Y_2 - (\hat{\beta}_0 + \hat{
 
 Para los $n_t$ los [datos de entrenamiento]{style="color:blue;"}!
 
-## Example
+## Ejemplo
 
-TBD
+
+![](images/Modulo 3 - Modelos predictivos y series de tiempo copy.012.jpeg){fig-align="center"}
 
 ## Regresión lineal en Python
 

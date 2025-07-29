@@ -1447,5 +1447,12 @@
     "title": "Predictive Models and Time Series",
     "section": "Desventajas de los modelos de regresión lineal",
     "text": "Desventajas de los modelos de regresión lineal\nA pesar de su simplicidad y versatilidad, los modelos de regresión lineal no son los mejores para describir una serie de tiempo.\nEsto es porque no asumen una dependencia entre valores consecutivos de la serie de tiempo. Es decir, no usan el hecho de que, por ejemplo, \\(Y_1\\) puede ayudarnos a predecir \\(Y_2\\), y \\(Y_2\\) puede ayudarnos a predecir \\(Y_3\\), etc.\nModelos que nos ayudan a utilizar observaciones anteriores para predecir valores futuros de la variable de respuesta \\(Y\\) son los modelos autoregresivos."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#ejemplo-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#ejemplo-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Ejemplo",
+    "text": "Ejemplo"
   }
 ]
