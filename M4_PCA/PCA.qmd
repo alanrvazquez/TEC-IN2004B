@@ -46,6 +46,137 @@ Aquí nos usaremos estos métodos en predictores $X_1, X_2, \ldots, X_p$ que son
 
 # Dispersión en una o varias dimensiones
 
+## Dispersión en una dimensión
+
+El concepto de componentes principales requiere de entender la dispersión o variabilidad de los datos. 
+
+Supongamos que tenemos datos de un solo predictor.
+
+::: center
+[_**Observaciones de un predictor**_]
+:::
+
+![](images/unadispersion.png)
+
+## Dispersión en dos dimensiones
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/dosdispersion1.png)
+:::
+
+::: {.column width="50%"}
+![](images/dosdispersion2.png)
+:::
+:::::
+::::::
+
+## Capturando dispersión
+
+En algunos casos, podemos capturar la dispersión de datos en dos dimensiones (predictores) usando una sola dimensión.
+
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/capturedispersion1.png)
+:::
+
+::: {.column width="50%"}
+
+:::
+:::::
+::::::
+
+## Capturando dispersión
+
+En algunos casos, podemos capturar la dispersión de datos en dos dimensiones (predictores) usando una sola dimensión.
+
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/capturedispersion2.png)
+:::
+
+::: {.column width="50%"}
+Un solo predictor $X_2$ captura gran parte de la dispersión en los datos.
+
+![](images/capturedispersion3.png)
+:::
+:::::
+::::::
+
+##  Veamos otro ejemplo
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/otroejemplo1.png)
+:::
+
+::: {.column width="50%"}
+
+:::
+:::::
+::::::
+
+##  Veamos otro ejemplo
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/otroejemplo1.png)
+:::
+
+::: {.column width="50%"}
+
+Un solo predictor captura gran parte de la dispersión en los datos. En este caso, el nuevo predictor tiene la forma $Z_1 = a X_1 + b X_2 + c.$
+
+![](images/otroejemplo2.png)
+:::
+:::::
+::::::
+
+##
+
+Alternativamente, podemos utilizar dos dimensiones alternativas para capturar la dispersión.
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/alternativas1.png)
+:::
+
+::: {.column width="50%"}
+
+Un solo predictor captura gran parte de la dispersión en los datos. En este caso, el nuevo predictor tiene la forma $Z_1 = a X_1 + b X_2 + c.$
+
+![](images/alternativas2.png)
+:::
+:::::
+::::::
+
+## Un Nuevo Eje de Coordenadas
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+- El nuevo eje de coordenadas esta dado por dos nuevos predictores $Z_1$ y $Z_2$. Los dos son dados por ecuaciones lineales de los nuevos predictores.
+
+- El primer eje $Z_1$ captura gran porción de la dispersión, mientras que $Z_2$ captura poca porción desde otro ángulo.
+
+- Los nuevos ejes $Z_1$ y $Z_2$ se llaman [_**componentes principales**_]{style="color:DARKgray;"}.
+:::
+
+::: {.column width="50%"}
+
+![](images/alternativas3.png)
+:::
+:::::
+::::::
+
 # Análisis de componentes principales
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
