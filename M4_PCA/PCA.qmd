@@ -8,7 +8,7 @@ author:
 format: 
   revealjs:
     chalkboard: false
-    multiplex: true
+    multiplex: false
     footer: "Tecnologico de Monterrey"
     logo: IN1002b_logo.png
     css: style.css
@@ -22,10 +22,30 @@ jupyter: python3
 
 </br>
 
-1.  Introduction
-2.  Logistic regression
-3.  Estimating a logistic regression model
-4.  Classification performance
+1. Introducción
+2. Dispersión en una o varias dimensiones
+3. Análisis de componentes principales
 
+# Introducción
+
+## Tipos de Aprendizaje
+
+En ciencia de datos, existen dos tipos principales de aprendizaje:
+
+-   [Aprendizaje supervisado (*supervised learning*). En el cual tenemos varios predictores y una respuesta. El objetivo es predecir la respuesta usando los valores de los predictores.]{style="color:gray;"}
+
+-   [Aprendizaje sin supervisión (*unsupervised learning*)]{style="color:green;"}. En el cual solo tenemos varios predictores. El objetivo es descubrir patrones en sus datos.
+
+## Métodos de aprendizaje sin supervisión
+
+[Los **Métodos de Agrupamiento** tienen como objetivo encontrar subgrupos con datos similares en la base de datos.]{style="color:gray;"}
+
+El [**Análisis de Componentes Principales**]{style="color:aqua;"} busca una representación alternativa de los datos para facilitar su comprensión cuando hay muchos predictores en la base de datos.
+
+Aquí nos usaremos estos métodos en predictores $X_1, X_2, \ldots, X_p$ que son numéricos.
+
+# Dispersión en una o varias dimensiones
+
+# Análisis de componentes principales
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)

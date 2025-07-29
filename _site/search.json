@@ -1685,5 +1685,19 @@
     "title": "Clustering Methods",
     "section": "",
     "text": "Con estos métodos, no existe una única respuesta correcta; se debe considerar cualquier solución que exponga algunos aspectos interesantes de los datos.\n\nJames et al. (2017)"
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#tipos-de-aprendizaje-1",
+    "href": "M4_Clustering/Clustering.html#tipos-de-aprendizaje-1",
+    "title": "Clustering Methods",
+    "section": "Tipos de Aprendizaje",
+    "text": "Tipos de Aprendizaje\nEn ciencia de datos, existen dos tipos principales de aprendizaje:\n\nAprendizaje supervisado (supervised learning). En el cual tenemos varios predictores y una respuesta. El objetivo es predecir la respuesta usando los valores de los predictores.\nAprendizaje sin supervisión (unsupervised learning). En el cual solo tenemos varios predictores. El objetivo es descubrir patrones en sus datos."
+  },
+  {
+    "objectID": "M4_Clustering/Clustering.html#métodos-de-aprendizaje-sin-supervisión-1",
+    "href": "M4_Clustering/Clustering.html#métodos-de-aprendizaje-sin-supervisión-1",
+    "title": "Clustering Methods",
+    "section": "Métodos de aprendizaje sin supervisión",
+    "text": "Métodos de aprendizaje sin supervisión\nLos Métodos de Agrupamiento tienen como objetivo encontrar subgrupos con datos similares en la base de datos.\nEl Análisis de Componentes Principales busca una representación alternativa de los datos para facilitar su comprensión cuando hay muchos predictores en la base de datos.\nAquí nos usaremos estos métodos en predictores \\(X_1, X_2, \\ldots, X_p\\) que son numéricos."
   }
 ]
