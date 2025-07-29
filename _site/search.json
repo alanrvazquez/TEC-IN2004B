@@ -1125,5 +1125,327 @@
     "title": "Classification Methods",
     "section": "",
     "text": "El rendimiento predictivo de K-NN se deteriora a medida que aumenta el número de predictores.\nEsto se debe a que la distancia esperada al vecino más cercano aumenta drásticamente con el número de predictores, a menos que el tamaño del conjunto de datos aumente exponencialmente con este número.\nEsto se conoce como la maldición de la dimensionalidad.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#agenda",
+    "href": "M3_PredictiveModels/PredictiveModels.html#agenda",
+    "title": "Predictive Models and Time Series",
+    "section": "Agenda",
+    "text": "Agenda\n\n\nIntroducción\nSeries de tiempo\nModelo de regresión lineal para series de tiempo"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#problemas-principales-de-cienca-de-datos",
+    "href": "M3_PredictiveModels/PredictiveModels.html#problemas-principales-de-cienca-de-datos",
+    "title": "Predictive Models and Time Series",
+    "section": "Problemas principales de cienca de datos",
+    "text": "Problemas principales de cienca de datos\nProblemas de regresión. La respuesta es numérica. Por ejemplo, los ingresos de una persona, el valor de una casa, la presión arterial del paciente.\nProblemas de clasificación. La respuesta es categórica e involucra K categorías diferentes. Por ejemplo, la marca de un producto adquirido (A, B, C) o si una persona incumple una deuda (sí o no).\nLos predictores pueden ser numéricos o categóricos."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#problema-de-regresión",
+    "href": "M3_PredictiveModels/PredictiveModels.html#problema-de-regresión",
+    "title": "Predictive Models and Time Series",
+    "section": "Problema de regresión",
+    "text": "Problema de regresión\nObjetivo: encontrar la mejor función \\(f(X)\\) del predictor \\(X\\) que describa la respuesta \\(Y\\).\nEn términos matemáticos, queremos establecer la siguiente relación\n\\[Y = f(X) + \\epsilon\\]\n\nDonde \\(\\epsilon\\) es un error natural (aleatorio)."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#cómo-encontrar-la-forma-de-fx",
+    "href": "M3_PredictiveModels/PredictiveModels.html#cómo-encontrar-la-forma-de-fx",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo encontrar la forma de \\(f(X)\\)?",
+    "text": "¿Cómo encontrar la forma de \\(f(X)\\)?\nUsando datos de entrenamiento."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#cómo-encontrar-la-forma-de-fx-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#cómo-encontrar-la-forma-de-fx-1",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo encontrar la forma de \\(f(X)\\)?",
+    "text": "¿Cómo encontrar la forma de \\(f(X)\\)?\nUsando datos de entrenamiento."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx",
+    "href": "M3_PredictiveModels/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?",
+    "text": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?\n\n\n\nUsando datos de validación."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?",
+    "text": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?\n\n\n\nUsando datos de validación."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#además",
+    "href": "M3_PredictiveModels/PredictiveModels.html#además",
+    "title": "Predictive Models and Time Series",
+    "section": "Además…",
+    "text": "Además…\n\n\n\nPodemos usar datos de prueba para una evaluación final del modelo.\nLos datos de prueba, son datos que se obtuvieron del proceso que generó los datos de entrenamiento.\nLos datos de prueba son independientes de los datos de entrenamiento."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#modelo-de-regresión-lineal",
+    "href": "M3_PredictiveModels/PredictiveModels.html#modelo-de-regresión-lineal",
+    "title": "Predictive Models and Time Series",
+    "section": "Modelo de Regresión Lineal",
+    "text": "Modelo de Regresión Lineal\nUna función candidata muy común para predecir una respuesta es el modelo de regresión lineal.\nTiene la forma matemática:\n\\[\\hat{Y}_i = \\hat{f}(X_i) = \\hat{\\beta}_0 + \\hat{\\beta}_1 X_i\\]\n\nDonde \\(i = 1, \\ldots, n_t\\) es el indice de los \\(n_t\\) datos de entrenamiento, y\n\\(\\hat{Y}_i\\) es la predicción del valor real de la respuesta \\(Y_i\\) asociada a un valor del predictor igual a \\(X_i\\).\nLos valores \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) se llaman coeficientes del modelo."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#section",
+    "href": "M3_PredictiveModels/PredictiveModels.html#section",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Los valores de \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) se obtienen usando el conjunto de datos de prueba y el método de mínimos cuadrados.\nEste método encuentra los valores de \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) que minimizan el error cometido por el modelo \\(\\hat{f}(X_i)\\) al tratar de predecir las respuestas del conjunto de entrenamiento.\nTécnicamente, el método minimiza la siguiente expresión\n\\[(Y_1 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 ))^2 + (Y_2 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_2 ))^2 + \\cdots + (Y_{n_t} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_{n_t} ))^2 \\]\nPara los \\(n_t\\) los datos de entrenamiento!"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#example",
+    "href": "M3_PredictiveModels/PredictiveModels.html#example",
+    "title": "Predictive Models and Time Series",
+    "section": "Example",
+    "text": "Example\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#regresión-lineal-en-python",
+    "href": "M3_PredictiveModels/PredictiveModels.html#regresión-lineal-en-python",
+    "title": "Predictive Models and Time Series",
+    "section": "Regresión lineal en Python",
+    "text": "Regresión lineal en Python\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#supuestos-del-modelo-de-regresión-lineal",
+    "href": "M3_PredictiveModels/PredictiveModels.html#supuestos-del-modelo-de-regresión-lineal",
+    "title": "Predictive Models and Time Series",
+    "section": "Supuestos del modelo de regresión lineal",
+    "text": "Supuestos del modelo de regresión lineal\nPara usarlo el modelo de regresión, los errores del modelo \\(e_i = Y_i - \\hat{Y}_i\\) obtenidos en los datos de entrenamiento deben que cumplir tres condiciones:\n\nEn promedio, ser iguales a 0.\nTener la misma dispersión o variabilidad.\nSer independientes los unos de los otros.\n\nEstos supuestos se evalúan usando un análisis gráfico de residuos (errores del modelo)."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#en-python",
+    "href": "M3_PredictiveModels/PredictiveModels.html#en-python",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#error-de-predicción",
+    "href": "M3_PredictiveModels/PredictiveModels.html#error-de-predicción",
+    "title": "Predictive Models and Time Series",
+    "section": "Error de Predicción",
+    "text": "Error de Predicción\nDespués de estimar y validar el modelo de regresión lineal, podemos verificar la calidad de sus predicciones sobre datos no observados. Es decir, sobre los datos en el conjunto de validación.\nUna métrica para esto es el error de predicción promedio (MSE\\(_v\\)):\n\\[\\text{MSE}_v = \\frac{(Y_1 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 ))^2 + (Y_2 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_2 ))^2 + \\cdots + (Y_{n_v} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_{n_v} ))^2}{n_v} \\]\n\nPara los \\(n_v\\) los datos de validación!\n\nEntre más pequeño \\(\\text{MSE}_v\\), mejores las predicciones sobre datos no observados."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#section-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#section-1",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "En la práctica, se utiliza la raíz cuadrada del error de predicción promedio:\n\\[\\text{RMSE}_v = \\sqrt{\\text{MSE}_v}.\\]\nLa ventaja del \\(\\text{RMSE}_v\\) es que se puede interpretar como:\n\nLa variabilidad promedio de una predicción del modelo.\n\nPor ejemplo, si \\(\\text{RMSE}_v = 1\\), entonces una predicción de \\(\\hat{Y} = 5\\) tendrá una tasa de error (promedio) de \\(\\pm 1\\)."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#en-python-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#en-python-1",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#otra-métrica-r2",
+    "href": "M3_PredictiveModels/PredictiveModels.html#otra-métrica-r2",
+    "title": "Predictive Models and Time Series",
+    "section": "Otra Métrica: \\(R^2\\)",
+    "text": "Otra Métrica: \\(R^2\\)\n\nEn el contexto de Ciencia de Datos, el \\(R^2\\) se puede interpretar como la correlación entre las respuestas actuales y las predecidas por el modelo.\nCuanto mayor sea la correlación, mejor será la concordancia entre las respuestas previstas y las reales."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#mini-actividad-cooperative-mode",
+    "href": "M3_PredictiveModels/PredictiveModels.html#mini-actividad-cooperative-mode",
+    "title": "Predictive Models and Time Series",
+    "section": "Mini-Actividad (cooperative mode)",
+    "text": "Mini-Actividad (cooperative mode)\n\nConsidera el conjunto de datos Advertising.xlsx en Canvas.\nUsa un modelo para predecir Sales que incluya el predictor Radio (dinero invertido en anuncios por la radio de un producto ($)). ¿Cuál es el valor del \\(\\text{RMSE}_v\\)?\nAhora, usa un modelo para predecir Sales que incluya dos predictores: TV y Radio. ¿Cuál es el valor del \\(\\text{RMSE}_v\\)?\n¿Cuál modelo preferen?"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#otras-funciones-candidatas",
+    "href": "M3_PredictiveModels/PredictiveModels.html#otras-funciones-candidatas",
+    "title": "Predictive Models and Time Series",
+    "section": "Otras funciones candidatas",
+    "text": "Otras funciones candidatas\nEl modelo de regresión lineal es de los más comunes para predecir una respuesta. Es simple y fácil de calcular e interpretar.\nSin embargo, puede ser limitado para problemas muy complejos.\nPara esto, existen otras funciones candidatas \\(\\hat{f}(X)\\) más avanzadas como:\n\nK vecinos más cercanos.\nLASSO.\nArboles de decision."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#qué-es-una-serie-de-tiempo",
+    "href": "M3_PredictiveModels/PredictiveModels.html#qué-es-una-serie-de-tiempo",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Qué es una serie de tiempo?",
+    "text": "¿Qué es una serie de tiempo?\n\nEs una secuencia de observaciones recopiladas en intervalos de tiempo sucesivos.\nLos datos de series temporales se usan comúnmente en campos como finanzas, economía, pronóstico del tiempo, procesamiento de señales y muchos otros.\nAnalizar datos de series temporales nos ayuda a comprender patrones, tendencias y comportamientos a lo largo del tiempo, lo que permite la predicción, la detección de anomalías y la toma de decisiones."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#ejemplo",
+    "href": "M3_PredictiveModels/PredictiveModels.html#ejemplo",
+    "title": "Predictive Models and Time Series",
+    "section": "Ejemplo",
+    "text": "Ejemplo"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#section-2",
+    "href": "M3_PredictiveModels/PredictiveModels.html#section-2",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Técnicamente, es un conjunto de observaciones sobre un predictor (discreto) \\(T\\) y una respuesta \\(Y\\).\nLas observaciones de \\(Y\\) se registran en los momentos o tiempos dados por el predictor \\(T\\).\n\n\n\n\nDia\nT\nTemperatura (Y)\n\n\n\n\nLunes\n1\n10\n\n\nMartes\n2\n12\n\n\nMiércoles\n3\n15\n\n\nJueves\n4\n14\n\n\nViernes\n5\n18\n\n\n\n\nLa característica especial de la serie de tiempo es que las observaciones de \\(Y\\) no son independientes!"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#en-python-2",
+    "href": "M3_PredictiveModels/PredictiveModels.html#en-python-2",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#series-informativas",
+    "href": "M3_PredictiveModels/PredictiveModels.html#series-informativas",
+    "title": "Predictive Models and Time Series",
+    "section": "Series informativas",
+    "text": "Series informativas\n\nUna serie de tiempo informativa es una serie que contiene patrones que podemos utilizar para predecir valores futuros de la serie.\nLos tres posibles patrones son:\n\nTendencia: la serie tiene un comportamiento creciente/decreciente.\nEstacionalidad: la serie tiene un patrón cíclico repetitivo en sus valores.\nAutocorrelación: la serie sigue un patrón que puede ser descrito con valores anteriores de la misma."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#tendencia",
+    "href": "M3_PredictiveModels/PredictiveModels.html#tendencia",
+    "title": "Predictive Models and Time Series",
+    "section": "Tendencia",
+    "text": "Tendencia\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#estacionalidad",
+    "href": "M3_PredictiveModels/PredictiveModels.html#estacionalidad",
+    "title": "Predictive Models and Time Series",
+    "section": "Estacionalidad",
+    "text": "Estacionalidad\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#autocorrelación",
+    "href": "M3_PredictiveModels/PredictiveModels.html#autocorrelación",
+    "title": "Predictive Models and Time Series",
+    "section": "Autocorrelación",
+    "text": "Autocorrelación\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#series-no-informativas-ruido-blanco",
+    "href": "M3_PredictiveModels/PredictiveModels.html#series-no-informativas-ruido-blanco",
+    "title": "Predictive Models and Time Series",
+    "section": "Series No Informativas: Ruido Blanco",
+    "text": "Series No Informativas: Ruido Blanco\n\nUn ruido blanco es una serie cuyos valores, en promedio, son 0 y tienen una variación constante. También, sus valores son independientes entre si.\nSe usa para describir el error aleatorio o natural."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#modelo-de-regresión-lineal-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#modelo-de-regresión-lineal-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Modelo de Regresión Lineal",
+    "text": "Modelo de Regresión Lineal\nEl modelo de regresión lineal es útil para capturar los patrones de una serie de tiempo. En este contexto, el modelo toma la forma:\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i\\]\n\nDonde \\(i = 1, \\ldots, n_t\\) es el indice de los \\(n_t\\) datos de entrenamiento, y\n\\(\\hat{Y}_i\\) es la predicción del valor real de la respuesta \\(Y_i\\) en el tiempo \\(T_i\\)."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#tendencia-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#tendencia-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Tendencia",
+    "text": "Tendencia\nLa tendencia de la serie de tiempo es capturada por el valor de \\(\\hat{\\beta}_1\\) en\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i\\]\n\nSi \\(\\hat{\\beta}_1\\) es positivo, la serie tiene una tendencia ascendente.\nSi \\(\\hat{\\beta}_1\\) es negativo, la serie tiene una tendencia descendente.\n\nLos valores de \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) se obtienen usando el método de mínimos cuadrados."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#evaluación-del-modelo",
+    "href": "M3_PredictiveModels/PredictiveModels.html#evaluación-del-modelo",
+    "title": "Predictive Models and Time Series",
+    "section": "Evaluación del Modelo",
+    "text": "Evaluación del Modelo\nRecuerda que los errores del modelo de regresión lineal (\\(e_i = Y_i - \\hat{Y}_i\\)) deben de cumplir con dos condiciones:\n\nEn promedio, ser iguales a 0.\nTener la misma dispersión o variabilidad.\nSer independientes los unos de los otros.\n\nEn el contexto de series de tiempo, esto significa que los errores del modelo \\(e_i\\) se deben de comportar como un ruido blanco que no contiene patrones."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#en-python-3",
+    "href": "M3_PredictiveModels/PredictiveModels.html#en-python-3",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#analysis-de-residuales",
+    "href": "M3_PredictiveModels/PredictiveModels.html#analysis-de-residuales",
+    "title": "Predictive Models and Time Series",
+    "section": "Analysis de Residuales",
+    "text": "Analysis de Residuales\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#el-modelo-es-más-flexible-que-eso",
+    "href": "M3_PredictiveModels/PredictiveModels.html#el-modelo-es-más-flexible-que-eso",
+    "title": "Predictive Models and Time Series",
+    "section": "El Modelo es Más Flexible que Eso",
+    "text": "El Modelo es Más Flexible que Eso\nSi es necesario, el modelo de regresión lineal se puede extender para capturar relaciones cuadráticas. Para esto, el modelo toma la siguiente forma:\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i + \\hat{\\beta}_2 T^{2}_i \\]\n\nDonde \\(T^{2}_i\\) es el valor del indice de tiempo al cuadrado.\n\\(\\hat{\\beta}_2\\) es un término que captura una posible curvatura en la serie de tiempo."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#en-python-4",
+    "href": "M3_PredictiveModels/PredictiveModels.html#en-python-4",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#analysis-de-residuales-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#analysis-de-residuales-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Analysis de Residuales",
+    "text": "Analysis de Residuales\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#tendencias-exponenciales",
+    "href": "M3_PredictiveModels/PredictiveModels.html#tendencias-exponenciales",
+    "title": "Predictive Models and Time Series",
+    "section": "Tendencias exponenciales",
+    "text": "Tendencias exponenciales\nSi una serie tiene una tendencia exponencial, el modelo de regresión lineal podría no hacer apropiado para capturar dicha tendencia.\nUn remedio sencillo es calcular el logaritmo de los datos de la respuesta y obtener un modelo de regresión lineal para la variable transformada.\nEs decir, usar el siguiente modelo para describir la serie de tiempo:\n\\[\\log (Y_i) = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i.\\] ## Ejemplo\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#mini-actividad-cooperative-mode-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#mini-actividad-cooperative-mode-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Mini-Actividad (cooperative mode)",
+    "text": "Mini-Actividad (cooperative mode)\n\nConsidera el conjunto de datos CanadianWorkHours.xlsx en Canvas.\nVisualiza la serie en Python. La variable de respuesta es Working Hours y el predictor es el año.\nUsando Python, contesta la pregunta: ¿Cúal de los siguientes modelos se ajusta mejor a la serie?\nModelo de regresión con tendencia lineal.\nModelo de regresión con tendencia quadratica.\nModelo de regresión con tendencia exponencial."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#identificando-heteroscedasticidad",
+    "href": "M3_PredictiveModels/PredictiveModels.html#identificando-heteroscedasticidad",
+    "title": "Predictive Models and Time Series",
+    "section": "Identificando Heteroscedasticidad",
+    "text": "Identificando Heteroscedasticidad\nHeteroscedastisidad surge cuando la dispersión de los errores del modelo no es constante a través del tiempo.\nEjemplo"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#en-python-5",
+    "href": "M3_PredictiveModels/PredictiveModels.html#en-python-5",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#qué-hago-si-la-transformación-no-funciona",
+    "href": "M3_PredictiveModels/PredictiveModels.html#qué-hago-si-la-transformación-no-funciona",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Qué hago si la transformación no funciona?",
+    "text": "¿Qué hago si la transformación no funciona?\n\nSi la transformación de logaritmo no reduce significativamente la heteroscedasticidad, existen modelos para modelar la varianza llamados GARCH.\n\nPuedes consultar literatura sobre dichos modelos y sus implementaciones en software en un texto de series de tiempo como Time Series Analysis with applications in R de Cryer y Chan."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#estacionalidad-1",
+    "href": "M3_PredictiveModels/PredictiveModels.html#estacionalidad-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Estacionalidad",
+    "text": "Estacionalidad\nLa estacionalidad consiste en un comportamiento repetitivo o cíclico que ocurre con una frecuencia constante.\nEjemplos:\n\nDemanda de prendas de invierno\nDemanda para viajes turísticos\nVolumen de Lluvia durante el año."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#capturando-estacionalidad",
+    "href": "M3_PredictiveModels/PredictiveModels.html#capturando-estacionalidad",
+    "title": "Predictive Models and Time Series",
+    "section": "Capturando Estacionalidad",
+    "text": "Capturando Estacionalidad\n\n\n\nEl modelo de regresión lineal se puede extender para capturar patrones de estacionalidad en la serie de tiempo.\nPara esto, se crea un predictor adicional categórico que indica la estación a la que pertenece cada dato.\nDetrás de cámaras, el predictor adicional categórico se transforma en varios predicadores numéricos auxiliares."
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#analizando-series-estacionales-en-python",
+    "href": "M3_PredictiveModels/PredictiveModels.html#analizando-series-estacionales-en-python",
+    "title": "Predictive Models and Time Series",
+    "section": "Analizando series estacionales en Python",
+    "text": "Analizando series estacionales en Python\nTBD"
+  },
+  {
+    "objectID": "M3_PredictiveModels/PredictiveModels.html#desventajas-de-los-modelos-de-regresión-lineal",
+    "href": "M3_PredictiveModels/PredictiveModels.html#desventajas-de-los-modelos-de-regresión-lineal",
+    "title": "Predictive Models and Time Series",
+    "section": "Desventajas de los modelos de regresión lineal",
+    "text": "Desventajas de los modelos de regresión lineal\nA pesar de su simplicidad y versatilidad, los modelos de regresión lineal no son los mejores para describir una serie de tiempo.\nEsto es porque no asumen una dependencia entre valores consecutivos de la serie de tiempo. Es decir, no usan el hecho de que, por ejemplo, \\(Y_1\\) puede ayudarnos a predecir \\(Y_2\\), y \\(Y_2\\) puede ayudarnos a predecir \\(Y_3\\), etc.\nModelos que nos ayudan a utilizar observaciones anteriores para predecir valores futuros de la variable de respuesta \\(Y\\) son los modelos autoregresivos."
   }
 ]
