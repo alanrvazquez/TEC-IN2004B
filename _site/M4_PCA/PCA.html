@@ -181,7 +181,7 @@ Alan R. Vazquez
 <p>El concepto de componentes principales requiere de entender la dispersión o variabilidad de los datos.</p>
 <p>Supongamos que tenemos datos de un solo predictor.</p>
 <div class="center">
-<p>[<em><strong>Observaciones de un predictor</strong></em>]</p>
+<p>[<strong><em>Observaciones de un predictor</em></strong>]</p>
 </div>
 
 <img data-src="images/unadispersion.png" class="r-stretch"></section>
@@ -265,18 +265,265 @@ Alan R. Vazquez
 <ul>
 <li><p>El nuevo eje de coordenadas esta dado por dos nuevos predictores <span class="math inline">\(Z_1\)</span> y <span class="math inline">\(Z_2\)</span>. Los dos son dados por ecuaciones lineales de los nuevos predictores.</p></li>
 <li><p>El primer eje <span class="math inline">\(Z_1\)</span> captura gran porción de la dispersión, mientras que <span class="math inline">\(Z_2\)</span> captura poca porción desde otro ángulo.</p></li>
-<li><p>Los nuevos ejes <span class="math inline">\(Z_1\)</span> y <span class="math inline">\(Z_2\)</span> se llaman <span style="color:DARKgray;"><em><strong>componentes principales</strong></em></span>.</p></li>
+<li><p>Los nuevos ejes <span class="math inline">\(Z_1\)</span> y <span class="math inline">\(Z_2\)</span> se llaman <span style="color:DARKgray;"><strong><em>componentes principales</em></strong></span>.</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/alternativas3.png"></p>
 </div></div>
 </div>
 </section></section>
+<section>
 <section id="análisis-de-componentes-principales" class="title-slide slide level1 center">
 <h1>Análisis de componentes principales</h1>
 
 </section>
+<section id="reducción-de-dimension" class="slide level2">
+<h2>Reducción de Dimension</h2>
+<p><br></p>
+<p>El <span style="color:aqua;"><strong>Análisis de Componentes Principales</strong></span> (ACP) nos ayuda a reducir la dimensión de los datos.</p>
+<ul>
+<li><p>Crea un nuevo eje de coordenadas en dos (o más) dimensiones.</p></li>
+<li><p>Técnicamente, crea nuevos predictores combinando predictores altamente <u><em>correlacionados</em></u>. Los nuevos predictores no están correlacionados.</p></li>
+</ul>
+</section>
+<section id="preparación" class="slide level2">
+<h2>Preparación</h2>
+<p><strong>Paso 1</strong>. Comenzamos con una base de datos con <span class="math inline">\(n\)</span> observaciones y <span class="math inline">\(p\)</span> predictores.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><strong>Predictor 1</strong></th>
+<th><strong>Predictor 2</strong></th>
+<th><strong>Predictor 3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>15</td>
+<td>14</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>3</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>18</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>16</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p><strong>Paso 2</strong>. Estandarizamos cada predictor individualmente.</p>
+<p><span class="math display">\[{\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 }}\]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Predictor 1</th>
+<th>Predictor 2</th>
+<th>Predictor 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>1.15</td>
+<td>0.46</td>
+<td>-0.96</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>-1.52</td>
+<td>-1.20</td>
+<td>-0.75</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>0.12</td>
+<td>-0.95</td>
+<td>1.55</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>-0.29</td>
+<td>0.97</td>
+<td>-0.13</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>0.53</td>
+<td>0.72</td>
+<td>0.29</td>
+</tr>
+<tr class="even">
+<td><strong>Suma</strong></td>
+<td><em>0</em></td>
+<td><em>0</em></td>
+<td><em>0</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Varianza</strong></td>
+<td><em>1</em></td>
+<td><em>1</em></td>
+<td><em>1</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><strong>Paso 3</strong>. Asumimos que la base de datos estandarizada es una matrix <span class="math inline">\(\mathbf{X}\)</span> de <span class="math inline">\(n\times p\)</span>.</p>
+<p><span class="math display">\[\mathbf{X} = \begin{pmatrix}
+1.15    &amp;   0.46    &amp;   -0.96   \\
+-1.52   &amp;   -1.20   &amp;   -0.75   \\
+0.12    &amp;   -0.95   &amp;   1.55    \\
+-0.29   &amp;   0.97    &amp;   -0.13   \\
+0.53    &amp;   0.72    &amp;   0.29    \\
+\end{pmatrix}\]</span></p>
+</section>
+<section id="algoritmo" class="slide level2">
+<h2>Algoritmo</h2>
+<p><br></p>
+<p>El algoritmo de ACP tiene su origen en el álgebra lineal.</p>
+<p>Su idea básica es:</p>
+<ol type="1">
+<li><p>Crear una matriz <span class="math inline">\(\mathbf{C}\)</span> con las correlaciones entre los predictores de la matriz <span class="math inline">\(\mathbf{X}\)</span>.</p></li>
+<li><p>Partir la matrix <span class="math inline">\(\mathbf{C}\)</span> en tres partes que nos dan el nuevo eje de coordenadas y la importancia de cada eje.</p></li>
+</ol>
+</section>
+<section id="matriz-de-correlación" class="slide level2">
+<h2>Matriz de Correlación</h2>
+<p>Siguiendo con nuestro ejemplo, la matriz de correlación contiene las correlaciones entre dos columnas de <span class="math inline">\(\mathbf{X}\)</span>.</p>
 
+<img data-src="images/correlations.png" class="r-stretch"></section>
+<section id="partición-de-la-matriz-de-correlación" class="slide level2">
+<h2>Partición de la matriz de correlación</h2>
+<p>La partición de la matrix <span class="math inline">\(\mathbf{C}\)</span> se hace usando el <span style="color:aqua;"><em>método de descomposición por valores y vectores propios</em></span>.</p>
+
+<img data-src="images/descomposition1.png" class="r-stretch"></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+
+<img data-src="images/descomposition2.png" class="r-stretch"><ul>
+<li><p>Las columnas de <span class="math inline">\(\mathbf{B}\)</span> definen los ejes del nuevo sistema de coordenadas. Estos ejes se llaman <span style="color:green;"><strong><em>componentes principales</em></strong></span>.</p></li>
+<li><p>Los valores diagonales en <span class="math inline">\(\mathbf{A}\)</span> definen la importancia individual de cada componente principal (eje).</p></li>
+</ul>
+</section>
+<section id="proporción-de-la-dispersión-explicada-por-el-componente" class="slide level2">
+<h2>Proporción de la dispersión explicada por el componente</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><span class="math display">\[\mathbf{A} = \begin{pmatrix}
+1.60     &amp;  0.00    &amp;   0.00    \\
+0.00     &amp;  1.07     &amp;  0.00    \\
+0.00     &amp;  0.00     &amp;  0.33    \\
+\end{pmatrix}\]</span></p>
+</div><div class="column" style="width:60%;">
+<p>La proporción de la dispersión en los datos que es capturada por el primer componente es <span class="math inline">\(\frac{a_{1,1}}{p} = \frac{1.60}{3} = 0.53\)</span>. La proporción capturada por el segundo componente es <span class="math inline">\(\frac{a_{2,2}}{p} = \frac{1.07}{3} = 0.36\)</span>. La proporción capturada por el tercer componente es <span class="math inline">\(\frac{a_{3,3}}{p} = \frac{0.33}{3} = 0.11\)</span>.</p>
+</div></div>
+</div>
+</section>
+<section id="comentarios" class="slide level2">
+<h2>Comentarios</h2>
+<p>Los componentes principales se pueden usar para aproximar una matriz.</p>
+<p>Por ejemplo, podemos aproximar la matriz <span class="math inline">\(\mathbf{C}\)</span> al fijar el tercer componente igual a cero.</p>
+<p><span class="math display">\[\begin{pmatrix}
+-0.68   &amp;   0.35    &amp;   0.00    \\
+-0.72   &amp;   -0.13   &amp;   0.00    \\
+0.16    &amp;   0.93    &amp;   0.00\\
+\end{pmatrix} \begin{pmatrix}
+1.60     &amp;  0.00    &amp;   0.00    \\
+0.00     &amp;  1.07     &amp;  0.00    \\
+0.00     &amp;  0.00     &amp;  0.00    \\
+\end{pmatrix} \begin{pmatrix}
+-0.68   &amp;   -0.72   &amp;   0.16    \\
+0.35    &amp;   -0.13   &amp;   0.93    \\
+0.00    &amp;   0.00    &amp;   0.00    \\
+\end{pmatrix} = \begin{pmatrix}
+0.86    &amp;   0.73    &amp;   0.18    \\
+0.73    &amp;   0.85    &amp;   -0.30   \\
+0.18    &amp;   -0.30   &amp;   0.96    \\
+\end{pmatrix}\]</span></p>
+<p><span class="math display">\[\approx \begin{pmatrix}
+1.00    &amp;   0.58    &amp;   0.11    \\
+0.58    &amp;   1.00    &amp;   -0.23   \\
+0.11    &amp;   -0.23   &amp;   1.00    \\
+\end{pmatrix} = \mathbf{C}\]</span> ##</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>Las aproximaciones son útiles para almacenar matrices grandes.</p></li>
+<li><p>Esto se porque solo necesitamos almacenar los valores propios más grandes y sus vectores propios correspondientes para recuperar una aproximación de alta calidad de la matriz completa.</p></li>
+<li><p>Esta es la idea detrás de la <strong>compresión de imagenes</strong>.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/clipboard-2295232858.png"></p>
+</div></div>
+</div>
+</section>
+<section id="ejemplo" class="slide level2">
+<h2>Ejemplo</h2>
+<p>Considera una base de datos de las 100 canciones más populares en TikTok. Los datos están en el archivo “TikTok 2020 reduced.xlsx“. Se tienen observaciones de varios predictores como:</p>
+<ul>
+<li><p>La bailabilidad describe qué tan adecuada es una pista para bailar basándose en una combinación de elementos musicales.</p></li>
+<li><p>La energía es una medida de 0 a 1 y representa una medida perceptiva de intensidad y actividad.</p></li>
+<li><p>El volumen general de una pista en decibelios (dB). Los valores de sonoridad se promedian en toda la pista.</p></li>
+<li><p>El habla detecta la presencia de palabras habladas en una pista. Cuanto más exclusivamente parecida a un discurso sea la grabación.</p></li>
+<li><p>Una medida de confianza de 0 a 1 sobre si la pista es acústica.</p></li>
+<li><p>Detecta la presencia de una audiencia en la grabación.</p></li>
+<li><p>Una medida de 0 a 1 que describe la positividad musical que transmite una pista.</p></li>
+</ul>
+</section>
+<section id="apc-en-python" class="slide level2">
+<h2>APC en Python</h2>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>El <strong>Scree o Summary Plot</strong> te dice la variabilidad capturada por cada componente. Dicha variabilidad es dada por el <em>Eigen value</em> o valor propio. De 1 a 8 componentes.</p></li>
+<li><p>El primer componente abarca la mayor parte de la dispersión de los datos.</p></li>
+<li><p>Esta gráfica se usa para definir el número total de componentes a usar.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p>TBD</p>
+</div></div>
+</div>
+</section>
+<section id="biplot" class="slide level2">
+<h2>Biplot</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Muestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes.</li>
+<li>Ayuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones.</li>
+<li>Una linea roja da las dirección de crecimiento de la variable etiquetada.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p>TBD</p>
+</div></div>
+</div>
+</section></section>
 <section id="return-to-main-page" class="title-slide slide level1 center">
 <h1><a href="https://alanrvazquez.github.io/TEC-IN1002B-Website/">Return to main page</a></h1>
 

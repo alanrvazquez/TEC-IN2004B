@@ -1776,5 +1776,103 @@
     "title": "Principal Component Analysis",
     "section": "Un Nuevo Eje de Coordenadas",
     "text": "Un Nuevo Eje de Coordenadas\n\n\n\n\nEl nuevo eje de coordenadas esta dado por dos nuevos predictores \\(Z_1\\) y \\(Z_2\\). Los dos son dados por ecuaciones lineales de los nuevos predictores.\nEl primer eje \\(Z_1\\) captura gran porción de la dispersión, mientras que \\(Z_2\\) captura poca porción desde otro ángulo.\nLos nuevos ejes \\(Z_1\\) y \\(Z_2\\) se llaman componentes principales."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#reducción-de-dimension",
+    "href": "M4_PCA/PCA.html#reducción-de-dimension",
+    "title": "Principal Component Analysis",
+    "section": "Reducción de Dimension",
+    "text": "Reducción de Dimension\n\nEl Análisis de Componentes Principales (ACP) nos ayuda a reducir la dimensión de los datos.\n\nCrea un nuevo eje de coordenadas en dos (o más) dimensiones.\nTécnicamente, crea nuevos predictores combinando predictores altamente correlacionados. Los nuevos predictores no están correlacionados."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#preparación",
+    "href": "M4_PCA/PCA.html#preparación",
+    "title": "Principal Component Analysis",
+    "section": "Preparación",
+    "text": "Preparación\nPaso 1. Comenzamos con una base de datos con \\(n\\) observaciones y \\(p\\) predictores.\n\n\n\nPredictor 1\nPredictor 2\nPredictor 3\n\n\n\n\n15\n14\n5\n\n\n2\n1\n6\n\n\n10\n3\n17\n\n\n8\n18\n9\n\n\n12\n16\n11"
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#section-1",
+    "href": "M4_PCA/PCA.html#section-1",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Paso 2. Estandarizamos cada predictor individualmente.\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2 }}\\]\n\n\n\n\nPredictor 1\nPredictor 2\nPredictor 3\n\n\n\n\n\n1.15\n0.46\n-0.96\n\n\n\n-1.52\n-1.20\n-0.75\n\n\n\n0.12\n-0.95\n1.55\n\n\n\n-0.29\n0.97\n-0.13\n\n\n\n0.53\n0.72\n0.29\n\n\nSuma\n0\n0\n0\n\n\nVarianza\n1\n1\n1"
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#section-2",
+    "href": "M4_PCA/PCA.html#section-2",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Paso 3. Asumimos que la base de datos estandarizada es una matrix \\(\\mathbf{X}\\) de \\(n\\times p\\).\n\\[\\mathbf{X} = \\begin{pmatrix}\n1.15    &   0.46    &   -0.96   \\\\\n-1.52   &   -1.20   &   -0.75   \\\\\n0.12    &   -0.95   &   1.55    \\\\\n-0.29   &   0.97    &   -0.13   \\\\\n0.53    &   0.72    &   0.29    \\\\\n\\end{pmatrix}\\]"
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#algoritmo",
+    "href": "M4_PCA/PCA.html#algoritmo",
+    "title": "Principal Component Analysis",
+    "section": "Algoritmo",
+    "text": "Algoritmo\n\nEl algoritmo de ACP tiene su origen en el álgebra lineal.\nSu idea básica es:\n\nCrear una matriz \\(\\mathbf{C}\\) con las correlaciones entre los predictores de la matriz \\(\\mathbf{X}\\).\nPartir la matrix \\(\\mathbf{C}\\) en tres partes que nos dan el nuevo eje de coordenadas y la importancia de cada eje."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#matriz-de-correlación",
+    "href": "M4_PCA/PCA.html#matriz-de-correlación",
+    "title": "Principal Component Analysis",
+    "section": "Matriz de Correlación",
+    "text": "Matriz de Correlación\nSiguiendo con nuestro ejemplo, la matriz de correlación contiene las correlaciones entre dos columnas de \\(\\mathbf{X}\\)."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#partición-de-la-matriz-de-correlación",
+    "href": "M4_PCA/PCA.html#partición-de-la-matriz-de-correlación",
+    "title": "Principal Component Analysis",
+    "section": "Partición de la matriz de correlación",
+    "text": "Partición de la matriz de correlación\nLa partición de la matrix \\(\\mathbf{C}\\) se hace usando el método de descomposición por valores y vectores propios."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#section-3",
+    "href": "M4_PCA/PCA.html#section-3",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Las columnas de \\(\\mathbf{B}\\) definen los ejes del nuevo sistema de coordenadas. Estos ejes se llaman componentes principales.\nLos valores diagonales en \\(\\mathbf{A}\\) definen la importancia individual de cada componente principal (eje)."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#proporción-de-la-dispersión-explicada-por-el-componente",
+    "href": "M4_PCA/PCA.html#proporción-de-la-dispersión-explicada-por-el-componente",
+    "title": "Principal Component Analysis",
+    "section": "Proporción de la dispersión explicada por el componente",
+    "text": "Proporción de la dispersión explicada por el componente\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\nLa proporción de la dispersión en los datos que es capturada por el primer componente es \\(\\frac{a_{1,1}}{p} = \\frac{1.60}{3} = 0.53\\). La proporción capturada por el segundo componente es \\(\\frac{a_{2,2}}{p} = \\frac{1.07}{3} = 0.36\\). La proporción capturada por el tercer componente es \\(\\frac{a_{3,3}}{p} = \\frac{0.33}{3} = 0.11\\)."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#comentarios",
+    "href": "M4_PCA/PCA.html#comentarios",
+    "title": "Principal Component Analysis",
+    "section": "Comentarios",
+    "text": "Comentarios\nLos componentes principales se pueden usar para aproximar una matriz.\nPor ejemplo, podemos aproximar la matriz \\(\\mathbf{C}\\) al fijar el tercer componente igual a cero.\n\\[\\begin{pmatrix}\n-0.68   &   0.35    &   0.00    \\\\\n-0.72   &   -0.13   &   0.00    \\\\\n0.16    &   0.93    &   0.00\\\\\n\\end{pmatrix} \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.00    \\\\\n\\end{pmatrix} \\begin{pmatrix}\n-0.68   &   -0.72   &   0.16    \\\\\n0.35    &   -0.13   &   0.93    \\\\\n0.00    &   0.00    &   0.00    \\\\\n\\end{pmatrix} = \\begin{pmatrix}\n0.86    &   0.73    &   0.18    \\\\\n0.73    &   0.85    &   -0.30   \\\\\n0.18    &   -0.30   &   0.96    \\\\\n\\end{pmatrix}\\]\n\\[\\approx \\begin{pmatrix}\n1.00    &   0.58    &   0.11    \\\\\n0.58    &   1.00    &   -0.23   \\\\\n0.11    &   -0.23   &   1.00    \\\\\n\\end{pmatrix} = \\mathbf{C}\\] ##\n\n\n\n\nLas aproximaciones son útiles para almacenar matrices grandes.\nEsto se porque solo necesitamos almacenar los valores propios más grandes y sus vectores propios correspondientes para recuperar una aproximación de alta calidad de la matriz completa.\nEsta es la idea detrás de la compresión de imagenes."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#ejemplo",
+    "href": "M4_PCA/PCA.html#ejemplo",
+    "title": "Principal Component Analysis",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nConsidera una base de datos de las 100 canciones más populares en TikTok. Los datos están en el archivo “TikTok 2020 reduced.xlsx“. Se tienen observaciones de varios predictores como:\n\nLa bailabilidad describe qué tan adecuada es una pista para bailar basándose en una combinación de elementos musicales.\nLa energía es una medida de 0 a 1 y representa una medida perceptiva de intensidad y actividad.\nEl volumen general de una pista en decibelios (dB). Los valores de sonoridad se promedian en toda la pista.\nEl habla detecta la presencia de palabras habladas en una pista. Cuanto más exclusivamente parecida a un discurso sea la grabación.\nUna medida de confianza de 0 a 1 sobre si la pista es acústica.\nDetecta la presencia de una audiencia en la grabación.\nUna medida de 0 a 1 que describe la positividad musical que transmite una pista."
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#apc-en-python",
+    "href": "M4_PCA/PCA.html#apc-en-python",
+    "title": "Principal Component Analysis",
+    "section": "APC en Python",
+    "text": "APC en Python"
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#section-4",
+    "href": "M4_PCA/PCA.html#section-4",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "El Scree o Summary Plot te dice la variabilidad capturada por cada componente. Dicha variabilidad es dada por el Eigen value o valor propio. De 1 a 8 componentes.\nEl primer componente abarca la mayor parte de la dispersión de los datos.\nEsta gráfica se usa para definir el número total de componentes a usar.\n\n\nTBD"
+  },
+  {
+    "objectID": "M4_PCA/PCA.html#biplot",
+    "href": "M4_PCA/PCA.html#biplot",
+    "title": "Principal Component Analysis",
+    "section": "Biplot",
+    "text": "Biplot\n\n\n\n\nMuestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes.\nAyuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones.\nUna linea roja da las dirección de crecimiento de la variable etiquetada.\n\n\nTBD"
   }
 ]
