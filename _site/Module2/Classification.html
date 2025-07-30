@@ -229,22 +229,41 @@ Alan R. Vazquez
 <section id="load-the-libraries" class="slide level2">
 <h2>Load the libraries</h2>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="274f21d9" class="cell" data-execution_count="1">
+<div id="29a7243c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><a></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb1-6"><a></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb1-7"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, ConfusionMatrixDisplay, accuracy_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-5"><a></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
+<span id="cb1-6"><a></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb1-7"><a></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-8"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, ConfusionMatrixDisplay </span>
+<span id="cb1-9"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here, we will introduce the functions <code>confusion_matrix()</code>, <code>ConfusionMatrixDisplay()</code> and <code>accuracy_score()</code> to evaluate the performance of a logistic regression classifier.</p>
+<p>Here, we use specific functions from the <strong>pandas</strong>, <strong>matplotlib</strong>, and <strong>sklearn</strong> libraries in Python.</p>
 </section>
 <section id="main-data-science-problems" class="slide level2">
 <h2>Main Data Science Problems</h2>
+<p><br></p>
 <p><span style="color:green;"><strong>Regression Problems</strong></span>. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.</p>
 <p><span style="color:blue;"><strong>Classification Problems</strong></span>. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).</p>
-<p>Predictors can be numerical or categorical.</p>
+<p>The predictors (<span class="math inline">\(\boldsymbol{X}\)</span>) can be <em>numerical</em> or <em>categorical</em>.</p>
+</section>
+<section id="main-data-science-problems-1" class="slide level2">
+<h2>Main Data Science Problems</h2>
+<p><br></p>
+<p><span style="color:gray;"><strong>Regression Problems</strong>. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.</span></p>
+<p><span style="color:blue;"><strong>Classification Problems</strong></span>. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).</p>
+<p>The predictors (<span class="math inline">\(\boldsymbol{X}\)</span>) <em>numerical</em> or <em>categorical</em>.</p>
+</section>
+<section id="terminology" class="slide level2">
+<h2>Terminology</h2>
+<p><br><br></p>
+<p>Explanatory variables or predictors:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> represents an explanatory variable or predictor.</li>
+<li><span class="math inline">\(\boldsymbol{X} = (X_1, X_2, \ldots, X_p)\)</span> represents a collection of <span class="math inline">\(p\)</span> predictors.</li>
+</ul>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -254,16 +273,35 @@ Alan R. Vazquez
 <ul>
 <li class="fragment"><p><span class="math inline">\(Y\)</span> is a <span style="color:darkgreen;"><strong>categorical variable</strong></span> that takes <span style="color:darkgreen;"><strong>2 categories</strong></span> or <span style="color:darkgreen;"><strong>classes</strong></span>.</p></li>
 <li class="fragment"><p>For example, <span class="math inline">\(Y\)</span> can take <span style="color:darkgreen;">0</span> or <span style="color:darkgreen;">1</span>, <span style="color:darkgreen;">A</span> or <span style="color:darkgreen;">B</span>, <span style="color:darkgreen;">no</span> or <span style="color:darkgreen;">yes</span>, <span style="color:darkgreen;">spam</span> or <span style="color:darkgreen;">no spam</span>.</p></li>
+<li class="fragment"><p>When classes are strings, they are usually encoded as 0 and 1.</p>
+<ul>
+<li class="fragment">The <strong>target class</strong> is the one for which <span class="math inline">\(Y = 1\)</span>.</li>
+<li class="fragment">The <strong>reference class</strong> is the one for which <span class="math inline">\(Y = 0\)</span>.</li>
+</ul></li>
 </ul>
-<p>When classes are strings, they are usually encoded as 0 and 1.</p>
-<p>The <strong>target class</strong> is the one for which <span class="math inline">\(Y = 1\)</span>. The <strong>reference class</strong> is the one for which <span class="math inline">\(Y = 0\)</span>.</p>
 </div>
 </section>
 <section id="classification-algorithms" class="slide level2">
 <h2>Classification Algorithms</h2>
+<p><br></p>
 <p>Classification algorithms use predictor values <span style="color:blue;">to predict the class</span> of the response (target or reference).</p>
+<p><br></p>
 <p>That is, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not.</p>
-<p>Technically, they predict the <span style="color:purple;">probability</span> that the record belongs to the target class.</p>
+<p><br></p>
+<p>Technically, <span style="color:purple;"><strong>they predict the probability</strong></span> that the record belongs to the target class.</p>
+</section>
+<section id="classification-algorithms-1" class="slide level2">
+<h2>Classification Algorithms</h2>
+<p><br><br></p>
+<p><span style="color:darkgreen;"><strong>Goal</strong></span>: Develop a function <span class="math inline">\(C(\boldsymbol{X})\)</span> for predicting <span class="math inline">\(Y = \{0, 1\}\)</span> from <span class="math inline">\(\boldsymbol{X}\)</span>.</p>
+<p><br></p>
+<div class="fragment">
+<p>To achieve this goal, most algorithms consider functions <span class="math inline">\(C(\boldsymbol{X})\)</span> that <span style="color:brown;"><strong>predict the probability</strong></span> that <span class="math inline">\(Y\)</span> takes the value of 1.</p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>A probability for each class can be very useful for gauging the model’s confidence about the predicted classification.</p>
+</div>
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example 1</h2>
@@ -281,6 +319,45 @@ Alan R. Vazquez
 </div>
 <div class="fragment">
 <p>Both emails would be classified as spam. However, we would have greater confidence in our classification for the second email.</p>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p>Technically, <span class="math inline">\(C(\boldsymbol{X})\)</span> works with the <em>conditional probability</em>:</p>
+<p><span class="math display">\[P(Y = 1 | X_1 = x_1, X_2 = x_2, \ldots, X_p = x_p) = P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\]</span></p>
+<p>In words, this is the probability that <span class="math inline">\(Y\)</span> takes a value of 1 <span style="color:brown;"><strong>given that</strong></span> the predictors <span class="math inline">\(\boldsymbol{X}\)</span> have taken the values <span class="math inline">\(\boldsymbol{x} = (x_1, x_2, \ldots, x_p)\)</span>.</p>
+<p><br></p>
+<div class="fragment">
+<p>The conditional probability that <span class="math inline">\(Y\)</span> takes the value of 0 is</p>
+<p><span class="math display">\[P(Y = 0 | \boldsymbol{X} = \boldsymbol{x}) = 1 - P(Y = 1 | \boldsymbol{X} = \boldsymbol{x}).\]</span></p>
+</div>
+</section>
+<section id="bayes-classifier" class="slide level2">
+<h2>Bayes Classifier</h2>
+<p><br></p>
+<p>It turns out that, if we know the true structure of <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span>, we can build a good classification function called the <span style="color:darkblue;"><strong>Bayes classifier</strong></span>:</p>
+<p><span class="math display">\[C(\boldsymbol{X}) =
+    \begin{cases}
+      1, &amp; \text{if}\ P(Y = 1 | \boldsymbol{X} = \boldsymbol{x}) &gt; 0.5 \\
+      0, &amp; \text{if}\ P(Y = 1 | \boldsymbol{X} = \boldsymbol{x}) \leq 0.5
+    \end{cases}.\]</span></p>
+<p>This function classifies to the most probable class using the conditional distribution <span class="math inline">\(P(Y | \boldsymbol{X} = \boldsymbol{x})\)</span>.</p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p><span style="color:red;">HOWEVER, we don’t (and will never) know the true form of <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span>!</span></p>
+<p><br></p>
+<div class="fragment">
+<p>To overcome this issue, we several standard solutions:</p>
+<div>
+<ul>
+<li class="fragment"><span style="color:brown;"><strong>Logistic Regression</strong></span>: Impose an structure on <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span>. This was covered in IN1002B.</li>
+<li class="fragment"><span style="color:darkblue;"><strong>Classification Trees</strong></span>: Estimate <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span> directly. What we will cover today.</li>
+<li class="fragment"><span style="color:darkgreen;"><strong><em>K</em>-Nearest Neighbours</strong></span>: Estimate <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span> directly. (Optional).</li>
+</ul>
+</div>
 </div>
 </section></section>
 <section>
@@ -304,12 +381,12 @@ Alan R. Vazquez
 
 <img data-src="images/clipboard-270396609.png" class="r-stretch"><p>Dataset</p>
 <p>The data is located in the file “banknotes.xlsx”.</p>
-<div id="5b9f8eb2" class="cell" data-execution_count="2">
+<div id="559d5d91" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>bank_data <span class="op">=</span> pd.read_excel(<span class="st">"banknotes.xlsx"</span>)</span>
 <span id="cb2-2"><a></a><span class="co"># Set response variable as categorical.</span></span>
 <span id="cb2-3"><a></a>bank_data[<span class="st">'Status'</span>] <span class="op">=</span> pd.Categorical(bank_data[<span class="st">'Status'</span>])</span>
 <span id="cb2-4"><a></a>bank_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="107">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -387,7 +464,7 @@ Alan R. Vazquez
 <section id="generating-training-data" class="slide level2">
 <h2>Generating Training Data</h2>
 <p>We split the current dataset into two datasets: training and validation. To do this, we use the scikit-learn <code>train_test_split()</code> function.</p>
-<div id="796fd9d9" class="cell" data-execution_count="3">
+<div id="b8bbc142" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Set full matrix of predictors.</span></span>
 <span id="cb3-2"><a></a>X_full <span class="op">=</span> bank_data.drop(columns <span class="op">=</span> [<span class="st">'Status'</span>])</span>
 <span id="cb3-3"><a></a></span>
@@ -400,7 +477,7 @@ Alan R. Vazquez
 </div>
 <p>The <code>test_size</code> parameter sets the portion of the dataset that will go into the validation set.</p>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 <p><br></p>
 <ul>
@@ -415,11 +492,11 @@ Alan R. Vazquez
 <p>Stratify or segment the prediction space into several simpler regions.</p>
 
 <img data-src="images/Screenshot 2025-07-28 at 11.47.35 a.m..png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="section-2" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 
 <img data-src="images/Modulo 2 - Algoritmos de Clasificacion.012.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="section-3" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
 
 <img data-src="images/Modulo 2 - Algoritmos de Clasificacion.013.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
@@ -438,43 +515,43 @@ Alan R. Vazquez
 <p>The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.</p>
 <p>Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that <strong>minimizes</strong> the so-called <span style="color:purple;"><strong><em>impurity</em></strong></span>.</p>
 </section>
-<section id="section-4" class="slide level2">
-<h2></h2>
-
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.016.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="section-5" class="slide level2">
-<h2></h2>
-
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.017.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-6" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.018.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.016.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-7" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.019.jpeg" class="r-stretch"></section>
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.017.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-8" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.020.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.018.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-9" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.021.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.019.jpeg" class="r-stretch"></section>
 <section id="section-10" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.022.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.020.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-11" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.023.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.021.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-12" class="slide level2">
 <h2></h2>
 
-<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.024.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.022.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-13" class="slide level2">
+<h2></h2>
+
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.023.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+
+<img data-src="images/Modulo 2 - Algoritmos de Clasificacion.024.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section-15" class="slide level2">
 <h2></h2>
 <div class="center">
 <div class="columns">
@@ -532,11 +609,11 @@ Alan R. Vazquez
 <p>To avoid overfitting, we pruned some of the tree’s branches. More specifically, we collapsed two internal (non-terminal) nodes.</p>
 
 <img data-src="images/clipboard-1949573140.png" class="r-stretch"></section>
-<section id="section-14" class="slide level2">
+<section id="section-16" class="slide level2">
 <h2></h2>
 
 <img data-src="images/Modulo 2 - Algoritmos de Clasificacion.029.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="section-15" class="slide level2">
+<section id="section-17" class="slide level2">
 <h2></h2>
 <p>To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.</p>
 <p>The algorithm has a tuning parameter called <span class="math inline">\(\alpha\)</span>, which <strong>places greater weight on the number of tree nodes</strong> (or size):</p>
@@ -581,7 +658,7 @@ Alan R. Vazquez
 <p>We evaluate a logistic regression classifier by classifying observations that were not used for training or estimation.</p>
 <p>That is, we use the classifier to predict categories in the test data set using only the predictor values from this set.</p>
 <p>In Python, we use the commands:</p>
-<div id="4562839d" class="cell" data-execution_count="4">
+<div id="63906080" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Remove problematic predictor from the test set.</span></span>
 <span id="cb4-2"><a></a><span class="co">#X_val = X_val.drop(columns = ['Right'])</span></span>
 <span id="cb4-3"><a></a></span>
@@ -592,21 +669,21 @@ Alan R. Vazquez
 <span id="cb4-8"><a></a><span class="co">#predicted_probability = logit_model.predict(X_val)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-16" class="slide level2">
+<section id="section-18" class="slide level2">
 <h2></h2>
 <p>The <code>predict()</code> function generates <span style="color:brown;"><strong>probabilities</strong></span> instead of the actual classes.</p>
-<div id="91fc4efa" class="cell" data-execution_count="5">
+<div id="387f752e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co">#predicted_probability.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These are the probabilities that a bill is “counterfeit” based on its characteristics (predictor values).</p>
 <p>To convert the probabilities into real-world classes, we round them:</p>
-<div id="caaec99c" class="cell" data-execution_count="6">
+<div id="1d2b96c7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">#predicted_classes = round(predicted_probability).astype('int')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-17" class="slide level2">
+<section id="section-19" class="slide level2">
 <h2></h2>
-<div id="299977d1" class="cell" data-execution_count="7">
+<div id="273a33bc" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co">#predicted_classes.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -628,7 +705,7 @@ Alan R. Vazquez
 <h2>In Python</h2>
 <p><br></p>
 <p>We calculate the confusion matrix using the homonymous function <strong>scikit-learn</strong>.</p>
-<div id="826fbe06" class="cell" data-execution_count="8">
+<div id="7b0f3db0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Create dummy variables for test set.</span></span>
 <span id="cb8-2"><a></a><span class="co">#Y_dummies = pd.get_dummies(Y_val, dtype = 'int')</span></span>
 <span id="cb8-3"><a></a></span>
@@ -642,10 +719,10 @@ Alan R. Vazquez
 <span id="cb8-11"><a></a><span class="co">#print(cm)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-18" class="slide level2">
+<section id="section-20" class="slide level2">
 <h2></h2>
 <p>We can display the confusion matrix using the <code>ConfusionMatrixDisplay()</code> function.</p>
-<div id="2a770f1b" class="cell" data-execution_count="9">
+<div id="0b53d32f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co">#ConfusionMatrixDisplay(cm).plot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -653,7 +730,7 @@ Alan R. Vazquez
 <h2>Accuracy</h2>
 <p>A simple metric for summarizing the information in the confusion matrix is <strong>accuracy</strong>. It is the proportion of correct classifications for both classes, out of the total classifications performed.</p>
 <p>In Python, we calculate accuracy using the <strong>scikit-learn</strong> <code>accuracy_score()</code> function.</p>
-<div id="dcd2e50a" class="cell" data-execution_count="10">
+<div id="870427e4" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co">#accuracy = accuracy_score(Y_target_test, predicted_classes)</span></span>
 <span id="cb10-2"><a></a><span class="co">#print( round(accuracy, 2) )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -679,7 +756,7 @@ Alan R. Vazquez
 <li><p>Ideally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay.</p></li>
 </ul>
 </section>
-<section id="section-19" class="slide level2">
+<section id="section-21" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>In other words, we want to avoid making wrong decisions about customers who will churn.</p></li>
@@ -705,17 +782,17 @@ Alan R. Vazquez
 </ul>
 <p>These metrics are calculated from the confusion matrix.</p>
 </section>
-<section id="section-20" class="slide level2">
+<section id="section-22" class="slide level2">
 <h2></h2>
 
 <img data-src="images/classspecific_metrics.png" class="quarto-figure quarto-figure-center r-stretch"><p><span style="color:darkblue;"><strong>Sensitivity</strong></span> or <em>recall</em> = OO/(OO + OR) “How many records of the target class did we predict correctly?”</p>
 </section>
-<section id="section-21" class="slide level2">
+<section id="section-23" class="slide level2">
 <h2></h2>
 
 <img data-src="images/classspecific_metrics.png" class="quarto-figure quarto-figure-center r-stretch"><p><span style="color:darkgreen;"><strong>Precision</strong></span> = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?</p>
 </section>
-<section id="section-22" class="slide level2">
+<section id="section-24" class="slide level2">
 <h2></h2>
 
 <img data-src="images/classspecific_metrics.png" class="quarto-figure quarto-figure-center r-stretch"><p><strong>Type I error</strong> = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”</p>
@@ -743,7 +820,7 @@ Alan R. Vazquez
 <p>Using the data in the “weight-height.csv” table, apply the CART procedure to build a decision tree useful for predicting a person’s sex based on their weight and height.</p>
 <p>In this example, the predictor variables are continuous, and the predictor variable is binary.</p>
 </section>
-<section id="section-23" class="slide level2">
+<section id="section-25" class="slide level2">
 <h2></h2>
 <p>Interpret the Precision, Accuracy, Sensitivity, and Type 1 Error values for the validation set. If the software doesn’t report them, perform the calculations using the confusion matrix. Use “Female” as the target class.</p>
 <p>Discuss the effectiveness of the resulting model.</p>
@@ -764,14 +841,14 @@ Alan R. Vazquez
 <li><p>For the new observation, the algorithm predicts the value of the most common response among the <em>K</em> nearest observations.</p></li>
 </ol>
 </section>
-<section id="section-24" class="slide level2">
+<section id="section-26" class="slide level2">
 <h2></h2>
 <p>Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.</p>
 <p>A new observation arrives, and we don’t know which group it belongs to.</p>
 
 <img data-src="images/ball_example.png" class="quarto-figure quarto-figure-center r-stretch"><p>If we had chosen <span class="math inline">\(K=3\)</span>, then the three nearest neighbors would vote on which group the new observation belongs to.</p>
 </section>
-<section id="section-25" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2></h2>
 <p>Using <span class="math inline">\(K = 3\)</span>, that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”</p>
 
@@ -785,7 +862,7 @@ Alan R. Vazquez
 <li><p>If there is a tie in the vote, set a rule to break the tie. For example, randomly select the class.</p></li>
 </ul>
 </section>
-<section id="section-26" class="slide level2">
+<section id="section-28" class="slide level2">
 <h2></h2>
 <p><strong><em>KNN uses the Euclidean distance between points</em></strong>. So it ignores units.</p>
 <ul>
@@ -794,7 +871,7 @@ Alan R. Vazquez
 <li><p>Therefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.</p></li>
 </ul>
 </section>
-<section id="section-27" class="slide level2">
+<section id="section-29" class="slide level2">
 <h2></h2>
 <p>As a first step, we must transform the predictors so that they have the same units!</p>
 <p>This requires a predictor standardization process, which is done in Python.</p>
@@ -806,7 +883,7 @@ Alan R. Vazquez
 <p>To <strong>center</strong> a predictor variable, the mean value of the predictor is subtracted from all values.</p>
 <p>Therefore, the centered predictor has a mean of zero (i.e., its average value is zero).</p>
 </section>
-<section id="section-28" class="slide level2">
+<section id="section-30" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>To <strong>scale</strong> a predictor, each of its values is divided by its standard deviation.</p>
@@ -818,7 +895,7 @@ Alan R. Vazquez
 <section id="example-1-cont." class="slide level2">
 <h2>Example 1 (cont.)</h2>
 <p>We use the five numeric predictors from the <code>complete_sbAuto</code> dataset.</p>
-<div id="f2e447df" class="cell" data-execution_count="11">
+<div id="76e1fd1a" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co">#complete_sbAuto.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -838,15 +915,15 @@ Alan R. Vazquez
 <p><br></p>
 <p>To standardize <strong>numeric</strong> predictors, we use the <code>StandardScaler()</code> function. We also apply the function to variables using the <code>fit_transform()</code> function.</p>
 <p><br></p>
-<div id="ca7fd8af" class="cell" data-execution_count="13">
+<div id="77b14034" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co">#scaler = StandardScaler()</span></span>
 <span id="cb12-2"><a></a><span class="co">#Xs = scaler.fit_transform(complete_sbAuto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-29" class="slide level2">
+<section id="section-31" class="slide level2">
 <h2></h2>
 <p>Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.</p>
-<div id="8a625038" class="cell" data-execution_count="14">
+<div id="4abc03f7" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co">#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)</span></span>
 <span id="cb13-2"><a></a><span class="co">#scaled_df.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -870,7 +947,7 @@ Alan R. Vazquez
 <li><p>In this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with.</p></li>
 </ul>
 </section>
-<section id="section-30" class="slide level2">
+<section id="section-32" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>The predictive performance of <em>K</em>-NN deteriorates as the number of predictors increases.</p></li>
