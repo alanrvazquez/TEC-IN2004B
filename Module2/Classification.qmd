@@ -22,12 +22,12 @@ jupyter: python3
 
 </br>
 
-1.  Introducción
-2.  Classification and Regression Trees (CART)
-3.  Métricas de Algoritmos de Clasificación
-4.  *K* vecinos cercanos
+1. Introduction
+2. Classification and Regression Trees (CART)
+3. Classification Algorithm Metrics
+4. *K* Nearest Neighbors
 
-# Introducción
+# Introduction
 
 ## Load the libraries
 
@@ -48,44 +48,44 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_s
 
 Here, we will introduce the functions `confusion_matrix()`, `ConfusionMatrixDisplay()` and `accuracy_score()` to evaluate the performance of a logistic regression classifier.
 
-## Problemas principales de cienca de datos
+## Main Data Science Problems
 
-[**Problemas de regresión**]{style="color:green;"}. La respuesta es numérica. Por ejemplo, los ingresos de una persona, el valor de una casa, la presión arterial del paciente.
+[**Regression Problems**]{style="color:green;"}. The response is numerical. For example, a person's income, the value of a house, or a patient's blood pressure.
 
-[**Problemas de clasificación**]{style="color:blue;"}. La respuesta es categórica e involucra K categorías diferentes. Por ejemplo, la marca de un producto adquirido (A, B, C) o si una persona incumple una deuda (sí o no).
+[**Classification Problems**]{style="color:blue;"}. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).
 
-Los predictores pueden ser numéricos o categóricos.
+Predictors can be numerical or categorical.
 
 ## 
 
 </br>
 
-[Respuesta]{style="text-decoration: underline;"}:
+[Response]{style="text-decoration: underline;"}:
 
 ::: incremental
--   $Y$ es una [**variable categórica**]{style="color:darkgreen;"} que toma [**2 categorías**]{style="color:darkgreen;"} o [**clases**]{style="color:darkgreen;"}.
+- $Y$ is a [**categorical variable**]{style="color:darkgreen;"} that takes [**2 categories**]{style="color:darkgreen;"} or [**classes**]{style="color:darkgreen;"}.
 
--   Por ejemplo, $Y$ puede tomar [0]{style="color:darkgreen;"} o [1]{style="color:darkgreen;"}, [A]{style="color:darkgreen;"} o [B]{style="color:darkgreen;"}, [no]{style="color:darkgreen;"} o [sí]{style="color:darkgreen;"}, [spam]{style="color:darkgreen;"} o [no spam]{style="color:darkgreen;"}.
+- For example, $Y$ can take [0]{style="color:darkgreen;"} or [1]{style="color:darkgreen;"}, [A]{style="color:darkgreen;"} or [B]{style="color:darkgreen;"}, [no]{style="color:darkgreen;"} or [yes]{style="color:darkgreen;"}, [spam]{style="color:darkgreen;"} or [no spam]{style="color:darkgreen;"}.
 
-Cuando las clases son cadenas, se suele codificarlas como 0 y 1.
+When classes are strings, they are usually encoded as 0 and 1.
 
-La **clase de destino** es aquella para la que $Y = 1$. La **clase de referencia** es aquella para la que $Y = 0$.
+The **target class** is the one for which $Y = 1$. The **reference class** is the one for which $Y = 0$.
 :::
 
-## Algoritmos de Clasificación
+## Classification Algorithms
 
-Los algoritmos de clasificación usan los valores de los predictores [para predecir la clase]{style="color:lightblue;"} de la respuesta (objetivo o referencia).
+Classification algorithms use predictor values [to predict the class]{style="color:blue;"} of the response (target or reference).
 
-Es decir, para un registro no visto, usan los valores de los predictores para predecir si el registro pertenece a la clase objetivo o no.
+That is, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not.
 
-Técnicamente, predicen la [probabilidad]{style="color:purple;"} de que el registro pertenece a la clase objetivo.
+Technically, they predict the [probability]{style="color:purple;"} that the record belongs to the target class.
 
-## Ejemplo 1
+## Example 1
 
-Considere un filtro de correo no deseado donde $Y$ es el tipo de correo.
+Consider a spam filter where $Y$ is the email type.
 
--   La clase de destino es spam. En este caso, $Y=1$.
--   La clase de referencia no es spam. En este caso, $Y=0$.
+- The target class is spam. In this case, $Y=1$.
+- The reference class is not spam. In this case, $Y=0$.
 
 . . .
 
@@ -93,31 +93,31 @@ Considere un filtro de correo no deseado donde $Y$ es el tipo de correo.
 
 . . .
 
-Ambos correos se clasificarían como spam. Sin embargo, tendríamos mayor confianza en nuestra clasificación para el segundo correo.
+Both emails would be classified as spam. However, we would have greater confidence in our classification for the second email.
 
 # Classification and Regression Trees (CART)
 
-## Arbol de Decisión
+## Decision Tree
 
-Es un algoritmo de aprendizaje supervisado que predice o clasifica observaciones usando una estructura de arbol jerarquica.
+It is a supervised learning algorithm that predicts or classifies observations using a hierarchical tree structure.
 
--   Sencillo y útil para interpretaciones.
+- Simple and useful for interpretation.
 
--   Puede manejar predictores y respuestas numéricas y categóricas.
+- Can handle numerical and categorical predictors and responses.
 
--   Computacionalmente eficiente.
+- Computationally efficient.
 
--   Técnica no paramétrica.
+- Nonparametric technique.
 
-## Ejemplo 2: Identificar Billetes Falsos
+## Example 2: Identifying Counterfeit Banknotes
 
 </br>
 
 ![](images/clipboard-270396609.png)
 
-Conjunto de datos
+Dataset
 
-Los datos se encuentran en el archivo "banknotes.xlsx".
+The data is located in the file "banknotes.xlsx".
 
 ```{python}
 #| echo: true
@@ -129,9 +129,9 @@ bank_data['Status'] = pd.Categorical(bank_data['Status'])
 bank_data.head()
 ```
 
-Generar datos de entrenamiento
+## Generating Training Data
 
-Dividimos el conjunto de datos actual en dos conjuntos de datos: de entrenamiento y de validación. Para ello, utilizamos la función `train_test_split()` de **scikit-learn**.
+We split the current dataset into two datasets: training and validation. To do this, we use the scikit-learn `train_test_split()` function.
 
 ```{python}
 #| echo: true
@@ -148,23 +148,23 @@ X_train, X_val, Y_train, Y_val = train_test_split(X_full, Y_full,
                                                     test_size=0.3)
 ```
 
-El parámetro `test_size` establece la parte del conjunto de datos que irá al conjunto de validación.
+The `test_size` parameter sets the portion of the dataset that will go into the validation set.
 
 ## 
 
 </br>
 
--   La función realiza una partición inteligente de los datos utilizando la distribución *empírica* de la respuesta.
+- The function intelligently partitions the data using the *empirical* distribution of the response.
 
--   Técnicamente, divide los datos para que la distribución de la respuesta en los conjuntos de entrenamiento y validación sea similar.
+- Technically, it splits the data so that the response distribution in the training and validation sets is similar.
 
--   Normalmente, la proporción del conjunto de datos que se destina al conjunto de prueba es del 20 % o 30 %.
+- Typically, the proportion of the data set allocated to the test set is 20% or 30%.
 
--   Más adelante, utilizaremos el [**conjunto de datos de validación**]{style="color:orange;"} para evaluar el rendimiento de clasificación del modelo de regresión logística estimado para clasificar datos no observados.
+- Later, we will use the [**validation data set**]{style="color:orange;"} to evaluate the classification performance of the estimated logistic regression model for classifying unobserved data.
 
-## Idea básica de un árbol de decisión
+## Basic idea of a decision tree
 
-Estratificar o segmentar el espacio predictor en varias regiones más simples.
+Stratify or segment the prediction space into several simpler regions.
 
 ![](images/Screenshot%202025-07-28%20at%2011.47.35%20a.m..png){fig-align="center"}
 
@@ -176,23 +176,23 @@ Estratificar o segmentar el espacio predictor en varias regiones más simples.
 
 ![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.013.jpeg){fig-align="center"}
 
-## ¿Cómo se construye un árbol de decisión?
+## How do you build a decision tree?
 
-La construcción de árboles de decisión implica dos procedimientos principales.
+Building decision trees involves two main procedures.
 
-1.  [Crece un árbol grande.]{style="color:lightblue;"}
+1. [Grow a large tree.]{style="color:darkblue;"}
 
-2.  [Poda el árbol para evitar un ajuste excesivo.]{style="color:lightblue;"}
+2. [Pruning the tree to prevent overfitting.]{style="color:darkblue;"}
 
-Después de construir un “buen” árbol, podemos predecir nuevas observaciones que no se encuentran en el conjunto de datos que usamos para construirlo.
+After building a “good” tree, we can predict new observations that are not in the data set we used to build it.
 
-## ¿Cómo crecemos un arbol?
+## How do we grow a tree?
 
-**Usando el algoritmo CART!**
+**Using the CART algorithm!**
 
-El algoritmo utiliza una estrategia de división binaria recursiva que construye el árbol utilizando un enfoque codicioso de arriba hacia abajo.
+The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
 
-Básicamente, en un nodo determinado, considera todas las variables y todas las posibles divisiones de esa variable. Luego, para la clasificación, elige la mejor variable y la divide que **minimiza** la llamada [***impureza***]{style="color:purple;"}.
+Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimizes** the so-called [***impurity***]{style="color:purple;"}.
 
 ## 
 
@@ -235,7 +235,7 @@ Básicamente, en un nodo determinado, considera todas las variables y todas las 
 :::::: center
 ::::: columns
 ::: {.column width="40%"}
-Repetimos el proceso de partición hasta que los nodos terminales tengan no menos de 5 observaciones
+We repeat the partitioning process until the terminal nodes have no less than 5 observations.
 :::
 
 ::: {.column width="60%"}
@@ -244,9 +244,9 @@ Repetimos el proceso de partición hasta que los nodos terminales tengan no meno
 :::::
 ::::::
 
-## ¿Qué es impureza?
+## What is impurity?
 
-La impureza del nodo se refiere a la homogeneidad de las clases de respuesta en ese nodo.
+Node impurity refers to the homogeneity of the response classes at that node.
 
 :::::: center
 ::::: columns
@@ -260,20 +260,20 @@ La impureza del nodo se refiere a la homogeneidad de las clases de respuesta en 
 :::::
 ::::::
 
-[*El algorítmo CART minimiza la impureza entre los nodos del arbol.*]{style="color:darkgray;"}
+[*The CART algorithm minimizes impurity between tree nodes.*]{style="color:darkgray;"}
 
 # ¿Cómo medimos la impureza?
 
 :::::: center
 ::::: columns
 ::: {.column width="40%"}
-Hay tres métricas diferentes para la impureza:
+There are three different metrics for impurity:
 
--   Riesgo de clasificación errónea
+- Risk of misclassification.
 
--   Entropía cruzada
+- Cross entropy.
 
--   Índice de impurezas de Gini
+- Gini impurity index.
 :::
 
 ::: {.column width="60%"}
@@ -282,9 +282,9 @@ Hay tres métricas diferentes para la impureza:
 :::::
 ::::::
 
-## Podando el Arbol
+## Pruning the Tree
 
-Para evitar un ajuste excesivo, podamos algunas de las ramas del árbol. Más específicamente, colapsamos dos nodos internos (no terminales).
+To avoid overfitting, we pruned some of the tree's branches. More specifically, we collapsed two internal (non-terminal) nodes.
 
 ![](images/clipboard-1949573140.png)
 
@@ -294,53 +294,53 @@ Para evitar un ajuste excesivo, podamos algunas de las ramas del árbol. Más es
 
 ## 
 
-Para podar un arbol usamos un algoritmo avanzado para medir la contribucón de las ramas del arbol.
+To prune a tree, we use an advanced algorithm to measure the contribution of the tree's branches.
 
-El algoritmo tiene un parametro de ajuste llamado $\alpha$, que **pone mayor peso en el numero de nodos del arbol** (o tamaño):
+The algorithm has a tuning parameter called $\alpha$, which **places greater weight on the number of tree nodes** (or size):
 
--   Valores grandes de $\alpha$ resultan en arboles pequeños con pocos nodos.
+- Large values of $\alpha$ result in small trees with few nodes.
 
--   Valores pequeños de $\alpha$ resultan en arboles grandes con muchos nodos.
+- Small values of $\alpha$ result in large trees with many nodes.
 
-## Detalles de implementación
+## Implementation Details
 
--   Predictores categóricos con niveles desordenados $\{A, B, C\}$. Ordenamos los niveles de una manera específica (funciona para problemas binarios y de regresión).
+- Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
 
--   Predictores con valores faltantes. Para predictores cuantitativos, usamos imputación múltiple. Para predictores categóricos, creamos un nuevo nivel "NA".
+- Predictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new "NA" level.
 
--   Divisiones terciarias o cuartarias. No hay mucha mejora.
+- Tertiary or quartary splits. There is not much improvement.
 
--   Divisiones en diagonal (usando una combinación lineal para la partición). Pueden conducir a una mejora, pero perjudican la interpretabilidad.
+- Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
 
-# Ejemplo en Python
+# Python Example
 
-Los datos “AdultReduced.jmp” provienen del Repositorio de Aprendizaje Automático de la UCI y se derivan de registros del censo de USA.
+The “AdultReduced.jmp” data comes from the UCI Machine Learning Repository and is derived from US Census records.
 
-En estos datos, el objetivo es predecir si los ingresos de una persona eran grandes (definidos en 1994 como más de 50.000 dólares) o pequeños.
+In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than $50,000) or low.
 
-Los predictores incluyen nivel educativo, tipo de trabajo (por ejemplo, nunca trabajó y gobierno local), ganancias/pérdidas de capital, horas de trabajo por semana, país de origen, etc.
+Predictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc.
 
-Los datos tienen 7,508 registros.
+The data contains 7,508 records.
 
-## Desventaja de los Arboles de Decisión
+## Disadvantage of Decision Trees
 
--   Los árboles de decisión tienen una gran variación. Un pequeño cambio en los datos de entrenamiento puede dar lugar a un árbol muy diferente.
+- Decision trees have high variance. A small change in the training data can result in a very different tree.
 
--   Tiene problemas para identificar estructuras de datos simples.
+- It has trouble identifying simple data structures.
 
 ![](images/clipboard-3265772983.png)
 
-# Métricas de Algoritmos de Clasificación
+# Classification Algorithm Metrics
 
-## Evaluación
+## Evaluation
 
 </br>
 
-Evaluamos un clasificador de regresión logística clasificando las observaciones que no se utilizaron para el entrenamiento ni para su estimación.
+We evaluate a logistic regression classifier by classifying observations that were not used for training or estimation.
 
-Es decir, utilizamos el clasificador para predecir las categorías del conjunto de datos de prueba utilizando únicamente los valores predictores de este conjunto.
+That is, we use the classifier to predict categories in the test data set using only the predictor values from this set.
 
-En Python, usamos los comandos:
+In Python, we use the commands:
 
 ```{python}
 #| echo: true
@@ -357,7 +357,7 @@ En Python, usamos los comandos:
 
 ## 
 
-La función `predict()` genera [**probabilidades**]{style="color:brown;"} en lugar de las clases reales.
+The `predict()` function generates [**probabilities**]{style="color:brown;"} instead of the actual classes.
 
 ```{python}
 #| echo: true
@@ -366,9 +366,9 @@ La función `predict()` genera [**probabilidades**]{style="color:brown;"} en lug
 #predicted_probability.head()
 ```
 
-Estas son las probabilidades de que un billete sea "falso" según sus características (valores de los predictores).
+These are the probabilities that a bill is "counterfeit" based on its characteristics (predictor values).
 
-Para convertir las probabilidades en clases reales, las redondeamos:
+To convert the probabilities into real-world classes, we round them:
 
 ```{python}
 #| echo: true
@@ -382,26 +382,26 @@ Para convertir las probabilidades en clases reales, las redondeamos:
 #predicted_classes.head()
 ```
 
--   Las observaciones con probabilidades superiores a 0,5 se clasifican como "falsas".
--   Las observaciones con probabilidades inferiores a 0,5 se clasifican como "genuinas".
+- Observations with probabilities greater than 0.5 are classified as "false."
+- Observations with probabilities less than 0.5 are classified as "genuine."
 
-Ahora, comparamos las predicciones con las categorías reales en el [**conjunto de datos de validación**]{style="color:orange;"}. [Un buen modelo de regresión logística presenta una buena concordancia entre sus predicciones y las categorías reales.]{style="color:darkblue;"}
+Now, we compare the predictions with the actual categories in the [**validation dataset**]{style="color:orange;"}. [A good logistic regression model shows good agreement between its predictions and the actual categories.]{style="color:darkblue;"}
 
-## Matriz de confusión
+## Confusion Matrix
 
--   Tabla utilizada para evaluar el rendimiento de un clasificador.
+- Table used to evaluate the performance of a classifier.
 
--   Compara los valores reales con los valores predichos de un clasificador.
+- Compares actual values with the predicted values of a classifier.
 
--   Útil para problemas de clasificación binaria y multiclase.
+- Useful for binary and multiclass classification problems.
 
 ![](images/confusion_matrix.png){fig-align="center"}
 
-## En Python
+## In Python
 
 </br>
 
-Calculamos la matriz de confusión utilizando la función homónima **scikit-learn**.
+We calculate the confusion matrix using the homonymous function **scikit-learn**.
 
 ```{python}
 #| echo: true
@@ -422,7 +422,7 @@ Calculamos la matriz de confusión utilizando la función homónima **scikit-lea
 
 ## 
 
-Podemos visualizar la matriz de confusión utilizando la función `ConfusionMatrixDisplay()`.
+We can display the confusion matrix using the `ConfusionMatrixDisplay()` function.
 
 ```{python}
 #| echo: true
@@ -432,11 +432,11 @@ Podemos visualizar la matriz de confusión utilizando la función `ConfusionMatr
 #ConfusionMatrixDisplay(cm).plot()
 ```
 
-## Precisión
+## Accuracy
 
-Una métrica simple para resumir la información de la matriz de confusión es la **precisión**. Es la proporción de clasificaciones correctas para ambas clases, del total de clasificaciones realizadas.
+A simple metric for summarizing the information in the confusion matrix is **accuracy**. It is the proportion of correct classifications for both classes, out of the total classifications performed.
 
-En Python, calculamos la precisión mediante la función `accuracy_score()` de **scikit-learn**.
+In Python, we calculate accuracy using the **scikit-learn** `accuracy_score()` function.
 
 ```{python}
 #| echo: true
@@ -448,195 +448,195 @@ En Python, calculamos la precisión mediante la función `accuracy_score()` de *
 
 </br>
 
-Cuanto mayor sea la precisión, mejor será el rendimiento del clasificador.
+The higher the accuracy, the better the performance of the classifier.
 
 ## Observaciones
 
 </br>
 
--   La precisión es fácil de calcular e interpretar.
+- Accuracy is easy to calculate and interpret.
 
--   Funciona bien cuando el conjunto de datos tiene una distribución de clases equilibrada (es decir, casos 1 y 0 aproximadamente iguales).
+- It works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).
 
--   Sin embargo, hay situaciones en las que identificar la clase objetivo es más importante que la clase de referencia.
+- However, there are situations in which identifying the target class is more important than the reference class.
 
--   Por ejemplo, no es ideal para conjuntos de datos desequilibrados. Cuando una clase es mucho más frecuente que la otra, la precisión puede ser engañosa.
+- For example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading.
 
-## Un ejemplo
+## An example
 
--   Digamos que deseamos crear un clasificador que nos diga si un cliente de una empresa de telefonía móvil abandonará el próximo mes.
+- Let's say we want to create a classifier that tells us whether a mobile phone company's customer will churn next month.
 
--   Los clientes que abandonan disminuyen significativamente los ingresos de la empresa. Por eso es importante conservar a estos clientes.
+- Customers who churn significantly decrease the company's revenue. That's why it's important to retain these customers.
 
--   Para retener a ese cliente, la empresa le enviará un mensaje de texto con una oferta para un plan móvil de bajo costo.
+- To retain that customer, the company will send them a text message with an offer for a low-cost mobile plan.
 
--   Idealmente, nuestro clasificador identifica correctamente a los clientes que abandonarán, para que obtengan la oferta y, con suerte, se queden.
+- Ideally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay.
 
-## 
+##
 
--   En otras palabras, queremos evitar tomar decisiones equivocadas sobre clientes que abandonarán.
+- In other words, we want to avoid making wrong decisions about customers who will churn.
 
--   Las decisiones equivocadas sobre los clientes leales no son tan relevantes.
+- Wrong decisions about loyal customers aren't as relevant.
 
--   Porque si clasificamos a un cliente leal como uno que abandonará, el cliente obtendrá una buena oferta. Probablemente pagará menos pero se quedará de todos modos.
+- Because if we classify a loyal customer as one who will churn, the customer will get a good deal. They'll probably pay less but stay anyway.
 
-## Otro ejemplo
+## Another example
 
--   Otro ejemplo es desarrollar un algoritmo (clasificador) que pueda identificar rápidamente a pacientes que puedan tener una enfermedad rara y necesiten una evaluación médica más exhaustiva y costosa.
+- Another example is developing an algorithm (classifier) that can quickly identify patients who may have a rare disease and need a more extensive and expensive medical evaluation.
 
--   El clasificador debe tomar decisiones correctas sobre los pacientes con la enfermedad rara, para que sean evaluados y eventualmente tratados.
+- The classifier must make correct decisions about patients with the rare disease, so they can be evaluated and eventually treated.
 
--   Un paciente sano al que se clasifica erróneamente con la enfermedad sólo incurrirá en algunos dólares extra para pagar el siguiente estudio. Sólo para descubrir que el paciente no tiene la enfermedad.
+- A healthy patient who is misclassified with the disease will only incur a few extra dollars to pay for the next test, only to discover that the patient does not have the disease.
 
-## Métricas especificas de clasificación
+## Classification-Specific Metrics
 
-Para superar esta limitación de exactitud y tasa de error, existen varias métricas específicas de clase. Los más populares son:
+To overcome this limitation of accuracy and error rate, there are several class-specific metrics. The most popular are:
 
--   [**Sensibilidad**]{style="color:darkblue;"} o *recall*
+- [**Sensitivity**]{style="color:darkblue;"} or *recall*
 
--   [**Presición**]{style="color:darkgreen;"}
+- [**Precision**]{style="color:darkgreen;"}
 
--   **Error tipo I**
+- **Type I error**
 
-Estas métricas se calculan de la matriz de confusión.
-
-## 
-
-![](images/classspecific_metrics.png){fig-align="center"}
-
-[**Sensibilidad**]{style="color:darkblue;"} o *recall* = OO/(OO + OR) “¿Cuántos registros de la clase objetivo predijimos correctamente?”
+These metrics are calculated from the confusion matrix.
 
 ## 
 
 ![](images/classspecific_metrics.png){fig-align="center"}
 
-[**Presición**]{style="color:darkgreen;"} = OO/(OO + RO) ¿Cuántos de los registros que predijimos como de clase objetivo fueron clasificados correctamente?
+[**Sensitivity**]{style="color:darkblue;"} or *recall* = OO/(OO + OR) “How many records of the target class did we predict correctly?”
 
 ## 
 
 ![](images/classspecific_metrics.png){fig-align="center"}
 
-**Error tipo I** = RO/(RO + RR) “¿Cuántos de los registros de referencia predijimos incorrectamente como de objetivo?”
-
-## Discusión
-
--   Generalmente existe un compromiso entre sensibilidad y error de tipo I.
-
--   Intuitivamente, aumentar la sensibilidad de un clasificador probablemente genere un aumento del error tipo I, porque se predicen más observaciones como positivas.
-
--   Las posibles compensaciones entre sensibilidad y error de tipo I pueden ser apropiadas cuando existen diferentes sanciones o costos asociados con cada tipo de error.
-
-## Ejemplo
-
-Asumiendo que la clase de interés o objetivo es “large”
-
--   Sensibilidad = 566/(566 + 214) = 0.726
-
--   Precisión = 566/(566 + 156) = 0.783
-
--   Error Tipo 1 = 156/(156+655) = 0.192
-
-## Actividad 2.1: Clasificación y métricas (cooperative mode)
-
-Juntate con un compañero.
-
-Utilizando los datos de la tabla “weight-height.csv” aplica el procedimiento CART para construir un árbol de decisión útil para predecir el sexo de una persona a partir de su peso y su estatura.
-
-En este ejemplo las variables predictoras son continuas y la variable a predecir es binaria.
+[**Precision**]{style="color:darkgreen;"} = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?
 
 ## 
 
-Interpreta los valores de Precision, Exactitud, Sensibilidad y Error Tipo 1 para el conjunto de validación. Si el software no los reporta haz los cálculos a partir de la matriz de confusión. Utiliza “Female” como clase objetivo.
+![](images/classspecific_metrics.png){fig-align="center"}
 
-Discute sobre la efectividad del modelo resultante.
+**Type I error** = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”
 
-# *K* vecinos cercanos
+## Discussion
 
-Es un algoritmo de aprendizaje supervisado que usa la proximidad para hacer clasificaciones o predicciones sobre la agrupación de un punto de datos individual.
+- There is generally a trade-off between sensitivity and Type I error.
 
-**Idea básica**: predecir una nueva observación utilizando las K observaciones más cercanas en el conjunto de datos de entrenamiento.
+- Intuitively, increasing the sensitivity of a classifier is likely to increase Type I error, because more observations are predicted as positive.
 
-Para predecir la respuesta de una nueva observación, K-NN utiliza los K vecinos (observaciones) más cercanos en [***terminos de los predictores!***]{style="color:aqua;"}
+- Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
 
-La respuesta prevista para la nueva observación es la respuesta más común de los K vecinos.
+## Example
 
-## El algoritmo tiene 3 pasos
+Assuming the target class is "large"
 
-1.  Elige el numero de vecinos más cercanos (K).
+- Sensitivity = 566/(566 + 214) = 0.726
 
-2.  Para una observación nueva, encuentra las K observaciones más cercanas en los datos de entrenamiento (ignorando la respuesta).
+- Accuracy = 566/(566 + 156) = 0.783
 
-3.  Para la observación nueva, el algoritmo predice el valor de la respuesta mas común entre las K observaciones más cercanas.
+- Type 1 Error = 156/(156 + 655) = 0.192
 
-## 
+## Activity 2.1: Classification and Metrics (cooperative mode)
 
-Supongamos que tenemos dos grupos: el grupo rojo y el grupo verde. La recta numérica muestra el valor de una variable para nuestros datos de entrenamiento.
+Pair with a partner.
 
-Llega una nueva observación y no sabemos a qué grupo pertenece.
+Using the data in the "weight-height.csv" table, apply the CART procedure to build a decision tree useful for predicting a person's sex based on their weight and height.
+
+In this example, the predictor variables are continuous, and the predictor variable is binary.
+
+##
+
+Interpret the Precision, Accuracy, Sensitivity, and Type 1 Error values for the validation set. If the software doesn't report them, perform the calculations using the confusion matrix. Use "Female" as the target class.
+
+Discuss the effectiveness of the resulting model.
+
+# *K* nearest neighbors
+
+This is a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.
+
+**Basic idea**: Predict a new observation using the *K* closest observations in the training dataset.
+
+To predict the response for a new observation, *K*-NN uses the *K* nearest neighbors (observations) in [***terms of the predictors!***]{style="color:aqua;"}
+
+The predicted response for the new observation is the most common response among the *K* nearest neighbors.
+
+## The algorithm has 3 steps:
+
+1. Choose the number of nearest neighbors (*K*).
+
+2. For a new observation, find the *K* closest observations in the training data (ignoring the response).
+
+3. For the new observation, the algorithm predicts the value of the most common response among the *K* nearest observations.
+
+##
+
+Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.
+
+A new observation arrives, and we don't know which group it belongs to.
 
 ![](images/ball_example.png){fig-align="center"}
 
-Si hubiéramos elegido K=3, entonces los tres vecinos más cercanos votarían a qué grupo pertenece la nueva observación.
+If we had chosen $K=3$, then the three nearest neighbors would vote on which group the new observation belongs to.
 
-## 
+##
 
-Usando $K = 3$, son 2 votos para "genuino" y 2 para "falso". Entonces clasificamos como "geniunio".
+Using $K = 3$, that's 2 votes for "genuine" and 2 for "fake." So we classify it as "genius."
 
 ![](images/ball_example2.png){fig-align="center"}
 
-La cercanía se basa en la distancia Euclidiana.
+Closeness is based on Euclidean distance.
 
-## Detalles de implementación
+## Implementation Details
 
-**Empates**
+**Ties**
 
--   Si hay más de *K* vecinos mas cercanos, incluyelos todos.
+- If there are more than *K* nearest neighbors, include them all.
 
--   Si hay un empate en la votación, fija una regla para romper el empate. Por ejemplo, seleccionar la clase aleatoriamente.
+- If there is a tie in the vote, set a rule to break the tie. For example, randomly select the class.
 
-## 
+##
 
-***KNN utiliza la distancia euclidiana entre puntos***. Entonces ignora las unidades.
+***KNN uses the Euclidean distance between points***. So it ignores units.
 
--   Ejemplo: dos predictores: altura en cm y extensión de brazos en pies. Compare dos personas: (152.4, 1.52) y (182.88, 1.85).
+- Example: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).
 
--   Estas personas están separadas por 30.48 unidades de distancia en la primera variable, pero sólo por 0.33 unidades en la segunda.
+- These people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.
 
--   Por lo tanto, el primer predictor juega un papel mucho más importante en la clasificación y puede impulsar los resultados de modo que la segunda variable se vuelva inútil.
+- Therefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.
 
-## 
+##
 
-Como primer paso, ¡debemos de transformar los predictores para que tengan las mismas unidades!
+As a first step, we must transform the predictors so that they have the same units!
 
-Esto requiere un proceso de estandarización de los predictores, que se hace en Python.
+This requires a predictor standardization process, which is done in Python.
 
-## Estandarización
-
-</br>
-
-La estandarización se refiere a *centrar* y *escalar* cada predictor numérico individualmente. Esto coloca a todos los predictores en la misma escala.
-
-Para **centrar** una variable predictora, se resta el valor promedio del predictor de todos los valores.
-
-Por lo tanto, el predictor centrado tiene una media cero (es decir, su valor promedio es cero).
-
-## 
+## Standardization
 
 </br>
 
-Para **escalar** un predictor, cada uno de sus valores se divide entre su desviación estándar.
+Standardization refers to *centering* and *scaling* each numerical predictor individually. This places all predictors on the same scale.
 
-Al escalar los datos, los valores tienen una desviación estándar común de uno.
+To **center** a predictor variable, the mean value of the predictor is subtracted from all values.
 
-En términos matemáticos, estandarizamos un predictor como:
+Therefore, the centered predictor has a mean of zero (i.e., its average value is zero).
+
+##
+
+</br>
+
+To **scale** a predictor, each of its values is divided by its standard deviation.
+
+When scaling the data, the values have a common standard deviation of one.
+
+In mathematical terms, we standardize a predictor as:
 
 $${\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2}},$$
 
-con $\bar{X} = \sum_{i=1}^n \frac{x_i}{n}$.
+with $\bar{X} = \sum_{i=1}^n \frac{x_i}{n}$.
 
-## Ejemplo 1 (cont.)
+## Example 1 (cont.)
 
-Usamos los cinco predictores numéricos del conjunto de datos `complete_sbAuto`.
+We use the five numeric predictors from the `complete_sbAuto` dataset.
 
 ```{python}
 #| echo: true
@@ -644,9 +644,9 @@ Usamos los cinco predictores numéricos del conjunto de datos `complete_sbAuto`.
 #complete_sbAuto.head()
 ```
 
-## Dos predictores en unidades originales
+## Two predictors in original units
 
-Considere el conjunto de datos `complete_sbAuto` creado previamente. Considere dos puntos en el gráfico: $(175, 5140)$ y $(69, 1613)$.
+Consider the previously created `complete_sbAuto` dataset. Consider two points on the graph: $(175, 5140)$ and $(69, 1613)$.
 
 ::::: columns
 ::: {.column width="50%"}
@@ -668,15 +668,15 @@ Considere el conjunto de datos `complete_sbAuto` creado previamente. Considere d
 ::: {.column width="50%"}
 </br>
 
-La distancia entre estos puntos es $\sqrt{(69 - 175)^2 + (1613-5140)^2}$ $= \sqrt{11236 + 12439729}$ $= 3528.592$.
+The distance between these points is $\sqrt{(69 - 175)^2 + (1613-5140)^2}$ $= \sqrt{11236 + 12439729}$ $= 3528.592$.
 :::
 :::::
 
-## Estandarización en Python
+## Standardization in Python
 
 </br>
 
-Para estandarizar predictores **numéricos**, usamos la función `StandardScaler()`. Además, aplicamos la función a las variables mediante la función `fit_transform()`.
+To standardize **numeric** predictors, we use the `StandardScaler()` function. We also apply the function to variables using the `fit_transform()` function.
 
 </br>
 
@@ -689,7 +689,7 @@ Para estandarizar predictores **numéricos**, usamos la función `StandardScaler
 
 ## 
 
-Lamentablemente, el objeto resultante no es un marco de datos de Pandas. Por lo tanto, lo convertimos a este formato.
+Unfortunately, the resulting object isn't a Pandas data frame. So, we converted it to this format.
 
 ```{python}
 #| echo: true
@@ -698,9 +698,9 @@ Lamentablemente, el objeto resultante no es un marco de datos de Pandas. Por lo 
 #scaled_df.head()
 ```
 
-## Dos predictores en unidades estandarizadas
+## Two predictors in standardized units
 
-En la nueva escala, los dos puntos ahora son: $(1.82, 2.53)$ y $(-0.91, -1.60)$.
+On the new scale, the two points are now: $(1.82, 2.53)$ and $(-0.91, -1.60)$.
 
 ::::: columns
 ::: {.column width="50%"}
@@ -722,25 +722,25 @@ En la nueva escala, los dos puntos ahora son: $(1.82, 2.53)$ y $(-0.91, -1.60)$.
 ::: {.column width="50%"}
 </br>
 
-La distancia entre estos puntos es $\sqrt{(-0.91 - 1.82)^2 + (-1.60-2.53)^2}$ $= \sqrt{7.45 + 17.05} = 4.95$.
+The distance between these points is $\sqrt{(-0.91 - 1.82)^2 + (-1.60-2.53)^2}$ $= \sqrt{7.45 + 17.05} = 4.95$.
 :::
 :::::
 
-## Discusión
+## Discussion
 
-K-NN es intuitivo y sencillo y puede producir predicciones decentes. Sin embargo, K-NN tiene algunas desventajas:
+*K*-NN is intuitive and simple and can produce decent predictions. However, *K*-NN has some disadvantages:
 
--   Cuando el conjunto de datos de entrenamiento es muy grande, K-NN es computacionalmente costoso. Esto se debe a que, para predecir una observación, necesitamos calcular la distancia entre la observación y todas las demás en el conjunto de datos. (“Aprendiz perezoso”).
+- When the training dataset is very large, *K*-NN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. ("Lazy learner").
 
--   En este caso, un arbol de decisión es mas ventajoso porque es fácil de construir, almacenar, y hacer predicciones con él.
+- In this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with.
 
-## 
+##
 
--   El rendimiento predictivo de K-NN se deteriora a medida que aumenta el número de predictores.
+- The predictive performance of *K*-NN deteriorates as the number of predictors increases.
 
--   Esto se debe a que la distancia esperada al vecino más cercano aumenta drásticamente con el número de predictores, a menos que el tamaño del conjunto de datos aumente exponencialmente con este número.
+- This is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.
 
--   Esto se conoce como la ***maldición de la dimensionalidad***.
+- This is known as the ***curse of dimensionality***.
 
 ![](images/clipboard-72810347.png)
 
