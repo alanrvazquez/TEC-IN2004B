@@ -1874,5 +1874,257 @@
     "title": "Principal Component Analysis",
     "section": "Biplot",
     "text": "Biplot\n\n\n\n\nMuestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes.\nAyuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones.\nUna linea roja da las dirección de crecimiento de la variable etiquetada.\n\n\nTBD"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#agenda",
+    "href": "Module2/IntrotoDataScience.html#agenda",
+    "title": "Introduction to Data Science",
+    "section": "Agenda",
+    "text": "Agenda\n\n\nData Science\nSupervised and Unsupervised Learning"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#section",
+    "href": "Module2/IntrotoDataScience.html#section",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "A week before the storm made landfall, Linda M. Dillman, Wal-Mart’s chief information officer, pressured her staff to create forecasts based on what had happened when Hurricane Charley hit the area several weeks earlier.\n\nBacked by trillions of bytes of purchase history stored in Walmart’s data warehouse, he said, the company could “start predicting what’s going to happen, rather than waiting for it to happen,” as he put it."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#otros-conceptos-parecidos",
+    "href": "Module2/IntrotoDataScience.html#otros-conceptos-parecidos",
+    "title": "Introduction to Data Science",
+    "section": "Otros conceptos parecidos",
+    "text": "Otros conceptos parecidos\nData mining is a process of discovering patterns in large data sets using methods at the intersection of statistics and database systems.\nPredictive modeling is the process of developing a model so that we can understand and quantify the accuracy of the model’s prediction in yet-to-be-seen future data sets.\nStatistical learning refers to a set of tools (statistical models and data mining methods) for modeling and understanding complex data sets."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#in-2004",
+    "href": "Module2/IntrotoDataScience.html#in-2004",
+    "title": "Introduction to Data Science",
+    "section": "In 2004…",
+    "text": "In 2004…\nHurricane Frances battered the Caribbean and threatened to directly affect Florida’s Atlantic coast.\n\n\n\n\n\n\n\n\n\n\n\n\n\nResidents headed for higher ground, but in Arkansas, Walmart executives saw a big opportunity for one of their newest data-driven weapons: predictive technology."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#section-1",
+    "href": "Module2/IntrotoDataScience.html#section-1",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "Clustering attempts to group individuals in a population based on their similarity, but not for any specific purpose. For example, “Do our customers form natural groups or segments?”"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#the-result",
+    "href": "Module2/IntrotoDataScience.html#the-result",
+    "title": "Introduction to Data Science",
+    "section": "The result",
+    "text": "The result\n\n\nThe New York Times reported\n\n\n“… Experts analyzed the data and found that stores would indeed need certain products, not just the typical flashlights.”\n\n\n\nDillman said\n\n\n“We didn’t know in the past that strawberry Pop-Tarts increase their sales, like seven times their normal sales rate, before a hurricane.”"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#cross-industry-standard-process-crisp-for-data-science",
+    "href": "Module2/IntrotoDataScience.html#cross-industry-standard-process-crisp-for-data-science",
+    "title": "Introduction to Data Science",
+    "section": "Cross-Industry Standard Process (CRISP) for Data Science",
+    "text": "Cross-Industry Standard Process (CRISP) for Data Science"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#crisp-model",
+    "href": "Module2/IntrotoDataScience.html#crisp-model",
+    "title": "Introduction to Data Science",
+    "section": "CRISP Model",
+    "text": "CRISP Model\n\n\nBusiness Understanding: What does the business need?\nData Understanding: What data do we have or need? Is it clean?\nData Preparation: How do we organize the data for modeling?\nModeling: What modeling techniques should we apply?\nEvaluation: Which model best meets business objectives?\nImplementation: How do stakeholders access the results?"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#business-understanding",
+    "href": "Module2/IntrotoDataScience.html#business-understanding",
+    "title": "Introduction to Data Science",
+    "section": "Business Understanding",
+    "text": "Business Understanding\n\n\nBusiness understanding refers to defining the business problem you are trying to solve.\nThe goal is to reframe the business problem as a data science problem.\nReframing the problem and designing a solution is often an iterative process."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#problems-in-data-science",
+    "href": "Module2/IntrotoDataScience.html#problems-in-data-science",
+    "title": "Introduction to Data Science",
+    "section": "Problems in Data Science",
+    "text": "Problems in Data Science\n\nClassification (or class probability estimation) attempts to predict, for each individual in a population, which of a (small) set of classes that individual belongs to. For example, “Among all T-Mobile customers, which ones are likely to respond to a given offer?”\n\nRegression attempts to estimate or predict, for each individual, the numerical value of some variable for that individual. For example, “How much will a given customer use the service?”"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#section-2",
+    "href": "Module2/IntrotoDataScience.html#section-2",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "Signet Bank’s management was convinced that modeling profitability, not just the probability of default, was the right strategy.\nThey knew that a small proportion of customers actually account for more than 100% of a bank’s profit from credit card transactions (because the rest are either breaking even or losing money).\nIf they could model profitability, they could make better offers to the best customers and “skim the cream” of the big banks’ clientele."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#data-understanding-i",
+    "href": "Module2/IntrotoDataScience.html#data-understanding-i",
+    "title": "Introduction to Data Science",
+    "section": "Data Understanding I",
+    "text": "Data Understanding I\n\n\n\nIf the goal is to solve a business problem, data constitutes the raw material available from which the solution will be built.\nThe available data rarely matches the problem.\nFor example, historical data is often collected for purposes unrelated to the current business problem or without any explicit purpose."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#data-comprehension-ii",
+    "href": "Module2/IntrotoDataScience.html#data-comprehension-ii",
+    "title": "Introduction to Data Science",
+    "section": "Data Comprehension II",
+    "text": "Data Comprehension II\n\n\nData costs vary. Some data will be available for free, while others will require effort to obtain.\n\n\n\nA key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.\nEven after acquiring all the data sets, compiling them may require additional effort."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#example",
+    "href": "Module2/IntrotoDataScience.html#example",
+    "title": "Introduction to Data Science",
+    "section": "Example",
+    "text": "Example\n\nIn the 1980s, credit cards were essentially priced uniformly because companies didn’t have adequate information systems to deal with differential pricing on a massive scale.\n\nAround 1990, Richard Fairbanks and Nigel Morris realized that information technology was powerful enough to enable more sophisticated predictive models and offer different terms (today: pricing, credit limits, low introductory rate balance transfers, cash back, and loyalty points)."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#section-3",
+    "href": "Module2/IntrotoDataScience.html#section-3",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "But Signet Bank had a really big problem implementing this strategy.\nThey didn’t have the right data to model profitability for offering different terms to different customers!\nSince the bank offered credit with a specific set of terms and a specific default model, they had the data to model profitability (1) for the terms they actually offered in the past, and (2) for the type of customer actually offered credit."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#section-4",
+    "href": "Module2/IntrotoDataScience.html#section-4",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "What could Signet Bank do? They put into play a fundamental data science strategy: acquire the necessary data at a cost!\nIn this case, data on customer profitability with different credit terms could be generated by conducting experiments. Different terms were randomly offered to different customers.\nThis might seem silly outside the context of data analytics thinking: you’re likely to lose money!\nThis is true. In this case, the losses are the cost of data acquisition."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#section-5",
+    "href": "Module2/IntrotoDataScience.html#section-5",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "What could Signet Bank do? They put into play a fundamental data science strategy: acquire the necessary data at a cost.\nIn this case, data on customer profitability with different credit terms could be generated by conducting experiments. Different terms were randomly offered to different customers.\nThis might seem silly outside the context of data analytics thinking: you’re likely to lose money!\nThis is true. In this case, the losses are the cost of data acquisition."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#what-happened",
+    "href": "Module2/IntrotoDataScience.html#what-happened",
+    "title": "Introduction to Data Science",
+    "section": "What happened?",
+    "text": "What happened?\nAs expected, Signet’s number of bad accounts skyrocketed.\nThe losses continued for several years while data scientists worked to build predictive models from the data, evaluate them, and implement them to improve profits.\nBecause the company viewed these losses as investments in data, they persisted despite complaints from stakeholders.\nEventually, Signet’s credit card business turned around and became so profitable that it was spun off to separate it from the bank’s other operations, which were now overshadowing the success of its consumer lending business."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#richard-fairbanks-and-nigel-morris",
+    "href": "Module2/IntrotoDataScience.html#richard-fairbanks-and-nigel-morris",
+    "title": "Introduction to Data Science",
+    "section": "Richard Fairbanks and Nigel Morris",
+    "text": "Richard Fairbanks and Nigel Morris\n\n\n\n\n\n\n\nFounders of"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#most-used-data-science-tools",
+    "href": "Module2/IntrotoDataScience.html#most-used-data-science-tools",
+    "title": "Introduction to Data Science",
+    "section": "Most Used Data Science Tools",
+    "text": "Most Used Data Science Tools\n\nPython\nR\nSAS\nExcel\nPower BI\nTableau\nApache Spark\n\nhttps://hackr.io/blog/top-data-analytics-tools"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#other-tools-used",
+    "href": "Module2/IntrotoDataScience.html#other-tools-used",
+    "title": "Introduction to Data Science",
+    "section": "Other Tools Used",
+    "text": "Other Tools Used\n\nRapidMiner (https://rapidminer.com/products/studio/)\nJMP (https://www.jmp.com/es_mx/home.html)\nMinitab (https://www.minitab.com/es-mx/products/minitab/)\nTrifacta (https://www.trifacta.com/)\nBigML (https://bigml.com/)\nMLBase (http://www.mlbase.org/)\nGoogle Cloud AutoML (https://cloud.google.com/automl/)"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#terminology",
+    "href": "Module2/IntrotoDataScience.html#terminology",
+    "title": "Introduction to Data Science",
+    "section": "Terminology",
+    "text": "Terminology\n\nPredictors. They are represented using the notation \\(X_1\\) for the first predictor, \\(X_p\\) for the second predictor, …, and \\(X_p\\) for the p-th predictor.\nResponse. \\(Y\\) represents the response variable, which we will attempt to predict.\n\n\nWe want to establish the following relationship\n\\[\nY = f(X_1, X_2, \\ldots, X_p) + \\epsilon,\n\\]\nwhere \\(f\\) is a function of the predictors and \\(\\epsilon\\) is a natural (random) error."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#types-of-learning",
+    "href": "Module2/IntrotoDataScience.html#types-of-learning",
+    "title": "Introduction to Data Science",
+    "section": "Types of Learning",
+    "text": "Types of Learning\n\nIn data science (and machine learning), there are two main types of learning:\n\nSupervised learning\nUnsupervised learning"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#supervised-learning",
+    "href": "Module2/IntrotoDataScience.html#supervised-learning",
+    "title": "Introduction to Data Science",
+    "section": "Supervised Learning…",
+    "text": "Supervised Learning…\nIncludes algorithms that learn by example. The user provides the supervised algorithm with a known data set that includes the corresponding known inputs and outputs. The algorithm must find a method to determine how to reach those inputs and outputs.\nWhile the user knows the correct answers to the problem, the algorithm identifies patterns in the data, learns from observations, and makes predictions.\nThe algorithm makes predictions that can be corrected by the user, and this process continues until the algorithm reaches a high level of accuracy and performance."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#popular-supervised-algorithms",
+    "href": "Module2/IntrotoDataScience.html#popular-supervised-algorithms",
+    "title": "Introduction to Data Science",
+    "section": "Popular Supervised Algorithms",
+    "text": "Popular Supervised Algorithms"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#popular-unsupervised-algorithms",
+    "href": "Module2/IntrotoDataScience.html#popular-unsupervised-algorithms",
+    "title": "Introduction to Data Science",
+    "section": "Popular Unsupervised Algorithms",
+    "text": "Popular Unsupervised Algorithms"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#unsupervised-learning",
+    "href": "Module2/IntrotoDataScience.html#unsupervised-learning",
+    "title": "Introduction to Data Science",
+    "section": "Unsupervised Learning…",
+    "text": "Unsupervised Learning…\n\nstudies data to identify patterns. There is no answer key or human operator to provide instruction. The machine determines correlations and relationships by analyzing the available data.\nIn this process, the unsupervised algorithm is left to interpret large data sets. The algorithm attempts to organize that data in some way to describe its structure.\nAs it evaluates more data, its ability to make decisions about it gradually improves and becomes more refined."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#two-data-sets",
+    "href": "Module2/IntrotoDataScience.html#two-data-sets",
+    "title": "Introduction to Data Science",
+    "section": "Two Data Sets",
+    "text": "Two Data Sets\n\nIn supervised learning, there are several types of data.\nTraining data is the data used to construct \\(\\hat{f}(\\boldsymbol{X})\\).\nTest data is the data that was NOT used in the fitting process, but is used to test the model’s performance on unanalyzed data."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#yogi-berra",
+    "href": "Module2/IntrotoDataScience.html#yogi-berra",
+    "title": "Introduction to Data Science",
+    "section": "Yogi Berra",
+    "text": "Yogi Berra\n\n\nIt’s though to make predictions, especially about the future."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#lets-play",
+    "href": "Module2/IntrotoDataScience.html#lets-play",
+    "title": "Introduction to Data Science",
+    "section": "Let’s Play",
+    "text": "Let’s Play\n\nLet’s play with supervised models.\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#what-is-data-science-1",
+    "href": "Module2/IntrotoDataScience.html#what-is-data-science-1",
+    "title": "Introduction to Data Science",
+    "section": "What is data science?",
+    "text": "What is data science?\n\nData science is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from vast amounts of structured and unstructured data."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#data-science-is",
+    "href": "Module2/IntrotoDataScience.html#data-science-is",
+    "title": "Introduction to Data Science",
+    "section": "Data Science is …",
+    "text": "Data Science is …\na multidisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from vast amounts of structured and unstructured data."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#other-similar-concepts",
+    "href": "Module2/IntrotoDataScience.html#other-similar-concepts",
+    "title": "Introduction to Data Science",
+    "section": "Other Similar Concepts",
+    "text": "Other Similar Concepts\n\n\n\nData mining is a process of discovering patterns in large data sets using methods at the intersection of statistics and database systems.\nPredictive modeling is the process of developing a model so that we can understand and quantify the accuracy of the model’s prediction in yet-to-be-seen future data sets.\nStatistical learning refers to a set of tools (statistical models and data mining methods) for modeling and understanding complex data sets."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#discussion",
+    "href": "Module2/IntrotoDataScience.html#discussion",
+    "title": "Introduction to Data Science",
+    "section": "Discussion",
+    "text": "Discussion\n\n\nOften, reframing the problem and designing a solution is an iterative process.\nThe initial formulation may not be complete or optimal, so multiple iterations may be necessary to formulate an acceptable solution.\nThe key to great success is creative problem formulation by an analyst on how to frame the business problem as one or more data science problems."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#data-understanding-ii",
+    "href": "Module2/IntrotoDataScience.html#data-understanding-ii",
+    "title": "Introduction to Data Science",
+    "section": "Data Understanding II",
+    "text": "Data Understanding II\n\n\nData costs vary. Some data will be available for free, while others will require effort to obtain.\n\n\n\nA key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.\nEven after acquiring all the data sets, compiling them may require additional effort."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.html#the-true-model",
+    "href": "Module2/IntrotoDataScience.html#the-true-model",
+    "title": "Introduction to Data Science",
+    "section": "The True Model",
+    "text": "The True Model\nIn mathematical terms, we want to establish the following relationship\n\\[\nY = f(X_1, X_2, \\ldots, X_p) + \\epsilon\n\\]\nWhere \\(f\\) is a function of the predictors and \\(\\epsilon\\) is a natural (random) error."
   }
 ]

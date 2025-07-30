@@ -22,14 +22,14 @@ jupyter: python3
 
 </br>
 
-1. What is data science?
-2. Types of learning: supervised and unsupervised
+1.  Data Science
+2.  Supervised and Unsupervised Learning
 
-# ¿Qué es la ciencia de datos?
+# Data Science
 
-## 
+## Data Science is ...
 
-Data science is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from vast amounts of structured and unstructured [data]{style="color:purple;"}.
+a multidisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from vast amounts of structured and unstructured [data]{style="color:purple;"}.
 
 . . .
 
@@ -45,13 +45,17 @@ Data science is an interdisciplinary field that uses scientific methods, process
 :::::
 ::::::
 
-## Otros conceptos parecidos
+## Other Similar Concepts
 
-**Data mining** is a process of discovering patterns in large [data sets]{style="color:purple;"} using methods at the intersection of statistics and database systems.
+</br>
 
-**Predictive modeling** is the process of developing a model so that we can understand and quantify the accuracy of the model's prediction in yet-to-be-seen future [data sets]{style="color:purple;"}.
+::: incremental
+-   **Data mining** is a process of discovering patterns in large [data sets]{style="color:purple;"} using methods at the intersection of statistics and database systems.
 
-**Statistical learning** refers to a set of tools (statistical models and data mining methods) for modeling and understanding complex [data sets]{style="color:purple;"}.
+-   **Predictive modeling** is the process of developing a model so that we can understand and quantify the accuracy of the model's prediction in yet-to-be-seen future [data sets]{style="color:purple;"}.
+
+-   **Statistical learning** refers to a set of tools (statistical models and data mining methods) for modeling and understanding complex [data sets]{style="color:purple;"}.
+:::
 
 ## In 2004...
 
@@ -80,6 +84,8 @@ Hurricane Frances battered the Caribbean and threatened to directly affect Flori
 Residents headed for higher ground, but in Arkansas, Walmart executives saw a big opportunity for one of their newest data-driven weapons: ***predictive technology***.
 
 ## 
+
+</br>
 
 ::::::: center
 :::::: columns
@@ -110,7 +116,7 @@ Backed by trillions of bytes of purchase history stored in Walmart's data wareho
 The New York Times reported
 
 ::: {style="font-size: 80%;"}
-> *"... Experts analyzed the data and found that stores would indeed need certain products, not just the typical flashlights.*
+> *"... Experts analyzed the data and found that stores would indeed need certain products, not just the typical flashlights."*
 :::
 ::::
 
@@ -131,27 +137,33 @@ Dillman said
 
 ## CRISP Model
 
-**Business Understanding**: What does the business need?
+</br>
 
-**Data Understanding**: What data do we have or need? Is it clean?
+-   **Business Understanding**: What does the business need?
 
-**Data Preparation**: How do we organize the data for modeling?
+-   **Data Understanding**: What data do we have or need? Is it clean?
 
-**Modeling**: What modeling techniques should we apply?
+-   **Data Preparation**: How do we organize the data for modeling?
 
-**Evaluation**: Which model best meets business objectives?
+-   **Modeling**: What modeling techniques should we apply?
 
-**Implementation**: How do stakeholders access the results?
+-   **Evaluation**: Which model best meets business objectives?
+
+-   **Implementation**: How do stakeholders access the results?
 
 ## Business Understanding
 
-- Business understanding refers to defining the business problem you are trying to solve.
+</br></br>
 
-- The goal is to reframe the business problem as a data science problem.
+-   Business understanding refers to defining the business problem you are trying to solve.
 
-- Reframing the problem and designing a solution is often an iterative process.
+-   The goal is to reframe the business problem as a data science problem.
+
+-   Reframing the problem and designing a solution is often an iterative process.
 
 ## Problems in Data Science
+
+</br>
 
 [**Classification**]{style="color:blue;"} (or class probability estimation) attempts to predict, for each individual in a population, which of a (small) set of classes that individual belongs to. For example, "Among all T-Mobile customers, which ones are likely to respond to a given offer?"
 
@@ -159,52 +171,59 @@ Dillman said
 
 [**Regression**]{style="color:green;"} attempts to estimate or predict, for each individual, the numerical value of some variable for that individual. For example, "How much will a given customer use the service?"
 
-
 ## 
+
+</br></br></br>
 
 **Clustering** attempts to group individuals in a population based on their similarity, but not for any specific purpose. For example, "Do our customers form natural groups or segments?"
 
-# Discussion
+## Discussion
 
-- Often, reframing the problem and designing a solution is an iterative process.
+</br>
 
-- The initial formulation may not be complete or optimal, so multiple iterations may be necessary to formulate an acceptable solution.
+-   Often, reframing the problem and designing a solution is an iterative process.
 
-- [The key to great success is creative problem formulation by an analyst on how to frame the business problem as one or more data science problems.]{style="color:lightblue;"}
+-   The initial formulation may not be complete or optimal, so multiple iterations may be necessary to formulate an acceptable solution.
 
-# Data Understanding
+-   [The key to great success is creative problem formulation by an analyst on how to frame the business problem as one or more data science problems.]{style="color:brown;"}
 
 ## Data Understanding I
 
 </br>
 
 ::: incremental
-- If the goal is to solve a business problem, data constitutes the raw material available from which the solution will be built.
+-   If the goal is to solve a business problem, data constitutes the raw material available from which the solution will be built.
 
-- The available data rarely matches the problem.
+-   The available data rarely matches the problem.
 
-- For example, historical data is often collected for purposes unrelated to the current business problem or without any explicit purpose.
+-   For example, historical data is often collected for purposes unrelated to the current business problem or without any explicit purpose.
 :::
 
-## Data Comprehension II
+## Data Understanding II
 
 </br>
 
-- Data costs vary. Some data will be available for free, while others will require effort to obtain.
+-   Data costs vary. Some data will be available for free, while others will require effort to obtain.
 
-::: incremental 
-- A key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.
+::: incremental
+-   A key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.
 
-- Even after acquiring all the data sets, compiling them may require additional effort.
+-   Even after acquiring all the data sets, compiling them may require additional effort.
 :::
 
 ## Example
 
+</br>
+
 In the 1980s, credit cards were essentially priced uniformly because companies didn't have adequate information systems to deal with differential pricing on a massive scale.
+
+</br>
 
 Around 1990, Richard Fairbanks and Nigel Morris realized that information technology was powerful enough to enable more sophisticated predictive models and offer different terms (today: pricing, credit limits, low introductory rate balance transfers, cash back, and loyalty points).
 
 ## 
+
+</br>
 
 Signet Bank's management was convinced that modeling profitability, not just the probability of default, was the right strategy.
 
@@ -212,7 +231,9 @@ They knew that a small proportion of customers actually account for more than 10
 
 If they could model profitability, they could make better offers to the best customers and "skim the cream" of the big banks' clientele.
 
-##
+## 
+
+</br>
 
 But Signet Bank had a really big problem implementing this strategy.
 
@@ -220,9 +241,11 @@ They didn't have the right data to model profitability for offering different te
 
 Since the bank offered credit with a specific set of terms and a specific default model, they had the data to model profitability (1) for the terms they actually offered in the past, and (2) for the type of customer actually offered credit.
 
-##
+## 
 
-What could Signet Bank do? They put into play a fundamental data science strategy: **acquire the necessary data at a cost**.
+</br>
+
+What could Signet Bank do? They put into play a fundamental data science strategy: [**acquire the necessary data at a cost!**]{style="color:darkred;"}
 
 In this case, data on customer profitability with different credit terms could be generated by conducting experiments. Different terms were randomly offered to different customers.
 
@@ -242,51 +265,63 @@ Eventually, Signet's credit card business turned around and became so profitable
 
 ## Richard Fairbanks and Nigel Morris
 
-![](images/clipboard-4138827509.png)
+![](images/ruchardnigel.jpg){fig-align="center" width="512" height="286"}
+
+::::: columns
+::: {.column width="50%"}
+Founders of
+:::
+
+::: {style="font-size: 50%;"}
+![](images/Capital_One_logo.png){fig-align="center" width="323"}
+:::
+:::::
 
 ## Most Used Data Science Tools
 
-1. Python
-2. R
-3. SAS
-4. Excel
-5. Power BI
-6. Tableau
-7. Apache Spark
+1.  Python
+2.  R
+3.  SAS
+4.  Excel
+5.  Power BI
+6.  Tableau
+7.  Apache Spark
 
 <https://hackr.io/blog/top-data-analytics-tools>
 
-## Other tools used
+## Other Tools Used
 
-- RapidMiner (<https://rapidminer.com/products/studio/>)
+-   RapidMiner (<https://rapidminer.com/products/studio/>)
 
-- JMP (<https://www.jmp.com/es_mx/home.html>)
+-   JMP (<https://www.jmp.com/es_mx/home.html>)
 
-- Minitab (<https://www.minitab.com/es-mx/products/minitab/>)
+-   Minitab (<https://www.minitab.com/es-mx/products/minitab/>)
 
-- Trifacta (<https://www.trifacta.com/>)
+-   Trifacta (<https://www.trifacta.com/>)
 
-- BigML (<https://bigml.com/>)
+-   BigML (<https://bigml.com/>)
 
-- MLBase (<http://www.mlbase.org/>)
+-   MLBase (<http://www.mlbase.org/>)
 
-- Google Cloud AutoML (<https://cloud.google.com/automl/>)
+-   Google Cloud AutoML (<https://cloud.google.com/automl/>)
 
-# Types of learning: supervised and unsupervised
+# Supervised and Unsupervised Learning
 
 ## Terminology
 
-- [**Predictors**]{style="color:darkblue;"}. They are represented using the notation $X_1$ for the first predictor, $X_p$ for the second predictor, ..., and $X_p$ for the p-th predictor.
+-   [**Predictors**]{style="color:darkblue;"}. They are represented using the notation $X_1$ for the first predictor, $X_p$ for the second predictor, ..., and $X_p$ for the *p*-th predictor.
 
-- [**Response**]{style="color:darkred;"}. $Y$ represents the response variable, which we will attempt to predict.
+-   [**Response**]{style="color:darkred;"}. $Y$ represents the response variable, which we will attempt to predict.
 
-In mathematical terms, we want to establish the following relationship
+. . .
+
+We want to establish the following relationship
 
 $$ 
-Y = f(X_1, X_2, \ldots, X_p) + \epsilon
+Y = f(X_1, X_2, \ldots, X_p) + \epsilon,
 $$
 
-Where $f$ is a function of the predictors and $\epsilon$ is a natural (random) error.
+where $f$ is a function of the predictors and $\epsilon$ is a natural (random) error.
 
 ## Types of Learning
 
@@ -294,47 +329,53 @@ Where $f$ is a function of the predictors and $\epsilon$ is a natural (random) e
 
 In data science (and machine learning), there are two main types of learning:
 
-- [Supervised learning]{style="color:blue;"}
+-   [Supervised learning]{style="color:blue;"}
 
-- [Unsupervised learning]{style="color:green;"}
+-   [Unsupervised learning]{style="color:green;"}
 
 ## 
 
 ![](images/clipboard-2564234206.png)
 
-## Supervised Learning
+## Supervised Learning...
 
-This includes algorithms that learn by example. The user provides the machine learning algorithm with a known data set that includes the corresponding known inputs and outputs. The algorithm must find a method to determine how to reach those inputs and outputs.
+Includes algorithms that learn by example. The user provides the supervised algorithm with a known data set that includes the corresponding known inputs and outputs. The algorithm must find a method to determine how to reach those inputs and outputs.
 
-While the operator knows the correct answers to the problem, the algorithm identifies patterns in the data, learns from observations, and makes predictions. The algorithm makes predictions that can be corrected by the operator, and this process continues until the algorithm reaches a high level of accuracy and performance.
+While the user knows the correct answers to the problem, the algorithm identifies patterns in the data, learns from observations, and makes predictions.
+
+The algorithm makes predictions that can be corrected by the user, and this process continues until the algorithm reaches a high level of accuracy and performance.
 
 ## Popular Supervised Algorithms
 
-![](images/clipboard-4052653044.png)
+![](images/clipboard-4052653044.png){fig-align="center"}
 
 ## 
 
-![](images/clipboard-2622609818.png)
+![](images/clipboard-2622609818.png){fig-align="center"}
 
-## Popular unsupervised algorithms
+## Unsupervised Learning...
 
-![](images/clipboard-1531600765.png)
+</br>
 
-## Unsupervised Learning
+studies data to identify patterns. There is no answer key or human operator to provide instruction. The machine determines correlations and relationships by analyzing the available data.
 
-The machine learning algorithm studies data to identify patterns. There is no answer key or human operator to provide instruction. The machine determines correlations and relationships by analyzing the available data.
+In this process, the unsupervised algorithm is left to interpret large data sets. The algorithm attempts to organize that data in some way to describe its structure.
 
-In this process, the machine learning algorithm is left to interpret large data sets. The algorithm attempts to organize that data in some way to describe its structure. As it evaluates more data, its ability to make decisions about it gradually improves and becomes more refined.
+As it evaluates more data, its ability to make decisions about it gradually improves and becomes more refined.
+
+## Popular Unsupervised Algorithms
+
+![](images/clipboard-1531600765.png){fig-align="center"}
 
 ## Two Data Sets
 
-- In supervised learning, there are several types of data.
+-   In supervised learning, there are several types of data.
 
-- Training data is the data used to construct $\hat{f}(\boldsymbol{X})$.
+-   [**Training data**]{style="color:darkblue;"} is the data used to construct $\hat{f}(\boldsymbol{X})$.
 
-- Test data is the data that was NOT used in the fitting process, but is used to test the model's performance on unanalyzed data.
+-   [**Test data**]{style="color:darkgreen;"} is the data that was NOT used in the fitting process, but is used to test the model's performance on unanalyzed data.
 
-![](images/training_test.jpeg){fig-align="center"}
+![](images/training_test.jpeg){fig-align="center" width="720"}
 
 ## Yogi Berra
 
@@ -343,6 +384,8 @@ In this process, the machine learning algorithm is left to interpret large data 
 > It’s though to make predictions, especially about the future.
 
 ## Let's Play
+
+</br></br>
 
 Let's play with supervised models.
 
