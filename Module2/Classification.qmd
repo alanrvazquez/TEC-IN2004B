@@ -472,8 +472,6 @@ plt.show()
 :::::
 ::::::
 
-
-
 ## 
 
 ![](images/tree_scheme.png){fig-align="center"}
@@ -494,15 +492,14 @@ After building a “good” tree, we can predict new observations that are not i
 
 </br>
 
-. . . 
+. . .
 
 **Using the CART algorithm!**
 
 ::: incremental
+-   The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
 
-- The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
-
-- Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimizes** the so-called [***impurity***]{style="color:purple;"}.
+-   Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimizes** the so-called [***impurity***]{style="color:purple;"}.
 :::
 
 ## 
@@ -543,6 +540,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 :::
 :::::
@@ -586,6 +584,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 :::
 :::::
@@ -629,6 +628,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 :::
 :::::
@@ -672,6 +672,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 :::
 :::::
@@ -715,6 +716,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 :::
 :::::
@@ -758,12 +760,12 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ![](images/tree_sequence_1.png){fig-align="center"}
 :::
 :::::
 ::::::
-
 
 ## 
 
@@ -804,6 +806,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ![](images/tree_sequence_2.png){fig-align="center"}
 :::
@@ -849,6 +852,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ![](images/tree_sequence_2.png){fig-align="center"}
 :::
@@ -894,12 +898,12 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ![](images/tree_sequence_2.png){fig-align="center"}
 :::
 :::::
 ::::::
-
 
 ## 
 
@@ -940,6 +944,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ![](images/tree_sequence_2.png){fig-align="center"}
 :::
@@ -989,6 +994,7 @@ plt.tight_layout()
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ![](images/tree_sequence_4.png){fig-align="center"}
 :::
@@ -997,42 +1003,63 @@ plt.show()
 
 ## 
 
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.018.jpeg){fig-align="center"}
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='orange', linewidth=3)     # Horizontal line
+plt.axvline(x=10.95, ymin=0, ymax=0.43, color='green', linewidth=3)  # Left vertical
+
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+![](images/tree_sequence_6.png){fig-align="center"}
+:::
+:::::
+::::::
 
 ## 
 
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.019.jpeg)
-
-## 
-
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.020.jpeg){fig-align="center"}
-
-## 
-
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.021.jpeg){fig-align="center"}
-
-## 
-
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.022.jpeg){fig-align="center"}
-
-## 
-
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.023.jpeg){fig-align="center"}
-
-## 
-
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.024.jpeg){fig-align="center"}
-
-## 
+</br>
 
 :::::: center
 ::::: columns
 ::: {.column width="40%"}
-We repeat the partitioning process until the terminal nodes have no less than 5 observations.
+We repeat the partitioning process until the terminal nodes have no less than, say, 5 observations.
 :::
 
 ::: {.column width="60%"}
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.025.jpeg){fig-align="center"}
+![](images/full_tree.png){fig-align="center"}
 :::
 :::::
 ::::::
@@ -1055,10 +1082,10 @@ Node impurity refers to the homogeneity of the response classes at that node.
 
 [*The CART algorithm minimizes impurity between tree nodes.*]{style="color:darkgray;"}
 
-# ¿Cómo medimos la impureza?
+## How do we measure impurity?
 
-:::::: center
-::::: columns
+::::::: center
+:::::: columns
 ::: {.column width="40%"}
 There are three different metrics for impurity:
 
@@ -1069,23 +1096,130 @@ There are three different metrics for impurity:
 -   Gini impurity index.
 :::
 
-::: {.column width="60%"}
-![](images/Metrics1.png){fig-align="center"} ![](images/Metrics2.png){fig-align="center"} [Proportion of elements in a class]{.smallcaps}
+:::: {.column width="60%"}
+![](images/Metrics1.png){fig-align="center" width="469"} ![](images/Metrics2.png){fig-align="center" width="396"}
+
+::: {style="font-size: 50%;"}
+Proportion of elements in a class
 :::
-:::::
+::::
 ::::::
+:::::::
 
 ## Pruning the Tree
 
 To avoid overfitting, we pruned some of the tree's branches. More specifically, we collapsed two internal (non-terminal) nodes.
 
-![](images/clipboard-1949573140.png)
+![](images/clipboard-1949573140.png){fig-align="center"}
 
 ## 
 
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.029.jpeg){fig-align="center"}
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='black', linewidth=3)     # Horizontal line
+plt.axvline(x=10.95, ymin=0, ymax=0.438, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.3, ymin=0, ymax=0.438, color='black', linewidth=3)  # Right vertical
+
+# Add region labels
+plt.text(8.5, 11.5, r"$R_1$", fontsize=30, fontweight='bold')
+plt.text(8.5, 8.0, r"$R_2$", fontsize=30, fontweight='bold')
+plt.text(10.95, 7.2, r"$R_3$", fontsize=20, fontweight='bold')
+plt.text(11.5, 8.0, r"$R_4$", fontsize=30, fontweight='bold')
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+![](images/tree_plot.png){fig-align="center"}
+:::
+:::::
+::::::
 
 ## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='black', linewidth=3)     # Horizontal line
+plt.axvline(x=10.95, ymin=0, ymax=0.438, color='black', linewidth=3)  # Left vertical
+#plt.axvline(x=11.3, ymin=0, ymax=0.438, color='black', linewidth=3)  # Right vertical
+
+# Add region labels
+plt.text(8.5, 11.5, r"$R_1$", fontsize=30, fontweight='bold')
+plt.text(8.5, 8.0, r"$R_2$", fontsize=30, fontweight='bold')
+plt.text(10.95, 7.2, r"$R_3$", fontsize=20, fontweight='bold')
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+![](images/tree_plot_simple.png){fig-align="center"}
+:::
+:::::
+::::::
+
+## 
+
+</br></br></br>
 
 To prune a tree, we use an advanced algorithm to measure the contribution of the tree's branches.
 
@@ -1105,84 +1239,147 @@ The algorithm has a tuning parameter called $\alpha$, which **places greater wei
 
 -   Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
 
-# Python Example
+## In Python
 
-The “AdultReduced.jmp” data comes from the UCI Machine Learning Repository and is derived from US Census records.
+</br>
 
-In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than \$50,000) or low.
+In Python, we can use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a decision tree.
 
-Predictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc.
+```{python}
+#| echo: true
+#| output: false
 
-The data contains 7,508 records.
+# We tell Python we want a classification tree
+clf = DecisionTreeClassifier(max_depth=5, random_state=507134)
 
-## Disadvantage of Decision Trees
+# We train the classification tree using the training data.
+clf.fit(X_train, Y_train)
+```
+
+The parameters `max_depth` of `DecisionTreeClassifier()` controls the depth of the tree. The parameter `random_state` allows you to reproduce the same tree in different runs of the Python code. 
+
+## Plotting the tree
+
+</br>
+
+To see the decision tree, we use the `plot_tree` function from **scikit-learn** and some commands from **matplotlib**. Specifically, we use the `plt.figure()` functions to define the size of the figure and `plt.show()` to display the figure.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+plot_tree(clf, filled=True, rounded=True)
+plt.show()
+```
+
+##
+
+</br>
+
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(8, 6))
+plot_tree(clf, filled=True, rounded=True)
+plt.show()
+```
+
+## Apply penalty for large trees
+
+Now, let's illustrate the pruning technique to find a small decision tree that performs well. To do this, we will train several decision trees using different values of the $\alpha$ parameter, which weighs the contribution of the tree branches.
+
+</br>
+
+In Python, this is achieved using the `cost_complexity_pruning_path()` function with the following syntax.
+
+```{python}
+#| echo: true
+#| output: false
+
+path = clf.cost_complexity_pruning_path(X_train, Y_train)
+ccp_alphas, impurities = path.ccp_alphas, path.impurities
+```
+
+##
+
+The `ccp_alphas` and `impurities` objects contain the different values of the $\alpha$ parameter used, as well as the impurity performance of the generated trees.
+
+To train a decision tree using different alpha values, we use the following code that iterates over the values contained in `ccp_alphas`.
+
+```{python}
+#| echo: true
+#| output: false
+
+clfs = []
+for ccp_alpha in ccp_alphas:
+    clf = DecisionTreeClassifier(random_state=0, ccp_alpha=ccp_alpha)
+    clf.fit(X_train, Y_train)
+    clfs.append(clf)
+```
+
+In the next section, we will evaluate the performance of these decision trees.
+
+## Disadvantages of decision trees
 
 -   Decision trees have high variance. A small change in the training data can result in a very different tree.
 
 -   It has trouble identifying simple data structures.
 
-![](images/clipboard-3265772983.png)
+![](images/clipboard-3265772983.png){fig-align="center"}
 
-# Classification Algorithm Metrics
+# Classification Metrics
 
 ## Evaluation
 
 </br>
 
-We evaluate a logistic regression classifier by classifying observations that were not used for training or estimation.
+We evaluate a classification tree by classifying observations that were not used for training.
 
-That is, we use the classifier to predict categories in the test data set using only the predictor values from this set.
+That is, we use the classifier to predict categories in the validation data set using only the predictor values from this set.
 
 In Python, we use the commands:
 
 ```{python}
 #| echo: true
 
-# Remove problematic predictor from the test set.
-#X_val = X_val.drop(columns = ['Right'])
-
-# Add constant to the predictor matrix from the test set.
-#X_val = sm.add_constant(X_val)
-
-# Predict probabilities.
-#predicted_probability = logit_model.predict(X_val)
+# Predict classes.
+predicted_class = clf.predict(X_valid)
 ```
 
 ## 
 
-The `predict()` function generates [**probabilities**]{style="color:brown;"} instead of the actual classes.
+</br>
+
+The `predict()` function generates actual classes to which each observation was assigned.
 
 ```{python}
 #| echo: true
 #| output: true
 
-#predicted_probability.head()
-```
-
-These are the probabilities that a bill is "counterfeit" based on its characteristics (predictor values).
-
-To convert the probabilities into real-world classes, we round them:
-
-```{python}
-#| echo: true
-#predicted_classes = round(predicted_probability).astype('int')
+predicted_class
 ```
 
 ## 
 
+The `predict_proba()` function generates the probabilities used by the algorithm to assign the classes.
+
 ```{python}
 #| echo: true
-#predicted_classes.head()
+#| output: true
+
+# Predict probabilities.
+predicted_probability = clf.predict_proba(X_valid)
+predicted_probability
 ```
-
--   Observations with probabilities greater than 0.5 are classified as "false."
--   Observations with probabilities less than 0.5 are classified as "genuine."
-
-Now, we compare the predictions with the actual categories in the [**validation dataset**]{style="color:orange;"}. [A good logistic regression model shows good agreement between its predictions and the actual categories.]{style="color:darkblue;"}
 
 ## Confusion Matrix
 
--   Table used to evaluate the performance of a classifier.
+-   Table to evaluate the performance of a classifier.
 
 -   Compares actual values with the predicted values of a classifier.
 
@@ -1200,17 +1397,11 @@ We calculate the confusion matrix using the homonymous function **scikit-learn**
 #| echo: true
 #| output: true
 
-# Create dummy variables for test set.
-#Y_dummies = pd.get_dummies(Y_val, dtype = 'int')
-
-# Select target variable from test set.
-#Y_target_test = Y_dummies['counterfeit']
-
 # Compute confusion matrix.
-#cm = confusion_matrix(Y_target_test, predicted_classes)
+cm = confusion_matrix(Y_valid, predicted_class)
 
 # Show confusion matrix.
-#print(cm)
+print(cm)
 ```
 
 ## 
@@ -1222,7 +1413,7 @@ We can display the confusion matrix using the `ConfusionMatrixDisplay()` functio
 #| output: true
 #| fig-align: center
 
-#ConfusionMatrixDisplay(cm).plot()
+ConfusionMatrixDisplay(cm).plot()
 ```
 
 ## Accuracy
@@ -1235,15 +1426,50 @@ In Python, we calculate accuracy using the **scikit-learn** `accuracy_score()` f
 #| echo: true
 #| output: true
 
-#accuracy = accuracy_score(Y_target_test, predicted_classes)
-#print( round(accuracy, 2) )
+accuracy = accuracy_score(Y_valid, predicted_class)
+print( round(accuracy, 2) )
 ```
-
-</br>
 
 The higher the accuracy, the better the performance of the classifier.
 
-## Observaciones
+##
+
+</br>
+
+Now, for each of those trees contained in `clfs`, we evaluate the performance in terms of accuracy for the training and validation data.
+
+```{python}
+#| echo: true
+#| output: false
+
+train_scores = [clf.score(X_train, Y_train) for clf in clfs]
+validation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]
+```
+
+## 
+
+We visualize the results using the following plot.
+
+```{python}
+#| echo: true
+#| output: true
+#| code-fold: true
+#| fig-align: center 
+
+fig, ax = plt.subplots()
+ax.set_xlabel("alpha")
+ax.set_ylabel("Accuracy")
+ax.set_title("Accuracy vs alpha for training and validation data")
+ax.plot(ccp_alphas, train_scores, marker="o", label="train", drawstyle="steps-post")
+ax.plot(ccp_alphas, validation_scores, marker="o", label="validation", drawstyle="steps-post")
+ax.legend()
+plt.show()
+```
+
+The tree created above has two weaknesses. First, it is very large, making it difficult to visualize. Second, it can suffer from overfitting. That is, it performs very well on the training data, but poorly on unobserved validation data.
+
+
+## Comments
 
 </br>
 
