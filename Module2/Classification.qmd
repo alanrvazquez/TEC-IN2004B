@@ -467,7 +467,7 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
-![](images/tree_plot.png)
+![](images/tree_plot.png){fig-align="center"}
 :::
 :::::
 ::::::
@@ -759,10 +759,241 @@ plt.show()
 ```
 :::
 ::: {.column width="50%"}
+![](images/tree_sequence_1.png){fig-align="center"}
 :::
 :::::
 ::::::
 
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='orange', linewidth=3)     # Horizontal line
+plt.axvline(x=7.8, ymin=9.55, ymax=0.438, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+![](images/tree_sequence_2.png){fig-align="center"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='orange', linewidth=3)     # Horizontal line
+plt.axvline(x=8.0, ymin=9.55, ymax=0.438, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+![](images/tree_sequence_2.png){fig-align="center"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='orange', linewidth=3)     # Horizontal line
+plt.axvline(x=8.2, ymin=9.55, ymax=0.438, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+![](images/tree_sequence_2.png){fig-align="center"}
+:::
+:::::
+::::::
+
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='orange', linewidth=3)     # Horizontal line
+plt.axvline(x=12.5, ymin=9.55, ymax=0.438, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+![](images/tree_sequence_2.png){fig-align="center"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='orange', linewidth=3)     # Horizontal line
+plt.axvline(x=7.8, ymin=0, ymax=0.43, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=8.0, ymin=0, ymax=0.43, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=8.2, ymin=0, ymax=0.43, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=12.5, ymin=0, ymax=0.43, color='black', linewidth=3)  # Left vertical
+
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+![](images/tree_sequence_4.png){fig-align="center"}
+:::
+:::::
+::::::
 
 ## 
 
