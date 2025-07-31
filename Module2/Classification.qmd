@@ -244,7 +244,6 @@ In many practical situations, a test dataset is not available. To overcome this 
 
 **Idea**: Apply model to your [**validation dataset**]{style="color:orange;"} to mimic what will happen when you apply it to test dataset.
 
-
 ## Example 1: Identifying Counterfeit Banknotes
 
 </br>
@@ -264,7 +263,6 @@ bank_data = pd.read_excel("banknotes.xlsx")
 bank_data['Status'] = pd.Categorical(bank_data['Status'])
 bank_data.head()
 ```
-
 
 ## How do we generate validation data?
 
@@ -368,7 +366,7 @@ It is a supervised learning algorithm that predicts or classifies observations u
 
 </br>
 
-Main characteristics: 
+Main characteristics:
 
 -   Simple and useful for interpretation.
 
@@ -377,8 +375,6 @@ Main characteristics:
 -   Computationally efficient.
 
 -   Nonparametric technique.
-
-
 
 ## Basic idea of a decision tree
 
@@ -404,9 +400,9 @@ sns.scatterplot(
 )
 
 # Add decision boundaries
-plt.axhline(y=9.8, color='black', linewidth=3)     # Horizontal line
-plt.axvline(x=10.9, ymin=0, ymax=0.47, color='black', linewidth=3)  # Left vertical
-plt.axvline(x=11.2, ymin=0, ymax=0.47, color='black', linewidth=3)  # Right vertical
+plt.axhline(y=9.55, color='black', linewidth=3)     # Horizontal line
+plt.axvline(x=10.95, ymin=0, ymax=0.438, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.3, ymin=0, ymax=0.438, color='black', linewidth=3)  # Right vertical
 
 # Add region labels
 plt.text(8.5, 11.5, r"$R_1$", fontsize=30, fontweight='bold')
@@ -423,40 +419,350 @@ plt.tight_layout()
 plt.show()
 ```
 
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='black', linewidth=3)     # Horizontal line
+plt.axvline(x=10.95, ymin=0, ymax=0.438, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.3, ymin=0, ymax=0.438, color='black', linewidth=3)  # Right vertical
+
+# Add region labels
+plt.text(8.5, 11.5, r"$R_1$", fontsize=30, fontweight='bold')
+plt.text(8.5, 8.0, r"$R_2$", fontsize=30, fontweight='bold')
+plt.text(10.95, 7.2, r"$R_3$", fontsize=20, fontweight='bold')
+plt.text(11.5, 8.0, r"$R_4$", fontsize=30, fontweight='bold')
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+![](images/tree_plot.png)
+:::
+:::::
+::::::
+
+
 
 ## 
 
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.012.jpeg){fig-align="center"}
-
-## 
-
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.013.jpeg){fig-align="center"}
+![](images/tree_scheme.png){fig-align="center"}
 
 ## How do you build a decision tree?
 
-Building decision trees involves two main procedures.
+</br>
+
+Building decision trees involves two main procedures:
 
 1.  [Grow a large tree.]{style="color:darkblue;"}
 
-2.  [Pruning the tree to prevent overfitting.]{style="color:darkblue;"}
+2.  [Prune the tree to prevent overfitting.]{style="color:darkblue;"}
 
 After building a “good” tree, we can predict new observations that are not in the data set we used to build it.
 
 ## How do we grow a tree?
 
+</br>
+
+. . . 
+
 **Using the CART algorithm!**
 
-The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
+::: incremental
 
-Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimizes** the so-called [***impurity***]{style="color:purple;"}.
+- The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
+
+- Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimizes** the so-called [***impurity***]{style="color:purple;"}.
+:::
 
 ## 
 
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.016.jpeg){fig-align="center"}
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=7.2, color='black', linewidth=3)     # Horizontal line
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom", color='red')
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+:::
+:::::
+::::::
 
 ## 
 
-![](images/Modulo%202%20-%20Algoritmos%20de%20Clasificacion.017.jpeg){fig-align="center"}
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=7.5, color='black', linewidth=3)     # Horizontal line
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom", color='red')
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=7.7, color='black', linewidth=3)     # Horizontal line
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom", color='red')
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=7.9, color='black', linewidth=3)     # Horizontal line
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom", color='red')
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=12.5, color='black', linewidth=3)     # Horizontal line
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom", color='red')
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.55, color='orange', linewidth=3)     # Horizontal line
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+::: {.column width="50%"}
+:::
+:::::
+::::::
+
 
 ## 
 
