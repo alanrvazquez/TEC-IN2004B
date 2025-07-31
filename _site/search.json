@@ -2139,7 +2139,7 @@
     "href": "Module2/Classification.html#load-the-libraries",
     "title": "Classification Methods",
     "section": "Load the libraries",
-    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score\n\nHere, we use specific functions from the pandas, matplotlib, and sklearn libraries in Python."
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
   },
   {
     "objectID": "Module2/Classification.html#main-data-science-problems",
@@ -2174,7 +2174,7 @@
     "href": "Module2/Classification.html#decision-tree",
     "title": "Classification Methods",
     "section": "Decision Tree",
-    "text": "Decision Tree\nIt is a supervised learning algorithm that predicts or classifies observations using a hierarchical tree structure.\n\nSimple and useful for interpretation.\nCan handle numerical and categorical predictors and responses.\nComputationally efficient.\nNonparametric technique."
+    "text": "Decision Tree\nIt is a supervised learning algorithm that predicts or classifies observations using a hierarchical tree structure.\n\nMain characteristics:\n\nSimple and useful for interpretation.\nCan handle numerical and categorical predictors and responses.\nComputationally efficient.\nNonparametric technique."
   },
   {
     "objectID": "Module2/Classification.html#example-2-identifying-counterfeit-banknotes",
@@ -2279,7 +2279,7 @@
     "href": "Module2/Classification.html#section-17",
     "title": "Classification Methods",
     "section": "",
-    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThe algorithm has a tuning parameter called \\(\\alpha\\), which places greater weight on the number of tree nodes (or size):\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
+    "text": "We repeat the partitioning process until the terminal nodes have no less than 5 observations."
   },
   {
     "objectID": "Module2/Classification.html#confusion-matrix",
@@ -2328,7 +2328,7 @@
     "href": "Module2/Classification.html#section-19",
     "title": "Classification Methods",
     "section": "",
-    "text": "#predicted_classes.head()\n\n\nObservations with probabilities greater than 0.5 are classified as “false.”\nObservations with probabilities less than 0.5 are classified as “genuine.”\n\nNow, we compare the predictions with the actual categories in the validation dataset. A good logistic regression model shows good agreement between its predictions and the actual categories."
+    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThe algorithm has a tuning parameter called \\(\\alpha\\), which places greater weight on the number of tree nodes (or size):\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
   },
   {
     "objectID": "Module2/Classification.html#another-example",
@@ -2349,21 +2349,21 @@
     "href": "Module2/Classification.html#section-20",
     "title": "Classification Methods",
     "section": "",
-    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\n#ConfusionMatrixDisplay(cm).plot()"
+    "text": "The predict() function generates probabilities instead of the actual classes.\n\n#predicted_probability.head()\n\nThese are the probabilities that a bill is “counterfeit” based on its characteristics (predictor values).\nTo convert the probabilities into real-world classes, we round them:\n\n#predicted_classes = round(predicted_probability).astype('int')"
   },
   {
     "objectID": "Module2/Classification.html#section-21",
     "href": "Module2/Classification.html#section-21",
     "title": "Classification Methods",
     "section": "",
-    "text": "In other words, we want to avoid making wrong decisions about customers who will churn.\nWrong decisions about loyal customers aren’t as relevant.\nBecause if we classify a loyal customer as one who will churn, the customer will get a good deal. They’ll probably pay less but stay anyway."
+    "text": "#predicted_classes.head()\n\n\nObservations with probabilities greater than 0.5 are classified as “false.”\nObservations with probabilities less than 0.5 are classified as “genuine.”\n\nNow, we compare the predictions with the actual categories in the validation dataset. A good logistic regression model shows good agreement between its predictions and the actual categories."
   },
   {
     "objectID": "Module2/Classification.html#section-22",
     "href": "Module2/Classification.html#section-22",
     "title": "Classification Methods",
     "section": "",
-    "text": "Sensitivity or recall = OO/(OO + OR) “How many records of the target class did we predict correctly?”"
+    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\n#ConfusionMatrixDisplay(cm).plot()"
   },
   {
     "objectID": "Module2/Classification.html#discussion",
@@ -2391,7 +2391,7 @@
     "href": "Module2/Classification.html#section-23",
     "title": "Classification Methods",
     "section": "",
-    "text": "Precision = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?"
+    "text": "In other words, we want to avoid making wrong decisions about customers who will churn.\nWrong decisions about loyal customers aren’t as relevant.\nBecause if we classify a loyal customer as one who will churn, the customer will get a good deal. They’ll probably pay less but stay anyway."
   },
   {
     "objectID": "Module2/Classification.html#the-algorithm-has-3-steps",
@@ -2405,14 +2405,14 @@
     "href": "Module2/Classification.html#section-24",
     "title": "Classification Methods",
     "section": "",
-    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
+    "text": "Sensitivity or recall = OO/(OO + OR) “How many records of the target class did we predict correctly?”"
   },
   {
     "objectID": "Module2/Classification.html#section-25",
     "href": "Module2/Classification.html#section-25",
     "title": "Classification Methods",
     "section": "",
-    "text": "Interpret the Precision, Accuracy, Sensitivity, and Type 1 Error values for the validation set. If the software doesn’t report them, perform the calculations using the confusion matrix. Use “Female” as the target class.\nDiscuss the effectiveness of the resulting model."
+    "text": "Precision = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?"
   },
   {
     "objectID": "Module2/Classification.html#implementation-details-1",
@@ -2426,14 +2426,14 @@
     "href": "Module2/Classification.html#section-26",
     "title": "Classification Methods",
     "section": "",
-    "text": "Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.\nA new observation arrives, and we don’t know which group it belongs to.\n\nIf we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
+    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
   },
   {
     "objectID": "Module2/Classification.html#section-27",
     "href": "Module2/Classification.html#section-27",
     "title": "Classification Methods",
     "section": "",
-    "text": "Using \\(K = 3\\), that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”\n\nCloseness is based on Euclidean distance."
+    "text": "Interpret the Precision, Accuracy, Sensitivity, and Type 1 Error values for the validation set. If the software doesn’t report them, perform the calculations using the confusion matrix. Use “Female” as the target class.\nDiscuss the effectiveness of the resulting model."
   },
   {
     "objectID": "Module2/Classification.html#standardization",
@@ -2447,7 +2447,7 @@
     "href": "Module2/Classification.html#section-28",
     "title": "Classification Methods",
     "section": "",
-    "text": "KNN uses the Euclidean distance between points. So it ignores units.\n\nExample: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).\nThese people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.\nTherefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless."
+    "text": "Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.\nA new observation arrives, and we don’t know which group it belongs to.\n\nIf we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
   },
   {
     "objectID": "Module2/Classification.html#example-1-cont.",
@@ -2475,7 +2475,7 @@
     "href": "Module2/Classification.html#section-29",
     "title": "Classification Methods",
     "section": "",
-    "text": "As a first step, we must transform the predictors so that they have the same units!\nThis requires a predictor standardization process, which is done in Python."
+    "text": "Using \\(K = 3\\), that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”\n\nCloseness is based on Euclidean distance."
   },
   {
     "objectID": "Module2/Classification.html#two-predictors-in-standardized-units",
@@ -2496,14 +2496,14 @@
     "href": "Module2/Classification.html#section-30",
     "title": "Classification Methods",
     "section": "",
-    "text": "To scale a predictor, each of its values is divided by its standard deviation.\nWhen scaling the data, the values have a common standard deviation of one.\nIn mathematical terms, we standardize a predictor as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
+    "text": "KNN uses the Euclidean distance between points. So it ignores units.\n\nExample: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).\nThese people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.\nTherefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless."
   },
   {
     "objectID": "Module2/Classification.html#main-data-science-problems-1",
     "href": "Module2/Classification.html#main-data-science-problems-1",
     "title": "Classification Methods",
     "section": "Main Data Science Problems",
-    "text": "Main Data Science Problems\n\nRegression Problems. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.\nClassification Problems. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).\nThe predictors (\\(\\boldsymbol{X}\\)) numerical or categorical."
+    "text": "Main Data Science Problems\n\nRegression Problems. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.\nClassification Problems. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).\nThe predictors (\\(\\boldsymbol{X}\\)) can be numerical or categorical."
   },
   {
     "objectID": "Module2/Classification.html#terminology",
@@ -2531,35 +2531,35 @@
     "href": "Module2/Classification.html#section-3",
     "title": "Classification Methods",
     "section": "",
-    "text": "The function intelligently partitions the data using the empirical distribution of the response.\nTechnically, it splits the data so that the response distribution in the training and validation sets is similar.\nTypically, the proportion of the data set allocated to the test set is 20% or 30%.\nLater, we will use the validation data set to evaluate the classification performance of the estimated logistic regression model for classifying unobserved data."
+    "text": "A random sample of \\(n\\) observations.\nUse it to construct \\(\\hat{f}(\\boldsymbol{X})\\).\n\n\n\n\n\nAnother random sample of \\(n_t\\) observations, which is independent of the training data.\nUse it to evaluate \\(\\hat{f}(\\boldsymbol{X})\\)."
   },
   {
     "objectID": "Module2/Classification.html#section-4",
     "href": "Module2/Classification.html#section-4",
     "title": "Classification Methods",
     "section": "",
-    "text": "The function intelligently partitions the data using the empirical distribution of the response.\nTechnically, it splits the data so that the response distribution in the training and validation sets is similar.\nTypically, the proportion of the data set allocated to the test set is 20% or 30%.\nLater, we will use the validation data set to evaluate the classification performance of the estimated logistic regression model for classifying unobserved data."
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus\n\n\n\n\n43\n130.4\n129.7\n9.0\n9.8\ngenuine\n\n\n7\n129.6\n129.2\n7.2\n10.7\ngenuine\n\n\n167\n130.4\n130.1\n9.6\n11.2\ncounterfeit\n\n\n10\n130.4\n130.3\n7.9\n11.7\ngenuine"
   },
   {
     "objectID": "Module2/Classification.html#section-31",
     "href": "Module2/Classification.html#section-31",
     "title": "Classification Methods",
     "section": "",
-    "text": "Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
+    "text": "As a first step, we must transform the predictors so that they have the same units!\nThis requires a predictor standardization process, which is done in Python."
   },
   {
     "objectID": "Module2/Classification.html#section-32",
     "href": "Module2/Classification.html#section-32",
     "title": "Classification Methods",
     "section": "",
-    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
+    "text": "To scale a predictor, each of its values is divided by its standard deviation.\nWhen scaling the data, the values have a common standard deviation of one.\nIn mathematical terms, we standardize a predictor as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
   },
   {
     "objectID": "Module2/Classification.html#section-33",
     "href": "Module2/Classification.html#section-33",
     "title": "Classification Methods",
     "section": "",
-    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
+    "text": "Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
   },
   {
     "objectID": "Module2/Classification.html#classification-algorithms-1",
@@ -2567,5 +2567,131 @@
     "title": "Classification Methods",
     "section": "Classification Algorithms",
     "text": "Classification Algorithms\n\nGoal: Develop a function \\(C(\\boldsymbol{X})\\) for predicting \\(Y = \\{0, 1\\}\\) from \\(\\boldsymbol{X}\\).\n\n\nTo achieve this goal, most algorithms consider functions \\(C(\\boldsymbol{X})\\) that predict the probability that \\(Y\\) takes the value of 1.\n\n\n\nA probability for each class can be very useful for gauging the model’s confidence about the predicted classification."
+  },
+  {
+    "objectID": "Module2/Classification.html#two-datasets",
+    "href": "Module2/Classification.html#two-datasets",
+    "title": "Classification Methods",
+    "section": "Two datasets",
+    "text": "Two datasets\n\nThe application of data science algorithms needs two data sets:\n\n\nTraining data is data that we use to train or construct the estimated function \\(\\hat{f}(\\boldsymbol{X})\\).\nTest data is data that we use to evaluate the predictive performance of \\(\\hat{f}(\\boldsymbol{X})\\) only."
+  },
+  {
+    "objectID": "Module2/Classification.html#validation-dataset",
+    "href": "Module2/Classification.html#validation-dataset",
+    "title": "Classification Methods",
+    "section": "Validation Dataset",
+    "text": "Validation Dataset\nIn many practical situations, a test dataset is not available. To overcome this issue, we use a validation dataset.\n\n\nIdea: Apply model to your validation dataset to mimic what will happen when you apply it to test dataset."
+  },
+  {
+    "objectID": "Module2/Classification.html#example-1-1",
+    "href": "Module2/Classification.html#example-1-1",
+    "title": "Classification Methods",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe “BostonHousing.xlsx” contains data collected by the US Bureau of the Census concerning housing in the area of Boston, Massachusetts. The dataset includes data on 506 census housing tracts in the Boston area in 1970s.\nThe goal is to predict the median house price in new tracts based on information such as crime rate, pollution, and number of rooms.\nThe response is the median value of owner-occupied homes in $1000s, contained in the column MEDV."
+  },
+  {
+    "objectID": "Module2/Classification.html#the-predictors",
+    "href": "Module2/Classification.html#the-predictors",
+    "title": "Classification Methods",
+    "section": "The predictors",
+    "text": "The predictors\n\n\nCRIM: per capita crime rate by town.\nZN: proportion of residential land zoned for lots over 25,000 sq.ft.\nINDUS: proportion of non-retail business acres per town.\nCHAS: Charles River (‘Yes’ if tract bounds river; ‘No’ otherwise).\nNOX: nitrogen oxides concentration (parts per 10 million).\nRM: average number of rooms per dwelling.\nAGE: proportion of owner-occupied units built prior to 1940.\nDIS: weighted mean of distances to five Boston employment centers\nRAD: index of accessibility to radial highways (‘Low’, ‘Medium’, ‘High’).\nTAX: full-value property-tax rate per $10,000.\nPTRATIO: pupil-teacher ratio by town.\nLSTAT: lower status of the population (percent)."
+  },
+  {
+    "objectID": "Module2/Classification.html#read-the-dataset",
+    "href": "Module2/Classification.html#read-the-dataset",
+    "title": "Classification Methods",
+    "section": "Read the dataset",
+    "text": "Read the dataset\n\nWe read the dataset and set the variable CHAS and RAD as categorical.\n\nBoston_data = pd.read_excel('BostonHousing.xlsx')\n\nBoston_data['CHAS'] = pd.Categorical(Boston_data['CHAS'])\nBoston_data['RAD'] = pd.Categorical(Boston_data['RAD'], \n                                      categories=[\"Low\", \"Medium\", \"High\"], \n                                      ordered=True)"
+  },
+  {
+    "objectID": "Module2/Classification.html#how-do-we-generate-validation-data",
+    "href": "Module2/Classification.html#how-do-we-generate-validation-data",
+    "title": "Classification Methods",
+    "section": "How do we generate validation data?",
+    "text": "How do we generate validation data?\nWe split the current dataset into a training and a validation dataset. To this end, we use the function train_test_split() from scikit-learn.\n\nThe function has three main inputs:\n\nA pandas dataframe with the predictor columns only.\nA pandas dataframe with the response column only.\nThe parameter test_size which sets the portion of the dataset that will go to the validation set."
+  },
+  {
+    "objectID": "Module2/Classification.html#create-the-predictor-matrix",
+    "href": "Module2/Classification.html#create-the-predictor-matrix",
+    "title": "Classification Methods",
+    "section": "Create the predictor matrix",
+    "text": "Create the predictor matrix\nWe use the function .drop() from pandas. This function drops one or more columns from a data frame. Let’s drop the response column Status and store the result in X_full.\n\n# Set full matrix of predictors.\nX_full = bank_data.drop(columns = ['Status']) \nX_full.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\n\n\n\n\n0\n131.0\n131.1\n9.0\n9.7\n\n\n1\n129.7\n129.7\n8.1\n9.5\n\n\n2\n129.7\n129.7\n8.7\n9.6\n\n\n3\n129.7\n129.6\n7.5\n10.4"
+  },
+  {
+    "objectID": "Module2/Classification.html#create-the-response-column",
+    "href": "Module2/Classification.html#create-the-response-column",
+    "title": "Classification Methods",
+    "section": "Create the response column",
+    "text": "Create the response column\nWe use the function .filter() from pandas to extract the column Status from the data frame. We store the result in Y_full.\n\n# Set full matrix of responses.\nY_full = bank_data.filter(['Status'])\nY_full.head(4)\n\n\n\n\n\n\n\n\nStatus\n\n\n\n\n0\ngenuine\n\n\n1\ngenuine\n\n\n2\ngenuine\n\n\n3\ngenuine"
+  },
+  {
+    "objectID": "Module2/Classification.html#lets-partition-the-dataset",
+    "href": "Module2/Classification.html#lets-partition-the-dataset",
+    "title": "Classification Methods",
+    "section": "Let’s partition the dataset",
+    "text": "Let’s partition the dataset\n\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.3)\n\n\nThe function makes a clever partition of the data using the empirical distribution of the response.\nTechnically, it splits the data so that the distribution of the response under the training and validation sets is similar.\nUsually, the proportion of the dataset that goes to the validation set is 20% or 30%."
+  },
+  {
+    "objectID": "Module2/Classification.html#section-5",
+    "href": "Module2/Classification.html#section-5",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus\n\n\n\n\n95\n129.9\n129.9\n9.0\n9.5\ngenuine\n\n\n47\n129.9\n129.7\n7.3\n10.9\ngenuine\n\n\n81\n129.8\n129.6\n7.5\n10.3\ngenuine\n\n\n104\n130.2\n130.3\n11.8\n10.9\ncounterfeit\n\n\n32\n130.0\n129.6\n7.7\n10.5\ngenuine"
+  },
+  {
+    "objectID": "Module2/Classification.html#section-6",
+    "href": "Module2/Classification.html#section-6",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nCRIM\nZN\nINDUS\nCHAS\nNOX\nRM\nAGE\nDIS\nRAD\nTAX\nPTRATIO\nLSTAT\nMEDV\n\n\n\n\n347\n0.01870\n85.0\n4.15\nNo\n0.429\n6.516\n27.7\n8.5353\nMedium\n351\n17.9\n6.36\n23.1\n\n\n450\n6.71772\n0.0\n18.10\nNo\n0.713\n6.749\n92.6\n2.3236\nHigh\n666\n20.2\n17.44\n13.4\n\n\n193\n0.02187\n60.0\n2.93\nNo\n0.401\n6.800\n9.9\n6.2196\nLow\n265\n15.6\n5.03\n31.1\n\n\n272\n0.11460\n20.0\n6.96\nNo\n0.464\n6.538\n58.7\n3.9175\nLow\n223\n18.6\n7.73\n24.4\n\n\n160\n1.27346\n0.0\n19.58\nYes\n0.605\n6.250\n92.6\n1.7984\nMedium\n403\n14.7\n5.50\n27.0"
+  },
+  {
+    "objectID": "Module2/Classification.html#work-on-your-training-dataset",
+    "href": "Module2/Classification.html#work-on-your-training-dataset",
+    "title": "Classification Methods",
+    "section": "Work on your training dataset",
+    "text": "Work on your training dataset\nAfter we have partitioned the data, we work on the training data to develop our predictive pipeline.\nThe pipeline has two main steps:\n\nData preprocessing.\nModel development.\n\nWe will now discuss preprocessing techniques applied to the predictor columns in the training dataset.\nNote that all preprocessing techniques will also be applied to the validation dataset and test dataset to prepare it for your model!"
+  },
+  {
+    "objectID": "Module2/Classification.html#section-7",
+    "href": "Module2/Classification.html#section-7",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "The function intelligently partitions the data using the empirical distribution of the response.\nTechnically, it splits the data so that the response distribution in the training and validation sets is similar.\nTypically, the proportion of the data set allocated to the test set is 20% or 30%.\nLater, we will use the validation data set to evaluate the classification performance of the estimated logistic regression model for classifying unobserved data."
+  },
+  {
+    "objectID": "Module2/Classification.html#section-34",
+    "href": "Module2/Classification.html#section-34",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
+  },
+  {
+    "objectID": "Module2/Classification.html#section-35",
+    "href": "Module2/Classification.html#section-35",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
+  },
+  {
+    "objectID": "Module2/Classification.html#section-36",
+    "href": "Module2/Classification.html#section-36",
+    "title": "Classification Methods",
+    "section": "",
+    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
+  },
+  {
+    "objectID": "Module2/Classification.html#example-1-identifying-counterfeit-banknotes",
+    "href": "Module2/Classification.html#example-1-identifying-counterfeit-banknotes",
+    "title": "Classification Methods",
+    "section": "Example 1: Identifying Counterfeit Banknotes",
+    "text": "Example 1: Identifying Counterfeit Banknotes"
+  },
+  {
+    "objectID": "Module2/Classification.html#dataset",
+    "href": "Module2/Classification.html#dataset",
+    "title": "Classification Methods",
+    "section": "Dataset",
+    "text": "Dataset\nThe data is located in the file “banknotes.xlsx”.\n\nbank_data = pd.read_excel(\"banknotes.xlsx\")\n# Set response variable as categorical.\nbank_data['Status'] = pd.Categorical(bank_data['Status'])\nbank_data.head()\n\n\n\n\n\n\n\n\nStatus\nLeft\nRight\nBottom\nTop\n\n\n\n\n0\ngenuine\n131.0\n131.1\n9.0\n9.7\n\n\n1\ngenuine\n129.7\n129.7\n8.1\n9.5\n\n\n2\ngenuine\n129.7\n129.7\n8.7\n9.6\n\n\n3\ngenuine\n129.7\n129.6\n7.5\n10.4\n\n\n4\ngenuine\n129.6\n129.7\n10.4\n7.7"
   }
 ]

@@ -22,10 +22,10 @@ jupyter: python3
 
 </br>
 
-1. Introduction
-2. Classification and Regression Trees (CART)
-3. Classification Algorithm Metrics
-4. *K* Nearest Neighbors
+1.  Introduction
+2.  Classification and Regression Trees (CART)
+3.  Classification Algorithm Metrics
+4.  *K* Nearest Neighbors
 
 # Introduction
 
@@ -40,6 +40,7 @@ Before we start, let's import the data science libraries into Python.
 # Importing necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.neighbors import KNeighborsClassifier
@@ -48,7 +49,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from sklearn.metrics import accuracy_score
 ```
 
-Here, we use specific functions from the **pandas**, **matplotlib**, and **sklearn** libraries in Python.
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
 
 ## Main Data Science Problems
 
@@ -68,7 +69,7 @@ The predictors ($\boldsymbol{X}$) can be *numerical* or *categorical*.
 
 [**Classification Problems**]{style="color:blue;"}. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).
 
-The predictors ($\boldsymbol{X}$) *numerical* or *categorical*.
+The predictors ($\boldsymbol{X}$) can be *numerical* or *categorical*.
 
 ## Terminology
 
@@ -86,13 +87,14 @@ Explanatory variables or predictors:
 [Response]{style="text-decoration: underline;"}:
 
 ::: incremental
-- $Y$ is a [**categorical variable**]{style="color:darkgreen;"} that takes [**2 categories**]{style="color:darkgreen;"} or [**classes**]{style="color:darkgreen;"}.
+-   $Y$ is a [**categorical variable**]{style="color:darkgreen;"} that takes [**2 categories**]{style="color:darkgreen;"} or [**classes**]{style="color:darkgreen;"}.
 
-- For example, $Y$ can take [0]{style="color:darkgreen;"} or [1]{style="color:darkgreen;"}, [A]{style="color:darkgreen;"} or [B]{style="color:darkgreen;"}, [no]{style="color:darkgreen;"} or [yes]{style="color:darkgreen;"}, [spam]{style="color:darkgreen;"} or [no spam]{style="color:darkgreen;"}.
+-   For example, $Y$ can take [0]{style="color:darkgreen;"} or [1]{style="color:darkgreen;"}, [A]{style="color:darkgreen;"} or [B]{style="color:darkgreen;"}, [no]{style="color:darkgreen;"} or [yes]{style="color:darkgreen;"}, [spam]{style="color:darkgreen;"} or [no spam]{style="color:darkgreen;"}.
 
-- When classes are strings, they are usually encoded as 0 and 1.
-  - The **target class** is the one for which $Y = 1$. 
-  - The **reference class** is the one for which $Y = 0$.
+-   When classes are strings, they are usually encoded as 0 and 1.
+
+    -   The **target class** is the one for which $Y = 1$.
+    -   The **reference class** is the one for which $Y = 0$.
 :::
 
 ## Classification Algorithms
@@ -131,8 +133,8 @@ A probability for each class can be very useful for gauging the model’s confid
 
 Consider a spam filter where $Y$ is the email type.
 
-- The target class is spam. In this case, $Y=1$.
-- The reference class is not spam. In this case, $Y=0$.
+-   The target class is spam. In this case, $Y=1$.
+-   The reference class is not spam. In this case, $Y=0$.
 
 . . .
 
@@ -189,14 +191,14 @@ To overcome this issue, we several standard solutions:
 ::: incremental
 -   [**Logistic Regression**]{style="color:brown;"}: Impose an structure on $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$. This was covered in IN1002B.
 -   [**Classification Trees**]{style="color:darkblue;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. What we will cover today.
--   [**_K_-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (Optional).
+-   [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (Optional).
 :::
 
 ## Two datasets
 
 </br></br>
 
-The application of data science models needs two data sets:
+The application of data science algorithms needs two data sets:
 
 ::: incremental
 -   [**Training data**]{style="color:blue;"} is data that we use to train or construct the estimated function $\hat{f}(\boldsymbol{X})$.
@@ -242,61 +244,27 @@ In many practical situations, a test dataset is not available. To overcome this 
 
 **Idea**: Apply model to your [**validation dataset**]{style="color:orange;"} to mimic what will happen when you apply it to test dataset.
 
-## Example 1
+
+## Example 1: Identifying Counterfeit Banknotes
 
 </br>
 
-The "BostonHousing.xlsx" contains data collected by the US Bureau of the Census concerning housing in the area of Boston, Massachusetts. The dataset includes data on 506 census housing tracts in the Boston area in 1970s.
+![](images/clipboard-270396609.png)
 
-The **goal** is to predict the median house price in new tracts based on information such as crime rate, pollution, and number of rooms.
+## Dataset
 
-The [response]{style="color:darkred;"} is the median value of owner-occupied homes in \$1000s, contained in the column `MEDV`.
-
-## The predictors
-
-::: {style="font-size: 70%;"}
--   `CRIM`: per capita crime rate by town.
--   `ZN`: proportion of residential land zoned for lots over 25,000 sq.ft.
--   `INDUS`: proportion of non-retail business acres per town.
--   `CHAS`: Charles River ('Yes' if tract bounds river; 'No' otherwise).
--   `NOX`: nitrogen oxides concentration (parts per 10 million).
--   `RM`: average number of rooms per dwelling.
--   `AGE`: proportion of owner-occupied units built prior to 1940.
--   `DIS`: weighted mean of distances to five Boston employment centers
--   `RAD`: index of accessibility to radial highways ('Low', 'Medium', 'High').
--   `TAX`: full-value property-tax rate per \$10,000.
--   `PTRATIO`: pupil-teacher ratio by town.
--   `LSTAT`: lower status of the population (percent).
-:::
-
-## Read the dataset
-
-</br>
-
-We read the dataset and set the variable `CHAS` and `RAD` as categorical.
+The data is located in the file "banknotes.xlsx".
 
 ```{python}
 #| echo: true
 #| output: true
 
-Boston_data = pd.read_excel('BostonHousing.xlsx')
-
-Boston_data['CHAS'] = pd.Categorical(Boston_data['CHAS'])
-Boston_data['RAD'] = pd.Categorical(Boston_data['RAD'], 
-                                      categories=["Low", "Medium", "High"], 
-                                      ordered=True)
+bank_data = pd.read_excel("banknotes.xlsx")
+# Set response variable as categorical.
+bank_data['Status'] = pd.Categorical(bank_data['Status'])
+bank_data.head()
 ```
 
-## 
-
-</br>
-
-```{python}
-#| echo: true
-#| output: true
-
-Boston_data.head()
-```
 
 ## How do we generate validation data?
 
@@ -312,27 +280,27 @@ The function has three main inputs:
 
 ## Create the predictor matrix
 
-We use the function `.drop()` from **pandas**. This function drops one or more columns from a data frame. Let's drop the response column `MEDV` and store the result in `X_full`.
+We use the function `.drop()` from **pandas**. This function drops one or more columns from a data frame. Let's drop the response column `Status` and store the result in `X_full`.
 
 ```{python}
 #| echo: true
 #| output: true
 
 # Set full matrix of predictors.
-X_full = Boston_data.drop(columns = ['MEDV']) 
+X_full = bank_data.drop(columns = ['Status']) 
 X_full.head(4)
 ```
 
 ## Create the response column
 
-We use the function `.filter()` from **pandas** to extract the column `MEDV` from the data frame. We store the result in `Y_full`.
+We use the function `.filter()` from **pandas** to extract the column `Status` from the data frame. We store the result in `Y_full`.
 
 ```{python}
 #| echo: true
 #| output: true
 
 # Set full matrix of responses.
-Y_full = Boston_data.filter(['MEDV'])
+Y_full = bank_data.filter(['Status'])
 Y_full.head(4)
 ```
 
@@ -392,79 +360,69 @@ We will now discuss preprocessing techniques applied to the predictor columns in
 
 Note that all preprocessing techniques will also be applied to the [**validation dataset**]{style="color:orange;"} and [**test dataset**]{style="color:green;"} to prepare it for your model!
 
-
 # Classification and Regression Trees (CART)
 
 ## Decision Tree
 
 It is a supervised learning algorithm that predicts or classifies observations using a hierarchical tree structure.
 
-- Simple and useful for interpretation.
-
-- Can handle numerical and categorical predictors and responses.
-
-- Computationally efficient.
-
-- Nonparametric technique.
-
-## Example 2: Identifying Counterfeit Banknotes
-
 </br>
 
-![](images/clipboard-270396609.png)
+Main characteristics: 
 
-Dataset
+-   Simple and useful for interpretation.
 
-The data is located in the file "banknotes.xlsx".
+-   Can handle numerical and categorical predictors and responses.
 
-```{python}
-#| echo: true
-#| output: true
+-   Computationally efficient.
 
-bank_data = pd.read_excel("banknotes.xlsx")
-# Set response variable as categorical.
-bank_data['Status'] = pd.Categorical(bank_data['Status'])
-bank_data.head()
-```
+-   Nonparametric technique.
 
-## Generating Training Data
 
-We split the current dataset into two datasets: training and validation. To do this, we use the scikit-learn `train_test_split()` function.
-
-```{python}
-#| echo: true
-#| output: true
-
-# Set full matrix of predictors.
-X_full = bank_data.drop(columns = ['Status'])
-
-# Set full matrix of responses.
-Y_full = bank_data['Status']
-
-# Split the dataset.
-X_train, X_val, Y_train, Y_val = train_test_split(X_full, Y_full, 
-                                                    test_size=0.3)
-```
-
-The `test_size` parameter sets the portion of the dataset that will go into the validation set.
-
-## 
-
-</br>
-
-- The function intelligently partitions the data using the *empirical* distribution of the response.
-
-- Technically, it splits the data so that the response distribution in the training and validation sets is similar.
-
-- Typically, the proportion of the data set allocated to the test set is 20% or 30%.
-
-- Later, we will use the [**validation data set**]{style="color:orange;"} to evaluate the classification performance of the estimated logistic regression model for classifying unobserved data.
 
 ## Basic idea of a decision tree
 
 Stratify or segment the prediction space into several simpler regions.
 
-![](images/Screenshot%202025-07-28%20at%2011.47.35%20a.m..png){fig-align="center"}
+```{python}
+#| fig-align: center
+
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(9.3, 5.3))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.8, color='black', linewidth=3)     # Horizontal line
+plt.axvline(x=10.9, ymin=0, ymax=0.47, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.2, ymin=0, ymax=0.47, color='black', linewidth=3)  # Right vertical
+
+# Add region labels
+plt.text(8.5, 11.5, r"$R_1$", fontsize=30, fontweight='bold')
+plt.text(8.5, 8.0, r"$R_2$", fontsize=30, fontweight='bold')
+plt.text(10.95, 7.2, r"$R_3$", fontsize=20, fontweight='bold')
+plt.text(11.5, 8.0, r"$R_4$", fontsize=30, fontweight='bold')
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+
 
 ## 
 
@@ -478,9 +436,9 @@ Stratify or segment the prediction space into several simpler regions.
 
 Building decision trees involves two main procedures.
 
-1. [Grow a large tree.]{style="color:darkblue;"}
+1.  [Grow a large tree.]{style="color:darkblue;"}
 
-2. [Pruning the tree to prevent overfitting.]{style="color:darkblue;"}
+2.  [Pruning the tree to prevent overfitting.]{style="color:darkblue;"}
 
 After building a “good” tree, we can predict new observations that are not in the data set we used to build it.
 
@@ -567,11 +525,11 @@ Node impurity refers to the homogeneity of the response classes at that node.
 ::: {.column width="40%"}
 There are three different metrics for impurity:
 
-- Risk of misclassification.
+-   Risk of misclassification.
 
-- Cross entropy.
+-   Cross entropy.
 
-- Gini impurity index.
+-   Gini impurity index.
 :::
 
 ::: {.column width="60%"}
@@ -596,25 +554,25 @@ To prune a tree, we use an advanced algorithm to measure the contribution of the
 
 The algorithm has a tuning parameter called $\alpha$, which **places greater weight on the number of tree nodes** (or size):
 
-- Large values of $\alpha$ result in small trees with few nodes.
+-   Large values of $\alpha$ result in small trees with few nodes.
 
-- Small values of $\alpha$ result in large trees with many nodes.
+-   Small values of $\alpha$ result in large trees with many nodes.
 
 ## Implementation Details
 
-- Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
+-   Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
 
-- Predictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new "NA" level.
+-   Predictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new "NA" level.
 
-- Tertiary or quartary splits. There is not much improvement.
+-   Tertiary or quartary splits. There is not much improvement.
 
-- Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
+-   Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
 
 # Python Example
 
 The “AdultReduced.jmp” data comes from the UCI Machine Learning Repository and is derived from US Census records.
 
-In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than $50,000) or low.
+In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than \$50,000) or low.
 
 Predictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc.
 
@@ -622,9 +580,9 @@ The data contains 7,508 records.
 
 ## Disadvantage of Decision Trees
 
-- Decision trees have high variance. A small change in the training data can result in a very different tree.
+-   Decision trees have high variance. A small change in the training data can result in a very different tree.
 
-- It has trouble identifying simple data structures.
+-   It has trouble identifying simple data structures.
 
 ![](images/clipboard-3265772983.png)
 
@@ -680,18 +638,18 @@ To convert the probabilities into real-world classes, we round them:
 #predicted_classes.head()
 ```
 
-- Observations with probabilities greater than 0.5 are classified as "false."
-- Observations with probabilities less than 0.5 are classified as "genuine."
+-   Observations with probabilities greater than 0.5 are classified as "false."
+-   Observations with probabilities less than 0.5 are classified as "genuine."
 
 Now, we compare the predictions with the actual categories in the [**validation dataset**]{style="color:orange;"}. [A good logistic regression model shows good agreement between its predictions and the actual categories.]{style="color:darkblue;"}
 
 ## Confusion Matrix
 
-- Table used to evaluate the performance of a classifier.
+-   Table used to evaluate the performance of a classifier.
 
-- Compares actual values with the predicted values of a classifier.
+-   Compares actual values with the predicted values of a classifier.
 
-- Useful for binary and multiclass classification problems.
+-   Useful for binary and multiclass classification problems.
 
 ![](images/confusion_matrix.png){fig-align="center"}
 
@@ -752,49 +710,49 @@ The higher the accuracy, the better the performance of the classifier.
 
 </br>
 
-- Accuracy is easy to calculate and interpret.
+-   Accuracy is easy to calculate and interpret.
 
-- It works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).
+-   It works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).
 
-- However, there are situations in which identifying the target class is more important than the reference class.
+-   However, there are situations in which identifying the target class is more important than the reference class.
 
-- For example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading.
+-   For example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading.
 
 ## An example
 
-- Let's say we want to create a classifier that tells us whether a mobile phone company's customer will churn next month.
+-   Let's say we want to create a classifier that tells us whether a mobile phone company's customer will churn next month.
 
-- Customers who churn significantly decrease the company's revenue. That's why it's important to retain these customers.
+-   Customers who churn significantly decrease the company's revenue. That's why it's important to retain these customers.
 
-- To retain that customer, the company will send them a text message with an offer for a low-cost mobile plan.
+-   To retain that customer, the company will send them a text message with an offer for a low-cost mobile plan.
 
-- Ideally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay.
+-   Ideally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay.
 
-##
+## 
 
-- In other words, we want to avoid making wrong decisions about customers who will churn.
+-   In other words, we want to avoid making wrong decisions about customers who will churn.
 
-- Wrong decisions about loyal customers aren't as relevant.
+-   Wrong decisions about loyal customers aren't as relevant.
 
-- Because if we classify a loyal customer as one who will churn, the customer will get a good deal. They'll probably pay less but stay anyway.
+-   Because if we classify a loyal customer as one who will churn, the customer will get a good deal. They'll probably pay less but stay anyway.
 
 ## Another example
 
-- Another example is developing an algorithm (classifier) that can quickly identify patients who may have a rare disease and need a more extensive and expensive medical evaluation.
+-   Another example is developing an algorithm (classifier) that can quickly identify patients who may have a rare disease and need a more extensive and expensive medical evaluation.
 
-- The classifier must make correct decisions about patients with the rare disease, so they can be evaluated and eventually treated.
+-   The classifier must make correct decisions about patients with the rare disease, so they can be evaluated and eventually treated.
 
-- A healthy patient who is misclassified with the disease will only incur a few extra dollars to pay for the next test, only to discover that the patient does not have the disease.
+-   A healthy patient who is misclassified with the disease will only incur a few extra dollars to pay for the next test, only to discover that the patient does not have the disease.
 
 ## Classification-Specific Metrics
 
 To overcome this limitation of accuracy and error rate, there are several class-specific metrics. The most popular are:
 
-- [**Sensitivity**]{style="color:darkblue;"} or *recall*
+-   [**Sensitivity**]{style="color:darkblue;"} or *recall*
 
-- [**Precision**]{style="color:darkgreen;"}
+-   [**Precision**]{style="color:darkgreen;"}
 
-- **Type I error**
+-   **Type I error**
 
 These metrics are calculated from the confusion matrix.
 
@@ -818,21 +776,21 @@ These metrics are calculated from the confusion matrix.
 
 ## Discussion
 
-- There is generally a trade-off between sensitivity and Type I error.
+-   There is generally a trade-off between sensitivity and Type I error.
 
-- Intuitively, increasing the sensitivity of a classifier is likely to increase Type I error, because more observations are predicted as positive.
+-   Intuitively, increasing the sensitivity of a classifier is likely to increase Type I error, because more observations are predicted as positive.
 
-- Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
+-   Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
 
 ## Example
 
 Assuming the target class is "large"
 
-- Sensitivity = 566/(566 + 214) = 0.726
+-   Sensitivity = 566/(566 + 214) = 0.726
 
-- Accuracy = 566/(566 + 156) = 0.783
+-   Accuracy = 566/(566 + 156) = 0.783
 
-- Type 1 Error = 156/(156 + 655) = 0.192
+-   Type 1 Error = 156/(156 + 655) = 0.192
 
 ## Activity 2.1: Classification and Metrics (cooperative mode)
 
@@ -842,7 +800,7 @@ Using the data in the "weight-height.csv" table, apply the CART procedure to bui
 
 In this example, the predictor variables are continuous, and the predictor variable is binary.
 
-##
+## 
 
 Interpret the Precision, Accuracy, Sensitivity, and Type 1 Error values for the validation set. If the software doesn't report them, perform the calculations using the confusion matrix. Use "Female" as the target class.
 
@@ -860,13 +818,13 @@ The predicted response for the new observation is the most common response among
 
 ## The algorithm has 3 steps:
 
-1. Choose the number of nearest neighbors (*K*).
+1.  Choose the number of nearest neighbors (*K*).
 
-2. For a new observation, find the *K* closest observations in the training data (ignoring the response).
+2.  For a new observation, find the *K* closest observations in the training data (ignoring the response).
 
-3. For the new observation, the algorithm predicts the value of the most common response among the *K* nearest observations.
+3.  For the new observation, the algorithm predicts the value of the most common response among the *K* nearest observations.
 
-##
+## 
 
 Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.
 
@@ -876,7 +834,7 @@ A new observation arrives, and we don't know which group it belongs to.
 
 If we had chosen $K=3$, then the three nearest neighbors would vote on which group the new observation belongs to.
 
-##
+## 
 
 Using $K = 3$, that's 2 votes for "genuine" and 2 for "fake." So we classify it as "genius."
 
@@ -888,21 +846,21 @@ Closeness is based on Euclidean distance.
 
 **Ties**
 
-- If there are more than *K* nearest neighbors, include them all.
+-   If there are more than *K* nearest neighbors, include them all.
 
-- If there is a tie in the vote, set a rule to break the tie. For example, randomly select the class.
+-   If there is a tie in the vote, set a rule to break the tie. For example, randomly select the class.
 
-##
+## 
 
 ***KNN uses the Euclidean distance between points***. So it ignores units.
 
-- Example: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).
+-   Example: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).
 
-- These people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.
+-   These people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.
 
-- Therefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.
+-   Therefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.
 
-##
+## 
 
 As a first step, we must transform the predictors so that they have the same units!
 
@@ -918,7 +876,7 @@ To **center** a predictor variable, the mean value of the predictor is subtracte
 
 Therefore, the centered predictor has a mean of zero (i.e., its average value is zero).
 
-##
+## 
 
 </br>
 
@@ -1028,17 +986,17 @@ The distance between these points is $\sqrt{(-0.91 - 1.82)^2 + (-1.60-2.53)^2}$ 
 
 *K*-NN is intuitive and simple and can produce decent predictions. However, *K*-NN has some disadvantages:
 
-- When the training dataset is very large, *K*-NN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. ("Lazy learner").
+-   When the training dataset is very large, *K*-NN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. ("Lazy learner").
 
-- In this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with.
+-   In this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with.
 
-##
+## 
 
-- The predictive performance of *K*-NN deteriorates as the number of predictors increases.
+-   The predictive performance of *K*-NN deteriorates as the number of predictors increases.
 
-- This is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.
+-   This is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.
 
-- This is known as the ***curse of dimensionality***.
+-   This is known as the ***curse of dimensionality***.
 
 ![](images/clipboard-72810347.png)
 
