@@ -211,7 +211,7 @@ Alan R. Vazquez
 <section id="load-the-libraries" class="slide level2">
 <h2>Load the libraries</h2>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="bdd2c6df" class="cell" data-execution_count="1">
+<div id="59968909" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -225,20 +225,24 @@ Alan R. Vazquez
 </div>
 <p>Here, we use specific functions from the <strong>pandas</strong>, <strong>matplotlib</strong>, <strong>seaborn</strong> and <strong>sklearn</strong> libraries in Python.</p>
 </section>
-<section id="k-nearest-neighbors" class="slide level2">
-<h2><em>K</em> nearest neighbors</h2>
-<p>This is a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.</p>
+<section id="k-nearest-neighbors-knn" class="slide level2">
+<h2><em>K</em>-nearest neighbors (KNN)</h2>
+<p><br></p>
+<p>KNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.</p>
 <p><strong>Basic idea</strong>: Predict a new observation using the <em>K</em> closest observations in the training dataset.</p>
-<p>To predict the response for a new observation, <em>K</em>-NN uses the <em>K</em> nearest neighbors (observations) in <span style="color:aqua;"><strong><em>terms of the predictors!</em></strong></span></p>
+<p>To predict the response for a new observation, KNN uses the <em>K</em> nearest neighbors (observations) in <span style="color:aqua;"><strong><em>terms of the predictors!</em></strong></span></p>
 <p>The predicted response for the new observation is the most common response among the <em>K</em> nearest neighbors.</p>
 </section>
 <section id="the-algorithm-has-3-steps" class="slide level2">
 <h2>The algorithm has 3 steps:</h2>
+<p><br><br></p>
+<div>
 <ol type="1">
-<li><p>Choose the number of nearest neighbors (<em>K</em>).</p></li>
-<li><p>For a new observation, find the <em>K</em> closest observations in the training data (ignoring the response).</p></li>
-<li><p>For the new observation, the algorithm predicts the value of the most common response among the <em>K</em> nearest observations.</p></li>
+<li class="fragment"><p>Choose the number of nearest neighbors (<em>K</em>).</p></li>
+<li class="fragment"><p>For a new observation, find the <em>K</em> closest observations in the training data (ignoring the response).</p></li>
+<li class="fragment"><p>For the new observation, the algorithm predicts the value of the most common response among the <em>K</em> nearest observations.</p></li>
 </ol>
+</div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -294,7 +298,7 @@ Alan R. Vazquez
 <section id="example-1-cont." class="slide level2">
 <h2>Example 1 (cont.)</h2>
 <p>We use the five numeric predictors from the <code>complete_sbAuto</code> dataset.</p>
-<div id="7bf1e341" class="cell" data-execution_count="2">
+<div id="de1deec6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co">#complete_sbAuto.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -314,7 +318,7 @@ Alan R. Vazquez
 <p><br></p>
 <p>To standardize <strong>numeric</strong> predictors, we use the <code>StandardScaler()</code> function. We also apply the function to variables using the <code>fit_transform()</code> function.</p>
 <p><br></p>
-<div id="12f7be11" class="cell" data-execution_count="4">
+<div id="0571618d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">#scaler = StandardScaler()</span></span>
 <span id="cb3-2"><a></a><span class="co">#Xs = scaler.fit_transform(complete_sbAuto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -322,7 +326,7 @@ Alan R. Vazquez
 <section id="section-5" class="slide level2">
 <h2></h2>
 <p>Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.</p>
-<div id="10b77bb0" class="cell" data-execution_count="5">
+<div id="77828a3d" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)</span></span>
 <span id="cb4-2"><a></a><span class="co">#scaled_df.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

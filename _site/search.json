@@ -2307,7 +2307,7 @@
     "href": "Module2/Classification.html#accuracy",
     "title": "Classification Trees",
     "section": "Accuracy",
-    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.45\n\n\nThe higher the accuracy, the better the performance of the classifier."
+    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.47\n\n\nThe higher the accuracy, the better the performance of the classifier."
   },
   {
     "objectID": "Module2/Classification.html#observaciones",
@@ -2447,7 +2447,7 @@
     "href": "Module2/Classification.html#section-28",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143]])"
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429]])"
   },
   {
     "objectID": "Module2/Classification.html#example-1-cont.",
@@ -2636,14 +2636,14 @@
     "href": "Module2/Classification.html#section-5",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n82\n129.7\n129.1\n9.0\n9.7\n0\n\n\n29\n129.7\n129.3\n8.3\n9.0\n0\n\n\n90\n129.7\n129.3\n8.6\n9.6\n0\n\n\n188\n129.9\n130.2\n9.6\n11.9\n1"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n143\n130.5\n130.4\n10.6\n11.1\n1\n\n\n109\n130.6\n130.8\n10.4\n11.2\n1\n\n\n107\n130.1\n130.4\n9.8\n11.5\n1\n\n\n82\n129.7\n129.1\n9.0\n9.7\n0"
   },
   {
     "objectID": "Module2/Classification.html#section-6",
     "href": "Module2/Classification.html#section-6",
     "title": "Classification Trees",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n149\n129.9\n130.0\n9.9\n12.3\n1\n\n\n26\n130.2\n130.1\n8.9\n9.8\n0\n\n\n25\n130.4\n130.4\n8.0\n11.0\n0\n\n\n168\n129.9\n129.8\n9.6\n12.0\n1\n\n\n111\n130.5\n130.3\n10.6\n11.5\n1"
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n22\n130.6\n130.0\n8.4\n10.8\n0\n\n\n172\n130.5\n130.3\n11.8\n10.5\n1\n\n\n101\n130.5\n130.2\n11.0\n11.5\n1\n\n\n24\n129.7\n129.9\n7.4\n10.8\n0\n\n\n168\n129.9\n129.8\n9.6\n12.0\n1"
   },
   {
     "objectID": "Module2/Classification.html#work-on-your-training-dataset",
@@ -2818,7 +2818,7 @@
     "href": "Module2/Classification.html#in-python-1",
     "title": "Classification Trees",
     "section": "In Python",
-    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[27  0]\n [33  0]]"
+    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[28  0]\n [32  0]]"
   },
   {
     "objectID": "Module2/Classification.html#apply-penalty-for-large-trees",
@@ -2888,7 +2888,7 @@
     "href": "Module2/KNearestNeighbours.html#the-algorithm-has-3-steps",
     "title": "K nearest neighbors",
     "section": "The algorithm has 3 steps:",
-    "text": "The algorithm has 3 steps:\n\nChoose the number of nearest neighbors (K).\nFor a new observation, find the K closest observations in the training data (ignoring the response).\nFor the new observation, the algorithm predicts the value of the most common response among the K nearest observations."
+    "text": "The algorithm has 3 steps:\n\n\n\nChoose the number of nearest neighbors (K).\nFor a new observation, find the K closest observations in the training data (ignoring the response).\nFor the new observation, the algorithm predicts the value of the most common response among the K nearest observations."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section",
@@ -4443,5 +4443,12 @@
     "title": "Classification Trees",
     "section": "Set the target category",
     "text": "Set the target category\nTo set the target category in the response we use the get_dummies() function.\n\n# Create dummy variables.\nY_dummies = pd.get_dummies(Y_full, dtype = 'int')\n\n# Select target variable.\nY_target_full = Y_dummies['Status_counterfeit']"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#k-nearest-neighbors-knn",
+    "href": "Module2/KNearestNeighbours.html#k-nearest-neighbors-knn",
+    "title": "K nearest neighbors",
+    "section": "K-nearest neighbors (KNN)",
+    "text": "K-nearest neighbors (KNN)\n\nKNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.\nBasic idea: Predict a new observation using the K closest observations in the training dataset.\nTo predict the response for a new observation, KNN uses the K nearest neighbors (observations) in terms of the predictors!\nThe predicted response for the new observation is the most common response among the K nearest neighbors."
   }
 ]

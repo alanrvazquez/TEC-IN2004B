@@ -23,7 +23,7 @@ jupyter: python3
 </br>
 
 1.  Introduction
-2.  Classification Trees 
+2.  Classification Trees
 3.  Classification Algorithm Metrics
 4.  *K* Nearest Neighbors
 
@@ -1505,7 +1505,6 @@ plot_tree(clf_simple, filled=True, rounded=True)
 plt.show()
 ```
 
-
 ## Comments
 
 </br>
@@ -1566,14 +1565,13 @@ These metrics are calculated from the confusion matrix.
 
 [**Sensitivity**]{style="color:darkblue;"} or *recall* = OO/(OO + OR) “How many records of the target class did we predict correctly?”
 
-
 ## 
 
 ![](images/classspecific_metrics.png){fig-align="center"}
 
 [**Precision**]{style="color:darkgreen;"} = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?
 
-##
+## 
 
 </br>
 
@@ -1597,14 +1595,13 @@ precision = precision_score(Y_valid, predicted_class)
 print( round(precision, 2) )
 ```
 
-
 ## 
 
 ![](images/classspecific_metrics.png){fig-align="center"}
 
 **Type I error** = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”
 
-##
+## 
 
 </br></br></br>
 
@@ -1631,7 +1628,6 @@ print( round(type_I_error, 2) )
 -   Intuitively, increasing the sensitivity of a classifier is likely to increase Type I error, because more observations are predicted as positive.
 
 -   Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
-
 
 ## Activity 2.1: Classification and Metrics (solo mode)
 

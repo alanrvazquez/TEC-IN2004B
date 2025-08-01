@@ -41,23 +41,29 @@ from sklearn.metrics import accuracy_score, recall_score, precision_score
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
 
 
-## *K* nearest neighbors
+## *K*-nearest neighbors (KNN)
 
-This is a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.
+</br>
+
+KNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.
 
 **Basic idea**: Predict a new observation using the *K* closest observations in the training dataset.
 
-To predict the response for a new observation, *K*-NN uses the *K* nearest neighbors (observations) in [***terms of the predictors!***]{style="color:aqua;"}
+To predict the response for a new observation, KNN uses the *K* nearest neighbors (observations) in [***terms of the predictors!***]{style="color:aqua;"}
 
 The predicted response for the new observation is the most common response among the *K* nearest neighbors.
 
 ## The algorithm has 3 steps:
 
+</br></br>
+
+::: incremental
 1.  Choose the number of nearest neighbors (*K*).
 
 2.  For a new observation, find the *K* closest observations in the training data (ignoring the response).
 
 3.  For the new observation, the algorithm predicts the value of the most common response among the *K* nearest observations.
+::: 
 
 ## 
 
