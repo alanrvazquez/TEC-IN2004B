@@ -2895,35 +2895,35 @@
     "href": "Module2/KNearestNeighbours.html#section",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.\nA new observation arrives, and we don’t know which group it belongs to.\n\nIf we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
+    "text": "KNN uses the Euclidean distance between points. So it ignores units.\n\nExample: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).\nThese people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.\nTherefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.\n\n\nTherefore, as a first step, we must transform the predictors so that they have the same units!"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section-1",
     "href": "Module2/KNearestNeighbours.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Using \\(K = 3\\), that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”\n\nCloseness is based on Euclidean distance."
+    "text": "To scale a predictor, each of its values is divided by its standard deviation.\nWhen scaling the data, the values have a common standard deviation of one.\nIn mathematical terms, we standardize a predictor as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#implementation-details",
     "href": "Module2/KNearestNeighbours.html#implementation-details",
     "title": "K nearest neighbors",
     "section": "Implementation Details",
-    "text": "Implementation Details\nTies\n\nIf there are more than K nearest neighbors, include them all.\nIf there is a tie in the vote, set a rule to break the tie. For example, randomly select the class."
+    "text": "Implementation Details\n\nTies\n\nIf there are more than K nearest neighbors, include them all.\nIf there is a tie in the vote, set a rule to break the tie. For example, randomly select the class."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section-2",
     "href": "Module2/KNearestNeighbours.html#section-2",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "KNN uses the Euclidean distance between points. So it ignores units.\n\nExample: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).\nThese people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.\nTherefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless."
+    "text": "The dataset is in the file “auto.xlsx”. Let’s read the data using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nauto_data = pd.read_excel(\"auto.xlsx\")\n\n# Set categorical variables.\nauto_data['origin'] = pd.Categorical(auto_data['origin'])"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section-3",
     "href": "Module2/KNearestNeighbours.html#section-3",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "As a first step, we must transform the predictors so that they have the same units!\nThis requires a predictor standardization process, which is done in Python."
+    "text": "Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#standardization",
@@ -2937,7 +2937,7 @@
     "href": "Module2/KNearestNeighbours.html#section-4",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "To scale a predictor, each of its values is divided by its standard deviation.\nWhen scaling the data, the values have a common standard deviation of one.\nIn mathematical terms, we standardize a predictor as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
+    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#example-1-cont.",
@@ -2951,7 +2951,7 @@
     "href": "Module2/KNearestNeighbours.html#two-predictors-in-original-units",
     "title": "K nearest neighbors",
     "section": "Two predictors in original units",
-    "text": "Two predictors in original units\nConsider the previously created complete_sbAuto dataset. Consider two points on the graph: \\((175, 5140)\\) and \\((69, 1613)\\).\n\n\n\n\n\nThe distance between these points is \\(\\sqrt{(69 - 175)^2 + (1613-5140)^2}\\) \\(= \\sqrt{11236 + 12439729}\\) \\(= 3528.592\\)."
+    "text": "Two predictors in original units\nConsider the previously created auto_data dataset. Consider two points on the graph: \\((175, 5140)\\) and \\((69, 1613)\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe distance between these points is \\(\\sqrt{(69 - 175)^2 + (1613-5140)^2}\\) \\(= \\sqrt{11236 + 12439729}\\) \\(= 3528.592\\)."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#standardization-in-python",
@@ -2965,7 +2965,7 @@
     "href": "Module2/KNearestNeighbours.html#section-5",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
+    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#two-predictors-in-standardized-units",
@@ -2979,7 +2979,7 @@
     "href": "Module2/KNearestNeighbours.html#discussion",
     "title": "K nearest neighbors",
     "section": "Discussion",
-    "text": "Discussion\nK-NN is intuitive and simple and can produce decent predictions. However, K-NN has some disadvantages:\n\nWhen the training dataset is very large, K-NN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. (“Lazy learner”).\nIn this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with."
+    "text": "Discussion\n\nKNN is intuitive and simple and can produce decent predictions. However, KNN has some disadvantages:\n\nWhen the training dataset is very large, KNN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. (“Lazy learner”).\nIn this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section-6",
@@ -4450,5 +4450,68 @@
     "title": "K nearest neighbors",
     "section": "K-nearest neighbors (KNN)",
     "text": "K-nearest neighbors (KNN)\n\nKNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.\nBasic idea: Predict a new observation using the K closest observations in the training dataset.\nTo predict the response for a new observation, KNN uses the K nearest neighbors (observations) in terms of the predictors!\nThe predicted response for the new observation is the most common response among the K nearest neighbors."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#nearest-neighbour",
+    "href": "Module2/KNearestNeighbours.html#nearest-neighbour",
+    "title": "K nearest neighbors",
+    "section": "Nearest neighbour",
+    "text": "Nearest neighbour\nSuppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.\n\nA new observation arrives, and we don’t know which group it belongs to. If we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#nearest-neighbour-1",
+    "href": "Module2/KNearestNeighbours.html#nearest-neighbour-1",
+    "title": "K nearest neighbors",
+    "section": "Nearest neighbour",
+    "text": "Nearest neighbour\nSuppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.\n\nA new observation arrives, and we don’t know which group it belongs to. If we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#nearest-neighbour-2",
+    "href": "Module2/KNearestNeighbours.html#nearest-neighbour-2",
+    "title": "K nearest neighbors",
+    "section": "Nearest neighbour",
+    "text": "Nearest neighbour\nSuppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.\n\nA new observation arrives, and we don’t know which group it belongs to. If we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#nearest-neighbour-3",
+    "href": "Module2/KNearestNeighbours.html#nearest-neighbour-3",
+    "title": "K nearest neighbors",
+    "section": "Nearest neighbour",
+    "text": "Nearest neighbour\nSuppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.\n\nA new observation arrives, and we don’t know which group it belongs to. If we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#banknote-data",
+    "href": "Module2/KNearestNeighbours.html#banknote-data",
+    "title": "K nearest neighbors",
+    "section": "Banknote data",
+    "text": "Banknote data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing \\(K = 3\\), that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#banknote-data-1",
+    "href": "Module2/KNearestNeighbours.html#banknote-data-1",
+    "title": "K nearest neighbors",
+    "section": "Banknote data",
+    "text": "Banknote data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing \\(K = 3\\), that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#banknote-data-2",
+    "href": "Module2/KNearestNeighbours.html#banknote-data-2",
+    "title": "K nearest neighbors",
+    "section": "Banknote data",
+    "text": "Banknote data\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing \\(K = 3\\), that’s 3 votes for “counterfeit” and 0 for “genuine.” So we classify it as “counterfeit.”"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#banknote-data-3",
+    "href": "Module2/KNearestNeighbours.html#banknote-data-3",
+    "title": "K nearest neighbors",
+    "section": "Banknote data",
+    "text": "Banknote data\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing \\(K = 3\\), that’s 3 votes for “counterfeit” and 0 for “genuine.” So we classify it as “counterfeit.”\nCloseness is based on Euclidean distance."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#example-1",
+    "href": "Module2/KNearestNeighbours.html#example-1",
+    "title": "K nearest neighbors",
+    "section": "Example 1",
+    "text": "Example 1\nA market analyst is studying quality characteristics of cars. Specifically, the analyst is investigating the miles per gallon (mpg) of cars can be predicted using:\n\n\\(X_1:\\) cylinders. Number of cylinders between 4 and 8\n\\(X_2:\\) displacement. Engine displacement (cu. inches)\n\\(X_3:\\) horsepower. Engine horsepower\n\\(X_4:\\) weight. Vehicle weight (lbs.)\n\\(X_5:\\) acceleration. Time to accelerate from 0 to 60 mph (sec.)\n\\(X_6:\\) origin. Origin of car (American, European, Japanese)"
   }
 ]

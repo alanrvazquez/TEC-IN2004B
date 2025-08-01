@@ -40,7 +40,6 @@ from sklearn.metrics import accuracy_score, recall_score, precision_score
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
 
-
 ## *K*-nearest neighbors (KNN)
 
 </br>
@@ -49,7 +48,7 @@ KNN a supervised learning algorithm that uses proximity to make classifications 
 
 **Basic idea**: Predict a new observation using the *K* closest observations in the training dataset.
 
-To predict the response for a new observation, KNN uses the *K* nearest neighbors (observations) in [***terms of the predictors!***]{style="color:aqua;"}
+To predict the response for a new observation, KNN uses the *K* nearest neighbors (observations) in [***terms of the predictors!***]{style="color:brown;"}
 
 The predicted response for the new observation is the most common response among the *K* nearest neighbors.
 
@@ -63,27 +62,248 @@ The predicted response for the new observation is the most common response among
 2.  For a new observation, find the *K* closest observations in the training data (ignoring the response).
 
 3.  For the new observation, the algorithm predicts the value of the most common response among the *K* nearest observations.
-::: 
+:::
 
-## 
+## Nearest neighbour
 
-Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.
+Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.
 
-A new observation arrives, and we don't know which group it belongs to.
+![](images/KNNsequence1.png){fig-align="center"}
 
-![](images/ball_example.png){fig-align="center"}
+[A new observation arrives, and we don't know which group it belongs to. If we had chosen $K=3$, then the three nearest neighbors would vote on which group the new observation belongs to.]{style="color:white;"}
 
-If we had chosen $K=3$, then the three nearest neighbors would vote on which group the new observation belongs to.
+## Nearest neighbour
 
-## 
+Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.
+
+![](images/KNNsequence2.png){fig-align="center"}
+
+A new observation arrives, and we don't know which group it belongs to. [If we had chosen $K=3$, then the three nearest neighbors would vote on which group the new observation belongs to.]{style="color:white;"}
+
+## Nearest neighbour
+
+Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.
+
+![](images/KNNsequence3.png){fig-align="center"}
+
+A new observation arrives, and we don't know which group it belongs to. If we had chosen $K=3$, then the three nearest neighbors would vote on which group the new observation belongs to.
+
+## Nearest neighbour
+
+Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.
+
+![](images/KNNsequence4.png){fig-align="center"}
+
+A new observation arrives, and we don't know which group it belongs to. If we had chosen $K=3$, then the three nearest neighbors would vote on which group the new observation belongs to.
+
+## Banknote data
+
+::::: columns
+::: {.column width="70%"}
+```{python}
+#| fig-align: center
+#| echo: false
+#| output: true
+
+from matplotlib.patches import Circle
+
+bank_data = pd.read_excel("banknotes.xlsx")
+# Set response variable as categorical.
+bank_data['Status'] = pd.Categorical(bank_data['Status'])
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6.3, 6.3))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="30%"}
+:::
+:::::
 
 Using $K = 3$, that's 2 votes for "genuine" and 2 for "fake." So we classify it as "genius."
 
-![](images/ball_example2.png){fig-align="center"}
+## Banknote data
 
-Closeness is based on Euclidean distance.
+::::: columns
+::: {.column width="70%"}
+```{python}
+#| fig-align: center
+#| echo: false
+#| output: true
+
+from matplotlib.patches import Circle
+
+bank_data = pd.read_excel("banknotes.xlsx")
+# Set response variable as categorical.
+bank_data['Status'] = pd.Categorical(bank_data['Status'])
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6.3, 6.3))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add star point at (10, 10)
+plt.plot(10, 10, marker='*', markersize=15, color='red', label='Special Point')
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="30%"}
+:::
+:::::
+
+Using $K = 3$, that's 2 votes for "genuine" and 2 for "fake." So we classify it as "genius."
+
+## Banknote data
+
+::::: columns
+::: {.column width="70%"}
+```{python}
+#| fig-align: center
+#| echo: false
+#| output: true
+
+from matplotlib.patches import Circle
+
+bank_data = pd.read_excel("banknotes.xlsx")
+# Set response variable as categorical.
+bank_data['Status'] = pd.Categorical(bank_data['Status'])
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6.3, 6.3))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add star point at (10, 10)
+plt.plot(10, 10, marker='*', markersize=15, color='red', label='Special Point')
+
+# Add circle around the point with diameter = 1 unit (radius = 0.5)
+circle = Circle((10, 10), 0.5, edgecolor='black', facecolor='none', linewidth=2)
+plt.gca().add_patch(circle)
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="30%"}
+</br>
+
+Using $K = 3$, that's 3 votes for "counterfeit" and 0 for "genuine." So we classify it as "counterfeit."
+:::
+:::::
+
+## Banknote data
+
+::::: columns
+::: {.column width="70%"}
+```{python}
+#| fig-align: center
+#| echo: false
+#| output: true
+
+from matplotlib.patches import Circle
+
+bank_data = pd.read_excel("banknotes.xlsx")
+# Set response variable as categorical.
+bank_data['Status'] = pd.Categorical(bank_data['Status'])
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6.3, 6.3))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add star point at (10, 10)
+plt.plot(10, 10, marker='*', markersize=15, color='red', label='Special Point')
+
+# Add circle around the point with diameter = 1 unit (radius = 0.5)
+circle = Circle((10, 10), 0.5, edgecolor='black', facecolor='none', linewidth=2)
+plt.gca().add_patch(circle)
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="30%"}
+</br>
+
+Using $K = 3$, that's 3 votes for "counterfeit" and 0 for "genuine." So we classify it as "counterfeit."
+
+[Closeness is based on Euclidean distance.]{style="color:darkblue;"}
+:::
+:::::
 
 ## Implementation Details
+
+</br></br></br>
 
 **Ties**
 
@@ -93,7 +313,7 @@ Closeness is based on Euclidean distance.
 
 ## 
 
-***KNN uses the Euclidean distance between points***. So it ignores units.
+[KNN uses the Euclidean distance between points]{style="color:darkblue;"}. So it ignores units.
 
 -   Example: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).
 
@@ -101,11 +321,9 @@ Closeness is based on Euclidean distance.
 
 -   Therefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.
 
-## 
+. . .
 
-As a first step, we must transform the predictors so that they have the same units!
-
-This requires a predictor standardization process, which is done in Python.
+**Therefore, as a first step, we must transform the predictors so that they have the same units!**
 
 ## Standardization
 
@@ -131,19 +349,37 @@ $${\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1}
 
 with $\bar{X} = \sum_{i=1}^n \frac{x_i}{n}$.
 
-## Example 1 (cont.)
+## Example 1
 
-We use the five numeric predictors from the `complete_sbAuto` dataset.
+A market analyst is studying quality characteristics of cars. Specifically, the analyst is investigating the miles per gallon (mpg) of cars can be predicted using:
+
+-   $X_1:$ cylinders. Number of cylinders between 4 and 8
+-   $X_2:$ displacement. Engine displacement (cu. inches)
+-   $X_3:$ horsepower. Engine horsepower
+-   $X_4:$ weight. Vehicle weight (lbs.)
+-   $X_5:$ acceleration. Time to accelerate from 0 to 60 mph (sec.)
+-   $X_6:$ origin. Origin of car (American, European, Japanese)
+
+## 
+
+</br></br>
+
+The dataset is in the file "auto.xlsx". Let's read the data using **pandas**.
 
 ```{python}
 #| echo: true
 
-#complete_sbAuto.head()
+# Load the Excel file into a pandas DataFrame.
+auto_data = pd.read_excel("auto.xlsx")
+
+# Set categorical variables.
+auto_data['origin'] = pd.Categorical(auto_data['origin'])
 ```
+
 
 ## Two predictors in original units
 
-Consider the previously created `complete_sbAuto` dataset. Consider two points on the graph: $(175, 5140)$ and $(69, 1613)$.
+Consider the previously created `auto_data` dataset. Consider two points on the graph: $(175, 5140)$ and $(69, 1613)$.
 
 ::::: columns
 ::: {.column width="50%"}
@@ -152,13 +388,13 @@ Consider the previously created `complete_sbAuto` dataset. Consider two points o
 #| output: true
 #| fig-align: center
 
-#plt.figure(figsize=(5,5))
-#sns.scatterplot(data = complete_sbAuto, x = 'horsepower', y = 'weight')
-#plt.scatter(x = 175, y = 5140, color = 'red')
-#plt.scatter(x = 69, y = 1613, color = 'red')
-#plt.xlabel('Horsepower', fontsize=14)
-#plt.ylabel('Weight', fontsize=14)
-#plt.show()
+plt.figure(figsize=(5,5))
+sns.scatterplot(data = auto_data, x = 'horsepower', y = 'weight')
+plt.scatter(x = 175, y = 5140, color = 'red')
+plt.scatter(x = 69, y = 1613, color = 'red')
+plt.xlabel('Horsepower', fontsize=14)
+plt.ylabel('Weight', fontsize=14)
+plt.show()
 ```
 :::
 
@@ -225,22 +461,28 @@ The distance between these points is $\sqrt{(-0.91 - 1.82)^2 + (-1.60-2.53)^2}$ 
 
 ## Discussion
 
-*K*-NN is intuitive and simple and can produce decent predictions. However, *K*-NN has some disadvantages:
+</br>
 
--   When the training dataset is very large, *K*-NN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. ("Lazy learner").
+KNN is intuitive and simple and can produce decent predictions. However, KNN has some disadvantages:
+
+-   When the training dataset is very large, KNN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. ("*Lazy learner*").
 
 -   In this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with.
 
 ## 
 
+::: {style="font-size: 90%;"}
 -   The predictive performance of *K*-NN deteriorates as the number of predictors increases.
 
 -   This is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.
 
 -   This is known as the ***curse of dimensionality***.
+:::
 
-![](images/clipboard-72810347.png)
+![](images/clipboard-72810347.png){fig-align="center"}
 
+::: {style="font-size: 50%;"}
 <https://aiaspirant.com/curse-of-dimensionality/>
+:::
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)

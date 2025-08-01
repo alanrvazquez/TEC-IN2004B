@@ -211,7 +211,7 @@ Alan R. Vazquez
 <section id="load-the-libraries" class="slide level2">
 <h2>Load the libraries</h2>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="59968909" class="cell" data-execution_count="1">
+<div id="dc06fdde" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -230,7 +230,7 @@ Alan R. Vazquez
 <p><br></p>
 <p>KNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.</p>
 <p><strong>Basic idea</strong>: Predict a new observation using the <em>K</em> closest observations in the training dataset.</p>
-<p>To predict the response for a new observation, KNN uses the <em>K</em> nearest neighbors (observations) in <span style="color:aqua;"><strong><em>terms of the predictors!</em></strong></span></p>
+<p>To predict the response for a new observation, KNN uses the <em>K</em> nearest neighbors (observations) in <span style="color:brown;"><strong><em>terms of the predictors!</em></strong></span></p>
 <p>The predicted response for the new observation is the most common response among the <em>K</em> nearest neighbors.</p>
 </section>
 <section id="the-algorithm-has-3-steps" class="slide level2">
@@ -244,40 +244,123 @@ Alan R. Vazquez
 </ol>
 </div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p>Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.</p>
-<p>A new observation arrives, and we don’t know which group it belongs to.</p>
+<section id="nearest-neighbour" class="slide level2">
+<h2>Nearest neighbour</h2>
+<p>Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.</p>
 
-<img data-src="images/ball_example.png" class="quarto-figure quarto-figure-center r-stretch"><p>If we had chosen <span class="math inline">\(K=3\)</span>, then the three nearest neighbors would vote on which group the new observation belongs to.</p>
+<img data-src="images/KNNsequence1.png" class="quarto-figure quarto-figure-center r-stretch"><p><span style="color:white;">A new observation arrives, and we don’t know which group it belongs to. If we had chosen <span class="math inline">\(K=3\)</span>, then the three nearest neighbors would vote on which group the new observation belongs to.</span></p>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p>Using <span class="math inline">\(K = 3\)</span>, that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”</p>
+<section id="nearest-neighbour-1" class="slide level2">
+<h2>Nearest neighbour</h2>
+<p>Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.</p>
 
-<img data-src="images/ball_example2.png" class="quarto-figure quarto-figure-center r-stretch"><p>Closeness is based on Euclidean distance.</p>
+<img data-src="images/KNNsequence2.png" class="quarto-figure quarto-figure-center r-stretch"><p>A new observation arrives, and we don’t know which group it belongs to. <span style="color:white;">If we had chosen <span class="math inline">\(K=3\)</span>, then the three nearest neighbors would vote on which group the new observation belongs to.</span></p>
+</section>
+<section id="nearest-neighbour-2" class="slide level2">
+<h2>Nearest neighbour</h2>
+<p>Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.</p>
+
+<img data-src="images/KNNsequence3.png" class="quarto-figure quarto-figure-center r-stretch"><p>A new observation arrives, and we don’t know which group it belongs to. If we had chosen <span class="math inline">\(K=3\)</span>, then the three nearest neighbors would vote on which group the new observation belongs to.</p>
+</section>
+<section id="nearest-neighbour-3" class="slide level2">
+<h2>Nearest neighbour</h2>
+<p>Suppose we have two groups: red and green group. The number line shows the value of a predictor for our training data.</p>
+
+<img data-src="images/KNNsequence4.png" class="quarto-figure quarto-figure-center r-stretch"><p>A new observation arrives, and we don’t know which group it belongs to. If we had chosen <span class="math inline">\(K=3\)</span>, then the three nearest neighbors would vote on which group the new observation belongs to.</p>
+</section>
+<section id="banknote-data" class="slide level2">
+<h2>Banknote data</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div id="22575dde" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="KNearestNeighbours_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="589" height="589"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+
+</div></div>
+<p>Using <span class="math inline">\(K = 3\)</span>, that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”</p>
+</section>
+<section id="banknote-data-1" class="slide level2">
+<h2>Banknote data</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div id="ab4537cc" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="KNearestNeighbours_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="589" height="589"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+
+</div></div>
+<p>Using <span class="math inline">\(K = 3\)</span>, that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”</p>
+</section>
+<section id="banknote-data-2" class="slide level2">
+<h2>Banknote data</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div id="bdb566a7" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="KNearestNeighbours_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="589" height="589"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p><br></p>
+<p>Using <span class="math inline">\(K = 3\)</span>, that’s 3 votes for “counterfeit” and 0 for “genuine.” So we classify it as “counterfeit.”</p>
+</div></div>
+</section>
+<section id="banknote-data-3" class="slide level2">
+<h2>Banknote data</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div id="3b6559fd" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="KNearestNeighbours_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="589" height="589"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p><br></p>
+<p>Using <span class="math inline">\(K = 3\)</span>, that’s 3 votes for “counterfeit” and 0 for “genuine.” So we classify it as “counterfeit.”</p>
+<p><span style="color:darkblue;">Closeness is based on Euclidean distance.</span></p>
+</div></div>
 </section>
 <section id="implementation-details" class="slide level2">
 <h2>Implementation Details</h2>
+<p><br><br><br></p>
 <p><strong>Ties</strong></p>
 <ul>
 <li><p>If there are more than <em>K</em> nearest neighbors, include them all.</p></li>
 <li><p>If there is a tie in the vote, set a rule to break the tie. For example, randomly select the class.</p></li>
 </ul>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section" class="slide level2">
 <h2></h2>
-<p><strong><em>KNN uses the Euclidean distance between points</em></strong>. So it ignores units.</p>
+<p><span style="color:darkblue;">KNN uses the Euclidean distance between points</span>. So it ignores units.</p>
 <ul>
 <li><p>Example: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).</p></li>
 <li><p>These people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.</p></li>
 <li><p>Therefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.</p></li>
 </ul>
-</section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<p>As a first step, we must transform the predictors so that they have the same units!</p>
-<p>This requires a predictor standardization process, which is done in Python.</p>
+<div class="fragment">
+<p><strong>Therefore, as a first step, we must transform the predictors so that they have the same units!</strong></p>
+</div>
 </section>
 <section id="standardization" class="slide level2">
 <h2>Standardization</h2>
@@ -286,7 +369,7 @@ Alan R. Vazquez
 <p>To <strong>center</strong> a predictor variable, the mean value of the predictor is subtracted from all values.</p>
 <p>Therefore, the centered predictor has a mean of zero (i.e., its average value is zero).</p>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>To <strong>scale</strong> a predictor, each of its values is divided by its standard deviation.</p>
@@ -295,19 +378,44 @@ Alan R. Vazquez
 <p><span class="math display">\[{\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2}},\]</span></p>
 <p>with <span class="math inline">\(\bar{X} = \sum_{i=1}^n \frac{x_i}{n}\)</span>.</p>
 </section>
-<section id="example-1-cont." class="slide level2">
-<h2>Example 1 (cont.)</h2>
-<p>We use the five numeric predictors from the <code>complete_sbAuto</code> dataset.</p>
-<div id="de1deec6" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co">#complete_sbAuto.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="example-1" class="slide level2">
+<h2>Example 1</h2>
+<p>A market analyst is studying quality characteristics of cars. Specifically, the analyst is investigating the miles per gallon (mpg) of cars can be predicted using:</p>
+<ul>
+<li><span class="math inline">\(X_1:\)</span> cylinders. Number of cylinders between 4 and 8</li>
+<li><span class="math inline">\(X_2:\)</span> displacement. Engine displacement (cu. inches)</li>
+<li><span class="math inline">\(X_3:\)</span> horsepower. Engine horsepower</li>
+<li><span class="math inline">\(X_4:\)</span> weight. Vehicle weight (lbs.)</li>
+<li><span class="math inline">\(X_5:\)</span> acceleration. Time to accelerate from 0 to 60 mph (sec.)</li>
+<li><span class="math inline">\(X_6:\)</span> origin. Origin of car (American, European, Japanese)</li>
+</ul>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>The dataset is in the file “auto.xlsx”. Let’s read the data using <strong>pandas</strong>.</p>
+<div id="d37bb92d" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Load the Excel file into a pandas DataFrame.</span></span>
+<span id="cb2-2"><a></a>auto_data <span class="op">=</span> pd.read_excel(<span class="st">"auto.xlsx"</span>)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># Set categorical variables.</span></span>
+<span id="cb2-5"><a></a>auto_data[<span class="st">'origin'</span>] <span class="op">=</span> pd.Categorical(auto_data[<span class="st">'origin'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="two-predictors-in-original-units" class="slide level2">
 <h2>Two predictors in original units</h2>
-<p>Consider the previously created <code>complete_sbAuto</code> dataset. Consider two points on the graph: <span class="math inline">\((175, 5140)\)</span> and <span class="math inline">\((69, 1613)\)</span>.</p>
+<p>Consider the previously created <code>auto_data</code> dataset. Consider two points on the graph: <span class="math inline">\((175, 5140)\)</span> and <span class="math inline">\((69, 1613)\)</span>.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-
+<div id="9e145611" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="KNearestNeighbours_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="459" height="438"></p>
+</figure>
+</div>
+</div>
+</div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
 <p>The distance between these points is <span class="math inline">\(\sqrt{(69 - 175)^2 + (1613-5140)^2}\)</span> <span class="math inline">\(= \sqrt{11236 + 12439729}\)</span> <span class="math inline">\(= 3528.592\)</span>.</p>
@@ -318,15 +426,15 @@ Alan R. Vazquez
 <p><br></p>
 <p>To standardize <strong>numeric</strong> predictors, we use the <code>StandardScaler()</code> function. We also apply the function to variables using the <code>fit_transform()</code> function.</p>
 <p><br></p>
-<div id="0571618d" class="cell" data-execution_count="4">
+<div id="c5754ce0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">#scaler = StandardScaler()</span></span>
 <span id="cb3-2"><a></a><span class="co">#Xs = scaler.fit_transform(complete_sbAuto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 <p>Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.</p>
-<div id="77828a3d" class="cell" data-execution_count="5">
+<div id="74a99347" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)</span></span>
 <span id="cb4-2"><a></a><span class="co">#scaled_df.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -344,21 +452,26 @@ Alan R. Vazquez
 </section>
 <section id="discussion" class="slide level2">
 <h2>Discussion</h2>
-<p><em>K</em>-NN is intuitive and simple and can produce decent predictions. However, <em>K</em>-NN has some disadvantages:</p>
+<p><br></p>
+<p>KNN is intuitive and simple and can produce decent predictions. However, KNN has some disadvantages:</p>
 <ul>
-<li><p>When the training dataset is very large, <em>K</em>-NN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. (“Lazy learner”).</p></li>
+<li><p>When the training dataset is very large, KNN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. (“<em>Lazy learner</em>”).</p></li>
 <li><p>In this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with.</p></li>
 </ul>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
+<div style="font-size: 90%;">
 <ul>
 <li><p>The predictive performance of <em>K</em>-NN deteriorates as the number of predictors increases.</p></li>
 <li><p>This is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.</p></li>
 <li><p>This is known as the <strong><em>curse of dimensionality</em></strong>.</p></li>
 </ul>
+</div>
 
-<img data-src="images/clipboard-72810347.png" class="r-stretch"><p><a href="https://aiaspirant.com/curse-of-dimensionality/" class="uri">https://aiaspirant.com/curse-of-dimensionality/</a></p>
+<img data-src="images/clipboard-72810347.png" class="quarto-figure quarto-figure-center r-stretch"><div style="font-size: 50%;">
+<p><a href="https://aiaspirant.com/curse-of-dimensionality/" class="uri">https://aiaspirant.com/curse-of-dimensionality/</a></p>
+</div>
 </section>
 <section id="return-to-main-page" class="title-slide slide level1 center">
 <h1><a href="https://alanrvazquez.github.io/TEC-IN1002B-Website/">Return to main page</a></h1>
