@@ -376,7 +376,6 @@ auto_data = pd.read_excel("auto.xlsx")
 auto_data['origin'] = pd.Categorical(auto_data['origin'])
 ```
 
-
 ## Two predictors in original units
 
 Consider the previously created `auto_data` dataset. Consider two points on the graph: $(175, 5140)$ and $(69, 1613)$.
@@ -472,7 +471,7 @@ KNN is intuitive and simple and can produce decent predictions. However, KNN has
 ## 
 
 ::: {style="font-size: 90%;"}
--   The predictive performance of *K*-NN deteriorates as the number of predictors increases.
+-   The predictive performance of KNN deteriorates as the number of predictors increases.
 
 -   This is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.
 

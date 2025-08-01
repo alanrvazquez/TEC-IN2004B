@@ -4513,5 +4513,180 @@
     "title": "K nearest neighbors",
     "section": "Example 1",
     "text": "Example 1\nA market analyst is studying quality characteristics of cars. Specifically, the analyst is investigating the miles per gallon (mpg) of cars can be predicted using:\n\n\\(X_1:\\) cylinders. Number of cylinders between 4 and 8\n\\(X_2:\\) displacement. Engine displacement (cu. inches)\n\\(X_3:\\) horsepower. Engine horsepower\n\\(X_4:\\) weight. Vehicle weight (lbs.)\n\\(X_5:\\) acceleration. Time to accelerate from 0 to 60 mph (sec.)\n\\(X_6:\\) origin. Origin of car (American, European, Japanese)"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#agenda",
+    "href": "Module2/EnsembleMethods.html#agenda",
+    "title": "Ensamble Methods",
+    "section": "Agenda",
+    "text": "Agenda\n\n\nBagging\nRandom Forests\nBoosting"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#load-the-libraries",
+    "href": "Module2/EnsembleMethods.html#load-the-libraries",
+    "title": "Ensamble Methods",
+    "section": "Load the libraries",
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score, recall_score, precision_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#section-1",
+    "href": "Module2/EnsembleMethods.html#section-1",
+    "title": "Ensamble Methods",
+    "section": "",
+    "text": "Compute the proportion of trees that output a 0 as\n\n\\[p_{bag, 0} = \\frac{1}{B} \\sum_{b=1}^{B} I(\\hat{T}_{b}(\\boldsymbol{x}) = 0).\\]\n\nCompute the proportion of trees that output a 1 as:\n\n\\[p_{bag, 1} = \\frac{1}{B}\\sum_{b=1}^{B} I(\\hat{T}_{b}(\\boldsymbol{x}) = 1).\\]"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#decision-trees",
+    "href": "Module2/EnsembleMethods.html#decision-trees",
+    "title": "Ensamble Methods",
+    "section": "Decision trees",
+    "text": "Decision trees\n\n\n\n\n\nSimple and useful for interpretations.\nCan handle continuous and categorical predictors and responses. So, they can be applied to both classification and regression problems.\nComputationally efficient."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#two-facts",
+    "href": "Module2/EnsembleMethods.html#two-facts",
+    "title": "Ensamble Methods",
+    "section": "Two facts",
+    "text": "Two facts\n\n\nDeep trees have low bias but high variance.\nSmall trees have high bias but low variance."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#section",
+    "href": "Module2/EnsembleMethods.html#section",
+    "title": "Ensamble Methods",
+    "section": "",
+    "text": "Using the probabilities, a standard tree follows the Bayes Classifier to output the actual class:\n\n\\[\\hat{T}_{b}(\\boldsymbol{x}) =\n    \\begin{cases}\n      1, & \\hat{p}^{b}_1(\\boldsymbol{x}) &gt; 0.5 \\\\\n      0, & \\hat{p}^{b}_1(\\boldsymbol{x}) \\leq 0.5\n    \\end{cases}\\]"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#limitations-of-decision-trees",
+    "href": "Module2/EnsembleMethods.html#limitations-of-decision-trees",
+    "title": "Ensamble Methods",
+    "section": "Limitations of decision trees",
+    "text": "Limitations of decision trees\n\n\nDeep trees have low bias but high variance.\nSmall trees have high bias but low variance."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#ensamble-methods",
+    "href": "Module2/EnsembleMethods.html#ensamble-methods",
+    "title": "Ensamble Methods",
+    "section": "Ensamble methods",
+    "text": "Ensamble methods\n\nWe would like to have both low variability and low bias. To achieve this, we have two frameworks:\nBagging. Ensemble deep trees with low bias, then combat variance in some way.\n\nQuintessential method: Random Forests.\n\nBoosting. Construct small trees with low variance, then combat bias."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#ensamble-methods-1",
+    "href": "Module2/EnsembleMethods.html#ensamble-methods-1",
+    "title": "Ensamble Methods",
+    "section": "Ensamble methods",
+    "text": "Ensamble methods\n\nWe would like to have both low variability and low bias. To achieve this, we have two frameworks:\nBagging. Ensemble deep trees with low bias, then combat variance in some way.\n\nQuintessential method: Random Forests.\n\nBoosting. Construct small trees with low variance, then combat bias."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#bootstrap-samples",
+    "href": "Module2/EnsembleMethods.html#bootstrap-samples",
+    "title": "Ensamble Methods",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\n\nBootstrap samples are samples obtained with replacement from the original sample. So, an observation can occur more than one in a bootstrap sample.\nBootstrap samples are the building block of the bootstrap method, which is a statistical technique for estimating quantities about a population by averaging estimates from multiple small data samples."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#bagging-1",
+    "href": "Module2/EnsembleMethods.html#bagging-1",
+    "title": "Ensamble Methods",
+    "section": "Bagging",
+    "text": "Bagging\nGiven a training dataset, bagging averages the predictions from decision trees over a collection of bootstrap samples."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#predictions",
+    "href": "Module2/EnsembleMethods.html#predictions",
+    "title": "Ensamble Methods",
+    "section": "Predictions",
+    "text": "Predictions\n\nLet \\(\\mathbf{x} = (x_1, x_2, \\ldots, x_p)\\) be a vector of new predictor values. For classification problems with 2 classes:\n\nEach classification tree outputs the probability for class 1 and 2 depending on the region \\(\\mathbf{x}\\) falls in.\nFor the b-th tree, we denote the probabilities as \\(\\hat{p}^{b}_0(\\boldsymbol{x})\\) and \\(\\hat{p}^{b}_1(\\boldsymbol{x})\\) for class 0 and 1, respectively."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#implementation",
+    "href": "Module2/EnsembleMethods.html#implementation",
+    "title": "Ensamble Methods",
+    "section": "Implementation",
+    "text": "Implementation\n\nHow many trees? No risk of overfitting, so use plenty.\nNo pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.\nThe size of bootstrap samples is n, but we can use a different size."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#example",
+    "href": "Module2/EnsembleMethods.html#example",
+    "title": "Ensamble Methods",
+    "section": "Example",
+    "text": "Example\nTBD"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#prediction-importance",
+    "href": "Module2/EnsembleMethods.html#prediction-importance",
+    "title": "Ensamble Methods",
+    "section": "Prediction importance",
+    "text": "Prediction importance\nTBD"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#advantages",
+    "href": "Module2/EnsembleMethods.html#advantages",
+    "title": "Ensamble Methods",
+    "section": "Advantages",
+    "text": "Advantages\n\n\nBagging will have about the same low bias of a tree, but should have less variability. Hence, it results in lower prediction errors.\nThe fact that, for each tree, not all of the original observations were used, can be exploited to produce an estimate of the accuracy for classification."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#limitations",
+    "href": "Module2/EnsembleMethods.html#limitations",
+    "title": "Ensamble Methods",
+    "section": "Limitations",
+    "text": "Limitations\n\n\nLoss of interpretability: the final bagged classifier is not a tree, and so we forfeit the clear interpretative ability of a classification tree.\nComputational complexity: we are essentially multiplying the work of growing (and possibly pruning) a single tree by B.\nFundamental issue: bagging a good model can improve predictive accuracy, but bagging a bad one can seriously degrade predictive accuracy."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#other-issues",
+    "href": "Module2/EnsembleMethods.html#other-issues",
+    "title": "Ensamble Methods",
+    "section": "Other issues",
+    "text": "Other issues\n\nSuppose a variable is very important and decisive.\n\nIt will probably appear near the top of a large number of trees.\nAnd these trees will tend to vote the same way.\nIn some sense, then, many of the trees are “correlated”.\nThis will degrade the performance of bagging."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#section-2",
+    "href": "Module2/EnsembleMethods.html#section-2",
+    "title": "Ensamble Methods",
+    "section": "",
+    "text": "Classify according to a majority vote between \\(p_{bag, 0}\\) and \\(p_{bag, 1}\\)."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#section-3",
+    "href": "Module2/EnsembleMethods.html#section-3",
+    "title": "Ensamble Methods",
+    "section": "",
+    "text": "Bagging is unable to capture simple decision boundaries"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#random-forest-1",
+    "href": "Module2/EnsembleMethods.html#random-forest-1",
+    "title": "Ensamble Methods",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nExactly as bagging, but…\n\nWhen splitting the nodes using the CART algorithm, instead of going through all possible splits for all possible variables, we go through all possible splits on a random sample of a small number of variables \\(m\\), where \\(m &lt; p\\).\n\nRandom forests can reduce variability further."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#why-does-it-work",
+    "href": "Module2/EnsembleMethods.html#why-does-it-work",
+    "title": "Ensamble Methods",
+    "section": "Why does it work?",
+    "text": "Why does it work?\n\nNot so dominant predictors will get a chance to appear by themselves and show “their stuff”.\nThis adds more diversity to the trees.\nThe fact that the trees in the forest are not (strongly) correlated means lower variability."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#tuning-parameter",
+    "href": "Module2/EnsembleMethods.html#tuning-parameter",
+    "title": "Ensamble Methods",
+    "section": "Tuning parameter",
+    "text": "Tuning parameter\nHow do we set \\(m\\)?\n\nFor classification, use \\(m = \\lfloor \\sqrt{p} \\rfloor\\) and the minimum node size is 1.\n\nIn practice, sometimes the best values for these parameters will depend on the problem. So, we can treat \\(m\\) as a tuning parameter.\nNote that if \\(m = p\\), we get bagging."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#the-final-product-is-a-black-box",
+    "href": "Module2/EnsembleMethods.html#the-final-product-is-a-black-box",
+    "title": "Ensamble Methods",
+    "section": "The final product is a black box",
+    "text": "The final product is a black box\n\n\nA black box. Inside the box are several hundred trees, each slightly different.\nYou put an observation into the black box, and the black box classifies it or predicts it for you."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#random-forest-in-python",
+    "href": "Module2/EnsembleMethods.html#random-forest-in-python",
+    "title": "Ensamble Methods",
+    "section": "Random Forest in Python",
+    "text": "Random Forest in Python"
   }
 ]

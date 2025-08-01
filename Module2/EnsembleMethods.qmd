@@ -1,0 +1,255 @@
+---
+title: "Ensamble Methods"
+subtitle: "IN2004B: Generation of Value with Data Analytics"
+author: 
+  - name: Alan R. Vazquez
+    affiliations:
+      - name: Department of Industrial Engineering
+format: 
+  revealjs:
+    chalkboard: false
+    multiplex: false
+    footer: "Tecnologico de Monterrey"
+    logo: IN1002b_logo.png
+    css: style.css
+    slide-number: True
+    html-math-method: mathjax
+editor: visual
+jupyter: python3
+---
+
+## Agenda
+
+</br>
+
+1.  Bagging
+2.  Random Forests
+3.  Boosting
+
+# Bagging
+
+## Load the libraries
+
+Before we start, let's import the data science libraries into Python.
+
+```{python}
+#| echo: true
+#| output: false
+
+# Importing necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay 
+from sklearn.metrics import accuracy_score, recall_score, precision_score
+```
+
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
+
+## Decision trees
+
+</br>
+
+:::::: columns
+:::: {.column width="45%"}
+::: {style="font-size: 90%;"}
+-   Simple and useful for interpretations.
+
+-   Can handle continuous and categorical predictors and responses. So, they can be applied to both [**classification**]{style="color:blue;"} and [**regression**]{style="color:green;"} problems.
+
+-   Computationally efficient.
+:::
+::::
+
+::: {.column width="55%"}
+</br>
+
+![](images/clipboard-2280895928.png){fig-align="center"}
+:::
+::::::
+
+## Limitations of decision trees
+
+</br></br></br>
+
+-   Deep trees have low bias but high variance.
+
+-   Small trees have high bias but low variance.
+
+## Ensamble methods
+
+</br>
+
+We would like to have both low variability and low bias. To achieve this, we have two frameworks:
+
+[**Bagging**]{style="color:purple;"}. Ensemble deep trees with low bias, then combat variance in some way.
+
+-   Quintessential method: [Random Forests]{style="color:purple;"}.
+
+[**Boosting**]{style="color:orange;"}. Construct small trees with low variance, then combat bias.
+
+## Ensamble methods
+
+</br>
+
+[We would like to have both low variability and low bias. To achieve this, we have two frameworks:]{style="color:gray;"}
+
+[**Bagging**]{style="color:purple;"}. Ensemble deep trees with low bias, then combat variance in some way.
+
+-   [Quintessential method: Random Forests]{style="color:gray;"}.
+
+[**Boosting**. Construct small trees with low variance, then combat bias.]{style="color:gray;"}
+
+## Bootstrap samples
+
+::: {style="font-size: 90%;"}
+Bootstrap samples are samples obtained *with replacement* from the original sample. So, an observation can occur more than one in a bootstrap sample.
+
+Bootstrap samples are the building block of the bootstrap method, which is a statistical technique for estimating quantities about a population by averaging estimates from multiple small data samples. 
+:::
+
+![](images/clipboard-2003681619.png){fig-align="center"}
+
+## Bagging
+
+Given a training dataset, [**bagging**]{style="color:purple;"} averages the predictions from decision trees over a collection of ***bootstrap*** samples.
+
+![](images/bagging_scheme.png){fig-align="center"}
+
+## Predictions
+
+</br></br>
+
+Let $\mathbf{x} = (x_1, x_2, \ldots, x_p)$ be a vector of new predictor values. For classification problems with 2 classes:
+
+1.  Each classification tree outputs the probability for class 1 and 2 depending on the region $\mathbf{x}$ falls in.
+
+2.  For the *b*-th tree, we denote the probabilities as $\hat{p}^{b}_0(\boldsymbol{x})$ and $\hat{p}^{b}_1(\boldsymbol{x})$ for class 0 and 1, respectively.
+
+## 
+
+</br>
+
+3.  Using the probabilities, a standard tree follows the Bayes Classifier to output the actual class:
+
+$$\hat{T}_{b}(\boldsymbol{x}) =
+    \begin{cases}
+      1, & \hat{p}^{b}_1(\boldsymbol{x}) > 0.5 \\
+      0, & \hat{p}^{b}_1(\boldsymbol{x}) \leq 0.5
+    \end{cases}$$
+
+## 
+
+4.  Compute the proportion of trees that output a 0 as
+
+$$p_{bag, 0} = \frac{1}{B} \sum_{b=1}^{B} I(\hat{T}_{b}(\boldsymbol{x}) = 0).$$
+
+5.  Compute the proportion of trees that output a 1 as:
+
+$$p_{bag, 1} = \frac{1}{B}\sum_{b=1}^{B} I(\hat{T}_{b}(\boldsymbol{x}) = 1).$$
+
+## 
+
+</br></br></br>
+
+6.  Classify according to a majority vote between $p_{bag, 0}$ and $p_{bag, 1}$.
+
+## Implementation
+
+</br></br>
+
+How many trees? No risk of overfitting, so use plenty.
+
+No pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.
+
+The size of bootstrap samples is n, but we can use a different size.
+
+## Example
+
+TBD
+
+## Prediction importance
+
+TBD
+
+## Advantages
+
+</br></br></br>
+
+-   Bagging will have about the same low bias of a tree, but should have less variability. Hence, it results in lower prediction errors.
+
+-   The fact that, for each tree, not all of the original observations were used, can be exploited to produce an estimate of the accuracy for classification.
+
+## Limitations
+
+</br></br>
+
+-   *Loss of interpretability*: the final bagged classifier is [not a tree]{style="color:darkred;"}, and so we forfeit the clear interpretative ability of a classification tree.
+
+-   *Computational complexity*: we are essentially multiplying the work of growing (and possibly pruning) a single tree by B.
+
+-   *Fundamental issue*: bagging a good model can improve predictive accuracy, but bagging a bad one can seriously degrade predictive accuracy.
+
+## Other issues
+
+-   Suppose a variable is very important and decisive.
+
+    -   It will probably appear near the top of a large number of trees.
+
+    -   And these trees will tend to vote the same way.
+
+    -   In some sense, then, many of the trees are “correlated”.
+
+    -   This will degrade the performance of bagging.
+
+## 
+
+-   Bagging is unable to capture simple decision boundaries
+
+![](images/bagging_decision_boundary.png){fig-align="center"}
+
+# Random Forest
+
+## Random Forest
+
+</br>
+
+Exactly as bagging, but...
+
+-   When splitting the nodes using the CART algorithm, instead of going through all possible splits for all possible variables, we go through all possible splits on a [*random sample of a small number of variables* $m$]{style="color:brown;"}, where $m < p$.
+
+Random forests can reduce variability further.
+
+## Why does it work?
+
+</br>
+
+Not so dominant predictors will get a chance to appear by themselves and show “their stuff”.
+
+This adds more diversity to the trees.
+
+The fact that the trees in the forest are not (strongly) correlated means lower variability.
+
+## Tuning parameter
+
+How do we set $m$?
+
+-   For classification, use $m = \lfloor \sqrt{p} \rfloor$ and the minimum node size is 1.
+
+In practice, sometimes the best values for these parameters will depend on the problem. So, we can treat $m$ as a tuning parameter.
+
+Note that if $m = p$, we get bagging.
+
+## The final product is a black box
+
+![](images/clipboard-2376484681.png){fig-align="center"}
+
+-   A black box. Inside the box are several hundred trees, each slightly different.
+
+-   You put an observation into the black box, and the black box classifies it or predicts it for you.
+
+## Random Forest in Python
