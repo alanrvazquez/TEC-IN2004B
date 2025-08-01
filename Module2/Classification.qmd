@@ -1,5 +1,5 @@
 ---
-title: "Classification Methods"
+title: "Classification Trees"
 subtitle: "IN2004B: Generation of Value with Data Analytics"
 author: 
   - name: Alan R. Vazquez
@@ -23,7 +23,7 @@ jupyter: python3
 </br>
 
 1.  Introduction
-2.  Classification and Regression Trees (CART)
+2.  Classification Trees 
 3.  Classification Algorithm Metrics
 4.  *K* Nearest Neighbors
 
@@ -302,6 +302,21 @@ Y_full = bank_data.filter(['Status'])
 Y_full.head(4)
 ```
 
+## Set the target category
+
+To set the target category in the response we use the `get_dummies()` function.
+
+```{python}
+#| echo: true
+#| output: true
+
+# Create dummy variables.
+Y_dummies = pd.get_dummies(Y_full, dtype = 'int')
+
+# Select target variable.
+Y_target_full = Y_dummies['Status_counterfeit']
+```
+
 ## Let's partition the dataset
 
 </br>
@@ -311,7 +326,7 @@ Y_full.head(4)
 #| output: true
 
 # Split the dataset into training and validation.
-X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, 
+X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, 
                                                       test_size = 0.3)
 ```
 
@@ -358,7 +373,7 @@ We will now discuss preprocessing techniques applied to the predictor columns in
 
 Note that all preprocessing techniques will also be applied to the [**validation dataset**]{style="color:orange;"} and [**test dataset**]{style="color:green;"} to prepare it for your model!
 
-# Classification and Regression Trees (CART)
+# Classification Trees
 
 ## Decision tree
 
@@ -478,7 +493,7 @@ plt.show()
 
 ## How do you build a decision tree?
 
-</br>
+</br></br>
 
 Building decision trees involves two main procedures:
 
@@ -1515,6 +1530,8 @@ plt.show()
 
 ## 
 
+</br></br></br>
+
 -   In other words, we want to avoid making wrong decisions about customers who will churn.
 
 -   Wrong decisions about loyal customers aren't as relevant.
@@ -1549,17 +1566,6 @@ These metrics are calculated from the confusion matrix.
 
 [**Sensitivity**]{style="color:darkblue;"} or *recall* = OO/(OO + OR) “How many records of the target class did we predict correctly?”
 
-##
-
-In Python, we compute sensitivity using the following command:
-
-```{python}
-#| echo: true
-#| output: true
-
-#accuracy = recall_score(Y_valid, predicted_class)
-#print( round(accuracy, 2) )
-```
 
 ## 
 
@@ -1569,15 +1575,28 @@ In Python, we compute sensitivity using the following command:
 
 ##
 
-In Python, we compute precision using the following command:
+</br>
+
+In Python, we compute sensitivity and precision using the following commands:
 
 ```{python}
 #| echo: true
 #| output: true
 
-#accuracy = precision_score(Y_valid, predicted_class)
-#print( round(accuracy, 2) )
+recall = recall_score(Y_valid, predicted_class)
+print( round(recall, 2) )
 ```
+
+</br>
+
+```{python}
+#| echo: true
+#| output: true
+
+precision = precision_score(Y_valid, predicted_class)
+print( round(precision, 2) )
+```
+
 
 ## 
 
@@ -1587,6 +1606,8 @@ In Python, we compute precision using the following command:
 
 ##
 
+</br></br></br>
+
 Unfortunately, there is no simple command to calculate the type-I error in **sklearn**. To overcome this issue, we must calculate it manually.
 
 ```{python}
@@ -1594,10 +1615,11 @@ Unfortunately, there is no simple command to calculate the type-I error in **skl
 #| output: true
 
 # Confusion matrix to compute Type-I error
-#tn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()
+tn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()
 
 # Type-I error rate = False Positive Rate = FP / (FP + TN)
-#type_I_error = fp / (fp + tn)
+type_I_error = fp / (fp + tn)
+print( round(type_I_error, 2) )
 ```
 
 ## Discussion
