@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alan R. Vazquez">
+
+<title>Predictive Models and Time Series – TEC-IN2004B</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">TEC-IN2004B</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción">Introducción</a>
+  <ul class="collapse">
+  <li><a href="#problemas-principales-de-cienca-de-datos" id="toc-problemas-principales-de-cienca-de-datos" class="nav-link" data-scroll-target="#problemas-principales-de-cienca-de-datos">Problemas principales de cienca de datos</a></li>
+  <li><a href="#problema-de-regresión" id="toc-problema-de-regresión" class="nav-link" data-scroll-target="#problema-de-regresión">Problema de regresión</a></li>
+  <li><a href="#cómo-encontrar-la-forma-de-fx" id="toc-cómo-encontrar-la-forma-de-fx" class="nav-link" data-scroll-target="#cómo-encontrar-la-forma-de-fx">¿Cómo encontrar la forma de <span class="math inline">\(f(X)\)</span>?</a></li>
+  <li><a href="#cómo-encontrar-la-forma-de-fx-1" id="toc-cómo-encontrar-la-forma-de-fx-1" class="nav-link" data-scroll-target="#cómo-encontrar-la-forma-de-fx-1">¿Cómo encontrar la forma de <span class="math inline">\(f(X)\)</span>?</a></li>
+  <li><a href="#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx" id="toc-cómo-evaluar-la-calidad-de-la-función-candidata-hatfx" class="nav-link" data-scroll-target="#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx">¿Cómo evaluar la calidad de la función candidata <span class="math inline">\(\hat{f}(X)\)</span>?</a></li>
+  <li><a href="#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1" id="toc-cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1" class="nav-link" data-scroll-target="#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1">¿Cómo evaluar la calidad de la función candidata <span class="math inline">\(\hat{f}(X)\)</span>?</a></li>
+  <li><a href="#además" id="toc-además" class="nav-link" data-scroll-target="#además">Además…</a></li>
+  <li><a href="#modelo-de-regresión-lineal" id="toc-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal">Modelo de Regresión Lineal</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
+  <li><a href="#regresión-lineal-en-python" id="toc-regresión-lineal-en-python" class="nav-link" data-scroll-target="#regresión-lineal-en-python">Regresión lineal en Python</a></li>
+  <li><a href="#supuestos-del-modelo-de-regresión-lineal" id="toc-supuestos-del-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#supuestos-del-modelo-de-regresión-lineal">Supuestos del modelo de regresión lineal</a></li>
+  <li><a href="#en-python" id="toc-en-python" class="nav-link" data-scroll-target="#en-python">En Python</a></li>
+  <li><a href="#error-de-predicción" id="toc-error-de-predicción" class="nav-link" data-scroll-target="#error-de-predicción">Error de Predicción</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#en-python-1" id="toc-en-python-1" class="nav-link" data-scroll-target="#en-python-1">En Python</a></li>
+  <li><a href="#otra-métrica-r2" id="toc-otra-métrica-r2" class="nav-link" data-scroll-target="#otra-métrica-r2">Otra Métrica: <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#mini-actividad-cooperative-mode" id="toc-mini-actividad-cooperative-mode" class="nav-link" data-scroll-target="#mini-actividad-cooperative-mode">Mini-Actividad (cooperative mode)</a></li>
+  <li><a href="#otras-funciones-candidatas" id="toc-otras-funciones-candidatas" class="nav-link" data-scroll-target="#otras-funciones-candidatas">Otras funciones candidatas</a></li>
+  </ul></li>
+  <li><a href="#series-de-tiempo" id="toc-series-de-tiempo" class="nav-link" data-scroll-target="#series-de-tiempo">Series de tiempo</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-una-serie-de-tiempo" id="toc-qué-es-una-serie-de-tiempo" class="nav-link" data-scroll-target="#qué-es-una-serie-de-tiempo">¿Qué es una serie de tiempo?</a></li>
+  <li><a href="#ejemplo-1" id="toc-ejemplo-1" class="nav-link" data-scroll-target="#ejemplo-1">Ejemplo</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#en-python-2" id="toc-en-python-2" class="nav-link" data-scroll-target="#en-python-2">En Python</a></li>
+  <li><a href="#series-informativas" id="toc-series-informativas" class="nav-link" data-scroll-target="#series-informativas">Series informativas</a></li>
+  <li><a href="#tendencia" id="toc-tendencia" class="nav-link" data-scroll-target="#tendencia">Tendencia</a></li>
+  <li><a href="#estacionalidad" id="toc-estacionalidad" class="nav-link" data-scroll-target="#estacionalidad">Estacionalidad</a></li>
+  <li><a href="#autocorrelación" id="toc-autocorrelación" class="nav-link" data-scroll-target="#autocorrelación">Autocorrelación</a></li>
+  <li><a href="#series-no-informativas-ruido-blanco" id="toc-series-no-informativas-ruido-blanco" class="nav-link" data-scroll-target="#series-no-informativas-ruido-blanco">Series No Informativas: Ruido Blanco</a></li>
+  </ul></li>
+  <li><a href="#modelo-de-regresión-lineal-para-series-de-tiempo" id="toc-modelo-de-regresión-lineal-para-series-de-tiempo" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-para-series-de-tiempo">Modelo de regresión lineal para series de tiempo</a>
+  <ul class="collapse">
+  <li><a href="#modelo-de-regresión-lineal-1" id="toc-modelo-de-regresión-lineal-1" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-1">Modelo de Regresión Lineal</a></li>
+  <li><a href="#tendencia-1" id="toc-tendencia-1" class="nav-link" data-scroll-target="#tendencia-1">Tendencia</a></li>
+  <li><a href="#evaluación-del-modelo" id="toc-evaluación-del-modelo" class="nav-link" data-scroll-target="#evaluación-del-modelo">Evaluación del Modelo</a></li>
+  <li><a href="#en-python-3" id="toc-en-python-3" class="nav-link" data-scroll-target="#en-python-3">En Python</a></li>
+  <li><a href="#analysis-de-residuales" id="toc-analysis-de-residuales" class="nav-link" data-scroll-target="#analysis-de-residuales">Analysis de Residuales</a></li>
+  <li><a href="#el-modelo-es-más-flexible-que-eso" id="toc-el-modelo-es-más-flexible-que-eso" class="nav-link" data-scroll-target="#el-modelo-es-más-flexible-que-eso">El Modelo es Más Flexible que Eso</a></li>
+  <li><a href="#en-python-4" id="toc-en-python-4" class="nav-link" data-scroll-target="#en-python-4">En Python</a></li>
+  <li><a href="#analysis-de-residuales-1" id="toc-analysis-de-residuales-1" class="nav-link" data-scroll-target="#analysis-de-residuales-1">Analysis de Residuales</a></li>
+  <li><a href="#tendencias-exponenciales" id="toc-tendencias-exponenciales" class="nav-link" data-scroll-target="#tendencias-exponenciales">Tendencias exponenciales</a></li>
+  <li><a href="#mini-actividad-cooperative-mode-1" id="toc-mini-actividad-cooperative-mode-1" class="nav-link" data-scroll-target="#mini-actividad-cooperative-mode-1">Mini-Actividad (cooperative mode)</a></li>
+  <li><a href="#identificando-heteroscedasticidad" id="toc-identificando-heteroscedasticidad" class="nav-link" data-scroll-target="#identificando-heteroscedasticidad">Identificando Heteroscedasticidad</a></li>
+  </ul></li>
+  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a>
+  <ul class="collapse">
+  <li><a href="#en-python-5" id="toc-en-python-5" class="nav-link" data-scroll-target="#en-python-5">En Python</a></li>
+  <li><a href="#qué-hago-si-la-transformación-no-funciona" id="toc-qué-hago-si-la-transformación-no-funciona" class="nav-link" data-scroll-target="#qué-hago-si-la-transformación-no-funciona">¿Qué hago si la transformación no funciona?</a></li>
+  <li><a href="#estacionalidad-1" id="toc-estacionalidad-1" class="nav-link" data-scroll-target="#estacionalidad-1">Estacionalidad</a></li>
+  <li><a href="#capturando-estacionalidad" id="toc-capturando-estacionalidad" class="nav-link" data-scroll-target="#capturando-estacionalidad">Capturando Estacionalidad</a></li>
+  <li><a href="#analizando-series-estacionales-en-python" id="toc-analizando-series-estacionales-en-python" class="nav-link" data-scroll-target="#analizando-series-estacionales-en-python">Analizando series estacionales en Python</a></li>
+  <li><a href="#desventajas-de-los-modelos-de-regresión-lineal" id="toc-desventajas-de-los-modelos-de-regresión-lineal" class="nav-link" data-scroll-target="#desventajas-de-los-modelos-de-regresión-lineal">Desventajas de los modelos de regresión lineal</a></li>
+  </ul></li>
+  <li><a href="#return-to-main-page" id="toc-return-to-main-page" class="nav-link" data-scroll-target="#return-to-main-page">Return to main page</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PredictiveModels.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Predictive Models and Time Series</h1>
+<p class="subtitle lead">IN2004B: Generation of Value with Data Analytics</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Alan R. Vazquez </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Industrial Engineering
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<p><br></p>
+<ol type="1">
+<li>Introducción</li>
+<li>Series de tiempo</li>
+<li>Modelo de regresión lineal para series de tiempo</li>
+</ol>
+</section>
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<section id="problemas-principales-de-cienca-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-principales-de-cienca-de-datos">Problemas principales de cienca de datos</h2>
+<p><span style="color:green;"><strong>Problemas de regresión</strong></span>. La respuesta es numérica. Por ejemplo, los ingresos de una persona, el valor de una casa, la presión arterial del paciente.</p>
+<p><span style="color:blue;"><strong>Problemas de clasificación</strong></span>. La respuesta es categórica e involucra K categorías diferentes. Por ejemplo, la marca de un producto adquirido (A, B, C) o si una persona incumple una deuda (sí o no).</p>
+<p>Los predictores pueden ser numéricos o categóricos.</p>
+</section>
+<section id="problema-de-regresión" class="level2">
+<h2 class="anchored" data-anchor-id="problema-de-regresión">Problema de regresión</h2>
+<p><strong>Objetivo</strong>: encontrar la mejor función <span class="math inline">\(f(X)\)</span> del predictor <span class="math inline">\(X\)</span> que describa la respuesta <span class="math inline">\(Y\)</span>.</p>
+<p>En términos matemáticos, queremos establecer la siguiente relación</p>
+<p><span class="math display">\[Y = f(X) + \epsilon\]</span></p>
+<ul>
+<li>Donde <span class="math inline">\(\epsilon\)</span> es un error natural (aleatorio).</li>
+</ul>
+</section>
+<section id="cómo-encontrar-la-forma-de-fx" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-encontrar-la-forma-de-fx">¿Cómo encontrar la forma de <span class="math inline">\(f(X)\)</span>?</h2>
+<p>Usando datos de entrenamiento.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TrainVal1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="cómo-encontrar-la-forma-de-fx-1" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-encontrar-la-forma-de-fx-1">¿Cómo encontrar la forma de <span class="math inline">\(f(X)\)</span>?</h2>
+<p>Usando datos de entrenamiento.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TrainVal2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="cómo-evaluar-la-calidad-de-la-función-candidata-hatfx" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-evaluar-la-calidad-de-la-función-candidata-hatfx">¿Cómo evaluar la calidad de la función candidata <span class="math inline">\(\hat{f}(X)\)</span>?</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Usando datos de validación.</p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TrainVal3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1">¿Cómo evaluar la calidad de la función candidata <span class="math inline">\(\hat{f}(X)\)</span>?</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Usando datos de validación.</p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TrainVal4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="además" class="level2">
+<h2 class="anchored" data-anchor-id="además">Además…</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Podemos usar <span style="color:darkgreen;"><strong><em>datos de prueba</em></strong></span> para una evaluación final del modelo.</p>
+<p>Los datos de prueba, son datos que se obtuvieron del proceso que generó los datos de entrenamiento.</p>
+<p>Los datos de prueba son independientes de los datos de entrenamiento.</p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TrainVal5.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-de-regresión-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-regresión-lineal">Modelo de Regresión Lineal</h2>
+<p>Una función candidata muy común para predecir una respuesta es el modelo de regresión lineal.</p>
+<p>Tiene la forma matemática:</p>
+<p><span class="math display">\[\hat{Y}_i = \hat{f}(X_i) = \hat{\beta}_0 + \hat{\beta}_1 X_i\]</span></p>
+<ul>
+<li><p>Donde <span class="math inline">\(i = 1, \ldots, n_t\)</span> es el indice de los <span class="math inline">\(n_t\)</span> datos de entrenamiento, y</p></li>
+<li><p><span class="math inline">\(\hat{Y}_i\)</span> es la predicción del valor real de la respuesta <span class="math inline">\(Y_i\)</span> asociada a un valor del predictor igual a <span class="math inline">\(X_i\)</span>.</p></li>
+<li><p>Los valores <span class="math inline">\(\hat{\beta}_0\)</span> y <span class="math inline">\(\hat{\beta}_1\)</span> se llaman <span style="color:lightblue;"><em>coeficientes</em></span> del modelo.</p></li>
+</ul>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Los valores de <span class="math inline">\(\hat{\beta}_0\)</span> y <span class="math inline">\(\hat{\beta}_1\)</span> se obtienen usando el conjunto de datos de prueba y el método de mínimos cuadrados.</p>
+<p>Este método encuentra los valores de <span class="math inline">\(\hat{\beta}_0\)</span> y <span class="math inline">\(\hat{\beta}_1\)</span> que minimizan el error cometido por el modelo <span class="math inline">\(\hat{f}(X_i)\)</span> al tratar de predecir las respuestas del conjunto de entrenamiento.</p>
+<p>Técnicamente, el método minimiza la siguiente expresión</p>
+<p><span class="math display">\[(Y_1 - (\hat{\beta}_0 + \hat{\beta}_1 X_1 ))^2 + (Y_2 - (\hat{\beta}_0 + \hat{\beta}_1 X_2 ))^2 + \cdots + (Y_{n_t} - (\hat{\beta}_0 + \hat{\beta}_1 X_{n_t} ))^2 \]</span></p>
+<p>Para los <span class="math inline">\(n_t\)</span> los <span style="color:blue;">datos de entrenamiento</span>!</p>
+</section>
+<section id="ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo">Ejemplo</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Modulo 3 - Modelos predictivos y series de tiempo copy.012.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="regresión-lineal-en-python" class="level2">
+<h2 class="anchored" data-anchor-id="regresión-lineal-en-python">Regresión lineal en Python</h2>
+<p>TBD</p>
+</section>
+<section id="supuestos-del-modelo-de-regresión-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="supuestos-del-modelo-de-regresión-lineal">Supuestos del modelo de regresión lineal</h2>
+<p>Para usarlo el modelo de regresión, los errores del modelo <span class="math inline">\(e_i = Y_i - \hat{Y}_i\)</span> obtenidos en los <span style="color:blue;">datos de entrenamiento</span> deben que cumplir tres condiciones:</p>
+<ol type="1">
+<li>En promedio, ser iguales a 0.</li>
+<li>Tener la misma dispersión o variabilidad.</li>
+<li>Ser independientes los unos de los otros.</li>
+</ol>
+<p>Estos supuestos se evalúan usando un <em>análisis gráfico de residuos</em> (errores del modelo).</p>
+</section>
+<section id="en-python" class="level2">
+<h2 class="anchored" data-anchor-id="en-python">En Python</h2>
+</section>
+<section id="error-de-predicción" class="level2">
+<h2 class="anchored" data-anchor-id="error-de-predicción">Error de Predicción</h2>
+<p>Después de estimar y validar el modelo de regresión lineal, podemos verificar la calidad de sus predicciones sobre datos <span style="color:darkred;"><strong>no observados</strong></span>. Es decir, sobre los datos en el conjunto de validación.</p>
+<p>Una métrica para esto es el <strong>error de predicción promedio</strong> (MSE<span class="math inline">\(_v\)</span>):</p>
+<p><span class="math display">\[\text{MSE}_v = \frac{(Y_1 - (\hat{\beta}_0 + \hat{\beta}_1 X_1 ))^2 + (Y_2 - (\hat{\beta}_0 + \hat{\beta}_1 X_2 ))^2 + \cdots + (Y_{n_v} - (\hat{\beta}_0 + \hat{\beta}_1 X_{n_v} ))^2}{n_v} \]</span></p>
+<ul>
+<li>Para los <span class="math inline">\(n_v\)</span> los datos de validación!</li>
+</ul>
+<p>Entre más pequeño <span class="math inline">\(\text{MSE}_v\)</span>, mejores las predicciones sobre datos no observados.</p>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<p>En la práctica, se utiliza la raíz cuadrada del error de predicción promedio:</p>
+<p><span class="math display">\[\text{RMSE}_v = \sqrt{\text{MSE}_v}.\]</span></p>
+<p>La ventaja del <span class="math inline">\(\text{RMSE}_v\)</span> es que se puede interpretar como:</p>
+<blockquote class="blockquote">
+<p>La variabilidad promedio de una predicción del modelo.</p>
+</blockquote>
+<p>Por ejemplo, si <span class="math inline">\(\text{RMSE}_v = 1\)</span>, entonces una predicción de <span class="math inline">\(\hat{Y} = 5\)</span> tendrá una tasa de error (promedio) de <span class="math inline">\(\pm 1\)</span>.</p>
+</section>
+<section id="en-python-1" class="level2">
+<h2 class="anchored" data-anchor-id="en-python-1">En Python</h2>
+<p>TBD</p>
+</section>
+<section id="otra-métrica-r2" class="level2">
+<h2 class="anchored" data-anchor-id="otra-métrica-r2">Otra Métrica: <span class="math inline">\(R^2\)</span></h2>
+<ul>
+<li><p>En el contexto de Ciencia de Datos, el <span class="math inline">\(R^2\)</span> se puede interpretar como la correlación entre las respuestas actuales y las predecidas por el modelo.</p></li>
+<li><p>Cuanto mayor sea la correlación, mejor será la concordancia entre las respuestas previstas y las reales.</p></li>
+</ul>
+</section>
+<section id="mini-actividad-cooperative-mode" class="level2">
+<h2 class="anchored" data-anchor-id="mini-actividad-cooperative-mode">Mini-Actividad (cooperative mode)</h2>
+<ol type="1">
+<li><p>Considera el conjunto de datos Advertising.xlsx en Canvas.</p></li>
+<li><p>Usa un modelo para predecir Sales que incluya el predictor Radio (dinero invertido en anuncios por la radio de un producto ($)). ¿Cuál es el valor del <span class="math inline">\(\text{RMSE}_v\)</span>?</p></li>
+<li><p>Ahora, usa un modelo para predecir Sales que incluya dos predictores: TV y Radio. ¿Cuál es el valor del <span class="math inline">\(\text{RMSE}_v\)</span>?</p></li>
+<li><p>¿Cuál modelo preferen?</p></li>
+</ol>
+</section>
+<section id="otras-funciones-candidatas" class="level2">
+<h2 class="anchored" data-anchor-id="otras-funciones-candidatas">Otras funciones candidatas</h2>
+<p>El modelo de regresión lineal es de los más comunes para predecir una respuesta. Es simple y fácil de calcular e interpretar.</p>
+<p>Sin embargo, puede ser limitado para problemas muy complejos.</p>
+<p>Para esto, existen otras funciones candidatas <span class="math inline">\(\hat{f}(X)\)</span> más avanzadas como:</p>
+<ul>
+<li><p><em>K</em> vecinos más cercanos.</p></li>
+<li><p>LASSO.</p></li>
+<li><p>Arboles de decision.</p></li>
+</ul>
+</section>
+</section>
+<section id="series-de-tiempo" class="level1">
+<h1>Series de tiempo</h1>
+<section id="qué-es-una-serie-de-tiempo" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-una-serie-de-tiempo">¿Qué es una serie de tiempo?</h2>
+<ul>
+<li><p>Es una secuencia de observaciones recopiladas en intervalos de tiempo sucesivos.</p></li>
+<li><p>Los datos de series temporales se usan comúnmente en campos como finanzas, economía, pronóstico del tiempo, procesamiento de señales y muchos otros.</p></li>
+<li><p>Analizar datos de series temporales nos ayuda a comprender patrones, tendencias y comportamientos a lo largo del tiempo, lo que permite la predicción, la detección de anomalías y la toma de decisiones.</p></li>
+</ul>
+</section>
+<section id="ejemplo-1" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-1">Ejemplo</h2>
+<p><img src="images/clipboard-74597638.png" class="img-fluid"></p>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<ul>
+<li><p>Técnicamente, es un conjunto de observaciones sobre un predictor (discreto) <span class="math inline">\(T\)</span> y una respuesta <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Las observaciones de <span class="math inline">\(Y\)</span> se registran en los momentos o tiempos dados por el predictor <span class="math inline">\(T\)</span>.</p></li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dia</th>
+<th>T</th>
+<th>Temperatura (Y)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lunes</td>
+<td>1</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Martes</td>
+<td>2</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>Miércoles</td>
+<td>3</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Jueves</td>
+<td>4</td>
+<td>14</td>
+</tr>
+<tr class="odd">
+<td>Viernes</td>
+<td>5</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>La característica especial de la serie de tiempo es que las <span style="color:lightblue;">observaciones de <span class="math inline">\(Y\)</span> no son independientes!</span></li>
+</ul>
+</section>
+<section id="en-python-2" class="level2">
+<h2 class="anchored" data-anchor-id="en-python-2">En Python</h2>
+<p>TBD</p>
+</section>
+<section id="series-informativas" class="level2">
+<h2 class="anchored" data-anchor-id="series-informativas">Series informativas</h2>
+<p><br></p>
+<p>Una serie de tiempo informativa es una serie que contiene patrones que podemos utilizar para predecir valores futuros de la serie.</p>
+<p>Los tres posibles patrones son:</p>
+<ul>
+<li><span style="color:darkgreen;">Tendencia</span>: la serie tiene un comportamiento <strong>creciente/decreciente</strong>.</li>
+<li><span style="color:purple;">Estacionalidad</span>: la serie tiene un patrón <strong>cíclico</strong> repetitivo en sus valores.</li>
+<li><span style="color:darkblue;">Autocorrelación</span>: la serie sigue un patrón que puede ser descrito con <strong>valores anteriores</strong> de la misma.</li>
+</ul>
+</section>
+<section id="tendencia" class="level2">
+<h2 class="anchored" data-anchor-id="tendencia">Tendencia</h2>
+<p>TBD</p>
+</section>
+<section id="estacionalidad" class="level2">
+<h2 class="anchored" data-anchor-id="estacionalidad">Estacionalidad</h2>
+<p>TBD</p>
+</section>
+<section id="autocorrelación" class="level2">
+<h2 class="anchored" data-anchor-id="autocorrelación">Autocorrelación</h2>
+<p>TBD</p>
+</section>
+<section id="series-no-informativas-ruido-blanco" class="level2">
+<h2 class="anchored" data-anchor-id="series-no-informativas-ruido-blanco">Series No Informativas: Ruido Blanco</h2>
+<ul>
+<li><p>Un ruido blanco es una serie cuyos valores, en promedio, son <strong>0</strong> y tienen una variación constante. También, sus valores son independientes entre si.</p></li>
+<li><p>Se usa para describir el error aleatorio o <em>natural.</em></p></li>
+</ul>
+</section>
+</section>
+<section id="modelo-de-regresión-lineal-para-series-de-tiempo" class="level1">
+<h1>Modelo de regresión lineal para series de tiempo</h1>
+<section id="modelo-de-regresión-lineal-1" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-regresión-lineal-1">Modelo de Regresión Lineal</h2>
+<p>El modelo de regresión lineal es útil para capturar los patrones de una serie de tiempo. En este contexto, el modelo toma la forma:</p>
+<p><span class="math display">\[\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i\]</span></p>
+<ul>
+<li><p>Donde <span class="math inline">\(i = 1, \ldots, n_t\)</span> es el indice de los <span class="math inline">\(n_t\)</span> datos de entrenamiento, y</p></li>
+<li><p><span class="math inline">\(\hat{Y}_i\)</span> es la predicción del valor real de la respuesta <span class="math inline">\(Y_i\)</span> <em>en el tiempo</em> <span class="math inline">\(T_i\)</span>.</p></li>
+</ul>
+</section>
+<section id="tendencia-1" class="level2">
+<h2 class="anchored" data-anchor-id="tendencia-1">Tendencia</h2>
+<p>La tendencia de la serie de tiempo es capturada por el valor de <span class="math inline">\(\hat{\beta}_1\)</span> en</p>
+<p><span class="math display">\[\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i\]</span></p>
+<ul>
+<li><p>Si <span class="math inline">\(\hat{\beta}_1\)</span> es positivo, la serie tiene una tendencia ascendente.</p></li>
+<li><p>Si <span class="math inline">\(\hat{\beta}_1\)</span> es negativo, la serie tiene una tendencia descendente.</p></li>
+</ul>
+<p>Los valores de <span class="math inline">\(\hat{\beta}_0\)</span> y <span class="math inline">\(\hat{\beta}_1\)</span> se obtienen usando el método de mínimos cuadrados.</p>
+</section>
+<section id="evaluación-del-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="evaluación-del-modelo">Evaluación del Modelo</h2>
+<p>Recuerda que los errores del modelo de regresión lineal (<span class="math inline">\(e_i = Y_i - \hat{Y}_i\)</span>) deben de cumplir con dos condiciones:</p>
+<ol type="1">
+<li><p>En promedio, ser iguales a 0.</p></li>
+<li><p>Tener la misma dispersión o variabilidad.</p></li>
+<li><p>Ser independientes los unos de los otros.</p></li>
+</ol>
+<p>En el contexto de series de tiempo, <strong>esto significa que los errores del modelo</strong> <span class="math inline">\(e_i\)</span> se deben de comportar como un <span style="color:darkgray;">ruido blanco</span> que no contiene patrones.</p>
+</section>
+<section id="en-python-3" class="level2">
+<h2 class="anchored" data-anchor-id="en-python-3">En Python</h2>
+<p>TBD</p>
+</section>
+<section id="analysis-de-residuales" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-de-residuales">Analysis de Residuales</h2>
+<p>TBD</p>
+</section>
+<section id="el-modelo-es-más-flexible-que-eso" class="level2">
+<h2 class="anchored" data-anchor-id="el-modelo-es-más-flexible-que-eso">El Modelo es Más Flexible que Eso</h2>
+<p>Si es necesario, el modelo de regresión lineal se puede extender para capturar relaciones cuadráticas. Para esto, el modelo toma la siguiente forma:</p>
+<p><span class="math display">\[\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i + \hat{\beta}_2 T^{2}_i \]</span></p>
+<ul>
+<li><p>Donde <span class="math inline">\(T^{2}_i\)</span> es el valor del indice de tiempo al cuadrado.</p></li>
+<li><p><span class="math inline">\(\hat{\beta}_2\)</span> es un término que captura una posible curvatura en la serie de tiempo.</p></li>
+</ul>
+</section>
+<section id="en-python-4" class="level2">
+<h2 class="anchored" data-anchor-id="en-python-4">En Python</h2>
+<p>TBD</p>
+</section>
+<section id="analysis-de-residuales-1" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-de-residuales-1">Analysis de Residuales</h2>
+<p>TBD</p>
+</section>
+<section id="tendencias-exponenciales" class="level2">
+<h2 class="anchored" data-anchor-id="tendencias-exponenciales">Tendencias exponenciales</h2>
+<p>Si una serie tiene una tendencia <strong>exponencial</strong>, el modelo de regresión lineal podría no hacer apropiado para capturar dicha tendencia.</p>
+<p>Un remedio sencillo es calcular el <strong>logaritmo</strong> de los datos de la respuesta y obtener un modelo de regresión lineal para la variable transformada.</p>
+<p>Es decir, usar el siguiente modelo para describir la serie de tiempo:</p>
+<p><span class="math display">\[\log (Y_i) = \hat{\beta}_0 + \hat{\beta}_1 T_i.\]</span> ## Ejemplo</p>
+<p>TBD</p>
+</section>
+<section id="mini-actividad-cooperative-mode-1" class="level2">
+<h2 class="anchored" data-anchor-id="mini-actividad-cooperative-mode-1">Mini-Actividad (cooperative mode)</h2>
+<ol type="1">
+<li><p>Considera el conjunto de datos <em>CanadianWorkHours.xlsx</em> en Canvas.</p></li>
+<li><p>Visualiza la serie en Python. La variable de respuesta es Working Hours y el predictor es el año.</p></li>
+<li><p>Usando Python, contesta la pregunta: ¿Cúal de los siguientes modelos se ajusta mejor a la serie?</p></li>
+<li><p>Modelo de regresión con tendencia lineal.</p></li>
+<li><p>Modelo de regresión con tendencia quadratica.</p></li>
+<li><p>Modelo de regresión con tendencia exponencial.</p></li>
+</ol>
+</section>
+<section id="identificando-heteroscedasticidad" class="level2">
+<h2 class="anchored" data-anchor-id="identificando-heteroscedasticidad">Identificando Heteroscedasticidad</h2>
+<p>Heteroscedastisidad surge cuando la dispersión de los errores del modelo no es constante a través del tiempo.</p>
+<p>Ejemplo</p>
+</section>
+</section>
+<section id="solución" class="level1">
+<h1>Solución</h1>
+<p>Si identificamos heteroscedasticidad en los errores del modelo de regresión, tenemos algunas opciones de transformaciones en nuestra serie original.</p>
+<p>Aplicar transformaciones a serie de tiempo <span class="math inline">\(Y_i\)</span>: Logaritmo</p>
+<ul>
+<li>Si la serie de tiempo original contiene valores negativos, se le puede <strong>desfasar</strong> sumando el negativo de su mínimo valor.</li>
+</ul>
+<section id="en-python-5" class="level2">
+<h2 class="anchored" data-anchor-id="en-python-5">En Python</h2>
+</section>
+<section id="qué-hago-si-la-transformación-no-funciona" class="level2">
+<h2 class="anchored" data-anchor-id="qué-hago-si-la-transformación-no-funciona">¿Qué hago si la transformación no funciona?</h2>
+<ul>
+<li>Si la transformación de logaritmo no reduce significativamente la heteroscedasticidad, existen modelos para modelar la varianza llamados GARCH.<br>
+</li>
+<li>Puedes consultar literatura sobre dichos modelos y sus implementaciones en software en un texto de series de tiempo como <em>Time Series Analysis with applications in R</em> de Cryer y Chan.</li>
+</ul>
+</section>
+<section id="estacionalidad-1" class="level2">
+<h2 class="anchored" data-anchor-id="estacionalidad-1">Estacionalidad</h2>
+<p>La <strong>estacionalidad</strong> consiste en un comportamiento repetitivo o cíclico que ocurre con una frecuencia constante.</p>
+<p>Ejemplos:</p>
+<ul>
+<li><p>Demanda de prendas de invierno</p></li>
+<li><p>Demanda para viajes turísticos</p></li>
+<li><p>Volumen de Lluvia durante el año.</p></li>
+</ul>
+</section>
+<section id="capturando-estacionalidad" class="level2">
+<h2 class="anchored" data-anchor-id="capturando-estacionalidad">Capturando Estacionalidad</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>El modelo de regresión lineal se puede extender para capturar patrones de estacionalidad en la serie de tiempo.</p>
+<p>Para esto, se crea un predictor adicional categórico que indica la estación a la que pertenece cada dato.</p>
+<p>Detrás de cámaras, el predictor adicional categórico se transforma en varios predicadores numéricos auxiliares.</p>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-2320382344.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="analizando-series-estacionales-en-python" class="level2">
+<h2 class="anchored" data-anchor-id="analizando-series-estacionales-en-python">Analizando series estacionales en Python</h2>
+<p>TBD</p>
+</section>
+<section id="desventajas-de-los-modelos-de-regresión-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="desventajas-de-los-modelos-de-regresión-lineal">Desventajas de los modelos de regresión lineal</h2>
+<p>A pesar de su simplicidad y versatilidad, los modelos de regresión lineal no son los mejores para describir una serie de tiempo.</p>
+<p>Esto es porque no asumen una dependencia entre valores consecutivos de la serie de tiempo. Es decir, no usan el hecho de que, por ejemplo, <span class="math inline">\(Y_1\)</span> puede ayudarnos a predecir <span class="math inline">\(Y_2\)</span>, y <span class="math inline">\(Y_2\)</span> puede ayudarnos a predecir <span class="math inline">\(Y_3\)</span>, etc.</p>
+<p>Modelos que nos ayudan a utilizar observaciones anteriores para predecir valores futuros de la variable de respuesta <span class="math inline">\(Y\)</span> son los <strong>modelos autoregresivos</strong>.</p>
+</section>
+</section>
+<section id="return-to-main-page" class="level1">
+<h1><a href="https://alanrvazquez.github.io/TEC-IN1002B-Website/">Return to main page</a></h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

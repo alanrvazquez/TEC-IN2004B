@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alan R. Vazquez">
+
+<title>Principal Component Analysis – TEC-IN2004B</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">TEC-IN2004B</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción">Introducción</a>
+  <ul class="collapse">
+  <li><a href="#tipos-de-aprendizaje" id="toc-tipos-de-aprendizaje" class="nav-link" data-scroll-target="#tipos-de-aprendizaje">Tipos de Aprendizaje</a></li>
+  <li><a href="#métodos-de-aprendizaje-sin-supervisión" id="toc-métodos-de-aprendizaje-sin-supervisión" class="nav-link" data-scroll-target="#métodos-de-aprendizaje-sin-supervisión">Métodos de aprendizaje sin supervisión</a></li>
+  </ul></li>
+  <li><a href="#dispersión-en-una-o-varias-dimensiones" id="toc-dispersión-en-una-o-varias-dimensiones" class="nav-link" data-scroll-target="#dispersión-en-una-o-varias-dimensiones">Dispersión en una o varias dimensiones</a>
+  <ul class="collapse">
+  <li><a href="#dispersión-en-una-dimensión" id="toc-dispersión-en-una-dimensión" class="nav-link" data-scroll-target="#dispersión-en-una-dimensión">Dispersión en una dimensión</a></li>
+  <li><a href="#dispersión-en-dos-dimensiones" id="toc-dispersión-en-dos-dimensiones" class="nav-link" data-scroll-target="#dispersión-en-dos-dimensiones">Dispersión en dos dimensiones</a></li>
+  <li><a href="#capturando-dispersión" id="toc-capturando-dispersión" class="nav-link" data-scroll-target="#capturando-dispersión">Capturando dispersión</a></li>
+  <li><a href="#capturando-dispersión-1" id="toc-capturando-dispersión-1" class="nav-link" data-scroll-target="#capturando-dispersión-1">Capturando dispersión</a></li>
+  <li><a href="#veamos-otro-ejemplo" id="toc-veamos-otro-ejemplo" class="nav-link" data-scroll-target="#veamos-otro-ejemplo">Veamos otro ejemplo</a></li>
+  <li><a href="#veamos-otro-ejemplo-1" id="toc-veamos-otro-ejemplo-1" class="nav-link" data-scroll-target="#veamos-otro-ejemplo-1">Veamos otro ejemplo</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#un-nuevo-eje-de-coordenadas" id="toc-un-nuevo-eje-de-coordenadas" class="nav-link" data-scroll-target="#un-nuevo-eje-de-coordenadas">Un Nuevo Eje de Coordenadas</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-componentes-principales" id="toc-análisis-de-componentes-principales" class="nav-link" data-scroll-target="#análisis-de-componentes-principales">Análisis de componentes principales</a>
+  <ul class="collapse">
+  <li><a href="#reducción-de-dimension" id="toc-reducción-de-dimension" class="nav-link" data-scroll-target="#reducción-de-dimension">Reducción de Dimension</a></li>
+  <li><a href="#preparación" id="toc-preparación" class="nav-link" data-scroll-target="#preparación">Preparación</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#algoritmo" id="toc-algoritmo" class="nav-link" data-scroll-target="#algoritmo">Algoritmo</a></li>
+  <li><a href="#matriz-de-correlación" id="toc-matriz-de-correlación" class="nav-link" data-scroll-target="#matriz-de-correlación">Matriz de Correlación</a></li>
+  <li><a href="#partición-de-la-matriz-de-correlación" id="toc-partición-de-la-matriz-de-correlación" class="nav-link" data-scroll-target="#partición-de-la-matriz-de-correlación">Partición de la matriz de correlación</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#proporción-de-la-dispersión-explicada-por-el-componente" id="toc-proporción-de-la-dispersión-explicada-por-el-componente" class="nav-link" data-scroll-target="#proporción-de-la-dispersión-explicada-por-el-componente">Proporción de la dispersión explicada por el componente</a></li>
+  <li><a href="#comentarios" id="toc-comentarios" class="nav-link" data-scroll-target="#comentarios">Comentarios</a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
+  <li><a href="#apc-en-python" id="toc-apc-en-python" class="nav-link" data-scroll-target="#apc-en-python">APC en Python</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#biplot" id="toc-biplot" class="nav-link" data-scroll-target="#biplot">Biplot</a></li>
+  </ul></li>
+  <li><a href="#return-to-main-page" id="toc-return-to-main-page" class="nav-link" data-scroll-target="#return-to-main-page">Return to main page</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PCA.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Principal Component Analysis</h1>
+<p class="subtitle lead">IN2004B: Generation of Value with Data Analytics</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Alan R. Vazquez </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Industrial Engineering
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<p><br></p>
+<ol type="1">
+<li>Introducción</li>
+<li>Dispersión en una o varias dimensiones</li>
+<li>Análisis de componentes principales</li>
+</ol>
+</section>
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<section id="tipos-de-aprendizaje" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-aprendizaje">Tipos de Aprendizaje</h2>
+<p>En ciencia de datos, existen dos tipos principales de aprendizaje:</p>
+<ul>
+<li><p><span style="color:gray;">Aprendizaje supervisado (<em>supervised learning</em>). En el cual tenemos varios predictores y una respuesta. El objetivo es predecir la respuesta usando los valores de los predictores.</span></p></li>
+<li><p><span style="color:green;">Aprendizaje sin supervisión (<em>unsupervised learning</em>)</span>. En el cual solo tenemos varios predictores. El objetivo es descubrir patrones en sus datos.</p></li>
+</ul>
+</section>
+<section id="métodos-de-aprendizaje-sin-supervisión" class="level2">
+<h2 class="anchored" data-anchor-id="métodos-de-aprendizaje-sin-supervisión">Métodos de aprendizaje sin supervisión</h2>
+<p><span style="color:gray;">Los <strong>Métodos de Agrupamiento</strong> tienen como objetivo encontrar subgrupos con datos similares en la base de datos.</span></p>
+<p>El <span style="color:aqua;"><strong>Análisis de Componentes Principales</strong></span> busca una representación alternativa de los datos para facilitar su comprensión cuando hay muchos predictores en la base de datos.</p>
+<p>Aquí nos usaremos estos métodos en predictores <span class="math inline">\(X_1, X_2, \ldots, X_p\)</span> que son numéricos.</p>
+</section>
+</section>
+<section id="dispersión-en-una-o-varias-dimensiones" class="level1">
+<h1>Dispersión en una o varias dimensiones</h1>
+<section id="dispersión-en-una-dimensión" class="level2">
+<h2 class="anchored" data-anchor-id="dispersión-en-una-dimensión">Dispersión en una dimensión</h2>
+<p>El concepto de componentes principales requiere de entender la dispersión o variabilidad de los datos.</p>
+<p>Supongamos que tenemos datos de un solo predictor.</p>
+<div class="center">
+<p>[<strong><em>Observaciones de un predictor</em></strong>]</p>
+</div>
+<p><img src="images/unadispersion.png" class="img-fluid"></p>
+</section>
+<section id="dispersión-en-dos-dimensiones" class="level2">
+<h2 class="anchored" data-anchor-id="dispersión-en-dos-dimensiones">Dispersión en dos dimensiones</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/dosdispersion1.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="images/dosdispersion2.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="capturando-dispersión" class="level2">
+<h2 class="anchored" data-anchor-id="capturando-dispersión">Capturando dispersión</h2>
+<p>En algunos casos, podemos capturar la dispersión de datos en dos dimensiones (predictores) usando una sola dimensión.</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/capturedispersion1.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="capturando-dispersión-1" class="level2">
+<h2 class="anchored" data-anchor-id="capturando-dispersión-1">Capturando dispersión</h2>
+<p>En algunos casos, podemos capturar la dispersión de datos en dos dimensiones (predictores) usando una sola dimensión.</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/capturedispersion2.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p>Un solo predictor <span class="math inline">\(X_2\)</span> captura gran parte de la dispersión en los datos.</p>
+<p><img src="images/capturedispersion3.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="veamos-otro-ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="veamos-otro-ejemplo">Veamos otro ejemplo</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/otroejemplo1.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="veamos-otro-ejemplo-1" class="level2">
+<h2 class="anchored" data-anchor-id="veamos-otro-ejemplo-1">Veamos otro ejemplo</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/otroejemplo1.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p>Un solo predictor captura gran parte de la dispersión en los datos. En este caso, el nuevo predictor tiene la forma <span class="math inline">\(Z_1 = a X_1 + b X_2 + c.\)</span></p>
+<p><img src="images/otroejemplo2.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Alternativamente, podemos utilizar dos dimensiones alternativas para capturar la dispersión.</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/alternativas1.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p>Un solo predictor captura gran parte de la dispersión en los datos. En este caso, el nuevo predictor tiene la forma <span class="math inline">\(Z_1 = a X_1 + b X_2 + c.\)</span></p>
+<p><img src="images/alternativas2.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="un-nuevo-eje-de-coordenadas" class="level2">
+<h2 class="anchored" data-anchor-id="un-nuevo-eje-de-coordenadas">Un Nuevo Eje de Coordenadas</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>El nuevo eje de coordenadas esta dado por dos nuevos predictores <span class="math inline">\(Z_1\)</span> y <span class="math inline">\(Z_2\)</span>. Los dos son dados por ecuaciones lineales de los nuevos predictores.</p></li>
+<li><p>El primer eje <span class="math inline">\(Z_1\)</span> captura gran porción de la dispersión, mientras que <span class="math inline">\(Z_2\)</span> captura poca porción desde otro ángulo.</p></li>
+<li><p>Los nuevos ejes <span class="math inline">\(Z_1\)</span> y <span class="math inline">\(Z_2\)</span> se llaman <span style="color:DARKgray;"><strong><em>componentes principales</em></strong></span>.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img src="images/alternativas3.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="análisis-de-componentes-principales" class="level1">
+<h1>Análisis de componentes principales</h1>
+<section id="reducción-de-dimension" class="level2">
+<h2 class="anchored" data-anchor-id="reducción-de-dimension">Reducción de Dimension</h2>
+<p><br></p>
+<p>El <span style="color:aqua;"><strong>Análisis de Componentes Principales</strong></span> (ACP) nos ayuda a reducir la dimensión de los datos.</p>
+<ul>
+<li><p>Crea un nuevo eje de coordenadas en dos (o más) dimensiones.</p></li>
+<li><p>Técnicamente, crea nuevos predictores combinando predictores altamente <u><em>correlacionados</em></u>. Los nuevos predictores no están correlacionados.</p></li>
+</ul>
+</section>
+<section id="preparación" class="level2">
+<h2 class="anchored" data-anchor-id="preparación">Preparación</h2>
+<p><strong>Paso 1</strong>. Comenzamos con una base de datos con <span class="math inline">\(n\)</span> observaciones y <span class="math inline">\(p\)</span> predictores.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Predictor 1</strong></th>
+<th><strong>Predictor 2</strong></th>
+<th><strong>Predictor 3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>15</td>
+<td>14</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>3</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>18</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>16</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<p><strong>Paso 2</strong>. Estandarizamos cada predictor individualmente.</p>
+<p><span class="math display">\[{\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 }}\]</span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Predictor 1</th>
+<th>Predictor 2</th>
+<th>Predictor 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>1.15</td>
+<td>0.46</td>
+<td>-0.96</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>-1.52</td>
+<td>-1.20</td>
+<td>-0.75</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>0.12</td>
+<td>-0.95</td>
+<td>1.55</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>-0.29</td>
+<td>0.97</td>
+<td>-0.13</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>0.53</td>
+<td>0.72</td>
+<td>0.29</td>
+</tr>
+<tr class="even">
+<td><strong>Suma</strong></td>
+<td><em>0</em></td>
+<td><em>0</em></td>
+<td><em>0</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Varianza</strong></td>
+<td><em>1</em></td>
+<td><em>1</em></td>
+<td><em>1</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<p><strong>Paso 3</strong>. Asumimos que la base de datos estandarizada es una matrix <span class="math inline">\(\mathbf{X}\)</span> de <span class="math inline">\(n\times p\)</span>.</p>
+<p><span class="math display">\[\mathbf{X} = \begin{pmatrix}
+1.15    &amp;   0.46    &amp;   -0.96   \\
+-1.52   &amp;   -1.20   &amp;   -0.75   \\
+0.12    &amp;   -0.95   &amp;   1.55    \\
+-0.29   &amp;   0.97    &amp;   -0.13   \\
+0.53    &amp;   0.72    &amp;   0.29    \\
+\end{pmatrix}\]</span></p>
+</section>
+<section id="algoritmo" class="level2">
+<h2 class="anchored" data-anchor-id="algoritmo">Algoritmo</h2>
+<p><br></p>
+<p>El algoritmo de ACP tiene su origen en el álgebra lineal.</p>
+<p>Su idea básica es:</p>
+<ol type="1">
+<li><p>Crear una matriz <span class="math inline">\(\mathbf{C}\)</span> con las correlaciones entre los predictores de la matriz <span class="math inline">\(\mathbf{X}\)</span>.</p></li>
+<li><p>Partir la matrix <span class="math inline">\(\mathbf{C}\)</span> en tres partes que nos dan el nuevo eje de coordenadas y la importancia de cada eje.</p></li>
+</ol>
+</section>
+<section id="matriz-de-correlación" class="level2">
+<h2 class="anchored" data-anchor-id="matriz-de-correlación">Matriz de Correlación</h2>
+<p>Siguiendo con nuestro ejemplo, la matriz de correlación contiene las correlaciones entre dos columnas de <span class="math inline">\(\mathbf{X}\)</span>.</p>
+<p><img src="images/correlations.png" class="img-fluid"></p>
+</section>
+<section id="partición-de-la-matriz-de-correlación" class="level2">
+<h2 class="anchored" data-anchor-id="partición-de-la-matriz-de-correlación">Partición de la matriz de correlación</h2>
+<p>La partición de la matrix <span class="math inline">\(\mathbf{C}\)</span> se hace usando el <span style="color:aqua;"><em>método de descomposición por valores y vectores propios</em></span>.</p>
+<p><img src="images/descomposition1.png" class="img-fluid"></p>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"></h2>
+<p><img src="images/descomposition2.png" class="img-fluid"></p>
+<ul>
+<li><p>Las columnas de <span class="math inline">\(\mathbf{B}\)</span> definen los ejes del nuevo sistema de coordenadas. Estos ejes se llaman <span style="color:green;"><strong><em>componentes principales</em></strong></span>.</p></li>
+<li><p>Los valores diagonales en <span class="math inline">\(\mathbf{A}\)</span> definen la importancia individual de cada componente principal (eje).</p></li>
+</ul>
+</section>
+<section id="proporción-de-la-dispersión-explicada-por-el-componente" class="level2">
+<h2 class="anchored" data-anchor-id="proporción-de-la-dispersión-explicada-por-el-componente">Proporción de la dispersión explicada por el componente</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><span class="math display">\[\mathbf{A} = \begin{pmatrix}
+1.60     &amp;  0.00    &amp;   0.00    \\
+0.00     &amp;  1.07     &amp;  0.00    \\
+0.00     &amp;  0.00     &amp;  0.33    \\
+\end{pmatrix}\]</span></p>
+</div><div class="column" style="width:60%;">
+<p>La proporción de la dispersión en los datos que es capturada por el primer componente es <span class="math inline">\(\frac{a_{1,1}}{p} = \frac{1.60}{3} = 0.53\)</span>. La proporción capturada por el segundo componente es <span class="math inline">\(\frac{a_{2,2}}{p} = \frac{1.07}{3} = 0.36\)</span>. La proporción capturada por el tercer componente es <span class="math inline">\(\frac{a_{3,3}}{p} = \frac{0.33}{3} = 0.11\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="comentarios" class="level2">
+<h2 class="anchored" data-anchor-id="comentarios">Comentarios</h2>
+<p>Los componentes principales se pueden usar para aproximar una matriz.</p>
+<p>Por ejemplo, podemos aproximar la matriz <span class="math inline">\(\mathbf{C}\)</span> al fijar el tercer componente igual a cero.</p>
+<p><span class="math display">\[\begin{pmatrix}
+-0.68   &amp;   0.35    &amp;   0.00    \\
+-0.72   &amp;   -0.13   &amp;   0.00    \\
+0.16    &amp;   0.93    &amp;   0.00\\
+\end{pmatrix} \begin{pmatrix}
+1.60     &amp;  0.00    &amp;   0.00    \\
+0.00     &amp;  1.07     &amp;  0.00    \\
+0.00     &amp;  0.00     &amp;  0.00    \\
+\end{pmatrix} \begin{pmatrix}
+-0.68   &amp;   -0.72   &amp;   0.16    \\
+0.35    &amp;   -0.13   &amp;   0.93    \\
+0.00    &amp;   0.00    &amp;   0.00    \\
+\end{pmatrix} = \begin{pmatrix}
+0.86    &amp;   0.73    &amp;   0.18    \\
+0.73    &amp;   0.85    &amp;   -0.30   \\
+0.18    &amp;   -0.30   &amp;   0.96    \\
+\end{pmatrix}\]</span></p>
+<p><span class="math display">\[\approx \begin{pmatrix}
+1.00    &amp;   0.58    &amp;   0.11    \\
+0.58    &amp;   1.00    &amp;   -0.23   \\
+0.11    &amp;   -0.23   &amp;   1.00    \\
+\end{pmatrix} = \mathbf{C}\]</span> ##</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>Las aproximaciones son útiles para almacenar matrices grandes.</p></li>
+<li><p>Esto se porque solo necesitamos almacenar los valores propios más grandes y sus vectores propios correspondientes para recuperar una aproximación de alta calidad de la matriz completa.</p></li>
+<li><p>Esta es la idea detrás de la <strong>compresión de imagenes</strong>.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-2295232858.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo">Ejemplo</h2>
+<p>Considera una base de datos de las 100 canciones más populares en TikTok. Los datos están en el archivo “TikTok 2020 reduced.xlsx“. Se tienen observaciones de varios predictores como:</p>
+<ul>
+<li><p>La bailabilidad describe qué tan adecuada es una pista para bailar basándose en una combinación de elementos musicales.</p></li>
+<li><p>La energía es una medida de 0 a 1 y representa una medida perceptiva de intensidad y actividad.</p></li>
+<li><p>El volumen general de una pista en decibelios (dB). Los valores de sonoridad se promedian en toda la pista.</p></li>
+<li><p>El habla detecta la presencia de palabras habladas en una pista. Cuanto más exclusivamente parecida a un discurso sea la grabación.</p></li>
+<li><p>Una medida de confianza de 0 a 1 sobre si la pista es acústica.</p></li>
+<li><p>Detecta la presencia de una audiencia en la grabación.</p></li>
+<li><p>Una medida de 0 a 1 que describe la positividad musical que transmite una pista.</p></li>
+</ul>
+</section>
+<section id="apc-en-python" class="level2">
+<h2 class="anchored" data-anchor-id="apc-en-python">APC en Python</h2>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"></h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>El <strong>Scree o Summary Plot</strong> te dice la variabilidad capturada por cada componente. Dicha variabilidad es dada por el <em>Eigen value</em> o valor propio. De 1 a 8 componentes.</p></li>
+<li><p>El primer componente abarca la mayor parte de la dispersión de los datos.</p></li>
+<li><p>Esta gráfica se usa para definir el número total de componentes a usar.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p>TBD</p>
+</div>
+</div>
+</div>
+</section>
+<section id="biplot" class="level2">
+<h2 class="anchored" data-anchor-id="biplot">Biplot</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Muestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes.</li>
+<li>Ayuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones.</li>
+<li>Una linea roja da las dirección de crecimiento de la variable etiquetada.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p>TBD</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="return-to-main-page" class="level1">
+<h1><a href="https://alanrvazquez.github.io/TEC-IN1002B-Website/">Return to main page</a></h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

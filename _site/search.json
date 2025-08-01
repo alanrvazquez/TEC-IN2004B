@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "",
-    "text": "Indicators (slides)\nIntroduction to Data Bases\n\n\n\n\n\nIntroduction to Data Science (slides) (colab)\nClassification Algorithms\n\n\n\n\n\nPredictive Models\nAutocorrelation Models\nNonparametric models\n\n\n\n\n\nPrincipal Component Analysis\nClustering Methods"
+    "text": "Indicators (slides)\nIntroduction to Data Bases\n\n\n\n\n\nIntroduction to Data Science (slides) (colab)\nDecision trees for classification\nEnsambles of trees\nK-nearest neighbours\n\n\n\n\n\nPredictive Models\nAutocorrelation Models\nNonparametric models\n\n\n\n\n\nPrincipal Component Analysis\nClustering Methods"
   },
   {
     "objectID": "index.html#course-topics",
     "href": "index.html#course-topics",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "",
-    "text": "Indicators (slides)\nIntroduction to Data Bases\n\n\n\n\n\nIntroduction to Data Science (slides) (colab)\nClassification Algorithms\n\n\n\n\n\nPredictive Models\nAutocorrelation Models\nNonparametric models\n\n\n\n\n\nPrincipal Component Analysis\nClustering Methods"
+    "text": "Indicators (slides)\nIntroduction to Data Bases\n\n\n\n\n\nIntroduction to Data Science (slides) (colab)\nDecision trees for classification\nEnsambles of trees\nK-nearest neighbours\n\n\n\n\n\nPredictive Models\nAutocorrelation Models\nNonparametric models\n\n\n\n\n\nPrincipal Component Analysis\nClustering Methods"
   },
   {
     "objectID": "index.html#about-the-author",
@@ -2307,7 +2307,7 @@
     "href": "Module2/Classification.html#accuracy",
     "title": "Classification Methods",
     "section": "Accuracy",
-    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.45\n\n\nThe higher the accuracy, the better the performance of the classifier."
+    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.5\n\n\nThe higher the accuracy, the better the performance of the classifier."
   },
   {
     "objectID": "Module2/Classification.html#observaciones",
@@ -2447,7 +2447,7 @@
     "href": "Module2/Classification.html#section-28",
     "title": "Classification Methods",
     "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143],\n       [0.52142857, 0.47857143]])"
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5],\n       [0.5, 0.5]])"
   },
   {
     "objectID": "Module2/Classification.html#example-1-cont.",
@@ -2636,14 +2636,14 @@
     "href": "Module2/Classification.html#section-5",
     "title": "Classification Methods",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus\n\n\n\n\n141\n130.0\n129.4\n10.2\n11.0\ncounterfeit\n\n\n155\n130.0\n130.3\n11.6\n10.5\ncounterfeit\n\n\n80\n129.7\n129.7\n8.6\n10.3\ngenuine\n\n\n97\n129.7\n129.5\n8.0\n10.3\ngenuine"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus\n\n\n\n\n53\n130.2\n130.2\n7.6\n10.9\ngenuine\n\n\n4\n129.6\n129.7\n10.4\n7.7\ngenuine\n\n\n24\n129.7\n129.9\n7.4\n10.8\ngenuine\n\n\n194\n130.3\n130.5\n11.6\n10.6\ncounterfeit"
   },
   {
     "objectID": "Module2/Classification.html#section-6",
     "href": "Module2/Classification.html#section-6",
     "title": "Classification Methods",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus\n\n\n\n\n105\n130.2\n130.2\n10.6\n10.7\ncounterfeit\n\n\n154\n130.3\n130.0\n11.0\n11.5\ncounterfeit\n\n\n163\n130.1\n130.2\n11.6\n10.9\ncounterfeit\n\n\n36\n130.3\n130.0\n8.4\n9.7\ngenuine\n\n\n156\n129.7\n129.6\n10.3\n11.4\ncounterfeit"
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus\n\n\n\n\n102\n130.3\n130.1\n8.7\n11.7\ncounterfeit\n\n\n197\n130.3\n130.4\n10.6\n11.1\ncounterfeit\n\n\n138\n130.4\n130.4\n11.3\n10.8\ncounterfeit\n\n\n178\n130.5\n130.3\n10.2\n12.1\ncounterfeit\n\n\n63\n130.0\n129.5\n8.0\n10.8\ngenuine"
   },
   {
     "objectID": "Module2/Classification.html#work-on-your-training-dataset",
@@ -2818,7 +2818,7 @@
     "href": "Module2/Classification.html#in-python-1",
     "title": "Classification Methods",
     "section": "In Python",
-    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[27  0]\n [33  0]]"
+    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[30  0]\n [30  0]]"
   },
   {
     "objectID": "Module2/Classification.html#apply-penalty-for-large-trees",
@@ -2868,5 +2868,1573 @@
     "title": "Classification Methods",
     "section": "Activity 2.1: Classification and Metrics (solo mode)",
     "text": "Activity 2.1: Classification and Metrics (solo mode)\nUsing the data in the “weight-height.csv” table, apply the CART procedure to build a decision tree useful for predicting a person’s sex based on their weight and height.\nIn this example, the predictor variables are continuous, and the predictor variable is binary.\nInterpret the Precision, Accuracy, Sensitivity, and Type 1 Error values for the validation set. If the software doesn’t report them, perform the calculations using the confusion matrix. Use “Female” as the target class. Discuss the effectiveness of the resulting model."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#load-the-libraries",
+    "href": "Module2/KNearestNeighbours.html#load-the-libraries",
+    "title": "K nearest neighbors",
+    "section": "Load the libraries",
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score, recall_score, precision_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#k-nearest-neighbors",
+    "href": "Module2/KNearestNeighbours.html#k-nearest-neighbors",
+    "title": "K nearest neighbors",
+    "section": "K nearest neighbors",
+    "text": "K nearest neighbors\nThis is a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.\nBasic idea: Predict a new observation using the K closest observations in the training dataset.\nTo predict the response for a new observation, K-NN uses the K nearest neighbors (observations) in terms of the predictors!\nThe predicted response for the new observation is the most common response among the K nearest neighbors."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#the-algorithm-has-3-steps",
+    "href": "Module2/KNearestNeighbours.html#the-algorithm-has-3-steps",
+    "title": "K nearest neighbors",
+    "section": "The algorithm has 3 steps:",
+    "text": "The algorithm has 3 steps:\n\nChoose the number of nearest neighbors (K).\nFor a new observation, find the K closest observations in the training data (ignoring the response).\nFor the new observation, the algorithm predicts the value of the most common response among the K nearest observations."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#section",
+    "href": "Module2/KNearestNeighbours.html#section",
+    "title": "K nearest neighbors",
+    "section": "",
+    "text": "Suppose we have two groups: the red group and the green group. The number line shows the value of a variable for our training data.\nA new observation arrives, and we don’t know which group it belongs to.\n\nIf we had chosen \\(K=3\\), then the three nearest neighbors would vote on which group the new observation belongs to."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#section-1",
+    "href": "Module2/KNearestNeighbours.html#section-1",
+    "title": "K nearest neighbors",
+    "section": "",
+    "text": "Using \\(K = 3\\), that’s 2 votes for “genuine” and 2 for “fake.” So we classify it as “genius.”\n\nCloseness is based on Euclidean distance."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#implementation-details",
+    "href": "Module2/KNearestNeighbours.html#implementation-details",
+    "title": "K nearest neighbors",
+    "section": "Implementation Details",
+    "text": "Implementation Details\nTies\n\nIf there are more than K nearest neighbors, include them all.\nIf there is a tie in the vote, set a rule to break the tie. For example, randomly select the class."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#section-2",
+    "href": "Module2/KNearestNeighbours.html#section-2",
+    "title": "K nearest neighbors",
+    "section": "",
+    "text": "KNN uses the Euclidean distance between points. So it ignores units.\n\nExample: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).\nThese people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.\nTherefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#section-3",
+    "href": "Module2/KNearestNeighbours.html#section-3",
+    "title": "K nearest neighbors",
+    "section": "",
+    "text": "As a first step, we must transform the predictors so that they have the same units!\nThis requires a predictor standardization process, which is done in Python."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#standardization",
+    "href": "Module2/KNearestNeighbours.html#standardization",
+    "title": "K nearest neighbors",
+    "section": "Standardization",
+    "text": "Standardization\n\nStandardization refers to centering and scaling each numerical predictor individually. This places all predictors on the same scale.\nTo center a predictor variable, the mean value of the predictor is subtracted from all values.\nTherefore, the centered predictor has a mean of zero (i.e., its average value is zero)."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#section-4",
+    "href": "Module2/KNearestNeighbours.html#section-4",
+    "title": "K nearest neighbors",
+    "section": "",
+    "text": "To scale a predictor, each of its values is divided by its standard deviation.\nWhen scaling the data, the values have a common standard deviation of one.\nIn mathematical terms, we standardize a predictor as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#example-1-cont.",
+    "href": "Module2/KNearestNeighbours.html#example-1-cont.",
+    "title": "K nearest neighbors",
+    "section": "Example 1 (cont.)",
+    "text": "Example 1 (cont.)\nWe use the five numeric predictors from the complete_sbAuto dataset.\n\n#complete_sbAuto.head()"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#two-predictors-in-original-units",
+    "href": "Module2/KNearestNeighbours.html#two-predictors-in-original-units",
+    "title": "K nearest neighbors",
+    "section": "Two predictors in original units",
+    "text": "Two predictors in original units\nConsider the previously created complete_sbAuto dataset. Consider two points on the graph: \\((175, 5140)\\) and \\((69, 1613)\\).\n\n\n\n\n\nThe distance between these points is \\(\\sqrt{(69 - 175)^2 + (1613-5140)^2}\\) \\(= \\sqrt{11236 + 12439729}\\) \\(= 3528.592\\)."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#standardization-in-python",
+    "href": "Module2/KNearestNeighbours.html#standardization-in-python",
+    "title": "K nearest neighbors",
+    "section": "Standardization in Python",
+    "text": "Standardization in Python\n\nTo standardize numeric predictors, we use the StandardScaler() function. We also apply the function to variables using the fit_transform() function.\n\n\n#scaler = StandardScaler()\n#Xs = scaler.fit_transform(complete_sbAuto)"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#section-5",
+    "href": "Module2/KNearestNeighbours.html#section-5",
+    "title": "K nearest neighbors",
+    "section": "",
+    "text": "Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#two-predictors-in-standardized-units",
+    "href": "Module2/KNearestNeighbours.html#two-predictors-in-standardized-units",
+    "title": "K nearest neighbors",
+    "section": "Two predictors in standardized units",
+    "text": "Two predictors in standardized units\nOn the new scale, the two points are now: \\((1.82, 2.53)\\) and \\((-0.91, -1.60)\\).\n\n\n\n\n\nThe distance between these points is \\(\\sqrt{(-0.91 - 1.82)^2 + (-1.60-2.53)^2}\\) \\(= \\sqrt{7.45 + 17.05} = 4.95\\)."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#discussion",
+    "href": "Module2/KNearestNeighbours.html#discussion",
+    "title": "K nearest neighbors",
+    "section": "Discussion",
+    "text": "Discussion\nK-NN is intuitive and simple and can produce decent predictions. However, K-NN has some disadvantages:\n\nWhen the training dataset is very large, K-NN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. (“Lazy learner”).\nIn this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with."
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#section-6",
+    "href": "Module2/KNearestNeighbours.html#section-6",
+    "title": "K nearest neighbors",
+    "section": "",
+    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
+  },
+  {
+    "objectID": "Module1/Indicators.html",
+    "href": "Module1/Indicators.html",
+    "title": "Indicators",
+    "section": "",
+    "text": "Conceptos Básicos de Indicadores\nModelos para Definir Indicadores\nDocumentación de Indicadores"
+  },
+  {
+    "objectID": "Module1/Indicators.html#agenda",
+    "href": "Module1/Indicators.html#agenda",
+    "title": "Indicators",
+    "section": "",
+    "text": "Conceptos Básicos de Indicadores\nModelos para Definir Indicadores\nDocumentación de Indicadores"
+  },
+  {
+    "objectID": "Module1/Indicators.html#la-administración",
+    "href": "Module1/Indicators.html#la-administración",
+    "title": "Indicators",
+    "section": "La administración",
+    "text": "La administración\n\n“Administración es el proceso mediante el cual se diseña y mantiene un ambiente en el que individuos que trabajan en grupos cumplen metas específicas de manera eficaz”.\n\nKoontz, Harold, “Administración”, 14 Edición, Mc Graw Hill, México, 2012"
+  },
+  {
+    "objectID": "Module1/Indicators.html#funciones-de-la-administración",
+    "href": "Module1/Indicators.html#funciones-de-la-administración",
+    "title": "Indicators",
+    "section": "Funciones de la Administración",
+    "text": "Funciones de la Administración\nEl proceso administrativo se desglosa en cinco funciones gerenciales:\n\nPlanear: elegir misiones y objetivos, y las acciones para lograrlos\nOrganizar: establecer una estructura intencional de funciones que las personas desempeñen en una organización\nIntegrar personal: Cubrir y mantener cubiertos los puestos en la estructura organizacional\nDirigir: Influir en las personas para que contribuyan a las metas organizacionales y de grupo\nControlar: Medir y corregir el desempeño individual y organizacional para asegurar que los hechos se conformen a los planes."
+  },
+  {
+    "objectID": "Module1/Indicators.html#integración-de-la-planeación-y-el-control",
+    "href": "Module1/Indicators.html#integración-de-la-planeación-y-el-control",
+    "title": "Indicators",
+    "section": "Integración de la Planeación y el Control",
+    "text": "Integración de la Planeación y el Control"
+  },
+  {
+    "objectID": "Module1/Indicators.html#planeación",
+    "href": "Module1/Indicators.html#planeación",
+    "title": "Indicators",
+    "section": "Planeación",
+    "text": "Planeación\nComo resultado del proceso de planeación pueden generarse algunos de estos tipos de planes:\n\nObjetivos o metas. Son resultados específicos y medibles.\nEstrategias. Enfoques o planes para lograr objetivos.\nProcedimientos. Detallan la ejecución de una actividad.\nProgramas. Conjuntos organizados de actividades para alcazar objetivos.\nPresupuestos. Planes financieros detallados para facilitar la toma de decisiones económicas.\n\nAlta necesidad de medir progreso"
+  },
+  {
+    "objectID": "Module1/Indicators.html#definición-de-objetivos-smart",
+    "href": "Module1/Indicators.html#definición-de-objetivos-smart",
+    "title": "Indicators",
+    "section": "Definición de Objetivos SMART",
+    "text": "Definición de Objetivos SMART\nSpecific: Un objetivo debe ser claro y específico, evitando la ambigüedad. Debe responder a las preguntas qué, quién, cuándo, dónde y por qué.\nMeasurable: Un objetivo debe ser cuantificable o al menos evaluable para determinar el progreso y el éxito. Debe ser posible medirlo con indicadores o criterios tangibles.\nAchievable: Un objetivo debe ser realista y alcanzable, teniendo en cuenta los recursos disponibles, el tiempo y las habilidades necesarias.\nRelevant: Un objetivo debe ser relevante y estar alineado con los objetivos más amplios de la organización o del individuo.\nTime-bound: Un objetivo debe tener un plazo o fecha límite claramente definidos."
+  },
+  {
+    "objectID": "Module1/Indicators.html#ejemplo-1",
+    "href": "Module1/Indicators.html#ejemplo-1",
+    "title": "Indicators",
+    "section": "Ejemplo 1",
+    "text": "Ejemplo 1\nObjetivo: Cumplir con capacitación de personal\nSMART: Cumplir con al menos el 90% del programa de capacitación 2014 para todo el personal operativo de la empresa para el 30 de noviembre del presente año."
+  },
+  {
+    "objectID": "Module1/Indicators.html#ejemplo-2",
+    "href": "Module1/Indicators.html#ejemplo-2",
+    "title": "Indicators",
+    "section": "Ejemplo 2",
+    "text": "Ejemplo 2\nObjetivo: Aumentar las ventas un 20%.\nSMART: Lograr un incremento de ventas del producto X de al menos 17% al termino del primer semestre del 2015, manteniendo una rentabilidad para la empresa de al menos 5%."
+  },
+  {
+    "objectID": "Module1/Indicators.html#necesidad-de-medir",
+    "href": "Module1/Indicators.html#necesidad-de-medir",
+    "title": "Indicators",
+    "section": "Necesidad de medir",
+    "text": "Necesidad de medir\n\n\n\nPara poder llevar a cabo los procesos de Planeación, Instrumentación y Control, es necesario contar con un sistema de información que permita evaluar si se están logrando los fines que se planearon, y si las acciones instrumentadas se están llevando también de acuerdo con los planes.\nLa información es necesaria para corregir los planes o su instrumentación, y para producir nuevos planes."
+  },
+  {
+    "objectID": "Module1/Indicators.html#qué-es-un-indicador",
+    "href": "Module1/Indicators.html#qué-es-un-indicador",
+    "title": "Indicators",
+    "section": "¿Qué es un indicador?",
+    "text": "¿Qué es un indicador?\n\n“Es el resultado de una medición cuantitativa o cualitativa, o algún otro criterio, mediante el cual se puede evaluar el desempeño, la eficiencia, el logro, etc., de una persona u organización, frecuentemente comparándolo con un estándar o con una meta”.\n\nCollins English Dictionary.\n\n“The qualitative and/or quantitative information on an examined phenomenon (or a process, or a result), which makes it possible to analyze its evolution and to check whether quality targets are met, driving actions and decisions”.\n\nFranceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Management by Measurement: Designing Key Indicators and Performance Measurement Systems. 10.1007/978-3-540-73212-9."
+  },
+  {
+    "objectID": "Module1/Indicators.html#ejemplos-de-indicadores",
+    "href": "Module1/Indicators.html#ejemplos-de-indicadores",
+    "title": "Indicators",
+    "section": "Ejemplos de indicadores",
+    "text": "Ejemplos de indicadores"
+  },
+  {
+    "objectID": "Module1/Indicators.html#características-de-un-indicador",
+    "href": "Module1/Indicators.html#características-de-un-indicador",
+    "title": "Indicators",
+    "section": "Características de un indicador",
+    "text": "Características de un indicador\nFundamentales:\n\nValidez: el indicador debe mostrar fielmente el comportamiento real del fenómeno, variable, resultado, etc., que se desea medir.\nEstabilidad: el indicador debe definirse, calcularse e interpretarse de la misma manera a través del tiempo (permite comparaciones y observar tendencias)."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-1",
+    "href": "Module1/Indicators.html#section-1",
+    "title": "Indicators",
+    "section": "",
+    "text": "Ideales:\n\nSimple y fácil de interpretar.\nCapaz de indicar tendencias a través del tiempo.\nSensible a cambios dentro y fuera de la organización.\nFácil recolección y procesamiento de los datos.\nFácil y rápida actualización."
+  },
+  {
+    "objectID": "Module1/Indicators.html#utilidad-de-los-indicadores",
+    "href": "Module1/Indicators.html#utilidad-de-los-indicadores",
+    "title": "Indicators",
+    "section": "Utilidad de los indicadores",
+    "text": "Utilidad de los indicadores"
+  },
+  {
+    "objectID": "Module1/Indicators.html#dimensiones-de-análisis",
+    "href": "Module1/Indicators.html#dimensiones-de-análisis",
+    "title": "Indicators",
+    "section": "Dimensiones de análisis",
+    "text": "Dimensiones de análisis\n\nLos indicadores y los datos que conducen a ellos, muchas veces se estratifican con respecto a otras variables.\nA las variables que se utilizan como criterios de estratificación se les denomina “Dimensiones de análisis” (son dimensiones desde el punto de vista de hipercubos de datos).\n\nEjemplo: En un proceso de ventas, las ventas mensuales de pueden estratificar por: canal de distribución, región del país, familia de productos, etc., para efectos de su análisis y visualización."
+  },
+  {
+    "objectID": "Module1/Indicators.html#por-ejemplo",
+    "href": "Module1/Indicators.html#por-ejemplo",
+    "title": "Indicators",
+    "section": "Por ejemplo",
+    "text": "Por ejemplo"
+  },
+  {
+    "objectID": "Module1/Indicators.html#elección-de-indicadores",
+    "href": "Module1/Indicators.html#elección-de-indicadores",
+    "title": "Indicators",
+    "section": "Elección de indicadores",
+    "text": "Elección de indicadores\nLa elección de los indicadores es un factor crítico para que una organización se acerque al cumplimiento de su misión y haga realidad sus estrategias. Los indicadores y las estrategias están inevitablemente vinculados.\n\nUna estrategia sin indicadores es inútil, los indicadores sin una estrategia son irrelevantes!\n\nExisten dos tipos principales de indicadores\n\nAdelantados\nRetrasados"
+  },
+  {
+    "objectID": "Module1/Indicators.html#indicadores-adelantados-y-retrasados-leading-lagging",
+    "href": "Module1/Indicators.html#indicadores-adelantados-y-retrasados-leading-lagging",
+    "title": "Indicators",
+    "section": "Indicadores adelantados y retrasados (leading – lagging)",
+    "text": "Indicadores adelantados y retrasados (leading – lagging)\nUn indicador retrasado (lagging) mide el resultado del desempeño al final de un periodo, tiene una orientación hacia el pasado porque nos muestra las consecuencias de lo que ya se hizo. También se conocen como indicadores de resultado.\nUn indicador adelantado (leading) mide el desempeño de los factores que son críticos ahora, para obtener un resultado deseado en el futuro. También se conocen como indicadores de actuación."
+  },
+  {
+    "objectID": "Module1/Indicators.html#indicador-retrasado",
+    "href": "Module1/Indicators.html#indicador-retrasado",
+    "title": "Indicators",
+    "section": "Indicador Retrasado",
+    "text": "Indicador Retrasado\nPropósito: Mide el resultado del desempeño al final de un periodo\nEjemplo: Ventas anuales, market share, ROI\n\nVentaja: Son objetivos\nDesventaja: Reflejan el efecto de acciones del pasado."
+  },
+  {
+    "objectID": "Module1/Indicators.html#indicador-adelantado",
+    "href": "Module1/Indicators.html#indicador-adelantado",
+    "title": "Indicators",
+    "section": "Indicador Adelantado",
+    "text": "Indicador Adelantado\nPropósito: Mide procesos, actividades, comportamientos\nEjemplo: # de clientes visitados, # de cursos ofrecidos\n\nVentaja: Son predictivos, permiten corregir la estrategia\nDesventaja: Basados en hipótesis causa-efecto."
+  },
+  {
+    "objectID": "Module1/Indicators.html#otros-ejemplos",
+    "href": "Module1/Indicators.html#otros-ejemplos",
+    "title": "Indicators",
+    "section": "Otros Ejemplos",
+    "text": "Otros Ejemplos\nEn el contexto de un YouTuber:\n\nIndicador adelantado: Número de vistas de un video de YouTube en las primeras 24 horas.\nIndicador retrasado: Ingreso mensual generado por la monetización.\n\nEn el contexto del departamento de ventas de Netflix:\n\nIndicador adelantado: Número de usuarios que comienzan una prueba gratuita en un mes dado.\nIndicador retrasado: Ingreso mensuales por suscripciones."
+  },
+  {
+    "objectID": "Module1/Indicators.html#otros-ejemplos-1",
+    "href": "Module1/Indicators.html#otros-ejemplos-1",
+    "title": "Indicators",
+    "section": "Otros Ejemplos",
+    "text": "Otros Ejemplos\nEn el contexto de una empresa de GenAI:\n\nIndicador adelantado: Número de programadores contratados con expertise en IA.\nIndicador retrasado: Numero de licensias vendidas al año.\n\nEn el contexto de una empresa de mantenimiento de minisplits:\n\nIndicador adelantado: El tiempo promedio de respuesta del servicio técnico a solicitudes de soporte.\nIndicador retrasado: Numero de reseñas positivas en Google Maps en un mes."
+  },
+  {
+    "objectID": "Module1/Indicators.html#cómo-defino-un-indicador",
+    "href": "Module1/Indicators.html#cómo-defino-un-indicador",
+    "title": "Indicators",
+    "section": "¿Cómo defino un indicador?",
+    "text": "¿Cómo defino un indicador?\nCriterios de selección:\n\nRelación directa con el objetivo a medir\nFacilidad de comunicación enfocada a la estrategia\nRepetibilidad y confiabilidad\nFrecuencia de actualización\nUtilidad en la fijación de metas\nUtilidad para asignar responsabilidades\nUtilidad para el despliegue hacia abajo"
+  },
+  {
+    "objectID": "Module1/Indicators.html#indicadores-básicos-y-derivados",
+    "href": "Module1/Indicators.html#indicadores-básicos-y-derivados",
+    "title": "Indicators",
+    "section": "Indicadores Básicos y Derivados",
+    "text": "Indicadores Básicos y Derivados\nUn indicador básico se obtiene de la medición directa de un fenómeno o hecho. Por ejemplo: Número de pedidos entregados completos y a tiempo en la semana.\nUn indicador derivado combina la información de dos o más indicadores básicos o derivados. Por ejemplo: Porcentaje de pedidos entregados completos y a tiempo en la semana.\nEjemplo: en Análisis de modos de falla y efectos\n\nIndicadores básicos: Severidad, Ocurencia, Detección\nIndicador derivado: Risk Priority Number = SOD"
+  },
+  {
+    "objectID": "Module1/Indicators.html#ejemplo-3",
+    "href": "Module1/Indicators.html#ejemplo-3",
+    "title": "Indicators",
+    "section": "Ejemplo 3",
+    "text": "Ejemplo 3\nEn el análisis de modos de falla y efectos, tenemos los siguientes indicadores básicos:\n\nSeveridad (S): Mide el impacto o la gravedad de la falla en caso de que ocurra. Se mide en una escala del 1 al 10, donde 1 indica un efecto insignificante y 10 representa un efecto catastrófico para el usuario o el sistema.\nOcurrencia (O): Evalúa la probabilidad de que la falla ocurra. Se evalua en una escala de 1 al 10, donde 1 indica que la ocurrencia es muy rara y 10 que es altamente probable o frecuente.\nDetección (D): Representa la capacidad del sistema para detectar la falla antes de que llegue al cliente o al usuario final. Se califica en una escala del 1 al 10, donde 1 significa que la detección es casi segura y 10 que es muy difícil o imposible de detectar antes de que ocurra un problema.\n\nIndicador derivado: Número de Prioridad de Riesgo = S\\(\\times\\)O\\(\\times\\)D"
+  },
+  {
+    "objectID": "Module1/Indicators.html#el-formato-de-un-indicador",
+    "href": "Module1/Indicators.html#el-formato-de-un-indicador",
+    "title": "Indicators",
+    "section": "El Formato de un Indicador",
+    "text": "El Formato de un Indicador\nUn indicador se debe medir númericamente usando:\nNúmeros absolutos: Resultantes de un proceso de medición o conteo (volumen producido, precio de la acción, número de empleados, costos fijos…)\nTasas: Relación entre dos variables con diferentes unidades (número de unidades / número de operarios, consumo energético / litros producidos…)\nÍndices: Cantidad adimensional que resulta de dividir el valor actual de una variable entre un valor base de referencia de esa variable (índice de precios al consumidor)"
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-2",
+    "href": "Module1/Indicators.html#section-2",
+    "title": "Indicators",
+    "section": "",
+    "text": "Proporciones: Relaciones entre dos variables que se miden en las mismas unidades (hombres vs mujeres, admitidos vs rechazados)\nPorcentajes de crecimiento o decrecimiento: (Valor actual – Valor anterior)*100/Valor anterior.\nEvaluaciones: Evaluaciones de una variable cualitativa en una escala ordinal tipo Likert (bajo medio alto, pésimo malo regular bueno excelente)."
+  },
+  {
+    "objectID": "Module1/Indicators.html#actividad-1.1-cooperative-mode",
+    "href": "Module1/Indicators.html#actividad-1.1-cooperative-mode",
+    "title": "Indicators",
+    "section": "Actividad 1.1 (cooperative mode)",
+    "text": "Actividad 1.1 (cooperative mode)\nJúntate en equipos de 3 y pregúntale a ChatGPT! Para los siguientes conceptos sugieran al menos un indicador cuantitativo adelantado (leading) y un indicador retrasado (lagging):\n\nProductividad mensual de una línea de producción de muebles\nRotación anual de personal en una empresa de manufactura\nNivel de servicio al cliente de una empresa que fabrica envases de plástico y entrega regionalmente\nRentabilidad del negocio para una empresa mediana mayorista de abarrotes.\nDesempeño del proceso de recaudación de fondos de una asociación de apoyo a niños en situación de calle."
+  },
+  {
+    "objectID": "Module1/Indicators.html#recuerda-que",
+    "href": "Module1/Indicators.html#recuerda-que",
+    "title": "Indicators",
+    "section": "Recuerda que …",
+    "text": "Recuerda que …\n\n\nLos propósitos de un indicador son:\n\nEstablecer metas cuantitativas\nMotivación organizacional, inducción de conductas deseables\nEvaluación de la estrategia y aprendizaje estratégico."
+  },
+  {
+    "objectID": "Module1/Indicators.html#cuáles-indicadores-debemos-utilizar",
+    "href": "Module1/Indicators.html#cuáles-indicadores-debemos-utilizar",
+    "title": "Indicators",
+    "section": "¿Cuáles indicadores debemos utilizar?",
+    "text": "¿Cuáles indicadores debemos utilizar?\n\nUna vez que conocemos qué son los indicadores, su papel dentro del proceso administrativo, y los tipos de indicadores existen, nos preguntamos ¿Cuántos indicadores debemos tener? ¿Cuál es un conjunto apropiado de indicadores? ¿Cómo los documentamos y compartimos?\nAunque hay algunos indicadores que pudieran aplicarse de manera general a cualquier empresa, cada empresa tiene su propia estrategia, sus propias prioridades, su entorno competitivo particular, por lo tanto, el conjunto más conveniente de indicadores depende de cada organización.\n\nAquí describimos modelos para encontrar el número y conjunto apropiado de indicadores."
+  },
+  {
+    "objectID": "Module1/Indicators.html#estrategia-y-ejecución",
+    "href": "Module1/Indicators.html#estrategia-y-ejecución",
+    "title": "Indicators",
+    "section": "Estrategia y Ejecución",
+    "text": "Estrategia y Ejecución\n\n\nLa estructura de planeación y control de la organización provee un marco de trabajo para identificar y estructurar el sistema de indicadores.\nYa que uno de los retos primordiales de cualquier organización consiste en alinear la ejecución con la estrategia, o la estrategia con la ejecución.\nLos sistemas de indicadores para la medición del desempeño deben apoyar a mantener el vínculo entre la estrategia y la ejecución.\n\n\n\n\nhttps://nationalpost.com/news/wal-marts-epic-strategy-fail"
+  },
+  {
+    "objectID": "Module1/Indicators.html#modelos-para-definir-indicadores-1",
+    "href": "Module1/Indicators.html#modelos-para-definir-indicadores-1",
+    "title": "Indicators",
+    "section": "Modelos para Definir Indicadores",
+    "text": "Modelos para Definir Indicadores\nLos modelos para definir indicadores dependen del tipo de planeación estratégica.\nTres marcos de planeación estratégica son:\n\nAdministración por Objetivos (APO; Peter Drucker, 1954)\nHoshin Kanri\nBalanced Score Card (BSC; Kaplan & Norton, 1992, 1996)"
+  },
+  {
+    "objectID": "Module1/Indicators.html#balance-score-card-bsc",
+    "href": "Module1/Indicators.html#balance-score-card-bsc",
+    "title": "Indicators",
+    "section": "Balance Score Card (BSC)",
+    "text": "Balance Score Card (BSC)\nEs un modelo que ayuda a las organizaciones a traducir la estrategia en objetivos operacionales (medibles), que resulta en acciones, conductas y desempeño.\nBSC incluye todos los factores críticos de éxito en un sistema de medición, que brinda a las organizaciones una mejor posibilidad de alcanzar sus metas."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-3",
+    "href": "Module1/Indicators.html#section-3",
+    "title": "Indicators",
+    "section": "",
+    "text": "https://www.youtube.com/watch?v=QCi09LlI7Hs"
+  },
+  {
+    "objectID": "Module1/Indicators.html#objetivos-del-bsc",
+    "href": "Module1/Indicators.html#objetivos-del-bsc",
+    "title": "Indicators",
+    "section": "Objetivos del BSC",
+    "text": "Objetivos del BSC\n\nTraducir la estrategia a objetivos medibles.\nAlinear los componentes de la estrategia: objetivos, indicadores e iniciativas.\n\n3.Comunicar la estrategia a la organización.\n\nCrear la base para una administración estratégica."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-4",
+    "href": "Module1/Indicators.html#section-4",
+    "title": "Indicators",
+    "section": "",
+    "text": "BSC convierte la estrategia en un sistema integrado definido a través de 4 perspectivas:\n\n\n\nFinanciera\nClientes\nProcesos Internos\nAprendizaje y crecimiento"
+  },
+  {
+    "objectID": "Module1/Indicators.html#las-4-perspectivas",
+    "href": "Module1/Indicators.html#las-4-perspectivas",
+    "title": "Indicators",
+    "section": "Las 4 perspectivas",
+    "text": "Las 4 perspectivas\nBSC convierte la estrategia en un sistema integrado definido a través de 4 perspectivas:\n\n\n\nFinanciera. Incluye objetivos relacionados con la rentabilidad, productividad, utilidades, precio de las acciones, etc., son los objetivos que debe lograr la organización desde la perspectiva de los accionistas."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-5",
+    "href": "Module1/Indicators.html#section-5",
+    "title": "Indicators",
+    "section": "",
+    "text": "Clientes. Incluye objetivos relacionados con la propuesta de valor de la empresa, están orientados al mercado y se establecen desde la perspectiva de los clientes. Incluye objetivos de percepción de los clientes en cuanto al servicio, tiempo de entrega, calidad, valor/precio."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-6",
+    "href": "Module1/Indicators.html#section-6",
+    "title": "Indicators",
+    "section": "",
+    "text": "Procesos Internos. Incluye objetivos relacionados con el desempeño de los procesos que son críticos para cumplir con los objetivos de la perspectiva de clientes. Objetivos de desempeño de la Cadena de Valor primaria del negocio."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-7",
+    "href": "Module1/Indicators.html#section-7",
+    "title": "Indicators",
+    "section": "",
+    "text": "Aprendizaje y crecimiento. Son los objetivos relacionados con los habilitadores para lograr los objetivos de las otras perspectivas. Son objetivos de desarrollo de competencias, ambiente laboral, ambiente físico, infraestructura tecnológica, etc."
+  },
+  {
+    "objectID": "Module1/Indicators.html#componentes-del-modelo",
+    "href": "Module1/Indicators.html#componentes-del-modelo",
+    "title": "Indicators",
+    "section": "Componentes del Modelo",
+    "text": "Componentes del Modelo\nPara cada perspectiva se debe definir:\n\nUn conjunto pequeño de objetivos estratégicos\nPara cada objetivo una (o más si es indispensable) métrica como indicador de desempeño\nPara cada indicador establecer metas de largo y corto plazo\nIniciativas (programas, proyectos, acciones) para cerrar las brechas entre el desempeño actual y el deseado de acuerdo con las metas."
+  },
+  {
+    "objectID": "Module1/Indicators.html#mapa-estratégico",
+    "href": "Module1/Indicators.html#mapa-estratégico",
+    "title": "Indicators",
+    "section": "Mapa Estratégico",
+    "text": "Mapa Estratégico\n\nEl mapa estratégico muestra los objetivos estratégicos dentro de cada perspectiva usando una matriz.\nSe muestran también posibles relaciones causales entre los objetivos mediante flechas.\nSi se revisan los estatutos estratégicos de la organización (Visión y Misión) se pueden incluir Temas Estratégicos que mostrarán si la organización está atendiendo dichos temas de manera explícita en la planeación."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-9",
+    "href": "Module1/Indicators.html#section-9",
+    "title": "Indicators",
+    "section": "",
+    "text": "https://www.youtube.com/watch?v=Brv3w1MZpRg&ab_channel=EstrategiaenAcci%C3%B3nconIv%C3%A1nMart%C3%ADnezLima"
+  },
+  {
+    "objectID": "Module1/Indicators.html#actividad-1.2-cooperative-mode",
+    "href": "Module1/Indicators.html#actividad-1.2-cooperative-mode",
+    "title": "Indicators",
+    "section": "Actividad 1.2 (cooperative mode)",
+    "text": "Actividad 1.2 (cooperative mode)\n\nJúntate en equipos de 3.\nConstruye un mapa estratégico como parte de la aplicación del modelo Balanced Scorecard.\n\nLee la introducción del mini-caso Muebles Finos MF en CANVAS"
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-12",
+    "href": "Module1/Indicators.html#section-12",
+    "title": "Indicators",
+    "section": "",
+    "text": "La actividad consiste en asignar los objetivos de la empresa a las perspectivas del modelo BSC y a las líneas estratégicas del negocio. Una vez que hayan colocado los objetivos en el mapa, vincula los objetivos entre sí, estableciendo relaciones causa-efecto entre los objetivos. Se te pide también seleccionar 3 de los objetivos y proponer al menos un métrico sugerido para cada uno de ellos. Finalmente, escribirás la justificación de las relaciones causales establecidas"
+  },
+  {
+    "objectID": "Module1/Indicators.html#comentarios-finales",
+    "href": "Module1/Indicators.html#comentarios-finales",
+    "title": "Indicators",
+    "section": "Comentarios Finales",
+    "text": "Comentarios Finales\n\nUna vez que se ha diseñado el modelo de BSC para la empresa, se procede a desarrollar modelos específicos por áreas funcionales.\nEn las áreas funcionales se trabaja a partir de los objetivos estratégicos, identificando objetivos particulares del área funcional.\nEs más frecuente utilizar indicadores de actuación que de impacto a nivel departamental.\nNo necesariamente se mantienen todos los temas estratégicos en las áreas funcionales, ni necesariamente todas las áreas tienen objetivos en todas las perspectivas del BSC."
+  },
+  {
+    "objectID": "Module1/Indicators.html#section-13",
+    "href": "Module1/Indicators.html#section-13",
+    "title": "Indicators",
+    "section": "",
+    "text": "Es indispensable que los gerentes funcionales entiendan perfectamente el BSC de la empresa y la contribución de su área a los objetivos globales.\nEl responsable del despliegue de BSC debe asegurar la congruencia y alineación de los BSC funcionales.\nAlgunos indicadores a nivel organizacional son simplemente agregaciones de los indicadores departamentales."
+  },
+  {
+    "objectID": "Module1/Indicators.html#documentación-de-indicadores-1",
+    "href": "Module1/Indicators.html#documentación-de-indicadores-1",
+    "title": "Indicators",
+    "section": "Documentación de Indicadores",
+    "text": "Documentación de Indicadores\nCuando se están seleccionado y/o diseñando los indicadores, es necesario documentar formalmente la definición de cada uno de los indicadores.\nLa documentación es muy útil porque:\n\nAyuda a clarificar el significado de los indicadores.\nFacilita la comunicación entre los usuarios y creadores de los indicadores.\nSirve como referencia futura cuando se revise el sistema."
+  },
+  {
+    "objectID": "Module1/Indicators.html#formato-básico",
+    "href": "Module1/Indicators.html#formato-básico",
+    "title": "Indicators",
+    "section": "Formato Básico",
+    "text": "Formato Básico"
+  },
+  {
+    "objectID": "Module1/Indicators.html#return-to-main-page",
+    "href": "Module1/Indicators.html#return-to-main-page",
+    "title": "Indicators",
+    "section": "Return to main page",
+    "text": "Return to main page"
+  },
+  {
+    "objectID": "Module3/Nonparametric.html",
+    "href": "Module3/Nonparametric.html",
+    "title": "Nonparametric Methods",
+    "section": "",
+    "text": "Introduction\nLogistic regression\nEstimating a logistic regression model\nClassification performance"
+  },
+  {
+    "objectID": "Module3/Nonparametric.html#agenda",
+    "href": "Module3/Nonparametric.html#agenda",
+    "title": "Nonparametric Methods",
+    "section": "",
+    "text": "Introduction\nLogistic regression\nEstimating a logistic regression model\nClassification performance"
+  },
+  {
+    "objectID": "Module4/PCA.html",
+    "href": "Module4/PCA.html",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Introducción\nDispersión en una o varias dimensiones\nAnálisis de componentes principales"
+  },
+  {
+    "objectID": "Module4/PCA.html#agenda",
+    "href": "Module4/PCA.html#agenda",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Introducción\nDispersión en una o varias dimensiones\nAnálisis de componentes principales"
+  },
+  {
+    "objectID": "Module4/PCA.html#tipos-de-aprendizaje",
+    "href": "Module4/PCA.html#tipos-de-aprendizaje",
+    "title": "Principal Component Analysis",
+    "section": "Tipos de Aprendizaje",
+    "text": "Tipos de Aprendizaje\nEn ciencia de datos, existen dos tipos principales de aprendizaje:\n\nAprendizaje supervisado (supervised learning). En el cual tenemos varios predictores y una respuesta. El objetivo es predecir la respuesta usando los valores de los predictores.\nAprendizaje sin supervisión (unsupervised learning). En el cual solo tenemos varios predictores. El objetivo es descubrir patrones en sus datos."
+  },
+  {
+    "objectID": "Module4/PCA.html#métodos-de-aprendizaje-sin-supervisión",
+    "href": "Module4/PCA.html#métodos-de-aprendizaje-sin-supervisión",
+    "title": "Principal Component Analysis",
+    "section": "Métodos de aprendizaje sin supervisión",
+    "text": "Métodos de aprendizaje sin supervisión\nLos Métodos de Agrupamiento tienen como objetivo encontrar subgrupos con datos similares en la base de datos.\nEl Análisis de Componentes Principales busca una representación alternativa de los datos para facilitar su comprensión cuando hay muchos predictores en la base de datos.\nAquí nos usaremos estos métodos en predictores \\(X_1, X_2, \\ldots, X_p\\) que son numéricos."
+  },
+  {
+    "objectID": "Module4/PCA.html#dispersión-en-una-dimensión",
+    "href": "Module4/PCA.html#dispersión-en-una-dimensión",
+    "title": "Principal Component Analysis",
+    "section": "Dispersión en una dimensión",
+    "text": "Dispersión en una dimensión\nEl concepto de componentes principales requiere de entender la dispersión o variabilidad de los datos.\nSupongamos que tenemos datos de un solo predictor.\n\n[Observaciones de un predictor]"
+  },
+  {
+    "objectID": "Module4/PCA.html#dispersión-en-dos-dimensiones",
+    "href": "Module4/PCA.html#dispersión-en-dos-dimensiones",
+    "title": "Principal Component Analysis",
+    "section": "Dispersión en dos dimensiones",
+    "text": "Dispersión en dos dimensiones"
+  },
+  {
+    "objectID": "Module4/PCA.html#capturando-dispersión",
+    "href": "Module4/PCA.html#capturando-dispersión",
+    "title": "Principal Component Analysis",
+    "section": "Capturando dispersión",
+    "text": "Capturando dispersión\nEn algunos casos, podemos capturar la dispersión de datos en dos dimensiones (predictores) usando una sola dimensión."
+  },
+  {
+    "objectID": "Module4/PCA.html#capturando-dispersión-1",
+    "href": "Module4/PCA.html#capturando-dispersión-1",
+    "title": "Principal Component Analysis",
+    "section": "Capturando dispersión",
+    "text": "Capturando dispersión\nEn algunos casos, podemos capturar la dispersión de datos en dos dimensiones (predictores) usando una sola dimensión.\n\n\n\n\n\nUn solo predictor \\(X_2\\) captura gran parte de la dispersión en los datos."
+  },
+  {
+    "objectID": "Module4/PCA.html#veamos-otro-ejemplo",
+    "href": "Module4/PCA.html#veamos-otro-ejemplo",
+    "title": "Principal Component Analysis",
+    "section": "Veamos otro ejemplo",
+    "text": "Veamos otro ejemplo"
+  },
+  {
+    "objectID": "Module4/PCA.html#veamos-otro-ejemplo-1",
+    "href": "Module4/PCA.html#veamos-otro-ejemplo-1",
+    "title": "Principal Component Analysis",
+    "section": "Veamos otro ejemplo",
+    "text": "Veamos otro ejemplo\n\n\n\n\n\nUn solo predictor captura gran parte de la dispersión en los datos. En este caso, el nuevo predictor tiene la forma \\(Z_1 = a X_1 + b X_2 + c.\\)"
+  },
+  {
+    "objectID": "Module4/PCA.html#section",
+    "href": "Module4/PCA.html#section",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Alternativamente, podemos utilizar dos dimensiones alternativas para capturar la dispersión.\n\n\n\n\n\nUn solo predictor captura gran parte de la dispersión en los datos. En este caso, el nuevo predictor tiene la forma \\(Z_1 = a X_1 + b X_2 + c.\\)"
+  },
+  {
+    "objectID": "Module4/PCA.html#un-nuevo-eje-de-coordenadas",
+    "href": "Module4/PCA.html#un-nuevo-eje-de-coordenadas",
+    "title": "Principal Component Analysis",
+    "section": "Un Nuevo Eje de Coordenadas",
+    "text": "Un Nuevo Eje de Coordenadas\n\n\n\n\nEl nuevo eje de coordenadas esta dado por dos nuevos predictores \\(Z_1\\) y \\(Z_2\\). Los dos son dados por ecuaciones lineales de los nuevos predictores.\nEl primer eje \\(Z_1\\) captura gran porción de la dispersión, mientras que \\(Z_2\\) captura poca porción desde otro ángulo.\nLos nuevos ejes \\(Z_1\\) y \\(Z_2\\) se llaman componentes principales."
+  },
+  {
+    "objectID": "Module4/PCA.html#reducción-de-dimension",
+    "href": "Module4/PCA.html#reducción-de-dimension",
+    "title": "Principal Component Analysis",
+    "section": "Reducción de Dimension",
+    "text": "Reducción de Dimension\n\nEl Análisis de Componentes Principales (ACP) nos ayuda a reducir la dimensión de los datos.\n\nCrea un nuevo eje de coordenadas en dos (o más) dimensiones.\nTécnicamente, crea nuevos predictores combinando predictores altamente correlacionados. Los nuevos predictores no están correlacionados."
+  },
+  {
+    "objectID": "Module4/PCA.html#preparación",
+    "href": "Module4/PCA.html#preparación",
+    "title": "Principal Component Analysis",
+    "section": "Preparación",
+    "text": "Preparación\nPaso 1. Comenzamos con una base de datos con \\(n\\) observaciones y \\(p\\) predictores.\n\n\n\nPredictor 1\nPredictor 2\nPredictor 3\n\n\n\n\n15\n14\n5\n\n\n2\n1\n6\n\n\n10\n3\n17\n\n\n8\n18\n9\n\n\n12\n16\n11"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-1",
+    "href": "Module4/PCA.html#section-1",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Paso 2. Estandarizamos cada predictor individualmente.\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2 }}\\]\n\n\n\n\nPredictor 1\nPredictor 2\nPredictor 3\n\n\n\n\n\n1.15\n0.46\n-0.96\n\n\n\n-1.52\n-1.20\n-0.75\n\n\n\n0.12\n-0.95\n1.55\n\n\n\n-0.29\n0.97\n-0.13\n\n\n\n0.53\n0.72\n0.29\n\n\nSuma\n0\n0\n0\n\n\nVarianza\n1\n1\n1"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-2",
+    "href": "Module4/PCA.html#section-2",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Paso 3. Asumimos que la base de datos estandarizada es una matrix \\(\\mathbf{X}\\) de \\(n\\times p\\).\n\\[\\mathbf{X} = \\begin{pmatrix}\n1.15    &   0.46    &   -0.96   \\\\\n-1.52   &   -1.20   &   -0.75   \\\\\n0.12    &   -0.95   &   1.55    \\\\\n-0.29   &   0.97    &   -0.13   \\\\\n0.53    &   0.72    &   0.29    \\\\\n\\end{pmatrix}\\]"
+  },
+  {
+    "objectID": "Module4/PCA.html#algoritmo",
+    "href": "Module4/PCA.html#algoritmo",
+    "title": "Principal Component Analysis",
+    "section": "Algoritmo",
+    "text": "Algoritmo\n\nEl algoritmo de ACP tiene su origen en el álgebra lineal.\nSu idea básica es:\n\nCrear una matriz \\(\\mathbf{C}\\) con las correlaciones entre los predictores de la matriz \\(\\mathbf{X}\\).\nPartir la matrix \\(\\mathbf{C}\\) en tres partes que nos dan el nuevo eje de coordenadas y la importancia de cada eje."
+  },
+  {
+    "objectID": "Module4/PCA.html#matriz-de-correlación",
+    "href": "Module4/PCA.html#matriz-de-correlación",
+    "title": "Principal Component Analysis",
+    "section": "Matriz de Correlación",
+    "text": "Matriz de Correlación\nSiguiendo con nuestro ejemplo, la matriz de correlación contiene las correlaciones entre dos columnas de \\(\\mathbf{X}\\)."
+  },
+  {
+    "objectID": "Module4/PCA.html#partición-de-la-matriz-de-correlación",
+    "href": "Module4/PCA.html#partición-de-la-matriz-de-correlación",
+    "title": "Principal Component Analysis",
+    "section": "Partición de la matriz de correlación",
+    "text": "Partición de la matriz de correlación\nLa partición de la matrix \\(\\mathbf{C}\\) se hace usando el método de descomposición por valores y vectores propios."
+  },
+  {
+    "objectID": "Module4/PCA.html#section-3",
+    "href": "Module4/PCA.html#section-3",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Las columnas de \\(\\mathbf{B}\\) definen los ejes del nuevo sistema de coordenadas. Estos ejes se llaman componentes principales.\nLos valores diagonales en \\(\\mathbf{A}\\) definen la importancia individual de cada componente principal (eje)."
+  },
+  {
+    "objectID": "Module4/PCA.html#proporción-de-la-dispersión-explicada-por-el-componente",
+    "href": "Module4/PCA.html#proporción-de-la-dispersión-explicada-por-el-componente",
+    "title": "Principal Component Analysis",
+    "section": "Proporción de la dispersión explicada por el componente",
+    "text": "Proporción de la dispersión explicada por el componente\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\nLa proporción de la dispersión en los datos que es capturada por el primer componente es \\(\\frac{a_{1,1}}{p} = \\frac{1.60}{3} = 0.53\\). La proporción capturada por el segundo componente es \\(\\frac{a_{2,2}}{p} = \\frac{1.07}{3} = 0.36\\). La proporción capturada por el tercer componente es \\(\\frac{a_{3,3}}{p} = \\frac{0.33}{3} = 0.11\\)."
+  },
+  {
+    "objectID": "Module4/PCA.html#comentarios",
+    "href": "Module4/PCA.html#comentarios",
+    "title": "Principal Component Analysis",
+    "section": "Comentarios",
+    "text": "Comentarios\nLos componentes principales se pueden usar para aproximar una matriz.\nPor ejemplo, podemos aproximar la matriz \\(\\mathbf{C}\\) al fijar el tercer componente igual a cero.\n\\[\\begin{pmatrix}\n-0.68   &   0.35    &   0.00    \\\\\n-0.72   &   -0.13   &   0.00    \\\\\n0.16    &   0.93    &   0.00\\\\\n\\end{pmatrix} \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.00    \\\\\n\\end{pmatrix} \\begin{pmatrix}\n-0.68   &   -0.72   &   0.16    \\\\\n0.35    &   -0.13   &   0.93    \\\\\n0.00    &   0.00    &   0.00    \\\\\n\\end{pmatrix} = \\begin{pmatrix}\n0.86    &   0.73    &   0.18    \\\\\n0.73    &   0.85    &   -0.30   \\\\\n0.18    &   -0.30   &   0.96    \\\\\n\\end{pmatrix}\\]\n\\[\\approx \\begin{pmatrix}\n1.00    &   0.58    &   0.11    \\\\\n0.58    &   1.00    &   -0.23   \\\\\n0.11    &   -0.23   &   1.00    \\\\\n\\end{pmatrix} = \\mathbf{C}\\] ##\n\n\n\n\nLas aproximaciones son útiles para almacenar matrices grandes.\nEsto se porque solo necesitamos almacenar los valores propios más grandes y sus vectores propios correspondientes para recuperar una aproximación de alta calidad de la matriz completa.\nEsta es la idea detrás de la compresión de imagenes."
+  },
+  {
+    "objectID": "Module4/PCA.html#ejemplo",
+    "href": "Module4/PCA.html#ejemplo",
+    "title": "Principal Component Analysis",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nConsidera una base de datos de las 100 canciones más populares en TikTok. Los datos están en el archivo “TikTok 2020 reduced.xlsx“. Se tienen observaciones de varios predictores como:\n\nLa bailabilidad describe qué tan adecuada es una pista para bailar basándose en una combinación de elementos musicales.\nLa energía es una medida de 0 a 1 y representa una medida perceptiva de intensidad y actividad.\nEl volumen general de una pista en decibelios (dB). Los valores de sonoridad se promedian en toda la pista.\nEl habla detecta la presencia de palabras habladas en una pista. Cuanto más exclusivamente parecida a un discurso sea la grabación.\nUna medida de confianza de 0 a 1 sobre si la pista es acústica.\nDetecta la presencia de una audiencia en la grabación.\nUna medida de 0 a 1 que describe la positividad musical que transmite una pista."
+  },
+  {
+    "objectID": "Module4/PCA.html#apc-en-python",
+    "href": "Module4/PCA.html#apc-en-python",
+    "title": "Principal Component Analysis",
+    "section": "APC en Python",
+    "text": "APC en Python"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-4",
+    "href": "Module4/PCA.html#section-4",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "El Scree o Summary Plot te dice la variabilidad capturada por cada componente. Dicha variabilidad es dada por el Eigen value o valor propio. De 1 a 8 componentes.\nEl primer componente abarca la mayor parte de la dispersión de los datos.\nEsta gráfica se usa para definir el número total de componentes a usar.\n\n\nTBD"
+  },
+  {
+    "objectID": "Module4/PCA.html#biplot",
+    "href": "Module4/PCA.html#biplot",
+    "title": "Principal Component Analysis",
+    "section": "Biplot",
+    "text": "Biplot\n\n\n\n\nMuestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes.\nAyuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones.\nUna linea roja da las dirección de crecimiento de la variable etiquetada.\n\n\nTBD"
+  },
+  {
+    "objectID": "Module4/Clustering.html",
+    "href": "Module4/Clustering.html",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Aprendizaje Sin Supervisión\nMétodos de agrupamiento\n\nMétodo de K-Medias\nAgrupación Jerárquica"
+  },
+  {
+    "objectID": "Module4/Clustering.html#agenda",
+    "href": "Module4/Clustering.html#agenda",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Aprendizaje Sin Supervisión\nMétodos de agrupamiento\n\nMétodo de K-Medias\nAgrupación Jerárquica"
+  },
+  {
+    "objectID": "Module4/Clustering.html#tipos-de-aprendizaje",
+    "href": "Module4/Clustering.html#tipos-de-aprendizaje",
+    "title": "Clustering Methods",
+    "section": "Tipos de Aprendizaje",
+    "text": "Tipos de Aprendizaje\nEn ciencia de datos, existen dos tipos principales de aprendizaje:\n\nAprendizaje supervisado (supervised learning). En el cual tenemos varios predictores y una respuesta. El objetivo es predecir la respuesta usando los valores de los predictores.\nAprendizaje sin supervisión (unsupervised learning). En el cual solo tenemos varios predictores. El objetivo es descubrir patrones en sus datos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#tipos-de-aprendizaje-1",
+    "href": "Module4/Clustering.html#tipos-de-aprendizaje-1",
+    "title": "Clustering Methods",
+    "section": "Tipos de Aprendizaje",
+    "text": "Tipos de Aprendizaje\nEn ciencia de datos, existen dos tipos principales de aprendizaje:\n\nAprendizaje supervisado (supervised learning). En el cual tenemos varios predictores y una respuesta. El objetivo es predecir la respuesta usando los valores de los predictores.\nAprendizaje sin supervisión (unsupervised learning). En el cual solo tenemos varios predictores. El objetivo es descubrir patrones en sus datos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#aprendizaje-sin-supervisión-1",
+    "href": "Module4/Clustering.html#aprendizaje-sin-supervisión-1",
+    "title": "Clustering Methods",
+    "section": "Aprendizaje Sin Supervisión",
+    "text": "Aprendizaje Sin Supervisión\nSu objetivo es organizar o agrupar datos para obtener información.\nContesta preguntas como:\n\n¿Existe una forma informativa de visualizar los datos?\n¿Podemos descubrir subgrupos entre las variables o entre las observaciones?\n\nEl aprendizaje sin supervisión es más desafiante que el aprendizaje supervisado porque que es subjetivo y no existe un objetivo simple para el análisis, como predecir una respuesta.\nEl aprendizaje sn supervisión también se le conoce como análisis exploratorio de datos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#ejemplos-de-aprendizaje-sin-supervisión",
+    "href": "Module4/Clustering.html#ejemplos-de-aprendizaje-sin-supervisión",
+    "title": "Clustering Methods",
+    "section": "Ejemplos de aprendizaje sin supervisión",
+    "text": "Ejemplos de aprendizaje sin supervisión\n\nMarketing. Identificar un segmento de clientes que poseen una alta tendencia a adquirir un producto específico.\nRetail. Agrupar clientes según sus preferencias, estilo, elección de ropa y preferencias de tienda.\nCiencia médica. Facilitar el diagnóstico y tratamiento eficiente de sus pacientes así como el descubrimiento de nuevos medicamentos.\nSociología. Clasifique a las personas según su demografía, estilo de vida, nivel socioeconómico, etc."
+  },
+  {
+    "objectID": "Module4/Clustering.html#métodos-de-aprendizaje-sin-supervisión",
+    "href": "Module4/Clustering.html#métodos-de-aprendizaje-sin-supervisión",
+    "title": "Clustering Methods",
+    "section": "Métodos de aprendizaje sin supervisión",
+    "text": "Métodos de aprendizaje sin supervisión\nLos Métodos de Agrupamiento tienen como objetivo encontrar subgrupos con datos similares en la base de datos.\nEl Análisis de Componentes Principales busca una representación alternativa de los datos para facilitar su comprensión cuando hay muchos predictores en la base de datos.\nAquí nos usaremos estos métodos en predictores \\(X_1, X_2, \\ldots, X_p\\) que son numéricos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#métodos-de-aprendizaje-sin-supervisión-1",
+    "href": "Module4/Clustering.html#métodos-de-aprendizaje-sin-supervisión-1",
+    "title": "Clustering Methods",
+    "section": "Métodos de aprendizaje sin supervisión",
+    "text": "Métodos de aprendizaje sin supervisión\nLos Métodos de Agrupamiento tienen como objetivo encontrar subgrupos con datos similares en la base de datos.\nEl Análisis de Componentes Principales busca una representación alternativa de los datos para facilitar su comprensión cuando hay muchos predictores en la base de datos.\nAquí nos usaremos estos métodos en predictores \\(X_1, X_2, \\ldots, X_p\\) que son numéricos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#métodos-de-agrupamiento-1",
+    "href": "Module4/Clustering.html#métodos-de-agrupamiento-1",
+    "title": "Clustering Methods",
+    "section": "Métodos de agrupamiento",
+    "text": "Métodos de agrupamiento\nDos métodos clásicos de agrupamiento son:\n\nMétodo K-medias. Buscamos dividir las observaciones en K grupos.\nAgrupación jerárquica. Dividimos las n observaciones en 1 grupos, 2 grupos, 3 grupos, …, hasta n grupos. Visualizamos las divisiones usando una gráfica llamada dendrograma."
+  },
+  {
+    "objectID": "Module4/Clustering.html#ejemplo",
+    "href": "Module4/Clustering.html#ejemplo",
+    "title": "Clustering Methods",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nLa base de datos “penguins.xlsx” contiene datos sobre 342 pingüinos en la Antártida. Los datos contienen:\n\n\n\n\nLongitud del pico (bill length) en milimetros.\nProfundidad del pico (bill depth) en milimetros.\nLongitud de la aleta (flipper length) en milimetros\nPeso (body mass) en gramos.\n\n\n\n\n\n\n¿Podemos agrupar los pingüinos en base a estas características?"
+  },
+  {
+    "objectID": "Module4/Clustering.html#datos",
+    "href": "Module4/Clustering.html#datos",
+    "title": "Clustering Methods",
+    "section": "Datos",
+    "text": "Datos\nPython"
+  },
+  {
+    "objectID": "Module4/Clustering.html#visualización-de-datos",
+    "href": "Module4/Clustering.html#visualización-de-datos",
+    "title": "Clustering Methods",
+    "section": "Visualización de datos",
+    "text": "Visualización de datos\nScatter plots"
+  },
+  {
+    "objectID": "Module4/Clustering.html#el-método-de-k-medias",
+    "href": "Module4/Clustering.html#el-método-de-k-medias",
+    "title": "Clustering Methods",
+    "section": "El método de K-medias",
+    "text": "El método de K-medias\nObjetivo: Encontrar K grupos de observaciones tal que cada observación está en un grupo diferente."
+  },
+  {
+    "objectID": "Module4/Clustering.html#section",
+    "href": "Module4/Clustering.html#section",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Para esto, el método necesita dos elementos:\nA. Una medida de “cercanía” entre observaciones. B. Un algoritmo que agrupe observaciones que están cercanas entre sí.\nUna buena agrupación es aquella en la que las observaciones dentro de un grupo están cerca y las observaciones en diferentes grupos están lejos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#cómo-medimos-la-distancia-entre-observaciones",
+    "href": "Module4/Clustering.html#cómo-medimos-la-distancia-entre-observaciones",
+    "title": "Clustering Methods",
+    "section": "¿Cómo medimos la distancia entre observaciones?",
+    "text": "¿Cómo medimos la distancia entre observaciones?\nPara predictores cuantitativos, utilizamos la distancia euclidiana.\nPor ejemplo, si tenemos dos predictores \\(X_1\\) y \\(X_2\\) con observaciones dadas en la tabla:\n\n\n\nObservación\n(X_1)\n(X_2)\n\n\n\n\n1\n(X_{1,1})\n(X_{1,2})\n\n\n2\n(X_{2,1})\n(X_{2,2})"
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-1",
+    "href": "Module4/Clustering.html#section-1",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "La distancia euclideana es\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 }\\]"
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-2",
+    "href": "Module4/Clustering.html#section-2",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Podemos extender la distancia euclidiana para medir la distancia entre observaciones cuando tenemos más predictores. Por ejemplo, con 3 predictores tenemos\n\n\n\nObservación\n(X_1)\n(X_2)\n(X_3)\n\n\n\n\n1\n(X_{1,1})\n(X_{1,2})\n(X_{1,3})\n\n\n2\n(X_{2,1})\n(X_{2,2})\n(X_{2,3})\n\n\n\nDonde la distancia euclideana es\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^2 }\\]"
+  },
+  {
+    "objectID": "Module4/Clustering.html#problema-con-la-distancia-euclidiana",
+    "href": "Module4/Clustering.html#problema-con-la-distancia-euclidiana",
+    "title": "Clustering Methods",
+    "section": "Problema con la distancia euclidiana",
+    "text": "Problema con la distancia euclidiana\n\nLa distancia euclidiana depende de las unidades de medición de los predictores!\nPredictores con ciertas unidades tienen mayor relevancia en el cálculo de la distancia.\nEsto no es bueno ya que queremos que todos los predictores tengan la misma importancia al calcular la distancia euclidiana entre dos observaciones.\nLa solución es estandarizar las unidades de los predictores."
+  },
+  {
+    "objectID": "Module4/Clustering.html#algoritmo-de-k-medias",
+    "href": "Module4/Clustering.html#algoritmo-de-k-medias",
+    "title": "Clustering Methods",
+    "section": "Algoritmo de K-medias",
+    "text": "Algoritmo de K-medias\n\n\n\nElige un valor para K, el número de grupos.\n\nAsigna observaciones aleatoriamente a uno de los K grupos.\nEncuentra los centroides (puntos promedio) de cada grupo.\nReasigna observaciones al grupo del centroide más cercano.\nRepite los pasos 3, 4 hasta que no haya más cambios."
+  },
+  {
+    "objectID": "Module4/Clustering.html#k-medias-en-python",
+    "href": "Module4/Clustering.html#k-medias-en-python",
+    "title": "Clustering Methods",
+    "section": "K medias en Python",
+    "text": "K medias en Python\nTBD"
+  },
+  {
+    "objectID": "Module4/Clustering.html#estos-3-grupos-son-3-especies-de-pingüinos",
+    "href": "Module4/Clustering.html#estos-3-grupos-son-3-especies-de-pingüinos",
+    "title": "Clustering Methods",
+    "section": "Estos 3 grupos son 3 especies de pingüinos",
+    "text": "Estos 3 grupos son 3 especies de pingüinos\n\n\n\nAdelie (Grupo 1)\n\n\nGentoo (Grupo 2)\n\n\nChinstrap (Grupo 3)"
+  },
+  {
+    "objectID": "Module4/Clustering.html#comentarios",
+    "href": "Module4/Clustering.html#comentarios",
+    "title": "Clustering Methods",
+    "section": "Comentarios",
+    "text": "Comentarios\n\nSeleccionar el número de grupos K es más un arte que una ciencia. Será mejor que aciertes con K, o estarás detectando patrones donde en verdad no los hay.\nNecesitamos estandarizar todos los predictores.\nEl rendimiento de la agrupación por K-medias se ve afectado por la presencia de valores atípicos.\nLa solución del algoritmo es sensible al punto de partida. Por esto, normalmente se ejecuta varias veces y se reporta la mejor agrupación entre todas las ejecuciones."
+  },
+  {
+    "objectID": "Module4/Clustering.html#agrupación-jerárquica-1",
+    "href": "Module4/Clustering.html#agrupación-jerárquica-1",
+    "title": "Clustering Methods",
+    "section": "Agrupación Jerárquica",
+    "text": "Agrupación Jerárquica\n\n\n\n\nComienza con cada observación por sí sola en su propio grupo.\nLuego, fusiona gradualmente los grupos que están cerca unos de otros.\nContinuamos este proceso hasta que todas las observaciones estén en un grupo grande.\nFinalmente, damos un paso atrás y vemos qué agrupación funciona mejor."
+  },
+  {
+    "objectID": "Module4/Clustering.html#componentes-esenciales",
+    "href": "Module4/Clustering.html#componentes-esenciales",
+    "title": "Clustering Methods",
+    "section": "Componentes Esenciales",
+    "text": "Componentes Esenciales\n\n\nDistancia entre dos observaciones.\n\n\nUsamos la distancia euclidiana.\nDebemos de estandarizar los predictores!\n\n\nDistancia entre dos grupos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#distancia-entre-grupos.",
+    "href": "Module4/Clustering.html#distancia-entre-grupos.",
+    "title": "Clustering Methods",
+    "section": "Distancia entre grupos.",
+    "text": "Distancia entre grupos.\n\n\n\nLa distancia entre dos grupos de observaciones se llama vinculación.\nHay varios tipos de vinculación. Los más usados son\n\nVinculación completa\nVinculación promedio"
+  },
+  {
+    "objectID": "Module4/Clustering.html#vinculación-completa",
+    "href": "Module4/Clustering.html#vinculación-completa",
+    "title": "Clustering Methods",
+    "section": "Vinculación Completa",
+    "text": "Vinculación Completa\nLa distancia entre grupos se mide utilizando la mayor distancia entre observaciones."
+  },
+  {
+    "objectID": "Module4/Clustering.html#promedio",
+    "href": "Module4/Clustering.html#promedio",
+    "title": "Clustering Methods",
+    "section": "Promedio",
+    "text": "Promedio\nLa distancia entre grupos es el promedio de todas las distancias entre observaciones."
+  },
+  {
+    "objectID": "Module4/Clustering.html#algoritmo-de-agrupamiento-jerárquico",
+    "href": "Module4/Clustering.html#algoritmo-de-agrupamiento-jerárquico",
+    "title": "Clustering Methods",
+    "section": "Algoritmo de Agrupamiento Jerárquico",
+    "text": "Algoritmo de Agrupamiento Jerárquico\nLos pasos del algoritmo son los siguientes:\n\nAsigna cada observación a un grupo.\nMide el vínculo entre todos los grupos.\nFusiona los dos grupos que sean más similares.\nLuego, fusiona los dos siguientes grupos que sean más similares.\nContinua hasta que todos los grupos hayan sido fusionados."
+  },
+  {
+    "objectID": "Module4/Clustering.html#ejemplo-1",
+    "href": "Module4/Clustering.html#ejemplo-1",
+    "title": "Clustering Methods",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nConsideremos un conjunto de datos en el archivo “Cereals.xlsx”. Los datos incluyen información nutricional de 77 cereales, entre otros datos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#en-python",
+    "href": "Module4/Clustering.html#en-python",
+    "title": "Clustering Methods",
+    "section": "En Python",
+    "text": "En Python"
+  },
+  {
+    "objectID": "Module4/Clustering.html#resultados-dendrograma",
+    "href": "Module4/Clustering.html#resultados-dendrograma",
+    "title": "Clustering Methods",
+    "section": "Resultados: Dendrograma",
+    "text": "Resultados: Dendrograma\n\n\n\n\nUn dendrograma es un diagrama de arbol que resume y visualiza el proceso de agrupamiento.\nLas observaciones estan en el eje horizontal y en la parte inferior del diagrama.\nEl eje vertical muestra la distancia entre los grupos.\nSe lee de arriba a abajo."
+  },
+  {
+    "objectID": "Module4/Clustering.html#qué-hacer-con-un-dendrograma",
+    "href": "Module4/Clustering.html#qué-hacer-con-un-dendrograma",
+    "title": "Clustering Methods",
+    "section": "¿Qué hacer con un dendrograma?",
+    "text": "¿Qué hacer con un dendrograma?\n\n\n\nDibujamos una linea horizontal a una altura específica para definir los grupos.\nEsta linea define 3 grupos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-3",
+    "href": "Module4/Clustering.html#section-3",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Esta linea define 5 grupos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#dendrograma-en-python",
+    "href": "Module4/Clustering.html#dendrograma-en-python",
+    "title": "Clustering Methods",
+    "section": "Dendrograma en Python",
+    "text": "Dendrograma en Python"
+  },
+  {
+    "objectID": "Module4/Clustering.html#comentarios-1",
+    "href": "Module4/Clustering.html#comentarios-1",
+    "title": "Clustering Methods",
+    "section": "Comentarios",
+    "text": "Comentarios\n\nRecuerda que debemos estandarizar los predictores!\nNo es sencillo elegir el número correcto de grupos usando el dendrograma.\nLos resultados dependen de la medida de vinculación utilizada.\n\nLa vinculación completa resulta en grupos más estrechos.\nLa vinculación promedio logra un equilibrio entre grupos estrechos y más delgados.\n\nLa agrupación jerárquica es útil para detectar valores atípicos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-4",
+    "href": "Module4/Clustering.html#section-4",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Con estos métodos, no existe una única respuesta correcta; se debe considerar cualquier solución que exponga algunos aspectos interesantes de los datos.\n\nJames et al. (2017)"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html",
+    "href": "Module3/PredictiveModels.html",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Introducción\nSeries de tiempo\nModelo de regresión lineal para series de tiempo"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#agenda",
+    "href": "Module3/PredictiveModels.html#agenda",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Introducción\nSeries de tiempo\nModelo de regresión lineal para series de tiempo"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#problemas-principales-de-cienca-de-datos",
+    "href": "Module3/PredictiveModels.html#problemas-principales-de-cienca-de-datos",
+    "title": "Predictive Models and Time Series",
+    "section": "Problemas principales de cienca de datos",
+    "text": "Problemas principales de cienca de datos\nProblemas de regresión. La respuesta es numérica. Por ejemplo, los ingresos de una persona, el valor de una casa, la presión arterial del paciente.\nProblemas de clasificación. La respuesta es categórica e involucra K categorías diferentes. Por ejemplo, la marca de un producto adquirido (A, B, C) o si una persona incumple una deuda (sí o no).\nLos predictores pueden ser numéricos o categóricos."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#problema-de-regresión",
+    "href": "Module3/PredictiveModels.html#problema-de-regresión",
+    "title": "Predictive Models and Time Series",
+    "section": "Problema de regresión",
+    "text": "Problema de regresión\nObjetivo: encontrar la mejor función \\(f(X)\\) del predictor \\(X\\) que describa la respuesta \\(Y\\).\nEn términos matemáticos, queremos establecer la siguiente relación\n\\[Y = f(X) + \\epsilon\\]\n\nDonde \\(\\epsilon\\) es un error natural (aleatorio)."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#cómo-encontrar-la-forma-de-fx",
+    "href": "Module3/PredictiveModels.html#cómo-encontrar-la-forma-de-fx",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo encontrar la forma de \\(f(X)\\)?",
+    "text": "¿Cómo encontrar la forma de \\(f(X)\\)?\nUsando datos de entrenamiento."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#cómo-encontrar-la-forma-de-fx-1",
+    "href": "Module3/PredictiveModels.html#cómo-encontrar-la-forma-de-fx-1",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo encontrar la forma de \\(f(X)\\)?",
+    "text": "¿Cómo encontrar la forma de \\(f(X)\\)?\nUsando datos de entrenamiento."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx",
+    "href": "Module3/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?",
+    "text": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?\n\n\n\nUsando datos de validación."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1",
+    "href": "Module3/PredictiveModels.html#cómo-evaluar-la-calidad-de-la-función-candidata-hatfx-1",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?",
+    "text": "¿Cómo evaluar la calidad de la función candidata \\(\\hat{f}(X)\\)?\n\n\n\nUsando datos de validación."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#además",
+    "href": "Module3/PredictiveModels.html#además",
+    "title": "Predictive Models and Time Series",
+    "section": "Además…",
+    "text": "Además…\n\n\n\nPodemos usar datos de prueba para una evaluación final del modelo.\nLos datos de prueba, son datos que se obtuvieron del proceso que generó los datos de entrenamiento.\nLos datos de prueba son independientes de los datos de entrenamiento."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#modelo-de-regresión-lineal",
+    "href": "Module3/PredictiveModels.html#modelo-de-regresión-lineal",
+    "title": "Predictive Models and Time Series",
+    "section": "Modelo de Regresión Lineal",
+    "text": "Modelo de Regresión Lineal\nUna función candidata muy común para predecir una respuesta es el modelo de regresión lineal.\nTiene la forma matemática:\n\\[\\hat{Y}_i = \\hat{f}(X_i) = \\hat{\\beta}_0 + \\hat{\\beta}_1 X_i\\]\n\nDonde \\(i = 1, \\ldots, n_t\\) es el indice de los \\(n_t\\) datos de entrenamiento, y\n\\(\\hat{Y}_i\\) es la predicción del valor real de la respuesta \\(Y_i\\) asociada a un valor del predictor igual a \\(X_i\\).\nLos valores \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) se llaman coeficientes del modelo."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section",
+    "href": "Module3/PredictiveModels.html#section",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Los valores de \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) se obtienen usando el conjunto de datos de prueba y el método de mínimos cuadrados.\nEste método encuentra los valores de \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) que minimizan el error cometido por el modelo \\(\\hat{f}(X_i)\\) al tratar de predecir las respuestas del conjunto de entrenamiento.\nTécnicamente, el método minimiza la siguiente expresión\n\\[(Y_1 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 ))^2 + (Y_2 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_2 ))^2 + \\cdots + (Y_{n_t} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_{n_t} ))^2 \\]\nPara los \\(n_t\\) los datos de entrenamiento!"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#ejemplo",
+    "href": "Module3/PredictiveModels.html#ejemplo",
+    "title": "Predictive Models and Time Series",
+    "section": "Ejemplo",
+    "text": "Ejemplo"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#regresión-lineal-en-python",
+    "href": "Module3/PredictiveModels.html#regresión-lineal-en-python",
+    "title": "Predictive Models and Time Series",
+    "section": "Regresión lineal en Python",
+    "text": "Regresión lineal en Python\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#supuestos-del-modelo-de-regresión-lineal",
+    "href": "Module3/PredictiveModels.html#supuestos-del-modelo-de-regresión-lineal",
+    "title": "Predictive Models and Time Series",
+    "section": "Supuestos del modelo de regresión lineal",
+    "text": "Supuestos del modelo de regresión lineal\nPara usarlo el modelo de regresión, los errores del modelo \\(e_i = Y_i - \\hat{Y}_i\\) obtenidos en los datos de entrenamiento deben que cumplir tres condiciones:\n\nEn promedio, ser iguales a 0.\nTener la misma dispersión o variabilidad.\nSer independientes los unos de los otros.\n\nEstos supuestos se evalúan usando un análisis gráfico de residuos (errores del modelo)."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#en-python",
+    "href": "Module3/PredictiveModels.html#en-python",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#error-de-predicción",
+    "href": "Module3/PredictiveModels.html#error-de-predicción",
+    "title": "Predictive Models and Time Series",
+    "section": "Error de Predicción",
+    "text": "Error de Predicción\nDespués de estimar y validar el modelo de regresión lineal, podemos verificar la calidad de sus predicciones sobre datos no observados. Es decir, sobre los datos en el conjunto de validación.\nUna métrica para esto es el error de predicción promedio (MSE\\(_v\\)):\n\\[\\text{MSE}_v = \\frac{(Y_1 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 ))^2 + (Y_2 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_2 ))^2 + \\cdots + (Y_{n_v} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_{n_v} ))^2}{n_v} \\]\n\nPara los \\(n_v\\) los datos de validación!\n\nEntre más pequeño \\(\\text{MSE}_v\\), mejores las predicciones sobre datos no observados."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-1",
+    "href": "Module3/PredictiveModels.html#section-1",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "En la práctica, se utiliza la raíz cuadrada del error de predicción promedio:\n\\[\\text{RMSE}_v = \\sqrt{\\text{MSE}_v}.\\]\nLa ventaja del \\(\\text{RMSE}_v\\) es que se puede interpretar como:\n\nLa variabilidad promedio de una predicción del modelo.\n\nPor ejemplo, si \\(\\text{RMSE}_v = 1\\), entonces una predicción de \\(\\hat{Y} = 5\\) tendrá una tasa de error (promedio) de \\(\\pm 1\\)."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#en-python-1",
+    "href": "Module3/PredictiveModels.html#en-python-1",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#otra-métrica-r2",
+    "href": "Module3/PredictiveModels.html#otra-métrica-r2",
+    "title": "Predictive Models and Time Series",
+    "section": "Otra Métrica: \\(R^2\\)",
+    "text": "Otra Métrica: \\(R^2\\)\n\nEn el contexto de Ciencia de Datos, el \\(R^2\\) se puede interpretar como la correlación entre las respuestas actuales y las predecidas por el modelo.\nCuanto mayor sea la correlación, mejor será la concordancia entre las respuestas previstas y las reales."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#mini-actividad-cooperative-mode",
+    "href": "Module3/PredictiveModels.html#mini-actividad-cooperative-mode",
+    "title": "Predictive Models and Time Series",
+    "section": "Mini-Actividad (cooperative mode)",
+    "text": "Mini-Actividad (cooperative mode)\n\nConsidera el conjunto de datos Advertising.xlsx en Canvas.\nUsa un modelo para predecir Sales que incluya el predictor Radio (dinero invertido en anuncios por la radio de un producto ($)). ¿Cuál es el valor del \\(\\text{RMSE}_v\\)?\nAhora, usa un modelo para predecir Sales que incluya dos predictores: TV y Radio. ¿Cuál es el valor del \\(\\text{RMSE}_v\\)?\n¿Cuál modelo preferen?"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#otras-funciones-candidatas",
+    "href": "Module3/PredictiveModels.html#otras-funciones-candidatas",
+    "title": "Predictive Models and Time Series",
+    "section": "Otras funciones candidatas",
+    "text": "Otras funciones candidatas\nEl modelo de regresión lineal es de los más comunes para predecir una respuesta. Es simple y fácil de calcular e interpretar.\nSin embargo, puede ser limitado para problemas muy complejos.\nPara esto, existen otras funciones candidatas \\(\\hat{f}(X)\\) más avanzadas como:\n\nK vecinos más cercanos.\nLASSO.\nArboles de decision."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#qué-es-una-serie-de-tiempo",
+    "href": "Module3/PredictiveModels.html#qué-es-una-serie-de-tiempo",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Qué es una serie de tiempo?",
+    "text": "¿Qué es una serie de tiempo?\n\nEs una secuencia de observaciones recopiladas en intervalos de tiempo sucesivos.\nLos datos de series temporales se usan comúnmente en campos como finanzas, economía, pronóstico del tiempo, procesamiento de señales y muchos otros.\nAnalizar datos de series temporales nos ayuda a comprender patrones, tendencias y comportamientos a lo largo del tiempo, lo que permite la predicción, la detección de anomalías y la toma de decisiones."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#ejemplo-1",
+    "href": "Module3/PredictiveModels.html#ejemplo-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Ejemplo",
+    "text": "Ejemplo"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-2",
+    "href": "Module3/PredictiveModels.html#section-2",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Técnicamente, es un conjunto de observaciones sobre un predictor (discreto) \\(T\\) y una respuesta \\(Y\\).\nLas observaciones de \\(Y\\) se registran en los momentos o tiempos dados por el predictor \\(T\\).\n\n\n\n\nDia\nT\nTemperatura (Y)\n\n\n\n\nLunes\n1\n10\n\n\nMartes\n2\n12\n\n\nMiércoles\n3\n15\n\n\nJueves\n4\n14\n\n\nViernes\n5\n18\n\n\n\n\nLa característica especial de la serie de tiempo es que las observaciones de \\(Y\\) no son independientes!"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#en-python-2",
+    "href": "Module3/PredictiveModels.html#en-python-2",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#series-informativas",
+    "href": "Module3/PredictiveModels.html#series-informativas",
+    "title": "Predictive Models and Time Series",
+    "section": "Series informativas",
+    "text": "Series informativas\n\nUna serie de tiempo informativa es una serie que contiene patrones que podemos utilizar para predecir valores futuros de la serie.\nLos tres posibles patrones son:\n\nTendencia: la serie tiene un comportamiento creciente/decreciente.\nEstacionalidad: la serie tiene un patrón cíclico repetitivo en sus valores.\nAutocorrelación: la serie sigue un patrón que puede ser descrito con valores anteriores de la misma."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#tendencia",
+    "href": "Module3/PredictiveModels.html#tendencia",
+    "title": "Predictive Models and Time Series",
+    "section": "Tendencia",
+    "text": "Tendencia\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#estacionalidad",
+    "href": "Module3/PredictiveModels.html#estacionalidad",
+    "title": "Predictive Models and Time Series",
+    "section": "Estacionalidad",
+    "text": "Estacionalidad\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#autocorrelación",
+    "href": "Module3/PredictiveModels.html#autocorrelación",
+    "title": "Predictive Models and Time Series",
+    "section": "Autocorrelación",
+    "text": "Autocorrelación\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#series-no-informativas-ruido-blanco",
+    "href": "Module3/PredictiveModels.html#series-no-informativas-ruido-blanco",
+    "title": "Predictive Models and Time Series",
+    "section": "Series No Informativas: Ruido Blanco",
+    "text": "Series No Informativas: Ruido Blanco\n\nUn ruido blanco es una serie cuyos valores, en promedio, son 0 y tienen una variación constante. También, sus valores son independientes entre si.\nSe usa para describir el error aleatorio o natural."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#modelo-de-regresión-lineal-1",
+    "href": "Module3/PredictiveModels.html#modelo-de-regresión-lineal-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Modelo de Regresión Lineal",
+    "text": "Modelo de Regresión Lineal\nEl modelo de regresión lineal es útil para capturar los patrones de una serie de tiempo. En este contexto, el modelo toma la forma:\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i\\]\n\nDonde \\(i = 1, \\ldots, n_t\\) es el indice de los \\(n_t\\) datos de entrenamiento, y\n\\(\\hat{Y}_i\\) es la predicción del valor real de la respuesta \\(Y_i\\) en el tiempo \\(T_i\\)."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#tendencia-1",
+    "href": "Module3/PredictiveModels.html#tendencia-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Tendencia",
+    "text": "Tendencia\nLa tendencia de la serie de tiempo es capturada por el valor de \\(\\hat{\\beta}_1\\) en\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i\\]\n\nSi \\(\\hat{\\beta}_1\\) es positivo, la serie tiene una tendencia ascendente.\nSi \\(\\hat{\\beta}_1\\) es negativo, la serie tiene una tendencia descendente.\n\nLos valores de \\(\\hat{\\beta}_0\\) y \\(\\hat{\\beta}_1\\) se obtienen usando el método de mínimos cuadrados."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#evaluación-del-modelo",
+    "href": "Module3/PredictiveModels.html#evaluación-del-modelo",
+    "title": "Predictive Models and Time Series",
+    "section": "Evaluación del Modelo",
+    "text": "Evaluación del Modelo\nRecuerda que los errores del modelo de regresión lineal (\\(e_i = Y_i - \\hat{Y}_i\\)) deben de cumplir con dos condiciones:\n\nEn promedio, ser iguales a 0.\nTener la misma dispersión o variabilidad.\nSer independientes los unos de los otros.\n\nEn el contexto de series de tiempo, esto significa que los errores del modelo \\(e_i\\) se deben de comportar como un ruido blanco que no contiene patrones."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#en-python-3",
+    "href": "Module3/PredictiveModels.html#en-python-3",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#analysis-de-residuales",
+    "href": "Module3/PredictiveModels.html#analysis-de-residuales",
+    "title": "Predictive Models and Time Series",
+    "section": "Analysis de Residuales",
+    "text": "Analysis de Residuales\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#el-modelo-es-más-flexible-que-eso",
+    "href": "Module3/PredictiveModels.html#el-modelo-es-más-flexible-que-eso",
+    "title": "Predictive Models and Time Series",
+    "section": "El Modelo es Más Flexible que Eso",
+    "text": "El Modelo es Más Flexible que Eso\nSi es necesario, el modelo de regresión lineal se puede extender para capturar relaciones cuadráticas. Para esto, el modelo toma la siguiente forma:\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i + \\hat{\\beta}_2 T^{2}_i \\]\n\nDonde \\(T^{2}_i\\) es el valor del indice de tiempo al cuadrado.\n\\(\\hat{\\beta}_2\\) es un término que captura una posible curvatura en la serie de tiempo."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#en-python-4",
+    "href": "Module3/PredictiveModels.html#en-python-4",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#analysis-de-residuales-1",
+    "href": "Module3/PredictiveModels.html#analysis-de-residuales-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Analysis de Residuales",
+    "text": "Analysis de Residuales\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#tendencias-exponenciales",
+    "href": "Module3/PredictiveModels.html#tendencias-exponenciales",
+    "title": "Predictive Models and Time Series",
+    "section": "Tendencias exponenciales",
+    "text": "Tendencias exponenciales\nSi una serie tiene una tendencia exponencial, el modelo de regresión lineal podría no hacer apropiado para capturar dicha tendencia.\nUn remedio sencillo es calcular el logaritmo de los datos de la respuesta y obtener un modelo de regresión lineal para la variable transformada.\nEs decir, usar el siguiente modelo para describir la serie de tiempo:\n\\[\\log (Y_i) = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i.\\] ## Ejemplo\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#mini-actividad-cooperative-mode-1",
+    "href": "Module3/PredictiveModels.html#mini-actividad-cooperative-mode-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Mini-Actividad (cooperative mode)",
+    "text": "Mini-Actividad (cooperative mode)\n\nConsidera el conjunto de datos CanadianWorkHours.xlsx en Canvas.\nVisualiza la serie en Python. La variable de respuesta es Working Hours y el predictor es el año.\nUsando Python, contesta la pregunta: ¿Cúal de los siguientes modelos se ajusta mejor a la serie?\nModelo de regresión con tendencia lineal.\nModelo de regresión con tendencia quadratica.\nModelo de regresión con tendencia exponencial."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#identificando-heteroscedasticidad",
+    "href": "Module3/PredictiveModels.html#identificando-heteroscedasticidad",
+    "title": "Predictive Models and Time Series",
+    "section": "Identificando Heteroscedasticidad",
+    "text": "Identificando Heteroscedasticidad\nHeteroscedastisidad surge cuando la dispersión de los errores del modelo no es constante a través del tiempo.\nEjemplo"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#en-python-5",
+    "href": "Module3/PredictiveModels.html#en-python-5",
+    "title": "Predictive Models and Time Series",
+    "section": "En Python",
+    "text": "En Python"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#qué-hago-si-la-transformación-no-funciona",
+    "href": "Module3/PredictiveModels.html#qué-hago-si-la-transformación-no-funciona",
+    "title": "Predictive Models and Time Series",
+    "section": "¿Qué hago si la transformación no funciona?",
+    "text": "¿Qué hago si la transformación no funciona?\n\nSi la transformación de logaritmo no reduce significativamente la heteroscedasticidad, existen modelos para modelar la varianza llamados GARCH.\n\nPuedes consultar literatura sobre dichos modelos y sus implementaciones en software en un texto de series de tiempo como Time Series Analysis with applications in R de Cryer y Chan."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#estacionalidad-1",
+    "href": "Module3/PredictiveModels.html#estacionalidad-1",
+    "title": "Predictive Models and Time Series",
+    "section": "Estacionalidad",
+    "text": "Estacionalidad\nLa estacionalidad consiste en un comportamiento repetitivo o cíclico que ocurre con una frecuencia constante.\nEjemplos:\n\nDemanda de prendas de invierno\nDemanda para viajes turísticos\nVolumen de Lluvia durante el año."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#capturando-estacionalidad",
+    "href": "Module3/PredictiveModels.html#capturando-estacionalidad",
+    "title": "Predictive Models and Time Series",
+    "section": "Capturando Estacionalidad",
+    "text": "Capturando Estacionalidad\n\n\n\nEl modelo de regresión lineal se puede extender para capturar patrones de estacionalidad en la serie de tiempo.\nPara esto, se crea un predictor adicional categórico que indica la estación a la que pertenece cada dato.\nDetrás de cámaras, el predictor adicional categórico se transforma en varios predicadores numéricos auxiliares."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#analizando-series-estacionales-en-python",
+    "href": "Module3/PredictiveModels.html#analizando-series-estacionales-en-python",
+    "title": "Predictive Models and Time Series",
+    "section": "Analizando series estacionales en Python",
+    "text": "Analizando series estacionales en Python\nTBD"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#desventajas-de-los-modelos-de-regresión-lineal",
+    "href": "Module3/PredictiveModels.html#desventajas-de-los-modelos-de-regresión-lineal",
+    "title": "Predictive Models and Time Series",
+    "section": "Desventajas de los modelos de regresión lineal",
+    "text": "Desventajas de los modelos de regresión lineal\nA pesar de su simplicidad y versatilidad, los modelos de regresión lineal no son los mejores para describir una serie de tiempo.\nEsto es porque no asumen una dependencia entre valores consecutivos de la serie de tiempo. Es decir, no usan el hecho de que, por ejemplo, \\(Y_1\\) puede ayudarnos a predecir \\(Y_2\\), y \\(Y_2\\) puede ayudarnos a predecir \\(Y_3\\), etc.\nModelos que nos ayudan a utilizar observaciones anteriores para predecir valores futuros de la variable de respuesta \\(Y\\) son los modelos autoregresivos."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html",
+    "href": "Module3/Autocorrelation.html",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Autocorrelación\nEl modelo ARIMA\nEl modelo SARIMA"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#agenda",
+    "href": "Module3/Autocorrelation.html#agenda",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Autocorrelación\nEl modelo ARIMA\nEl modelo SARIMA"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#problema-con-los-modelos-de-regresión-lineal",
+    "href": "Module3/Autocorrelation.html#problema-con-los-modelos-de-regresión-lineal",
+    "title": "Autocorrelation Models",
+    "section": "Problema con los modelos de regresión lineal",
+    "text": "Problema con los modelos de regresión lineal\nLos modelos de regresión lineal no incorporan la dependencia entre valores consecutivos de una serie de tiempo.\nEsto es una pena porque respuestas registradas en periodos de tiempo cercanos tienden a estar correlacionadas. Esta correlación se llama autocorrelación de la serie de tiempo.\nLa autocorrelación nos ayuda a desarollar un modelo que puede hacer mejores pronósticos de respuestas futuras."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#qué-es-la-correlación",
+    "href": "Module3/Autocorrelation.html#qué-es-la-correlación",
+    "title": "Autocorrelation Models",
+    "section": "¿Qué es la correlación?",
+    "text": "¿Qué es la correlación?\n\nEs una medida de la fuerza y de la dirección de la relación lineal entre dos variables numéricas.\nEspecíficamente, se utiliza para evaluar la relación entre dos conjuntos de observaciones.\nLa correlación está entre \\(-1\\) y 1."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#cómo-medimos-la-autocorrelación",
+    "href": "Module3/Autocorrelation.html#cómo-medimos-la-autocorrelación",
+    "title": "Autocorrelation Models",
+    "section": "¿Cómo medimos la autocorrelación?",
+    "text": "¿Cómo medimos la autocorrelación?\nHay dos herramientas formales para medir la correlación entre las observaciones de una serie de tiempo:\n\nLa función de autocorrelación.\nLa función de autocorrelación parcial."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#la-función-de-autocorrelación",
+    "href": "Module3/Autocorrelation.html#la-función-de-autocorrelación",
+    "title": "Autocorrelation Models",
+    "section": "La función de autocorrelación",
+    "text": "La función de autocorrelación\n\nMide la correlación entre respuestas que están separadas por \\(j\\) periodos.\n\nPor ejemplo, la autocorrelación entre la temperatura presente y la temperatura registrada un día antes es la correlación entre las siguientes variables:"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section",
+    "href": "Module3/Autocorrelation.html#section",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "La autocorrelación entre las observaciones de la serie de tiempo y las observaciones un periodo atrás es: 0.586."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#calculo-de-autocorrelación-en-python",
+    "href": "Module3/Autocorrelation.html#calculo-de-autocorrelación-en-python",
+    "title": "Autocorrelation Models",
+    "section": "Calculo de Autocorrelación en Python",
+    "text": "Calculo de Autocorrelación en Python"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-1",
+    "href": "Module3/Autocorrelation.html#section-1",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "La función de autocorrelación comúnmente se visualiza usando una gráfica de barras.\nEl eje vertical muestra las diferencias (o lags) entre los periodos considerados, y el eje horizontal muestra las correlaciones entre las observaciones de distintos lags."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-2",
+    "href": "Module3/Autocorrelation.html#section-2",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.438\nTambién muestra que la correlación entre las respuestas actuales y las de 12 meses atrás estan altamente correlacionadas.\nLo mismo para las respuestas actuales y las respuestas tomadas 24 meses atrás."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#patrones-de-autocorrelación",
+    "href": "Module3/Autocorrelation.html#patrones-de-autocorrelación",
+    "title": "Autocorrelation Models",
+    "section": "Patrones de autocorrelación",
+    "text": "Patrones de autocorrelación\n\nUna autocorrelación fuerte (positiva o negativa) con un retraso \\(j\\) mayor que 1 y sus múltiplos (\\(2k, 3k, \\ldots\\)) normalmente refleja un patrón cíclico o estacionalidad.\nLa autocorrelación positiva de retardo 1 describe una serie en la que los valores consecutivos se mueven generalmente en la misma dirección.\nLa autocorrelación negativa de retardo 1 refleja oscilaciones en la serie, donde los valores altos (generalmente) son seguidos inmediatamente por valores bajos y viceversa."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#más-sobre-la-función-de-autocorrelación",
+    "href": "Module3/Autocorrelation.html#más-sobre-la-función-de-autocorrelación",
+    "title": "Autocorrelation Models",
+    "section": "Más sobre la función de autocorrelación",
+    "text": "Más sobre la función de autocorrelación\nConsidera el problema de predecir el precio promedio de un kilo de aguacate en este mes.\nPara esto tenemos el precio promedio del mes pasado y del antepasado."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-3",
+    "href": "Module3/Autocorrelation.html#section-3",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "La función de autocorrelación para \\(Y_t\\) y \\(Y_{t-2}\\) incluye el efecto directo e indirecto de \\(Y_{t-2}\\) sobre \\(Y_t\\)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#la-función-de-autocorrelación-parcial",
+    "href": "Module3/Autocorrelation.html#la-función-de-autocorrelación-parcial",
+    "title": "Autocorrelation Models",
+    "section": "La función de autocorrelación parcial",
+    "text": "La función de autocorrelación parcial\n\nMide la correlación entre respuestas que están separadas por \\(j\\) periodos, excluyendo la correlación debido a respuestas separadas por periodos intermedios."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-4",
+    "href": "Module3/Autocorrelation.html#section-4",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "En terminos técnicos, la función de autocorrelación parcial ajusta el siguiente modelo de regresión lineal\n\\[\\hat{Y}_t = \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}\\]\nDonde:\n\n\\(\\hat{Y}_{t}\\) es la predicción de la respuesta en el tiempo actual (\\(t\\)).\n\\(\\hat{\\beta}_1\\) es el efecto directo de \\(Y_{t-1}\\) en predecir \\(Y_{t}\\).\n\\(\\hat{\\beta}_2\\) es el efecto directo de \\(Y_{t-2}\\) en predecir \\(Y_{t}\\).\n\nLa autocorrelación parcial entre \\(Y_t\\) y \\(Y_{t-2}\\) es igual a \\(\\hat{\\beta}_2\\). ##\n\nLa función de autocorrelación parcial se visualiza usando una gráfica similar a la de la autocorrelación.\nEl eje vertical muestra las diferencias (o lags) entre los periodos considerados, y el eje horizontal muestra las correlaciones parciales entre las observaciones de distintos lags."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-5",
+    "href": "Module3/Autocorrelation.html#section-5",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.4387\nTambién muestra que la correlación entre las respuestas actuales y las de 6 y 7 meses atrás están altamente correlacionadas."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#modelos-autoregresivos",
+    "href": "Module3/Autocorrelation.html#modelos-autoregresivos",
+    "title": "Autocorrelation Models",
+    "section": "Modelos Autoregresivos",
+    "text": "Modelos Autoregresivos\nLos modelos autoregresivos son un typo de modelo de regresión lineal que incorporan directamente la autocorrelación de la serie de tiempo para predecir la respuesta actual.\nSu carácteristica principal es que los predictores del valor actual de la serie son sus valores anteriores.\n\nEn términos matemáticos, un modelo autoregresivo de orden 2 tiene la forma matemática: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}.\\)\nUno de orden 3 se ve así: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2} + \\hat{\\beta}_3 Y_{t-3}.\\)"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#modelos-arima",
+    "href": "Module3/Autocorrelation.html#modelos-arima",
+    "title": "Autocorrelation Models",
+    "section": "Modelos ARIMA",
+    "text": "Modelos ARIMA\nUna clase especial de modelos autoregresivos son los modelos ARIMA (Autoregressive Integrated Moving Average).\nUn modelo ARIMA se compone de tres elementos\n\nOperadores diferenciados o integrados (integrated).\nTérminos autoregresivos (autoregressive).\nTérminos estocásticos (moving average)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#estacionalidad",
+    "href": "Module3/Autocorrelation.html#estacionalidad",
+    "title": "Autocorrelation Models",
+    "section": "Estacionalidad",
+    "text": "Estacionalidad\nLa estacionalidad consiste en un comportamiento repetitivo o cíclico que ocurre con una frecuencia constante.\nSe puede identificar de la gráfica de la serie o usando las ACF and PACF.\nPara esto, debemos haber removido la tendencia."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#en-python",
+    "href": "Module3/Autocorrelation.html#en-python",
+    "title": "Autocorrelation Models",
+    "section": "En Python",
+    "text": "En Python"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#modelo-sarima",
+    "href": "Module3/Autocorrelation.html#modelo-sarima",
+    "title": "Autocorrelation Models",
+    "section": "Modelo SARIMA",
+    "text": "Modelo SARIMA\nEl modelo SARIMA (Seasonal Autoregressive Integrated Moving Average) es una extensión del modelo ARIMA para modelar los patrones de estacionalidad.\nEl modelo SARIMA tiene tres elementos adicionales para modelar la estacionalidad en la serie de tiempo.\n\nOperadores diferenciados o integrados (integrated) para la estacionalidad.\nTérminos autoregresivos (autoregressive) para la estacionalidad.\nTérminos estocásticos o promedios móviles (moving average) para la estacionalidad."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#notación",
+    "href": "Module3/Autocorrelation.html#notación",
+    "title": "Autocorrelation Models",
+    "section": "Notación",
+    "text": "Notación\nLa estacionalidad en una serie de tiempo es un patrón regular de cambios que se repite durante \\(S\\) períodos de tiempo, donde \\(S\\) define el número de períodos de tiempo hasta que el patrón se repite nuevamente.\nPor ejemplo, hay estacionalidad en los datos mensuales para los cuales los valores altos siempre tienden a ocurrir en algunos meses en particular y los valores bajos siempre tienden a ocurrir en otros meses en particular.\nEn este caso, \\(S=12\\) (meses por año) es el lapso del comportamiento estacional periódico. Para datos trimestrales, \\(S=4\\) períodos de tiempo por año."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#diferenciación-estacional",
+    "href": "Module3/Autocorrelation.html#diferenciación-estacional",
+    "title": "Autocorrelation Models",
+    "section": "Diferenciación estacional",
+    "text": "Diferenciación estacional\nEs la diferencia entre una respuesta y una respuesta con un rezago que es múltiplo de \\(S\\).\nPor ejemplo, con datos mensuales \\(S=12\\),\n\nUna diferencia estacional de nivel 1 es \\(Y_{t} - Y_{t-12}\\).\nUna diferencia estacional de nivel 2 es \\((Y_t - Y_{t-12}) - (Y_{t-12} - Y_{t-24})\\).\n\nLa diferenciación estacional elimina la tendencia estacional y también puede eliminar un tipo de no estacionariedad de paseo aleatorio estacional."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#términos-de-los-modelos-ar-y-ma-para-estacionalidad",
+    "href": "Module3/Autocorrelation.html#términos-de-los-modelos-ar-y-ma-para-estacionalidad",
+    "title": "Autocorrelation Models",
+    "section": "Términos de los modelos AR y MA para estacionalidad",
+    "text": "Términos de los modelos AR y MA para estacionalidad\nEn el SARIMA, los términos de los componentes AR y MA estacionales predicen la respuesta actual (\\(Y_t\\)) usando respuestas y errores en momentos con rezagos que son múltiplos de \\(S\\).\nPor ejemplo, con datos mensuales \\(S = 12\\),\n\nEl modelo AR estacional de orden 1 usaría \\(Y_{t-12}\\) para predecir \\(Y_{t}\\).\nEl modelo AR estacional de orden 2 usaría \\(Y_{t-12}\\) y \\(Y_{t-24}\\) para predecir \\(Y_{t}\\).\nEl modelo MA estacional de orden 1 usaría el término estocástico \\(a_{t-12}\\) como un predictor.\nEl modelo MA estacional de orden 2 usaría los términos estocásticos \\(a_{t-12}\\) y \\(a_{t-24}\\) como predictores."
+  },
+  {
+    "objectID": "Module1/DataBases.html",
+    "href": "Module1/DataBases.html",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "Dashboards para Visualizar Indicadores\nBases de Datos para Almacenar Indicadores"
+  },
+  {
+    "objectID": "Module1/DataBases.html#agenda",
+    "href": "Module1/DataBases.html#agenda",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "Dashboards para Visualizar Indicadores\nBases de Datos para Almacenar Indicadores"
+  },
+  {
+    "objectID": "Module1/DataBases.html#el-tablero-de-control-integral",
+    "href": "Module1/DataBases.html#el-tablero-de-control-integral",
+    "title": "Introduction to Data Bases",
+    "section": "El tablero de control integral",
+    "text": "El tablero de control integral\nUna vez que se definene los indicadores usando el Balance Scorecard y el formato de documentación, se procede a diseñar los tableros de control:\n\npantallas,\nestilos de gráficos y tablas,\nniveles de agregación,\nreportes predeterminados,\nrequerimientos de drill-down.\n\nEsto es tanto para el nivel general de la organización, como para los BSC funcionales."
+  },
+  {
+    "objectID": "Module1/DataBases.html#despliegue-del-tablero-de-indicadores",
+    "href": "Module1/DataBases.html#despliegue-del-tablero-de-indicadores",
+    "title": "Introduction to Data Bases",
+    "section": "Despliegue del tablero de indicadores",
+    "text": "Despliegue del tablero de indicadores\nPara la implementación de los tableros de indicadores se pueden seguir diversas estrategias, por ejemplo:\n\nDesarrollo en una plataforma especializada para sistemas de indicadores (https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/)\nDesarrollo con herramientas genéricas OLAP On-line Analytical Processing (https://www.softwaretestinghelp.com/best-olap-tools/)\nImplementaciones aisladas de corto alcance en hoja de cálculo."
+  },
+  {
+    "objectID": "Module1/DataBases.html#ejemplo-de-tablero-de-indicadores-de-tableu",
+    "href": "Module1/DataBases.html#ejemplo-de-tablero-de-indicadores-de-tableu",
+    "title": "Introduction to Data Bases",
+    "section": "Ejemplo de tablero de indicadores de Tableu",
+    "text": "Ejemplo de tablero de indicadores de Tableu\n\nhttps://www.tableau.com/es-mx"
+  },
+  {
+    "objectID": "Module1/DataBases.html#otro-ejemplo",
+    "href": "Module1/DataBases.html#otro-ejemplo",
+    "title": "Introduction to Data Bases",
+    "section": "Otro Ejemplo",
+    "text": "Otro Ejemplo"
+  },
+  {
+    "objectID": "Module1/DataBases.html#contexto",
+    "href": "Module1/DataBases.html#contexto",
+    "title": "Introduction to Data Bases",
+    "section": "Contexto",
+    "text": "Contexto\nAunque los datos para el cálculo de algunos indicadores tienen su origen fuera de la organización, la gran mayoría de los datos provienen de las bases de datos internas del negocio.\nExiste mucha diversidad de empresas, unas que tienen aplicaciones aisladas con bases de datos dispersas y con archivos en hojas de cálculo, hasta empresas muy organizadas con un sistema de bases centralizado en un servidor de datos y aplicaciones vinculadas."
+  },
+  {
+    "objectID": "Module1/DataBases.html#section",
+    "href": "Module1/DataBases.html#section",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "Para obtener los datos necesarios para el cálculo de indicadores, muchas veces será necesario integrar datos de diversas fuentes en la empresa. Para esto, se usan herramientas de ETL (extract-transform-load) y data warehousing."
+  },
+  {
+    "objectID": "Module1/DataBases.html#qué-es-una-base-de-datos",
+    "href": "Module1/DataBases.html#qué-es-una-base-de-datos",
+    "title": "Introduction to Data Bases",
+    "section": "¿Qué es una Base de Datos?",
+    "text": "¿Qué es una Base de Datos?\nBásicamente, una tabla de datos donde los renglones representan un conjunto de ocurrencias de una entidad (clientes, productos, pacientes, pedidos) y las columnas representan atributos o características que describen a la entidad (cliente: ID + nombre + domicilio + e-mail + saldo ) En el ámbito de TI el concepto de “base de datos” no se refiere a una tabla, sino a un conjunto de tablas relacionadas."
+  },
+  {
+    "objectID": "Module1/DataBases.html#terminología-de-bd",
+    "href": "Module1/DataBases.html#terminología-de-bd",
+    "title": "Introduction to Data Bases",
+    "section": "Terminología de BD",
+    "text": "Terminología de BD\nLas tablas contienen datos que se refieren a:\n\nalguna entidad acerca de la cual la organización necesita mantener información\nrelaciones entre entidades.\n\nA los renglones de la tabla se les denomina registros.\nA las columnas de la tabla se les denomina campos."
+  },
+  {
+    "objectID": "Module1/DataBases.html#section-1",
+    "href": "Module1/DataBases.html#section-1",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "Los registros son ocurrencias diferentes de la entidad correspondiente.\nLos campos son atributos que describen la entidad.\nCada registro tiene uno o varios campos que identifican de manera única cada registro, esos campos se denominan “llave”."
+  },
+  {
+    "objectID": "Module1/DataBases.html#bases-de-datos-relacionales",
+    "href": "Module1/DataBases.html#bases-de-datos-relacionales",
+    "title": "Introduction to Data Bases",
+    "section": "Bases de Datos Relacionales",
+    "text": "Bases de Datos Relacionales\n\nActualmente el modelo de bases más utilizado en el mundo es el de bases de datos relacionales, ver por ejemplo:\nhttps://db-engines.com/en/ranking\nhttps://www.dataversity.net/database-management-trends-in-2020/\nAnte el surgimiento de aplicaciones de big data hace que estas bases de datos sean la principal fuente de datos para indicadores en las empresas."
+  },
+  {
+    "objectID": "Module1/DataBases.html#ejemplo-de-base-de-datos-relacional",
+    "href": "Module1/DataBases.html#ejemplo-de-base-de-datos-relacional",
+    "title": "Introduction to Data Bases",
+    "section": "Ejemplo de Base de Datos Relacional",
+    "text": "Ejemplo de Base de Datos Relacional"
+  },
+  {
+    "objectID": "Module1/DataBases.html#ejemplo",
+    "href": "Module1/DataBases.html#ejemplo",
+    "title": "Introduction to Data Bases",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\n\n\nLa base de datos tiene 4 tablas: Pacientes, Medicinas, Recetas y Detalle de las recetas.\nLa tabla que contiene datos de la entidad “paciente” tiene los siguientes campos: identificador único, nombre, domicilio, fecha de nacimiento, teléfono, y foto."
+  },
+  {
+    "objectID": "Module1/DataBases.html#section-2",
+    "href": "Module1/DataBases.html#section-2",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "La tabla de recetas contiene los datos generales de cada receta expedida: número de receta (es la llave), fecha, hora de consulta, un indicador de si contiene medicamentos controlados o no, y el identificador del paciente, este campo permite relacionar los datos de la receta con los datos del paciente."
+  },
+  {
+    "objectID": "Module1/DataBases.html#section-3",
+    "href": "Module1/DataBases.html#section-3",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "La tabla de medicinas tiene los campos: identificador de la medicina, descripción genérica, agente activo, presentación más común, y contra-indicaciones."
+  },
+  {
+    "objectID": "Module1/DataBases.html#section-4",
+    "href": "Module1/DataBases.html#section-4",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "La tabla de detalle de la receta contiene los renglones de cada receta. Como hay recetas que pueden tener un solo medicamento, puede haber algunas con 2, 3 o más medicamentos, en el modelo relacional se guardan los renglones de todas las recetas en una sola tabla, todos los renglones de una receta tienen el mismo “número de receta” pero diferente “id del medicamento”…"
+  },
+  {
+    "objectID": "Module1/DataBases.html#section-5",
+    "href": "Module1/DataBases.html#section-5",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "En la tabla Detalle de Receta puede haber múltiples registros con el mismo Número de receta, porque la receta puede amparar varios medicamentos. También puede haber múltiples registros con el mismo ID de medicamento, porque un medicamento puede aparecer en muchas recetas."
+  },
+  {
+    "objectID": "Module1/DataBases.html#section-6",
+    "href": "Module1/DataBases.html#section-6",
+    "title": "Introduction to Data Bases",
+    "section": "",
+    "text": "En este caso, para identificar de manera única un renglón de una receta en particular se requieren los dos identificadores, el de la receta y el del medicamento, esto constituye una llave compuesta."
+  },
+  {
+    "objectID": "Module1/DataBases.html#consultas-queries-a-la-bd",
+    "href": "Module1/DataBases.html#consultas-queries-a-la-bd",
+    "title": "Introduction to Data Bases",
+    "section": "Consultas (queries) a la BD",
+    "text": "Consultas (queries) a la BD\nUna vez que se tiene la base de datos, es posible contestar preguntas como:\n\n¿En cuáles colonias viven los pacientes a quienes se les ha recetado turbocicloxina?\n¿A cuántos pacientes se les ha recetado turbocicloxina en el último mes?\n¿Cuáles agentes activos se les han administrado a los pacientes que viven en Prados #520 en el último año?"
+  },
+  {
+    "objectID": "Module1/DataBases.html#sql",
+    "href": "Module1/DataBases.html#sql",
+    "title": "Introduction to Data Bases",
+    "section": "SQL",
+    "text": "SQL\n\nLas herramientas y plataformas de Business Intelligence con las que contamos actualmente, nos permiten hacer fácilmente consultas como las del ejemplo anterior, simplemente “arrastrando” campos y aplicando filtros en un lienzo de diseño.\nInternamente las herramientas procesan las consultas mediante un lenguaje de manejo de bases de datos que se llama SQL Structured Query Language.\nPara hacer consultas más complejas puede ser necesario que se haga la consulta escribiendo directamente el código de SQL.\nEn este módulo no estudiaremos SQL."
   }
 ]

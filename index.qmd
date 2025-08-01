@@ -18,13 +18,15 @@ author:
 ### Module 2
 
 1.  Introduction to Data Science ([slides](/LinearRegression/LinearRegression.slides.html)) ([colab](https://colab.research.google.com/drive/1RPIkJNT2fdFB9jLcYGGjUx22G8JmzAPK?usp=sharing))
-2.  Classification Algorithms
+2.  Decision trees for classification
+3.  Ensambles of trees
+4.  *K*-nearest neighbours
 
 ### Module 3
 
 1.  Predictive Models
 2.  Autocorrelation Models
-3.  Nonparametric models
+3.  Tree-based methods
 
 ### Module 4
 

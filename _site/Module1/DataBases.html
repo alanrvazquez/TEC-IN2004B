@@ -8,7 +8,7 @@
 
 <meta name="author" content="Alan R. Vazquez">
 
-<title>IN2004B Generation of Value with Data Analytics – TEC-IN2004B</title>
+<title>Introduction to Data Bases – TEC-IN2004B</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,22 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">TEC-IN2004B</span>
     </a>
   </div>
@@ -90,11 +90,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -113,27 +113,43 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-topics" id="toc-course-topics" class="nav-link active" data-scroll-target="#course-topics">Course topics</a>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#dashboards-para-visualizar-indicadores" id="toc-dashboards-para-visualizar-indicadores" class="nav-link" data-scroll-target="#dashboards-para-visualizar-indicadores">Dashboards para Visualizar Indicadores</a>
   <ul class="collapse">
-  <li><a href="#module-1" id="toc-module-1" class="nav-link" data-scroll-target="#module-1">Module 1</a></li>
-  <li><a href="#module-2" id="toc-module-2" class="nav-link" data-scroll-target="#module-2">Module 2</a></li>
-  <li><a href="#module-3" id="toc-module-3" class="nav-link" data-scroll-target="#module-3">Module 3</a></li>
-  <li><a href="#module-4" id="toc-module-4" class="nav-link" data-scroll-target="#module-4">Module 4</a></li>
+  <li><a href="#el-tablero-de-control-integral" id="toc-el-tablero-de-control-integral" class="nav-link" data-scroll-target="#el-tablero-de-control-integral">El tablero de control integral</a></li>
+  <li><a href="#despliegue-del-tablero-de-indicadores" id="toc-despliegue-del-tablero-de-indicadores" class="nav-link" data-scroll-target="#despliegue-del-tablero-de-indicadores">Despliegue del tablero de indicadores</a></li>
+  <li><a href="#ejemplo-de-tablero-de-indicadores-de-tableu" id="toc-ejemplo-de-tablero-de-indicadores-de-tableu" class="nav-link" data-scroll-target="#ejemplo-de-tablero-de-indicadores-de-tableu">Ejemplo de tablero de indicadores de Tableu</a></li>
+  <li><a href="#otro-ejemplo" id="toc-otro-ejemplo" class="nav-link" data-scroll-target="#otro-ejemplo">Otro Ejemplo</a></li>
   </ul></li>
-  <li><a href="#about-the-author" id="toc-about-the-author" class="nav-link" data-scroll-target="#about-the-author">About the author</a>
+  <li><a href="#bases-de-datos-para-almacenar-indicadores" id="toc-bases-de-datos-para-almacenar-indicadores" class="nav-link" data-scroll-target="#bases-de-datos-para-almacenar-indicadores">Bases de Datos para Almacenar Indicadores</a>
   <ul class="collapse">
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  <li><a href="#contexto" id="toc-contexto" class="nav-link" data-scroll-target="#contexto">Contexto</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#qué-es-una-base-de-datos" id="toc-qué-es-una-base-de-datos" class="nav-link" data-scroll-target="#qué-es-una-base-de-datos">¿Qué es una Base de Datos?</a></li>
+  <li><a href="#terminología-de-bd" id="toc-terminología-de-bd" class="nav-link" data-scroll-target="#terminología-de-bd">Terminología de BD</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#bases-de-datos-relacionales" id="toc-bases-de-datos-relacionales" class="nav-link" data-scroll-target="#bases-de-datos-relacionales">Bases de Datos Relacionales</a></li>
+  <li><a href="#ejemplo-de-base-de-datos-relacional" id="toc-ejemplo-de-base-de-datos-relacional" class="nav-link" data-scroll-target="#ejemplo-de-base-de-datos-relacional">Ejemplo de Base de Datos Relacional</a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a></li>
+  <li><a href="#consultas-queries-a-la-bd" id="toc-consultas-queries-a-la-bd" class="nav-link" data-scroll-target="#consultas-queries-a-la-bd">Consultas (queries) a la BD</a></li>
+  <li><a href="#sql" id="toc-sql" class="nav-link" data-scroll-target="#sql">SQL</a></li>
   </ul></li>
+  <li><a href="#return-to-main-page" id="toc-return-to-main-page" class="nav-link" data-scroll-target="#return-to-main-page">Return to main page</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="DataBases.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IN2004B Generation of Value with Data Analytics</h1>
-<p class="subtitle lead">Materials for Semester AD 2025</p>
+<h1 class="title">Introduction to Data Bases</h1>
+<p class="subtitle lead">IN2004B: Generation of Value with Data Analytics</p>
 </div>
 
 
@@ -142,11 +158,11 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author">Alan R. Vazquez <a href="https://orcid.org/0000-0002-3658-0911" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    <p class="author">Alan R. Vazquez </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            Tecnologico de Monterrey
+            Department of Industrial Engineering
           </p>
       </div>
   </div>
@@ -163,48 +179,193 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="course-topics" class="level2">
-<h2 class="anchored" data-anchor-id="course-topics">Course topics</h2>
-<section id="module-1" class="level3">
-<h3 class="anchored" data-anchor-id="module-1">Module 1</h3>
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<p><br></p>
 <ol type="1">
-<li>Indicators (<a href="./IntroductionDS/Introduction.slides.html">slides</a>)</li>
-<li>Introduction to Data Bases</li>
+<li>Dashboards para Visualizar Indicadores</li>
+<li>Bases de Datos para Almacenar Indicadores</li>
 </ol>
 </section>
-<section id="module-2" class="level3">
-<h3 class="anchored" data-anchor-id="module-2">Module 2</h3>
-<ol type="1">
-<li>Introduction to Data Science (<a href="./LinearRegression/LinearRegression.slides.html">slides</a>) (<a href="https://colab.research.google.com/drive/1RPIkJNT2fdFB9jLcYGGjUx22G8JmzAPK?usp=sharing">colab</a>)</li>
-<li>Decision trees for classification</li>
-<li>Ensambles of trees</li>
-<li><em>K</em>-nearest neighbours</li>
-</ol>
+<section id="dashboards-para-visualizar-indicadores" class="level1">
+<h1>Dashboards para Visualizar Indicadores</h1>
+<section id="el-tablero-de-control-integral" class="level2">
+<h2 class="anchored" data-anchor-id="el-tablero-de-control-integral">El tablero de control integral</h2>
+<p>Una vez que se definene los indicadores usando el Balance Scorecard y el formato de documentación, se procede a diseñar los tableros de control:</p>
+<ul>
+<li>pantallas,</li>
+<li>estilos de gráficos y tablas,</li>
+<li>niveles de agregación,</li>
+<li>reportes predeterminados,</li>
+<li>requerimientos de drill-down.</li>
+</ul>
+<p>Esto es tanto para el nivel general de la organización, como para los BSC funcionales.</p>
 </section>
-<section id="module-3" class="level3">
-<h3 class="anchored" data-anchor-id="module-3">Module 3</h3>
-<ol type="1">
-<li>Predictive Models</li>
-<li>Autocorrelation Models</li>
-<li>Nonparametric models</li>
-</ol>
+<section id="despliegue-del-tablero-de-indicadores" class="level2">
+<h2 class="anchored" data-anchor-id="despliegue-del-tablero-de-indicadores">Despliegue del tablero de indicadores</h2>
+<p>Para la implementación de los tableros de indicadores se pueden seguir diversas estrategias, por ejemplo:</p>
+<ul>
+<li><p>Desarrollo en una plataforma especializada para sistemas de indicadores (<a href="https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/" class="uri">https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/</a>)</p></li>
+<li><p>Desarrollo con herramientas genéricas OLAP On-line Analytical Processing (<a href="https://www.softwaretestinghelp.com/best-olap-tools/" class="uri">https://www.softwaretestinghelp.com/best-olap-tools/</a>)</p></li>
+<li><p>Implementaciones aisladas de corto alcance en hoja de cálculo.</p></li>
+</ul>
 </section>
-<section id="module-4" class="level3">
-<h3 class="anchored" data-anchor-id="module-4">Module 4</h3>
-<ol type="1">
-<li>Principal Component Analysis</li>
-<li>Clustering Methods</li>
-</ol>
+<section id="ejemplo-de-tablero-de-indicadores-de-tableu" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-de-tablero-de-indicadores-de-tableu">Ejemplo de tablero de indicadores de Tableu</h2>
+<p><img src="images/clipboard-3862420324.png" class="img-fluid"></p>
+<p><a href="https://www.tableau.com/es-mx" class="uri">https://www.tableau.com/es-mx</a></p>
+</section>
+<section id="otro-ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="otro-ejemplo">Otro Ejemplo</h2>
+<p><img src="images/clipboard-686396046.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="about-the-author" class="level2">
-<h2 class="anchored" data-anchor-id="about-the-author">About the author</h2>
-<p>Alan R. Vazquez (<a href="https://alanrvazquez.netlify.app/">website</a>) is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.</p>
-<section id="license" class="level3">
-<h3 class="anchored" data-anchor-id="license">License</h3>
+<section id="bases-de-datos-para-almacenar-indicadores" class="level1">
+<h1>Bases de Datos para Almacenar Indicadores</h1>
+<section id="contexto" class="level2">
+<h2 class="anchored" data-anchor-id="contexto">Contexto</h2>
+<p>Aunque los datos para el cálculo de algunos indicadores tienen su origen fuera de la organización, la gran mayoría de los datos provienen de las bases de datos internas del negocio.</p>
+<p>Existe mucha diversidad de empresas, unas que tienen aplicaciones aisladas con bases de datos dispersas y con archivos en hojas de cálculo, hasta empresas muy organizadas con un sistema de bases centralizado en un servidor de datos y aplicaciones vinculadas.</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Para obtener los datos necesarios para el cálculo de indicadores, muchas veces será necesario integrar datos de diversas fuentes en la empresa. Para esto, se usan herramientas de ETL (extract-transform-load) y data warehousing.</p>
+</section>
+<section id="qué-es-una-base-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-una-base-de-datos">¿Qué es una Base de Datos?</h2>
+<p>Básicamente, una tabla de datos donde los renglones representan un conjunto de ocurrencias de una entidad (clientes, productos, pacientes, pedidos) y las columnas representan atributos o características que describen a la entidad (cliente: ID + nombre + domicilio + e-mail + saldo ) En el ámbito de TI el concepto de “base de datos” no se refiere a una tabla, sino a un conjunto de tablas relacionadas.</p>
+</section>
+<section id="terminología-de-bd" class="level2">
+<h2 class="anchored" data-anchor-id="terminología-de-bd">Terminología de BD</h2>
+<p>Las tablas contienen datos que se refieren a:</p>
+<ul>
+<li>alguna entidad acerca de la cual la organización necesita mantener información</li>
+<li>relaciones entre entidades.</li>
+</ul>
+<p>A los renglones de la tabla se les denomina <em>registros</em>.</p>
+<p>A las columnas de la tabla se les denomina <em>campos</em>.</p>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Los registros son ocurrencias diferentes de la entidad correspondiente.</p>
+<p>Los campos son atributos que describen la entidad.</p>
+<p>Cada registro tiene uno o varios campos que identifican de manera única cada registro, esos campos se denominan “llave”.</p>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-1851897012.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="bases-de-datos-relacionales" class="level2">
+<h2 class="anchored" data-anchor-id="bases-de-datos-relacionales">Bases de Datos Relacionales</h2>
+<ul>
+<li><p>Actualmente el modelo de bases más utilizado en el mundo es el de bases de datos relacionales, ver por ejemplo:</p></li>
+<li><p><a href="https://db-engines.com/en/ranking" class="uri">https://db-engines.com/en/ranking</a></p></li>
+<li><p><a href="https://www.dataversity.net/database-management-trends-in-2020/" class="uri">https://www.dataversity.net/database-management-trends-in-2020/</a></p></li>
+<li><p>Ante el surgimiento de aplicaciones de big data hace que estas bases de datos sean la principal fuente de datos para indicadores en las empresas.</p></li>
+</ul>
+</section>
+<section id="ejemplo-de-base-de-datos-relacional" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-de-base-de-datos-relacional">Ejemplo de Base de Datos Relacional</h2>
+<p><img src="images/clipboard-2062527429.png" class="img-fluid"></p>
+</section>
+<section id="ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo">Ejemplo</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>La base de datos tiene 4 tablas: Pacientes, Medicinas, Recetas y Detalle de las recetas.</p></li>
+<li><p>La tabla que contiene datos de la entidad “paciente” tiene los siguientes campos: identificador único, nombre, domicilio, fecha de nacimiento, teléfono, y foto.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-3132665686.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>La tabla de recetas contiene los datos generales de cada receta expedida: número de receta (es la llave), fecha, hora de consulta, un indicador de si contiene medicamentos controlados o no, y el identificador del paciente, este campo permite <em><strong>relacionar los datos de la receta</strong></em> con los datos del paciente.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-3132665686.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>La tabla de medicinas tiene los campos: identificador de la medicina, descripción genérica, agente activo, presentación más común, y contra-indicaciones.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-3132665686.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>La tabla de detalle de la receta contiene los renglones de cada receta. Como hay recetas que pueden tener un solo medicamento, puede haber algunas con 2, 3 o más medicamentos, en el modelo relacional se guardan los renglones de todas las recetas en una sola tabla, todos los renglones de una receta tienen el mismo “número de receta” pero diferente “id del medicamento”…</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-3132665686.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5"></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>En la tabla Detalle de Receta puede haber múltiples registros con el mismo Número de receta, porque la receta puede amparar varios medicamentos. También puede haber múltiples registros con el mismo ID de medicamento, porque un medicamento puede aparecer en muchas recetas.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-3132665686.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6"></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>En este caso, para identificar de manera única un renglón de una receta en particular se requieren los dos identificadores, el de la receta y el del medicamento, esto constituye una <em>llave compuesta</em>.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/clipboard-3132665686.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="consultas-queries-a-la-bd" class="level2">
+<h2 class="anchored" data-anchor-id="consultas-queries-a-la-bd">Consultas (queries) a la BD</h2>
+<p>Una vez que se tiene la base de datos, es posible contestar preguntas como:</p>
+<ul>
+<li><p>¿En cuáles colonias viven los pacientes a quienes se les ha recetado turbocicloxina?</p></li>
+<li><p>¿A cuántos pacientes se les ha recetado turbocicloxina en el último mes?</p></li>
+<li><p>¿Cuáles agentes activos se les han administrado a los pacientes que viven en Prados #520 en el último año?</p></li>
+</ul>
+</section>
+<section id="sql" class="level2">
+<h2 class="anchored" data-anchor-id="sql">SQL</h2>
+<ul>
+<li><p>Las herramientas y plataformas de Business Intelligence con las que contamos actualmente, nos permiten hacer fácilmente consultas como las del ejemplo anterior, simplemente “arrastrando” campos y aplicando filtros en un lienzo de diseño.</p></li>
+<li><p>Internamente las herramientas procesan las consultas mediante un lenguaje de manejo de bases de datos que se llama SQL Structured Query Language.</p></li>
+<li><p>Para hacer consultas más complejas puede ser necesario que se haga la consulta escribiendo directamente el código de SQL.</p></li>
+<li><p>En este módulo no estudiaremos SQL.</p></li>
+</ul>
+</section>
+</section>
+<section id="return-to-main-page" class="level1">
+<h1><a href="https://alanrvazquez.github.io/TEC-IN1002B-Website/">Return to main page</a></h1>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alan R. Vazquez">
+
+<title>Autocorrelation Models – TEC-IN2004B</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">TEC-IN2004B</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#autocorrelación" id="toc-autocorrelación" class="nav-link" data-scroll-target="#autocorrelación">Autocorrelación</a>
+  <ul class="collapse">
+  <li><a href="#problema-con-los-modelos-de-regresión-lineal" id="toc-problema-con-los-modelos-de-regresión-lineal" class="nav-link" data-scroll-target="#problema-con-los-modelos-de-regresión-lineal">Problema con los modelos de regresión lineal</a></li>
+  <li><a href="#qué-es-la-correlación" id="toc-qué-es-la-correlación" class="nav-link" data-scroll-target="#qué-es-la-correlación">¿Qué es la correlación?</a></li>
+  <li><a href="#cómo-medimos-la-autocorrelación" id="toc-cómo-medimos-la-autocorrelación" class="nav-link" data-scroll-target="#cómo-medimos-la-autocorrelación">¿Cómo medimos la autocorrelación?</a></li>
+  <li><a href="#la-función-de-autocorrelación" id="toc-la-función-de-autocorrelación" class="nav-link" data-scroll-target="#la-función-de-autocorrelación">La función de autocorrelación</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#calculo-de-autocorrelación-en-python" id="toc-calculo-de-autocorrelación-en-python" class="nav-link" data-scroll-target="#calculo-de-autocorrelación-en-python">Calculo de Autocorrelación en Python</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#patrones-de-autocorrelación" id="toc-patrones-de-autocorrelación" class="nav-link" data-scroll-target="#patrones-de-autocorrelación">Patrones de autocorrelación</a></li>
+  <li><a href="#más-sobre-la-función-de-autocorrelación" id="toc-más-sobre-la-función-de-autocorrelación" class="nav-link" data-scroll-target="#más-sobre-la-función-de-autocorrelación">Más sobre la función de autocorrelación</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#la-función-de-autocorrelación-parcial" id="toc-la-función-de-autocorrelación-parcial" class="nav-link" data-scroll-target="#la-función-de-autocorrelación-parcial">La función de autocorrelación parcial</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  </ul></li>
+  <li><a href="#el-modelo-arima" id="toc-el-modelo-arima" class="nav-link" data-scroll-target="#el-modelo-arima">El modelo ARIMA</a>
+  <ul class="collapse">
+  <li><a href="#modelos-autoregresivos" id="toc-modelos-autoregresivos" class="nav-link" data-scroll-target="#modelos-autoregresivos">Modelos Autoregresivos</a></li>
+  <li><a href="#modelos-arima" id="toc-modelos-arima" class="nav-link" data-scroll-target="#modelos-arima">Modelos ARIMA</a></li>
+  </ul></li>
+  <li><a href="#el-modelo-sarima" id="toc-el-modelo-sarima" class="nav-link" data-scroll-target="#el-modelo-sarima">El modelo SARIMA</a>
+  <ul class="collapse">
+  <li><a href="#estacionalidad" id="toc-estacionalidad" class="nav-link" data-scroll-target="#estacionalidad">Estacionalidad</a></li>
+  <li><a href="#en-python" id="toc-en-python" class="nav-link" data-scroll-target="#en-python">En Python</a></li>
+  <li><a href="#modelo-sarima" id="toc-modelo-sarima" class="nav-link" data-scroll-target="#modelo-sarima">Modelo SARIMA</a></li>
+  <li><a href="#notación" id="toc-notación" class="nav-link" data-scroll-target="#notación">Notación</a></li>
+  <li><a href="#diferenciación-estacional" id="toc-diferenciación-estacional" class="nav-link" data-scroll-target="#diferenciación-estacional">Diferenciación estacional</a></li>
+  <li><a href="#términos-de-los-modelos-ar-y-ma-para-estacionalidad" id="toc-términos-de-los-modelos-ar-y-ma-para-estacionalidad" class="nav-link" data-scroll-target="#términos-de-los-modelos-ar-y-ma-para-estacionalidad">Términos de los modelos AR y MA para estacionalidad</a></li>
+  </ul></li>
+  <li><a href="#en-python-1" id="toc-en-python-1" class="nav-link" data-scroll-target="#en-python-1">En Python</a></li>
+  <li><a href="#return-to-main-page" id="toc-return-to-main-page" class="nav-link" data-scroll-target="#return-to-main-page">Return to main page</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Autocorrelation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Autocorrelation Models</h1>
+<p class="subtitle lead">IN2004B: Generation of Value with Data Analytics</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Alan R. Vazquez </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Industrial Engineering
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<p><br></p>
+<ol type="1">
+<li>Autocorrelación</li>
+<li>El modelo ARIMA</li>
+<li>El modelo SARIMA</li>
+</ol>
+</section>
+<section id="autocorrelación" class="level1">
+<h1>Autocorrelación</h1>
+<section id="problema-con-los-modelos-de-regresión-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="problema-con-los-modelos-de-regresión-lineal">Problema con los modelos de regresión lineal</h2>
+<p>Los modelos de regresión lineal no incorporan la <span style="color:purple;">dependencia</span> entre valores consecutivos de una serie de tiempo.</p>
+<p>Esto es una pena porque respuestas registradas en periodos de tiempo cercanos tienden a estar correlacionadas. Esta correlación se llama <span style="color:purple;"><em><strong>autocorrelación</strong></em></span> de la serie de tiempo.</p>
+<p>La autocorrelación nos ayuda a desarollar un modelo que puede hacer mejores pronósticos de respuestas futuras.</p>
+</section>
+<section id="qué-es-la-correlación" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-la-correlación">¿Qué es la correlación?</h2>
+<ul>
+<li><p>Es una medida de la fuerza y de la dirección de la relación <em>lineal</em> entre dos variables numéricas.</p></li>
+<li><p>Específicamente, se utiliza para evaluar la relación entre dos conjuntos de observaciones.</p></li>
+<li><p>La correlación está entre <span class="math inline">\(-1\)</span> y 1.</p></li>
+</ul>
+</section>
+<section id="cómo-medimos-la-autocorrelación" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-medimos-la-autocorrelación">¿Cómo medimos la autocorrelación?</h2>
+<p>Hay dos herramientas formales para medir la correlación entre las observaciones de una serie de tiempo:</p>
+<ul>
+<li><p>La función de <span style="color:green;"><em><strong>autocorrelación</strong></em></span>.</p></li>
+<li><p>La función de <span style="color:purple;"><em><strong>autocorrelación parcial</strong></em></span>.</p></li>
+</ul>
+</section>
+<section id="la-función-de-autocorrelación" class="level2">
+<h2 class="anchored" data-anchor-id="la-función-de-autocorrelación">La función de autocorrelación</h2>
+<blockquote class="blockquote">
+<p>Mide la correlación entre respuestas que están separadas por <span class="math inline">\(j\)</span> periodos.</p>
+</blockquote>
+<p>Por ejemplo, la autocorrelación entre la temperatura presente y la temperatura registrada un día antes es la correlación entre las siguientes variables:</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>La autocorrelación entre las observaciones de la serie de tiempo y las observaciones un periodo atrás es: 0.586.</p>
+</section>
+<section id="calculo-de-autocorrelación-en-python" class="level2">
+<h2 class="anchored" data-anchor-id="calculo-de-autocorrelación-en-python">Calculo de Autocorrelación en Python</h2>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<ul>
+<li><p>La función de autocorrelación comúnmente se visualiza usando una gráfica de barras.</p></li>
+<li><p>El eje vertical muestra las diferencias (o lags) entre los periodos considerados, y el eje horizontal muestra las correlaciones entre las observaciones de distintos lags.</p></li>
+</ul>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<ul>
+<li><p>El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.438</p></li>
+<li><p>También muestra que la correlación entre las respuestas actuales y las de 12 meses atrás estan altamente correlacionadas.</p></li>
+<li><p>Lo mismo para las respuestas actuales y las respuestas tomadas 24 meses atrás.</p></li>
+</ul>
+</section>
+<section id="patrones-de-autocorrelación" class="level2">
+<h2 class="anchored" data-anchor-id="patrones-de-autocorrelación">Patrones de autocorrelación</h2>
+<ul>
+<li><p><strong>Una autocorrelación fuerte (positiva o negativa) con un retraso</strong> <span class="math inline">\(j\)</span> <strong>mayor que 1 y sus múltiplos</strong> (<span class="math inline">\(2k, 3k, \ldots\)</span>) normalmente refleja un patrón cíclico o estacionalidad.</p></li>
+<li><p><strong>La autocorrelación positiva de retardo 1</strong> describe una serie en la que los valores consecutivos se mueven <em>generalmente</em> en la misma dirección.</p></li>
+<li><p><strong>La autocorrelación negativa de retardo 1</strong> refleja oscilaciones en la serie, donde los valores altos (<em>generalmente</em>) son seguidos inmediatamente por valores bajos y viceversa.</p></li>
+</ul>
+</section>
+<section id="más-sobre-la-función-de-autocorrelación" class="level2">
+<h2 class="anchored" data-anchor-id="más-sobre-la-función-de-autocorrelación">Más sobre la función de autocorrelación</h2>
+<p>Considera el problema de predecir el precio promedio de un kilo de aguacate en este mes.</p>
+<p>Para esto tenemos el precio promedio del mes pasado y del antepasado.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Avocado1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"></h2>
+<p>La función de autocorrelación para <span class="math inline">\(Y_t\)</span> y <span class="math inline">\(Y_{t-2}\)</span> incluye el efecto directo e indirecto de <span class="math inline">\(Y_{t-2}\)</span> sobre <span class="math inline">\(Y_t\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Avocado3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="la-función-de-autocorrelación-parcial" class="level2">
+<h2 class="anchored" data-anchor-id="la-función-de-autocorrelación-parcial">La función de autocorrelación parcial</h2>
+<blockquote class="blockquote">
+<p>Mide la correlación entre respuestas que están separadas por <span class="math inline">\(j\)</span> periodos, <strong>excluyendo la correlación</strong> debido a respuestas separadas por periodos intermedios.</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Avocado4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"></h2>
+<p>En terminos técnicos, la función de autocorrelación parcial ajusta el siguiente modelo de regresión lineal</p>
+<p><span class="math display">\[\hat{Y}_t = \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(\hat{Y}_{t}\)</span> es la predicción de la respuesta en el tiempo actual (<span class="math inline">\(t\)</span>).</li>
+<li><span class="math inline">\(\hat{\beta}_1\)</span> es el <em>efecto directo</em> de <span class="math inline">\(Y_{t-1}\)</span> en predecir <span class="math inline">\(Y_{t}\)</span>.</li>
+<li><span class="math inline">\(\hat{\beta}_2\)</span> es el <em>efecto directo</em> de <span class="math inline">\(Y_{t-2}\)</span> en predecir <span class="math inline">\(Y_{t}\)</span>.</li>
+</ul>
+<p>La autocorrelación parcial entre <span class="math inline">\(Y_t\)</span> y <span class="math inline">\(Y_{t-2}\)</span> es igual a <span class="math inline">\(\hat{\beta}_2\)</span>. ##</p>
+<ul>
+<li><p>La función de autocorrelación parcial se visualiza usando una gráfica similar a la de la autocorrelación.</p></li>
+<li><p>El eje vertical muestra las diferencias (o <em>lags</em>) entre los periodos considerados, y el eje horizontal muestra las correlaciones parciales entre las observaciones de distintos lags.</p></li>
+</ul>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5"></h2>
+<ul>
+<li><p>El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.4387</p></li>
+<li><p>También muestra que la correlación entre las respuestas actuales y las de 6 y 7 meses atrás están altamente correlacionadas.</p></li>
+</ul>
+</section>
+</section>
+<section id="el-modelo-arima" class="level1">
+<h1>El modelo ARIMA</h1>
+<section id="modelos-autoregresivos" class="level2">
+<h2 class="anchored" data-anchor-id="modelos-autoregresivos">Modelos Autoregresivos</h2>
+<p>Los <em>modelos autoregresivos</em> son un typo de modelo de regresión lineal que incorporan directamente la autocorrelación de la serie de tiempo para predecir la respuesta actual.</p>
+<p>Su carácteristica principal es que los predictores del valor actual de la serie son sus valores anteriores.</p>
+<ul>
+<li><p>En términos matemáticos, un modelo autoregresivo de orden 2 tiene la forma matemática: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.\)</span></p></li>
+<li><p>Uno de orden 3 se ve así: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.\)</span></p></li>
+</ul>
+</section>
+<section id="modelos-arima" class="level2">
+<h2 class="anchored" data-anchor-id="modelos-arima">Modelos ARIMA</h2>
+<p>Una clase especial de modelos autoregresivos son los modelos <span style="color:purple;"><em><strong>ARIMA</strong></em></span> (<span style="color:purple;"><em>Autoregressive Integrated Moving Average</em></span>).</p>
+<p>Un modelo ARIMA se compone de tres elementos</p>
+<ol type="1">
+<li>Operadores diferenciados o integrados (<em>integrated</em>).</li>
+<li>Términos autoregresivos (<em>autoregressive</em>).</li>
+<li>Términos estocásticos (<em>moving average</em>).</li>
+</ol>
+</section>
+</section>
+<section id="el-modelo-sarima" class="level1">
+<h1>El modelo SARIMA</h1>
+<section id="estacionalidad" class="level2">
+<h2 class="anchored" data-anchor-id="estacionalidad">Estacionalidad</h2>
+<p>La <strong>estacionalidad</strong> consiste en un comportamiento repetitivo o cíclico que ocurre con una frecuencia constante.</p>
+<p>Se puede identificar de la gráfica de la serie o usando las ACF and PACF.</p>
+<p>Para esto, debemos haber removido la tendencia.</p>
+</section>
+<section id="en-python" class="level2">
+<h2 class="anchored" data-anchor-id="en-python">En Python</h2>
+</section>
+<section id="modelo-sarima" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-sarima">Modelo SARIMA</h2>
+<p>El modelo <span style="color:orange;">S</span>ARIMA (<span style="color:orange;"><em>Seasonal</em></span> Autoregressive Integrated Moving Average) es una extensión del modelo ARIMA para modelar los patrones de estacionalidad.</p>
+<p>El modelo SARIMA tiene tres elementos adicionales para modelar la estacionalidad en la serie de tiempo.</p>
+<ol type="1">
+<li>Operadores diferenciados o integrados (<em>integrated</em>) para la estacionalidad.</li>
+<li>Términos autoregresivos (<em>autoregressive</em>) para la estacionalidad.</li>
+<li>Términos estocásticos o promedios móviles (<em>moving average</em>) para la estacionalidad.</li>
+</ol>
+</section>
+<section id="notación" class="level2">
+<h2 class="anchored" data-anchor-id="notación">Notación</h2>
+<p>La estacionalidad en una serie de tiempo es un patrón regular de cambios que se repite durante <span style="color:orange;"><span class="math inline">\(S\)</span> períodos de tiempo</span>, donde <span class="math inline">\(S\)</span> define el número de períodos de tiempo hasta que el patrón se repite nuevamente.</p>
+<p>Por ejemplo, hay estacionalidad en los datos mensuales para los cuales los valores altos siempre tienden a ocurrir en algunos meses en particular y los valores bajos siempre tienden a ocurrir en otros meses en particular.</p>
+<p>En este caso, <span class="math inline">\(S=12\)</span> (meses por año) es el lapso del comportamiento estacional periódico. Para datos trimestrales, <span class="math inline">\(S=4\)</span> períodos de tiempo por año.</p>
+</section>
+<section id="diferenciación-estacional" class="level2">
+<h2 class="anchored" data-anchor-id="diferenciación-estacional">Diferenciación estacional</h2>
+<p>Es la diferencia entre una respuesta y una respuesta con un rezago que es múltiplo de <span class="math inline">\(S\)</span>.</p>
+<p>Por ejemplo, con datos mensuales <span class="math inline">\(S=12\)</span>,</p>
+<ul>
+<li>Una diferencia estacional de nivel 1 es <span class="math inline">\(Y_{t} - Y_{t-12}\)</span>.</li>
+<li>Una diferencia estacional de nivel 2 es <span class="math inline">\((Y_t - Y_{t-12}) - (Y_{t-12} - Y_{t-24})\)</span>.</li>
+</ul>
+<p>La diferenciación estacional elimina la tendencia estacional y también puede eliminar un tipo de no estacionariedad de paseo aleatorio estacional.</p>
+</section>
+<section id="términos-de-los-modelos-ar-y-ma-para-estacionalidad" class="level2">
+<h2 class="anchored" data-anchor-id="términos-de-los-modelos-ar-y-ma-para-estacionalidad">Términos de los modelos AR y MA para estacionalidad</h2>
+<p>En el SARIMA, los términos de los componentes AR y MA estacionales predicen la respuesta actual (<span class="math inline">\(Y_t\)</span>) usando respuestas y errores en momentos con rezagos que son múltiplos de <span class="math inline">\(S\)</span>.</p>
+<p>Por ejemplo, con datos mensuales <span class="math inline">\(S = 12\)</span>,</p>
+<ul>
+<li>El modelo AR estacional de orden 1 usaría <span class="math inline">\(Y_{t-12}\)</span> para predecir <span class="math inline">\(Y_{t}\)</span>.</li>
+<li>El modelo AR estacional de orden 2 usaría <span class="math inline">\(Y_{t-12}\)</span> y <span class="math inline">\(Y_{t-24}\)</span> para predecir <span class="math inline">\(Y_{t}\)</span>.</li>
+<li>El modelo MA estacional de orden 1 usaría el término estocástico <span class="math inline">\(a_{t-12}\)</span> como un predictor.</li>
+<li>El modelo MA estacional de orden 2 usaría los términos estocásticos <span class="math inline">\(a_{t-12}\)</span> y <span class="math inline">\(a_{t-24}\)</span> como predictores.</li>
+</ul>
+</section>
+</section>
+<section id="en-python-1" class="level1">
+<h1>En Python</h1>
+</section>
+<section id="return-to-main-page" class="level1">
+<h1><a href="https://alanrvazquez.github.io/TEC-IN1002B-Website/">Return to main page</a></h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
