@@ -4519,7 +4519,7 @@
     "href": "Module2/EnsembleMethods.html#agenda",
     "title": "Ensamble Methods",
     "section": "Agenda",
-    "text": "Agenda\n\n\nIntroduction to Ensemble Methods\n\nBagging\nRandom Forests\n\nK-Nearest Neighbors"
+    "text": "Agenda\n\n\nIntroduction to Ensemble Methods\nBagging\nRandom Forests"
   },
   {
     "objectID": "Module2/EnsembleMethods.html#load-the-libraries",
@@ -4666,14 +4666,14 @@
     "href": "Module2/EnsembleMethods.html#why-does-it-work",
     "title": "Ensamble Methods",
     "section": "Why does it work?",
-    "text": "Why does it work?\n\n\nNot so dominant predictors will get a chance to appear by themselves and show “their stuff”.\nThis adds more diversity to the trees.\nThe fact that the trees in the forest are not (strongly) correlated means lower variability."
+    "text": "Why does it work?\n\n\nNot so dominant predictors will get a chance to appear by themselves and show “their stuff”.\nThis adds more diversity to the trees.\nThe fact that the trees in the forest are not (strongly) correlated means lower variability in the predictions and so, a bettter performance overall."
   },
   {
     "objectID": "Module2/EnsembleMethods.html#tuning-parameter",
     "href": "Module2/EnsembleMethods.html#tuning-parameter",
     "title": "Ensamble Methods",
     "section": "Tuning parameter",
-    "text": "Tuning parameter\nHow do we set \\(m\\)?\n\nFor classification, use \\(m = \\lfloor \\sqrt{p} \\rfloor\\) and the minimum node size is 1.\n\nIn practice, sometimes the best values for these parameters will depend on the problem. So, we can treat \\(m\\) as a tuning parameter.\nNote that if \\(m = p\\), we get bagging."
+    "text": "Tuning parameter\n\nHow do we set \\(m\\)?\n\nFor classification, use \\(m = \\lfloor \\sqrt{p} \\rfloor\\) and the minimum node size is 1.\n\nIn practice, sometimes the best values for these parameters will depend on the problem. So, we can treat \\(m\\) as a tuning parameter.\n\nNote that if \\(m = p\\), we get bagging."
   },
   {
     "objectID": "Module2/EnsembleMethods.html#the-final-product-is-a-black-box",
@@ -4687,7 +4687,7 @@
     "href": "Module2/EnsembleMethods.html#random-forest-in-python",
     "title": "Ensamble Methods",
     "section": "Random Forest in Python",
-    "text": "Random Forest in Python"
+    "text": "Random Forest in Python\n\nIn Python, we define a RandomForest algorithm for classification using the RandomForestClassifier function from scikit-learn. The n_estimators argument is the number of decision trees to generate in the RandomForest, and random_state allows you to reprudce the results.\n\n# Set the bagging algorithm.\nRFalgorithm = RandomForestClassifier(n_estimators = 500,\n                                     random_state = 59227)\n\n# Train the bagging algorithm.\nRFalgorithm.fit(X_train, Y_train)"
   },
   {
     "objectID": "Module2/EnsembleMethods.html#example-1",
@@ -4757,7 +4757,7 @@
     "href": "Module2/EnsembleMethods.html#predictions-1",
     "title": "Ensamble Methods",
     "section": "Predictions",
-    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 0, ..., 0, 0, 1])"
+    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 1, 0, ..., 0, 0, 0])"
   },
   {
     "objectID": "Module2/EnsembleMethods.html#confusion-matrix",
@@ -4778,7 +4778,7 @@
     "href": "Module2/EnsembleMethods.html#a-single-pruned-tree",
     "title": "Ensamble Methods",
     "section": "A single pruned tree",
-    "text": "A single pruned tree\nTo compare the bagging, let’s use a single tree with cost complexity pruning.\n\n\nCode\n# Set the classification tree.\nclf = DecisionTreeClassifier(random_state=507134)\n# Train classification tree.\nclf.fit(X_train, Y_train)\n# Compute cost complexity pruning path.\npath = clf.cost_complexity_pruning_path(X_train, Y_train)\nccp_alphas, impurities = path.ccp_alphas, path.impurities\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf = DecisionTreeClassifier(random_state=507134, ccp_alpha=ccp_alpha)\n    clf.fit(X_train, Y_train)\n    clfs.append(clf)\n    \ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.79"
+    "text": "A single pruned tree\nTo compare the bagging, let’s use a single tree with cost complexity pruning.\n\n\nCode\n# Set the classification tree.\nclf = DecisionTreeClassifier(random_state=507134)\n# Train classification tree.\nclf.fit(X_train, Y_train)\n# Compute cost complexity pruning path.\npath = clf.cost_complexity_pruning_path(X_train, Y_train)\nccp_alphas, impurities = path.ccp_alphas, path.impurities\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf = DecisionTreeClassifier(random_state=507134, ccp_alpha=ccp_alpha)\n    clf.fit(X_train, Y_train)\n    clfs.append(clf)\n    \ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.8"
   },
   {
     "objectID": "Module2/EnsembleMethods.html#section-6",
@@ -4821,5 +4821,19 @@
     "title": "Ensamble Methods",
     "section": "Evaluation",
     "text": "Evaluation\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.77"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#confusion-matrix-1",
+    "href": "Module2/EnsembleMethods.html#confusion-matrix-1",
+    "title": "Ensamble Methods",
+    "section": "Confusion matrix",
+    "text": "Confusion matrix\nEvaluate the performance of random forest.\n\n\nCode\n# Predict class.\nRF_predicted = RFalgorithm.predict(X_valid)\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, RF_predicted)\n\n# Visualize the matrix.\nConfusionMatrixDisplay(cm).plot()"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.html#accuracy-1",
+    "href": "Module2/EnsembleMethods.html#accuracy-1",
+    "title": "Ensamble Methods",
+    "section": "Accuracy",
+    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.81"
   }
 ]

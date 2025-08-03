@@ -23,9 +23,8 @@ jupyter: python3
 </br>
 
 1.  Introduction to Ensemble Methods
-    - Bagging
-    - Random Forests
-3.  *K*-Nearest Neighbors
+2.  Bagging
+3.  Random Forests
 
 # Ensamble Methods
 
@@ -421,9 +420,11 @@ Random forests can reduce variability further.
 
 - This adds more diversity to the trees.
 
-- The fact that the trees in the forest are not (strongly) correlated means lower variability.
+- The fact that the trees in the forest are not (strongly) correlated means lower variability in the predictions and so, a bettter performance overall.
 
 ## Tuning parameter
+
+</br>
 
 How do we set $m$?
 
@@ -431,7 +432,7 @@ How do we set $m$?
 
 In practice, sometimes the best values for these parameters will depend on the problem. So, we can treat $m$ as a tuning parameter.
 
-Note that if $m = p$, we get bagging.
+> Note that if $m = p$, we get bagging.
 
 ## The final product is a black box
 
@@ -442,3 +443,60 @@ Note that if $m = p$, we get bagging.
 -   You put an observation into the black box, and the black box classifies it or predicts it for you.
 
 ## Random Forest in Python
+
+</br>
+
+In Python, we define a RandomForest algorithm for classification using the `RandomForestClassifier` function from **scikit-learn**. The `n_estimators` argument is the number of decision trees to generate in the RandomForest, and `random_state` allows you to reprudce the results.
+
+```{python}
+#| echo: true
+#| output: false
+
+# Set the bagging algorithm.
+RFalgorithm = RandomForestClassifier(n_estimators = 500,
+                                     random_state = 59227)
+
+# Train the bagging algorithm.
+RFalgorithm.fit(X_train, Y_train)
+```
+
+## Confusion matrix
+
+Evaluate the performance of random forest.
+
+```{python}
+#| echo: true
+#| output: true
+#| code-fold: true
+#| fig-align: center
+
+# Predict class.
+RF_predicted = RFalgorithm.predict(X_valid)
+
+# Compute confusion matrix.
+cm = confusion_matrix(Y_valid, RF_predicted)
+
+# Visualize the matrix.
+ConfusionMatrixDisplay(cm).plot()
+```
+
+## Accuracy
+
+</br></br>
+
+The accuracy of the random forest classifier is 79%. 
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+# Compute accuracy.
+accuracy = accuracy_score(Y_valid, RF_predicted)
+
+# Show accuracy.
+print( round(accuracy, 2) )
+```
+
+
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
