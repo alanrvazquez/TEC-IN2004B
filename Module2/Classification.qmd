@@ -25,7 +25,6 @@ jupyter: python3
 1.  Introduction
 2.  Classification Trees
 3.  Classification Algorithm Metrics
-4.  *K* Nearest Neighbors
 
 # Introduction
 
@@ -191,7 +190,7 @@ To overcome this issue, we several standard solutions:
 ::: incremental
 -   [**Logistic Regression**]{style="color:brown;"}: Impose an structure on $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$. This was covered in IN1002B.
 -   [**Classification Trees**]{style="color:darkblue;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. What we will cover today.
--   [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (Optional).
+-   [**Ensemble methods**]{style="color:orange;"} and [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (If time permits).
 :::
 
 ## Two datasets
@@ -315,6 +314,9 @@ Y_dummies = pd.get_dummies(Y_full, dtype = 'int')
 
 # Select target variable.
 Y_target_full = Y_dummies['Status_counterfeit']
+
+# Show target variable.
+Y_target_full.head() 
 ```
 
 ## Let's partition the dataset
@@ -371,7 +373,7 @@ The pipeline has two main steps:
 
 We will now discuss preprocessing techniques applied to the predictor columns in the training dataset.
 
-Note that all preprocessing techniques will also be applied to the [**validation dataset**]{style="color:orange;"} and [**test dataset**]{style="color:green;"} to prepare it for your model!
+Note that all preprocessing techniques will also be applied to the [**validation**]{style="color:orange;"} and [**test**]{style="color:green;"} datasets to prepare it for your model!
 
 # Classification Trees
 
@@ -1331,7 +1333,7 @@ To train a decision tree using different alpha values, we use the following code
 
 clfs = []
 for ccp_alpha in ccp_alphas:
-    clf = DecisionTreeClassifier(random_state=0, ccp_alpha=ccp_alpha)
+    clf = DecisionTreeClassifier(random_state=507134, ccp_alpha=ccp_alpha)
     clf.fit(X_train, Y_train)
     clfs.append(clf)
 ```
@@ -1503,6 +1505,19 @@ Once this is done, we can visualize the small tree using the `plot_tree()` funct
 plt.figure(figsize=(6, 6))
 plot_tree(clf_simple, filled=True, rounded=True)
 plt.show()
+```
+
+## Evaluation
+
+Let's compute the accuracy of the pruned tree.
+
+```{python}
+#| echo: true
+#| output: true
+
+single_tree_Y_pred = clf_simple.predict(X_valid)
+accuracy = accuracy_score(Y_valid, single_tree_Y_pred)
+print( round(accuracy, 2) )
 ```
 
 ## Comments

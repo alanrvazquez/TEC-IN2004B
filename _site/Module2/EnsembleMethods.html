@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -187,6 +187,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -212,30 +215,34 @@ Alan R. Vazquez
 <h2>Agenda</h2>
 <p><br></p>
 <ol type="1">
+<li>Introduction to Ensemble Methods
+<ul>
 <li>Bagging</li>
 <li>Random Forests</li>
-<li>Boosting</li>
+</ul></li>
+<li><em>K</em>-Nearest Neighbors</li>
 </ol>
 </section>
 <section>
-<section id="bagging" class="title-slide slide level1 center">
-<h1>Bagging</h1>
+<section id="ensamble-methods" class="title-slide slide level1 center">
+<h1>Ensamble Methods</h1>
 
 </section>
 <section id="load-the-libraries" class="slide level2">
 <h2>Load the libraries</h2>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="d6e0ca3f" class="cell" data-execution_count="1">
+<div id="0e754b3a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-5"><a></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb1-6"><a></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
-<span id="cb1-7"><a></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb1-8"><a></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb1-9"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, ConfusionMatrixDisplay </span>
-<span id="cb1-10"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, recall_score, precision_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> BaggingClassifier, RandomForestClassifier</span>
+<span id="cb1-8"><a></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb1-9"><a></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-10"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, ConfusionMatrixDisplay </span>
+<span id="cb1-11"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, recall_score, precision_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here, we use specific functions from the <strong>pandas</strong>, <strong>matplotlib</strong>, <strong>seaborn</strong> and <strong>sklearn</strong> libraries in Python.</p>
 </section>
@@ -264,29 +271,26 @@ Alan R. Vazquez
 <h2>Limitations of decision trees</h2>
 <p><br><br><br></p>
 <ul>
-<li><p>Deep trees have low bias but high variance.</p></li>
-<li><p>Small trees have high bias but low variance.</p></li>
+<li><p>In general, decision trees do not work well for classification and regression problems.</p></li>
+<li><p>However, decision trees can be combined to build effective algorithms for these problems.</p></li>
 </ul>
-</section>
-<section id="ensamble-methods" class="slide level2">
-<h2>Ensamble methods</h2>
-<p><br></p>
-<p>We would like to have both low variability and low bias. To achieve this, we have two frameworks:</p>
-<p><span style="color:purple;"><strong>Bagging</strong></span>. Ensemble deep trees with low bias, then combat variance in some way.</p>
-<ul>
-<li>Quintessential method: <span style="color:purple;">Random Forests</span>.</li>
-</ul>
-<p><span style="color:orange;"><strong>Boosting</strong></span>. Construct small trees with low variance, then combat bias.</p>
 </section>
 <section id="ensamble-methods-1" class="slide level2">
 <h2>Ensamble methods</h2>
 <p><br></p>
-<p><span style="color:gray;">We would like to have both low variability and low bias. To achieve this, we have two frameworks:</span></p>
-<p><span style="color:purple;"><strong>Bagging</strong></span>. Ensemble deep trees with low bias, then combat variance in some way.</p>
+<p>Ensemble methods refer to frameworks to combine decision trees.</p>
+<p>Here, we will cover a popular ensamble method:</p>
 <ul>
-<li><span style="color:gray;">Quintessential method: Random Forests</span>.</li>
+<li><p><span style="color:purple;"><strong>Bagging</strong></span>. Ensemble many deep trees.</p>
+<ul>
+<li>Quintessential method: <span style="color:purple;">Random Forests</span>.</li>
+</ul></li>
 </ul>
-<p><span style="color:gray;"><strong>Boosting</strong>. Construct small trees with low variance, then combat bias.</span></p>
+</section></section>
+<section>
+<section id="bagging" class="title-slide slide level1 center">
+<h1>Bagging</h1>
+
 </section>
 <section id="bootstrap-samples" class="slide level2">
 <h2>Bootstrap samples</h2>
@@ -343,23 +347,339 @@ Alan R. Vazquez
 <section id="implementation" class="slide level2">
 <h2>Implementation</h2>
 <p><br><br></p>
-<p>How many trees? No risk of overfitting, so use plenty.</p>
-<p>No pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.</p>
-<p>The size of bootstrap samples is n, but we can use a different size.</p>
+<ul>
+<li><p>How many trees? No risk of overfitting, so use plenty.</p></li>
+<li><p>No pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.</p></li>
+<li><p>The size of bootstrap samples is the same as the size of the training dataset, but we can use a different size.</p></li>
+</ul>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p>TBD</p>
+<section id="example-1" class="slide level2">
+<h2>Example 1</h2>
+<p><br></p>
+<p>The data “AdultReduced.xlsx” comes from the UCI Machine Learning Repository and is derived from US census records. In this data, the goal is to predict whether a person’s income was high (defined in 1994 as more than $50,000) or low.</p>
+<p>Predictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc. The data contains 7,508 records.</p>
 </section>
-<section id="prediction-importance" class="slide level2">
-<h2>Prediction importance</h2>
-<p>TBD</p>
+<section id="read-the-dataset" class="slide level2">
+<h2>Read the dataset</h2>
+<div id="64c92bc1" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Load the data</span></span>
+<span id="cb2-2"><a></a>Adult_data <span class="op">=</span> pd.read_excel(<span class="st">'AdultReduced.xlsx'</span>)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># Preview the data.</span></span>
+<span id="cb2-5"><a></a>Adult_data.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">workclass</th>
+<th data-quarto-table-cell-role="th">fnlwgt</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">education.num</th>
+<th data-quarto-table-cell-role="th">marital.status</th>
+<th data-quarto-table-cell-role="th">occupation</th>
+<th data-quarto-table-cell-role="th">relationship</th>
+<th data-quarto-table-cell-role="th">race</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">capital.gain</th>
+<th data-quarto-table-cell-role="th">capital.loss</th>
+<th data-quarto-table-cell-role="th">hours.per.week</th>
+<th data-quarto-table-cell-role="th">native.country</th>
+<th data-quarto-table-cell-role="th">income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>39</td>
+<td>State-gov</td>
+<td>77516</td>
+<td>Bachelors</td>
+<td>13</td>
+<td>Never-married</td>
+<td>Adm-clerical</td>
+<td>Not-in-family</td>
+<td>White</td>
+<td>Male</td>
+<td>2174</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>small</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>50</td>
+<td>Self-emp-not-inc</td>
+<td>83311</td>
+<td>Bachelors</td>
+<td>13</td>
+<td>Married-civ-spouse</td>
+<td>Exec-managerial</td>
+<td>Husband</td>
+<td>White</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>13</td>
+<td>United-States</td>
+<td>small</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>38</td>
+<td>Private</td>
+<td>215646</td>
+<td>HS-grad</td>
+<td>9</td>
+<td>Divorced</td>
+<td>Handlers-cleaners</td>
+<td>Not-in-family</td>
+<td>White</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>small</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="selected-predictors." class="slide level2">
+<h2>Selected predictors.</h2>
+<ul>
+<li>age: Age of the individual.</li>
+<li>sex: Sex of the individual (male or female).</li>
+<li>race: Race of the individual (W, B, Amer-Indian, Amer-Pacific, or Other).</li>
+<li>education.num: number of years of education.</li>
+<li>hours.per.week: Number of work hours per week.</li>
+</ul>
+<div id="d5571b33" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Choose the predictors.</span></span>
+<span id="cb3-2"><a></a>Adult_Subset <span class="op">=</span> Adult_data.<span class="bu">filter</span>([<span class="st">'age'</span>, <span class="st">'education.num'</span>, <span class="st">'capital.gain'</span>, </span>
+<span id="cb3-3"><a></a>                                  <span class="st">'hours.per.week'</span>, <span class="st">'income'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="set-the-target-class" class="slide level2">
+<h2>Set the target class</h2>
+<p>Let’s set the <strong>target class</strong> and the <strong>reference class</strong> using the <code>get_dummies()</code> function.</p>
+<div id="5bc6ff44" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Select answer</span></span>
+<span id="cb4-2"><a></a>Y <span class="op">=</span> Adult_Subset[<span class="st">'income'</span>]</span>
+<span id="cb4-3"><a></a><span class="co"># Create dummy variables.</span></span>
+<span id="cb4-4"><a></a>Y_dummies <span class="op">=</span> pd.get_dummies(Y, dtype <span class="op">=</span> <span class="st">'int'</span>)</span>
+<span id="cb4-5"><a></a><span class="co"># Show.</span></span>
+<span id="cb4-6"><a></a>Y_dummies.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">large</th>
+<th data-quarto-table-cell-role="th">small</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>Here we’ll use the <strong>large</strong> target class. So, let’s use the corresponding column as our response variable.</p>
+<div id="9349971c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Choose target category.</span></span>
+<span id="cb5-2"><a></a>Y_target <span class="op">=</span> Y_dummies[<span class="st">'large'</span>]</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>Y_target.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<pre><code>0    0
+1    0
+2    0
+3    0
+4    1
+Name: large, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="training-and-validation-datasets" class="slide level2">
+<h2>Training and validation datasets</h2>
+<p><br></p>
+<p>To evaluate a model’s performance on unobserved data, we split the current dataset into training and validation datasets. To do this, we use <code>train_test_split()</code> from <strong>scikit-learn</strong>.</p>
+<div id="e3aaa07f" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Create predictor matrix</span></span>
+<span id="cb7-2"><a></a>X_full <span class="op">=</span> Adult_Subset.drop(columns <span class="op">=</span> [<span class="st">'income'</span>])</span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a><span class="co"># Split into training and validation</span></span>
+<span id="cb7-5"><a></a>X_train, X_valid, Y_train, Y_valid <span class="op">=</span> train_test_split(X_full, Y_target, </span>
+<span id="cb7-6"><a></a>                                                      test_size <span class="op">=</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We use 80% of the dataset for training and the rest for validation.</p>
+</section>
+<section id="bagging-in-python" class="slide level2">
+<h2>Bagging in Python</h2>
+<p><br></p>
+<p>We define a bagging algorithm for classification using the <code>BaggingClassifier</code> function from <strong>scikit-learn</strong>.</p>
+<p>The <code>n_estimators</code> argument is the number of decision trees to generate in bagging. Ideally, it should be high, around 500.</p>
+<div id="81f76a11" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Set the bagging algorithm.</span></span>
+<span id="cb8-2"><a></a>Baggingalgorithm <span class="op">=</span> BaggingClassifier(n_estimators <span class="op">=</span> <span class="dv">500</span>, </span>
+<span id="cb8-3"><a></a>                                     random_state <span class="op">=</span> <span class="dv">59227</span>)</span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a><span class="co"># Train the bagging algorithm.</span></span>
+<span id="cb8-6"><a></a>Baggingalgorithm.fit(X_train, Y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>random_state</code> allows us to obtain the same bagging algorithm in different runs of the algorithm.</p>
+</section>
+<section id="predictions-1" class="slide level2">
+<h2>Predictions</h2>
+<p>Predict the classes using bagging.</p>
+<div id="a4af1634" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>predicted_class <span class="op">=</span> Baggingalgorithm.predict(X_valid)</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>predicted_class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre><code>array([0, 0, 0, ..., 0, 0, 1])</code></pre>
+</div>
+</div>
+</section>
+<section id="confusion-matrix" class="slide level2">
+<h2>Confusion matrix</h2>
+<div id="c6c04230" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Compute confusion matrix.</span></span>
+<span id="cb11-2"><a></a>cm <span class="op">=</span> confusion_matrix(Y_valid, predicted_class)</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="co"># Visualize the matrix.</span></span>
+<span id="cb11-5"><a></a>ConfusionMatrixDisplay(cm).plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="EnsembleMethods_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="524" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="accuracy" class="slide level2">
+<h2>Accuracy</h2>
+<p><br><br></p>
+<p>The accuracy of the bagging classifier is 78%.</p>
+<div id="6097af7d" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Compute accuracy.</span></span>
+<span id="cb12-2"><a></a>accuracy <span class="op">=</span> accuracy_score(Y_valid, predicted_class)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a><span class="co"># Show accuracy.</span></span>
+<span id="cb12-5"><a></a><span class="bu">print</span>( <span class="bu">round</span>(accuracy, <span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.8</code></pre>
+</div>
+</div>
+</section>
+<section id="a-single-pruned-tree" class="slide level2">
+<h2>A single pruned tree</h2>
+<p>To compare the bagging, let’s use a single tree with cost complexity pruning.</p>
+<div id="144605ed" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Set the classification tree.</span></span>
+<span id="cb14-2"><a></a>clf <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">507134</span>)</span>
+<span id="cb14-3"><a></a><span class="co"># Train classification tree.</span></span>
+<span id="cb14-4"><a></a>clf.fit(X_train, Y_train)</span>
+<span id="cb14-5"><a></a><span class="co"># Compute cost complexity pruning path.</span></span>
+<span id="cb14-6"><a></a>path <span class="op">=</span> clf.cost_complexity_pruning_path(X_train, Y_train)</span>
+<span id="cb14-7"><a></a>ccp_alphas, impurities <span class="op">=</span> path.ccp_alphas, path.impurities</span>
+<span id="cb14-8"><a></a></span>
+<span id="cb14-9"><a></a>clfs <span class="op">=</span> []</span>
+<span id="cb14-10"><a></a><span class="cf">for</span> ccp_alpha <span class="kw">in</span> ccp_alphas:</span>
+<span id="cb14-11"><a></a>    clf <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">507134</span>, ccp_alpha<span class="op">=</span>ccp_alpha)</span>
+<span id="cb14-12"><a></a>    clf.fit(X_train, Y_train)</span>
+<span id="cb14-13"><a></a>    clfs.append(clf)</span>
+<span id="cb14-14"><a></a>    </span>
+<span id="cb14-15"><a></a>train_scores <span class="op">=</span> [clf.score(X_train, Y_train) <span class="cf">for</span> clf <span class="kw">in</span> clfs]</span>
+<span id="cb14-16"><a></a>validation_scores <span class="op">=</span> [clf.score(X_valid, Y_valid) <span class="cf">for</span> clf <span class="kw">in</span> clfs]</span>
+<span id="cb14-17"><a></a></span>
+<span id="cb14-18"><a></a><span class="co"># We tell Python that we want a classification tree</span></span>
+<span id="cb14-19"><a></a>clf_simple <span class="op">=</span> DecisionTreeClassifier(ccp_alpha<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb14-20"><a></a></span>
+<span id="cb14-21"><a></a><span class="co"># We train the classification tree using the training data.</span></span>
+<span id="cb14-22"><a></a>clf_simple.fit(X_train, Y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Let’s compute the accuracy of the pruned tree.</p>
+<div id="219ec3dc" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>single_tree_Y_pred <span class="op">=</span> clf_simple.predict(X_valid)</span>
+<span id="cb15-2"><a></a>accuracy <span class="op">=</span> accuracy_score(Y_valid, single_tree_Y_pred)</span>
+<span id="cb15-3"><a></a><span class="bu">print</span>( <span class="bu">round</span>(accuracy, <span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.79</code></pre>
+</div>
+</div>
 </section>
 <section id="advantages" class="slide level2">
 <h2>Advantages</h2>
 <p><br><br><br></p>
 <ul>
-<li><p>Bagging will have about the same low bias of a tree, but should have less variability. Hence, it results in lower prediction errors.</p></li>
+<li><p>Bagging will have lower prediction errors than a single classification tree.</p></li>
 <li><p>The fact that, for each tree, not all of the original observations were used, can be exploited to produce an estimate of the accuracy for classification.</p></li>
 </ul>
 </section>
@@ -374,6 +694,7 @@ Alan R. Vazquez
 </section>
 <section id="other-issues" class="slide level2">
 <h2>Other issues</h2>
+<p><br><br></p>
 <ul>
 <li><p>Suppose a variable is very important and decisive.</p>
 <ul>
@@ -384,7 +705,7 @@ Alan R. Vazquez
 </ul></li>
 </ul>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 <ul>
 <li>Bagging is unable to capture simple decision boundaries</li>
@@ -408,9 +729,11 @@ Alan R. Vazquez
 <section id="why-does-it-work" class="slide level2">
 <h2>Why does it work?</h2>
 <p><br></p>
-<p>Not so dominant predictors will get a chance to appear by themselves and show “their stuff”.</p>
-<p>This adds more diversity to the trees.</p>
-<p>The fact that the trees in the forest are not (strongly) correlated means lower variability.</p>
+<ul>
+<li><p>Not so dominant predictors will get a chance to appear by themselves and show “their stuff”.</p></li>
+<li><p>This adds more diversity to the trees.</p></li>
+<li><p>The fact that the trees in the forest are not (strongly) correlated means lower variability.</p></li>
+</ul>
 </section>
 <section id="tuning-parameter" class="slide level2">
 <h2>Tuning parameter</h2>
