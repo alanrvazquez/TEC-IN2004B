@@ -2874,7 +2874,7 @@
     "href": "Module2/KNearestNeighbours.html#load-the-libraries",
     "title": "K nearest neighbors",
     "section": "Load the libraries",
-    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score, recall_score, precision_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#k-nearest-neighbors",
@@ -2902,7 +2902,7 @@
     "href": "Module2/KNearestNeighbours.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "To scale a predictor, each of its values is divided by its standard deviation.\nWhen scaling the data, the values have a common standard deviation of one.\nIn mathematical terms, we standardize a predictor as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n The accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.95"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#implementation-details",
@@ -2916,28 +2916,28 @@
     "href": "Module2/KNearestNeighbours.html#section-2",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "The dataset is in the file “auto.xlsx”. Let’s read the data using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nauto_data = pd.read_excel(\"auto.xlsx\")\n\n# Set categorical variables.\nauto_data['origin'] = pd.Categorical(auto_data['origin'])"
+    "text": "The predictive performance of KNN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section-3",
     "href": "Module2/KNearestNeighbours.html#section-3",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Unfortunately, the resulting object isn’t a Pandas data frame. So, we converted it to this format.\n\n#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)\n#scaled_df.head()"
+    "text": "The predictive performance of KNN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#standardization",
     "href": "Module2/KNearestNeighbours.html#standardization",
     "title": "K nearest neighbors",
     "section": "Standardization",
-    "text": "Standardization\n\nStandardization refers to centering and scaling each numerical predictor individually. This places all predictors on the same scale.\nTo center a predictor variable, the mean value of the predictor is subtracted from all values.\nTherefore, the centered predictor has a mean of zero (i.e., its average value is zero)."
+    "text": "Standardization\n\nStandardization refers to centering and scaling each numerical predictor individually. This places all predictors on the same scale.\nIn mathematical terms, we standardize a predictor \\(\\mathbf{X}\\) as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section-4",
     "href": "Module2/KNearestNeighbours.html#section-4",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "The predictive performance of K-NN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
+    "text": "The predictive performance of KNN deteriorates as the number of predictors increases.\nThis is because the expected distance to the nearest neighbor increases dramatically with the number of predictors, unless the size of the dataset increases exponentially with this number.\nThis is known as the curse of dimensionality.\n\n\n\n\nhttps://aiaspirant.com/curse-of-dimensionality/"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#example-1-cont.",
@@ -2958,7 +2958,7 @@
     "href": "Module2/KNearestNeighbours.html#standardization-in-python",
     "title": "K nearest neighbors",
     "section": "Standardization in Python",
-    "text": "Standardization in Python\n\nTo standardize numeric predictors, we use the StandardScaler() function. We also apply the function to variables using the fit_transform() function.\n\n\n#scaler = StandardScaler()\n#Xs = scaler.fit_transform(complete_sbAuto)"
+    "text": "Standardization in Python\n\nTo standardize numeric predictors, we use the StandardScaler() function. We also apply the function to variables using the fit_transform() function.\n\n\nscaler = StandardScaler()\nXs_train = scaler.fit_transform(X_train)"
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#section-5",
@@ -4449,7 +4449,7 @@
     "href": "Module2/KNearestNeighbours.html#k-nearest-neighbors-knn",
     "title": "K nearest neighbors",
     "section": "K-nearest neighbors (KNN)",
-    "text": "K-nearest neighbors (KNN)\n\nKNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.\nBasic idea: Predict a new observation using the K closest observations in the training dataset.\nTo predict the response for a new observation, KNN uses the K nearest neighbors (observations) in terms of the predictors!\nThe predicted response for the new observation is the most common response among the K nearest neighbors."
+    "text": "K-nearest neighbors (KNN)\n\nKNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.\n\nBasic idea: Predict a new observation using the K closest observations in the training dataset.\n\nTo predict the response for a new observation, KNN uses the K nearest neighbors (observations) in terms of the predictors!\nThe predicted response for the new observation is the most common response among the K nearest neighbors."
   },
   {
     "objectID": "Module2/KNearestNeighbours.html#nearest-neighbour",
@@ -4835,5 +4835,75 @@
     "title": "Ensamble Methods",
     "section": "Accuracy",
     "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.81"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#example-2-identifying-counterfeit-banknotes",
+    "href": "Module2/KNearestNeighbours.html#example-2-identifying-counterfeit-banknotes",
+    "title": "K nearest neighbors",
+    "section": "Example 2: Identifying Counterfeit Banknotes",
+    "text": "Example 2: Identifying Counterfeit Banknotes\nThe data is located in the file “banknotes.xlsx”.\n\nbank_data = pd.read_excel(\"banknotes.xlsx\")\n# Set response variable as categorical.\nbank_data['Status'] = pd.Categorical(bank_data['Status'])\nbank_data.head()\n\n\n\n\n\n\n\n\nStatus\nLeft\nRight\nBottom\nTop\n\n\n\n\n0\ngenuine\n131.0\n131.1\n9.0\n9.7\n\n\n1\ngenuine\n129.7\n129.7\n8.1\n9.5\n\n\n2\ngenuine\n129.7\n129.7\n8.7\n9.6\n\n\n3\ngenuine\n129.7\n129.6\n7.5\n10.4\n\n\n4\ngenuine\n129.6\n129.7\n10.4\n7.7"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#create-the-predictor-matrix-and-response-column",
+    "href": "Module2/KNearestNeighbours.html#create-the-predictor-matrix-and-response-column",
+    "title": "K nearest neighbors",
+    "section": "Create the predictor matrix and response column",
+    "text": "Create the predictor matrix and response column\nLet’s create the predictor matrix or response column\n\n# Set full matrix of predictors.\nX_full = bank_data.drop(columns = ['Status']) \n\n# Vector with responses\nY_full = bank_data.filter(['Status'])\n\nTo set the target category in the response we use the get_dummies() function.\n\n# Create dummy variables.\nY_dummies = pd.get_dummies(Y_full, dtype = 'int')\n\n# Select target variable.\nY_target_full = Y_dummies['Status_counterfeit']"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#set-the-target-category",
+    "href": "Module2/KNearestNeighbours.html#set-the-target-category",
+    "title": "K nearest neighbors",
+    "section": "Set the target category",
+    "text": "Set the target category\nTo set the target category in the response we use the get_dummies() function.\n\n# Create dummy variables.\nY_dummies = pd.get_dummies(Y_full, dtype = 'int')\n\n# Select target variable.\nY_target_full = Y_dummies['Status_counterfeit']"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#lets-partition-the-dataset",
+    "href": "Module2/KNearestNeighbours.html#lets-partition-the-dataset",
+    "title": "K nearest neighbors",
+    "section": "Let’s partition the dataset",
+    "text": "Let’s partition the dataset\n\nWe use 70% for training and the rest for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n                                                      test_size = 0.3)"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#knn-in-python",
+    "href": "Module2/KNearestNeighbours.html#knn-in-python",
+    "title": "K nearest neighbors",
+    "section": "KNN in Python",
+    "text": "KNN in Python\n\nIn Python, we can use the KNeighborsClassifier() and fit() from scikit-learn to train a KNN.\nIn the KNeighborsClassifier function, we can define the number of nearest neighbors using the n_neighbors parameter.\n\n# For example, let's use KNN with three neighbours\nknn = KNeighborsClassifier(n_neighbors=3)\n\n# Now, we train the algorithm.\nknn.fit(Xs_train, Y_train)"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#evaluation",
+    "href": "Module2/KNearestNeighbours.html#evaluation",
+    "title": "K nearest neighbors",
+    "section": "Evaluation",
+    "text": "Evaluation\n\nTo evaluate KNN, we make predictions on the validation data (not used to train the KNN). To do this, we must first perform standardization operations on the predictors in the validation dataset.\n\nXs_valid = scaler.fit_transform(X_valid)\n\n\nNext, we make predictions.\n\nY_pred_knn = knn.predict(Xs_valid)"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#confusion-matrix",
+    "href": "Module2/KNearestNeighbours.html#confusion-matrix",
+    "title": "K nearest neighbors",
+    "section": "Confusion matrix",
+    "text": "Confusion matrix\n\n# Calcular matriz de confusión.\ncm = confusion_matrix(Y_valid, Y_pred_knn)\n\n# Mostrar matriz de confusión.\nConfusionMatrixDisplay(cm).plot()"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#example",
+    "href": "Module2/KNearestNeighbours.html#example",
+    "title": "K nearest neighbors",
+    "section": "Example",
+    "text": "Example\nThe data is located in the file “banknotes.xlsx”.\n\nbank_data = pd.read_excel(\"banknotes.xlsx\")\n# Set response variable as categorical.\nbank_data['Status'] = pd.Categorical(bank_data['Status'])\nbank_data.head()\n\n\n\n\n\n\n\n\nStatus\nLeft\nRight\nBottom\nTop\n\n\n\n\n0\ngenuine\n131.0\n131.1\n9.0\n9.7\n\n\n1\ngenuine\n129.7\n129.7\n8.1\n9.5\n\n\n2\ngenuine\n129.7\n129.7\n8.7\n9.6\n\n\n3\ngenuine\n129.7\n129.6\n7.5\n10.4\n\n\n4\ngenuine\n129.6\n129.7\n10.4\n7.7"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#finding-the-best-value-of-k",
+    "href": "Module2/KNearestNeighbours.html#finding-the-best-value-of-k",
+    "title": "K nearest neighbors",
+    "section": "Finding the best value of K",
+    "text": "Finding the best value of K\nWe can determine the best value of K for the KNN algorithm. To this end, we evaluate the performance of the KNN for different values of \\(K\\) in terms of accuracy on the validation dataset.\n\nbest_k = 1\nbest_accuracy = 0\nk_values = range(1, 50)  # Test k values from 1 to 50\nvalidation_accuracies = []\n\nfor k in k_values:\n    model = KNeighborsClassifier(n_neighbors=k)\n    model.fit(Xs_train, Y_train)\n    val_accuracy = accuracy_score(Y_valid, model.predict(Xs_valid))\n    validation_accuracies.append(val_accuracy)\n\n    if val_accuracy &gt; best_accuracy:\n        best_accuracy = val_accuracy\n        best_k = k"
+  },
+  {
+    "objectID": "Module2/KNearestNeighbours.html#visualize",
+    "href": "Module2/KNearestNeighbours.html#visualize",
+    "title": "K nearest neighbors",
+    "section": "Visualize",
+    "text": "Visualize\nWe can then visualize the accuracy for different values of \\(K\\) using the following graph and code.\n\n\nCode\nplt.figure(figsize=(6.3, 4.3))\nplt.plot(k_values, validation_accuracies, marker=\"o\", linestyle=\"-\")\nplt.xlabel(\"Number of Neighbors (k)\")\nplt.ylabel(\"Validation Accuracy\")\nplt.title(\"Choosing the Best k for KNN\")\nplt.show()"
   }
 ]

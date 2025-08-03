@@ -35,7 +35,7 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay 
-from sklearn.metrics import accuracy_score, recall_score, precision_score
+from sklearn.metrics import accuracy_score
 ```
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
@@ -46,7 +46,7 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 KNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.
 
-**Basic idea**: Predict a new observation using the *K* closest observations in the training dataset.
+- **Basic idea**: Predict a new observation using the *K* closest observations in the training dataset.
 
 To predict the response for a new observation, KNN uses the *K* nearest neighbors (observations) in [***terms of the predictors!***]{style="color:brown;"}
 
@@ -331,78 +331,69 @@ Using $K = 3$, that's 3 votes for "counterfeit" and 0 for "genuine." So we class
 
 Standardization refers to *centering* and *scaling* each numerical predictor individually. This places all predictors on the same scale.
 
-To **center** a predictor variable, the mean value of the predictor is subtracted from all values.
-
-Therefore, the centered predictor has a mean of zero (i.e., its average value is zero).
-
-## 
-
-</br>
-
-To **scale** a predictor, each of its values is divided by its standard deviation.
-
-When scaling the data, the values have a common standard deviation of one.
-
-In mathematical terms, we standardize a predictor as:
+In mathematical terms, we standardize a predictor $\mathbf{X}$ as:
 
 $${\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2}},$$
 
 with $\bar{X} = \sum_{i=1}^n \frac{x_i}{n}$.
 
-## Example 1
+## Example
 
-A market analyst is studying quality characteristics of cars. Specifically, the analyst is investigating the miles per gallon (mpg) of cars can be predicted using:
-
--   $X_1:$ cylinders. Number of cylinders between 4 and 8
--   $X_2:$ displacement. Engine displacement (cu. inches)
--   $X_3:$ horsepower. Engine horsepower
--   $X_4:$ weight. Vehicle weight (lbs.)
--   $X_5:$ acceleration. Time to accelerate from 0 to 60 mph (sec.)
--   $X_6:$ origin. Origin of car (American, European, Japanese)
-
-## 
-
-</br></br>
-
-The dataset is in the file "auto.xlsx". Let's read the data using **pandas**.
+The data is located in the file "banknotes.xlsx".
 
 ```{python}
 #| echo: true
-
-# Load the Excel file into a pandas DataFrame.
-auto_data = pd.read_excel("auto.xlsx")
-
-# Set categorical variables.
-auto_data['origin'] = pd.Categorical(auto_data['origin'])
-```
-
-## Two predictors in original units
-
-Consider the previously created `auto_data` dataset. Consider two points on the graph: $(175, 5140)$ and $(69, 1613)$.
-
-::::: columns
-::: {.column width="50%"}
-```{python}
-#| echo: false
 #| output: true
-#| fig-align: center
 
-plt.figure(figsize=(5,5))
-sns.scatterplot(data = auto_data, x = 'horsepower', y = 'weight')
-plt.scatter(x = 175, y = 5140, color = 'red')
-plt.scatter(x = 69, y = 1613, color = 'red')
-plt.xlabel('Horsepower', fontsize=14)
-plt.ylabel('Weight', fontsize=14)
-plt.show()
+bank_data = pd.read_excel("banknotes.xlsx")
+# Set response variable as categorical.
+bank_data['Status'] = pd.Categorical(bank_data['Status'])
+bank_data.head()
 ```
-:::
 
-::: {.column width="50%"}
+## Create the predictor matrix and response column
+
+Let's create the predictor matrix or response column
+
+```{python}
+#| echo: true
+#| output: true
+
+# Set full matrix of predictors.
+X_full = bank_data.drop(columns = ['Status']) 
+
+# Vector with responses
+Y_full = bank_data.filter(['Status'])
+```
+
+To set the target category in the response we use the `get_dummies()` function.
+
+```{python}
+#| echo: true
+#| output: true
+
+# Create dummy variables.
+Y_dummies = pd.get_dummies(Y_full, dtype = 'int')
+
+# Select target variable.
+Y_target_full = Y_dummies['Status_counterfeit']
+```
+
+## Let's partition the dataset
+
 </br>
 
-The distance between these points is $\sqrt{(69 - 175)^2 + (1613-5140)^2}$ $= \sqrt{11236 + 12439729}$ $= 3528.592$.
-:::
-:::::
+We use 70% for training and the rest for validation.
+
+```{python}
+#| echo: true
+#| output: true
+
+# Split the dataset into training and validation.
+X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, 
+                                                      test_size = 0.3)
+```
+
 
 ## Standardization in Python
 
@@ -415,48 +406,135 @@ To standardize **numeric** predictors, we use the `StandardScaler()` function. W
 ```{python}
 #| echo: true
 
-#scaler = StandardScaler()
-#Xs = scaler.fit_transform(complete_sbAuto)
+scaler = StandardScaler()
+Xs_train = scaler.fit_transform(X_train)
 ```
 
-## 
 
-Unfortunately, the resulting object isn't a Pandas data frame. So, we converted it to this format.
+## KNN in Python
+
+</br>
+
+In Python, we can use the `KNeighborsClassifier()` and `fit()` from **scikit-learn**  to train a KNN. 
+
+In the `KNeighborsClassifier` function, we can define the number of nearest neighbors using the `n_neighbors` parameter.
+
+```{python}
+#| echo: true
+#| output: false
+
+# For example, let's use KNN with three neighbours
+knn = KNeighborsClassifier(n_neighbors=3)
+
+# Now, we train the algorithm.
+knn.fit(Xs_train, Y_train)
+```
+
+## Evaluation
+
+</br>
+
+To evaluate KNN, we make predictions on the validation data (not used to train the KNN). To do this, we must first perform standardization operations on the predictors in the validation dataset.
+
 
 ```{python}
 #| echo: true
 
-#scaled_df = pd.DataFrame(Xs, columns = complete_sbAuto.columns)
-#scaled_df.head()
+Xs_valid = scaler.fit_transform(X_valid)
 ```
 
-## Two predictors in standardized units
+</br>
 
-On the new scale, the two points are now: $(1.82, 2.53)$ and $(-0.91, -1.60)$.
+Next, we make predictions.
 
-::::: columns
-::: {.column width="50%"}
 ```{python}
-#| echo: false
+#| echo: true
+
+Y_pred_knn = knn.predict(Xs_valid)
+```
+
+## Confusion matrix
+
+```{python}
+#| echo: true
 #| output: true
 #| fig-align: center
 
-#plt.figure(figsize=(5,5))
-#sns.scatterplot(data = scaled_df, x = 'horsepower', y = 'weight')
-#plt.scatter(x = 1.83, y = 2.54, color = 'red')
-#plt.scatter(x = -0.90, y = -1.60, color = 'red')
-#plt.xlabel('Standardized horsepower', fontsize=14)
-#plt.ylabel('Standardized weight', fontsize=14)
-#plt.show()
-```
-:::
+# Calcular matriz de confusión.
+cm = confusion_matrix(Y_valid, Y_pred_knn)
 
-::: {.column width="50%"}
+# Mostrar matriz de confusión.
+ConfusionMatrixDisplay(cm).plot()
+```
+
+## Finding the best value of *K*
+
+We can determine the best value of *K* for the KNN algorithm. To this end, we evaluate the performance of the KNN for different values of $K$ in terms of accuracy on the validation dataset.
+
+```{python}
+#| echo: true
+#| output: false
+
+best_k = 1
+best_accuracy = 0
+k_values = range(1, 50)  # Test k values from 1 to 50
+validation_accuracies = []
+
+for k in k_values:
+    model = KNeighborsClassifier(n_neighbors=k)
+    model.fit(Xs_train, Y_train)
+    val_accuracy = accuracy_score(Y_valid, model.predict(Xs_valid))
+    validation_accuracies.append(val_accuracy)
+
+    if val_accuracy > best_accuracy:
+        best_accuracy = val_accuracy
+        best_k = k
+```
+
+## Visualize
+
+We can then visualize the accuracy for different values of $K$ using the following graph and code.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(6.3, 4.3))
+plt.plot(k_values, validation_accuracies, marker="o", linestyle="-")
+plt.xlabel("Number of Neighbors (k)")
+plt.ylabel("Validation Accuracy")
+plt.title("Choosing the Best k for KNN")
+plt.show()
+```
+
+##
+
 </br>
 
-The distance between these points is $\sqrt{(-0.91 - 1.82)^2 + (-1.60-2.53)^2}$ $= \sqrt{7.45 + 17.05} = 4.95$.
-:::
-:::::
+Finally, we select the best number of nearest neighbors contained in the `best_k` object.
+
+```{python}
+#| echo: true
+#| output: false
+
+KNN_final = KNeighborsClassifier(n_neighbors = best_k)
+KNN_final.fit(Xs_train, Y_train)
+```
+
+</br>
+
+The accuracy of the best KNN is 
+
+```{python}
+#| echo: true
+#| output: true
+
+Y_pred_KNNfinal = KNN_final.predict(Xs_valid)
+valid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)
+print(valid_accuracy)
+```
 
 ## Discussion
 
