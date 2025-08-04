@@ -223,7 +223,7 @@ Alan R. Vazquez
 <section id="load-the-libraries" class="slide level2">
 <h2>Load the libraries</h2>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="42a8887a" class="cell" data-execution_count="1">
+<div id="363f9001" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -264,7 +264,7 @@ Alan R. Vazquez
 </ul>
 </div><div class="column" style="width:40%;">
 <p><br></p>
-<div id="7f98d888" class="cell" data-execution_count="2">
+<div id="87451d8f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -342,8 +342,8 @@ Alan R. Vazquez
 <section id="example-1" class="slide level2">
 <h2>Example 1</h2>
 <p>Let’s consider again the dataset in the file “Amtrak.xlsx.” The file contains records of Amtrak passenger numbers from January 1991 to March 2004.</p>
-<div id="b7cb918a" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="168">
+<div id="d67fb8ab" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -415,7 +415,7 @@ Alan R. Vazquez
 <section id="section" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="b98a45a2" class="cell" data-execution_count="4">
+<div id="468ec68a" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -438,7 +438,7 @@ Alan R. Vazquez
 <h2>Autocorrelation plot</h2>
 <p><br></p>
 <p>In Python, we use the <code>plot_acf</code> function from the <strong>statsmodels</strong> library.</p>
-<div id="39e02e8c" class="cell" data-execution_count="5">
+<div id="93808d48" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb2-2"><a></a>plot_acf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
 <span id="cb2-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
@@ -450,7 +450,7 @@ Alan R. Vazquez
 <section id="the-resulting-plot" class="slide level2">
 <h2>The resulting plot</h2>
 <p><br></p>
-<div id="e0c94549" class="cell" data-execution_count="6">
+<div id="88c7a902" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -478,7 +478,7 @@ Alan R. Vazquez
 </div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
-<div id="1a25aaa2" class="cell" data-execution_count="7">
+<div id="305ae680" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 384x384 with 0 Axes&gt;</code></pre>
 </div>
@@ -539,7 +539,7 @@ Alan R. Vazquez
 <li><p>The vertical axis shows the differences (or <em>lags</em>) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.</p></li>
 </ul>
 <p>In Python, we use the <code>plot_pacf</code> function from <strong>statsmodels</strong>.</p>
-<div id="9a663e34" class="cell" data-execution_count="8">
+<div id="cebf4179" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb5-2"><a></a>plot_pacf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
 <span id="cb5-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
@@ -561,7 +561,7 @@ Alan R. Vazquez
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="f4477b11" class="cell" data-execution_count="9">
+<div id="782d4c2b" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -666,7 +666,7 @@ Alan R. Vazquez
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="IN1002b_logo.png" class="slide-logo"></p>
+<p><img src="IN2004B_logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>Tecnologico de Monterrey</p>
 </div>

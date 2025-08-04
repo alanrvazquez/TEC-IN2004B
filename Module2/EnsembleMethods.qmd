@@ -10,7 +10,7 @@ format:
     chalkboard: false
     multiplex: false
     footer: "Tecnologico de Monterrey"
-    logo: IN1002b_logo.png
+    logo: IN2004B_logo.png
     css: style.css
     slide-number: True
     html-math-method: mathjax
@@ -77,23 +77,21 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 </br></br></br>
 
-- In general, decision trees do not work well for classification and regression problems. 
+-   In general, decision trees do not work well for classification and regression problems.
 
-- However, decision trees can be combined to build effective algorithms for these problems.
+-   However, decision trees can be combined to build effective algorithms for these problems.
 
 ## Ensamble methods
 
 </br>
 
-Ensemble methods refer to frameworks to combine decision trees. 
-
+Ensemble methods refer to frameworks to combine decision trees.
 
 Here, we will cover a popular ensamble method:
 
-- [**Bagging**]{style="color:purple;"}. Ensemble many deep trees.
+-   [**Bagging**]{style="color:purple;"}. Ensemble many deep trees.
 
-  -   Quintessential method: [Random Forests]{style="color:purple;"}.
-
+    -   Quintessential method: [Random Forests]{style="color:purple;"}.
 
 # Bagging
 
@@ -155,17 +153,17 @@ $$p_{bag, 1} = \frac{1}{B}\sum_{b=1}^{B} I(\hat{T}_{b}(\boldsymbol{x}) = 1).$$
 
 </br></br>
 
-- How many trees? No risk of overfitting, so use plenty.
+-   How many trees? No risk of overfitting, so use plenty.
 
-- No pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.
+-   No pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.
 
-- The size of bootstrap samples is the same as the size of the training dataset, but we can use a different size.
+-   The size of bootstrap samples is the same as the size of the training dataset, but we can use a different size.
 
 ## Example 1
 
 </br>
 
-The data “AdultReduced.xlsx” comes from the UCI Machine Learning Repository and is derived from US census records. In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than $50,000) or low.
+The data “AdultReduced.xlsx” comes from the UCI Machine Learning Repository and is derived from US census records. In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than \$50,000) or low.
 
 Predictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc. The data contains 7,508 records.
 
@@ -184,11 +182,11 @@ Adult_data.head(3)
 
 ## Selected predictors.
 
-- age: Age of the individual.
-- sex: Sex of the individual (male or female).
-- race: Race of the individual (W, B, Amer-Indian, Amer-Pacific, or Other).
-- education.num: number of years of education.
-- hours.per.week: Number of work hours per week.
+-   age: Age of the individual.
+-   sex: Sex of the individual (male or female).
+-   race: Race of the individual (W, B, Amer-Indian, Amer-Pacific, or Other).
+-   education.num: number of years of education.
+-   hours.per.week: Number of work hours per week.
 
 ```{python}
 #| echo: true
@@ -235,7 +233,7 @@ Y_target.head()
 
 </br>
 
-To evaluate a model's performance on unobserved data, we split the current dataset into training and validation datasets. To do this, we use  `train_test_split()` from **scikit-learn**.
+To evaluate a model's performance on unobserved data, we split the current dataset into training and validation datasets. To do this, we use `train_test_split()` from **scikit-learn**.
 
 ```{python}
 #| echo: true
@@ -255,7 +253,7 @@ We use 80% of the dataset for training and the rest for validation.
 
 </br>
 
-We define a bagging algorithm for classification using the `BaggingClassifier` function from **scikit-learn**. 
+We define a bagging algorithm for classification using the `BaggingClassifier` function from **scikit-learn**.
 
 The `n_estimators` argument is the number of decision trees to generate in bagging. Ideally, it should be high, around 500.
 
@@ -304,7 +302,7 @@ ConfusionMatrixDisplay(cm).plot()
 
 </br></br>
 
-The accuracy of the bagging classifier is 78%. 
+The accuracy of the bagging classifier is 78%.
 
 ```{python}
 #| echo: true
@@ -416,11 +414,11 @@ Random forests can reduce variability further.
 
 </br>
 
-- Not so dominant predictors will get a chance to appear by themselves and show “their stuff”.
+-   Not so dominant predictors will get a chance to appear by themselves and show “their stuff”.
 
-- This adds more diversity to the trees.
+-   This adds more diversity to the trees.
 
-- The fact that the trees in the forest are not (strongly) correlated means lower variability in the predictions and so, a bettter performance overall.
+-   The fact that the trees in the forest are not (strongly) correlated means lower variability in the predictions and so, a bettter performance overall.
 
 ## Tuning parameter
 
@@ -484,7 +482,7 @@ ConfusionMatrixDisplay(cm).plot()
 
 </br></br>
 
-The accuracy of the random forest classifier is 79%. 
+The accuracy of the random forest classifier is 79%.
 
 ```{python}
 #| echo: true
@@ -497,6 +495,5 @@ accuracy = accuracy_score(Y_valid, RF_predicted)
 # Show accuracy.
 print( round(accuracy, 2) )
 ```
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)

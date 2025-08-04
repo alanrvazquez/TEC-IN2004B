@@ -10,7 +10,7 @@ format:
     chalkboard: false
     multiplex: false
     footer: "Tecnologico de Monterrey"
-    logo: IN1002b_logo.png
+    logo: IN2004B_logo.png
     css: style.css
     slide-number: True
     html-math-method: mathjax
@@ -120,9 +120,9 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
-- La base de datos tiene 4 tablas: Pacientes, Medicinas, Recetas y Detalle de las recetas. 
+-   La base de datos tiene 4 tablas: Pacientes, Medicinas, Recetas y Detalle de las recetas.
 
-- La tabla que contiene datos de la entidad “paciente” tiene los siguientes campos: identificador único, nombre, domicilio, fecha de nacimiento, teléfono, y foto.
+-   La tabla que contiene datos de la entidad “paciente” tiene los siguientes campos: identificador único, nombre, domicilio, fecha de nacimiento, teléfono, y foto.
 :::
 
 ::: {.column width="40%"}
@@ -134,20 +134,7 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
-- La tabla de recetas contiene los datos generales de cada receta expedida: número de receta (es la llave), fecha, hora de consulta, un indicador de si contiene medicamentos controlados o no, y el identificador del paciente, este campo permite _**relacionar los datos de la receta**_ con los datos del paciente.
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-- La tabla de medicinas tiene los campos: identificador de la medicina, descripción genérica, agente activo, presentación más común, y contra-indicaciones.
+-   La tabla de recetas contiene los datos generales de cada receta expedida: número de receta (es la llave), fecha, hora de consulta, un indicador de si contiene medicamentos controlados o no, y el identificador del paciente, este campo permite ***relacionar los datos de la receta*** con los datos del paciente.
 :::
 
 ::: {.column width="40%"}
@@ -159,21 +146,7 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
-- La tabla de detalle de la receta contiene los renglones de cada receta. Como hay recetas que pueden tener un solo medicamento, puede haber algunas con 2, 3 o más medicamentos, en el modelo relacional se guardan los renglones de todas las recetas en una sola tabla, todos los renglones de una receta tienen el mismo “número de receta” pero diferente “id del medicamento”...
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-- En la tabla Detalle de Receta puede haber múltiples registros con el mismo Número de receta, porque la receta puede amparar varios medicamentos. También puede haber múltiples registros con el mismo ID de medicamento, porque un medicamento puede aparecer en muchas recetas.
-
+-   La tabla de medicinas tiene los campos: identificador de la medicina, descripción genérica, agente activo, presentación más común, y contra-indicaciones.
 :::
 
 ::: {.column width="40%"}
@@ -185,8 +158,31 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
-- En este caso, para identificar de manera única un renglón de una receta en particular se requieren los dos identificadores, el de la receta y el del medicamento, esto constituye una *llave compuesta*.
+-   La tabla de detalle de la receta contiene los renglones de cada receta. Como hay recetas que pueden tener un solo medicamento, puede haber algunas con 2, 3 o más medicamentos, en el modelo relacional se guardan los renglones de todas las recetas en una sola tabla, todos los renglones de una receta tienen el mismo “número de receta” pero diferente “id del medicamento”...
+:::
 
+::: {.column width="40%"}
+![](images/clipboard-3132665686.png)
+:::
+:::::
+
+## 
+
+::::: columns
+::: {.column width="60%"}
+-   En la tabla Detalle de Receta puede haber múltiples registros con el mismo Número de receta, porque la receta puede amparar varios medicamentos. También puede haber múltiples registros con el mismo ID de medicamento, porque un medicamento puede aparecer en muchas recetas.
+:::
+
+::: {.column width="40%"}
+![](images/clipboard-3132665686.png)
+:::
+:::::
+
+## 
+
+::::: columns
+::: {.column width="60%"}
+-   En este caso, para identificar de manera única un renglón de una receta en particular se requieren los dos identificadores, el de la receta y el del medicamento, esto constituye una *llave compuesta*.
 :::
 
 ::: {.column width="40%"}
@@ -198,20 +194,20 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 Una vez que se tiene la base de datos, es posible contestar preguntas como:
 
-- ¿En cuáles colonias viven los pacientes a quienes se les ha recetado turbocicloxina?
+-   ¿En cuáles colonias viven los pacientes a quienes se les ha recetado turbocicloxina?
 
-- ¿A cuántos pacientes se les ha recetado turbocicloxina en el último mes?
+-   ¿A cuántos pacientes se les ha recetado turbocicloxina en el último mes?
 
-- ¿Cuáles agentes activos se les han administrado a los pacientes que viven en Prados #520 en el último año?
+-   ¿Cuáles agentes activos se les han administrado a los pacientes que viven en Prados #520 en el último año?
 
 ## SQL
 
-- Las herramientas y plataformas de Business Intelligence con las que contamos actualmente, nos permiten hacer fácilmente consultas como las del ejemplo anterior, simplemente “arrastrando” campos y aplicando filtros en un lienzo de diseño.
+-   Las herramientas y plataformas de Business Intelligence con las que contamos actualmente, nos permiten hacer fácilmente consultas como las del ejemplo anterior, simplemente “arrastrando” campos y aplicando filtros en un lienzo de diseño.
 
-- Internamente las herramientas procesan las consultas mediante un lenguaje de manejo de bases de datos que se llama SQL Structured Query Language.
+-   Internamente las herramientas procesan las consultas mediante un lenguaje de manejo de bases de datos que se llama SQL Structured Query Language.
 
-- Para hacer consultas más complejas puede ser necesario que se haga la consulta escribiendo directamente el código de SQL.
+-   Para hacer consultas más complejas puede ser necesario que se haga la consulta escribiendo directamente el código de SQL.
 
-- En este módulo no estudiaremos SQL.
+-   En este módulo no estudiaremos SQL.
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)

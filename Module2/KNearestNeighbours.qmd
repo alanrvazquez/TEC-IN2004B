@@ -10,7 +10,7 @@ format:
     chalkboard: false
     multiplex: false
     footer: "Tecnologico de Monterrey"
-    logo: IN1002b_logo.png
+    logo: IN2004B_logo.png
     css: style.css
     slide-number: True
     html-math-method: mathjax
@@ -46,7 +46,7 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 KNN a supervised learning algorithm that uses proximity to make classifications or predictions about the clustering of a single data point.
 
-- **Basic idea**: Predict a new observation using the *K* closest observations in the training dataset.
+-   **Basic idea**: Predict a new observation using the *K* closest observations in the training dataset.
 
 To predict the response for a new observation, KNN uses the *K* nearest neighbors (observations) in [***terms of the predictors!***]{style="color:brown;"}
 
@@ -394,7 +394,6 @@ X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full,
                                                       test_size = 0.3)
 ```
 
-
 ## Standardization in Python
 
 </br>
@@ -410,12 +409,11 @@ scaler = StandardScaler()
 Xs_train = scaler.fit_transform(X_train)
 ```
 
-
 ## KNN in Python
 
 </br>
 
-In Python, we can use the `KNeighborsClassifier()` and `fit()` from **scikit-learn**  to train a KNN. 
+In Python, we can use the `KNeighborsClassifier()` and `fit()` from **scikit-learn** to train a KNN.
 
 In the `KNeighborsClassifier` function, we can define the number of nearest neighbors using the `n_neighbors` parameter.
 
@@ -435,7 +433,6 @@ knn.fit(Xs_train, Y_train)
 </br>
 
 To evaluate KNN, we make predictions on the validation data (not used to train the KNN). To do this, we must first perform standardization operations on the predictors in the validation dataset.
-
 
 ```{python}
 #| echo: true
@@ -509,7 +506,7 @@ plt.title("Choosing the Best k for KNN")
 plt.show()
 ```
 
-##
+## 
 
 </br>
 
@@ -525,7 +522,7 @@ KNN_final.fit(Xs_train, Y_train)
 
 </br>
 
-The accuracy of the best KNN is 
+The accuracy of the best KNN is
 
 ```{python}
 #| echo: true

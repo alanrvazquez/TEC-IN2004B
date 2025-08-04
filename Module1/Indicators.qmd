@@ -10,7 +10,7 @@ format:
     chalkboard: false
     multiplex: false
     footer: "Tecnologico de Monterrey"
-    logo: IN1002b_logo.png
+    logo: IN2004B_logo.png
     css: style.css
     slide-number: True
     html-math-method: mathjax
@@ -89,7 +89,6 @@ Como resultado del proceso de planeación pueden generarse algunos de estos tipo
 ::::: columns
 ::: {.column width="50%"}
 -   Para poder llevar a cabo los procesos de Planeación, Instrumentación y Control, es necesario contar con un sistema de información que permita evaluar si se están logrando los fines que se planearon, y si las acciones instrumentadas se están llevando también de acuerdo con los planes.
-
 
 -   La información es necesaria para corregir los planes o su instrumentación, y para producir nuevos planes.
 :::
