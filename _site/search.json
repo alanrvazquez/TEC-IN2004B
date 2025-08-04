@@ -5072,7 +5072,7 @@
     "href": "Module3/PredictiveModels.html#seasonality",
     "title": "Predictive Models and Time Series",
     "section": "Seasonality",
-    "text": "Seasonality\nSeasonality refers to repetitive or cyclical behavior that occurs with a constant frequency.\nExamples:\n\nDemand for winter clothing\nDemand for tourist travel\nAmount of rainfall throughout the year."
+    "text": "Seasonality\nSeasonality refers to repetitive or cyclical behavior that occurs with a constant frequency.\n\n\n\nExamples:\n\nDemand for winter clothing\nDemand for tourist travel\nAmount of rainfall throughout the year."
   },
   {
     "objectID": "Module3/PredictiveModels.html#autocorrelation",
@@ -5114,7 +5114,7 @@
     "href": "Module3/PredictiveModels.html#in-python-3",
     "title": "Predictive Models and Time Series",
     "section": "In Python",
-    "text": "In Python"
+    "text": "In Python\nThe easiest way to apply the logarithm in Python is to use the log() function from the numpy library\n\nlog_Y_full = np.log( Y_full )\n\nNow, the response to use is in log_Y_full.\n\nThe steps to fit a linear regression model are similar.\n\n# 1. Create linear regression\nLRmodelAirlineTransformed = LinearRegression()\n\n# 2. Fit the model\nLRmodelAirlineTransformed.fit(X_full, log_Y_full)"
   },
   {
     "objectID": "Module3/PredictiveModels.html#residual-analysis",
@@ -5170,7 +5170,7 @@
     "href": "Module3/PredictiveModels.html#identifying-heteroskedasticity",
     "title": "Predictive Models and Time Series",
     "section": "Identifying Heteroskedasticity",
-    "text": "Identifying Heteroskedasticity\nHeteroskedasticity arises when the dispersion of model errors is not constant over time.\nExample"
+    "text": "Identifying Heteroskedasticity\n\nHeteroskedasticity arises when the dispersion of model errors is not constant over time.\nTo see it, let’s go back to the Airline data, which contains the number of passengers of an international airline per month between 1949 and 1960.\n\nAirline_data = pd.read_excel(\"Airline.xlsx\")"
   },
   {
     "objectID": "Module3/PredictiveModels.html#in-python-5",
@@ -5184,7 +5184,7 @@
     "href": "Module3/PredictiveModels.html#what-do-i-do-if-the-transformation-doesnt-work",
     "title": "Predictive Models and Time Series",
     "section": "What do I do if the transformation doesn’t work?",
-    "text": "What do I do if the transformation doesn’t work?\n\nIf the log transformation doesn’t significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.\nYou can find literature on these models and their software implementations in a time series textbook such as Time Series Analysis with Applications in R by Cryer and Chan."
+    "text": "What do I do if the transformation doesn’t work?\n\n\nIf the log transformation doesn’t significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.\nYou can find literature on these models and their software implementations in a time series textbook such as Time Series Analysis with Applications in R by Cryer and Chan."
   },
   {
     "objectID": "Module3/PredictiveModels.html#seasonality-1",
@@ -5197,22 +5197,22 @@
     "objectID": "Module3/PredictiveModels.html#capturing-seasonality",
     "href": "Module3/PredictiveModels.html#capturing-seasonality",
     "title": "Predictive Models and Time Series",
-    "section": "Capturing Seasonality",
-    "text": "Capturing Seasonality\n\n\n\nThe linear regression model can be extended to capture seasonal patterns in the time series.\nTo do this, an additional categorical predictor is created that indicates the season to which each data item belongs.\nBehind the scenes, the additional categorical predictor is transformed into several auxiliary numerical predictors."
+    "section": "Capturing seasonality",
+    "text": "Capturing seasonality\n\n\n\nThe linear regression model can be extended to capture seasonal patterns in the time series.\nTo do this, an additional categorical predictor is created that indicates the season to which each data item belongs.\nBehind the scenes, the additional categorical predictor is transformed into several auxiliary numerical predictors."
   },
   {
     "objectID": "Module3/PredictiveModels.html#analyzing-seasonal-series-in-python",
     "href": "Module3/PredictiveModels.html#analyzing-seasonal-series-in-python",
     "title": "Predictive Models and Time Series",
-    "section": "Analyzing Seasonal Series in Python",
-    "text": "Analyzing Seasonal Series in Python\nTBD"
+    "section": "Analyzing seasonal series in Python",
+    "text": "Analyzing seasonal series in Python\nConsider the data in Amtrak_train with the additional predictor of Season to model seasonality.\n\n\n\n\n\n\n\n\n\nMonth\nt\nRidership (in 000s)\nSeason\n\n\n\n\n0\n1991-01-01\n1\n1708.917\nJan\n\n\n1\n1991-02-01\n2\n1620.586\nFeb\n\n\n2\n1991-03-04\n3\n1972.715\nMar\n\n\n3\n1991-04-04\n4\n1811.665\nApr\n\n\n4\n1991-05-05\n5\n1974.964\nMay"
   },
   {
     "objectID": "Module3/PredictiveModels.html#disadvantages-of-linear-regression-models",
     "href": "Module3/PredictiveModels.html#disadvantages-of-linear-regression-models",
     "title": "Predictive Models and Time Series",
     "section": "Disadvantages of linear regression models",
-    "text": "Disadvantages of linear regression models\nDespite their simplicity and versatility, linear regression models are not the best for describing a time series.\nThis is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, \\(Y_1\\) can help us predict \\(Y_2\\), and \\(Y_2\\) can help us predict \\(Y_3\\), etc.\nModels that help us use past observations to predict future values of the response variable \\(Y\\) are autoregressive models."
+    "text": "Disadvantages of linear regression models\n\nDespite their simplicity and versatility, linear regression models are not the best for describing a time series.\nThis is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, \\(Y_1\\) can help us predict \\(Y_2\\), and \\(Y_2\\) can help us predict \\(Y_3\\), etc.\nModels that help us use past observations to predict future values of the response variable \\(Y\\) are autoregressive models."
   },
   {
     "objectID": "Module3/PredictiveModels.html#load-the-libraries",
@@ -5394,6 +5394,104 @@
     "href": "Module3/PredictiveModels.html#section-15",
     "title": "Predictive Models and Time Series",
     "section": "",
-    "text": "Let’s do the same for the the linear regression model with a quadratic term.\n\nX_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)\nY_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)\nmse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (MSE)\nprint(round(mse_quad, 2))\n\n30271.15\n\n\nWe conclude that the linear model with a quadratic term is better than the linear regression model because the \\(\\text{MSE}_v\\) of the former is smaller than for the latter."
+    "text": "Airline_data.head()\n\n\n\n\n\n\n\n\nT\nNumero de pasajeros\n\n\n\n\n0\n1\n112\n\n\n1\n2\n118\n\n\n2\n3\n132\n\n\n3\n4\n129\n\n\n4\n5\n121"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-16",
+    "href": "Module3/PredictiveModels.html#section-16",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "For illustrative purposes, we will not split the time series into training and validation datasets.\n\n\nCode\nplt.figure(figsize=(10, 5))\nsns.lineplot(x='T', y='Numero de pasajeros', data = Airline_data)\nplt.xlabel('Time')\nplt.ylabel('Number of passengers')\nplt.title('Number of passengers across time')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#residual-analysis-2",
+    "href": "Module3/PredictiveModels.html#residual-analysis-2",
+    "title": "Predictive Models and Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\nHeteroskedasticity: Dispersion of the residuals increases with the predicted value.\n\n\n\nCode\nY_pred = LRmodelAirline.predict(X_full)\nresiduals = Y_full - Y_pred\nplt.figure(figsize=(6, 4))\nsns.residplot(x=Y_pred, y=residuals, lowess=True, line_kws={'color': 'red'})\nplt.xlabel(\"Fitted Values (Y_pred)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-17",
+    "href": "Module3/PredictiveModels.html#section-17",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Let’s fit a linear regression model.\n\n# Set predictor.\nX_full = Airline_data.filter(['T'])\n\n# Set response.\nY_full = Airline_data.filter(['Numero de pasajeros'])\n\n# 1. Create linear regression\nLRmodelAirline = LinearRegression()\n\n# 2. Fit the model\nLRmodelAirline.fit(X_full, Y_full)"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#solution",
+    "href": "Module3/PredictiveModels.html#solution",
+    "title": "Predictive Models and Time Series",
+    "section": "Solution",
+    "text": "Solution\n\nIf we identify heteroskedasticity in the regression model errors, we have several transformation options for our original series.\n\nA common transformations to the time series \\(Y_i\\) is the Natural Logarithm\nIf the original time series contains negative values, it can be lagged by adding the negative of its minimum value."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-18",
+    "href": "Module3/PredictiveModels.html#section-18",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "To fit a linear regression model with a categorical variable like Season, we must transform the text categories into numbers. To do this, we use dummy variables constructed using the following commands.\n\ndummy_data = pd.get_dummies(Amtrak_train['Season'], dtype = 'int')\ndummy_data.head(4)\n\n\n\n\n\n\n\n\nApr\nAug\nDec\nFeb\nJan\nJul\nJun\nMar\nMay\nNov\nOct\nSep\n\n\n\n\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n2\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n3\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#residual-analysis-3",
+    "href": "Module3/PredictiveModels.html#residual-analysis-3",
+    "title": "Predictive Models and Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\n\n\nWith transformation\n\n\nCode\nY_pred_log = LRmodelAirlineTransformed.predict(X_full)\nresiduals_log = log_Y_full - Y_pred_log\nplt.figure(figsize=(6, 4))\nsns.residplot(x=Y_pred_log, y=residuals_log, lowess=True, line_kws={'color': 'red'})\nplt.xlabel(\"Fitted Values\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\nWithout transformation\n\n\nCode\nY_pred = LRmodelAirline.predict(X_full)\nresiduals = Y_full - Y_pred\nplt.figure(figsize=(6, 4))\nsns.residplot(x=Y_pred, y=residuals, lowess=True, line_kws={'color': 'red'})\nplt.xlabel(\"Fitted Values\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-19",
+    "href": "Module3/PredictiveModels.html#section-19",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Simply put, the matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column Apr has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.\n\n\n\n\n\n\n\n\n\nApr\nAug\nDec\nFeb\nJan\nJul\nJun\nMar\nMay\nNov\nOct\nSep\n\n\n\n\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n2\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n3\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-20",
+    "href": "Module3/PredictiveModels.html#section-20",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Unfortunately, we cannot use the matrix as is in the linear regression model. This is due to multicollinearity issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.\n\nTo solve this problem, we arbitrarily remove a column from the matrix above. For example, let’s remove Dec.\n\ndummy_data = dummy_data.drop([\"Dec\"], axis = 1)"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-21",
+    "href": "Module3/PredictiveModels.html#section-21",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Now, let’s build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.\n\nX_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, dummy_data], \n                          axis = 1)\n\n\nNext, we fit the model with all the terms in the matrix above.\n\n# 0. Asegurarnos que tenemos la respuesta del problema en `Y_full`.\nY_train = Amtrak_train['Ridership (in 000s)']\n\n# 1. Crear modelo de regresión lineal\nSeasonmodelAmtrak = LinearRegression()\n\n# 2. Ajustar el modelo usando los datos de entrenamiento\nSeasonmodelAmtrak.fit(X_quad_season, Y_train)"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#model-coefficients",
+    "href": "Module3/PredictiveModels.html#model-coefficients",
+    "title": "Predictive Models and Time Series",
+    "section": "Model coefficients",
+    "text": "Model coefficients\n\n\nprint(\"Intercept = \", SeasonmodelAmtrak.intercept_)\nprint(\"Coefficients = \", SeasonmodelAmtrak.coef_)\n\nIntercept =  1924.3205889003025\nCoefficients =  [-6.12171259e+00  4.96085283e-02  1.22309969e+01  1.77720172e+02\n -2.83088245e+02 -2.25659158e+02  1.15685204e+02 -7.31735621e+00\n  1.59876604e+01  5.17037414e+01 -4.77796001e+01 -3.19949172e+01\n -1.45366826e+02]"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#residual-analysis-4",
+    "href": "Module3/PredictiveModels.html#residual-analysis-4",
+    "title": "Predictive Models and Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\n\nCode\nY_pred = SeasonmodelAmtrak.predict(X_quad_season)\nresiduals = Y_train - Y_pred\nplt.figure(figsize=(8, 6))\nsns.scatterplot(x=Amtrak_data['t'], y=residuals)\nplt.xlabel(\"Time (t)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Time\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#predictions-on-the-validation-dataset",
+    "href": "Module3/PredictiveModels.html#predictions-on-the-validation-dataset",
+    "title": "Predictive Models and Time Series",
+    "section": "Predictions on the validation dataset",
+    "text": "Predictions on the validation dataset\nPrepare the validation data using dummy variables.\n\nY_valid = Amtrak_validation['Ridership (in 000s)']\n\ndummy_valid = pd.get_dummies(Amtrak_validation['Season'], dtype = 'int')\ndummy_valid = dummy_valid.drop([\"Dec\"], axis = 1)\n\nX_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2, \n                        dummy_valid], axis = 1)\n\n\nNow, we compute the validation \\(\\text{MSE}_v\\).\n\nY_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)\n\nmse_season = mean_squared_error(Y_valid, Y_pred_valid) \nprint(round(mse_season, 2))\n\n4890.5"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#section-22",
+    "href": "Module3/PredictiveModels.html#section-22",
+    "title": "Predictive Models and Time Series",
+    "section": "",
+    "text": "Now, we compute the validation MSE\n\nY_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)\n\nmse_season = mean_squared_error(Y_valid, Y_pred_valid) \nprint(round(mse_season, 2))\n\n4890.5"
+  },
+  {
+    "objectID": "Module3/PredictiveModels.html#estimated-model-coefficients",
+    "href": "Module3/PredictiveModels.html#estimated-model-coefficients",
+    "title": "Predictive Models and Time Series",
+    "section": "Estimated model coefficients",
+    "text": "Estimated model coefficients\n\n\nprint(\"Intercept = \", SeasonmodelAmtrak.intercept_)\nprint(\"Coefficients = \", SeasonmodelAmtrak.coef_)\n\nIntercept =  1924.3205889003025\nCoefficients =  [-6.12171259e+00  4.96085283e-02  1.22309969e+01  1.77720172e+02\n -2.83088245e+02 -2.25659158e+02  1.15685204e+02 -7.31735621e+00\n  1.59876604e+01  5.17037414e+01 -4.77796001e+01 -3.19949172e+01\n -1.45366826e+02]"
   }
 ]

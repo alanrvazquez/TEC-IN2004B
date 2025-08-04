@@ -1093,21 +1093,191 @@ We conclude that the linear model with a quadratic term is better than the linea
 
 ## Identifying Heteroskedasticity
 
+</br></br>
+
 Heteroskedasticity arises when the dispersion of model errors is not constant over time.
 
-Example
+To see it, let's go back to the Airline data, which contains the number of passengers of an international airline per month between 1949 and 1960.
 
-# Solution
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
 
-If we identify heteroskedasticity in the regression model errors, we have several transformation options for our original series.
+Airline_data = pd.read_excel("Airline.xlsx")
+```
 
-Applying transformations to the time series $Y_i$: Logarithm
+##
+
+</br></br>
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Airline_data.head()
+```
+
+##
+
+For illustrative purposes, we will not split the time series into training and validation datasets. 
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 5))
+sns.lineplot(x='T', y='Numero de pasajeros', data = Airline_data)
+plt.xlabel('Time')
+plt.ylabel('Number of passengers')
+plt.title('Number of passengers across time')
+plt.tight_layout()
+plt.show()
+```
+
+## 
+
+</br></br>
+
+Let's fit a linear regression model.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Set predictor.
+X_full = Airline_data.filter(['T'])
+
+# Set response.
+Y_full = Airline_data.filter(['Numero de pasajeros'])
+
+# 1. Create linear regression
+LRmodelAirline = LinearRegression()
+
+# 2. Fit the model
+LRmodelAirline.fit(X_full, Y_full)
+```
+
+
+
+## Residual analysis
+
+::: {style="font-size: 90%;"}
+**Heteroskedasticity**: Dispersion of the residuals increases with the predicted value.
+:::
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+Y_pred = LRmodelAirline.predict(X_full)
+residuals = Y_full - Y_pred
+plt.figure(figsize=(6, 4))
+sns.residplot(x=Y_pred, y=residuals, lowess=True, line_kws={'color': 'red'})
+plt.xlabel("Fitted Values (Y_pred)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+
+
+## Solution
+
+</br>
+
+If we identify heteroskedasticity in the regression model errors, we have several transformation options for our **original** series.
+
+- A common transformations to the time series $Y_i$ is the **Natural Logarithm**
 
 - If the original time series contains negative values, it can be **lagged** by adding the negative of its minimum value.
 
 ## In Python
 
+The easiest way to apply the logarithm in Python is to use the `log()` function from the **numpy** library 
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+log_Y_full = np.log( Y_full )
+```
+
+Now, the response to use is in `log_Y_full`. 
+
+</br>
+
+The steps to fit a linear regression model are similar.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# 1. Create linear regression
+LRmodelAirlineTransformed = LinearRegression()
+
+# 2. Fit the model
+LRmodelAirlineTransformed.fit(X_full, log_Y_full)
+```
+
+## Residual analysis
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+With transformation
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+Y_pred_log = LRmodelAirlineTransformed.predict(X_full)
+residuals_log = log_Y_full - Y_pred_log
+plt.figure(figsize=(6, 4))
+sns.residplot(x=Y_pred_log, y=residuals_log, lowess=True, line_kws={'color': 'red'})
+plt.xlabel("Fitted Values")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+:::
+::: {.column width="50%"}
+Without transformation
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+Y_pred = LRmodelAirline.predict(X_full)
+residuals = Y_full - Y_pred
+plt.figure(figsize=(6, 4))
+sns.residplot(x=Y_pred, y=residuals, lowess=True, line_kws={'color': 'red'})
+plt.xlabel("Fitted Values")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+:::
+:::
+:::
+
 ## What do I do if the transformation doesn't work?
+
+</br>
 
 - If the log transformation doesn't significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.
 
@@ -1117,6 +1287,9 @@ Applying transformations to the time series $Y_i$: Logarithm
 
 Seasonality refers to repetitive or cyclical behavior that occurs with a constant frequency.
 
+:::::: center
+::::: columns
+::: {.column width="50%"}
 Examples:
 
 - Demand for winter clothing
@@ -1124,8 +1297,27 @@ Examples:
 - Demand for tourist travel
 
 - Amount of rainfall throughout the year.
+:::
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
 
-## Capturing Seasonality
+plt.figure(figsize=(5, 5))
+sns.lineplot(x='T', y='Numero de pasajeros', data = Airline_data)
+plt.xlabel('Time')
+plt.ylabel('Number of passengers')
+plt.title('Number of passengers across time')
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+:::
+
+## Capturing seasonality
 
 :::::: center
 ::::: columns
@@ -1143,16 +1335,173 @@ Behind the scenes, the additional categorical predictor is transformed into seve
 :::::
 ::::::
 
-## Analyzing Seasonal Series in Python
+## Analyzing seasonal series in Python
 
-TBD
+Consider the data in `Amtrak_train` with the additional predictor of `Season` to model seasonality.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Amtrak_train.head()
+```
+
+##
+
+To fit a linear regression model with a categorical variable like `Season`, we must transform the text categories into numbers. To do this, we use dummy variables constructed using the following commands.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+dummy_data = pd.get_dummies(Amtrak_train['Season'], dtype = 'int')
+dummy_data.head(4)
+```
+
+##
+
+Simply put, the matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column `Apr` has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+dummy_data.head(4)
+```
+
+## 
+
+</br>
+
+Unfortunately, we cannot use the matrix as is in the linear regression model. This is due to multicollinearity issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.
+
+</br>
+
+To solve this problem, we arbitrarily remove a column from the matrix above. For example, let's remove `Dec`.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+dummy_data = dummy_data.drop(["Dec"], axis = 1)
+```
+
+##
+
+Now, let's build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+X_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, dummy_data], 
+                          axis = 1)
+```
+
+</br>
+
+Next, we fit the model with all the terms in the matrix above.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# 0. Asegurarnos que tenemos la respuesta del problema en `Y_full`.
+Y_train = Amtrak_train['Ridership (in 000s)']
+
+# 1. Crear modelo de regresión lineal
+SeasonmodelAmtrak = LinearRegression()
+
+# 2. Ajustar el modelo usando los datos de entrenamiento
+SeasonmodelAmtrak.fit(X_quad_season, Y_train)
+```
+
+## Estimated model coefficients
+
+</br>
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+print("Intercept = ", SeasonmodelAmtrak.intercept_)
+print("Coefficients = ", SeasonmodelAmtrak.coef_)
+```
+
+
+## Residual analysis
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+Y_pred = SeasonmodelAmtrak.predict(X_quad_season)
+residuals = Y_train - Y_pred
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=Amtrak_data['t'], y=residuals)
+plt.xlabel("Time (t)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Time")
+plt.show()
+```
+
+## Predictions on the validation dataset
+
+Prepare the validation data using dummy variables.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+Y_valid = Amtrak_validation['Ridership (in 000s)']
+
+dummy_valid = pd.get_dummies(Amtrak_validation['Season'], dtype = 'int')
+dummy_valid = dummy_valid.drop(["Dec"], axis = 1)
+
+X_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2, 
+                        dummy_valid], axis = 1)
+```
+
+</br>
+
+Now, we compute the validation $\text{MSE}_v$.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Y_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)
+
+mse_season = mean_squared_error(Y_valid, Y_pred_valid) 
+print(round(mse_season, 2))
+```
 
 ## Disadvantages of linear regression models
 
-Despite their simplicity and versatility, linear regression models are not the best for describing a time series.
+- Despite their simplicity and versatility, linear regression models are not the best for describing a time series.
 
-This is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, $Y_1$ can help us predict $Y_2$, and $Y_2$ can help us predict $Y_3$, etc.
+- This is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, $Y_1$ can help us predict $Y_2$, and $Y_2$ can help us predict $Y_3$, etc.
 
-Models that help us use past observations to predict future values of the response variable $Y$ are **autoregressive models**.
+- Models that help us use past observations to predict future values of the response variable $Y$ are **autoregressive models**.
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
