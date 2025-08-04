@@ -22,9 +22,9 @@ jupyter: python3
 
 </br>
 
-1. Introduction
-2. Time Series
-3. Linear Regression Model for Time Series
+1.  Introduction
+2.  Time Series
+3.  Linear Regression Model for Time Series
 
 # Introduction
 
@@ -78,14 +78,13 @@ In mathematical terms, we want to establish the following relationship:
 
 $$Y = f(\mathbf{X}) + \epsilon$$
 
-- Where $\epsilon$ is a natural (random) error.
+-   Where $\epsilon$ is a natural (random) error.
 
 ## How to find the shape of $f(X)$?
 
 </br>
 
-Using training data.
-![](images/TrainVal1.png){fig-align="center"}
+Using training data. ![](images/TrainVal1.png){fig-align="center"}
 
 ## How to find the shape of $f(X)$?
 
@@ -138,7 +137,6 @@ Test data is independent of the training data.
 :::
 
 ::: {.column width="60%"}
-
 </br>
 
 ![](images/TrainVal5.png){fig-align="center"}
@@ -152,13 +150,13 @@ A common candidate function for predicting a response is the linear regression m
 
 $$\hat{Y}_i = \hat{f}(X_i) = \hat{\beta}_0 + \hat{\beta}_1 X_i.$$
 
-- Where $i = 1, \ldots, n_t$ is the index of the $n_t$ training data.
+-   Where $i = 1, \ldots, n_t$ is the index of the $n_t$ training data.
 
-- $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ associated with a predictor value equal to $X_i$.
+-   $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ associated with a predictor value equal to $X_i$.
 
-- The values $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the [*coefficients*]{style="color:lightblue;"} of the model.
+-   The values $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the [*coefficients*]{style="color:lightblue;"} of the model.
 
-##
+## 
 
 </br>
 
@@ -186,9 +184,9 @@ For the $n_t$ the [training data]{style="color:blue;"}!
 
 We used the dataset called "Advertising.xlsx" in Canvas.
 
-- TV: Money spent on TV ads for a product ($).
-- Sales: Sales generated from the product ($).
-- 200 markets
+-   TV: Money spent on TV ads for a product (\$).
+-   Sales: Sales generated from the product (\$).
+-   200 markets
 
 ```{python}
 #| echo: true
@@ -198,7 +196,7 @@ We used the dataset called "Advertising.xlsx" in Canvas.
 Ads_data = pd.read_excel('Advertising.xlsx')
 ```
 
-##
+## 
 
 </br>
 
@@ -210,7 +208,6 @@ Ads_data.head()
 ```
 
 ## 
-
 
 </br></br>
 
@@ -293,9 +290,9 @@ $$\hat{Y}_i = 6.69 + 0.051 X_i.$$
 
 To use the regression model, the model errors $e_i = Y_i - \hat{Y}_i$ obtained on the [training data]{style="color:blue;"} must meet three conditions:
 
-1. On average, they must be equal to 0.
-2. They must have the same dispersion or variability.
-3. They must be independent of each other.
+1.  On average, they must be equal to 0.
+2.  They must have the same dispersion or variability.
+3.  They must be independent of each other.
 
 These assumptions are evaluated using a *graphical analysis of residuals* (model errors).
 
@@ -329,7 +326,7 @@ For plotting, we put everything together in a pandas dataframe.
 #results_df.describe()
 ```
 
-##
+## 
 
 ```{python}
 #| echo: true
@@ -373,10 +370,9 @@ One metric for this is the **mean prediction error** (MSE$_v$):
 $$\text{MSE}_v = \frac{(Y_1 - (\hat{\beta}_0 + \hat{\beta}_1 X_1 ))^2 + (Y_2 - (\hat{\beta}_0 + \hat{\beta}_1 X_2 ))^2 + \cdots + (Y_{n_v} - (\hat{\beta}_0 + \hat{\beta}_1 X_{n_v} ))^2}{n_v}$$
 :::
 
-- For $n_v$, the validation data!
+-   For $n_v$, the validation data!
 
 The smaller $\text{MSE}_v$, the better the predictions.
-
 
 ## 
 
@@ -442,9 +438,9 @@ print(round(mse**(1/2), 2))
 
 ## Another Metric: $R^2$
 
-- In the context of Data Science, $R^2$ can be interpreted as the *squared* correlation between the actual responses and those predicted by the model.
+-   In the context of Data Science, $R^2$ can be interpreted as the *squared* correlation between the actual responses and those predicted by the model.
 
-- The higher the correlation, the better the agreement between the predicted and actual responses.
+-   The higher the correlation, the better the agreement between the predicted and actual responses.
 
 </br>
 
@@ -464,13 +460,13 @@ print(round(rtwo_sc, 2))
 
 </br></br>
 
-1. Consider the Advertising.xlsx dataset in Canvas.
+1.  Consider the Advertising.xlsx dataset in Canvas.
 
-2. Use a model to predict Sales that includes the Radio predictor (money spent on radio ads for a product (\$)). What is the $\text{RMSE}_v$?
+2.  Use a model to predict Sales that includes the Radio predictor (money spent on radio ads for a product (\$)). What is the $\text{RMSE}_v$?
 
-3. Now, use a model to predict Sales that includes two predictors: TV and Radio. What is the $\text{RMSE}_v$?
+3.  Now, use a model to predict Sales that includes two predictors: TV and Radio. What is the $\text{RMSE}_v$?
 
-4. Which model do you prefer?
+4.  Which model do you prefer?
 
 ## Other candidate functions
 
@@ -480,11 +476,11 @@ However, it can be limited for very complex problems.
 
 For this purpose, there are other, more advanced candidate functions $\hat{f}(X)$, such as:
 
-- *K* nearest neighbors.
+-   *K* nearest neighbors.
 
-- Decision or *regression* trees.
+-   Decision or *regression* trees.
 
-- Ensamble methods (bagging and random forest).
+-   Ensamble methods (bagging and random forest).
 
 # Time Series
 
@@ -492,11 +488,11 @@ For this purpose, there are other, more advanced candidate functions $\hat{f}(X)
 
 </br>
 
-- It is a sequence of observations collected at successive time intervals.
+-   It is a sequence of observations collected at successive time intervals.
 
-- Time series data is commonly used in fields such as finance, economics, weather forecasting, signal processing, and many others.
+-   Time series data is commonly used in fields such as finance, economics, weather forecasting, signal processing, and many others.
 
-- Analyzing time series data helps us understand patterns, trends, and behaviors over time, enabling prediction, anomaly detection, and decision-making.
+-   Analyzing time series data helps us understand patterns, trends, and behaviors over time, enabling prediction, anomaly detection, and decision-making.
 
 ## Example 2
 
@@ -509,35 +505,34 @@ For this purpose, there are other, more advanced candidate functions $\hat{f}(X)
 :::::: center
 ::::: columns
 ::: {.column width="60%"}
-- Technically, a time series is a set of observations about a (discrete) predictor $T$ and a response $Y$.
+-   Technically, a time series is a set of observations about a (discrete) predictor $T$ and a response $Y$.
 
-- Observations of $Y$ are recorded at the moments or times given by the predictor $T$.
+-   Observations of $Y$ are recorded at the moments or times given by the predictor $T$.
 
-- The special feature of the time series is that the [observations of $Y$ are not independent!]{style="color:lightblue;"}
-
+-   The special feature of the time series is that the [observations of $Y$ are not independent!]{style="color:lightblue;"}
 :::
+
 ::: {.column width="40%"}
 | Day       | T   | Temperature (Y) |
 |-----------|-----|-----------------|
-| Monday     | 1   | 10              |
-| Tuesday    | 2   | 12              |
+| Monday    | 1   | 10              |
+| Tuesday   | 2   | 12              |
 | Wednesday | 3   | 15              |
-| Thursday    | 4   | 14              |
-| Friday   | 5   | 18              |
+| Thursday  | 4   | 14              |
+| Friday    | 5   | 18              |
 :::
-:::
-:::
-
+:::::
+::::::
 
 ## Example 3: Amtrak data
 
 </br>
 
-- The Amtrak train company in the USA collects data on the number of passengers traveling on its trains.
+-   The Amtrak train company in the USA collects data on the number of passengers traveling on its trains.
 
-- Records are available from January 1991 to March 2004.
+-   Records are available from January 1991 to March 2004.
 
-- The data is available in "Amtrak.xlsx" on Canvas.
+-   The data is available in "Amtrak.xlsx" on Canvas.
 
 ```{python}
 #| echo: true
@@ -548,7 +543,7 @@ For this purpose, there are other, more advanced candidate functions $\hat{f}(X)
 Amtrak_data = pd.read_excel('Amtrak.xlsx')
 ```
 
-##
+## 
 
 </br>
 
@@ -589,10 +584,10 @@ An informative time series is a series that contains patterns that we can use to
 The three possible patterns are:
 
 ::: incremental
-- [**Trend**]{style="color:darkgreen;"}: the series has an **increasing/decreasing** behavior.
-- [**Seasonality**]{style="color:purple;"}: the series has a repeating **cyclical** pattern in its values.
-- [**Autocorrelation**]{style="color:darkblue;"}: the series follows a pattern that can be described by **previous** values of the series.
-::: 
+-   [**Trend**]{style="color:darkgreen;"}: the series has an **increasing/decreasing** behavior.
+-   [**Seasonality**]{style="color:purple;"}: the series has a repeating **cyclical** pattern in its values.
+-   [**Autocorrelation**]{style="color:darkblue;"}: the series follows a pattern that can be described by **previous** values of the series.
+:::
 
 ## Example 4: Airline data
 
@@ -601,12 +596,13 @@ The three possible patterns are:
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
-- This series has an upper **trend**.
+-   This series has an upper **trend**.
 
-- This series has **cyclical** patterns in its values.
+-   This series has **cyclical** patterns in its values.
 
-- Although not immediately visible, we can use the previous values of the series to describe the future ones.
+-   Although not immediately visible, we can use the previous values of the series to describe the future ones.
 :::
+
 ::: {.column width="50%"}
 ```{python}
 #| echo: false
@@ -625,9 +621,8 @@ plt.tight_layout()
 plt.show()
 ```
 :::
-:::
-:::
-
+:::::
+::::::
 
 ## Non-informative series: White noise
 
@@ -636,11 +631,13 @@ plt.show()
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
-- White noise is a series whose values, on average, are **0** and have a constant variation. 
-- Its values are also independent of each other.
+-   White noise is a series whose values, on average, are **0** and have a constant variation.
 
-- It is used to describe random or *natural* error.
+-   Its values are also independent of each other.
+
+-   It is used to describe random or *natural* error.
 :::
+
 ::: {.column width="50%"}
 ```{python}
 #| echo: false
@@ -671,9 +668,8 @@ plt.tight_layout()
 plt.show()
 ```
 :::
-:::
-:::
-
+:::::
+::::::
 
 # Linear Regression Model for Time Series
 
@@ -685,9 +681,9 @@ The linear regression model is useful for capturing patterns in a time series. I
 
 $$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i$$
 
-- Where $i = 1, \ldots, n_t$ is the index of the $n_t$ training data.
+-   Where $i = 1, \ldots, n_t$ is the index of the $n_t$ training data.
 
-- $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ *at time* $T_i$.
+-   $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ *at time* $T_i$.
 
 ## Trend
 
@@ -697,9 +693,9 @@ The trend of the time series is captured by the value of $\hat{\beta}_1$ at
 
 $$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i$$
 
-- If $\hat{\beta}_1$ is positive, the series has an upward trend.
+-   If $\hat{\beta}_1$ is positive, the series has an upward trend.
 
-- If $\hat{\beta}_1$ is negative, the series has a downward trend.
+-   If $\hat{\beta}_1$ is negative, the series has a downward trend.
 
 The values of $\hat{\beta}_0$ and $\hat{\beta}_1$ are obtained using the least squares method.
 
@@ -709,11 +705,11 @@ The values of $\hat{\beta}_0$ and $\hat{\beta}_1$ are obtained using the least s
 
 Remember that the errors of the linear regression model ($e_i = Y_i - \hat{Y}_i$) must meet two conditions:
 
-1. On average, they must be equal to 0.
+1.  On average, they must be equal to 0.
 
-2. They must have the same dispersion or variability.
+2.  They must have the same dispersion or variability.
 
-3. They must be independent of each other.
+3.  They must be independent of each other.
 
 In the context of time series, **this means that the model errors** $e_i$ must behave like [white noise]{style="color:darkgray;"} that contains no patterns.
 
@@ -740,17 +736,17 @@ plt.show()
 
 ## Creating a train and a validation data
 
-In time series, the order of the data matters because each observation is tied to a specific point in time. 
+In time series, the order of the data matters because each observation is tied to a specific point in time.
 
-Unlike typical datasets where observations are independent of one another, time series data follows a sequence where past values influence future ones. 
+Unlike typical datasets where observations are independent of one another, time series data follows a sequence where past values influence future ones.
 
 Because of this, we cannot randomly split the data using a function like `train_test_split()`. Doing so might result in a situation where the model learns from future values to predict past ones—which doesn’t make sense and would lead to overly optimistic performance.
 
 ## 
 
-Instead, we want to mimic real-world forecasting: train the model on earlier time periods and test it on later ones. 
+Instead, we want to mimic real-world forecasting: train the model on earlier time periods and test it on later ones.
 
-To help us do this properly, we use the code below. 
+To help us do this properly, we use the code below.
 
 ```{python}
 #| echo: true
@@ -767,11 +763,9 @@ Amtrak_train = Amtrak_data[:split_point]
 Amtrak_validation = Amtrak_data[split_point:]
 ```
 
-
 This code ensures that the training data always comes before the validation data in time, preserving the temporal order. The proportion of data that goes to training is set using `split_ratio`.
 
-
-##
+## 
 
 </br></br>
 
@@ -843,7 +837,7 @@ LRmodelAmtrak = LinearRegression()
 LRmodelAmtrak.fit(X_train, Y_train)
 ```
 
-##
+## 
 
 </br>
 
@@ -883,7 +877,7 @@ Y_pred = LRmodelAmtrak.predict(X_train)
 residuals = Y_train - Y_pred
 ```
 
-##
+## 
 
 :::::: center
 ::::: columns
@@ -902,6 +896,7 @@ plt.title("Residuals vs. Fitted Values")
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ```{python}
 #| echo: true
@@ -917,8 +912,8 @@ plt.show()
 #plt.show()
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## The model is more flexible than that
 
@@ -928,9 +923,9 @@ If necessary, the linear regression model can be extended to capture quadratic r
 
 $$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i + \hat{\beta}_2 T^{2}_i $$
 
-- Where $T^{2}_i$ is the squared value of the time index.
+-   Where $T^{2}_i$ is the squared value of the time index.
 
-- $\hat{\beta}_2$ is a term that captures possible curvature in the time series.
+-   $\hat{\beta}_2$ is a term that captures possible curvature in the time series.
 
 ## In Python
 
@@ -960,7 +955,7 @@ QuadmodelAmtrak = LinearRegression()
 QuadmodelAmtrak.fit(X_quad, Y_train)
 ```
 
-##
+## 
 
 </br>
 
@@ -1005,6 +1000,7 @@ plt.title("Residuals vs. Fitted Values")
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 ```{python}
 #| echo: true
@@ -1020,15 +1016,14 @@ plt.show()
 #plt.show()
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## Model evaluation using validation data
 
 </br>
 
 Remember that another way to evaluate the performance of a model is using the $\text{MSE}_v$ or $\text{RMSE}_v$ on the validation data. To this end, we need some Python objects.
-
 
 ```{python}
 #| echo: true
@@ -1072,24 +1067,23 @@ mse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (M
 print(round(mse_quad, 2))
 ```
 
-We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{MSE}_v$ of the former is smaller than for the latter. 
-
+We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{MSE}_v$ of the former is smaller than for the latter.
 
 ## Mini-Activity (cooperative mode)
 
-1. Consider the dataset *CanadianWorkHours.xlsx* in Canvas.
+1.  Consider the dataset *CanadianWorkHours.xlsx* in Canvas.
 
-2. Split the data into training and validation
+2.  Split the data into training and validation
 
-3. Visualize the series in Python. The response variable is Working Hours and the predictor is Year.
+3.  Visualize the series in Python. The response variable is Working Hours and the predictor is Year.
 
-4. Using Python, answer the question: Which of the following models best fits the series?
+4.  Using Python, answer the question: Which of the following models best fits the series?
 
-  - Linear trend regression model.
-  
-  - Quadratic trend regression model.
-  
-  - Exponential trend regression model.
+-   Linear trend regression model.
+
+-   Quadratic trend regression model.
+
+-   Exponential trend regression model.
 
 ## Identifying Heteroskedasticity
 
@@ -1108,7 +1102,7 @@ To see it, let's go back to the Airline data, which contains the number of passe
 Airline_data = pd.read_excel("Airline.xlsx")
 ```
 
-##
+## 
 
 </br></br>
 
@@ -1121,9 +1115,9 @@ Airline_data = pd.read_excel("Airline.xlsx")
 Airline_data.head()
 ```
 
-##
+## 
 
-For illustrative purposes, we will not split the time series into training and validation datasets. 
+For illustrative purposes, we will not split the time series into training and validation datasets.
 
 ```{python}
 #| echo: true
@@ -1165,8 +1159,6 @@ LRmodelAirline = LinearRegression()
 LRmodelAirline.fit(X_full, Y_full)
 ```
 
-
-
 ## Residual analysis
 
 ::: {style="font-size: 90%;"}
@@ -1189,20 +1181,19 @@ plt.title("Residuals vs. Fitted Values")
 plt.show()
 ```
 
-
 ## Solution
 
 </br>
 
 If we identify heteroskedasticity in the regression model errors, we have several transformation options for our **original** series.
 
-- A common transformations to the time series $Y_i$ is the **Natural Logarithm**
+-   A common transformations to the time series $Y_i$ is the **Natural Logarithm**
 
-- If the original time series contains negative values, it can be **lagged** by adding the negative of its minimum value.
+-   If the original time series contains negative values, it can be **lagged** by adding the negative of its minimum value.
 
 ## In Python
 
-The easiest way to apply the logarithm in Python is to use the `log()` function from the **numpy** library 
+The easiest way to apply the logarithm in Python is to use the `log()` function from the **numpy** library
 
 ```{python}
 #| echo: true
@@ -1213,7 +1204,7 @@ The easiest way to apply the logarithm in Python is to use the `log()` function 
 log_Y_full = np.log( Y_full )
 ```
 
-Now, the response to use is in `log_Y_full`. 
+Now, the response to use is in `log_Y_full`.
 
 </br>
 
@@ -1238,6 +1229,7 @@ LRmodelAirlineTransformed.fit(X_full, log_Y_full)
 ::::: columns
 ::: {.column width="50%"}
 With transformation
+
 ```{python}
 #| echo: true
 #| output: true
@@ -1254,8 +1246,10 @@ plt.title("Residuals vs. Fitted Values")
 plt.show()
 ```
 :::
+
 ::: {.column width="50%"}
 Without transformation
+
 ```{python}
 #| echo: true
 #| output: true
@@ -1272,16 +1266,16 @@ plt.title("Residuals vs. Fitted Values")
 plt.show()
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## What do I do if the transformation doesn't work?
 
 </br>
 
-- If the log transformation doesn't significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.
+-   If the log transformation doesn't significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.
 
-- You can find literature on these models and their software implementations in a time series textbook such as *Time Series Analysis with Applications in R* by Cryer and Chan.
+-   You can find literature on these models and their software implementations in a time series textbook such as *Time Series Analysis with Applications in R* by Cryer and Chan.
 
 ## Seasonality
 
@@ -1292,12 +1286,13 @@ Seasonality refers to repetitive or cyclical behavior that occurs with a constan
 ::: {.column width="50%"}
 Examples:
 
-- Demand for winter clothing
+-   Demand for winter clothing
 
-- Demand for tourist travel
+-   Demand for tourist travel
 
-- Amount of rainfall throughout the year.
+-   Amount of rainfall throughout the year.
 :::
+
 ::: {.column width="50%"}
 ```{python}
 #| echo: false
@@ -1314,8 +1309,8 @@ plt.tight_layout()
 plt.show()
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## Capturing seasonality
 
@@ -1348,7 +1343,7 @@ Consider the data in `Amtrak_train` with the additional predictor of `Season` to
 Amtrak_train.head()
 ```
 
-##
+## 
 
 To fit a linear regression model with a categorical variable like `Season`, we must transform the text categories into numbers. To do this, we use dummy variables constructed using the following commands.
 
@@ -1362,7 +1357,7 @@ dummy_data = pd.get_dummies(Amtrak_train['Season'], dtype = 'int')
 dummy_data.head(4)
 ```
 
-##
+## 
 
 Simply put, the matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column `Apr` has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.
 
@@ -1394,7 +1389,7 @@ To solve this problem, we arbitrarily remove a column from the matrix above. For
 dummy_data = dummy_data.drop(["Dec"], axis = 1)
 ```
 
-##
+## 
 
 Now, let's build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.
 
@@ -1441,7 +1436,6 @@ SeasonmodelAmtrak.fit(X_quad_season, Y_train)
 print("Intercept = ", SeasonmodelAmtrak.intercept_)
 print("Coefficients = ", SeasonmodelAmtrak.coef_)
 ```
-
 
 ## Residual analysis
 
@@ -1498,10 +1492,10 @@ print(round(mse_season, 2))
 
 ## Disadvantages of linear regression models
 
-- Despite their simplicity and versatility, linear regression models are not the best for describing a time series.
+-   Despite their simplicity and versatility, linear regression models are not the best for describing a time series.
 
-- This is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, $Y_1$ can help us predict $Y_2$, and $Y_2$ can help us predict $Y_3$, etc.
+-   This is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, $Y_1$ can help us predict $Y_2$, and $Y_2$ can help us predict $Y_3$, etc.
 
-- Models that help us use past observations to predict future values of the response variable $Y$ are **autoregressive models**.
+-   Models that help us use past observations to predict future values of the response variable $Y$ are **autoregressive models**.
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)

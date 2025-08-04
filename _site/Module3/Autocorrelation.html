@@ -1,379 +1,624 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Alan R. Vazquez">
-
-<title>Autocorrelation Models – TEC-IN2004B</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<html lang="en"><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
+  <meta name="author" content="Alan R. Vazquez">
+  <title>TEC-IN2004B – Autocorrelation Models</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
     }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
-</head>
-
-<body class="nav-fixed">
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">TEC-IN2004B</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
-  <li><a href="#autocorrelación" id="toc-autocorrelación" class="nav-link" data-scroll-target="#autocorrelación">Autocorrelación</a>
-  <ul class="collapse">
-  <li><a href="#problema-con-los-modelos-de-regresión-lineal" id="toc-problema-con-los-modelos-de-regresión-lineal" class="nav-link" data-scroll-target="#problema-con-los-modelos-de-regresión-lineal">Problema con los modelos de regresión lineal</a></li>
-  <li><a href="#qué-es-la-correlación" id="toc-qué-es-la-correlación" class="nav-link" data-scroll-target="#qué-es-la-correlación">¿Qué es la correlación?</a></li>
-  <li><a href="#cómo-medimos-la-autocorrelación" id="toc-cómo-medimos-la-autocorrelación" class="nav-link" data-scroll-target="#cómo-medimos-la-autocorrelación">¿Cómo medimos la autocorrelación?</a></li>
-  <li><a href="#la-función-de-autocorrelación" id="toc-la-función-de-autocorrelación" class="nav-link" data-scroll-target="#la-función-de-autocorrelación">La función de autocorrelación</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  <li><a href="#calculo-de-autocorrelación-en-python" id="toc-calculo-de-autocorrelación-en-python" class="nav-link" data-scroll-target="#calculo-de-autocorrelación-en-python">Calculo de Autocorrelación en Python</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
-  <li><a href="#patrones-de-autocorrelación" id="toc-patrones-de-autocorrelación" class="nav-link" data-scroll-target="#patrones-de-autocorrelación">Patrones de autocorrelación</a></li>
-  <li><a href="#más-sobre-la-función-de-autocorrelación" id="toc-más-sobre-la-función-de-autocorrelación" class="nav-link" data-scroll-target="#más-sobre-la-función-de-autocorrelación">Más sobre la función de autocorrelación</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
-  <li><a href="#la-función-de-autocorrelación-parcial" id="toc-la-función-de-autocorrelación-parcial" class="nav-link" data-scroll-target="#la-función-de-autocorrelación-parcial">La función de autocorrelación parcial</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
-  </ul></li>
-  <li><a href="#el-modelo-arima" id="toc-el-modelo-arima" class="nav-link" data-scroll-target="#el-modelo-arima">El modelo ARIMA</a>
-  <ul class="collapse">
-  <li><a href="#modelos-autoregresivos" id="toc-modelos-autoregresivos" class="nav-link" data-scroll-target="#modelos-autoregresivos">Modelos Autoregresivos</a></li>
-  <li><a href="#modelos-arima" id="toc-modelos-arima" class="nav-link" data-scroll-target="#modelos-arima">Modelos ARIMA</a></li>
-  </ul></li>
-  <li><a href="#el-modelo-sarima" id="toc-el-modelo-sarima" class="nav-link" data-scroll-target="#el-modelo-sarima">El modelo SARIMA</a>
-  <ul class="collapse">
-  <li><a href="#estacionalidad" id="toc-estacionalidad" class="nav-link" data-scroll-target="#estacionalidad">Estacionalidad</a></li>
-  <li><a href="#en-python" id="toc-en-python" class="nav-link" data-scroll-target="#en-python">En Python</a></li>
-  <li><a href="#modelo-sarima" id="toc-modelo-sarima" class="nav-link" data-scroll-target="#modelo-sarima">Modelo SARIMA</a></li>
-  <li><a href="#notación" id="toc-notación" class="nav-link" data-scroll-target="#notación">Notación</a></li>
-  <li><a href="#diferenciación-estacional" id="toc-diferenciación-estacional" class="nav-link" data-scroll-target="#diferenciación-estacional">Diferenciación estacional</a></li>
-  <li><a href="#términos-de-los-modelos-ar-y-ma-para-estacionalidad" id="toc-términos-de-los-modelos-ar-y-ma-para-estacionalidad" class="nav-link" data-scroll-target="#términos-de-los-modelos-ar-y-ma-para-estacionalidad">Términos de los modelos AR y MA para estacionalidad</a></li>
-  </ul></li>
-  <li><a href="#en-python-1" id="toc-en-python-1" class="nav-link" data-scroll-target="#en-python-1">En Python</a></li>
-  <li><a href="#return-to-main-page" id="toc-return-to-main-page" class="nav-link" data-scroll-target="#return-to-main-page">Return to main page</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Autocorrelation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Autocorrelation Models</h1>
-<p class="subtitle lead">IN2004B: Generation of Value with Data Analytics</p>
-</div>
-
-
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
   
-    <div class="quarto-title-meta-contents">
-    <p class="author">Alan R. Vazquez </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Autocorrelation Models</h1>
+  <p class="subtitle">IN2004B: Generation of Value with Data Analytics</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Alan R. Vazquez 
+</div>
+        <p class="quarto-title-affiliation">
             Department of Industrial Engineering
           </p>
-      </div>
-  </div>
+    </div>
+</div>
 
-<div class="quarto-title-meta">
-
-      
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="agenda" class="level2">
-<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+</section>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
 <p><br></p>
 <ol type="1">
-<li>Autocorrelación</li>
-<li>El modelo ARIMA</li>
-<li>El modelo SARIMA</li>
+<li>Autocorrelation</li>
+<li>The ARIMA model</li>
+<li>The SARIMA model</li>
 </ol>
 </section>
-<section id="autocorrelación" class="level1">
-<h1>Autocorrelación</h1>
-<section id="problema-con-los-modelos-de-regresión-lineal" class="level2">
-<h2 class="anchored" data-anchor-id="problema-con-los-modelos-de-regresión-lineal">Problema con los modelos de regresión lineal</h2>
-<p>Los modelos de regresión lineal no incorporan la <span style="color:purple;">dependencia</span> entre valores consecutivos de una serie de tiempo.</p>
-<p>Esto es una pena porque respuestas registradas en periodos de tiempo cercanos tienden a estar correlacionadas. Esta correlación se llama <span style="color:purple;"><em><strong>autocorrelación</strong></em></span> de la serie de tiempo.</p>
-<p>La autocorrelación nos ayuda a desarollar un modelo que puede hacer mejores pronósticos de respuestas futuras.</p>
+<section id="load-the-libraries" class="slide level2">
+<h2>Load the libraries</h2>
+<p>Before we start, let’s import the data science libraries into Python.</p>
+<div id="42a8887a" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
+<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-7"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-8"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb1-9"><a></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf, plot_pacf</span>
+<span id="cb1-10"><a></a><span class="im">from</span> statsmodels.tsa.arima.model <span class="im">import</span> ARIMA</span>
+<span id="cb1-11"><a></a><span class="im">from</span> statsmodels.tsa.statespace.tools <span class="im">import</span> diff</span>
+<span id="cb1-12"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, we use specific functions from the <strong>pandas</strong>, <strong>matplotlib</strong>, <strong>seaborn</strong>, <strong>sklearn</strong> and <strong>statsmodels</strong> libraries in Python.</p>
 </section>
-<section id="qué-es-la-correlación" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-la-correlación">¿Qué es la correlación?</h2>
+<section>
+<section id="autocorrelation" class="title-slide slide level1 center">
+<h1>Autocorrelation</h1>
+
+</section>
+<section id="problem-with-linear-regression-models" class="slide level2">
+<h2>Problem with linear regression models</h2>
+<p><br></p>
+<p>Linear regression models do not incorporate the <span style="color:purple;">dependence</span> between consecutive values in a time series.</p>
+<p>This is unfortunate because responses recorded over close time periods tend to be correlated. This correlation is called the <span style="color:purple;"><strong>autocorrelation</strong></span> of the time series.</p>
+<p>Autocorrelation helps us develop a model that can make better predictions of future responses.</p>
+</section>
+<section id="what-is-correlation" class="slide level2">
+<h2>What is correlation?</h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><br></p>
 <ul>
-<li><p>Es una medida de la fuerza y de la dirección de la relación <em>lineal</em> entre dos variables numéricas.</p></li>
-<li><p>Específicamente, se utiliza para evaluar la relación entre dos conjuntos de observaciones.</p></li>
-<li><p>La correlación está entre <span class="math inline">\(-1\)</span> y 1.</p></li>
+<li><p>It is a measure of the strength and direction of the <em>linear</em> relationship between two numerical variables.</p></li>
+<li><p>Specifically, it is used to assess the relationship between two sets of observations.</p></li>
+<li><p>Correlation is between <span class="math inline">\(-1\)</span> and 1.</p></li>
 </ul>
+</div><div class="column" style="width:40%;">
+<p><br></p>
+<div id="7f98d888" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="470"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
 </section>
-<section id="cómo-medimos-la-autocorrelación" class="level2">
-<h2 class="anchored" data-anchor-id="cómo-medimos-la-autocorrelación">¿Cómo medimos la autocorrelación?</h2>
-<p>Hay dos herramientas formales para medir la correlación entre las observaciones de una serie de tiempo:</p>
+<section id="how-do-we-measure-autocorrelation" class="slide level2">
+<h2>How do we measure autocorrelation?</h2>
+<p><br><br><br></p>
+<p>There are two formal tools for measuring the correlation between observations in a time series:</p>
+<div>
 <ul>
-<li><p>La función de <span style="color:green;"><em><strong>autocorrelación</strong></em></span>.</p></li>
-<li><p>La función de <span style="color:purple;"><em><strong>autocorrelación parcial</strong></em></span>.</p></li>
+<li class="fragment"><p>The <span style="color:green;"><strong><em>autocorrelation</em></strong></span> function.</p></li>
+<li class="fragment"><p>The <span style="color:purple;"><strong><em>partial autocorrelation</em></strong></span> function.</p></li>
 </ul>
+</div>
 </section>
-<section id="la-función-de-autocorrelación" class="level2">
-<h2 class="anchored" data-anchor-id="la-función-de-autocorrelación">La función de autocorrelación</h2>
-<blockquote class="blockquote">
-<p>Mide la correlación entre respuestas que están separadas por <span class="math inline">\(j\)</span> periodos.</p>
+<section id="the-autocorrelation-function" class="slide level2">
+<h2>The autocorrelation function</h2>
+<blockquote>
+<p>Measures the correlation between responses separated by <span class="math inline">\(j\)</span> periods.</p>
 </blockquote>
-<p>Por ejemplo, la autocorrelación entre la temperatura presente y la temperatura registrada un día antes es la correlación entre las siguientes variables:</p>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<p>La autocorrelación entre las observaciones de la serie de tiempo y las observaciones un periodo atrás es: 0.586.</p>
-</section>
-<section id="calculo-de-autocorrelación-en-python" class="level2">
-<h2 class="anchored" data-anchor-id="calculo-de-autocorrelación-en-python">Calculo de Autocorrelación en Python</h2>
-</section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1"></h2>
-<ul>
-<li><p>La función de autocorrelación comúnmente se visualiza usando una gráfica de barras.</p></li>
-<li><p>El eje vertical muestra las diferencias (o lags) entre los periodos considerados, y el eje horizontal muestra las correlaciones entre las observaciones de distintos lags.</p></li>
-</ul>
-</section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2"></h2>
-<ul>
-<li><p>El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.438</p></li>
-<li><p>También muestra que la correlación entre las respuestas actuales y las de 12 meses atrás estan altamente correlacionadas.</p></li>
-<li><p>Lo mismo para las respuestas actuales y las respuestas tomadas 24 meses atrás.</p></li>
-</ul>
-</section>
-<section id="patrones-de-autocorrelación" class="level2">
-<h2 class="anchored" data-anchor-id="patrones-de-autocorrelación">Patrones de autocorrelación</h2>
-<ul>
-<li><p><strong>Una autocorrelación fuerte (positiva o negativa) con un retraso</strong> <span class="math inline">\(j\)</span> <strong>mayor que 1 y sus múltiplos</strong> (<span class="math inline">\(2k, 3k, \ldots\)</span>) normalmente refleja un patrón cíclico o estacionalidad.</p></li>
-<li><p><strong>La autocorrelación positiva de retardo 1</strong> describe una serie en la que los valores consecutivos se mueven <em>generalmente</em> en la misma dirección.</p></li>
-<li><p><strong>La autocorrelación negativa de retardo 1</strong> refleja oscilaciones en la serie, donde los valores altos (<em>generalmente</em>) son seguidos inmediatamente por valores bajos y viceversa.</p></li>
-</ul>
-</section>
-<section id="más-sobre-la-función-de-autocorrelación" class="level2">
-<h2 class="anchored" data-anchor-id="más-sobre-la-función-de-autocorrelación">Más sobre la función de autocorrelación</h2>
-<p>Considera el problema de predecir el precio promedio de un kilo de aguacate en este mes.</p>
-<p>Para esto tenemos el precio promedio del mes pasado y del antepasado.</p>
+<p>For example, consider the autocorrelation between the current temperature and the temperature recorded the day before.</p>
+<div class="fragment">
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Avocado1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figure>
+<p><img data-src="images/correlation_1.png" class="quarto-figure quarto-figure-center" width="465" height="288"></p>
 </figure>
 </div>
-</section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3"></h2>
-<p>La función de autocorrelación para <span class="math inline">\(Y_t\)</span> y <span class="math inline">\(Y_{t-2}\)</span> incluye el efecto directo e indirecto de <span class="math inline">\(Y_{t-2}\)</span> sobre <span class="math inline">\(Y_t\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Avocado3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+</div>
 </div>
 </section>
-<section id="la-función-de-autocorrelación-parcial" class="level2">
-<h2 class="anchored" data-anchor-id="la-función-de-autocorrelación-parcial">La función de autocorrelación parcial</h2>
-<blockquote class="blockquote">
-<p>Mide la correlación entre respuestas que están separadas por <span class="math inline">\(j\)</span> periodos, <strong>excluyendo la correlación</strong> debido a respuestas separadas por periodos intermedios.</p>
+<section id="the-autocorrelation-function-1" class="slide level2">
+<h2>The autocorrelation function</h2>
+<blockquote>
+<p>Measures the correlation between responses separated by <span class="math inline">\(j\)</span> periods.</p>
 </blockquote>
+<p>For example, consider the autocorrelation between the current temperature and the temperature recorded the day before.</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Avocado4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figure>
+<p><img data-src="images/correlation_1.png" class="quarto-figure quarto-figure-center" width="465" height="288"></p>
 </figure>
 </div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/correlation_2.png" class="quarto-figure quarto-figure-center" width="465" height="288"></p>
+</figure>
+</div>
+</div></div>
+</div>
 </section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4"></h2>
-<p>En terminos técnicos, la función de autocorrelación parcial ajusta el siguiente modelo de regresión lineal</p>
-<p><span class="math display">\[\hat{Y}_t = \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}\]</span></p>
-<p>Donde:</p>
+<section id="the-autocorrelation-function-2" class="slide level2">
+<h2>The autocorrelation function</h2>
+<blockquote>
+<p>Measures the correlation between responses separated by <span class="math inline">\(j\)</span> periods.</p>
+</blockquote>
+<p>For example, consider the autocorrelation between the current temperature and the temperature recorded the day before. This would be the correlation between these two columns</p>
+
+<img data-src="images/correlation_combined.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="example-1" class="slide level2">
+<h2>Example 1</h2>
+<p>Let’s consider again the dataset in the file “Amtrak.xlsx.” The file contains records of Amtrak passenger numbers from January 1991 to March 2004.</p>
+<div id="b7cb918a" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="168">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">Ridership (in 000s)</th>
+<th data-quarto-table-cell-role="th">Season</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1991-01-01</td>
+<td>1</td>
+<td>1708.917</td>
+<td>Jan</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1991-02-01</td>
+<td>2</td>
+<td>1620.586</td>
+<td>Feb</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1991-03-04</td>
+<td>3</td>
+<td>1972.715</td>
+<td>Mar</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1991-04-04</td>
+<td>4</td>
+<td>1811.665</td>
+<td>Apr</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1991-05-05</td>
+<td>5</td>
+<td>1974.964</td>
+<td>May</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p><br></p>
+<div id="b98a45a2" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="825" height="523"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="autocorrelation-function" class="slide level2">
+<h2>Autocorrelation function</h2>
+<p><br></p>
 <ul>
-<li><span class="math inline">\(\hat{Y}_{t}\)</span> es la predicción de la respuesta en el tiempo actual (<span class="math inline">\(t\)</span>).</li>
-<li><span class="math inline">\(\hat{\beta}_1\)</span> es el <em>efecto directo</em> de <span class="math inline">\(Y_{t-1}\)</span> en predecir <span class="math inline">\(Y_{t}\)</span>.</li>
-<li><span class="math inline">\(\hat{\beta}_2\)</span> es el <em>efecto directo</em> de <span class="math inline">\(Y_{t-2}\)</span> en predecir <span class="math inline">\(Y_{t}\)</span>.</li>
+<li><p>The autocorrelation function measures the correlation between responses that are separated by a specific number of periods.</p></li>
+<li><p>The autocorrelation function is commonly visualized using a bar chart.</p></li>
+<li><p>The vertical axis shows the differences (or <span style="color:brown;"><em>lags</em></span>) between the periods considered, and the horizontal axis shows the correlations between observations at different lags.</p></li>
 </ul>
-<p>La autocorrelación parcial entre <span class="math inline">\(Y_t\)</span> y <span class="math inline">\(Y_{t-2}\)</span> es igual a <span class="math inline">\(\hat{\beta}_2\)</span>. ##</p>
+</section>
+<section id="autocorrelation-plot" class="slide level2">
+<h2>Autocorrelation plot</h2>
+<p><br></p>
+<p>In Python, we use the <code>plot_acf</code> function from the <strong>statsmodels</strong> library.</p>
+<div id="39e02e8c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb2-2"><a></a>plot_acf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
+<span id="cb2-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
+<span id="cb2-4"><a></a>plt.ylabel(<span class="st">"Correlation"</span>)</span>
+<span id="cb2-5"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>lags</code> parameter controls the number of periods for which to compute the autocorrelation function.</p>
+</section>
+<section id="the-resulting-plot" class="slide level2">
+<h2>The resulting plot</h2>
+<p><br></p>
+<div id="e0c94549" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-7-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 80%;">
+<p><br></p>
 <ul>
-<li><p>La función de autocorrelación parcial se visualiza usando una gráfica similar a la de la autocorrelación.</p></li>
-<li><p>El eje vertical muestra las diferencias (o <em>lags</em>) entre los periodos considerados, y el eje horizontal muestra las correlaciones parciales entre las observaciones de distintos lags.</p></li>
+<li><p>The autocorrelation plot shows that the responses and those from zero periods ago have a correlation of 1.</p></li>
+<li><p>The autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45.</p></li>
+<li><p>The autocorrelation plot shows that the responses and those from 24 periods ago have a correlation of around 0.5.</p></li>
 </ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<div id="1a25aaa2" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 384x384 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-8-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
 </section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5"></h2>
+<section id="autocorrelation-patterns" class="slide level2">
+<h2>Autocorrelation patterns</h2>
+<p><br></p>
 <ul>
-<li><p>El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.4387</p></li>
-<li><p>También muestra que la correlación entre las respuestas actuales y las de 6 y 7 meses atrás están altamente correlacionadas.</p></li>
+<li><p><strong>A strong autocorrelation (positive or negative) with a lag</strong> <span class="math inline">\(j\)</span> <strong>greater than 1 and its multiples</strong> (<span class="math inline">\(2k, 3k, \ldots\)</span>) typically reflects a cyclical pattern or seasonality.</p></li>
+<li><p><strong>Positive lag-1 autocorrelation</strong> describes a series in which consecutive values <em>generally</em> move in the same direction.</p></li>
+<li><p><strong>Negative lag-1 autocorrelation</strong> reflects oscillations in the series, where high values (<em>generally</em>) are immediately followed by low values and vice versa.</p></li>
 </ul>
 </section>
-</section>
-<section id="el-modelo-arima" class="level1">
-<h1>El modelo ARIMA</h1>
-<section id="modelos-autoregresivos" class="level2">
-<h2 class="anchored" data-anchor-id="modelos-autoregresivos">Modelos Autoregresivos</h2>
-<p>Los <em>modelos autoregresivos</em> son un typo de modelo de regresión lineal que incorporan directamente la autocorrelación de la serie de tiempo para predecir la respuesta actual.</p>
-<p>Su carácteristica principal es que los predictores del valor actual de la serie son sus valores anteriores.</p>
+<section id="more-about-the-autocorrelation-function" class="slide level2">
+<h2>More about the autocorrelation function</h2>
+<p>Consider the problem of predicting the average price of a kilo of avocado this month.</p>
+<p>For this, we have the average price from last month and the month before that.</p>
+
+<img data-src="images/Avocado1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>The autocorrelation function for <span class="math inline">\(Y_t\)</span> and <span class="math inline">\(Y_{t-2}\)</span> includes the direct and indirect effect of <span class="math inline">\(Y_{t-2}\)</span> on <span class="math inline">\(Y_t\)</span>.</p>
+
+<img data-src="images/Avocado3.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="partial-autocorrelation-function" class="slide level2">
+<h2>Partial autocorrelation function</h2>
+<blockquote>
+<p>Measures the correlation between responses that are separated by <span class="math inline">\(j\)</span> periods, <strong>excluding correlation</strong> due to responses separated by intervening periods.</p>
+</blockquote>
+
+<img data-src="images/Avocado4.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>In technical terms, the partial autocorrelation function fits the following linear regression model</p>
+<p><span class="math display">\[\hat{Y}_t = \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}\]</span> Where:</p>
 <ul>
-<li><p>En términos matemáticos, un modelo autoregresivo de orden 2 tiene la forma matemática: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.\)</span></p></li>
-<li><p>Uno de orden 3 se ve así: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.\)</span></p></li>
+<li><span class="math inline">\(\hat{Y}_{t}\)</span> is the predicted response at the current time (<span class="math inline">\(t\)</span>).</li>
+<li><span class="math inline">\(\hat{\beta}_1\)</span> is the <em>direct effect</em> of <span class="math inline">\(Y_{t-1}\)</span> on predicting <span class="math inline">\(Y_{t}\)</span>.</li>
+<li><span class="math inline">\(\hat{\beta}_2\)</span> is the <em>direct effect</em> of <span class="math inline">\(Y_{t-2}\)</span> on predicting <span class="math inline">\(Y_{t}\)</span>.</li>
+</ul>
+<p>The partial autocorrelation between <span class="math inline">\(Y_t\)</span> and <span class="math inline">\(Y_{t-2}\)</span> is equal to <span class="math inline">\(\hat{\beta}_2\)</span>.</p>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>The partial autocorrelation function is visualized using a graph similar to that for autocorrelation.</p></li>
+<li><p>The vertical axis shows the differences (or <em>lags</em>) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.</p></li>
+</ul>
+<p>In Python, we use the <code>plot_pacf</code> function from <strong>statsmodels</strong>.</p>
+<div id="9a663e34" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb5-2"><a></a>plot_pacf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
+<span id="cb5-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
+<span id="cb5-4"><a></a>plt.ylabel(<span class="st">"Correlation"</span>)</span>
+<span id="cb5-5"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p><br></p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 80%;">
+<p><br></p>
+<ul>
+<li><p>The partial autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45. <em>This is the same for the autocorrelation plot.</em></p></li>
+<li><p>The partial autocorrelation plot shows that the responses and those from two periods ago have a correlation near 0.</p></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="f4477b11" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-10-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section></section>
+<section>
+<section id="the-arima-model" class="title-slide slide level1 center">
+<h1>The ARIMA Model</h1>
+
+</section>
+<section id="autoregressive-models" class="slide level2">
+<h2>Autoregressive models</h2>
+<p><em>Autoregressive models</em> are a type of linear regression model that directly incorporate the autocorrelation of the time series to predict the current response.</p>
+<p>Their main characteristic is that the predictors of the current value of the series are its past values.</p>
+<ul>
+<li><p>An autoregressive model of order 2 has the mathematical form: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.\)</span></p></li>
+<li><p>An order 3 model looks like this: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.\)</span></p></li>
 </ul>
 </section>
-<section id="modelos-arima" class="level2">
-<h2 class="anchored" data-anchor-id="modelos-arima">Modelos ARIMA</h2>
-<p>Una clase especial de modelos autoregresivos son los modelos <span style="color:purple;"><em><strong>ARIMA</strong></em></span> (<span style="color:purple;"><em>Autoregressive Integrated Moving Average</em></span>).</p>
-<p>Un modelo ARIMA se compone de tres elementos</p>
+<section id="arima-models" class="slide level2">
+<h2>ARIMA models</h2>
+<p><br></p>
+<p>A special class of autoregressive models are <span style="color:purple;"><strong><em>ARIMA</em></strong></span> (<span style="color:purple;"><em>Autoregressive Integrated Moving Average</em></span>).</p>
+<p>An ARIMA model is composed of three elements:</p>
+<div>
 <ol type="1">
-<li>Operadores diferenciados o integrados (<em>integrated</em>).</li>
-<li>Términos autoregresivos (<em>autoregressive</em>).</li>
-<li>Términos estocásticos (<em>moving average</em>).</li>
+<li class="fragment">Differenced or integrated operators (<em>integrated</em>).</li>
+<li class="fragment">Autoregressive terms (<em>autoregressive</em>).</li>
+<li class="fragment">Stochastic terms (<em>moving average</em>).</li>
 </ol>
-</section>
-</section>
-<section id="el-modelo-sarima" class="level1">
+</div>
+</section></section>
+<section>
+<section id="el-modelo-sarima" class="title-slide slide level1 center">
 <h1>El modelo SARIMA</h1>
-<section id="estacionalidad" class="level2">
-<h2 class="anchored" data-anchor-id="estacionalidad">Estacionalidad</h2>
+
+</section>
+<section id="estacionalidad" class="slide level2">
+<h2>Estacionalidad</h2>
 <p>La <strong>estacionalidad</strong> consiste en un comportamiento repetitivo o cíclico que ocurre con una frecuencia constante.</p>
 <p>Se puede identificar de la gráfica de la serie o usando las ACF and PACF.</p>
 <p>Para esto, debemos haber removido la tendencia.</p>
 </section>
-<section id="en-python" class="level2">
-<h2 class="anchored" data-anchor-id="en-python">En Python</h2>
+<section id="en-python" class="slide level2">
+<h2>En Python</h2>
 </section>
-<section id="modelo-sarima" class="level2">
-<h2 class="anchored" data-anchor-id="modelo-sarima">Modelo SARIMA</h2>
+<section id="modelo-sarima" class="slide level2">
+<h2>Modelo SARIMA</h2>
 <p>El modelo <span style="color:orange;">S</span>ARIMA (<span style="color:orange;"><em>Seasonal</em></span> Autoregressive Integrated Moving Average) es una extensión del modelo ARIMA para modelar los patrones de estacionalidad.</p>
 <p>El modelo SARIMA tiene tres elementos adicionales para modelar la estacionalidad en la serie de tiempo.</p>
 <ol type="1">
@@ -382,14 +627,14 @@ window.Quarto = {
 <li>Términos estocásticos o promedios móviles (<em>moving average</em>) para la estacionalidad.</li>
 </ol>
 </section>
-<section id="notación" class="level2">
-<h2 class="anchored" data-anchor-id="notación">Notación</h2>
+<section id="notación" class="slide level2">
+<h2>Notación</h2>
 <p>La estacionalidad en una serie de tiempo es un patrón regular de cambios que se repite durante <span style="color:orange;"><span class="math inline">\(S\)</span> períodos de tiempo</span>, donde <span class="math inline">\(S\)</span> define el número de períodos de tiempo hasta que el patrón se repite nuevamente.</p>
 <p>Por ejemplo, hay estacionalidad en los datos mensuales para los cuales los valores altos siempre tienden a ocurrir en algunos meses en particular y los valores bajos siempre tienden a ocurrir en otros meses en particular.</p>
 <p>En este caso, <span class="math inline">\(S=12\)</span> (meses por año) es el lapso del comportamiento estacional periódico. Para datos trimestrales, <span class="math inline">\(S=4\)</span> períodos de tiempo por año.</p>
 </section>
-<section id="diferenciación-estacional" class="level2">
-<h2 class="anchored" data-anchor-id="diferenciación-estacional">Diferenciación estacional</h2>
+<section id="diferenciación-estacional" class="slide level2">
+<h2>Diferenciación estacional</h2>
 <p>Es la diferencia entre una respuesta y una respuesta con un rezago que es múltiplo de <span class="math inline">\(S\)</span>.</p>
 <p>Por ejemplo, con datos mensuales <span class="math inline">\(S=12\)</span>,</p>
 <ul>
@@ -398,8 +643,8 @@ window.Quarto = {
 </ul>
 <p>La diferenciación estacional elimina la tendencia estacional y también puede eliminar un tipo de no estacionariedad de paseo aleatorio estacional.</p>
 </section>
-<section id="términos-de-los-modelos-ar-y-ma-para-estacionalidad" class="level2">
-<h2 class="anchored" data-anchor-id="términos-de-los-modelos-ar-y-ma-para-estacionalidad">Términos de los modelos AR y MA para estacionalidad</h2>
+<section id="términos-de-los-modelos-ar-y-ma-para-estacionalidad" class="slide level2">
+<h2>Términos de los modelos AR y MA para estacionalidad</h2>
 <p>En el SARIMA, los términos de los componentes AR y MA estacionales predicen la respuesta actual (<span class="math inline">\(Y_t\)</span>) usando respuestas y errores en momentos con rezagos que son múltiplos de <span class="math inline">\(S\)</span>.</p>
 <p>Por ejemplo, con datos mensuales <span class="math inline">\(S = 12\)</span>,</p>
 <ul>
@@ -408,438 +653,418 @@ window.Quarto = {
 <li>El modelo MA estacional de orden 1 usaría el término estocástico <span class="math inline">\(a_{t-12}\)</span> como un predictor.</li>
 <li>El modelo MA estacional de orden 2 usaría los términos estocásticos <span class="math inline">\(a_{t-12}\)</span> y <span class="math inline">\(a_{t-24}\)</span> como predictores.</li>
 </ul>
-</section>
-</section>
-<section id="en-python-1" class="level1">
+</section></section>
+<section id="en-python-1" class="title-slide slide level1 center">
 <h1>En Python</h1>
+
 </section>
-<section id="return-to-main-page" class="level1">
+
+<section id="return-to-main-page" class="title-slide slide level1 center">
 <h1><a href="https://alanrvazquez.github.io/TEC-IN1002B-Website/">Return to main page</a></h1>
 
 
 </section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="IN1002b_logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>Tecnologico de Monterrey</p>
+</div>
+</div></div>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
         }
       }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
         }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        return note.innerHTML;
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
       }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
       }
-    }, function(instance) {
     });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-
-
-
+    </script>
+    
 
 </body></html>

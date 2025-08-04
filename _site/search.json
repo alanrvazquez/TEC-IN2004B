@@ -4133,8 +4133,8 @@
     "objectID": "Module3/Autocorrelation.html#agenda",
     "href": "Module3/Autocorrelation.html#agenda",
     "title": "Autocorrelation Models",
-    "section": "",
-    "text": "Autocorrelación\nEl modelo ARIMA\nEl modelo SARIMA"
+    "section": "Agenda",
+    "text": "Agenda\n\n\nAutocorrelation\nThe ARIMA model\nThe SARIMA model"
   },
   {
     "objectID": "Module3/Autocorrelation.html#problema-con-los-modelos-de-regresión-lineal",
@@ -4169,7 +4169,7 @@
     "href": "Module3/Autocorrelation.html#section",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "La autocorrelación entre las observaciones de la serie de tiempo y las observaciones un periodo atrás es: 0.586."
+    "text": "The autocorrelation between the time series observations and the observations one period ago is 0.586."
   },
   {
     "objectID": "Module3/Autocorrelation.html#calculo-de-autocorrelación-en-python",
@@ -4183,14 +4183,14 @@
     "href": "Module3/Autocorrelation.html#section-1",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "La función de autocorrelación comúnmente se visualiza usando una gráfica de barras.\nEl eje vertical muestra las diferencias (o lags) entre los periodos considerados, y el eje horizontal muestra las correlaciones entre las observaciones de distintos lags."
+    "text": "The autocorrelation plot shows that the responses and those from zero periods ago have a correlation of 1.\nThe autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45.\nThe autocorrelation plot shows that the responses and those from 24 periods ago have a correlation of around 0.5.\n\n\n\n\n\n\n&lt;Figure size 384x384 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-2",
     "href": "Module3/Autocorrelation.html#section-2",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.438\nTambién muestra que la correlación entre las respuestas actuales y las de 12 meses atrás estan altamente correlacionadas.\nLo mismo para las respuestas actuales y las respuestas tomadas 24 meses atrás."
+    "text": "The autocorrelation function for \\(Y_t\\) and \\(Y_{t-2}\\) includes the direct and indirect effect of \\(Y_{t-2}\\) on \\(Y_t\\)."
   },
   {
     "objectID": "Module3/Autocorrelation.html#patrones-de-autocorrelación",
@@ -4211,35 +4211,35 @@
     "href": "Module3/Autocorrelation.html#section-3",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "La función de autocorrelación para \\(Y_t\\) y \\(Y_{t-2}\\) incluye el efecto directo e indirecto de \\(Y_{t-2}\\) sobre \\(Y_t\\)."
+    "text": "In technical terms, the partial autocorrelation function fits the following linear regression model\n\\[\\hat{Y}_t = \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}\\] Where:\n\n\\(\\hat{Y}_{t}\\) is the predicted response at the current time (\\(t\\)).\n\\(\\hat{\\beta}_1\\) is the direct effect of \\(Y_{t-1}\\) on predicting \\(Y_{t}\\).\n\\(\\hat{\\beta}_2\\) is the direct effect of \\(Y_{t-2}\\) on predicting \\(Y_{t}\\).\n\nThe partial autocorrelation between \\(Y_t\\) and \\(Y_{t-2}\\) is equal to \\(\\hat{\\beta}_2\\)."
   },
   {
     "objectID": "Module3/Autocorrelation.html#la-función-de-autocorrelación-parcial",
     "href": "Module3/Autocorrelation.html#la-función-de-autocorrelación-parcial",
     "title": "Autocorrelation Models",
     "section": "La función de autocorrelación parcial",
-    "text": "La función de autocorrelación parcial\n\nMide la correlación entre respuestas que están separadas por \\(j\\) periodos, excluyendo la correlación debido a respuestas separadas por periodos intermedios."
+    "text": "La función de autocorrelación parcial\n\nMeasures the correlation between responses that are separated by \\(j\\) periods, excluding correlation due to responses separated by intervening periods."
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-4",
     "href": "Module3/Autocorrelation.html#section-4",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "En terminos técnicos, la función de autocorrelación parcial ajusta el siguiente modelo de regresión lineal\n\\[\\hat{Y}_t = \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}\\]\nDonde:\n\n\\(\\hat{Y}_{t}\\) es la predicción de la respuesta en el tiempo actual (\\(t\\)).\n\\(\\hat{\\beta}_1\\) es el efecto directo de \\(Y_{t-1}\\) en predecir \\(Y_{t}\\).\n\\(\\hat{\\beta}_2\\) es el efecto directo de \\(Y_{t-2}\\) en predecir \\(Y_{t}\\).\n\nLa autocorrelación parcial entre \\(Y_t\\) y \\(Y_{t-2}\\) es igual a \\(\\hat{\\beta}_2\\). ##\n\nLa función de autocorrelación parcial se visualiza usando una gráfica similar a la de la autocorrelación.\nEl eje vertical muestra las diferencias (o lags) entre los periodos considerados, y el eje horizontal muestra las correlaciones parciales entre las observaciones de distintos lags."
+    "text": "The partial autocorrelation function is visualized using a graph similar to that for autocorrelation.\nThe vertical axis shows the differences (or lags) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.\n\nIn Python, we use the plot_pacf function from statsmodels.\n\nplt.figure(figsize=(10, 6))\nplot_pacf(Amtrak_data['Ridership (in 000s)'], lags = 25)\nplt.xlabel(\"Lag\")\nplt.ylabel(\"Correlation\")\nplt.show()"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-5",
     "href": "Module3/Autocorrelation.html#section-5",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "El diagrama de autocorrelación muestra que las respuestas y las de un mes atrás tienen una correlación alrededor de 0.4387\nTambién muestra que la correlación entre las respuestas actuales y las de 6 y 7 meses atrás están altamente correlacionadas."
+    "text": "The partial autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45. This is the same for the autocorrelation plot.\nThe partial autocorrelation plot shows that the responses and those from two periods ago have a correlation near 0.\n\n\n\n\n\n&lt;Figure size 960x576 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.html#modelos-autoregresivos",
     "href": "Module3/Autocorrelation.html#modelos-autoregresivos",
     "title": "Autocorrelation Models",
     "section": "Modelos Autoregresivos",
-    "text": "Modelos Autoregresivos\nLos modelos autoregresivos son un typo de modelo de regresión lineal que incorporan directamente la autocorrelación de la serie de tiempo para predecir la respuesta actual.\nSu carácteristica principal es que los predictores del valor actual de la serie son sus valores anteriores.\n\nEn términos matemáticos, un modelo autoregresivo de orden 2 tiene la forma matemática: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}.\\)\nUno de orden 3 se ve así: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2} + \\hat{\\beta}_3 Y_{t-3}.\\)"
+    "text": "Modelos Autoregresivos\nAutoregressive models are a type of linear regression model that directly incorporate the autocorrelation of the time series to predict the current response.\nTheir main characteristic is that the predictors of the current value of the series are its past values.\n\nAn autoregressive model of order 2 has the mathematical form: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}.\\)\nAn order 3 model looks like this: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2} + \\hat{\\beta}_3 Y_{t-3}.\\)"
   },
   {
     "objectID": "Module3/Autocorrelation.html#modelos-arima",
@@ -5493,5 +5493,124 @@
     "title": "Predictive Models and Time Series",
     "section": "Estimated model coefficients",
     "text": "Estimated model coefficients\n\n\nprint(\"Intercept = \", SeasonmodelAmtrak.intercept_)\nprint(\"Coefficients = \", SeasonmodelAmtrak.coef_)\n\nIntercept =  1924.3205889003025\nCoefficients =  [-6.12171259e+00  4.96085283e-02  1.22309969e+01  1.77720172e+02\n -2.83088245e+02 -2.25659158e+02  1.15685204e+02 -7.31735621e+00\n  1.59876604e+01  5.17037414e+01 -4.77796001e+01 -3.19949172e+01\n -1.45366826e+02]"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#problem-with-linear-regression-models",
+    "href": "Module3/Autocorrelation.html#problem-with-linear-regression-models",
+    "title": "Autocorrelation Models",
+    "section": "Problem with linear regression models",
+    "text": "Problem with linear regression models\n\nLinear regression models do not incorporate the dependence between consecutive values in a time series.\nThis is unfortunate because responses recorded over close time periods tend to be correlated. This correlation is called the autocorrelation of the time series.\nAutocorrelation helps us develop a model that can make better predictions of future responses."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#what-is-correlation",
+    "href": "Module3/Autocorrelation.html#what-is-correlation",
+    "title": "Autocorrelation Models",
+    "section": "What is correlation?",
+    "text": "What is correlation?\n\n\n\n\n\nIt is a measure of the strength and direction of the linear relationship between two numerical variables.\nSpecifically, it is used to assess the relationship between two sets of observations.\nCorrelation is between \\(-1\\) and 1."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#how-do-we-measure-autocorrelation",
+    "href": "Module3/Autocorrelation.html#how-do-we-measure-autocorrelation",
+    "title": "Autocorrelation Models",
+    "section": "How do we measure autocorrelation?",
+    "text": "How do we measure autocorrelation?\n\nThere are two formal tools for measuring the correlation between observations in a time series:\n\n\nThe autocorrelation function.\nThe partial autocorrelation function."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#the-autocorrelation-function",
+    "href": "Module3/Autocorrelation.html#the-autocorrelation-function",
+    "title": "Autocorrelation Models",
+    "section": "The autocorrelation function",
+    "text": "The autocorrelation function\n\nMeasures the correlation between responses separated by \\(j\\) periods.\n\nFor example, consider the autocorrelation between the current temperature and the temperature recorded the day before."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#autocorrelation-calculation-in-python",
+    "href": "Module3/Autocorrelation.html#autocorrelation-calculation-in-python",
+    "title": "Autocorrelation Models",
+    "section": "Autocorrelation Calculation in Python",
+    "text": "Autocorrelation Calculation in Python"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#load-the-libraries",
+    "href": "Module3/Autocorrelation.html#load-the-libraries",
+    "title": "Autocorrelation Models",
+    "section": "Load the libraries",
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, r2_score\nfrom statsmodels.graphics.tsaplots import plot_acf, plot_pacf\nfrom statsmodels.tsa.arima.model import ARIMA\nfrom statsmodels.tsa.statespace.tools import diff\nfrom sklearn.metrics import mean_squared_error, r2_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn, sklearn and statsmodels libraries in Python."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#the-autocorrelation-function-1",
+    "href": "Module3/Autocorrelation.html#the-autocorrelation-function-1",
+    "title": "Autocorrelation Models",
+    "section": "The autocorrelation function",
+    "text": "The autocorrelation function\n\nMeasures the correlation between responses separated by \\(j\\) periods.\n\nFor example, consider the autocorrelation between the current temperature and the temperature recorded the day before."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#the-autocorrelation-function-2",
+    "href": "Module3/Autocorrelation.html#the-autocorrelation-function-2",
+    "title": "Autocorrelation Models",
+    "section": "The autocorrelation function",
+    "text": "The autocorrelation function\n\nMeasures the correlation between responses separated by \\(j\\) periods.\n\nFor example, consider the autocorrelation between the current temperature and the temperature recorded the day before. This would be the correlation between these two columns"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#example-1",
+    "href": "Module3/Autocorrelation.html#example-1",
+    "title": "Autocorrelation Models",
+    "section": "Example 1",
+    "text": "Example 1\nLet’s consider again the dataset in the file “Amtrak.xlsx.” The file contains records of Amtrak passenger numbers from January 1991 to March 2004.\n\n\n\n\n\n\n\n\n\nMonth\nt\nRidership (in 000s)\nSeason\n\n\n\n\n0\n1991-01-01\n1\n1708.917\nJan\n\n\n1\n1991-02-01\n2\n1620.586\nFeb\n\n\n2\n1991-03-04\n3\n1972.715\nMar\n\n\n3\n1991-04-04\n4\n1811.665\nApr\n\n\n4\n1991-05-05\n5\n1974.964\nMay"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#autocorrelation-function",
+    "href": "Module3/Autocorrelation.html#autocorrelation-function",
+    "title": "Autocorrelation Models",
+    "section": "Autocorrelation function",
+    "text": "Autocorrelation function\n\n\nThe autocorrelation function measures the correlation between responses that are separated by a specific number of periods.\nThe autocorrelation function is commonly visualized using a bar chart.\nThe vertical axis shows the differences (or lags) between the periods considered, and the horizontal axis shows the correlations between observations at different lags."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#autocorrelation-plot",
+    "href": "Module3/Autocorrelation.html#autocorrelation-plot",
+    "title": "Autocorrelation Models",
+    "section": "Autocorrelation plot",
+    "text": "Autocorrelation plot\n\nIn Python, we use the plot_acf function from the statsmodels library.\n\nplt.figure(figsize=(10, 6))\nplot_acf(Amtrak_data['Ridership (in 000s)'], lags = 25)\nplt.xlabel(\"Lag\")\nplt.ylabel(\"Correlation\")\nplt.show()\n\nThe lags parameter controls the number of periods for which to compute the autocorrelation function."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#the-resulting-plot",
+    "href": "Module3/Autocorrelation.html#the-resulting-plot",
+    "title": "Autocorrelation Models",
+    "section": "The resulting plot",
+    "text": "The resulting plot\n\n\n\n&lt;Figure size 960x576 with 0 Axes&gt;"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#autocorrelation-patterns",
+    "href": "Module3/Autocorrelation.html#autocorrelation-patterns",
+    "title": "Autocorrelation Models",
+    "section": "Autocorrelation patterns",
+    "text": "Autocorrelation patterns\n\n\nA strong autocorrelation (positive or negative) with a lag \\(j\\) greater than 1 and its multiples (\\(2k, 3k, \\ldots\\)) typically reflects a cyclical pattern or seasonality.\nPositive lag-1 autocorrelation describes a series in which consecutive values generally move in the same direction.\nNegative lag-1 autocorrelation reflects oscillations in the series, where high values (generally) are immediately followed by low values and vice versa."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#more-about-the-autocorrelation-function",
+    "href": "Module3/Autocorrelation.html#more-about-the-autocorrelation-function",
+    "title": "Autocorrelation Models",
+    "section": "More about the autocorrelation function",
+    "text": "More about the autocorrelation function\nConsider the problem of predicting the average price of a kilo of avocado this month.\nFor this, we have the average price from last month and the month before that."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#partial-autocorrelation-function",
+    "href": "Module3/Autocorrelation.html#partial-autocorrelation-function",
+    "title": "Autocorrelation Models",
+    "section": "Partial autocorrelation function",
+    "text": "Partial autocorrelation function\n\nMeasures the correlation between responses that are separated by \\(j\\) periods, excluding correlation due to responses separated by intervening periods."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#autoregressive-models",
+    "href": "Module3/Autocorrelation.html#autoregressive-models",
+    "title": "Autocorrelation Models",
+    "section": "Autoregressive models",
+    "text": "Autoregressive models\nAutoregressive models are a type of linear regression model that directly incorporate the autocorrelation of the time series to predict the current response.\nTheir main characteristic is that the predictors of the current value of the series are its past values.\n\nAn autoregressive model of order 2 has the mathematical form: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}.\\)\nAn order 3 model looks like this: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2} + \\hat{\\beta}_3 Y_{t-3}.\\)"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#arima-models",
+    "href": "Module3/Autocorrelation.html#arima-models",
+    "title": "Autocorrelation Models",
+    "section": "ARIMA models",
+    "text": "ARIMA models\n\nA special class of autoregressive models are ARIMA (Autoregressive Integrated Moving Average).\nAn ARIMA model is composed of three elements:\n\n\nDifferenced or integrated operators (integrated).\nAutoregressive terms (autoregressive).\nStochastic terms (moving average)."
   }
 ]
