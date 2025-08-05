@@ -48,7 +48,7 @@ from statsmodels.tsa.statespace.tools import diff
 from sklearn.metrics import mean_squared_error, r2_score
 ```
 
-Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**,  **sklearn** and **statsmodels** libraries in Python.
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**, **sklearn** and **statsmodels** libraries in Python.
 
 # Autocorrelation
 
@@ -147,6 +147,7 @@ For example, consider the autocorrelation between the current temperature and th
 ::: {.column width="50%"}
 ![](images/correlation_1.png){fig-align="center" width="465" height="288"}
 :::
+
 ::: {.column width="50%"}
 ![](images/correlation_2.png){fig-align="center" width="465" height="288"}
 :::
@@ -161,7 +162,6 @@ For example, consider the autocorrelation between the current temperature and th
 
 ![](images/correlation_combined.png){fig-align="center"}
 
-
 ## Example 1
 
 Let's consider again the dataset in the file "Amtrak.xlsx." The file contains records of Amtrak passenger numbers from January 1991 to March 2004.
@@ -175,7 +175,7 @@ Amtrak_data = pd.read_excel('Amtrak.xlsx')
 Amtrak_data.head()
 ```
 
-##
+## 
 
 </br>
 
@@ -196,11 +196,11 @@ plt.show()
 
 </br>
 
-- The autocorrelation function measures the correlation between responses that are separated by a specific number of periods.
+-   The autocorrelation function measures the correlation between responses that are separated by a specific number of periods.
 
-- The autocorrelation function is commonly visualized using a bar chart. 
+-   The autocorrelation function is commonly visualized using a bar chart.
 
-- The vertical axis shows the differences (or [*lags*]{style="color:brown;"}) between the periods considered, and the horizontal axis shows the correlations between observations at different lags.
+-   The vertical axis shows the differences (or [*lags*]{style="color:brown;"}) between the periods considered, and the horizontal axis shows the correlations between observations at different lags.
 
 ## Autocorrelation plot
 
@@ -238,28 +238,25 @@ plt.ylabel("Correlation")
 plt.show()
 ```
 
-##
+## 
 
-
-:::::: center
-::::: columns
-::: {.column width="50%"}
-
+::::::: center
+:::::: columns
+:::: {.column width="50%"}
 ::: {style="font-size: 80%;"}
-
 </br>
 
-- The autocorrelation plot shows that the responses and those from zero periods ago have a correlation of 1.
+-   The autocorrelation plot shows that the responses and those from zero periods ago have a correlation of 1.
 
-- The autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45.
+-   The autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45.
 
-- The autocorrelation plot shows that the responses and those from 24 periods ago have a correlation of around 0.5.
+-   The autocorrelation plot shows that the responses and those from 24 periods ago have a correlation of around 0.5.
 :::
+::::
 
-:::
 ::: {.column width="50%"}
-
 </br>
+
 ```{python}
 #| echo: false
 #| output: true
@@ -272,18 +269,18 @@ plt.ylabel("Correlation")
 plt.show()
 ```
 :::
-:::
-:::
+::::::
+:::::::
 
 ## Autocorrelation patterns
 
 </br>
 
-- **A strong autocorrelation (positive or negative) with a lag** $j$ **greater than 1 and its multiples** ($2k, 3k, \ldots$) typically reflects a cyclical pattern or seasonality.
+-   **A strong autocorrelation (positive or negative) with a lag** $j$ **greater than 1 and its multiples** ($2k, 3k, \ldots$) typically reflects a cyclical pattern or seasonality.
 
-- **Positive lag-1 autocorrelation** describes a series in which consecutive values *generally* move in the same direction.
+-   **Positive lag-1 autocorrelation** describes a series in which consecutive values *generally* move in the same direction.
 
-- **Negative lag-1 autocorrelation** reflects oscillations in the series, where high values (*generally*) are immediately followed by low values and vice versa.
+-   **Negative lag-1 autocorrelation** reflects oscillations in the series, where high values (*generally*) are immediately followed by low values and vice versa.
 
 ## More about the autocorrelation function
 
@@ -311,20 +308,19 @@ The autocorrelation function for $Y_t$ and $Y_{t-2}$ includes the direct and ind
 
 In technical terms, the partial autocorrelation function fits the following linear regression model
 
-$$\hat{Y}_t = \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}$$
-Where:
+$$\hat{Y}_t = \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}$$ Where:
 
-- $\hat{Y}_{t}$ is the predicted response at the current time ($t$).
-- $\hat{\beta}_1$ is the *direct effect* of $Y_{t-1}$ on predicting $Y_{t}$.
-- $\hat{\beta}_2$ is the *direct effect* of $Y_{t-2}$ on predicting $Y_{t}$.
+-   $\hat{Y}_{t}$ is the predicted response at the current time ($t$).
+-   $\hat{\beta}_1$ is the *direct effect* of $Y_{t-1}$ on predicting $Y_{t}$.
+-   $\hat{\beta}_2$ is the *direct effect* of $Y_{t-2}$ on predicting $Y_{t}$.
 
-The partial autocorrelation between $Y_t$ and $Y_{t-2}$ is equal to $\hat{\beta}_2$. 
+The partial autocorrelation between $Y_t$ and $Y_{t-2}$ is equal to $\hat{\beta}_2$.
 
-##
+## 
 
-- The partial autocorrelation function is visualized using a graph similar to that for autocorrelation.
+-   The partial autocorrelation function is visualized using a graph similar to that for autocorrelation.
 
-- The vertical axis shows the differences (or *lags*) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.
+-   The vertical axis shows the differences (or *lags*) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.
 
 In Python, we use the `plot_pacf` function from **statsmodels**.
 
@@ -340,24 +336,22 @@ plt.ylabel("Correlation")
 plt.show()
 ```
 
-
 ## 
 
 </br>
 
-:::::: center
-::::: columns
-::: {.column width="50%"}
-
+::::::: center
+:::::: columns
+:::: {.column width="50%"}
 ::: {style="font-size: 80%;"}
-
 </br>
 
-- The partial autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45. *This is the same for the autocorrelation plot.*
+-   The partial autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45. *This is the same for the autocorrelation plot.*
 
-- The partial autocorrelation plot shows that the responses and those from two periods ago have a correlation near 0.
+-   The partial autocorrelation plot shows that the responses and those from two periods ago have a correlation near 0.
 :::
-:::
+::::
+
 ::: {.column width="50%"}
 ```{python}
 #| echo: false
@@ -371,8 +365,8 @@ plt.ylabel("Correlation")
 plt.show()
 ```
 :::
-:::
-:::
+::::::
+:::::::
 
 # The ARIMA Model
 
@@ -382,9 +376,9 @@ plt.show()
 
 Their main characteristic is that the predictors of the current value of the series are its past values.
 
-- An autoregressive model of order 2 has the mathematical form: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.$
+-   An autoregressive model of order 2 has the mathematical form: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.$
 
-- An order 3 model looks like this: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.$
+-   An order 3 model looks like this: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.$
 
 ## ARIMA models
 
@@ -392,13 +386,349 @@ Their main characteristic is that the predictors of the current value of the ser
 
 A special class of autoregressive models are [***ARIMA***]{style="color:purple;"} ([*Autoregressive Integrated Moving Average*]{style="color:purple;"}).
 
-An ARIMA model is composed of three elements:
+. . . 
+
+An ARIMA model consists of three elements:
 
 ::: incremental
-1. Differenced or integrated operators (*integrated*).
-2. Autoregressive terms (*autoregressive*).
-3. Stochastic terms (*moving average*).
+1.  Integrated operators (*integrated*).
+2.  Autoregressive terms (*autoregressive*).
+3.  Stochastic terms (*moving average*).
 :::
+
+## 1. Integrated or differentiatedoperators (I)
+
+</br>
+
+They create a new variable $Z_t$, which equals the difference between the current response and the delayed response by a number of periods or lags.
+
+There are three common levels of differentiation:
+
+- Level 0: $Z_t = Y_t$.
+- Level 1: $Z_t = Y_t - Y_{t-1}$.
+- Level 2: $Z_t = (Y_t - Y_{t-1}) - (Y_{t-1} - Y_{t-2})$.
+
+## Example 2
+
+We consider the time series "CanadianWorkHours.xlsx" that contains the average hours worked by a certain group of workers over a certain range of years. 
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+CanadianWorkHours = pd.read_excel('CanadianWorkHours.xlsx')
+CanadianWorkHours.head(4)
+```
+
+## 
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='Year', y='Hours per Week', data = CanadianWorkHours)
+plt.xlabel('Year')
+plt.ylabel('Hours per Week')
+plt.title('Hours per Week Over Time')
+plt.show()
+```
+
+##
+
+</br></br>
+
+In **statsmodels**, we apply the integration operator using the pre-loaded `diff()` function. The function's `k_diff` argument specifies the order or level of the operator. 
+
+</br>
+
+First, let's use a level-1 operator.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Z_series_one = diff(CanadianWorkHours['Hours per Week'], k_diff = 1)
+```
+
+##
+
+The time series with a level-1 operator looks like this.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_one)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 1')
+plt.show()
+```
+
+## 
+
+A level-2 operator would work like this.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Z_series_two = diff(CanadianWorkHours['Hours per Week'], k_diff = 2)
+```
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(9, 5))
+sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_two)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 2')
+plt.show()
+```
+
+
+##
+
+We see that the level 2 operator is more successful in removing the trend from the original time series.
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_one)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 1')
+plt.show()
+```
+:::
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_two)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 2')
+plt.show()
+```
+:::
+:::
+:::
+
+## Comments
+
+</br></br>
+
+The differentiation operator removes or de-trends the time series.
+
+- The level 0 differentiation operator leaves the time series intact.
+- The level 1 differentiation operator removes its linear trend.
+- The level 2 differentiation operator removes its quadratic trend.
+
+## How do we determine the operator level?
+
+</br>
+
+Visualizing the time series and determining whether there is a linear or quadratic trend.
+
+If level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.
+
+[*Once this is done, we set our transformed variable $Z_t$ as the new response variable.*]{style="color:purple;"}
+
+## 2. Autoregressive (AR) terms
+
+</br>
+
+Here we use autoregressive models, but with the new response variable $Z_t$.
+
+We can have different levels of order (or number of terms) in the autoregression model. For example:
+
+- Order 1 model: $\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1}$.
+
+- Order 2 model: $\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2}$.
+
+If necessary, we can exclude the constant coefficient $\hat{\beta}_0$ from the model.
+
+## How do we determine the number of terms?
+
+</br></br></br>
+
+Using the correlation functions (ACF) and partial correlation functions (PACF) of the differenced series.
+
+## 
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_acf(Z_series_two, lags = 15)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_pacf(Z_series_two, lags = 15)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+:::
+:::
+
+To achieve this, we have some rules.
+
+## Rule 1
+
+</br></br>
+
+A first-order autoregressive model has:
+
+1. An ACF with a single peak at the first period difference (lag).
+
+2. An ACF with exponentially decreasing correlations.
+
+## Rule 2
+
+</br></br>
+
+A second-order autoregressive model has:
+
+1. A PACF with two peaks at the first period differences (lags).
+
+2. An ACF with correlations that decrease positively and negatively but approach zero.
+
+## Rule 3
+
+</br>
+
+If the PACF of the differenced series $Z_t$ shows a higher partial correlation than the others and/or the lag-1 autocorrelation is positive, then consider adding an AR term to the model.
+
+</br>
+
+The lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.
+
+## 
+
+Following part 1 of Rule 1, we conclude that an autoregressive term of order 1 will be sufficient to capture the relationships between the elements of the series.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_pacf(Z_series_two, lags = 15)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+## 3. Stochastic Terms (Moving Averages, MA)
+
+Instead of using past values of the response variable, a moving average model uses stochastic terms to predict the current response.
+The model has different versions depending on the number of errors used to predict the response. For example:
+
+- MA of order 1: $Z_t = \theta_0 + \theta_1 a_{t-1}$;
+- MA of order 2: $Z_t = \theta_0 + \theta_1 a_{t-1} + \theta_2 a_{t-2}$,
+
+where $\theta_0$ is a constant and $a_t$ are terms from a white noise series (i.e., random terms).
+
+## How do I choose the order of the MAs?
+
+</br></br>
+
+**Rule 4**: MA models have:
+
+1. Correlations other than 0 in the ACF. The lags at which this occurs indicate the terms to include in the MA model.
+
+2. Correlations in the PACF that gradually decrease to zero in some way.
+
+##
+
+::: {style="font-size: 90%;"}
+This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it's the autocorrelation function of the series after it's been differentiated.
+:::
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_acf(Z_series_two, lags = 15)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+##
+
+[*Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.*]{style="color:darkblue;"}
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_acf(Z_series_two, lags = 15)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+## ARIMA
+
+</br>
+
+::: incremental
+1. Define the response differentiation level and create $Z_t$.
+
+2. Define the order of the AR model (e.g., order 2).
+
+3. Define the order of the MA model (e.g., order 1).
+:::
+
+. . . 
+
+::: center
+$$\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2} + \theta_1 a_{t-1}$$
+:::
+
+. . . 
+
+The ARIMA model coefficients are estimated using an advanced method that takes into account the dependencies between the time series responses.
 
 # El modelo SARIMA
 

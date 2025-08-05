@@ -223,7 +223,7 @@ Alan R. Vazquez
 <section id="load-the-libraries" class="slide level2">
 <h2>Load the libraries</h2>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="363f9001" class="cell" data-execution_count="1">
+<div id="02a891ca" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -264,7 +264,7 @@ Alan R. Vazquez
 </ul>
 </div><div class="column" style="width:40%;">
 <p><br></p>
-<div id="87451d8f" class="cell" data-execution_count="2">
+<div id="ff867c4c" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -342,8 +342,8 @@ Alan R. Vazquez
 <section id="example-1" class="slide level2">
 <h2>Example 1</h2>
 <p>Let’s consider again the dataset in the file “Amtrak.xlsx.” The file contains records of Amtrak passenger numbers from January 1991 to March 2004.</p>
-<div id="d67fb8ab" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="beb7386b" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="418">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -415,7 +415,7 @@ Alan R. Vazquez
 <section id="section" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="468ec68a" class="cell" data-execution_count="4">
+<div id="4c0ade46" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -438,7 +438,7 @@ Alan R. Vazquez
 <h2>Autocorrelation plot</h2>
 <p><br></p>
 <p>In Python, we use the <code>plot_acf</code> function from the <strong>statsmodels</strong> library.</p>
-<div id="93808d48" class="cell" data-execution_count="5">
+<div id="13762021" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb2-2"><a></a>plot_acf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
 <span id="cb2-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
@@ -450,7 +450,7 @@ Alan R. Vazquez
 <section id="the-resulting-plot" class="slide level2">
 <h2>The resulting plot</h2>
 <p><br></p>
-<div id="88c7a902" class="cell" data-execution_count="6">
+<div id="fab87a01" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -478,7 +478,7 @@ Alan R. Vazquez
 </div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
-<div id="305ae680" class="cell" data-execution_count="7">
+<div id="a8f3db5b" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 384x384 with 0 Axes&gt;</code></pre>
 </div>
@@ -539,7 +539,7 @@ Alan R. Vazquez
 <li><p>The vertical axis shows the differences (or <em>lags</em>) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.</p></li>
 </ul>
 <p>In Python, we use the <code>plot_pacf</code> function from <strong>statsmodels</strong>.</p>
-<div id="cebf4179" class="cell" data-execution_count="8">
+<div id="6a49c868" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb5-2"><a></a>plot_pacf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
 <span id="cb5-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
@@ -561,7 +561,7 @@ Alan R. Vazquez
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="782d4c2b" class="cell" data-execution_count="9">
+<div id="73e153b2" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -594,13 +594,367 @@ Alan R. Vazquez
 <h2>ARIMA models</h2>
 <p><br></p>
 <p>A special class of autoregressive models are <span style="color:purple;"><strong><em>ARIMA</em></strong></span> (<span style="color:purple;"><em>Autoregressive Integrated Moving Average</em></span>).</p>
-<p>An ARIMA model is composed of three elements:</p>
+<div class="fragment">
+<p>An ARIMA model consists of three elements:</p>
 <div>
 <ol type="1">
-<li class="fragment">Differenced or integrated operators (<em>integrated</em>).</li>
+<li class="fragment">Integrated operators (<em>integrated</em>).</li>
 <li class="fragment">Autoregressive terms (<em>autoregressive</em>).</li>
 <li class="fragment">Stochastic terms (<em>moving average</em>).</li>
 </ol>
+</div>
+</div>
+</section>
+<section id="integrated-or-differentiatedoperators-i" class="slide level2">
+<h2>1. Integrated or differentiatedoperators (I)</h2>
+<p><br></p>
+<p>They create a new variable <span class="math inline">\(Z_t\)</span>, which equals the difference between the current response and the delayed response by a number of periods or lags.</p>
+<p>There are three common levels of differentiation:</p>
+<ul>
+<li>Level 0: <span class="math inline">\(Z_t = Y_t\)</span>.</li>
+<li>Level 1: <span class="math inline">\(Z_t = Y_t - Y_{t-1}\)</span>.</li>
+<li>Level 2: <span class="math inline">\(Z_t = (Y_t - Y_{t-1}) - (Y_{t-1} - Y_{t-2})\)</span>.</li>
+</ul>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example 2</h2>
+<p>We consider the time series “CanadianWorkHours.xlsx” that contains the average hours worked by a certain group of workers over a certain range of years.</p>
+<div id="66648780" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>CanadianWorkHours <span class="op">=</span> pd.read_excel(<span class="st">'CanadianWorkHours.xlsx'</span>)</span>
+<span id="cb7-2"><a></a>CanadianWorkHours.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="425">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Hours per Week</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1966</td>
+<td>37.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1967</td>
+<td>37.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1968</td>
+<td>37.4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1969</td>
+<td>37.5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div id="1ed62b93" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb8-2"><a></a>sns.lineplot(x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Hours per Week'</span>, data <span class="op">=</span> CanadianWorkHours)</span>
+<span id="cb8-3"><a></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb8-4"><a></a>plt.ylabel(<span class="st">'Hours per Week'</span>)</span>
+<span id="cb8-5"><a></a>plt.title(<span class="st">'Hours per Week Over Time'</span>)</span>
+<span id="cb8-6"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="821" height="523"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>In <strong>statsmodels</strong>, we apply the integration operator using the pre-loaded <code>diff()</code> function. The function’s <code>k_diff</code> argument specifies the order or level of the operator.</p>
+<p><br></p>
+<p>First, let’s use a level-1 operator.</p>
+<div id="efd79e32" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>Z_series_one <span class="op">=</span> diff(CanadianWorkHours[<span class="st">'Hours per Week'</span>], k_diff <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<p>The time series with a level-1 operator looks like this.</p>
+<div id="634ba7ef" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb10-2"><a></a>sns.lineplot(x<span class="op">=</span>CanadianWorkHours[<span class="st">'Year'</span>], y<span class="op">=</span>Z_series_one)</span>
+<span id="cb10-3"><a></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb10-4"><a></a>plt.ylabel(<span class="st">'Difference Level 1'</span>)</span>
+<span id="cb10-5"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-14-output-1.png" class="quarto-figure quarto-figure-center" width="823" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p>A level-2 operator would work like this.</p>
+<div id="de51d866" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>Z_series_two <span class="op">=</span> diff(CanadianWorkHours[<span class="st">'Hours per Week'</span>], k_diff <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8ab9b044" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
+<span id="cb12-2"><a></a>sns.lineplot(x<span class="op">=</span>CanadianWorkHours[<span class="st">'Year'</span>], y<span class="op">=</span>Z_series_two)</span>
+<span id="cb12-3"><a></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb12-4"><a></a>plt.ylabel(<span class="st">'Difference Level 2'</span>)</span>
+<span id="cb12-5"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-16-output-1.png" class="quarto-figure quarto-figure-center" width="749" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<p>We see that the level 2 operator is more successful in removing the trend from the original time series.</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="92752f52" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-17-output-1.png" class="quarto-figure quarto-figure-center" width="526" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="ad462745" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-18-output-1.png" class="quarto-figure quarto-figure-center" width="526" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="comments" class="slide level2">
+<h2>Comments</h2>
+<p><br><br></p>
+<p>The differentiation operator removes or de-trends the time series.</p>
+<ul>
+<li>The level 0 differentiation operator leaves the time series intact.</li>
+<li>The level 1 differentiation operator removes its linear trend.</li>
+<li>The level 2 differentiation operator removes its quadratic trend.</li>
+</ul>
+</section>
+<section id="how-do-we-determine-the-operator-level" class="slide level2">
+<h2>How do we determine the operator level?</h2>
+<p><br></p>
+<p>Visualizing the time series and determining whether there is a linear or quadratic trend.</p>
+<p>If level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.</p>
+<p><span style="color:purple;"><em>Once this is done, we set our transformed variable <span class="math inline">\(Z_t\)</span> as the new response variable.</em></span></p>
+</section>
+<section id="autoregressive-ar-terms" class="slide level2">
+<h2>2. Autoregressive (AR) terms</h2>
+<p><br></p>
+<p>Here we use autoregressive models, but with the new response variable <span class="math inline">\(Z_t\)</span>.</p>
+<p>We can have different levels of order (or number of terms) in the autoregression model. For example:</p>
+<ul>
+<li><p>Order 1 model: <span class="math inline">\(\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1}\)</span>.</p></li>
+<li><p>Order 2 model: <span class="math inline">\(\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2}\)</span>.</p></li>
+</ul>
+<p>If necessary, we can exclude the constant coefficient <span class="math inline">\(\hat{\beta}_0\)</span> from the model.</p>
+</section>
+<section id="how-do-we-determine-the-number-of-terms" class="slide level2">
+<h2>How do we determine the number of terms?</h2>
+<p><br><br><br></p>
+<p>Using the correlation functions (ACF) and partial correlation functions (PACF) of the differenced series.</p>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="f1a50955" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-19-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="c755a410" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-20-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<p>To achieve this, we have some rules.</p>
+</section>
+<section id="rule-1" class="slide level2">
+<h2>Rule 1</h2>
+<p><br><br></p>
+<p>A first-order autoregressive model has:</p>
+<ol type="1">
+<li><p>An ACF with a single peak at the first period difference (lag).</p></li>
+<li><p>An ACF with exponentially decreasing correlations.</p></li>
+</ol>
+</section>
+<section id="rule-2" class="slide level2">
+<h2>Rule 2</h2>
+<p><br><br></p>
+<p>A second-order autoregressive model has:</p>
+<ol type="1">
+<li><p>A PACF with two peaks at the first period differences (lags).</p></li>
+<li><p>An ACF with correlations that decrease positively and negatively but approach zero.</p></li>
+</ol>
+</section>
+<section id="rule-3" class="slide level2">
+<h2>Rule 3</h2>
+<p><br></p>
+<p>If the PACF of the differenced series <span class="math inline">\(Z_t\)</span> shows a higher partial correlation than the others and/or the lag-1 autocorrelation is positive, then consider adding an AR term to the model.</p>
+<p><br></p>
+<p>The lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.</p>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<p>Following part 1 of Rule 1, we conclude that an autoregressive term of order 1 will be sufficient to capture the relationships between the elements of the series.</p>
+<div id="fe97cff6" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-21-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="stochastic-terms-moving-averages-ma" class="slide level2">
+<h2>3. Stochastic Terms (Moving Averages, MA)</h2>
+<p>Instead of using past values of the response variable, a moving average model uses stochastic terms to predict the current response. The model has different versions depending on the number of errors used to predict the response. For example:</p>
+<ul>
+<li>MA of order 1: <span class="math inline">\(Z_t = \theta_0 + \theta_1 a_{t-1}\)</span>;</li>
+<li>MA of order 2: <span class="math inline">\(Z_t = \theta_0 + \theta_1 a_{t-1} + \theta_2 a_{t-2}\)</span>,</li>
+</ul>
+<p>where <span class="math inline">\(\theta_0\)</span> is a constant and <span class="math inline">\(a_t\)</span> are terms from a white noise series (i.e., random terms).</p>
+</section>
+<section id="how-do-i-choose-the-order-of-the-mas" class="slide level2">
+<h2>How do I choose the order of the MAs?</h2>
+<p><br><br></p>
+<p><strong>Rule 4</strong>: MA models have:</p>
+<ol type="1">
+<li><p>Correlations other than 0 in the ACF. The lags at which this occurs indicate the terms to include in the MA model.</p></li>
+<li><p>Correlations in the PACF that gradually decrease to zero in some way.</p></li>
+</ol>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<div style="font-size: 90%;">
+<p>This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it’s the autocorrelation function of the series after it’s been differentiated.</p>
+</div>
+<div id="01236788" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-22-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p><span style="color:darkblue;"><em>Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.</em></span></p>
+<div id="ee0bf0d5" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Autocorrelation_files/figure-revealjs/cell-23-output-2.png" class="quarto-figure quarto-figure-center" width="832" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="arima" class="slide level2">
+<h2>ARIMA</h2>
+<p><br></p>
+<div>
+<ol type="1">
+<li class="fragment"><p>Define the response differentiation level and create <span class="math inline">\(Z_t\)</span>.</p></li>
+<li class="fragment"><p>Define the order of the AR model (e.g., order 2).</p></li>
+<li class="fragment"><p>Define the order of the MA model (e.g., order 1).</p></li>
+</ol>
+</div>
+<div class="fragment">
+<div class="center">
+<p><span class="math display">\[\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2} + \theta_1 a_{t-1}\]</span></p>
+</div>
+</div>
+<div class="fragment">
+<p>The ARIMA model coefficients are estimated using an advanced method that takes into account the dependencies between the time series responses.</p>
 </div>
 </section></section>
 <section>

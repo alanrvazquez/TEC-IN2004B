@@ -5611,6 +5611,167 @@
     "href": "Module3/Autocorrelation.html#arima-models",
     "title": "Autocorrelation Models",
     "section": "ARIMA models",
-    "text": "ARIMA models\n\nA special class of autoregressive models are ARIMA (Autoregressive Integrated Moving Average).\nAn ARIMA model is composed of three elements:\n\n\nDifferenced or integrated operators (integrated).\nAutoregressive terms (autoregressive).\nStochastic terms (moving average)."
+    "text": "ARIMA models\n\nA special class of autoregressive models are ARIMA (Autoregressive Integrated Moving Average).\n\nAn ARIMA model consists of three elements:\n\n\nIntegrated operators (integrated).\nAutoregressive terms (autoregressive).\nStochastic terms (moving average)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#example-2",
+    "href": "Module3/Autocorrelation.html#example-2",
+    "title": "Autocorrelation Models",
+    "section": "Example 2",
+    "text": "Example 2\nWe consider the time series “CanadianWorkHours.xlsx” that contains the average hours worked by a certain group of workers over a certain range of years.\n\nCanadianWorkHours = pd.read_excel('CanadianWorkHours.xlsx')\nCanadianWorkHours.head(4)\n\n\n\n\n\n\n\n\nYear\nHours per Week\n\n\n\n\n0\n1966\n37.2\n\n\n1\n1967\n37.0\n\n\n2\n1968\n37.4\n\n\n3\n1969\n37.5"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-6",
+    "href": "Module3/Autocorrelation.html#section-6",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Code\nplt.figure(figsize=(10, 6))\nsns.lineplot(x='Year', y='Hours per Week', data = CanadianWorkHours)\nplt.xlabel('Year')\nplt.ylabel('Hours per Week')\nplt.title('Hours per Week Over Time')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-7",
+    "href": "Module3/Autocorrelation.html#section-7",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "In statsmodels, we apply the integration operator using the pre-loaded diff() function. The function’s k_diff argument specifies the order or level of the operator.\n\nFirst, let’s use a level-1 operator.\n\nZ_series_one = diff(CanadianWorkHours['Hours per Week'], k_diff = 1)"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-8",
+    "href": "Module3/Autocorrelation.html#section-8",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "The time series with a level-1 operator looks like this.\n\n\nCode\nplt.figure(figsize=(10, 6))\nsns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_one)\nplt.xlabel('Year')\nplt.ylabel('Difference Level 1')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-9",
+    "href": "Module3/Autocorrelation.html#section-9",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "A level-2 operator would work like this.\n\nZ_series_two = diff(CanadianWorkHours['Hours per Week'], k_diff = 2)\n\n\n\nCode\nplt.figure(figsize=(9, 5))\nsns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_two)\nplt.xlabel('Year')\nplt.ylabel('Difference Level 2')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-10",
+    "href": "Module3/Autocorrelation.html#section-10",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "We see that the level 2 operator is more successful in removing the trend from the original time series."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#integrated-or-differentiated-operators-i",
+    "href": "Module3/Autocorrelation.html#integrated-or-differentiated-operators-i",
+    "title": "Autocorrelation Models",
+    "section": "1. Integrated or differentiated operators (I)",
+    "text": "1. Integrated or differentiated operators (I)\n\nThey create a new variable \\(Z_t\\), which equals the difference between the current response and the delayed response by a number of periods.\nThere are two common levels of differencing:\n\nLevel 0: \\(Z_t = Y_t\\).\nLevel 1: \\(Z_t = Y_t - Y_{t-1}\\).\nLevel 2: \\(Z_t = (Y_t - Y_{t-1}) - (Y_{t-1} - Y_{t-2})\\)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#integrated-operators-i",
+    "href": "Module3/Autocorrelation.html#integrated-operators-i",
+    "title": "Autocorrelation Models",
+    "section": "1. Integrated operators (I)",
+    "text": "1. Integrated operators (I)\n\nThey create a new variable \\(Z_t\\), which equals the difference between the current response and the delayed response by a number of periods or lags.\nThere are three common levels of integration:\n\nLevel 0: \\(Z_t = Y_t\\).\nLevel 1: \\(Z_t = Y_t - Y_{t-1}\\).\nLevel 2: \\(Z_t = (Y_t - Y_{t-1}) - (Y_{t-1} - Y_{t-2})\\)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#integrated-or-differentiatedoperators-i",
+    "href": "Module3/Autocorrelation.html#integrated-or-differentiatedoperators-i",
+    "title": "Autocorrelation Models",
+    "section": "1. Integrated or differentiatedoperators (I)",
+    "text": "1. Integrated or differentiatedoperators (I)\n\nThey create a new variable \\(Z_t\\), which equals the difference between the current response and the delayed response by a number of periods or lags.\nThere are three common levels of differentiation:\n\nLevel 0: \\(Z_t = Y_t\\).\nLevel 1: \\(Z_t = Y_t - Y_{t-1}\\).\nLevel 2: \\(Z_t = (Y_t - Y_{t-1}) - (Y_{t-1} - Y_{t-2})\\)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#comments",
+    "href": "Module3/Autocorrelation.html#comments",
+    "title": "Autocorrelation Models",
+    "section": "Comments",
+    "text": "Comments\n\nThe differentiation operator removes or de-trends the time series.\n\nThe level 0 differentiation operator leaves the time series intact.\nThe level 1 differentiation operator removes its linear trend.\nThe level 2 differentiation operator removes its quadratic trend."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#how-do-we-determine-the-operator-level",
+    "href": "Module3/Autocorrelation.html#how-do-we-determine-the-operator-level",
+    "title": "Autocorrelation Models",
+    "section": "How do we determine the operator level?",
+    "text": "How do we determine the operator level?\n\nVisualizing the time series and determining whether there is a linear or quadratic trend.\nIf level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.\nOnce this is done, we set our transformed variable \\(Z_t\\) as the new response variable."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#autoregressive-ar-terms",
+    "href": "Module3/Autocorrelation.html#autoregressive-ar-terms",
+    "title": "Autocorrelation Models",
+    "section": "2. Autoregressive (AR) terms",
+    "text": "2. Autoregressive (AR) terms\n\nHere we use autoregressive models, but with the new response variable \\(Z_t\\).\nWe can have different levels of order (or number of terms) in the autoregression model. For example:\n\nOrder 1 model: \\(\\hat{Z}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Z_{t-1}\\).\nOrder 2 model: \\(\\hat{Z}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Z_{t-1} + \\hat{\\beta}_2 Z_{t-2}\\).\n\nIf necessary, we can exclude the constant coefficient \\(\\hat{\\beta}_0\\) from the model."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#how-do-we-determine-the-number-of-terms",
+    "href": "Module3/Autocorrelation.html#how-do-we-determine-the-number-of-terms",
+    "title": "Autocorrelation Models",
+    "section": "How do we determine the number of terms?",
+    "text": "How do we determine the number of terms?\n\nUsing the correlation functions (ACF) and partial correlation functions (PACF) of the differenced series."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#rule-1",
+    "href": "Module3/Autocorrelation.html#rule-1",
+    "title": "Autocorrelation Models",
+    "section": "Rule 1",
+    "text": "Rule 1\n\nA first-order autoregressive model has:\n\nAn ACF with a single peak at the first period difference (lag).\nAn ACF with exponentially decreasing correlations."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#rule-2",
+    "href": "Module3/Autocorrelation.html#rule-2",
+    "title": "Autocorrelation Models",
+    "section": "Rule 2",
+    "text": "Rule 2\n\nA second-order autoregressive model has:\n\nA PACF with two peaks at the first period differences (lags).\nAn ACF with correlations that decrease positively and negatively but approach zero."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#rule-3",
+    "href": "Module3/Autocorrelation.html#rule-3",
+    "title": "Autocorrelation Models",
+    "section": "Rule 3",
+    "text": "Rule 3\n\nIf the PACF of the differenced series \\(Z_t\\) shows a higher partial correlation than the others and/or the lag-1 autocorrelation is positive, then consider adding an AR term to the model.\n\nThe lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-11",
+    "href": "Module3/Autocorrelation.html#section-11",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\nTo achieve this, we have some rules."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-12",
+    "href": "Module3/Autocorrelation.html#section-12",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Following part 1 of Rule 1, we conclude that an autoregressive term of order 1 will be sufficient to capture the relationships between the elements of the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#stochastic-terms-moving-averages-ma",
+    "href": "Module3/Autocorrelation.html#stochastic-terms-moving-averages-ma",
+    "title": "Autocorrelation Models",
+    "section": "3. Stochastic Terms (Moving Averages, MA)",
+    "text": "3. Stochastic Terms (Moving Averages, MA)\nInstead of using past values of the response variable, a moving average model uses stochastic terms to predict the current response. The model has different versions depending on the number of errors used to predict the response. For example:\n\nMA of order 1: \\(Z_t = \\theta_0 + \\theta_1 a_{t-1}\\);\nMA of order 2: \\(Z_t = \\theta_0 + \\theta_1 a_{t-1} + \\theta_2 a_{t-2}\\),\n\nwhere \\(\\theta_0\\) is a constant and \\(a_t\\) are terms from a white noise series (i.e., random terms)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#how-do-i-choose-the-order-of-the-mas",
+    "href": "Module3/Autocorrelation.html#how-do-i-choose-the-order-of-the-mas",
+    "title": "Autocorrelation Models",
+    "section": "How do I choose the order of the MAs?",
+    "text": "How do I choose the order of the MAs?\n\nRule 4: MA models have:\n\nCorrelations other than 0 in the ACF. The lags at which this occurs indicate the terms to include in the MA model.\nCorrelations in the PACF that gradually decrease to zero in some way."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#arima",
+    "href": "Module3/Autocorrelation.html#arima",
+    "title": "Autocorrelation Models",
+    "section": "ARIMA",
+    "text": "ARIMA\n\n\n\nDefine the response differentiation level and create \\(Z_t\\).\nDefine the order of the AR model (e.g., order 2).\nDefine the order of the MA model (e.g., order 1).\n\n\n\n\n\\[\\hat{Z}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Z_{t-1} + \\hat{\\beta}_2 Z_{t-2} + \\theta_1 a_{t-1}\\]\n\n\n\nThe ARIMA model coefficients are estimated using an advanced method that takes into account the dependencies between the time series responses."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-13",
+    "href": "Module3/Autocorrelation.html#section-13",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it’s the autocorrelation function of the series after it’s been differentiated.\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-14",
+    "href": "Module3/Autocorrelation.html#section-14",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
   }
 ]
