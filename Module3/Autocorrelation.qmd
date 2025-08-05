@@ -421,7 +421,29 @@ CanadianWorkHours = pd.read_excel('CanadianWorkHours.xlsx')
 CanadianWorkHours.head(4)
 ```
 
-## 
+## Creating a train and a validation data
+
+Recall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Define the split point
+split_ratio = 0.8  # 80% train, 20% test
+split_point = int(len(CanadianWorkHours) * split_ratio)
+
+# Split the data
+Canadian_train = CanadianWorkHours[:split_point]
+Canadian_validation = CanadianWorkHours[split_point:]
+```
+
+We use 80% of the time series for training and the rest for validation.
+
+
+## Training data
 
 ```{python}
 #| echo: true
@@ -430,7 +452,7 @@ CanadianWorkHours.head(4)
 #| code-fold: true
 
 plt.figure(figsize=(10, 6))
-sns.lineplot(x='Year', y='Hours per Week', data = CanadianWorkHours)
+sns.lineplot(x='Year', y='Hours per Week', data = Canadian_train)
 plt.xlabel('Year')
 plt.ylabel('Hours per Week')
 plt.title('Hours per Week Over Time')
@@ -452,7 +474,7 @@ First, let's use a level-1 operator.
 #| output: true
 #| fig-align: center
 
-Z_series_one = diff(CanadianWorkHours['Hours per Week'], k_diff = 1)
+Z_series_one = diff(Canadian_train['Hours per Week'], k_diff = 1)
 ```
 
 ##
@@ -466,7 +488,7 @@ The time series with a level-1 operator looks like this.
 #| code-fold: true
 
 plt.figure(figsize=(10, 6))
-sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_one)
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_one)
 plt.xlabel('Year')
 plt.ylabel('Difference Level 1')
 plt.show()
@@ -481,7 +503,7 @@ A level-2 operator would work like this.
 #| output: true
 #| fig-align: center
 
-Z_series_two = diff(CanadianWorkHours['Hours per Week'], k_diff = 2)
+Z_series_two = diff(Canadian_train['Hours per Week'], k_diff = 2)
 ```
 
 ```{python}
@@ -491,7 +513,7 @@ Z_series_two = diff(CanadianWorkHours['Hours per Week'], k_diff = 2)
 #| code-fold: true
 
 plt.figure(figsize=(9, 5))
-sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_two)
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_two)
 plt.xlabel('Year')
 plt.ylabel('Difference Level 2')
 plt.show()
@@ -511,7 +533,7 @@ We see that the level 2 operator is more successful in removing the trend from t
 #| fig-align: center
 
 plt.figure(figsize=(6, 6))
-sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_one)
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_one)
 plt.xlabel('Year')
 plt.ylabel('Difference Level 1')
 plt.show()
@@ -524,7 +546,7 @@ plt.show()
 #| fig-align: center
 
 plt.figure(figsize=(6, 6))
-sns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_two)
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_two)
 plt.xlabel('Year')
 plt.ylabel('Difference Level 2')
 plt.show()
@@ -584,7 +606,7 @@ Using the correlation functions (ACF) and partial correlation functions (PACF) o
 #| fig-align: center
 
 plt.figure(figsize=(3, 3))
-plot_acf(Z_series_two, lags = 15)
+plot_acf(Z_series_two, lags = 10)
 plt.xlabel("Lag")
 plt.ylabel("Correlation")
 plt.show()
@@ -597,7 +619,7 @@ plt.show()
 #| fig-align: center
 
 plt.figure(figsize=(3, 3))
-plot_pacf(Z_series_two, lags = 15)
+plot_pacf(Z_series_two, lags = 10)
 plt.xlabel("Lag")
 plt.ylabel("Correlation")
 plt.show()
@@ -640,7 +662,7 @@ The lag at which the PACF cuts off from the confidence limits in the software is
 
 ## 
 
-Following part 1 of Rule 1, we conclude that an autoregressive term of order 1 will be sufficient to capture the relationships between the elements of the series.
+Following part 1 of Rule 1, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.
 
 ```{python}
 #| echo: false
@@ -648,7 +670,7 @@ Following part 1 of Rule 1, we conclude that an autoregressive term of order 1 w
 #| fig-align: center
 
 plt.figure(figsize=(3, 3))
-plot_pacf(Z_series_two, lags = 15)
+plot_pacf(Z_series_two, lags = 10)
 plt.xlabel("Lag")
 plt.ylabel("Correlation")
 plt.show()
@@ -686,7 +708,7 @@ This means that to determine the order, we focus primarily on the autocorrelatio
 #| fig-align: center
 
 plt.figure(figsize=(3, 3))
-plot_acf(Z_series_two, lags = 15)
+plot_acf(Z_series_two, lags = 10)
 plt.xlabel("Lag")
 plt.ylabel("Correlation")
 plt.show()
@@ -702,7 +724,7 @@ plt.show()
 #| fig-align: center
 
 plt.figure(figsize=(3, 3))
-plot_acf(Z_series_two, lags = 15)
+plot_acf(Z_series_two, lags = 10)
 plt.xlabel("Lag")
 plt.ylabel("Correlation")
 plt.show()
@@ -729,6 +751,261 @@ $$\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2} + \t
 . . . 
 
 The ARIMA model coefficients are estimated using an advanced method that takes into account the dependencies between the time series responses.
+
+## ARIMA in Pyhon
+
+</br></br>
+
+To fit an ARIMA model, we use the `ARIMA()` function from **statsmodels**. 
+
+The function has an important argument called `order`, which equals `(p,d,q)`, where
+
+- `p` is the order of the autoregressive model.
+- `d` is the level of the integration or differencing operator.
+- `q` is the number of elements in the moving average.
+
+## 
+
+</br>
+
+From our previous analysis of the training data for the Canadian workhours example, we conclude that:
+
+- We must use a level-2 differencing operator to remove the quadratic trend from the series. Therefore, `d = 2`.
+
+- One autoregressive term should be sufficient to capture the patterns in the time series. Therefore, `p = 2`.
+
+- It is not necessary to have moving average terms. Therefore, `q = 0`.
+
+##
+
+</br></br>
+
+Once this is defined, we can train an ARIMA model using the training data with the following code:
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+Arima_Canadian = ARIMA(Canadian_train['Hours per Week'], 
+                       order=(2, 2, 0))
+results_ARIMA_Canadian = Arima_Canadian.fit()
+```
+
+Technically, `ARIMA()` defines the model and `.fit()` fits the model to the data using *maximum likelihood estimation*.
+
+## 
+
+After fitting, we can get a summary of the model fit using the following code.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+print(results_ARIMA_Canadian.summary())
+```
+
+
+## 
+
+</br></br>
+
+**The next step in evaluating an ARIMA model is to study the model's residuals to ensure there is nothing else to explain in the model.** 
+
+</br>
+
+We can obtain the residuals using the following code.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+ARIMA_residuals = results_ARIMA_Canadian.resid
+ARIMA_residuals = ARIMA_residuals.drop(0)
+```
+
+## Time series of residuals
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x=Canadian_train['Year'], y=ARIMA_residuals)
+plt.xlabel('Year')
+plt.ylabel('Residuals')
+plt.show()
+```
+
+
+## Correlation plots
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plot_acf(ARIMA_residuals, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plot_pacf(ARIMA_residuals, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+:::
+:::
+
+
+## 
+
+</br></br></br>
+
+[**The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is correct.**]{style="color:darkgreen;"}
+
+## Forecast
+
+Once the model is validated, we make predictions for elements in the time series. 
+
+</br>
+
+To predict the average number of hours worked in the next, say, 3 years, we use the  `.forecast()` function. The `steps` argument indicates the number of steps in the future to make the predictions.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+results_ARIMA_Canadian.forecast(steps = 3)
+```
+
+## Model evaluation using MSE
+
+</br></br>
+
+Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more *data-driven* approach and evaluate the model using the mean squared error (MSE) or root MSE.
+
+To this end, we simply use the `mean_squared_error()` function with the validation responses and our predictions.
+
+## Validation data
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Canadian_validation
+```
+
+## 
+
+</br>
+
+The validation data has 7 time periods that can be determined using the command below.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+len(Canadian_validation)
+```
+
+So, we must forecast 7 periods ahead using our ARIMA model.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+forecast_Canadian = results_ARIMA_Canadian.forecast(steps = 7)
+forecast_Canadian
+```
+
+##
+
+</br>
+
+Using the forecast and validation data, we compute the RMSE.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+mse = mean_squared_error(Canadian_validation["Hours per Week"], forecast_Canadian)  
+print(round(mse**(1/2), 2))
+```
+
+We can also compute the $R^2$ score.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+rtwo = r2_score(Canadian_validation["Hours per Week"], forecast_Canadian)  
+print(round(rtwo, 2))
+```
+
+> A negative signifies that the model's predictions are worse than simply predicting the average of the response
+
+##
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Forecast the next steps (length of validation set)
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Canadian_validation['Year'].values
+forecast_df = pd.DataFrame({
+    'Year': forecast_years,
+    'Hours per Week': forecast_Canadian,
+    'Type': 'Forecast'
+})
+
+# Add 'Type' column to training and validation data
+Canadian_train_plot = Canadian_train.copy()
+Canadian_train_plot['Type'] = 'Train'
+
+Canadian_validation_plot = Canadian_validation.copy()
+Canadian_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Canadian_train_plot, Canadian_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='Year', y='Hours per Week', hue='Type', style='Type', markers=False)
+plt.xlabel('Year')
+plt.ylabel('Hours per Week')
+plt.title('Actual and Forecasted Hours per Week Over Time')
+plt.tight_layout()
+plt.show()
+
+```
 
 # El modelo SARIMA
 

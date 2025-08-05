@@ -5625,35 +5625,35 @@
     "href": "Module3/Autocorrelation.html#section-6",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Code\nplt.figure(figsize=(10, 6))\nsns.lineplot(x='Year', y='Hours per Week', data = CanadianWorkHours)\nplt.xlabel('Year')\nplt.ylabel('Hours per Week')\nplt.title('Hours per Week Over Time')\nplt.show()"
+    "text": "In statsmodels, we apply the integration operator using the pre-loaded diff() function. The function’s k_diff argument specifies the order or level of the operator.\n\nFirst, let’s use a level-1 operator.\n\nZ_series_one = diff(Canadian_train['Hours per Week'], k_diff = 1)"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-7",
     "href": "Module3/Autocorrelation.html#section-7",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "In statsmodels, we apply the integration operator using the pre-loaded diff() function. The function’s k_diff argument specifies the order or level of the operator.\n\nFirst, let’s use a level-1 operator.\n\nZ_series_one = diff(CanadianWorkHours['Hours per Week'], k_diff = 1)"
+    "text": "The time series with a level-1 operator looks like this.\n\n\nCode\nplt.figure(figsize=(10, 6))\nsns.lineplot(x=Canadian_train['Year'], y=Z_series_one)\nplt.xlabel('Year')\nplt.ylabel('Difference Level 1')\nplt.show()"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-8",
     "href": "Module3/Autocorrelation.html#section-8",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "The time series with a level-1 operator looks like this.\n\n\nCode\nplt.figure(figsize=(10, 6))\nsns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_one)\nplt.xlabel('Year')\nplt.ylabel('Difference Level 1')\nplt.show()"
+    "text": "A level-2 operator would work like this.\n\nZ_series_two = diff(Canadian_train['Hours per Week'], k_diff = 2)\n\n\n\nCode\nplt.figure(figsize=(9, 5))\nsns.lineplot(x=Canadian_train['Year'], y=Z_series_two)\nplt.xlabel('Year')\nplt.ylabel('Difference Level 2')\nplt.show()"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-9",
     "href": "Module3/Autocorrelation.html#section-9",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "A level-2 operator would work like this.\n\nZ_series_two = diff(CanadianWorkHours['Hours per Week'], k_diff = 2)\n\n\n\nCode\nplt.figure(figsize=(9, 5))\nsns.lineplot(x=CanadianWorkHours['Year'], y=Z_series_two)\nplt.xlabel('Year')\nplt.ylabel('Difference Level 2')\nplt.show()"
+    "text": "We see that the level 2 operator is more successful in removing the trend from the original time series."
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-10",
     "href": "Module3/Autocorrelation.html#section-10",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "We see that the level 2 operator is more successful in removing the trend from the original time series."
+    "text": "&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\nTo achieve this, we have some rules."
   },
   {
     "objectID": "Module3/Autocorrelation.html#integrated-or-differentiated-operators-i",
@@ -5730,14 +5730,14 @@
     "href": "Module3/Autocorrelation.html#section-11",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\nTo achieve this, we have some rules."
+    "text": "Following part 1 of Rule 1, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-12",
     "href": "Module3/Autocorrelation.html#section-12",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Following part 1 of Rule 1, we conclude that an autoregressive term of order 1 will be sufficient to capture the relationships between the elements of the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+    "text": "This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it’s the autocorrelation function of the series after it’s been differentiated.\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.html#stochastic-terms-moving-averages-ma",
@@ -5765,13 +5765,118 @@
     "href": "Module3/Autocorrelation.html#section-13",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it’s the autocorrelation function of the series after it’s been differentiated.\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+    "text": "Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-14",
     "href": "Module3/Autocorrelation.html#section-14",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+    "text": "From our previous analysis of the training data for the Canadian workhours example, we conclude that:\n\nWe must use a level-2 differencing operator to remove the quadratic trend from the series. Therefore, d = 2.\nOne autoregressive term should be sufficient to capture the patterns in the time series. Therefore, p = 2.\nIt is not necessary to have moving average terms. Therefore, q = 0."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#arima-in-pyhon",
+    "href": "Module3/Autocorrelation.html#arima-in-pyhon",
+    "title": "Autocorrelation Models",
+    "section": "ARIMA in Pyhon",
+    "text": "ARIMA in Pyhon\n\nTo fit an ARIMA model, we use the ARIMA() function from statsmodels.\nThe function has an important argument called order, which equals (p,d,q), where\n\np is the order of the autoregressive model.\nd is the level of the integration or differencing operator.\nq is the number of elements in the moving average."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-15",
+    "href": "Module3/Autocorrelation.html#section-15",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Once this is defined, we can train an ARIMA model using the training data with the following code:\n\nArima_Canadian = ARIMA(Canadian_train['Hours per Week'], \n                       order=(2, 2, 0))\nresults_ARIMA_Canadian = Arima_Canadian.fit()\n\nTechnically, ARIMA() defines the model and .fit() fits the model to the data using maximum likelihood estimation."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-16",
+    "href": "Module3/Autocorrelation.html#section-16",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 05 Aug 2025   AIC                             11.074\nTime:                        10:54:17   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-17",
+    "href": "Module3/Autocorrelation.html#section-17",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "The next step in evaluating an ARIMA model is to study the model’s residuals to ensure there is nothing else to explain in the model.\n\nWe can obtain the residuals using the following code.\n\nARIMA_residuals = results_ARIMA_Canadian.resid\nARIMA_residuals = ARIMA_residuals.drop(0)"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#time-series-of-residuals",
+    "href": "Module3/Autocorrelation.html#time-series-of-residuals",
+    "title": "Autocorrelation Models",
+    "section": "Time series of residuals",
+    "text": "Time series of residuals\n\n\nCode\nplt.figure(figsize=(10, 6))\nsns.lineplot(x=Canadian_train['Year'], y=ARIMA_residuals)\nplt.xlabel('Year')\nplt.ylabel('Residuals')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#correlation-plots",
+    "href": "Module3/Autocorrelation.html#correlation-plots",
+    "title": "Autocorrelation Models",
+    "section": "Correlation plots",
+    "text": "Correlation plots"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-18",
+    "href": "Module3/Autocorrelation.html#section-18",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is correct."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-19",
+    "href": "Module3/Autocorrelation.html#section-19",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "The validation data has 7 time periods that can be determined using the command below.\n\nlen(Canadian_validation)\n\n7\n\n\nSo, we must forecast 7 periods ahead using our ARIMA model.\n\nforecast_Canadian = results_ARIMA_Canadian.forecast(steps = 7)\nforecast_Canadian\n\n28    36.102917\n29    36.205233\n30    36.382827\n31    36.580331\n32    36.738265\n33    36.900243\n34    37.078325\nName: predicted_mean, dtype: float64"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#forecast",
+    "href": "Module3/Autocorrelation.html#forecast",
+    "title": "Autocorrelation Models",
+    "section": "Forecast",
+    "text": "Forecast\nOnce the model is validated, we make predictions for elements in the time series.\n\nTo predict the average number of hours worked in the next, say, 3 years, we use the .forecast() function. The steps argument indicates the number of steps in the future to make the predictions.\n\nresults_ARIMA_Canadian.forecast(steps = 3)\n\n28    36.102917\n29    36.205233\n30    36.382827\nName: predicted_mean, dtype: float64"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#creating-a-train-and-a-validation-data",
+    "href": "Module3/Autocorrelation.html#creating-a-train-and-a-validation-data",
+    "title": "Autocorrelation Models",
+    "section": "Creating a train and a validation data",
+    "text": "Creating a train and a validation data\nRecall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.\n\n# Define the split point\nsplit_ratio = 0.8  # 80% train, 20% test\nsplit_point = int(len(CanadianWorkHours) * split_ratio)\n\n# Split the data\nCanadian_train = CanadianWorkHours[:split_point]\nCanadian_validation = CanadianWorkHours[split_point:]\n\nWe use 80% of the time series for training and the rest for validation."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#training-data",
+    "href": "Module3/Autocorrelation.html#training-data",
+    "title": "Autocorrelation Models",
+    "section": "Training data",
+    "text": "Training data\n\n\nCode\nplt.figure(figsize=(10, 6))\nsns.lineplot(x='Year', y='Hours per Week', data = Canadian_train)\nplt.xlabel('Year')\nplt.ylabel('Hours per Week')\nplt.title('Hours per Week Over Time')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#model-evaluation-using-mse",
+    "href": "Module3/Autocorrelation.html#model-evaluation-using-mse",
+    "title": "Autocorrelation Models",
+    "section": "Model evaluation using MSE",
+    "text": "Model evaluation using MSE\n\nInstead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more data-driven approach and evaluate the model using the mean squared error (MSE) or root MSE.\nTo this end, we simply use the mean_squared_error() function with the validation responses and our predictions."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#validation-data",
+    "href": "Module3/Autocorrelation.html#validation-data",
+    "title": "Autocorrelation Models",
+    "section": "Validation data",
+    "text": "Validation data\n\nCanadian_validation\n\n\n\n\n\n\n\n\nYear\nHours per Week\n\n\n\n\n28\n1994\n36.0\n\n\n29\n1995\n35.7\n\n\n30\n1996\n35.7\n\n\n31\n1997\n35.5\n\n\n32\n1998\n35.6\n\n\n33\n1999\n36.3\n\n\n34\n2000\n36.5"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-20",
+    "href": "Module3/Autocorrelation.html#section-20",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Canadian_validation[\"Hours per Week\"], forecast_Canadian)  \nprint(round(mse**(1/2), 2))\n\n0.75\n\n\nWe can also compute the \\(R^2\\) score.\n\nrtwo = r2_score(Canadian_validation[\"Hours per Week\"], forecast_Canadian)  \nprint(round(rtwo, 2))\n\n-3.52\n\n\n\nA negative signifies that the model’s predictions are worse than simply predicting the average of the response"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-21",
+    "href": "Module3/Autocorrelation.html#section-21",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "rtwo = r2_score(Canadian_validation[\"Hours per Week\"], forecast_Canadian)  \nprint(round(rtwo, 2))\n\n-3.52"
   }
 ]
