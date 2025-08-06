@@ -3370,8 +3370,8 @@
     "objectID": "Module4/PCA.html#agenda",
     "href": "Module4/PCA.html#agenda",
     "title": "Principal Component Analysis",
-    "section": "",
-    "text": "Introducción\nDispersión en una o varias dimensiones\nAnálisis de componentes principales"
+    "section": "Agenda",
+    "text": "Agenda\n\n\nIntroduction\nDispersion in one or more dimensions\nPrincipal component analysis"
   },
   {
     "objectID": "Module4/PCA.html#tipos-de-aprendizaje",
@@ -3434,7 +3434,7 @@
     "href": "Module4/PCA.html#section",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Alternativamente, podemos utilizar dos dimensiones alternativas para capturar la dispersión.\n\n\n\n\n\nUn solo predictor captura gran parte de la dispersión en los datos. En este caso, el nuevo predictor tiene la forma \\(Z_1 = a X_1 + b X_2 + c.\\)"
+    "text": "Alternatively, we can use two alternative dimensions to capture the dispersion."
   },
   {
     "objectID": "Module4/PCA.html#un-nuevo-eje-de-coordenadas",
@@ -3462,14 +3462,14 @@
     "href": "Module4/PCA.html#section-1",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Paso 2. Estandarizamos cada predictor individualmente.\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2 }}\\]\n\n\n\n\nPredictor 1\nPredictor 2\nPredictor 3\n\n\n\n\n\n1.15\n0.46\n-0.96\n\n\n\n-1.52\n-1.20\n-0.75\n\n\n\n0.12\n-0.95\n1.55\n\n\n\n-0.29\n0.97\n-0.13\n\n\n\n0.53\n0.72\n0.29\n\n\nSuma\n0\n0\n0\n\n\nVarianza\n1\n1\n1"
+    "text": "Step 2. We standardize each predictor individually.\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2 }}\\]\n\n\n\n\nPredictor 1\nPredictor 2\nPredictor 3\n\n\n\n\n\n1.15\n0.46\n-0.96\n\n\n\n-1.52\n-1.20\n-0.75\n\n\n\n0.12\n-0.95\n1.55\n\n\n\n-0.29\n0.97\n-0.13\n\n\n\n0.53\n0.72\n0.29\n\n\nSum\n0\n0\n0\n\n\nVariance\n1\n1\n1"
   },
   {
     "objectID": "Module4/PCA.html#section-2",
     "href": "Module4/PCA.html#section-2",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Paso 3. Asumimos que la base de datos estandarizada es una matrix \\(\\mathbf{X}\\) de \\(n\\times p\\).\n\\[\\mathbf{X} = \\begin{pmatrix}\n1.15    &   0.46    &   -0.96   \\\\\n-1.52   &   -1.20   &   -0.75   \\\\\n0.12    &   -0.95   &   1.55    \\\\\n-0.29   &   0.97    &   -0.13   \\\\\n0.53    &   0.72    &   0.29    \\\\\n\\end{pmatrix}\\]"
+    "text": "Step 3. We assume that the standardized database is an \\(n\\times p\\) matrix \\(\\mathbf{X}\\).\n\\[\\mathbf{X} = \\begin{pmatrix}\n1.15    &   0.46    &   -0.96   \\\\\n-1.52   &   -1.20   &   -0.75   \\\\\n0.12    &   -0.95   &   1.55    \\\\\n-0.29   &   0.97    &   -0.13   \\\\\n0.53    &   0.72    &   0.29    \\\\\n\\end{pmatrix}\\]"
   },
   {
     "objectID": "Module4/PCA.html#algoritmo",
@@ -3497,7 +3497,7 @@
     "href": "Module4/PCA.html#section-3",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Las columnas de \\(\\mathbf{B}\\) definen los ejes del nuevo sistema de coordenadas. Estos ejes se llaman componentes principales.\nLos valores diagonales en \\(\\mathbf{A}\\) definen la importancia individual de cada componente principal (eje)."
+    "text": "The columns of \\(\\mathbf{B}\\) define the axes of the new coordinate system. These axes are called principal components.\nThe diagonal values in \\(\\mathbf{A}\\) define the individual importance of each principal component (axis)."
   },
   {
     "objectID": "Module4/PCA.html#proporción-de-la-dispersión-explicada-por-el-componente",
@@ -3532,14 +3532,14 @@
     "href": "Module4/PCA.html#section-4",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "El Scree o Summary Plot te dice la variabilidad capturada por cada componente. Dicha variabilidad es dada por el Eigen value o valor propio. De 1 a 8 componentes.\nEl primer componente abarca la mayor parte de la dispersión de los datos.\nEsta gráfica se usa para definir el número total de componentes a usar.\n\n\nTBD"
+    "text": "\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion captured by the second component is \\(\\frac{a_{2,2}}{p} = \\frac{1.07}{3} = 0.36\\).\nThe proportion captured by the third component is \\(\\frac{a_{3,3}}{p} = \\frac{0.33}{3} = 0.11.\\)"
   },
   {
     "objectID": "Module4/PCA.html#biplot",
     "href": "Module4/PCA.html#biplot",
     "title": "Principal Component Analysis",
     "section": "Biplot",
-    "text": "Biplot\n\n\n\n\nMuestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes.\nAyuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones.\nUna linea roja da las dirección de crecimiento de la variable etiquetada.\n\n\nTBD"
+    "text": "Biplot\n\n\n\n\nDisplays the graphical observations on the new coordinate axis given by the first two components.\nHelps visualize data for three or more predictors using a two-dimensional scatter plot.\nA red line indicates the growth direction of the labeled variable."
   },
   {
     "objectID": "Module4/Clustering.html",
@@ -6361,5 +6361,208 @@
     "title": "Clustering Methods",
     "section": "Dendrogram in Python",
     "text": "Dendrogram in Python\nTo produce a nice dendrogram in Python, we use the function dendrogram from scipy.\n\n\nCode\nplt.figure(figsize=(8, 4))\ndendrogram(Clust_Cereal, color_threshold=None)\nplt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')\nplt.xlabel('Sample Index')\nplt.ylabel('Distance')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module4/PCA.html#types-of-learning",
+    "href": "Module4/PCA.html#types-of-learning",
+    "title": "Principal Component Analysis",
+    "section": "Types of learning",
+    "text": "Types of learning\n\nIn data science, there are two main types of learning:\n\nSupervised learning. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.\nUnsupervised learning. In which we have only multiple predictors. The goal is to discover patterns in your data."
+  },
+  {
+    "objectID": "Module4/PCA.html#unsupervised-learning-methods",
+    "href": "Module4/PCA.html#unsupervised-learning-methods",
+    "title": "Principal Component Analysis",
+    "section": "Unsupervised learning methods",
+    "text": "Unsupervised learning methods\n\n\nClustering Methods aim to find subgroups with similar data in the database.\nPrincipal Component Analysis seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.\n\nHere we will use these methods on predictors \\(X_1, X_2, \\ldots, X_p,\\) which are numerical."
+  },
+  {
+    "objectID": "Module4/PCA.html#dispersion-in-one-dimension",
+    "href": "Module4/PCA.html#dispersion-in-one-dimension",
+    "title": "Principal Component Analysis",
+    "section": "Dispersion in one dimension",
+    "text": "Dispersion in one dimension\n\nThe concept of principal components requires an understanding of the dispersion or variability of the data.\nSuppose we have data for a single predictor."
+  },
+  {
+    "objectID": "Module4/PCA.html#dispersion-in-two-dimensions",
+    "href": "Module4/PCA.html#dispersion-in-two-dimensions",
+    "title": "Principal Component Analysis",
+    "section": "Dispersion in two dimensions",
+    "text": "Dispersion in two dimensions"
+  },
+  {
+    "objectID": "Module4/PCA.html#capturing-dispersion",
+    "href": "Module4/PCA.html#capturing-dispersion",
+    "title": "Principal Component Analysis",
+    "section": "Capturing dispersion",
+    "text": "Capturing dispersion\nIn some cases, we can capture the spread of data in two dimensions (predictors) using a single dimension."
+  },
+  {
+    "objectID": "Module4/PCA.html#capturing-dispersion-1",
+    "href": "Module4/PCA.html#capturing-dispersion-1",
+    "title": "Principal Component Analysis",
+    "section": "Capturing dispersion",
+    "text": "Capturing dispersion\nIn some cases, we can capture the spread of data in two dimensions (predictors) using a single dimension.\n\n\n\n\n\n\n\n\n\n\nA single predictor \\(X_2\\) captures much of the spread in the data."
+  },
+  {
+    "objectID": "Module4/PCA.html#lets-see-another-example",
+    "href": "Module4/PCA.html#lets-see-another-example",
+    "title": "Principal Component Analysis",
+    "section": "Let’s see another example",
+    "text": "Let’s see another example"
+  },
+  {
+    "objectID": "Module4/PCA.html#lets-see-another-example-1",
+    "href": "Module4/PCA.html#lets-see-another-example-1",
+    "title": "Principal Component Analysis",
+    "section": "Let’s see another example",
+    "text": "Let’s see another example\n\n\n\n\n\n\n\n\n\n\nA single predictor captures much of the dispersion in the data. In this case, the new predictor has the form \\(Z_1 = a X_1 + b X_2 + c.\\)"
+  },
+  {
+    "objectID": "Module4/PCA.html#a-new-coordinate-system",
+    "href": "Module4/PCA.html#a-new-coordinate-system",
+    "title": "Principal Component Analysis",
+    "section": "A new coordinate system",
+    "text": "A new coordinate system\n\n\n\n\n\nThe new coordinate axis is given by two new predictors, \\(Z_1\\) and \\(Z_2\\). Both are given by linear equations of the new predictors.\nThe first axis, \\(Z_1\\), captures a large portion of the dispersion, while \\(Z_2\\) captures a small portion from another angle.\nThe new axes, \\(Z_1\\) and \\(Z_2\\), are called principal components."
+  },
+  {
+    "objectID": "Module4/PCA.html#dimension-reduction",
+    "href": "Module4/PCA.html#dimension-reduction",
+    "title": "Principal Component Analysis",
+    "section": "Dimension Reduction",
+    "text": "Dimension Reduction\n\nPrincipal Components Analysis (PCA) helps us reduce the dimension of the data.\n\n\nIt creates a new coordinate axis in two (or more) dimensions.\nTechnically, it creates new predictors by combining highly correlated predictors. The new predictors are uncorrelated."
+  },
+  {
+    "objectID": "Module4/PCA.html#setup",
+    "href": "Module4/PCA.html#setup",
+    "title": "Principal Component Analysis",
+    "section": "Setup",
+    "text": "Setup\n\nStep 1. We start with a database with \\(n\\) observations and \\(p\\) predictors.\n\n\n\nPredictor 1\nPredictor 2\nPredictor 3\n\n\n\n\n15\n14\n5\n\n\n2\n1\n6\n\n\n10\n3\n17\n\n\n8\n18\n9\n\n\n12\n16\n11"
+  },
+  {
+    "objectID": "Module4/PCA.html#algorithm",
+    "href": "Module4/PCA.html#algorithm",
+    "title": "Principal Component Analysis",
+    "section": "Algorithm",
+    "text": "Algorithm\n\nThe PCA algorithm has its origins in linear algebra.\n\nIts basic idea is:\n\nCreate a matrix \\(\\mathbf{C}\\) with the correlations between the predictors of the matrix \\(\\mathbf{X}\\).\nSplit the matrix \\(\\mathbf{C}\\) into three parts, which give us the new coordinate axis and the importance of each axis."
+  },
+  {
+    "objectID": "Module4/PCA.html#correlation-matrix",
+    "href": "Module4/PCA.html#correlation-matrix",
+    "title": "Principal Component Analysis",
+    "section": "Correlation matrix",
+    "text": "Correlation matrix\n\nContinuing with our example, the correlation matrix contains the correlations between two columns of \\(\\mathbf{X}\\)."
+  },
+  {
+    "objectID": "Module4/PCA.html#partitioning-the-correlation-matrix",
+    "href": "Module4/PCA.html#partitioning-the-correlation-matrix",
+    "title": "Principal Component Analysis",
+    "section": "Partitioning the correlation matrix",
+    "text": "Partitioning the correlation matrix\n\nThe \\(\\mathbf{C}\\) matrix is partitioned using the eigenvalue and eigenvector decomposition method."
+  },
+  {
+    "objectID": "Module4/PCA.html#proportion-of-the-dispersion-explained-by-the-component",
+    "href": "Module4/PCA.html#proportion-of-the-dispersion-explained-by-the-component",
+    "title": "Principal Component Analysis",
+    "section": "Proportion of the dispersion explained by the component",
+    "text": "Proportion of the dispersion explained by the component\n\n\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion of the dispersion in the data that is captured by the first component is \\(\\frac{a_{1,1}}{p} = \\frac{1.60}{3} = 0.53\\)."
+  },
+  {
+    "objectID": "Module4/PCA.html#comments",
+    "href": "Module4/PCA.html#comments",
+    "title": "Principal Component Analysis",
+    "section": "Comments",
+    "text": "Comments\n\nPrincipal components can be used to approximate a matrix.\nFor example, we can approximate the matrix \\(\\mathbf{C}\\) by setting the third component equal to zero.\n\n\\[\\begin{pmatrix}\n-0.68   &   0.35    &   0.00    \\\\\n-0.72   &   -0.13   &   0.00    \\\\\n0.16    &   0.93    &   0.00\\\\\n\\end{pmatrix} \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.00    \\\\\n\\end{pmatrix} \\begin{pmatrix}\n-0.68   &   -0.72   &   0.16    \\\\\n0.35    &   -0.13   &   0.93    \\\\\n0.00    &   0.00    &   0.00    \\\\\n\\end{pmatrix} = \\begin{pmatrix}\n0.86    &   0.73    &   0.18    \\\\\n0.73    &   0.85    &   -0.30   \\\\\n0.18    &   -0.30   &   0.96    \\\\\n\\end{pmatrix}\\]\n\n\n\\[\\approx \\begin{pmatrix}\n1.00    &   0.58    &   0.11    \\\\\n0.58    &   1.00    &   -0.23   \\\\\n0.11    &   -0.23   &   1.00    \\\\\n\\end{pmatrix} = \\mathbf{C}\\]"
+  },
+  {
+    "objectID": "Module4/PCA.html#example-1",
+    "href": "Module4/PCA.html#example-1",
+    "title": "Principal Component Analysis",
+    "section": "Example 1",
+    "text": "Example 1\n\nConsider a database of the 100 most popular songs on TikTok. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:\n\nDanceability describes how suitable a track is for dancing based on a combination of musical elements.\nEnergy is a measure from 0 to 1 and represents a perceptual measure of intensity and activity.\nThe overall volume of a track in decibels (dB). Loudness values are averaged across the entire track."
+  },
+  {
+    "objectID": "Module4/PCA.html#pca-in-python",
+    "href": "Module4/PCA.html#pca-in-python",
+    "title": "Principal Component Analysis",
+    "section": "PCA in Python",
+    "text": "PCA in Python\n\nWe tell Python that we want to apply PCA using the function PCA() from sklearn. Next, we run the algorithm using .fit_transform()\n\npca = PCA()\nPCA_tiktok = pca.fit_transform(Xs_tiktok)"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-5",
+    "href": "Module4/PCA.html#section-5",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Approximations are useful for storing large matrices.\nThis is because we only need to store the largest eigenvalues and their corresponding eigenvectors to recover a high-quality approximation of the entire matrix.\nThis is the idea behind image compression."
+  },
+  {
+    "objectID": "Module4/PCA.html#proportion-of-the-dispersion-explained-by-the-component-1",
+    "href": "Module4/PCA.html#proportion-of-the-dispersion-explained-by-the-component-1",
+    "title": "Principal Component Analysis",
+    "section": "Proportion of the dispersion explained by the component",
+    "text": "Proportion of the dispersion explained by the component\n\n\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion captured by the third component is \\(\\frac{a_{3,3}}{p} = \\frac{0.33}{3} = 0.11.\\)"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-6",
+    "href": "Module4/PCA.html#section-6",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Other predictors are:\n\nSpeech detects the presence of spoken words in a track. The more exclusively speech-like the recording is.\nA confidence measure from 0 to 1 about whether the track is acoustic.\nDetects the presence of an audience in the recording.\nA measure from 0 to 1 that describes the musical positivity a track conveys."
+  },
+  {
+    "objectID": "Module4/PCA.html#section-7",
+    "href": "Module4/PCA.html#section-7",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "The Screen or Summary Plot tells you the variability captured by each component. This variability is given by the Eigenvalue. From 1 to 8 components.\nThe first component covers most of the data dispersion.\nThis graph is used to define the total number of components to use."
+  },
+  {
+    "objectID": "Module4/PCA.html#the-data",
+    "href": "Module4/PCA.html#the-data",
+    "title": "Principal Component Analysis",
+    "section": "The data",
+    "text": "The data\n\ntiktok_data = pd.read_excel(\"TikTok_Songs_2020_Reduced.xlsx\")\ntiktok_data.head()\n\n\n\n\n\n\n\n\ntrack_name\nartist_name\nalbum\ndanceability\nenergy\nloudness\nspeechiness\nacousticness\nliveness\nvalence\ntempo\n\n\n\n\n0\nSay So\nDoja Cat\nHot Pink\n0.787\n0.673\n-4.583\n0.1590\n0.26400\n0.0904\n0.779\n110.962\n\n\n1\nBlinding Lights\nThe Weeknd\nAfter Hours\n0.514\n0.730\n-5.934\n0.0598\n0.00146\n0.0897\n0.334\n171.005\n\n\n2\nSupalonely (feat. Gus Dapperton)\nBENEE\nHey u x\n0.862\n0.631\n-4.746\n0.0515\n0.29100\n0.1230\n0.841\n128.978\n\n\n3\nSavage\nMegan Thee Stallion\nSuga\n0.843\n0.741\n-5.609\n0.3340\n0.02520\n0.0960\n0.680\n168.983\n\n\n4\nMoral of the Story\nAshe\nMoral of the Story\n0.572\n0.406\n-8.624\n0.0427\n0.58700\n0.1020\n0.265\n119.812"
+  },
+  {
+    "objectID": "Module4/PCA.html#standardize-the-data",
+    "href": "Module4/PCA.html#standardize-the-data",
+    "title": "Principal Component Analysis",
+    "section": "Standardize the data",
+    "text": "Standardize the data\n\nRemember that PCA works with distances, so we must standardize the quantitative predictors to have an accurate analysis.\n\n# Select the predictors\nfeatures = ['danceability', 'energy', 'loudness', 'speechiness',\n            'acousticness', 'liveness', 'valence', 'tempo']\nX_tiktok = tiktok_data.filter(features)  \n\n# Standardize the data\nscaler = StandardScaler()\nXs_tiktok = scaler.fit_transform(X_tiktok)"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-8",
+    "href": "Module4/PCA.html#section-8",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "The code to generate a scree plot is below.\n\nexplained_var = pca.explained_variance_ratio_\n\nplt.figure(figsize=(5, 5))\nplt.plot(range(1, len(explained_var) + 1), explained_var, \n         marker='o', linestyle='-')\nplt.title('Scree Plot')\nplt.xlabel('Principal Component')\nplt.ylabel('Explained Variance Ratio')\nplt.xticks(range(1, len(explained_var) + 1))\nplt.grid(True)\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-9",
+    "href": "Module4/PCA.html#section-9",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "The code to generate the biplot is lenghty but it can be broken into three steps.\nStep 1. Create a DataFrame with the PCA results\n\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df.head()\n\n\n\n\n\n\n\n\nPC1\nPC2\nPC3\nPC4\nPC5\nPC6\nPC7\nPC8\n\n\n\n\n0\n1.103065\n0.558086\n-0.800688\n0.446496\n0.605944\n-0.044089\n0.287325\n-0.413604\n\n\n1\n0.805080\n-0.766973\n1.580513\n-2.215856\n0.359655\n0.708123\n-0.882761\n0.113058\n\n\n2\n1.330433\n0.728161\n-0.288982\n0.376298\n0.786185\n-1.134308\n0.178388\n-0.242497\n\n\n3\n1.496277\n2.095014\n1.351398\n-0.621691\n0.390949\n0.494101\n0.024648\n-0.080720\n\n\n4\n-1.973362\n-0.966108\n-0.302071\n-1.266269\n0.414639\n-0.335677\n-0.076711\n-0.140126"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-10",
+    "href": "Module4/PCA.html#section-10",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Step 2. Create biplot of first two principal components\n\n\nCode\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.show()"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-11",
+    "href": "Module4/PCA.html#section-11",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Step 3. Add more information to the biplot.\n\n\nCode\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
+  },
+  {
+    "objectID": "Module4/PCA.html#section-12",
+    "href": "Module4/PCA.html#section-12",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "With some extra lines of code, we label the points in the plot.\n\n\nCode\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df = (pca_df\n          .assign(songs = tiktok_data['track_name'])\n          )\n\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add labels for each song\nfor i in range(pca_df.shape[0]):\n    plt.text(pca_df['PC1'][i] + 0.1, pca_df['PC2'][i] + 0.1,\n             pca_df['songs'][i], fontsize=8, alpha=0.7)\n\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
   }
 ]

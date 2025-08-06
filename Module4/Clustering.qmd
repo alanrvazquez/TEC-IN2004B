@@ -50,7 +50,7 @@ from sklearn.cluster import KMeans, AgglomerativeClustering
 from scipy.cluster.hierarchy import dendrogram, linkage
 ```
 
-Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**,  **sklearn**, and **scipy** libraries in Python.
 
 ## Types of learning
 
@@ -107,7 +107,7 @@ It is also known as *exploratory data analysis*.
 
 -   [**Principal Component Analysis**]{style="color:#017373;"} seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.
 
-Here we will use these methods on predictors $X_1, X_2, \ldots, X_p$, which are *numerical*.
+Here we will use these methods on predictors $X_1, X_2, \ldots, X_p,$ which are *numerical*.
 
 ## Unsupervised learning methods
 
@@ -117,7 +117,7 @@ Here we will use these methods on predictors $X_1, X_2, \ldots, X_p$, which are 
 
 -   [**Principal Component Analysis** seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.]{style="color:gray;"}
 
-Here we will use these methods on predictors $X_1, X_2, \ldots, X_p$, which are *numerical*.
+Here we will use these methods on predictors $X_1, X_2, \ldots, X_p,$ which are *numerical*.
 
 # Clustering Methods
 
@@ -228,13 +228,12 @@ For example, if we have two predictors $X_1$ and $X_2$ with observations given i
 $$d = \sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 }$$
 :::
 
-
 ## 
 
 We can extend the Euclidean distance to measure the distance between observations when we have more predictors. For example, with 3 predictors we have
 
-| Observation | $X_1$      | $X_2$      | $X_3$      |
-|-------------|------------|------------|------------|
+| Observation | $X_1$     | $X_2$     | $X_3$     |
+|-------------|-----------|-----------|-----------|
 | 1           | $X_{1,1}$ | $X_{1,2}$ | $X_{1,3}$ |
 | 2           | $X_{2,1}$ | $X_{2,2}$ | $X_{2,3}$ |
 
@@ -248,38 +247,38 @@ $$d = \sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^
 
 </br>
 
-- The Euclidean distance depends on the units of measurement of the predictors!
+-   The Euclidean distance depends on the units of measurement of the predictors!
 
-- Predictors with certain units have greater importance in calculating the distance.
+-   Predictors with certain units have greater importance in calculating the distance.
 
-- This is not good since we want all predictors to have equal importance when calculating the Euclidean distance between two observations.
+-   This is not good since we want all predictors to have equal importance when calculating the Euclidean distance between two observations.
 
-- The solution is to **standardize** the units of the predictors.
+-   The solution is to **standardize** the units of the predictors.
 
 ## K-Means Algorithm
 
-:::::: center
-::::: columns
-::: {.column width="50%"}
+::::::: center
+:::::: columns
+:::: {.column width="50%"}
 ::: {style="font-size: 90%;"}
 Choose a value for *K*, the number of groups.
 
-1. Randomly assign observations to one of the *K* groups.
-2. Find the *centroids* (average points) of each group.
-3. Reassign observations to the group with the closest centroid.
-4. Repeat steps 3 and 4 until there are no more changes.
+1.  Randomly assign observations to one of the *K* groups.
+2.  Find the *centroids* (average points) of each group.
+3.  Reassign observations to the group with the closest centroid.
+4.  Repeat steps 3 and 4 until there are no more changes.
 :::
-:::
+::::
 
 ::: {.column width="50%"}
 ![](images/clipboard-1847659123.png){fig-align="center"}
 :::
-:::::
 ::::::
+:::::::
 
 ## Example 1 (cont.)
 
-Let's apply the algorithm to the predictors `bill_depth_mm` and  `bill_length_mm` of the penguins dataset.
+Let's apply the algorithm to the predictors `bill_depth_mm` and `bill_length_mm` of the penguins dataset.
 
 ```{python}
 #| output: true
@@ -306,7 +305,7 @@ scaler = StandardScaler()
 Xs_penguins = scaler.fit_transform(X_penguins)
 ```
 
-##
+## 
 
 </br></br>
 
@@ -325,7 +324,7 @@ clusters = kmeans.fit_predict(Xs_penguins)
 
 The argument `n_clusters` sets the desired number of clusters and `random_state` allows us to reproduce the analysis.
 
-##
+## 
 
 The clusters created are contained in the `clusters` object.
 
@@ -387,12 +386,12 @@ sns.scatterplot(data=penguins_data, x="bill_depth_mm", y="bill_length_mm",
 plt.show() # Display the plot.
 ```
 
-##
+## 
 
 </br>
 
-::::::: center
-:::::: columns
+:::::: center
+::::: columns
 ::: {.column width="50%"}
 ```{python}
 #| output: true
@@ -424,8 +423,8 @@ sns.scatterplot(data=penguins_data, x="bill_depth_mm", y="bill_length_mm",
 plt.show() # Display the plot.
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## Let's try using more predictors
 
@@ -454,11 +453,10 @@ clustered_X = (X_penguins
               )
 ```
 
+## 
 
-##
-
-::::::: center
-:::::: columns
+:::::: center
+::::: columns
 ::: {.column width="50%"}
 ```{python}
 #| output: true
@@ -489,9 +487,8 @@ sns.scatterplot(data=penguins_data, x="bill_depth_mm", y="bill_length_mm",
 plt.show() # Display the plot.
 ```
 :::
-:::
-:::
-
+:::::
+::::::
 
 ## These are the three species
 
@@ -521,13 +518,13 @@ Chinstrap
 
 </br>
 
-A simple way to determine the number of clusters is recording the quality of clustering for  different numbers of clusters. 
+A simple way to determine the number of clusters is recording the quality of clustering for different numbers of clusters.
 
 In **sklearn**, we can record the [***inertia***]{style="color:#8B004F;"} of a partition into clusters. Technically, the inertia is the sum of squared distances of observations to their closest cluster center.
 
 The lower the intertia the better because this means that all observations are close to their cluster centers *overall*.
 
-##
+## 
 
 </br></br>
 
@@ -549,15 +546,16 @@ for i in range(1,11):
 
 ## 
 
-::::::: center
-:::::: columns
+:::::: center
+::::: columns
 ::: {.column width="50%"}
 Next, we plot the intertias and look for the *elbow* in the plot.
 
-The *elbow* represents a number of clusters for which there is no significant improvement in the quality of the clustering. 
+The *elbow* represents a number of clusters for which there is no significant improvement in the quality of the clustering.
 
 In this case, the number of clusters recommended by this *elbow* method is 3.
 :::
+
 ::: {.column width="50%"}
 ```{python}
 #| output: true
@@ -573,18 +571,18 @@ plt.ylabel('Inertia')
 plt.show()
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## Comments
 
-- Selecting the number of clusters *K* is more of an art than a science. You'd better get *K* right, or you'll be detecting patterns where none really exist.
+-   Selecting the number of clusters *K* is more of an art than a science. You'd better get *K* right, or you'll be detecting patterns where none really exist.
 
-- We need to standardize all predictors.
+-   We need to standardize all predictors.
 
-- The performance of *K*-means clustering is affected by the presence of outliers.
+-   The performance of *K*-means clustering is affected by the presence of outliers.
 
-- The algorithm's solution is sensitive to the starting point. Because of this, it is typically run multiple times, and the best clustering among all runs is reported.
+-   The algorithm's solution is sensitive to the starting point. Because of this, it is typically run multiple times, and the best clustering among all runs is reported.
 
 # Hierarchical Clustering
 
@@ -592,42 +590,40 @@ plt.show()
 
 </br>
 
-:::::: center
-::::: columns
-::: {.column width="50%"}
+::::::: center
+:::::: columns
+:::: {.column width="50%"}
 ::: {style="font-size: 90%;"}
+-   Start with each observation standing alone in its own group.
 
-- Start with each observation standing alone in its own group.
+-   Then, gradually merge the groups that are close together.
 
-- Then, gradually merge the groups that are close together.
+-   Continue this process until all the observations are in one large group.
 
-- Continue this process until all the observations are in one large group.
-
-- Finally, step back and see which grouping works best.
+-   Finally, step back and see which grouping works best.
 :::
-:::
+::::
 
 ::: {.column width="50%"}
-
 </br>
 
 ![](images/clipboard-2325345248.png)
 :::
-:::::
 ::::::
+:::::::
 
 ## Essential elements
 
 </br>
 
 ::: incremental
-1. Distance between two observations.
+1.  Distance between two observations.
 
-      - We use Euclidean distance.
-    
-      - We must standardize the predictors!
+    -   We use Euclidean distance.
 
-2. Distance between [**two groups**]{style="color:darkgreen;"}.
+    -   We must standardize the predictors!
+
+2.  Distance between [**two groups**]{style="color:darkgreen;"}.
 :::
 
 ## Distance between two groups
@@ -641,8 +637,8 @@ The distance between two groups of observations is called [***linkage***]{style=
 
 There are several types of linking. The most commonly used are:
 
-- Complete linkage
-- Average linkage
+-   Complete linkage
+-   Average linkage
 :::
 
 ::: {.column width="40%"}
@@ -670,11 +666,11 @@ The distance between groups is the average of all the distances between observat
 The steps of the algorithm are as follows:
 
 ::: incremental
-1. Assign each observation to a cluster.
-2. Measure the linkage between all clusters.
-3. Merge the two most similar clusters.
-4. Then, merge the next two most similar clusters.
-5. Continue until all clusters have been merged.
+1.  Assign each observation to a cluster.
+2.  Measure the linkage between all clusters.
+3.  Merge the two most similar clusters.
+4.  Then, merge the next two most similar clusters.
+5.  Continue until all clusters have been merged.
 :::
 
 ## Example 2
@@ -721,7 +717,7 @@ Xs_cereal = scaler.fit_transform(X_cereal)
 
 </br></br>
 
-Unfortunately, the `Agglomerative()` function in **sklearn** is not as user friendly compared to other available functions in Python. In particular, the **scipy** library has a function called `linkage()` for hierarchical clustering that works as follows. 
+Unfortunately, the `Agglomerative()` function in **sklearn** is not as user friendly compared to other available functions in Python. In particular, the **scipy** library has a function called `linkage()` for hierarchical clustering that works as follows.
 
 ```{python}
 #| output: true
@@ -736,22 +732,22 @@ The argument `method` sets the type of linkage to be used.
 
 </br>
 
-:::::: center
-::::: columns
-::: {.column width="40%"}
+::::::: center
+:::::: columns
+:::: {.column width="40%"}
 ::: {style="font-size: 80%;"}
-- A dendrogram is a tree diagram that summarizes and visualizes the clustering process.
-- Observations are on the horizontal axis and at the bottom of the diagram.
-- The vertical axis shows the distance between groups.
-- It is read from top to bottom.
+-   A dendrogram is a tree diagram that summarizes and visualizes the clustering process.
+-   Observations are on the horizontal axis and at the bottom of the diagram.
+-   The vertical axis shows the distance between groups.
+-   It is read from top to bottom.
 :::
-:::
+::::
 
 ::: {.column width="60%"}
 ![](images/clipboard-2041051251.png)
 :::
-:::::
 ::::::
+:::::::
 
 ## What to do with a dendrogram?
 
@@ -806,21 +802,20 @@ plt.tight_layout()
 plt.show()
 ```
 
-
 ## Comments
 
 </br>
 
-- Remember to standardize the predictors!
+-   Remember to standardize the predictors!
 
-- It's not easy to choose the correct number of clusters using the dendrogram.
+-   It's not easy to choose the correct number of clusters using the dendrogram.
 
-- The results depend on the linkage measure used.
+-   The results depend on the linkage measure used.
 
-    - Complete linkage results in narrower clusters.
-    - Average linkage strikes a balance between narrow and thinner clusters.
+    -   Complete linkage results in narrower clusters.
+    -   Average linkage strikes a balance between narrow and thinner clusters.
 
-- Hierarchical clustering is useful for detecting outliers.
+-   Hierarchical clustering is useful for detecting outliers.
 
 ## 
 
