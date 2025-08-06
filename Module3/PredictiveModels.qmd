@@ -613,7 +613,7 @@ The three possible patterns are:
 Airline_data = pd.read_excel("Airline.xlsx")
 
 plt.figure(figsize=(6, 4))
-sns.lineplot(x='T', y='Numero de pasajeros', data = Airline_data)
+sns.lineplot(x='T', y='Number of passengers', data = Airline_data)
 plt.xlabel('Time')
 plt.ylabel('Number of passengers')
 plt.title('Number of passengers across time')
@@ -1126,7 +1126,7 @@ For illustrative purposes, we will not split the time series into training and v
 #| code-fold: true
 
 plt.figure(figsize=(10, 5))
-sns.lineplot(x='T', y='Numero de pasajeros', data = Airline_data)
+sns.lineplot(x='T', y='Number of passengers', data = Airline_data)
 plt.xlabel('Time')
 plt.ylabel('Number of passengers')
 plt.title('Number of passengers across time')
@@ -1150,7 +1150,7 @@ Let's fit a linear regression model.
 X_full = Airline_data.filter(['T'])
 
 # Set response.
-Y_full = Airline_data.filter(['Numero de pasajeros'])
+Y_full = Airline_data.filter(['Number of passengers'])
 
 # 1. Create linear regression
 LRmodelAirline = LinearRegression()
@@ -1301,7 +1301,7 @@ Examples:
 #| code-fold: false
 
 plt.figure(figsize=(5, 5))
-sns.lineplot(x='T', y='Numero de pasajeros', data = Airline_data)
+sns.lineplot(x='T', y='Number of passengers', data = Airline_data)
 plt.xlabel('Time')
 plt.ylabel('Number of passengers')
 plt.title('Number of passengers across time')
