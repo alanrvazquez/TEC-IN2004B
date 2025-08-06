@@ -3658,7 +3658,7 @@
     "href": "Module4/Clustering.html#section-2",
     "title": "Clustering Methods",
     "section": "",
-    "text": "In Python, we use the KMeans() function of sklearn to apply K-means clustering. KMeans() tells Python we want to train a K-means clustering algorithm and .fit_predict() actually trains it using the data.\n\n# Fit KMeans with 3 clusters\nkmeans = KMeans(n_clusters = 3, random_state = 301655)\nclusters = kmeans.fit_predict(X)\n\nThe argument n_clusters sets the desired number of clusters and random_state allows us to reproduce the analysis."
+    "text": "In Python, we use the KMeans() function of sklearn to apply K-means clustering. KMeans() tells Python we want to train a K-means clustering algorithm and .fit_predict() actually trains it using the data.\n\n# Fit KMeans with 3 clusters\nkmeans = KMeans(n_clusters = 3, random_state = 301655)\nclusters = kmeans.fit_predict(Xs_penguins)\n\nThe argument n_clusters sets the desired number of clusters and random_state allows us to reproduce the analysis."
   },
   {
     "objectID": "Module4/Clustering.html#problema-con-la-distancia-euclidiana",
@@ -3756,21 +3756,21 @@
     "href": "Module4/Clustering.html#resultados-dendrograma",
     "title": "Clustering Methods",
     "section": "Resultados: Dendrograma",
-    "text": "Resultados: Dendrograma\n\n\n\n\nUn dendrograma es un diagrama de arbol que resume y visualiza el proceso de agrupamiento.\nLas observaciones estan en el eje horizontal y en la parte inferior del diagrama.\nEl eje vertical muestra la distancia entre los grupos.\nSe lee de arriba a abajo."
+    "text": "Resultados: Dendrograma\n\n\n\n\nA dendrogram is a tree diagram that summarizes and visualizes the clustering process.\nObservations are on the horizontal axis and at the bottom of the diagram.\nThe vertical axis shows the distance between groups.\nIt is read from top to bottom."
   },
   {
     "objectID": "Module4/Clustering.html#qué-hacer-con-un-dendrograma",
     "href": "Module4/Clustering.html#qué-hacer-con-un-dendrograma",
     "title": "Clustering Methods",
     "section": "¿Qué hacer con un dendrograma?",
-    "text": "¿Qué hacer con un dendrograma?\n\n\n\nDibujamos una linea horizontal a una altura específica para definir los grupos.\nEsta linea define 3 grupos."
+    "text": "¿Qué hacer con un dendrograma?\n\n\n\nWe draw a horizontal line at a specific height to define the groups.\nThis line defines three groups."
   },
   {
     "objectID": "Module4/Clustering.html#section-3",
     "href": "Module4/Clustering.html#section-3",
     "title": "Clustering Methods",
     "section": "",
-    "text": "The clusters created are contained in the clusters object.\n\n\nCode\nclusters\n\n\narray([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,\n       2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2,\n       1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1,\n       0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1,\n       1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1,\n       0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,\n       0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1,\n       0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,\n       0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0,\n       1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 2, 0, 1, 0,\n       0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0,\n       1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0], dtype=int32)"
+    "text": "The clusters created are contained in the clusters object.\n\n\nCode\nclusters\n\n\narray([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0,\n       2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 0, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2,\n       2, 0, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 1, 2,\n       0, 2, 2, 2, 2, 0, 0, 2, 1, 2, 2, 2], dtype=int32)"
   },
   {
     "objectID": "Module4/Clustering.html#dendrograma-en-python",
@@ -3791,7 +3791,7 @@
     "href": "Module4/Clustering.html#section-4",
     "title": "Clustering Methods",
     "section": "",
-    "text": "To visualize the clusters, we can augment the dataset X with the clusters object. usign the code below.\n\nclustered_X = (X\n              .assign(Cluster = clusters)\n              )\n\nclustered_X.head()\n\n\n\n\n\n\n\n\nbill_depth_mm\nbill_length_mm\nCluster\n\n\n\n\n0\n18.7\n39.1\n2\n\n\n1\n17.4\n39.5\n2\n\n\n2\n18.0\n40.3\n2\n\n\n3\n19.3\n36.7\n2\n\n\n4\n20.6\n39.3\n2"
+    "text": "To visualize the clusters, we augment the original dataset X_penguins (without standarization) with the clusters object. usign the code below.\n\nclustered_penguins = (X_penguins\n              .assign(Cluster = clusters)\n              )\n\nclustered_penguins.head()\n\n\n\n\n\n\n\n\nbill_depth_mm\nbill_length_mm\nCluster\n\n\n\n\n0\n18.7\n39.1\n1\n\n\n1\n17.4\n39.5\n1\n\n\n2\n18.0\n40.3\n1\n\n\n3\n19.3\n36.7\n1\n\n\n4\n20.6\n39.3\n1"
   },
   {
     "objectID": "Module3/PredictiveModels.html",
@@ -6080,7 +6080,7 @@
     "href": "Module4/Clustering.html#load-the-libraries",
     "title": "Clustering Methods",
     "section": "Load the libraries",
-    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.cluster import KMeans\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans, AgglomerativeClustering\nfrom scipy.cluster.hierarchy import dendrogram, linkage\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
   },
   {
     "objectID": "Module4/Clustering.html#example-1",
@@ -6143,14 +6143,14 @@
     "href": "Module4/Clustering.html#example-1-cont.",
     "title": "Clustering Methods",
     "section": "Example 1 (cont.)",
-    "text": "Example 1 (cont.)\nLet’s apply the algorithm to the predictors bill_depth_mm and bill_length_mm of the penguins dataset.\n\n\nCode\nX = penguins_data.filter(['bill_depth_mm', 'bill_length_mm'])\nX.head()\n\n\n\n\n\n\n\n\n\nbill_depth_mm\nbill_length_mm\n\n\n\n\n0\n18.7\n39.1\n\n\n1\n17.4\n39.5\n\n\n2\n18.0\n40.3\n\n\n3\n19.3\n36.7\n\n\n4\n20.6\n39.3"
+    "text": "Example 1 (cont.)\nLet’s apply the algorithm to the predictors bill_depth_mm and bill_length_mm of the penguins dataset.\n\n\nCode\nX_penguins = penguins_data.filter(['bill_depth_mm', 'bill_length_mm'])\nX_penguins.head()\n\n\n\n\n\n\n\n\n\nbill_depth_mm\nbill_length_mm\n\n\n\n\n0\n18.7\n39.1\n\n\n1\n17.4\n39.5\n\n\n2\n18.0\n40.3\n\n\n3\n19.3\n36.7\n\n\n4\n20.6\n39.3"
   },
   {
     "objectID": "Module4/Clustering.html#section-5",
     "href": "Module4/Clustering.html#section-5",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Code\nplt.figure(figsize=(9, 6))\nsns.scatterplot(data = clustered_X, x = 'bill_length_mm', y = 'bill_depth_mm', hue = 'Cluster', palette = 'Set1')\nplt.title('K-means Clustering of Penguins')\nplt.xlabel('Bill Length (mm)')\nplt.ylabel('Bill Depth (mm)')\nplt.tight_layout()\nplt.show()"
+    "text": "Code\nplt.figure(figsize=(9, 6))\nsns.scatterplot(data = clustered_penguins, x = 'bill_length_mm', y = 'bill_depth_mm', \n                hue = 'Cluster', palette = 'Set1')\nplt.title('K-means Clustering of Penguins')\nplt.xlabel('Bill Length (mm)')\nplt.ylabel('Bill Depth (mm)')\nplt.tight_layout()\nplt.show()"
   },
   {
     "objectID": "Module4/Clustering.html#section-6",
@@ -6178,7 +6178,7 @@
     "href": "Module4/Clustering.html#section-8",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Esta linea define 5 grupos."
+    "text": "To record the intertias for different numbers of clusters, we use the code below.\n\ninertias = []\n\nfor i in range(1,11):\n    kmeans = KMeans(n_clusters=i)\n    kmeans.fit(Xs_penguins)\n    inertias.append(kmeans.inertia_)"
   },
   {
     "objectID": "Module4/Clustering.html#the-truth-3-groups-of-penguins",
@@ -6192,7 +6192,7 @@
     "href": "Module4/Clustering.html#lets-try-using-more-predictors",
     "title": "Clustering Methods",
     "section": "Let’s try using more predictors",
-    "text": "Let’s try using more predictors\n\n\nX = penguins_data.filter(['bill_depth_mm', 'bill_length_mm', \n                          'flipper_length_mm', 'body_mass_g'])\n\n# Fit KMeans with 3 clusters\nkmeans = KMeans(n_clusters = 3, random_state = 301655)\nclusters = kmeans.fit_predict(X)\n\n# Save new clusters\nclustered_X = (X\n              .assign(Cluster = clusters)\n              )"
+    "text": "Let’s try using more predictors\n\n\nX_penguins = penguins_data.filter(['bill_depth_mm', 'bill_length_mm', \n                          'flipper_length_mm', 'body_mass_g'])\n\n## Standardize\nscaler = StandardScaler()\nXs_penguins = scaler.fit_transform(X_penguins)\n\n# Fit KMeans with 3 clusters\nkmeans = KMeans(n_clusters = 3, random_state = 301655)\nclusters = kmeans.fit_predict(Xs_penguins)\n\n# Save new clusters into the original data\nclustered_X = (X_penguins\n              .assign(Cluster = clusters)\n              )"
   },
   {
     "objectID": "Module4/Clustering.html#these-are-the-three-species",
@@ -6206,7 +6206,7 @@
     "href": "Module4/Clustering.html#section-9",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Con estos métodos, no existe una única respuesta correcta; se debe considerar cualquier solución que exponga algunos aspectos interesantes de los datos.\n\nJames et al. (2017)"
+    "text": "Next, we plot the intertias and look for the elbow in the plot.\nThe elbow represents a number of clusters for which there is no significant improvement in the quality of the clustering.\nIn this case, the number of clusters recommended by this elbow method is 3.\n\n\n\nCode\nplt.figure(figsize=(6, 6))\nplt.plot(range(1,11), inertias, marker='o')\nplt.title('Elbow method')\nplt.xlabel('Number of clusters')\nplt.ylabel('Inertia')\nplt.show()"
   },
   {
     "objectID": "Module4/Clustering.html#comments",
@@ -6214,5 +6214,152 @@
     "title": "Clustering Methods",
     "section": "Comments",
     "text": "Comments\n\nSelecting the number of clusters K is more of an art than a science. You’d better get K right, or you’ll be detecting patterns where none really exist.\nWe need to standardize all predictors.\nThe performance of K-means clustering is affected by the presence of outliers.\nThe algorithm’s solution is sensitive to the starting point. Because of this, it is typically run multiple times, and the best clustering among all runs is reported."
+  },
+  {
+    "objectID": "Module4/Clustering.html#determining-the-number-of-clusters",
+    "href": "Module4/Clustering.html#determining-the-number-of-clusters",
+    "title": "Clustering Methods",
+    "section": "Determining the number of clusters",
+    "text": "Determining the number of clusters\n\nA simple way to determine the number of clusters is recording the quality of clustering for different numbers of clusters.\nIn sklearn, we can record the inertia of a partition into clusters. Technically, the inertia is the sum of squared distances of observations to their closest cluster center.\nThe lower the intertia the better because this means that all observations are close to their cluster centers overall."
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-10",
+    "href": "Module4/Clustering.html#section-10",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Here, we will restrict to 7 numeric predictors\n\nX_cereal = cereal_data.filter(['calories', 'protein', 'fat', 'sodium', 'fiber',\n                              'carbo', 'sugars', 'potass', 'vitamins'])\nX_cereal.head()\n\n\n\n\n\n\n\n\ncalories\nprotein\nfat\nsodium\nfiber\ncarbo\nsugars\npotass\nvitamins\n\n\n\n\n0\n70\n4\n1\n130\n10.0\n5.0\n6\n280\n25\n\n\n1\n120\n3\n5\n15\n2.0\n8.0\n8\n135\n0\n\n\n2\n70\n4\n1\n260\n9.0\n7.0\n5\n320\n25\n\n\n3\n50\n4\n0\n140\n14.0\n8.0\n0\n330\n25\n\n\n4\n110\n2\n2\n200\n1.0\n14.0\n8\n-1\n25"
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-11",
+    "href": "Module4/Clustering.html#section-11",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Unfortunately, the Agglomerative() function in sklearn is not as user friendly compared to other available functions in Python. In particular, the scipy library has a function called linkage() for hierarchical clustering that works as follows.\n\nClust_Cereal = linkage(Xs_cereal, method = 'complete')\n\nThe argument method sets the type of linkage to be used."
+  },
+  {
+    "objectID": "Module4/Clustering.html#hierarchical-grouping-1",
+    "href": "Module4/Clustering.html#hierarchical-grouping-1",
+    "title": "Clustering Methods",
+    "section": "Hierarchical Grouping",
+    "text": "Hierarchical Grouping\n\n\n\n\nStart with each observation standing alone in its own group.\nThen, gradually merge the groups that are close together.\nContinue this process until all the observations are in one large group.\nFinally, step back and see which grouping works best."
+  },
+  {
+    "objectID": "Module4/Clustering.html#essential-elements",
+    "href": "Module4/Clustering.html#essential-elements",
+    "title": "Clustering Methods",
+    "section": "Essential elements",
+    "text": "Essential elements\n\n\n\nDistance between two observations.\n\nWe use Euclidean distance.\nWe must standardize the predictors!\n\nDistance between two groups."
+  },
+  {
+    "objectID": "Module4/Clustering.html#distance-between-two-groups",
+    "href": "Module4/Clustering.html#distance-between-two-groups",
+    "title": "Clustering Methods",
+    "section": "Distance between two groups",
+    "text": "Distance between two groups\n\n\n\n\nThe distance between two groups of observations is called linkage.\nThere are several types of linking. The most commonly used are:\n\nComplete linkage\nAverage linkage"
+  },
+  {
+    "objectID": "Module4/Clustering.html#complete-linkage",
+    "href": "Module4/Clustering.html#complete-linkage",
+    "title": "Clustering Methods",
+    "section": "Complete linkage",
+    "text": "Complete linkage\nThe distance between groups is measured using the largest distance between observations."
+  },
+  {
+    "objectID": "Module4/Clustering.html#average-linkage",
+    "href": "Module4/Clustering.html#average-linkage",
+    "title": "Clustering Methods",
+    "section": "Average linkage",
+    "text": "Average linkage\nThe distance between groups is the average of all the distances between observations."
+  },
+  {
+    "objectID": "Module4/Clustering.html#hierarchical-clustering-algorithm",
+    "href": "Module4/Clustering.html#hierarchical-clustering-algorithm",
+    "title": "Clustering Methods",
+    "section": "Hierarchical clustering algorithm",
+    "text": "Hierarchical clustering algorithm\n\nThe steps of the algorithm are as follows:\n\n\nAssign each observation to a cluster.\nMeasure the linkage between all clusters.\nMerge the two most similar clusters.\nThen, merge the next two most similar clusters.\nContinue until all clusters have been merged."
+  },
+  {
+    "objectID": "Module4/Clustering.html#ejemplo-2",
+    "href": "Module4/Clustering.html#ejemplo-2",
+    "title": "Clustering Methods",
+    "section": "Ejemplo 2",
+    "text": "Ejemplo 2\nLet’s consider a dataset called “Cereals.xlsx.” The data includes nutritional information for 77 cereals, among other data."
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-12",
+    "href": "Module4/Clustering.html#section-12",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "This line defines 5 groups."
+  },
+  {
+    "objectID": "Module4/Clustering.html#hierarchical-clustering-1",
+    "href": "Module4/Clustering.html#hierarchical-clustering-1",
+    "title": "Clustering Methods",
+    "section": "Hierarchical clustering",
+    "text": "Hierarchical clustering\n\n\n\n\n\n\nStart with each observation standing alone in its own group.\nThen, gradually merge the groups that are close together.\nContinue this process until all the observations are in one large group.\nFinally, step back and see which grouping works best."
+  },
+  {
+    "objectID": "Module4/Clustering.html#example-2",
+    "href": "Module4/Clustering.html#example-2",
+    "title": "Clustering Methods",
+    "section": "Example 2",
+    "text": "Example 2\n\nLet’s consider a dataset called “Cereals.xlsx.” The data includes nutritional information for 77 cereals, among other data.\n\ncereal_data = pd.read_excel(\"cereals.xlsx\")"
+  },
+  {
+    "objectID": "Module4/Clustering.html#standarization",
+    "href": "Module4/Clustering.html#standarization",
+    "title": "Clustering Methods",
+    "section": "Standarization",
+    "text": "Standarization\nSince the K-means algorithm works with Euclidean distance, we must standardize the predictors before we start. In this way, all of them will be equally informative in the process.\n\n\nCode\n## Standardize\nscaler = StandardScaler()\nXs_penguins = scaler.fit_transform(X_penguins)"
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-13",
+    "href": "Module4/Clustering.html#section-13",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "With these methods, there is no single correct answer; any solution that exposes some interesting aspect of the data should be considered.\n\nJames et al. (2017)"
+  },
+  {
+    "objectID": "Module4/Clustering.html#do-not-forget-to-standardize",
+    "href": "Module4/Clustering.html#do-not-forget-to-standardize",
+    "title": "Clustering Methods",
+    "section": "Do not forget to standardize",
+    "text": "Do not forget to standardize\n\nSince the hierarchical clustering algorithm also works with distances, we must standardize the predictors to have an accurate analysis.\n\nscaler = StandardScaler()\nXs_cereal = scaler.fit_transform(X_cereal)"
+  },
+  {
+    "objectID": "Module4/Clustering.html#comments-1",
+    "href": "Module4/Clustering.html#comments-1",
+    "title": "Clustering Methods",
+    "section": "Comments",
+    "text": "Comments\n\n\nRemember to standardize the predictors!\nIt’s not easy to choose the correct number of clusters using the dendrogram.\nThe results depend on the linkage measure used.\n\nComplete linkage results in narrower clusters.\nAverage linkage strikes a balance between narrow and thinner clusters.\n\nHierarchical clustering is useful for detecting outliers."
+  },
+  {
+    "objectID": "Module4/Clustering.html#results-dendrogram",
+    "href": "Module4/Clustering.html#results-dendrogram",
+    "title": "Clustering Methods",
+    "section": "Results: Dendrogram",
+    "text": "Results: Dendrogram\n\n\n\n\n\n\nA dendrogram is a tree diagram that summarizes and visualizes the clustering process.\nObservations are on the horizontal axis and at the bottom of the diagram.\nThe vertical axis shows the distance between groups.\nIt is read from top to bottom."
+  },
+  {
+    "objectID": "Module4/Clustering.html#results-dendrogram-1",
+    "href": "Module4/Clustering.html#results-dendrogram-1",
+    "title": "Clustering Methods",
+    "section": "Results: Dendrogram",
+    "text": "Results: Dendrogram\n\n\n\n\n\n\nA dendrogram is a tree diagram that summarizes and visualizes the clustering process.\nObservations are on the horizontal axis and at the bottom of the diagram.\nThe vertical axis shows the distance between groups.\nIt is read from top to bottom."
+  },
+  {
+    "objectID": "Module4/Clustering.html#what-to-do-with-a-dendrogram",
+    "href": "Module4/Clustering.html#what-to-do-with-a-dendrogram",
+    "title": "Clustering Methods",
+    "section": "What to do with a dendrogram?",
+    "text": "What to do with a dendrogram?\n\n\n\n\nWe draw a horizontal line at a specific height to define the groups.\nThis line defines three groups."
+  },
+  {
+    "objectID": "Module4/Clustering.html#dendrogram-in-python",
+    "href": "Module4/Clustering.html#dendrogram-in-python",
+    "title": "Clustering Methods",
+    "section": "Dendrogram in Python",
+    "text": "Dendrogram in Python\nTo produce a nice dendrogram in Python, we use the function dendrogram from scipy.\n\n\nCode\nplt.figure(figsize=(8, 4))\ndendrogram(Clust_Cereal, color_threshold=None)\nplt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')\nplt.xlabel('Sample Index')\nplt.ylabel('Distance')\nplt.tight_layout()\nplt.show()"
   }
 ]

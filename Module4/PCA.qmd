@@ -322,19 +322,19 @@ $$\approx \begin{pmatrix}
 
 Considera una base de datos de las 100 canciones más populares en TikTok. Los datos están en el archivo “TikTok 2020 reduced.xlsx“. Se tienen observaciones de varios predictores como:
 
-- La bailabilidad describe qué tan adecuada es una pista para bailar basándose en una combinación de elementos musicales.
+-   La bailabilidad describe qué tan adecuada es una pista para bailar basándose en una combinación de elementos musicales.
 
-- La energía es una medida de 0 a 1 y representa una medida perceptiva de intensidad y actividad.
+-   La energía es una medida de 0 a 1 y representa una medida perceptiva de intensidad y actividad.
 
-- El volumen general de una pista en decibelios (dB). Los valores de sonoridad se promedian en toda la pista.
+-   El volumen general de una pista en decibelios (dB). Los valores de sonoridad se promedian en toda la pista.
 
-- El habla detecta la presencia de palabras habladas en una pista. Cuanto más exclusivamente parecida a un discurso sea la grabación.
+-   El habla detecta la presencia de palabras habladas en una pista. Cuanto más exclusivamente parecida a un discurso sea la grabación.
 
-- Una medida de confianza de 0 a 1 sobre si la pista es acústica.
+-   Una medida de confianza de 0 a 1 sobre si la pista es acústica.
 
-- Detecta la presencia de una audiencia en la grabación.
+-   Detecta la presencia de una audiencia en la grabación.
 
-- Una medida de 0 a 1 que describe la positividad musical que transmite una pista.
+-   Una medida de 0 a 1 que describe la positividad musical que transmite una pista.
 
 ## APC en Python
 
@@ -343,11 +343,11 @@ Considera una base de datos de las 100 canciones más populares en TikTok. Los d
 :::::: center
 ::::: columns
 ::: {.column width="60%"}
-- El **Scree o Summary Plot** te dice la variabilidad capturada por cada componente. Dicha variabilidad es dada por el *Eigen value* o valor propio. De 1 a 8 componentes.
+-   El **Scree o Summary Plot** te dice la variabilidad capturada por cada componente. Dicha variabilidad es dada por el *Eigen value* o valor propio. De 1 a 8 componentes.
 
-- El primer componente abarca la mayor parte de la dispersión de los datos.
+-   El primer componente abarca la mayor parte de la dispersión de los datos.
 
-- Esta gráfica se usa para definir el número total de componentes a usar.
+-   Esta gráfica se usa para definir el número total de componentes a usar.
 :::
 
 ::: {.column width="40%"}
@@ -361,9 +361,9 @@ TBD
 :::::: center
 ::::: columns
 ::: {.column width="60%"}
-- Muestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes. 
-- Ayuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones. 
-- Una linea roja da las dirección de crecimiento de la variable etiquetada. 
+-   Muestra las observaciones gráficas en el nuevo eje de coordenadas dado por los dos primeros componentes.
+-   Ayuda a visualizar los datos de tres o más predictores usando una gáfica de dispersión en 2 dimensiones.
+-   Una linea roja da las dirección de crecimiento de la variable etiquetada.
 :::
 
 ::: {.column width="40%"}
@@ -371,6 +371,5 @@ TBD
 :::
 :::::
 ::::::
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)

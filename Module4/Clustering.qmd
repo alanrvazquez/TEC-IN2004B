@@ -45,7 +45,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans, AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage
 ```
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
@@ -285,8 +287,23 @@ Let's apply the algorithm to the predictors `bill_depth_mm` and  `bill_length_mm
 #| fig-align: center
 #| code-fold: true 
 
-X = penguins_data.filter(['bill_depth_mm', 'bill_length_mm'])
-X.head()
+X_penguins = penguins_data.filter(['bill_depth_mm', 'bill_length_mm'])
+X_penguins.head()
+```
+
+## Standarization
+
+Since the K-means algorithm works with Euclidean distance, we must standardize the predictors before we start. In this way, all of them will be equally informative in the process.
+
+```{python}
+#| output: true
+#| echo: true
+#| fig-align: center
+#| code-fold: true 
+
+## Standardize
+scaler = StandardScaler()
+Xs_penguins = scaler.fit_transform(X_penguins)
 ```
 
 ##
@@ -303,7 +320,7 @@ In Python, we use the `KMeans()` function of **sklearn** to apply K-means cluste
 
 # Fit KMeans with 3 clusters
 kmeans = KMeans(n_clusters = 3, random_state = 301655)
-clusters = kmeans.fit_predict(X)
+clusters = kmeans.fit_predict(Xs_penguins)
 ```
 
 The argument `n_clusters` sets the desired number of clusters and `random_state` allows us to reproduce the analysis.
@@ -323,7 +340,7 @@ clusters
 
 ## 
 
-To visualize the clusters, we can augment the dataset `X` with the `clusters` object. usign the code below.
+To visualize the clusters, we augment the original dataset `X_penguins` (without standarization) with the `clusters` object. usign the code below.
 
 ```{python}
 #| output: true
@@ -331,11 +348,11 @@ To visualize the clusters, we can augment the dataset `X` with the `clusters` ob
 #| fig-align: center
 #| code-fold: false 
 
-clustered_X = (X
+clustered_penguins = (X_penguins
               .assign(Cluster = clusters)
               )
 
-clustered_X.head()
+clustered_penguins.head()
 ```
 
 ## 
@@ -347,7 +364,8 @@ clustered_X.head()
 #| code-fold: true 
 
 plt.figure(figsize=(9, 6))
-sns.scatterplot(data = clustered_X, x = 'bill_length_mm', y = 'bill_depth_mm', hue = 'Cluster', palette = 'Set1')
+sns.scatterplot(data = clustered_penguins, x = 'bill_length_mm', y = 'bill_depth_mm', 
+                hue = 'Cluster', palette = 'Set1')
 plt.title('K-means Clustering of Penguins')
 plt.xlabel('Bill Length (mm)')
 plt.ylabel('Bill Depth (mm)')
@@ -383,7 +401,8 @@ plt.show() # Display the plot.
 #| code-fold: false 
 
 plt.figure(figsize=(5, 5))
-sns.scatterplot(data = clustered_X, x = 'bill_length_mm', y = 'bill_depth_mm', hue = 'Cluster', palette = 'Set1')
+sns.scatterplot(data = clustered_penguins, x = 'bill_length_mm', y = 'bill_depth_mm', 
+                hue = 'Cluster', palette = 'Set1')
 plt.title('K-means Clustering of Penguins')
 plt.xlabel('Bill Length (mm)')
 plt.ylabel('Bill Depth (mm)')
@@ -418,15 +437,19 @@ plt.show() # Display the plot.
 #| fig-align: center
 #| code-fold: false 
 
-X = penguins_data.filter(['bill_depth_mm', 'bill_length_mm', 
+X_penguins = penguins_data.filter(['bill_depth_mm', 'bill_length_mm', 
                           'flipper_length_mm', 'body_mass_g'])
+
+## Standardize
+scaler = StandardScaler()
+Xs_penguins = scaler.fit_transform(X_penguins)
 
 # Fit KMeans with 3 clusters
 kmeans = KMeans(n_clusters = 3, random_state = 301655)
-clusters = kmeans.fit_predict(X)
+clusters = kmeans.fit_predict(Xs_penguins)
 
-# Save new clusters
-clustered_X = (X
+# Save new clusters into the original data
+clustered_X = (X_penguins
               .assign(Cluster = clusters)
               )
 ```
@@ -494,6 +517,65 @@ Chinstrap
 ::::::
 :::::::
 
+## Determining the number of clusters
+
+</br>
+
+A simple way to determine the number of clusters is recording the quality of clustering for  different numbers of clusters. 
+
+In **sklearn**, we can record the [***inertia***]{style="color:#8B004F;"} of a partition into clusters. Technically, the inertia is the sum of squared distances of observations to their closest cluster center.
+
+The lower the intertia the better because this means that all observations are close to their cluster centers *overall*.
+
+##
+
+</br></br>
+
+To record the intertias for different numbers of clusters, we use the code below.
+
+```{python}
+#| output: false
+#| echo: true
+#| fig-align: center
+#| code-fold: false 
+
+inertias = []
+
+for i in range(1,11):
+    kmeans = KMeans(n_clusters=i)
+    kmeans.fit(Xs_penguins)
+    inertias.append(kmeans.inertia_)
+```
+
+## 
+
+::::::: center
+:::::: columns
+::: {.column width="50%"}
+Next, we plot the intertias and look for the *elbow* in the plot.
+
+The *elbow* represents a number of clusters for which there is no significant improvement in the quality of the clustering. 
+
+In this case, the number of clusters recommended by this *elbow* method is 3.
+:::
+::: {.column width="50%"}
+```{python}
+#| output: true
+#| echo: true
+#| fig-align: center
+#| code-fold: true 
+
+plt.figure(figsize=(6, 6))
+plt.plot(range(1,11), inertias, marker='o')
+plt.title('Elbow method')
+plt.xlabel('Number of clusters')
+plt.ylabel('Inertia')
+plt.show()
+```
+:::
+:::
+:::
+
 ## Comments
 
 - Selecting the number of clusters *K* is more of an art than a science. You'd better get *K* right, or you'll be detecting patterns where none really exist.
@@ -504,50 +586,63 @@ Chinstrap
 
 - The algorithm's solution is sensitive to the starting point. Because of this, it is typically run multiple times, and the best clustering among all runs is reported.
 
-# Agrupación Jerárquica
+# Hierarchical Clustering
 
-## Agrupación Jerárquica
+## Hierarchical clustering
+
+</br>
 
 :::::: center
 ::::: columns
-::: {.column width="60%"}
--   Comienza con cada observación por sí sola en su propio grupo.
+::: {.column width="50%"}
+::: {style="font-size: 90%;"}
 
--   Luego, fusiona gradualmente los grupos que están cerca unos de otros.
+- Start with each observation standing alone in its own group.
 
--   Continuamos este proceso hasta que todas las observaciones estén en un grupo grande.
+- Then, gradually merge the groups that are close together.
 
--   Finalmente, damos un paso atrás y vemos qué agrupación funciona mejor.
+- Continue this process until all the observations are in one large group.
+
+- Finally, step back and see which grouping works best.
+:::
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
+
+</br>
+
 ![](images/clipboard-2325345248.png)
 :::
 :::::
 ::::::
 
-## Componentes Esenciales
+## Essential elements
 
 </br>
 
-1.  Distancia entre dos observaciones.
+::: incremental
+1. Distance between two observations.
 
--   Usamos la distancia euclidiana.
--   Debemos de estandarizar los predictores!
+      - We use Euclidean distance.
+    
+      - We must standardize the predictors!
 
-2.  Distancia entre [**dos grupos**]{style="color:darkgreen;"}.
+2. Distance between [**two groups**]{style="color:darkgreen;"}.
+:::
 
-## Distancia entre grupos.
+## Distance between two groups
+
+</br></br>
 
 :::::: center
 ::::: columns
 ::: {.column width="60%"}
-La distancia entre dos grupos de observaciones se llama [***vinculación***]{style="color:pink;"}.
+The distance between two groups of observations is called [***linkage***]{style="color:pink;"}.
 
-Hay varios tipos de vinculación. Los más usados son
+There are several types of linking. The most commonly used are:
 
--   Vinculación completa
--   Vinculación promedio
+- Complete linkage
+- Average linkage
 :::
 
 ::: {.column width="40%"}
@@ -556,62 +651,121 @@ Hay varios tipos de vinculación. Los más usados son
 :::::
 ::::::
 
-## Vinculación Completa
+## Complete linkage
 
-La distancia entre grupos se mide utilizando la mayor distancia entre observaciones.
+The distance between groups is measured using the largest distance between observations.
 
-![](images/completa.png)
+![](images/completa.png){fig-align="center"}
 
-## Promedio
+## Average linkage
 
-La distancia entre grupos es el promedio de todas las distancias entre observaciones.
+The distance between groups is the average of all the distances between observations.
 
-![](images/promedio.png)
+![](images/promedio.png){fig-align="center"}
 
-## Algoritmo de Agrupamiento Jerárquico
+## Hierarchical clustering algorithm
 
-Los pasos del algoritmo son los siguientes:
+</br></br>
 
-1.  Asigna cada observación a un grupo.
-2.  Mide el vínculo entre todos los grupos.
-3.  Fusiona los dos grupos que sean más similares.
-4.  Luego, fusiona los dos siguientes grupos que sean más similares.
-5.  Continua hasta que todos los grupos hayan sido fusionados.
+The steps of the algorithm are as follows:
 
-## Ejemplo
+::: incremental
+1. Assign each observation to a cluster.
+2. Measure the linkage between all clusters.
+3. Merge the two most similar clusters.
+4. Then, merge the next two most similar clusters.
+5. Continue until all clusters have been merged.
+:::
 
-Consideremos un conjunto de datos en el archivo “Cereals.xlsx”. Los datos incluyen información nutricional de 77 cereales, entre otros datos.
+## Example 2
 
-## En Python
+</br></br>
 
-## Resultados: Dendrograma
+Let's consider a dataset called "Cereals.xlsx." The data includes nutritional information for 77 cereals, among other data.
+
+```{python}
+#| output: true
+#| echo: true
+
+cereal_data = pd.read_excel("cereals.xlsx")
+```
+
+## 
+
+Here, we will restrict to 7 numeric predictors
+
+```{python}
+#| output: true
+#| echo: true
+
+X_cereal = cereal_data.filter(['calories', 'protein', 'fat', 'sodium', 'fiber',
+                              'carbo', 'sugars', 'potass', 'vitamins'])
+X_cereal.head()
+```
+
+## Do not forget to standardize
+
+</br></br></br>
+
+Since the hierarchical clustering algorithm also works with distances, we must standardize the predictors to have an accurate analysis.
+
+```{python}
+#| output: true
+#| echo: true
+
+scaler = StandardScaler()
+Xs_cereal = scaler.fit_transform(X_cereal)
+```
+
+## 
+
+</br></br>
+
+Unfortunately, the `Agglomerative()` function in **sklearn** is not as user friendly compared to other available functions in Python. In particular, the **scipy** library has a function called `linkage()` for hierarchical clustering that works as follows. 
+
+```{python}
+#| output: true
+#| echo: true
+
+Clust_Cereal = linkage(Xs_cereal, method = 'complete')
+```
+
+The argument `method` sets the type of linkage to be used.
+
+## Results: Dendrogram
+
+</br>
 
 :::::: center
 ::::: columns
-::: {.column width="60%"}
--   Un dendrograma es un diagrama de arbol que resume y visualiza el proceso de agrupamiento.
--   Las observaciones estan en el eje horizontal y en la parte inferior del diagrama.
--   El eje vertical muestra la distancia entre los grupos.
--   Se lee de arriba a abajo.
+::: {.column width="40%"}
+::: {style="font-size: 80%;"}
+- A dendrogram is a tree diagram that summarizes and visualizes the clustering process.
+- Observations are on the horizontal axis and at the bottom of the diagram.
+- The vertical axis shows the distance between groups.
+- It is read from top to bottom.
+:::
 :::
 
-::: {.column width="40%"}
+::: {.column width="60%"}
 ![](images/clipboard-2041051251.png)
 :::
 :::::
 ::::::
 
-## ¿Qué hacer con un dendrograma?
+## What to do with a dendrogram?
+
+</br>
 
 :::::: center
 ::::: columns
-::: {.column width="60%"}
-Dibujamos una linea horizontal a una altura específica para definir los grupos.
+::: {.column width="40%"}
+We draw a horizontal line at a specific height to define the groups.
 
-Esta linea define 3 grupos.
+This line defines three groups.
 :::
 
-::: {.column width="40%"}
+::: {.column width="60%"}
 ![](images/dendrograma1.png)
 :::
 :::::
@@ -619,38 +773,60 @@ Esta linea define 3 grupos.
 
 ## 
 
+</br></br>
+
 :::::: center
 ::::: columns
-::: {.column width="60%"}
-Esta linea define 5 grupos.
+::: {.column width="40%"}
+This line defines 5 groups.
 :::
 
-::: {.column width="40%"}
+::: {.column width="60%"}
 ![](images/dendrograma2.png)
 :::
 :::::
 ::::::
 
-## Dendrograma en Python
+## Dendrogram in Python
 
-## Comentarios
+To produce a nice dendrogram in Python, we use the function `dendrogram` from **scipy**.
 
--   Recuerda que debemos estandarizar los predictores!
+```{python}
+#| output: true
+#| echo: true
+#| fig-align: center
+#| code-fold: true
 
--   No es sencillo elegir el número correcto de grupos usando el dendrograma.
+plt.figure(figsize=(8, 4))
+dendrogram(Clust_Cereal, color_threshold=None)
+plt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')
+plt.xlabel('Sample Index')
+plt.ylabel('Distance')
+plt.tight_layout()
+plt.show()
+```
 
--   Los resultados dependen de la medida de vinculación utilizada.
 
-    -   La vinculación completa resulta en grupos más estrechos.
-    -   La vinculación promedio logra un equilibrio entre grupos estrechos y más delgados.
+## Comments
 
--   La agrupación jerárquica es útil para detectar valores atípicos.
+</br>
+
+- Remember to standardize the predictors!
+
+- It's not easy to choose the correct number of clusters using the dendrogram.
+
+- The results depend on the linkage measure used.
+
+    - Complete linkage results in narrower clusters.
+    - Average linkage strikes a balance between narrow and thinner clusters.
+
+- Hierarchical clustering is useful for detecting outliers.
 
 ## 
 
-</br> </br>
+</br></br></br>
 
-> *Con estos métodos, no existe una única respuesta correcta; se debe considerar cualquier solución que exponga algunos aspectos interesantes de los datos.*
+> *With these methods, there is no single correct answer; any solution that exposes some interesting aspect of the data should be considered.*
 
 James et al. (2017)
 
