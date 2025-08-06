@@ -3552,8 +3552,8 @@
     "objectID": "Module4/Clustering.html#agenda",
     "href": "Module4/Clustering.html#agenda",
     "title": "Clustering Methods",
-    "section": "",
-    "text": "Aprendizaje Sin Supervisión\nMétodos de agrupamiento\n\nMétodo de K-Medias\nAgrupación Jerárquica"
+    "section": "Agenda",
+    "text": "Agenda\n\n\nUnsupervised Learning\nClustering Methods\nK-Means Method\nHierarchical Clustering"
   },
   {
     "objectID": "Module4/Clustering.html#tipos-de-aprendizaje",
@@ -3609,7 +3609,7 @@
     "href": "Module4/Clustering.html#ejemplo",
     "title": "Clustering Methods",
     "section": "Ejemplo",
-    "text": "Ejemplo\nLa base de datos “penguins.xlsx” contiene datos sobre 342 pingüinos en la Antártida. Los datos contienen:\n\n\n\n\nLongitud del pico (bill length) en milimetros.\nProfundidad del pico (bill depth) en milimetros.\nLongitud de la aleta (flipper length) en milimetros\nPeso (body mass) en gramos.\n\n\n\n\n\n\n¿Podemos agrupar los pingüinos en base a estas características?"
+    "text": "Ejemplo\nConsideremos un conjunto de datos en el archivo “Cereals.xlsx”. Los datos incluyen información nutricional de 77 cereales, entre otros datos."
   },
   {
     "objectID": "Module4/Clustering.html#datos",
@@ -3637,7 +3637,7 @@
     "href": "Module4/Clustering.html#section",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Para esto, el método necesita dos elementos:\nA. Una medida de “cercanía” entre observaciones. B. Un algoritmo que agrupe observaciones que están cercanas entre sí.\nUna buena agrupación es aquella en la que las observaciones dentro de un grupo están cerca y las observaciones en diferentes grupos están lejos."
+    "text": "For this, the method requires two elements:\n\n\nA measure of “closeness” between observations.\nAn algorithm that groups observations that are close to each other.\n\n\n\nGood clustering is one in which observations within a group are close together and observations in different groups are far apart."
   },
   {
     "objectID": "Module4/Clustering.html#cómo-medimos-la-distancia-entre-observaciones",
@@ -3651,14 +3651,14 @@
     "href": "Module4/Clustering.html#section-1",
     "title": "Clustering Methods",
     "section": "",
-    "text": "La distancia euclideana es\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 }\\]"
+    "text": "We can extend the Euclidean distance to measure the distance between observations when we have more predictors. For example, with 3 predictors we have\n\n\n\nObservation\n\\(X_1\\)\n\\(X_2\\)\n\\(X_3\\)\n\n\n\n\n1\n\\(X_{1,1}\\)\n\\(X_{1,2}\\)\n\\(X_{1,3}\\)\n\n\n2\n\\(X_{2,1}\\)\n\\(X_{2,2}\\)\n\\(X_{2,3}\\)\n\n\n\n\nWhere the Euclidean distance is\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^2 }\\]"
   },
   {
     "objectID": "Module4/Clustering.html#section-2",
     "href": "Module4/Clustering.html#section-2",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Podemos extender la distancia euclidiana para medir la distancia entre observaciones cuando tenemos más predictores. Por ejemplo, con 3 predictores tenemos\n\n\n\nObservación\n(X_1)\n(X_2)\n(X_3)\n\n\n\n\n1\n(X_{1,1})\n(X_{1,2})\n(X_{1,3})\n\n\n2\n(X_{2,1})\n(X_{2,2})\n(X_{2,3})\n\n\n\nDonde la distancia euclideana es\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^2 }\\]"
+    "text": "In Python, we use the KMeans() function of sklearn to apply K-means clustering. KMeans() tells Python we want to train a K-means clustering algorithm and .fit_predict() actually trains it using the data.\n\n# Fit KMeans with 3 clusters\nkmeans = KMeans(n_clusters = 3, random_state = 301655)\nclusters = kmeans.fit_predict(X)\n\nThe argument n_clusters sets the desired number of clusters and random_state allows us to reproduce the analysis."
   },
   {
     "objectID": "Module4/Clustering.html#problema-con-la-distancia-euclidiana",
@@ -3693,7 +3693,7 @@
     "href": "Module4/Clustering.html#comentarios",
     "title": "Clustering Methods",
     "section": "Comentarios",
-    "text": "Comentarios\n\nSeleccionar el número de grupos K es más un arte que una ciencia. Será mejor que aciertes con K, o estarás detectando patrones donde en verdad no los hay.\nNecesitamos estandarizar todos los predictores.\nEl rendimiento de la agrupación por K-medias se ve afectado por la presencia de valores atípicos.\nLa solución del algoritmo es sensible al punto de partida. Por esto, normalmente se ejecuta varias veces y se reporta la mejor agrupación entre todas las ejecuciones."
+    "text": "Comentarios\n\nRecuerda que debemos estandarizar los predictores!\nNo es sencillo elegir el número correcto de grupos usando el dendrograma.\nLos resultados dependen de la medida de vinculación utilizada.\n\nLa vinculación completa resulta en grupos más estrechos.\nLa vinculación promedio logra un equilibrio entre grupos estrechos y más delgados.\n\nLa agrupación jerárquica es útil para detectar valores atípicos."
   },
   {
     "objectID": "Module4/Clustering.html#agrupación-jerárquica-1",
@@ -3770,7 +3770,7 @@
     "href": "Module4/Clustering.html#section-3",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Esta linea define 5 grupos."
+    "text": "The clusters created are contained in the clusters object.\n\n\nCode\nclusters\n\n\narray([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,\n       2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2,\n       1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2,\n       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1,\n       0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1,\n       1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1,\n       0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,\n       0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1,\n       0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,\n       0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0,\n       1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 2, 0, 1, 0,\n       0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0,\n       1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0], dtype=int32)"
   },
   {
     "objectID": "Module4/Clustering.html#dendrograma-en-python",
@@ -3791,7 +3791,7 @@
     "href": "Module4/Clustering.html#section-4",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Con estos métodos, no existe una única respuesta correcta; se debe considerar cualquier solución que exponga algunos aspectos interesantes de los datos.\n\nJames et al. (2017)"
+    "text": "To visualize the clusters, we can augment the dataset X with the clusters object. usign the code below.\n\nclustered_X = (X\n              .assign(Cluster = clusters)\n              )\n\nclustered_X.head()\n\n\n\n\n\n\n\n\nbill_depth_mm\nbill_length_mm\nCluster\n\n\n\n\n0\n18.7\n39.1\n2\n\n\n1\n17.4\n39.5\n2\n\n\n2\n18.0\n40.3\n2\n\n\n3\n19.3\n36.7\n2\n\n\n4\n20.6\n39.3\n2"
   },
   {
     "objectID": "Module3/PredictiveModels.html",
@@ -6004,5 +6004,215 @@
     "title": "Autocorrelation Models",
     "section": "Autocorrelation plots",
     "text": "Autocorrelation plots\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+  },
+  {
+    "objectID": "Module4/Clustering.html#types-of-learning",
+    "href": "Module4/Clustering.html#types-of-learning",
+    "title": "Clustering Methods",
+    "section": "Types of learning",
+    "text": "Types of learning\n\nIn data science, there are two main types of learning:\n\nSupervised learning. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.\nUnsupervised learning. In which we have only multiple predictors. The goal is to discover patterns in your data."
+  },
+  {
+    "objectID": "Module4/Clustering.html#types-of-learning-1",
+    "href": "Module4/Clustering.html#types-of-learning-1",
+    "title": "Clustering Methods",
+    "section": "Types of learning",
+    "text": "Types of learning\n\nIn data science, there are two main types of learning:\n\nSupervised learning. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.\nUnsupervised learning. In which we have only multiple predictors. The goal is to discover patterns in your data."
+  },
+  {
+    "objectID": "Module4/Clustering.html#unsupervised-learning",
+    "href": "Module4/Clustering.html#unsupervised-learning",
+    "title": "Clustering Methods",
+    "section": "Unsupervised learning",
+    "text": "Unsupervised learning\nIts goal is to organize or group data to gain insights.\nIt answers questions like:\n\nIs there an informative way to visualize the data?\nCan we discover subgroups among variables or observations?\n\nUnsupervised learning is more challenging than supervised learning because it is subjective and there is no simple objective for the analysis, such as predicting a response.\nUnsupervised learning is also known as exploratory data analysis."
+  },
+  {
+    "objectID": "Module4/Clustering.html#examples-of-unsupervised-learning",
+    "href": "Module4/Clustering.html#examples-of-unsupervised-learning",
+    "title": "Clustering Methods",
+    "section": "Examples of Unsupervised Learning",
+    "text": "Examples of Unsupervised Learning\n\n\nMarketing. Identify a segment of customers with a high tendency to purchase a specific product.\nRetail. Group customers based on their preferences, style, clothing choices, and store preferences.\nMedical Science. Facilitate the efficient diagnosis and treatment of patients, as well as the discovery of new drugs.\nSociology. Classify people based on their demographics, lifestyle, socioeconomic status, etc."
+  },
+  {
+    "objectID": "Module4/Clustering.html#unsupervised-learning-methods",
+    "href": "Module4/Clustering.html#unsupervised-learning-methods",
+    "title": "Clustering Methods",
+    "section": "Unsupervised learning methods",
+    "text": "Unsupervised learning methods\n\n\nClustering Methods aim to find subgroups with similar data in the database.\nPrincipal Component Analysis seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.\n\nHere we will use these methods on predictors \\(X_1, X_2, \\ldots, X_p\\), which are numerical."
+  },
+  {
+    "objectID": "Module4/Clustering.html#unsupervised-learning-methods-1",
+    "href": "Module4/Clustering.html#unsupervised-learning-methods-1",
+    "title": "Clustering Methods",
+    "section": "Unsupervised learning methods",
+    "text": "Unsupervised learning methods\n\n\nClustering Methods aim to find subgroups with similar data in the database.\nPrincipal Component Analysis seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.\n\nHere we will use these methods on predictors \\(X_1, X_2, \\ldots, X_p\\), which are numerical."
+  },
+  {
+    "objectID": "Module4/Clustering.html#clustering-methods",
+    "href": "Module4/Clustering.html#clustering-methods",
+    "title": "Clustering Methods",
+    "section": "Clustering methods",
+    "text": "Clustering methods\nThey group data in different ways to discover groups with common traits."
+  },
+  {
+    "objectID": "Module4/Clustering.html#clustering-methods-1",
+    "href": "Module4/Clustering.html#clustering-methods-1",
+    "title": "Clustering Methods",
+    "section": "Clustering methods",
+    "text": "Clustering methods\nThey group data in different ways to discover groups with common traits."
+  },
+  {
+    "objectID": "Module4/Clustering.html#unsupervised-learning-1",
+    "href": "Module4/Clustering.html#unsupervised-learning-1",
+    "title": "Clustering Methods",
+    "section": "Unsupervised learning",
+    "text": "Unsupervised learning\nGoal: organize or group data to gain insights. It answers questions like these\n\nIs there an informative way to visualize the data?\nCan we discover subgroups among variables or observations?\n\n\nUnsupervised learning is more challenging than supervised learning because it is subjective and there is no simple objective for the analysis, such as predicting a response.\n\n\nIt is also known as exploratory data analysis."
+  },
+  {
+    "objectID": "Module4/Clustering.html#clustering-methods-2",
+    "href": "Module4/Clustering.html#clustering-methods-2",
+    "title": "Clustering Methods",
+    "section": "Clustering methods",
+    "text": "Clustering methods\n\nTwo classic clustering methods are:\n\nK-Means Method. We seek to divide the observations into K groups.\nHierarchical Clustering. We divide the n observations into 1 group, 2 groups, 3 groups, …, up to n groups. We visualize the divisions using a graph called a dendrogram."
+  },
+  {
+    "objectID": "Module4/Clustering.html#load-the-libraries",
+    "href": "Module4/Clustering.html#load-the-libraries",
+    "title": "Clustering Methods",
+    "section": "Load the libraries",
+    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.cluster import KMeans\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+  },
+  {
+    "objectID": "Module4/Clustering.html#example-1",
+    "href": "Module4/Clustering.html#example-1",
+    "title": "Clustering Methods",
+    "section": "Example 1",
+    "text": "Example 1\nThe “penguins.xlsx” database contains data on 342 penguins in Antarctica. The data includes:\n\n\n\n\nBill length in millimeters.\nBill depth in millimeters.\nFlipper length in millimeters.\nBody mass in grams."
+  },
+  {
+    "objectID": "Module4/Clustering.html#data",
+    "href": "Module4/Clustering.html#data",
+    "title": "Clustering Methods",
+    "section": "Data",
+    "text": "Data\n\npenguins_data = pd.read_excel(\"penguins.xlsx\")\npenguins_data.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\n4\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007"
+  },
+  {
+    "objectID": "Module4/Clustering.html#data-visualization",
+    "href": "Module4/Clustering.html#data-visualization",
+    "title": "Clustering Methods",
+    "section": "Data visualization",
+    "text": "Data visualization\nCan we group penguins based on their characteristics?\n\n\nCode\nplt.figure(figsize=(8, 5)) # Set figure size.\nsns.scatterplot(data=penguins_data, x=\"bill_depth_mm\", y=\"bill_length_mm\") # Define type of plot.\nplt.show() # Display the plot."
+  },
+  {
+    "objectID": "Module4/Clustering.html#the-k-means-method",
+    "href": "Module4/Clustering.html#the-k-means-method",
+    "title": "Clustering Methods",
+    "section": "The K-Means method",
+    "text": "The K-Means method\n\nGoal: Find K groups of observations such that each observation is in a different group."
+  },
+  {
+    "objectID": "Module4/Clustering.html#how-do-we-measure-the-distance-between-observations",
+    "href": "Module4/Clustering.html#how-do-we-measure-the-distance-between-observations",
+    "title": "Clustering Methods",
+    "section": "How do we measure the distance between observations?",
+    "text": "How do we measure the distance between observations?\nFor quantitative predictors, we use the Euclidean distance.\nFor example, if we have two predictors \\(X_1\\) and \\(X_2\\) with observations given in the table:\n\n\n\nObservation\n\\(X_1\\)\n\\(X_2\\)\n\n\n\n\n1\n\\(X_{1,1}\\)\n\\(X_{1,2}\\)\n\n\n2\n\\(X_{2,1}\\)\n\\(X_{2,2}\\)"
+  },
+  {
+    "objectID": "Module4/Clustering.html#euclidean-distance",
+    "href": "Module4/Clustering.html#euclidean-distance",
+    "title": "Clustering Methods",
+    "section": "Euclidean distance",
+    "text": "Euclidean distance\n\n\n\n\\[d = \\sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 }\\]"
+  },
+  {
+    "objectID": "Module4/Clustering.html#problem-with-euclidean-distance",
+    "href": "Module4/Clustering.html#problem-with-euclidean-distance",
+    "title": "Clustering Methods",
+    "section": "Problem with Euclidean distance",
+    "text": "Problem with Euclidean distance\n\n\nThe Euclidean distance depends on the units of measurement of the predictors!\nPredictors with certain units have greater importance in calculating the distance.\nThis is not good since we want all predictors to have equal importance when calculating the Euclidean distance between two observations.\nThe solution is to standardize the units of the predictors."
+  },
+  {
+    "objectID": "Module4/Clustering.html#k-means-algorithm",
+    "href": "Module4/Clustering.html#k-means-algorithm",
+    "title": "Clustering Methods",
+    "section": "K-Means Algorithm",
+    "text": "K-Means Algorithm\n\n\n\n\nChoose a value for K, the number of groups.\n\nRandomly assign observations to one of the K groups.\nFind the centroids (average points) of each group.\nReassign observations to the group with the closest centroid.\nRepeat steps 3 and 4 until there are no more changes."
+  },
+  {
+    "objectID": "Module4/Clustering.html#example-1-cont.",
+    "href": "Module4/Clustering.html#example-1-cont.",
+    "title": "Clustering Methods",
+    "section": "Example 1 (cont.)",
+    "text": "Example 1 (cont.)\nLet’s apply the algorithm to the predictors bill_depth_mm and bill_length_mm of the penguins dataset.\n\n\nCode\nX = penguins_data.filter(['bill_depth_mm', 'bill_length_mm'])\nX.head()\n\n\n\n\n\n\n\n\n\nbill_depth_mm\nbill_length_mm\n\n\n\n\n0\n18.7\n39.1\n\n\n1\n17.4\n39.5\n\n\n2\n18.0\n40.3\n\n\n3\n19.3\n36.7\n\n\n4\n20.6\n39.3"
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-5",
+    "href": "Module4/Clustering.html#section-5",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Code\nplt.figure(figsize=(9, 6))\nsns.scatterplot(data = clustered_X, x = 'bill_length_mm', y = 'bill_depth_mm', hue = 'Cluster', palette = 'Set1')\nplt.title('K-means Clustering of Penguins')\nplt.xlabel('Bill Length (mm)')\nplt.ylabel('Bill Depth (mm)')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-6",
+    "href": "Module4/Clustering.html#section-6",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Code\nplt.figure(figsize=(6, 6))\nsns.scatterplot(data = clustered_X, x = 'bill_length_mm', y = 'bill_depth_mm', hue = 'Cluster', palette = 'Set1')\nplt.title('K-means Clustering of Penguins')\nplt.xlabel('Bill Length (mm)')\nplt.ylabel('Bill Depth (mm)')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplt.figure(figsize=(6, 6))\nsns.scatterplot(data=penguins_data, x=\"bill_depth_mm\", y=\"bill_length_mm\",\n                hue=\"species\", palette = 'Set1') # Define type of plot.\nplt.show() # Display the plot."
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-7",
+    "href": "Module4/Clustering.html#section-7",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Esta linea define 5 grupos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#the-truth",
+    "href": "Module4/Clustering.html#the-truth",
+    "title": "Clustering Methods",
+    "section": "The truth",
+    "text": "The truth\nActually, there are three groups of penguins.\n\n\nCode\nplt.figure(figsize=(9, 6))\nsns.scatterplot(data=penguins_data, x=\"bill_depth_mm\", y=\"bill_length_mm\",\n                hue=\"species\", palette = 'Set1') # Define type of plot.\nplt.show() # Display the plot."
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-8",
+    "href": "Module4/Clustering.html#section-8",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Esta linea define 5 grupos."
+  },
+  {
+    "objectID": "Module4/Clustering.html#the-truth-3-groups-of-penguins",
+    "href": "Module4/Clustering.html#the-truth-3-groups-of-penguins",
+    "title": "Clustering Methods",
+    "section": "The truth: 3 groups of penguins",
+    "text": "The truth: 3 groups of penguins\n\n\nCode\nplt.figure(figsize=(9, 6))\nsns.scatterplot(data=penguins_data, x=\"bill_depth_mm\", y=\"bill_length_mm\",\n                hue=\"species\", palette = 'Set1') # Define type of plot.\nplt.show() # Display the plot."
+  },
+  {
+    "objectID": "Module4/Clustering.html#lets-try-using-more-predictors",
+    "href": "Module4/Clustering.html#lets-try-using-more-predictors",
+    "title": "Clustering Methods",
+    "section": "Let’s try using more predictors",
+    "text": "Let’s try using more predictors\n\n\nX = penguins_data.filter(['bill_depth_mm', 'bill_length_mm', \n                          'flipper_length_mm', 'body_mass_g'])\n\n# Fit KMeans with 3 clusters\nkmeans = KMeans(n_clusters = 3, random_state = 301655)\nclusters = kmeans.fit_predict(X)\n\n# Save new clusters\nclustered_X = (X\n              .assign(Cluster = clusters)\n              )"
+  },
+  {
+    "objectID": "Module4/Clustering.html#these-are-the-three-species",
+    "href": "Module4/Clustering.html#these-are-the-three-species",
+    "title": "Clustering Methods",
+    "section": "These are the three species",
+    "text": "These are the three species\n\n\n\nAdelie\n\n\nGentoo\n\n\nChinstrap"
+  },
+  {
+    "objectID": "Module4/Clustering.html#section-9",
+    "href": "Module4/Clustering.html#section-9",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "Con estos métodos, no existe una única respuesta correcta; se debe considerar cualquier solución que exponga algunos aspectos interesantes de los datos.\n\nJames et al. (2017)"
+  },
+  {
+    "objectID": "Module4/Clustering.html#comments",
+    "href": "Module4/Clustering.html#comments",
+    "title": "Clustering Methods",
+    "section": "Comments",
+    "text": "Comments\n\nSelecting the number of clusters K is more of an art than a science. You’d better get K right, or you’ll be detecting patterns where none really exist.\nWe need to standardize all predictors.\nThe performance of K-means clustering is affected by the presence of outliers.\nThe algorithm’s solution is sensitive to the starting point. Because of this, it is typically run multiple times, and the best clustering among all runs is reported."
   }
 ]

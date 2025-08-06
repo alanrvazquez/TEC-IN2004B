@@ -45,7 +45,6 @@ from sklearn.metrics import mean_squared_error, r2_score
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.tools import diff
-from sklearn.metrics import mean_squared_error, r2_score
 ```
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**, **sklearn** and **statsmodels** libraries in Python.
