@@ -24,8 +24,8 @@ format:
 
   revealjs:
     output-ext: "slides.html"
-    chalkboard: true
-    multiplex: true
+    chalkboard: false
+    multiplex: false
     footer: "Tecnologico de Monterrey"
     logo: IN2004B_logo.png
     css: style.css
