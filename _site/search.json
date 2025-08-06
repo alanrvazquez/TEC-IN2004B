@@ -5793,7 +5793,7 @@
     "href": "Module3/Autocorrelation.html#section-16",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 05 Aug 2025   AIC                             11.074\nTime:                        10:54:17   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 05 Aug 2025   AIC                             11.074\nTime:                        18:58:07   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-17",
@@ -5878,5 +5878,124 @@
     "title": "Autocorrelation Models",
     "section": "",
     "text": "rtwo = r2_score(Canadian_validation[\"Hours per Week\"], forecast_Canadian)  \nprint(round(rtwo, 2))\n\n-3.52"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#sarima-model",
+    "href": "Module3/Autocorrelation.html#sarima-model",
+    "title": "Autocorrelation Models",
+    "section": "SARIMA model",
+    "text": "SARIMA model\nThe SARIMA (Seasonal Autoregressive Integrated Moving Average) model is an extension of the ARIMA model for modeling seasonality patterns.\nThe SARIMA model has three additional elements for modeling seasonality in time series.\n\nDifferenced or integrated operators (integrated) for seasonality.\nAutoregressive terms (autoregressive) for seasonality.\nStochastic terms or moving averages (moving average) for seasonality."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#notation",
+    "href": "Module3/Autocorrelation.html#notation",
+    "title": "Autocorrelation Models",
+    "section": "Notation",
+    "text": "Notation\n\nSeasonality in a time series is a regular pattern of change that repeats over \\(S\\) time periods, where \\(S\\) defines the number of time periods until the pattern repeats again.\nFor example, there is seasonality in monthly data, where high values always tend to occur in some particular months and low values always tend to occur in other particular months.\nIn this case, \\(S=12\\) (months per year) is the length of periodic seasonal behavior. For quarterly data, \\(S=4\\) time periods per year."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#seasonal-differentiation",
+    "href": "Module3/Autocorrelation.html#seasonal-differentiation",
+    "title": "Autocorrelation Models",
+    "section": "Seasonal differentiation",
+    "text": "Seasonal differentiation\n\nThis is the difference between a response and a response with a lag that is a multiple of \\(S\\).\nFor example, with monthly data \\(S=12\\),\n\nA level 1 seasonal difference is \\(Y_{t} - Y_{t-12}\\).\nA level 2 seasonal difference is \\((Y_{t-12}) - (Y_{t-12} - Y_{t-24})\\).\n\nSeasonal differencing eliminates the seasonal trend and can also eliminate a type of nonstationarity caused by a seasonal random walk."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#ar-and-ma-model-terms-for-seasonality",
+    "href": "Module3/Autocorrelation.html#ar-and-ma-model-terms-for-seasonality",
+    "title": "Autocorrelation Models",
+    "section": "AR and MA Model Terms for Seasonality",
+    "text": "AR and MA Model Terms for Seasonality\nIn SARIMA, the seasonal AR and MA component terms predict the current response (\\(Y_t\\)) using responses and errors at times with lags that are multiples of \\(S\\).\nFor example, with monthly data \\(S = 12\\),\n\nThe first-order seasonal AR model would use \\(Y_{t-12}\\) to predict \\(Y_{t}\\).\nThe second-order seasonal AR model would use \\(Y_{t-12}\\) and \\(Y_{t-24}\\) to predict \\(Y_{t}\\).\nThe first-order seasonal MA model would use the stochastic term \\(a_{t-12}\\) as a predictor.\nThe second-order seasonal MA model would use the stochastic terms \\(a_{t-12}\\) and \\(a_{t-24}\\) as predictors."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#create-training-and-validation-data",
+    "href": "Module3/Autocorrelation.html#create-training-and-validation-data",
+    "title": "Autocorrelation Models",
+    "section": "Create training and validation data",
+    "text": "Create training and validation data\n\nWe use 80% of the time series for training and the rest for validation.\n\n# Define the split point\nsplit_ratio = 0.8  # 80% train, 20% test\nsplit_point = int(len(Airline_data) * split_ratio)\n\n# Split the data\nAirline_train = Airline_data[:split_point]\nAirline_validation = Airline_data[split_point:]"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-22",
+    "href": "Module3/Autocorrelation.html#section-22",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "To fit the SARIMA model, we use the ARIMA() function from statsmodels, but with an additional argument, seasonal_order=(0, 0, 0, 0).\n\nThis is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.\n\nRecall that the function has the argument order = (p, d, q) where p is the order of the autoregressive model, d is the differencing operator level, and q is the number of elements in the moving average.\nThese arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-23",
+    "href": "Module3/Autocorrelation.html#section-23",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Let’s fit a SARIMA model.\n\nSARIMA_model = ARIMA(Airline_train['Number of passengers'], order=(1, 2, 1), \n                      seasonal_order=(1, 1, 0, 12))\nSARIMA_Airline = SARIMA_model.fit()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-24",
+    "href": "Module3/Autocorrelation.html#section-24",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "&lt;Figure size 576x576 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 576x576 with 0 Axes&gt;"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#summary-of-fit",
+    "href": "Module3/Autocorrelation.html#summary-of-fit",
+    "title": "Autocorrelation Models",
+    "section": "Summary of fit",
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 05 Aug 2025   AIC                            756.482\nTime:                                   18:58:08   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#residual-analysis",
+    "href": "Module3/Autocorrelation.html#residual-analysis",
+    "title": "Autocorrelation Models",
+    "section": "Residual analysis",
+    "text": "Residual analysis\nWe can have a graphical evaluation of the model’s performance using a residual analysis.\n\nSARIMA_residuals = SARIMA_Airline.resid\nSARIMA_residuals = SARIMA_residuals.drop(0)\n\n\n\nCode\nplt.figure(figsize=(8, 3.5))\nsns.lineplot(x=Airline_train['T'], y=SARIMA_residuals)\nplt.xlabel('Year')\nplt.ylabel('Residuals')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-25",
+    "href": "Module3/Autocorrelation.html#section-25",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Airline_validation[\"Number of passengers\"], \n                        forecast_Airline)  \nprint(round(mse**(1/2), 2))\n\n26.39\n\n\n\nWe can also compute the \\(R^2\\) score.\n\nrtwo = r2_score(Airline_validation[\"Number of passengers\"], forecast_Airline)  \nprint(round(rtwo, 2))\n\n0.89"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#validation",
+    "href": "Module3/Autocorrelation.html#validation",
+    "title": "Autocorrelation Models",
+    "section": "Validation",
+    "text": "Validation\nThe validation data has 29 time periods that can be determined using the command below.\n\nlen(Airline_validation)\n\n29\n\n\n\nSo, we must forecast 7 periods ahead using our ARIMA model.\n\nforecast_Airline = SARIMA_Airline.forecast(steps = 29)\nforecast_Airline.head(3)\n\n115    489.635426\n116    428.961078\n117    373.169684\nName: predicted_mean, dtype: float64"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#section-26",
+    "href": "Module3/Autocorrelation.html#section-26",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Airline_validation[\"Number of passengers\"], \n                        forecast_Airline)  \nprint(round(mse**(1/2), 2))\n\n26.39\n\n\nWe can also compute the \\(R^2\\) score.\n\nrtwo = r2_score(Airline_validation[\"Number of passengers\"], forecast_Airline)  \nprint(round(rtwo, 2))\n\n0.89\n\n\n\nA negative signifies that the model’s predictions are worse than simply predicting the average of the response"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#seasonality",
+    "href": "Module3/Autocorrelation.html#seasonality",
+    "title": "Autocorrelation Models",
+    "section": "Seasonality",
+    "text": "Seasonality\n\n\nSeasonality consists of repetitive or cyclical behavior that occurs with a constant frequency.\nIt can be identified from the series graph or using the ACF and PACF.\nTo do this, we must have removed the trend."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#training-data-1",
+    "href": "Module3/Autocorrelation.html#training-data-1",
+    "title": "Autocorrelation Models",
+    "section": "Training data",
+    "text": "Training data\n\n\nCode\nplt.figure(figsize=(8, 5))\nsns.lineplot(x='T', y='Number of passengers', data = Airline_train)\nplt.xlabel('T')\nplt.ylabel('Number of passengers')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#example-3",
+    "href": "Module3/Autocorrelation.html#example-3",
+    "title": "Autocorrelation Models",
+    "section": "Example 3",
+    "text": "Example 3\nWe use the Airline data containing the number of passengers of an international airline per month between 1949 and 1960.\n\nAirline_data = pd.read_excel(\"Airline.xlsx\")\nAirline_data.head()\n\n\n\n\n\n\n\n\nT\nNumber of passengers\n\n\n\n\n0\n1\n112\n\n\n1\n2\n118\n\n\n2\n3\n132\n\n\n3\n4\n129\n\n\n4\n5\n121"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#seasonal-ar-and-ma-terms",
+    "href": "Module3/Autocorrelation.html#seasonal-ar-and-ma-terms",
+    "title": "Autocorrelation Models",
+    "section": "Seasonal AR and MA Terms",
+    "text": "Seasonal AR and MA Terms\nIn SARIMA, the seasonal AR and MA component terms predict the current response (\\(Y_t\\)) using responses and errors at times with lags that are multiples of \\(S\\).\nFor example, with monthly data \\(S = 12\\),\n\n\nThe first-order seasonal AR model would use \\(Y_{t-12}\\) to predict \\(Y_{t}\\).\nThe second-order seasonal AR model would use \\(Y_{t-12}\\) and \\(Y_{t-24}\\) to predict \\(Y_{t}\\).\nThe first-order seasonal MA model would use the stochastic term \\(a_{t-12}\\) as a predictor.\nThe second-order seasonal MA model would use the stochastic terms \\(a_{t-12}\\) and \\(a_{t-24}\\) as predictors."
   }
 ]
