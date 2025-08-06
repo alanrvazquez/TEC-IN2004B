@@ -5793,7 +5793,7 @@
     "href": "Module3/Autocorrelation.html#section-16",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 05 Aug 2025   AIC                             11.074\nTime:                        18:58:07   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 05 Aug 2025   AIC                             11.074\nTime:                        19:09:10   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-17",
@@ -5919,28 +5919,28 @@
     "href": "Module3/Autocorrelation.html#section-22",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "To fit the SARIMA model, we use the ARIMA() function from statsmodels, but with an additional argument, seasonal_order=(0, 0, 0, 0).\n\nThis is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.\n\nRecall that the function has the argument order = (p, d, q) where p is the order of the autoregressive model, d is the differencing operator level, and q is the number of elements in the moving average.\nThese arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality."
+    "text": "First, let’s use a level-1 operator.\n\nZ_series_one = diff(Airline_train['Number of passengers'], k_diff = 1)\n\n\n\nCode\nplt.figure(figsize=(8, 5))\nsns.lineplot(x=Airline_train['Number of passengers'], y=Z_series_one)\nplt.xlabel('T')\nplt.ylabel('Difference Level 1')\nplt.show()"
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-23",
     "href": "Module3/Autocorrelation.html#section-23",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Let’s fit a SARIMA model.\n\nSARIMA_model = ARIMA(Airline_train['Number of passengers'], order=(1, 2, 1), \n                      seasonal_order=(1, 1, 0, 12))\nSARIMA_Airline = SARIMA_model.fit()"
+    "text": "To fit the SARIMA model, we use the ARIMA() function from statsmodels, but with an additional argument, seasonal_order=(0, 0, 0, 0).\n\nThis is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.\n\nRecall that the function has the argument order = (p, d, q) where p is the order of the autoregressive model, d is the differencing operator level, and q is the number of elements in the moving average.\nThese arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality."
   },
   {
     "objectID": "Module3/Autocorrelation.html#section-24",
     "href": "Module3/Autocorrelation.html#section-24",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "&lt;Figure size 576x576 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 576x576 with 0 Axes&gt;"
+    "text": "Let’s fit a SARIMA model.\n\nSARIMA_model = ARIMA(Airline_train['Number of passengers'], order=(1, 2, 1), \n                      seasonal_order=(1, 1, 0, 12))\nSARIMA_Airline = SARIMA_model.fit()"
   },
   {
     "objectID": "Module3/Autocorrelation.html#summary-of-fit",
     "href": "Module3/Autocorrelation.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 05 Aug 2025   AIC                            756.482\nTime:                                   18:58:08   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 05 Aug 2025   AIC                            756.482\nTime:                                   19:09:12   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.html#residual-analysis",
@@ -5954,7 +5954,7 @@
     "href": "Module3/Autocorrelation.html#section-25",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Airline_validation[\"Number of passengers\"], \n                        forecast_Airline)  \nprint(round(mse**(1/2), 2))\n\n26.39\n\n\n\nWe can also compute the \\(R^2\\) score.\n\nrtwo = r2_score(Airline_validation[\"Number of passengers\"], forecast_Airline)  \nprint(round(rtwo, 2))\n\n0.89"
+    "text": "&lt;Figure size 576x576 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 576x576 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.html#validation",
@@ -5968,7 +5968,7 @@
     "href": "Module3/Autocorrelation.html#section-26",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Airline_validation[\"Number of passengers\"], \n                        forecast_Airline)  \nprint(round(mse**(1/2), 2))\n\n26.39\n\n\nWe can also compute the \\(R^2\\) score.\n\nrtwo = r2_score(Airline_validation[\"Number of passengers\"], forecast_Airline)  \nprint(round(rtwo, 2))\n\n0.89\n\n\n\nA negative signifies that the model’s predictions are worse than simply predicting the average of the response"
+    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Airline_validation[\"Number of passengers\"], \n                        forecast_Airline)  \nprint(round(mse**(1/2), 2))\n\n26.39\n\n\n\nWe can also compute the \\(R^2\\) score.\n\nrtwo = r2_score(Airline_validation[\"Number of passengers\"], forecast_Airline)  \nprint(round(rtwo, 2))\n\n0.89"
   },
   {
     "objectID": "Module3/Autocorrelation.html#seasonality",
@@ -5997,5 +5997,12 @@
     "title": "Autocorrelation Models",
     "section": "Seasonal AR and MA Terms",
     "text": "Seasonal AR and MA Terms\nIn SARIMA, the seasonal AR and MA component terms predict the current response (\\(Y_t\\)) using responses and errors at times with lags that are multiples of \\(S\\).\nFor example, with monthly data \\(S = 12\\),\n\n\nThe first-order seasonal AR model would use \\(Y_{t-12}\\) to predict \\(Y_{t}\\).\nThe second-order seasonal AR model would use \\(Y_{t-12}\\) and \\(Y_{t-24}\\) to predict \\(Y_{t}\\).\nThe first-order seasonal MA model would use the stochastic term \\(a_{t-12}\\) as a predictor.\nThe second-order seasonal MA model would use the stochastic terms \\(a_{t-12}\\) and \\(a_{t-24}\\) as predictors."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.html#autocorrelation-plots",
+    "href": "Module3/Autocorrelation.html#autocorrelation-plots",
+    "title": "Autocorrelation Models",
+    "section": "Autocorrelation plots",
+    "text": "Autocorrelation plots\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
   }
 ]
