@@ -197,6 +197,26 @@ X_full = Adult_data.filter(['age', 'sex', 'race', 'education.num',
                             'hours.per.week'])
 ```
 
+## Pre-processing for categorical predictors
+
+</br></br>
+
+Unfortunately, bagging does not work with categorical predictors. We must transform them into dummy variables using the code below.
+
+```{python}
+#| echo: true
+#| output: false
+
+# Turn categorical predictors into dummy variables.
+X_dummies = pd.get_dummies(X_full[['sex', 'race']])
+
+# Drop original predictors from the test.
+X_other = X_full.drop(['sex', 'race'], axis=1)
+
+# Update the predictor matrix.
+X_full = pd.concat([X_other, X_dummies], axis=1)
+```
+
 ## Set the target class
 
 Let's set the **target class** and the **reference class** using the `get_dummies()` function.
@@ -226,7 +246,7 @@ Here we'll use the **large** target class. So, let's use the corresponding colum
 #| output: true
 
 # Choose target category.
-Y_target = Y_dummies['large']
+Y_target = Y_dummies['income_large']
 
 Y_target.head()
 ```
