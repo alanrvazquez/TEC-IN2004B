@@ -22,79 +22,79 @@ jupyter: python3
 
 </br>
 
-1.  Dashboards para Visualizar Indicadores
-2.  Bases de Datos para Almacenar Indicadores
+1. Dashboards for Visualizing Indicators
+2. Databases for Storing Indicators
 
-# Dashboards para Visualizar Indicadores
+# Dashboards for Visualizing Indicators
 
-## El tablero de control integral
+## The Balanced Scorecard
 
-Una vez que se definene los indicadores usando el Balance Scorecard y el formato de documentación, se procede a diseñar los tableros de control:
+Once the indicators are defined using the Balanced Scorecard and the documentation format, the dashboards are designed:
 
--   pantallas,
--   estilos de gráficos y tablas,
--   niveles de agregación,
--   reportes predeterminados,
--   requerimientos de drill-down.
+- Screens,
+- Chart and table styles,
+- Aggregation levels,
+- Default reports,
+- Drill-down requirements.
 
-Esto es tanto para el nivel general de la organización, como para los BSC funcionales.
+This applies to both the overall organizational level and the functional BSCs.
 
-## Despliegue del tablero de indicadores
+## Dashboard Deployment
 
-Para la implementación de los tableros de indicadores se pueden seguir diversas estrategias, por ejemplo:
+Various strategies can be followed to implement the dashboards, for example:
 
--   Desarrollo en una plataforma especializada para sistemas de indicadores (<https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/>)
+- Development on a specialized platform for indicator systems (<https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/>)
 
--   Desarrollo con herramientas genéricas OLAP On-line Analytical Processing (<https://www.softwaretestinghelp.com/best-olap-tools/>)
+- Development with generic OLAP Online Analytical Processing tools (<https://www.softwaretestinghelp.com/best-olap-tools/>)
 
--   Implementaciones aisladas de corto alcance en hoja de cálculo.
+- Short-term, isolated implementations in spreadsheets.
 
-## Ejemplo de tablero de indicadores de Tableu
+## Tableu Dashboard Example
 
 ![](images/clipboard-3862420324.png)
 
 <https://www.tableau.com/es-mx>
 
-## Otro Ejemplo
+## Another Example
 
 ![](images/clipboard-686396046.png)
 
-# Bases de Datos para Almacenar Indicadores
+# Databases for Storing Indicators
 
-## Contexto
+## Context
 
-Aunque los datos para el cálculo de algunos indicadores tienen su origen fuera de la organización, la gran mayoría de los datos provienen de las bases de datos internas del negocio.
+Although the data for calculating some indicators originates outside the organization, the vast majority of data comes from the business's internal databases.
 
-Existe mucha diversidad de empresas, unas que tienen aplicaciones aisladas con bases de datos dispersas y con archivos en hojas de cálculo, hasta empresas muy organizadas con un sistema de bases centralizado en un servidor de datos y aplicaciones vinculadas.
+Companies vary widely, from those with isolated applications with scattered databases and spreadsheet files to highly organized companies with a centralized database system on a data server and linked applications.
 
-## 
+##
 
-Para obtener los datos necesarios para el cálculo de indicadores, muchas veces será necesario integrar datos de diversas fuentes en la empresa. Para esto, se usan herramientas de ETL (extract-transform-load) y data warehousing.
+To obtain the data needed to calculate indicators, it is often necessary to integrate data from various sources within the company. For this, ETL (extract-transform-load) and data warehousing tools are used.
 
-## ¿Qué es una Base de Datos?
+## What is a Database?
 
-Básicamente, una tabla de datos donde los renglones representan un conjunto de ocurrencias de una entidad (clientes, productos, pacientes, pedidos) y las columnas representan atributos o características que describen a la entidad (cliente: ID + nombre + domicilio + e-mail + saldo ) En el ámbito de TI el concepto de “base de datos” no se refiere a una tabla, sino a un conjunto de tablas relacionadas.
+Basically, a data table where rows represent a set of occurrences of an entity (customers, products, patients, orders) and columns represent attributes or characteristics that describe the entity (customer: ID + name + address + email + balance). In IT, the concept of a "database" does not refer to a table, but rather to a set of related tables.
 
-## Terminología de BD
+## Database Terminology
 
-Las tablas contienen datos que se refieren a:
+Tables contain data that refers to:
 
--   alguna entidad acerca de la cual la organización necesita mantener información
--   relaciones entre entidades.
+- an entity about which the organization needs to maintain information
+- relationships between entities
 
-A los renglones de la tabla se les denomina *registros*.
+The rows of the table are called *records*.
 
-A las columnas de la tabla se les denomina *campos*.
+The columns of the table are called *fields*.
 
 ## 
 
 ::::: columns
 ::: {.column width="60%"}
-Los registros son ocurrencias diferentes de la entidad correspondiente.
+Records are distinct occurrences of the corresponding entity.
 
-Los campos son atributos que describen la entidad.
+Fields are attributes that describe the entity.
 
-Cada registro tiene uno o varios campos que identifican de manera única cada registro, esos campos se denominan "llave".
+Each record has one or more fields that uniquely identify each record; these fields are called "keys."
 :::
 
 ::: {.column width="40%"}
@@ -102,27 +102,27 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 :::
 :::::
 
-## Bases de Datos Relacionales
+## Relational Databases
 
--   Actualmente el modelo de bases más utilizado en el mundo es el de bases de datos relacionales, ver por ejemplo:
+- Currently, the most widely used database model in the world is relational databases. See, for example:
 
--   <https://db-engines.com/en/ranking>
+- <https://db-engines.com/en/ranking>
 
--   <https://www.dataversity.net/database-management-trends-in-2020/>
+- <https://www.dataversity.net/database-management-trends-in-2020/>
 
--   Ante el surgimiento de aplicaciones de big data hace que estas bases de datos sean la principal fuente de datos para indicadores en las empresas.
+- The emergence of big data applications makes these databases the primary source of data for business indicators.
 
-## Ejemplo de Base de Datos Relacional
+## Relational Database Example
 
 ![](images/clipboard-2062527429.png)
 
-## Ejemplo
+## Example
 
 ::::: columns
 ::: {.column width="60%"}
--   La base de datos tiene 4 tablas: Pacientes, Medicinas, Recetas y Detalle de las recetas.
+- The database has four tables: Patients, Medicines, Prescriptions, and Prescription Details.
 
--   La tabla que contiene datos de la entidad “paciente” tiene los siguientes campos: identificador único, nombre, domicilio, fecha de nacimiento, teléfono, y foto.
+- The table containing data for the "patient" entity has the following fields: unique identifier, name, address, date of birth, phone number, and photo.
 :::
 
 ::: {.column width="40%"}
@@ -134,7 +134,7 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
--   La tabla de recetas contiene los datos generales de cada receta expedida: número de receta (es la llave), fecha, hora de consulta, un indicador de si contiene medicamentos controlados o no, y el identificador del paciente, este campo permite ***relacionar los datos de la receta*** con los datos del paciente.
+- The prescription table contains the general data for each prescription issued: prescription number (this is the key), date, consultation time, an indicator of whether it contains controlled medications or not, and the patient identifier. This field allows you to ***relate the prescription data*** with the patient data.
 :::
 
 ::: {.column width="40%"}
@@ -146,7 +146,18 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
--   La tabla de medicinas tiene los campos: identificador de la medicina, descripción genérica, agente activo, presentación más común, y contra-indicaciones.
+- The medicine table has the following fields: medicine identifier, generic description, active agent, most common presentation, and contraindications.:::
+
+::: {.column width="40%"}
+![](images/clipboard-3132665686.png)
+:::
+:::::
+
+## 
+
+::::: columns
+::: {.column width="60%"}
+- The prescription detail table contains the rows for each prescription. Since some prescriptions may have only one medication, and some may have two, three, or more medications, in the relational model, the rows for all prescriptions are stored in a single table. All the rows in a prescription have the same "prescription number" but a different "medication ID"...
 :::
 
 ::: {.column width="40%"}
@@ -158,7 +169,7 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
--   La tabla de detalle de la receta contiene los renglones de cada receta. Como hay recetas que pueden tener un solo medicamento, puede haber algunas con 2, 3 o más medicamentos, en el modelo relacional se guardan los renglones de todas las recetas en una sola tabla, todos los renglones de una receta tienen el mismo “número de receta” pero diferente “id del medicamento”...
+- In the Prescription Detail table, there may be multiple records with the same prescription number, because the prescription may cover multiple medications. There may also be multiple records with the same medication ID, because a single medication may appear on multiple prescriptions.
 :::
 
 ::: {.column width="40%"}
@@ -170,7 +181,7 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 
 ::::: columns
 ::: {.column width="60%"}
--   En la tabla Detalle de Receta puede haber múltiples registros con el mismo Número de receta, porque la receta puede amparar varios medicamentos. También puede haber múltiples registros con el mismo ID de medicamento, porque un medicamento puede aparecer en muchas recetas.
+- In this case, to uniquely identify a line of a particular prescription, both identifiers are required: the prescription identifier and the medication identifier. This constitutes a *composite key*.
 :::
 
 ::: {.column width="40%"}
@@ -178,36 +189,24 @@ Cada registro tiene uno o varios campos que identifican de manera única cada re
 :::
 :::::
 
-## 
+## Database Queries
 
-::::: columns
-::: {.column width="60%"}
--   En este caso, para identificar de manera única un renglón de una receta en particular se requieren los dos identificadores, el de la receta y el del medicamento, esto constituye una *llave compuesta*.
-:::
+Once you have the database, you can answer questions such as:
 
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
+- In which neighborhoods do the patients prescribed turbocycloxine live?
 
-## Consultas (queries) a la BD
+- How many patients have been prescribed turbocycloxine in the last month?
 
-Una vez que se tiene la base de datos, es posible contestar preguntas como:
-
--   ¿En cuáles colonias viven los pacientes a quienes se les ha recetado turbocicloxina?
-
--   ¿A cuántos pacientes se les ha recetado turbocicloxina en el último mes?
-
--   ¿Cuáles agentes activos se les han administrado a los pacientes que viven en Prados #520 en el último año?
+- Which active agents have been administered to patients living at Prados #520 in the last year?
 
 ## SQL
 
--   Las herramientas y plataformas de Business Intelligence con las que contamos actualmente, nos permiten hacer fácilmente consultas como las del ejemplo anterior, simplemente “arrastrando” campos y aplicando filtros en un lienzo de diseño.
+- Our current Business Intelligence tools and platforms allow us to easily create queries like the one in the previous example, simply by dragging and dropping fields and applying filters on a design canvas.
 
--   Internamente las herramientas procesan las consultas mediante un lenguaje de manejo de bases de datos que se llama SQL Structured Query Language.
+- Internally, the tools process queries using a database management language called SQL Structured Query Language.
 
--   Para hacer consultas más complejas puede ser necesario que se haga la consulta escribiendo directamente el código de SQL.
+- To create more complex queries, it may be necessary to create the query directly by writing the SQL code.
 
--   En este módulo no estudiaremos SQL.
+- We will not study SQL in this module.
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

@@ -3108,7 +3108,7 @@
     "href": "Module1/DataBases.slides.html#agenda",
     "title": "Introduction to Data Bases",
     "section": "Agenda",
-    "text": "Agenda\n\n\nDashboards para Visualizar Indicadores\nBases de Datos para Almacenar Indicadores"
+    "text": "Agenda\n\n\nDashboards for Visualizing Indicators\nDatabases for Storing Indicators"
   },
   {
     "objectID": "Module1/DataBases.slides.html#el-tablero-de-control-integral",
@@ -3150,7 +3150,7 @@
     "href": "Module1/DataBases.slides.html#section",
     "title": "Introduction to Data Bases",
     "section": "",
-    "text": "Para obtener los datos necesarios para el cálculo de indicadores, muchas veces será necesario integrar datos de diversas fuentes en la empresa. Para esto, se usan herramientas de ETL (extract-transform-load) y data warehousing."
+    "text": "To obtain the data needed to calculate indicators, it is often necessary to integrate data from various sources within the company. For this, ETL (extract-transform-load) and data warehousing tools are used."
   },
   {
     "objectID": "Module1/DataBases.slides.html#qué-es-una-base-de-datos",
@@ -3171,7 +3171,7 @@
     "href": "Module1/DataBases.slides.html#section-1",
     "title": "Introduction to Data Bases",
     "section": "",
-    "text": "Los registros son ocurrencias diferentes de la entidad correspondiente.\nLos campos son atributos que describen la entidad.\nCada registro tiene uno o varios campos que identifican de manera única cada registro, esos campos se denominan “llave”."
+    "text": "Records are distinct occurrences of the corresponding entity.\nFields are attributes that describe the entity.\nEach record has one or more fields that uniquely identify each record; these fields are called “keys.”"
   },
   {
     "objectID": "Module1/DataBases.slides.html#bases-de-datos-relacionales",
@@ -3199,35 +3199,35 @@
     "href": "Module1/DataBases.slides.html#section-2",
     "title": "Introduction to Data Bases",
     "section": "",
-    "text": "La tabla de recetas contiene los datos generales de cada receta expedida: número de receta (es la llave), fecha, hora de consulta, un indicador de si contiene medicamentos controlados o no, y el identificador del paciente, este campo permite relacionar los datos de la receta con los datos del paciente."
+    "text": "The prescription table contains the general data for each prescription issued: prescription number (this is the key), date, consultation time, an indicator of whether it contains controlled medications or not, and the patient identifier. This field allows you to relate the prescription data with the patient data."
   },
   {
     "objectID": "Module1/DataBases.slides.html#section-3",
     "href": "Module1/DataBases.slides.html#section-3",
     "title": "Introduction to Data Bases",
     "section": "",
-    "text": "La tabla de medicinas tiene los campos: identificador de la medicina, descripción genérica, agente activo, presentación más común, y contra-indicaciones."
+    "text": "The medicine table has the following fields: medicine identifier, generic description, active agent, most common presentation, and contraindications.:::\n\n\n\n\n\n\n\n\nThe prescription detail table contains the rows for each prescription. Since some prescriptions may have only one medication, and some may have two, three, or more medications, in the relational model, the rows for all prescriptions are stored in a single table. All the rows in a prescription have the same “prescription number” but a different “medication ID”…\n\n\n\n\n\n\n\n\n\nIn the Prescription Detail table, there may be multiple records with the same prescription number, because the prescription may cover multiple medications. There may also be multiple records with the same medication ID, because a single medication may appear on multiple prescriptions.\n\n\n\n\n\n\n\n\n\nIn this case, to uniquely identify a line of a particular prescription, both identifiers are required: the prescription identifier and the medication identifier. This constitutes a composite key.\n\n\n\n\n\nDatabase Queries\nOnce you have the database, you can answer questions such as:\n\nIn which neighborhoods do the patients prescribed turbocycloxine live?\nHow many patients have been prescribed turbocycloxine in the last month?\nWhich active agents have been administered to patients living at Prados #520 in the last year?\n\n\nSQL\n\nOur current Business Intelligence tools and platforms allow us to easily create queries like the one in the previous example, simply by dragging and dropping fields and applying filters on a design canvas.\nInternally, the tools process queries using a database management language called SQL Structured Query Language.\nTo create more complex queries, it may be necessary to create the query directly by writing the SQL code.\nWe will not study SQL in this module.\n\n\nReturn to main page"
   },
   {
     "objectID": "Module1/DataBases.slides.html#section-4",
     "href": "Module1/DataBases.slides.html#section-4",
     "title": "Introduction to Data Bases",
     "section": "",
-    "text": "La tabla de detalle de la receta contiene los renglones de cada receta. Como hay recetas que pueden tener un solo medicamento, puede haber algunas con 2, 3 o más medicamentos, en el modelo relacional se guardan los renglones de todas las recetas en una sola tabla, todos los renglones de una receta tienen el mismo “número de receta” pero diferente “id del medicamento”…"
+    "text": "The prescription detail table contains the rows for each prescription. Since some prescriptions may have only one medication, and some may have two, three, or more medications, in the relational model, the rows for all prescriptions are stored in a single table. All the rows in a prescription have the same “prescription number” but a different “medication ID”…"
   },
   {
     "objectID": "Module1/DataBases.slides.html#section-5",
     "href": "Module1/DataBases.slides.html#section-5",
     "title": "Introduction to Data Bases",
     "section": "",
-    "text": "En la tabla Detalle de Receta puede haber múltiples registros con el mismo Número de receta, porque la receta puede amparar varios medicamentos. También puede haber múltiples registros con el mismo ID de medicamento, porque un medicamento puede aparecer en muchas recetas."
+    "text": "In the Prescription Detail table, there may be multiple records with the same prescription number, because the prescription may cover multiple medications. There may also be multiple records with the same medication ID, because a single medication may appear on multiple prescriptions."
   },
   {
     "objectID": "Module1/DataBases.slides.html#section-6",
     "href": "Module1/DataBases.slides.html#section-6",
     "title": "Introduction to Data Bases",
     "section": "",
-    "text": "En este caso, para identificar de manera única un renglón de una receta en particular se requieren los dos identificadores, el de la receta y el del medicamento, esto constituye una llave compuesta."
+    "text": "In this case, to uniquely identify a line of a particular prescription, both identifiers are required: the prescription identifier and the medication identifier. This constitutes a composite key."
   },
   {
     "objectID": "Module1/DataBases.slides.html#consultas-queries-a-la-bd",
@@ -3241,7 +3241,7 @@
     "href": "Module1/DataBases.slides.html#sql",
     "title": "Introduction to Data Bases",
     "section": "SQL",
-    "text": "SQL\n\nLas herramientas y plataformas de Business Intelligence con las que contamos actualmente, nos permiten hacer fácilmente consultas como las del ejemplo anterior, simplemente “arrastrando” campos y aplicando filtros en un lienzo de diseño.\nInternamente las herramientas procesan las consultas mediante un lenguaje de manejo de bases de datos que se llama SQL Structured Query Language.\nPara hacer consultas más complejas puede ser necesario que se haga la consulta escribiendo directamente el código de SQL.\nEn este módulo no estudiaremos SQL."
+    "text": "SQL\n\nOur current Business Intelligence tools and platforms allow us to easily create queries like the one in the previous example, simply by dragging and dropping fields and applying filters on a design canvas.\nInternally, the tools process queries using a database management language called SQL Structured Query Language.\nTo create more complex queries, it may be necessary to create the query directly by writing the SQL code.\nWe will not study SQL in this module."
   },
   {
     "objectID": "Module1/Indicators.html",
@@ -3858,5 +3858,82 @@
     "title": "Indicators",
     "section": "Basic Format",
     "text": "Basic Format"
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#the-balanced-scorecard",
+    "href": "Module1/DataBases.slides.html#the-balanced-scorecard",
+    "title": "Introduction to Data Bases",
+    "section": "The Balanced Scorecard",
+    "text": "The Balanced Scorecard\nOnce the indicators are defined using the Balanced Scorecard and the documentation format, the dashboards are designed:\n\nScreens,\nChart and table styles,\nAggregation levels,\nDefault reports,\nDrill-down requirements.\n\nThis applies to both the overall organizational level and the functional BSCs."
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#dashboard-deployment",
+    "href": "Module1/DataBases.slides.html#dashboard-deployment",
+    "title": "Introduction to Data Bases",
+    "section": "Dashboard Deployment",
+    "text": "Dashboard Deployment\nVarious strategies can be followed to implement the dashboards, for example:\n\nDevelopment on a specialized platform for indicator systems (https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/)\nDevelopment with generic OLAP Online Analytical Processing tools (https://www.softwaretestinghelp.com/best-olap-tools/)\nShort-term, isolated implementations in spreadsheets."
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#tableu-dashboard-example",
+    "href": "Module1/DataBases.slides.html#tableu-dashboard-example",
+    "title": "Introduction to Data Bases",
+    "section": "Tableu Dashboard Example",
+    "text": "Tableu Dashboard Example\n\nhttps://www.tableau.com/es-mx"
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#another-example",
+    "href": "Module1/DataBases.slides.html#another-example",
+    "title": "Introduction to Data Bases",
+    "section": "Another Example",
+    "text": "Another Example"
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#context",
+    "href": "Module1/DataBases.slides.html#context",
+    "title": "Introduction to Data Bases",
+    "section": "Context",
+    "text": "Context\nAlthough the data for calculating some indicators originates outside the organization, the vast majority of data comes from the business’s internal databases.\nCompanies vary widely, from those with isolated applications with scattered databases and spreadsheet files to highly organized companies with a centralized database system on a data server and linked applications."
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#what-is-a-database",
+    "href": "Module1/DataBases.slides.html#what-is-a-database",
+    "title": "Introduction to Data Bases",
+    "section": "What is a Database?",
+    "text": "What is a Database?\nBasically, a data table where rows represent a set of occurrences of an entity (customers, products, patients, orders) and columns represent attributes or characteristics that describe the entity (customer: ID + name + address + email + balance). In IT, the concept of a “database” does not refer to a table, but rather to a set of related tables."
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#database-terminology",
+    "href": "Module1/DataBases.slides.html#database-terminology",
+    "title": "Introduction to Data Bases",
+    "section": "Database Terminology",
+    "text": "Database Terminology\nTables contain data that refers to:\n\nan entity about which the organization needs to maintain information\nrelationships between entities\n\nThe rows of the table are called records.\nThe columns of the table are called fields."
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#relational-databases",
+    "href": "Module1/DataBases.slides.html#relational-databases",
+    "title": "Introduction to Data Bases",
+    "section": "Relational Databases",
+    "text": "Relational Databases\n\nCurrently, the most widely used database model in the world is relational databases. See, for example:\nhttps://db-engines.com/en/ranking\nhttps://www.dataversity.net/database-management-trends-in-2020/\nThe emergence of big data applications makes these databases the primary source of data for business indicators."
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#relational-database-example",
+    "href": "Module1/DataBases.slides.html#relational-database-example",
+    "title": "Introduction to Data Bases",
+    "section": "Relational Database Example",
+    "text": "Relational Database Example"
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#example",
+    "href": "Module1/DataBases.slides.html#example",
+    "title": "Introduction to Data Bases",
+    "section": "Example",
+    "text": "Example\n\n\n\nThe database has four tables: Patients, Medicines, Prescriptions, and Prescription Details.\nThe table containing data for the “patient” entity has the following fields: unique identifier, name, address, date of birth, phone number, and photo."
+  },
+  {
+    "objectID": "Module1/DataBases.slides.html#database-queries",
+    "href": "Module1/DataBases.slides.html#database-queries",
+    "title": "Introduction to Data Bases",
+    "section": "Database Queries",
+    "text": "Database Queries\nOnce you have the database, you can answer questions such as:\n\nIn which neighborhoods do the patients prescribed turbocycloxine live?\nHow many patients have been prescribed turbocycloxine in the last month?\nWhich active agents have been administered to patients living at Prados #520 in the last year?"
   }
 ]
