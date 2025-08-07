@@ -22,75 +22,75 @@ jupyter: python3
 
 </br>
 
-1.  Conceptos Básicos de Indicadores
-2.  Modelos para Definir Indicadores
-3.  Documentación de Indicadores
+1. Basic Indicator Concepts
+2. Models for Defining Indicators
+3. Indicator Documentation
 
-# Conceptos Básicos de Indicadores
+# Basic Indicator Concepts
 
-## La administración
+## Management
 
-> "Administración es el proceso mediante el cual se diseña y mantiene un ambiente en el que individuos que trabajan en grupos cumplen metas específicas de manera eficaz".
+> "Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals."
 
-Koontz, Harold, "Administración", 14 Edición, Mc Graw Hill, México, 2012
+Koontz, Harold, "Management," 14th Edition, McGraw Hill, Mexico, 2012
 
-## Funciones de la Administración
+## Functions of management
 
-El proceso administrativo se desglosa en cinco funciones gerenciales:
+The management process is broken down into five management functions:
 
-1.  **Planear**: elegir misiones y objetivos, y las acciones para lograrlos
-2.  **Organizar**: establecer una estructura intencional de funciones que las personas desempeñen en una organización
-3.  **Integrar personal**: Cubrir y mantener cubiertos los puestos en la estructura organizacional
-4.  **Dirigir**: Influir en las personas para que contribuyan a las metas organizacionales y de grupo
-5.  **Controlar**: Medir y corregir el desempeño individual y organizacional para asegurar que los hechos se conformen a los planes.
+1. **Plan**: Choosing missions and objectives, and the actions to achieve them
+2. **Organizing**: Establishing an intentional structure of roles for people to perform in an organization
+3. **Staffing**: Filling and maintaining positions in the organizational structure
+4. **Directing**: Influencing people to contribute to organizational and group goals
+5. **Controlling**: Measuring and correcting individual and organizational performance to ensure that events conform to plans.
 
-## Integración de la Planeación y el Control
+## Integration of planning and control
 
 ![](images/clipboard-761299163.png)
 
-## Planeación
+## Planning
 
-Como resultado del proceso de planeación pueden generarse algunos de estos tipos de planes:
+As a result of the planning process, some of the following types of plans can be generated:
 
--   Objetivos o metas. Son resultados específicos y medibles.
--   Estrategias. Enfoques o planes para lograr objetivos.
--   Procedimientos. Detallan la ejecución de una actividad.
--   Programas. Conjuntos organizados de actividades para alcazar objetivos.
--   Presupuestos. Planes financieros detallados para facilitar la toma de decisiones económicas.
+- Objectives or goals. These are specific and measurable results.
+- Strategies. Approaches or plans to achieve objectives.
+- Procedures. These detail the execution of an activity.
+- Programs. Organized sets of activities to achieve objectives.
+- Budgets. Detailed financial plans to facilitate economic decision-making.
 
-[**Alta necesidad de medir progreso**]{style="color:blue;"}
+[**High need to measure progress**]{style="color:blue;"}
 
-## Definición de Objetivos SMART
+## Definition of SMART Objectives
 
-[S]{style="color:green;"}pecific: Un objetivo debe ser claro y específico, evitando la ambigüedad. Debe responder a las preguntas qué, quién, cuándo, dónde y por qué.
+[S]{style="color:green;"}Specific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.
 
-[M]{style="color:green;"}easurable: Un objetivo debe ser cuantificable o al menos evaluable para determinar el progreso y el éxito. Debe ser posible medirlo con indicadores o criterios tangibles.
+[M]{style="color:green;"}Measurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.
 
-[A]{style="color:green;"}chievable: Un objetivo debe ser realista y alcanzable, teniendo en cuenta los recursos disponibles, el tiempo y las habilidades necesarias.
+[A]{style="color:green;"}achievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.
 
-[R]{style="color:green;"}elevant: Un objetivo debe ser relevante y estar alineado con los objetivos más amplios de la organización o del individuo.
+[R]{style="color:green;"}elevated: A goal should be relevant and aligned with the broader goals of the organization or individual.
 
-[T]{style="color:green;"}ime-bound: Un objetivo debe tener un plazo o fecha límite claramente definidos.
+[T]{style="color:green;"}time-bound: A goal should have a clearly defined timeframe or deadline.
 
-## Ejemplo 1
+## Example 1
 
-**Objetivo**: Cumplir con capacitación de personal
+**Objective**: Complete staff training
 
-**SMART**: Cumplir con al menos el 90% del programa de capacitación 2014 para todo el personal operativo de la empresa para el 30 de noviembre del presente año.
+**SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
 
-## Ejemplo 2
+## Example 2
 
-**Objetivo**: Aumentar las ventas un 20%.
+**Objective**: Increase sales by 20%.
 
-**SMART**: Lograr un incremento de ventas del producto X de al menos 17% al termino del primer semestre del 2015, manteniendo una rentabilidad para la empresa de al menos 5%.
+**SMART**: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
 
-## Necesidad de medir
+## Need to measure
 
 ::::: columns
 ::: {.column width="50%"}
--   Para poder llevar a cabo los procesos de Planeación, Instrumentación y Control, es necesario contar con un sistema de información que permita evaluar si se están logrando los fines que se planearon, y si las acciones instrumentadas se están llevando también de acuerdo con los planes.
+- In order to carry out the Planning, Implementation, and Control processes, it is necessary to have an information system that allows us to evaluate whether the planned objectives are being achieved and whether the implemented actions are being carried out in accordance with the plans.
 
--   La información es necesaria para corregir los planes o su instrumentación, y para producir nuevos planes.
+- Information is necessary to correct plans or their implementation, and to produce new plans.
 :::
 
 ::: {.column width="50%"}
@@ -98,17 +98,17 @@ Como resultado del proceso de planeación pueden generarse algunos de estos tipo
 :::
 :::::
 
-## ¿Qué es un indicador?
+## What is an indicator?
 
-> "Es el resultado de una medición cuantitativa o cualitativa, o algún otro criterio, mediante el cual se puede evaluar el desempeño, la eficiencia, el logro, etc., de una persona u organización, frecuentemente comparándolo con un estándar o con una meta".
+> "It is the result of a quantitative or qualitative measurement, or some other criterion, by which the performance, efficiency, achievement, etc., of a person or organization can be evaluated, often compared to a standard or goal."
 
 Collins English Dictionary.
 
-> "The qualitative and/or quantitative information on an examined phenomenon (or a process, or a result), which makes it possible to analyze its evolution and to check whether quality targets are met, driving actions and decisions".
+> "The qualitative and/or quantitative information on an examined phenomenon (or a process, or a result), which makes it possible to analyze its evolution and to check whether quality targets are met, driving actions and decisions."
 
 Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Management by Measurement: Designing Key Indicators and Performance Measurement Systems. 10.1007/978-3-540-73212-9.
 
-## Ejemplos de indicadores
+## Examples of indicators
 
 ::::: columns
 ::: {.column width="50%"}
@@ -132,190 +132,191 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 :::
 :::::
 
-## Características de un indicador
+## Characteristics of an Indicator
 
-[*Fundamentales*]{style="color:lightblue;"}:
+[*Fundamentals*]{style="color:lightblue;"}:
 
--   *Validez*: el indicador debe mostrar fielmente el comportamiento real del fenómeno, variable, resultado, etc., que se desea medir.
+- *Validity*: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.
 
--   *Estabilidad*: el indicador debe definirse, calcularse e interpretarse de la misma manera a través del tiempo (permite comparaciones y observar tendencias).
+- *Stability*: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends).
 
-## 
+##
 
-[Ideales]{.underline}:
+[Ideal]{.underline}:
 
--   Simple y fácil de interpretar.
--   Capaz de indicar tendencias a través del tiempo.
--   Sensible a cambios dentro y fuera de la organización.
--   Fácil recolección y procesamiento de los datos.
--   Fácil y rápida actualización.
+- Simple and easy to interpret.
+- Able to indicate trends over time.
+- Sensitive to changes within and outside the organization.
+- Easy to collect and process data.
+- Quick and easy to update.
 
-## Utilidad de los indicadores
+## Usefulness of indicators
 
 ![](images/clipboard-2039277193.png)
 
-## Dimensiones de análisis
+## Analysis Dimensions
 
--   Los indicadores y los datos que conducen a ellos, muchas veces se estratifican con respecto a otras variables.
+- Indicators and the data that drive them are often stratified with respect to other variables.
 
--   A las variables que se utilizan como criterios de estratificación se les denomina “[Dimensiones de análisis]{style="color:lightblue;"}” (son dimensiones desde el punto de vista de hipercubos de datos).
+- Variables used as stratification criteria are called "[Analysis Dimensions]{style="color:lightblue;"}" (they are dimensions from the perspective of data hypercubes).
 
-*Ejemplo*: En un proceso de ventas, las ventas mensuales de pueden estratificar por: canal de distribución, región del país, familia de productos, etc., para efectos de su análisis y visualización.
+*Example*: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes.
 
-## Por ejemplo
+## For example
 
 ![](images/clipboard-1701530541.png)
 
-## Elección de indicadores
+## Selecting Indicators
 
-La elección de los indicadores es un factor crítico para que una organización se acerque al cumplimiento de su misión y haga realidad sus estrategias. Los indicadores y las estrategias están inevitablemente vinculados.
+Selecting indicators is a critical factor for an organization to move closer to fulfilling its mission and turning its strategies into reality. Indicators and strategies are inextricably linked.
 
-> Una estrategia sin indicadores es inútil, los indicadores sin una estrategia son irrelevantes!
+> A strategy without indicators is useless; indicators without a strategy are irrelevant!
 
-Existen dos tipos principales de indicadores
+There are two main types of indicators:
 
--   Adelantados
--   Retrasados
+- Leading
+- Lagging
 
-## Indicadores adelantados y retrasados (leading – lagging)
+## Leading and Lagging Indicators
 
-Un [indicador retrasado]{style="color:lightblue;"} (lagging) mide el resultado del desempeño al final de un periodo, tiene una orientación hacia el pasado porque nos muestra las consecuencias de lo que ya se hizo. También se conocen como indicadores de resultado.
+A [lagging indicator]{style="color:darkblue;"} measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.
 
-Un [indicador adelantado]{style="color:lightgreen;"} (leading) mide el desempeño de los factores que son críticos ahora, para obtener un resultado deseado en el futuro. También se conocen como indicadores de actuación.
+A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators.
 
-## Indicador Retrasado
+## Lagging Indicator
 
-Propósito: Mide el resultado del desempeño al final de un periodo
+Purpose: Measures the outcome of performance at the end of a period.
 
-Ejemplo: Ventas anuales, market share, ROI
+Example: Annual sales, market share, ROI.
 
--   Ventaja: Son objetivos
+- Advantage: They are objectives.
 
--   Desventaja: Reflejan el efecto de acciones del pasado.
+- Disadvantage: They reflect the effect of past actions.
 
-## Indicador Adelantado
+## Leading Indicator
 
-Propósito: Mide procesos, actividades, comportamientos
+Purpose: Measures processes, activities, behaviors
 
-Ejemplo: \# de clientes visitados, \# de cursos ofrecidos
+Example: \# of customers visited, \# of courses offered
 
--   Ventaja: Son predictivos, permiten corregir la estrategia
+- Advantage: They are predictive, allowing for strategy corrections
 
--   Desventaja: Basados en hipótesis causa-efecto.
+- Disadvantage: Based on cause-and-effect hypotheses.
 
-## Otros Ejemplos
+## Other Examples
 
-En el contexto de un YouTuber:
+In the context of a YouTuber:
 
--   Indicador adelantado: Número de vistas de un video de YouTube en las primeras 24 horas.
+- Leading indicator: Number of views of a YouTube video in the first 24 hours.
 
--   Indicador retrasado: Ingreso mensual generado por la monetización.
+- Lagging indicator: Monthly revenue generated from monetization.
 
-En el contexto del departamento de ventas de Netflix:
+In the context of Netflix's sales department:
 
--   Indicador adelantado: Número de usuarios que comienzan una prueba gratuita en un mes dado.
+- Leading indicator: Number of users who start a free trial in a given month.
 
--   Indicador retrasado: Ingreso mensuales por suscripciones.
+- Lagging indicator: Monthly revenue from subscriptions.
 
-## Otros Ejemplos
+## Other Examples
 
-En el contexto de una empresa de GenAI:
+In the context of a GenAI company:
 
--   Indicador adelantado: Número de programadores contratados con expertise en IA.
+- Leading indicator: Number of programmers hired with expertise in AI.
 
--   Indicador retrasado: Numero de licensias vendidas al año.
+- Lagging indicator: Number of licenses sold per year.
 
-En el contexto de una empresa de mantenimiento de minisplits:
+In the context of a mini-split maintenance company:
 
--   Indicador adelantado: El tiempo promedio de respuesta del servicio técnico a solicitudes de soporte.
+- Leading indicator: Average response time from technical support to support requests.
 
--   Indicador retrasado: Numero de reseñas positivas en Google Maps en un mes.
+- Lagging indicator: Number of positive reviews on Google Maps in a month.
 
-## ¿Cómo defino un indicador?
+## How do I define an indicator?
 
-Criterios de selección:
+Selection criteria:
 
--   Relación directa con el objetivo a medir
+- Direct relationship with the objective to be measured
 
--   Facilidad de comunicación enfocada a la estrategia
+- Ease of communication focused on the strategy
 
--   Repetibilidad y confiabilidad
+- Repeatability and reliability
 
--   Frecuencia de actualización
+- Update frequency
 
--   Utilidad en la fijación de metas
+- Usefulness in goal setting
 
--   Utilidad para asignar responsabilidades
+- Usefulness in assigning responsibilities
 
--   Utilidad para el despliegue hacia abajo
+- Usefulness for downward deployment
 
-## Indicadores Básicos y Derivados
+## Basic and Derived Indicators
 
-Un [indicador básico]{style="color:darkblue;"} se obtiene de la medición directa de un fenómeno o hecho. Por ejemplo: Número de pedidos entregados completos y a tiempo en la semana.
+A [basic indicator]{style="color:blue;"} is obtained from the direct measurement of a phenomenon or fact. For example: Number of orders delivered completely and on time during the week.
 
-Un [indicador derivado]{style="color:darkgreen;"} combina la información de dos o más indicadores básicos o derivados. Por ejemplo: Porcentaje de pedidos entregados completos y a tiempo en la semana.
+A [derived indicator]{style="color:green;"} combines the information from two or more basic or derived indicators. For example: Percentage of orders delivered completely and on time during the week.
 
-*Ejemplo*: en Análisis de modos de falla y efectos
+*Example*: in Failure Modes and Effects Analysis
 
--   Indicadores básicos: Severidad, Ocurencia, Detección
+- Basic indicators: Severity, Occurrence, Detection
 
--   Indicador derivado: Risk Priority Number = S*O*D
+- Derived indicator: Risk Priority Number = S*O*D
 
-## Ejemplo 3
 
-En el análisis de modos de falla y efectos, tenemos los siguientes indicadores básicos:
+## Example 3
 
--   **Severidad** (S): Mide el impacto o la gravedad de la falla en caso de que ocurra. Se mide en una escala del 1 al 10, donde 1 indica un efecto insignificante y 10 representa un efecto catastrófico para el usuario o el sistema.
+In failure modes and effects analysis, we have the following basic indicators:
 
--   **Ocurrencia** (O): Evalúa la probabilidad de que la falla ocurra. Se evalua en una escala de 1 al 10, donde 1 indica que la ocurrencia es muy rara y 10 que es altamente probable o frecuente.
+- **Severity** (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.
 
--   **Detección** (D): Representa la capacidad del sistema para detectar la falla antes de que llegue al cliente o al usuario final. Se califica en una escala del 1 al 10, donde 1 significa que la detección es casi segura y 10 que es muy difícil o imposible de detectar antes de que ocurra un problema.
+- **Occurrence** (O): Evaluates the probability of the failure occurring. It is evaluated on a scale of 1 to 10, where 1 indicates that the occurrence is very rare and 10 indicates that it is highly probable or frequent.
 
-[Indicador derivado]{style="color:darkgreen;"}: Número de Prioridad de Riesgo = S$\times$O$\times$D
+- **Detection** (D): Represents the system's ability to detect the failure before it reaches the customer or end user. It is rated on a scale of 1 to 10, where 1 means that detection is almost certain and 10 means that it is very difficult or impossible to detect before a problem occurs.
 
-## El Formato de un Indicador
+[Derived Indicator]{style="color:darkgreen;"}: Risk Priority Number = S$\times$O$\times$D
 
-Un indicador se debe medir númericamente usando:
+## The Format of an Indicator
 
-[Números absolutos]{style="color:lightblue;"}: Resultantes de un proceso de medición o conteo (volumen producido, precio de la acción, número de empleados, costos fijos…)
+An indicator should be measured numerically using:
 
-[Tasas]{style="color:lightblue;"}: Relación entre dos variables con diferentes unidades (número de unidades / número de operarios, consumo energético / litros producidos…)
+[Absolute Numbers]{style="color:lightblue;"}: Results of a measurement or counting process (volume produced, share price, number of employees, fixed costs, etc.)
 
-[Índices]{style="color:lightblue;"}: Cantidad adimensional que resulta de dividir el valor actual de una variable entre un valor base de referencia de esa variable (índice de precios al consumidor)
+[Rates]{style="color:lightblue;"}: Relationship between two variables with different units (number of units / number of workers, energy consumption / liters produced, etc.)
 
-## 
+[Indexes]{style="color:lightblue;"}: Dimensionless quantity resulting from dividing the current value of a variable by a reference base value for that variable (consumer price index)
 
-[Proporciones]{style="color:lightblue;"}: Relaciones entre dos variables que se miden en las mismas unidades (hombres vs mujeres, admitidos vs rechazados)
+##
 
-[Porcentajes de crecimiento o decrecimiento]{style="color:lightblue;"}: (Valor actual – Valor anterior)\*100/Valor anterior.
+[Proportions]{style="color:lightblue;"}: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)
 
-[Evaluaciones]{style="color:lightblue;"}: Evaluaciones de una variable cualitativa en una escala ordinal tipo Likert (bajo medio alto, pésimo malo regular bueno excelente).
+[Growth or Decrease Percentages]{style="color:lightblue;"}: (Current Value – Previous Value)*100/Previous Value.
 
-## Actividad 1.1 (cooperative mode)
+[Evaluations]{style="color:lightblue;"}: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent).
 
-Júntate en equipos de 3 y pregúntale a ChatGPT! Para los siguientes conceptos sugieran al menos un indicador cuantitativo adelantado (leading) y un indicador retrasado (lagging):
+## Activity 1.1 (cooperative mode)
 
-1.  Productividad mensual de una línea de producción de muebles
+Get into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:
 
-2.  Rotación anual de personal en una empresa de manufactura
+1. Monthly productivity of a furniture production line
 
-3.  Nivel de servicio al cliente de una empresa que fabrica envases de plástico y entrega regionalmente
+2. Annual staff turnover in a manufacturing company
 
-4.  Rentabilidad del negocio para una empresa mediana mayorista de abarrotes.
+3. Customer service level of a company that manufactures plastic packaging and delivers regionally
 
-5.  Desempeño del proceso de recaudación de fondos de una asociación de apoyo a niños en situación de calle.
+4. Business profitability for a medium-sized wholesale grocery company
 
-## Recuerda que ...
+5. Performance of the fundraising process of an association supporting homeless children
+
+## Remember that...
 
 ::::: columns
 ::: {.column width="50%"}
-Los propósitos de un indicador son:
+The purposes of an indicator are:
 
--   Establecer metas cuantitativas
+- Establish quantitative goals
 
--   Motivación organizacional, inducción de conductas deseables
+- Organizational motivation, induction of desirable behaviors
 
--   Evaluación de la estrategia y aprendizaje estratégico.
+- Strategy evaluation and strategic learning.
 :::
 
 ::: {.column width="50%"}
@@ -323,25 +324,25 @@ Los propósitos de un indicador son:
 :::
 :::::
 
-# Modelos para Definir Indicadores
+# Models for Defining Indicators
 
-## ¿Cuáles indicadores debemos utilizar?
+## Which indicators should we use?
 
--   Una vez que conocemos qué son los indicadores, su papel dentro del proceso administrativo, y los tipos de indicadores existen, nos preguntamos [¿Cuántos indicadores debemos tener? ¿Cuál es un conjunto apropiado de indicadores?]{style="color:lightblue;"} ¿Cómo los documentamos y compartimos?
+- Once we know what indicators are, their role in the management process, and the types of indicators that exist, we ask ourselves: [How many indicators should we have? What is an appropriate set of indicators?]{style="color:lightblue;"} How do we document and share them?
 
--   Aunque hay algunos indicadores que pudieran aplicarse de manera general a cualquier empresa, cada empresa tiene su propia estrategia, sus propias prioridades, su entorno competitivo particular, por lo tanto, el conjunto más conveniente de indicadores depende de cada organización.
+- Although there are some indicators that could be generally applied to any company, each company has its own strategy, its own priorities, and its particular competitive environment; therefore, the most appropriate set of indicators depends on each organization.
 
-[Aquí describimos modelos para encontrar el número y conjunto apropiado de indicadores.]{style="color:darkgray;"}
+[Here we describe models for finding the appropriate number and set of indicators.]{style="color:darkgray;"}
 
-## Estrategia y Ejecución
+## Strategy and Execution
 
 ![](images/clipboard-969668090.png)
 
--   *La estructura de planeación y control de la organización* provee un marco de trabajo para identificar y estructurar el sistema de indicadores.
+- *The organization's planning and control structure* provides a framework for identifying and structuring the indicator system.
 
--   Ya que uno de los retos primordiales de cualquier organización consiste en alinear la ejecución con la estrategia, o la estrategia con la ejecución.
+- Since one of the primary challenges for any organization is aligning execution with strategy, or strategy with execution.
 
--   Los sistemas de indicadores para la medición del desempeño deben apoyar a mantener el vínculo entre la estrategia y la ejecución.
+- Indicator systems for performance measurement must help maintain the link between strategy and execution.
 
 ::::: columns
 ::: {.column width="50%"}
@@ -355,21 +356,21 @@ Los propósitos de un indicador son:
 :::
 :::::
 
-## Modelos para Definir Indicadores
+## Models for Defining Indicators
 
-Los modelos para definir indicadores dependen del tipo de planeación estratégica.
+The models for defining indicators depend on the type of strategic planning.
 
-Tres marcos de planeación estratégica son:
+Three strategic planning frameworks are:
 
-1.  Administración por Objetivos (APO; Peter Drucker, 1954)
-2.  Hoshin Kanri
-3.  **Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)**
+1. Management by Objectives (MBO; Peter Drucker, 1954)
+2. Hoshin Kanri
+3. Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)
 
-## Balance Score Card (BSC)
+## Balanced Score Card (BSC)
 
-Es un modelo que [*ayuda a las organizaciones a traducir la estrategia en objetivos operacionales (medibles)*]{style="color:lightblue;"}, que resulta en acciones, conductas y desempeño.
+This is a model that [*helps organizations translate strategy into operational (measurable) objectives*]{style="color:lightblue;"}, resulting in actions, behaviors, and performance.
 
-BSC incluye todos los factores críticos de éxito en un sistema de medición, que brinda a las organizaciones una mejor posibilidad de alcanzar sus metas.
+The BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals.
 
 ## 
 
@@ -377,26 +378,26 @@ BSC incluye todos los factores críticos de éxito en un sistema de medición, q
 
 <https://www.youtube.com/watch?v=QCi09LlI7Hs>
 
-## Objetivos del BSC
+## BSC Objectives
 
-1.  Traducir la estrategia a objetivos medibles.
+1. Translate the strategy into measurable objectives.
 
-2.  Alinear los componentes de la estrategia: objetivos, indicadores e iniciativas.
+2. Align the strategy components: objectives, indicators, and initiatives.
 
-3.Comunicar la estrategia a la organización.
+3. Communicate the strategy to the organization.
 
-4.  Crear la base para una administración estratégica.
+4. Create the basis for strategic management.
 
-## 
+##
 
-BSC convierte la estrategia en un sistema integrado definido a través de 4 perspectivas:
+BSC transforms strategy into an integrated system defined through four perspectives:
 
 ::::: columns
 ::: {.column width="50%"}
-1.  Financiera
-2.  Clientes
-3.  Procesos Internos
-4.  Aprendizaje y crecimiento
+1. Financial
+2. Clients
+3. Internal Processes
+4. Learning and Growth
 :::
 
 ::: {.column width="50%"}
@@ -404,13 +405,13 @@ BSC convierte la estrategia en un sistema integrado definido a través de 4 pers
 :::
 :::::
 
-## Las 4 perspectivas
+## The 4 Perspectives
 
-BSC convierte la estrategia en un sistema integrado definido a través de 4 perspectivas:
+BSC transforms strategy into an integrated system defined through 4 perspectives:
 
 ::::: columns
 ::: {.column width="60%"}
-1.  *Financiera*. Incluye [**objetivos**]{style="color:lightblue;"} relacionados con la rentabilidad, productividad, utilidades, precio de las acciones, etc., son los objetivos que debe lograr la organización desde la perspectiva de los accionistas.
+1. *Financial*. Includes [**objectives**]{style="color:lightblue;"} related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders' perspective.
 :::
 
 ::: {.column width="40%"}
@@ -422,7 +423,7 @@ BSC convierte la estrategia en un sistema integrado definido a través de 4 pers
 
 ::::: columns
 ::: {.column width="60%"}
-2.  *Clientes*. Incluye [**objetivos**]{style="color:lightblue;"} relacionados con la propuesta de valor de la empresa, están orientados al mercado y se establecen desde la perspectiva de los clientes. Incluye objetivos de percepción de los clientes en cuanto al servicio, tiempo de entrega, calidad, valor/precio.
+2. *Customers*. Includes [**objectives**]{style="color:lightblue;"} related to the company's value proposition, are market-oriented, and are established from the customer's perspective. Includes customer perception objectives regarding service, delivery time, quality, and value/price.
 :::
 
 ::: {.column width="40%"}
@@ -434,8 +435,7 @@ BSC convierte la estrategia en un sistema integrado definido a través de 4 pers
 
 ::::: columns
 ::: {.column width="60%"}
-3.  *Procesos Internos*. Incluye [**objetivos**]{style="color:lightblue;"} relacionados con el desempeño de los procesos que son críticos para cumplir con los objetivos de la perspectiva de clientes. Objetivos de desempeño de la Cadena de Valor primaria del negocio.
-:::
+3. *Internal Processes*. Includes [**objectives**]{style="color:lightblue;"} related to the performance of processes that are critical to meeting customer perspective objectives. Performance objectives for the business's primary value chain.:::
 
 ::: {.column width="40%"}
 ![](images/clipboard-3795496454.png)
@@ -446,15 +446,14 @@ BSC convierte la estrategia en un sistema integrado definido a través de 4 pers
 
 ::::: columns
 ::: {.column width="60%"}
-4.  *Aprendizaje y crecimiento*. Son los [**objetivos**]{style="color:lightblue;"} relacionados con los habilitadores para lograr los objetivos de las otras perspectivas. Son objetivos de desarrollo de competencias, ambiente laboral, ambiente físico, infraestructura tecnológica, etc.
-:::
+4. *Learning and growth*. These are the [**objectives**]{style="color:lightblue;"} related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.:::
 
 ::: {.column width="40%"}
 ![](images/clipboard-3795496454.png)
 :::
 :::::
 
-# Ejemplo: Planear tu Fiesta de Cumpleaños
+# Example: Planning Your Birthday Party
 
 ![](images/EjemploBSC.png)
 
@@ -462,31 +461,29 @@ BSC convierte la estrategia en un sistema integrado definido a través de 4 pers
 
 ![](images/BSC_full.png)
 
-## Componentes del Modelo
+## Model Components
 
-Para cada perspectiva se debe definir:
+For each perspective, the following should be defined:
 
--   Un conjunto pequeño de objetivos estratégicos
+- A small set of strategic objectives
 
--   Para cada objetivo una (o más si es indispensable) métrica como indicador de desempeño
+- For each objective, one (or more if necessary) metric as a performance indicator
 
--   Para cada indicador establecer metas de largo y corto plazo
+- For each indicator, establish long- and short-term goals
 
--   Iniciativas (programas, proyectos, acciones) para cerrar las brechas entre el desempeño actual y el deseado de acuerdo con las metas.
+- Initiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.
 
-## Mapa Estratégico
+## Strategic Map
 
--   El mapa estratégico muestra los objetivos estratégicos dentro de cada perspectiva usando una matriz.
+- The strategic map displays the strategic objectives within each perspective using a matrix.
 
--   Se muestran también posibles relaciones causales entre los objetivos mediante flechas.
+- Possible causal relationships between objectives are also shown using arrows.
 
--   Si se revisan los estatutos estratégicos de la organización (Visión y Misión) se pueden incluir Temas Estratégicos que mostrarán si la organización está atendiendo dichos temas de manera explícita en la planeación.
+- If the organization's strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.
 
-# Estructura del Mapa Estratégico
+# Strategy Map Structure
 
-##  {fig-align="center"}
-
-![](images/clipboard-1407938894.png)
+![](images/clipboard-1407938894.png){fig-align="center"}
 
 <https://www.youtube.com/watch?v=Brv3w1MZpRg&ab_channel=EstrategiaenAcci%C3%B3nconIv%C3%A1nMart%C3%ADnezLima>
 
@@ -498,50 +495,50 @@ Para cada perspectiva se debe definir:
 
 ![](images/clipboard-1644569448.png)
 
-## Actividad 1.2 (cooperative mode)
+## Activity 1.2 (cooperative mode)
 
--   Júntate en equipos de 3.
--   Construye un mapa estratégico como parte de la aplicación del modelo Balanced Scorecard.
+- Form teams of three.
+- Build a strategy map as part of the Balanced Scorecard model application.
 
-Lee la introducción del mini-caso Muebles Finos MF en CANVAS
+Read the introduction to the Muebles Finos MF mini-case study in CANVAS.
 
-## 
+##
 
-La actividad consiste en asignar los objetivos de la empresa a las perspectivas del modelo BSC y a las líneas estratégicas del negocio. Una vez que hayan colocado los objetivos en el mapa, vincula los objetivos entre sí, estableciendo relaciones causa-efecto entre los objetivos. Se te pide también seleccionar 3 de los objetivos y proponer al menos un métrico sugerido para cada uno de ellos. Finalmente, escribirás la justificación de las relaciones causales establecidas
+The activity consists of mapping the company's objectives to the perspectives of the BSC model and to the business's strategic lines. Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them. You are also asked to select three of the objectives and propose at least one suggested metric for each. Finally, you will write the justification for the established causal relationships.
 
-## Comentarios Finales
+## Final Comments
 
--   Una vez que se ha diseñado el modelo de BSC para la empresa, se procede a desarrollar modelos específicos por áreas funcionales.
+- Once the BSC model has been designed for the company, specific models are developed by functional area.
 
--   En las áreas funcionales se trabaja a partir de los objetivos estratégicos, identificando objetivos particulares del área funcional.
+- In the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.
 
--   Es más frecuente utilizar indicadores de actuación que de impacto a nivel departamental.
+- It is more common to use performance indicators than impact indicators at the departmental level.
 
--   No necesariamente se mantienen todos los temas estratégicos en las áreas funcionales, ni necesariamente todas las áreas tienen objetivos en todas las perspectivas del BSC.
+- Not all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives.
 
-## 
+##
 
--   Es indispensable que los gerentes funcionales entiendan perfectamente el BSC de la empresa y la contribución de su área a los objetivos globales.
+- It is essential that functional managers fully understand the company's BSC and their area's contribution to the overall objectives.
 
--   El responsable del despliegue de BSC debe asegurar la congruencia y alineación de los BSC funcionales.
+- The person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.
 
--   Algunos indicadores a nivel organizacional son simplemente agregaciones de los indicadores departamentales.
+- Some organizational-level indicators are simply aggregations of departmental indicators.
 
-# Documentación de Indicadores
+# Indicator Documentation
 
-## Documentación de Indicadores
+## Indicator Documentation
 
-Cuando se están seleccionado y/o diseñando los indicadores, es necesario documentar formalmente la definición de cada uno de los indicadores.
+When selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.
 
-La documentación es muy útil porque:
+Documentation is very useful because:
 
--   Ayuda a clarificar el significado de los indicadores.
+- It helps clarify the meaning of the indicators.
 
--   Facilita la comunicación entre los usuarios y creadores de los indicadores.
+- It facilitates communication between users and indicator creators.
 
--   Sirve como referencia futura cuando se revise el sistema.
+- It serves as a future reference when revising the system.
 
-## Formato Básico
+## Basic Format
 
 ![](images/clipboard-1958606.png)
 
