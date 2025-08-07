@@ -1,0 +1,339 @@
+---
+title: "Development and Visualization of Indicators"
+subtitle: "IN2004B: Generation of Value with Data Analytics"
+author: 
+  - name: Alan R. Vazquez
+    affiliations:
+      - name: Department of Industrial Engineering
+format: 
+  revealjs:
+    chalkboard: false
+    multiplex: false
+    footer: "Tecnologico de Monterrey"
+    logo: IN2004B_logo.png
+    css: style.css
+    slide-number: True
+    html-math-method: mathjax
+editor: visual
+jupyter: python3
+---
+
+## Agenda
+
+</br>
+
+1.  Models for Defining Indicators
+2.  Indicator Documentation
+3.  Dashboards for Visualizing Indicators
+
+# Models for Defining Indicators
+
+## Introduction
+
+</br></br>
+
+Once we know what indicators are, their role in the management process, and the types of indicators that exist, we ask ourselves:
+
+::: incremental
+-   Which indicators should we use?
+
+-   How many indicators should we have?
+
+-   What is an appropriate set of indicators?
+
+-   How do we document and share them?
+:::
+
+## 
+
+</br></br>
+
+Although there are some indicators that could be generally applied to any company, each company has its own strategy, its own priorities, and its particular competitive environment
+
+Therefore, the most appropriate set of indicators depends on each organization.
+
+. . .
+
+</br>
+
+**Here we describe models for finding the appropriate number and set of indicators.**
+
+## Models for defining indicators
+
+</br></br>
+
+The models for defining indicators depend on the type of strategic planning.
+
+Three strategic planning frameworks are:
+
+1.  Management by Objectives (MBO; Peter Drucker, 1954)
+2.  Hoshin Kanri
+3.  Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)
+
+## Models for defining indicators
+
+</br></br>
+
+The models for defining indicators depend on the type of strategic planning.
+
+Three strategic planning frameworks are:
+
+1.  Management by Objectives (MBO; Peter Drucker, 1954)
+2.  Hoshin Kanri
+3.  **Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)**
+
+## Balanced Score Card (BSC)
+
+</br>
+
+::::: columns
+::: {.column width="60%"}
+It's a model that [*helps organizations translate strategy into operational (measurable) objectives*]{style="color:blue;"}, resulting in actions, behaviors, and performance.
+
+</br>
+
+The BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_EN.png){fig-align="center"}
+:::
+:::::
+
+## BSC's objectives
+
+</br></br>
+
+::: incremental
+1.  Translate the strategy into measurable objectives.
+
+2.  Align the strategy components: objectives, indicators, and initiatives.
+
+3.  Communicate the strategy to the organization.
+
+4.  Create the basis for strategic management.
+:::
+
+## 
+
+</br>
+
+BSC transforms strategy into an integrated system defined through four perspectives:
+
+</br>
+
+:::::: columns
+:::: {.column width="50%"}
+::: incremental
+1.  Financial
+2.  Clients
+3.  Internal Processes
+4.  Learning and Growth
+:::
+::::
+
+::: {.column width="50%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+::::::
+
+## The 4 Perspectives
+
+BSC transforms strategy into an integrated system defined through 4 perspectives:
+
+::::: columns
+::: {.column width="60%"}
+1.  *Financial*. Includes [**objectives**]{style="color:purple;"} related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders' perspective.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## 
+
+</br></br>
+
+::::: columns
+::: {.column width="60%"}
+2.  *Customers*. Includes [**objectives**]{style="color:purple;"} related to the company's value proposition, are market-oriented, and are established from the customer's perspective. Includes customer perception objectives regarding service, delivery time, quality, and value/price.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## 
+
+</br></br>
+
+::::: columns
+::: {.column width="60%"}
+3.  *Internal Processes*. Includes [**objectives**]{style="color:purple;"} related to the performance of processes that are critical to meeting customer perspective objectives. Performance objectives for the business's primary value chain.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## 
+
+</br></br>
+
+::::: columns
+::: {.column width="60%"}
+4.  *Learning and growth*. These are the [**objectives**]{style="color:purple;"} related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## Planning Your Birthday Party
+
+![](images/BSC_party.png){fig-align="center"}
+
+## 
+
+![](images/BSC_full_EN.jpg){fig-align="center"}
+
+## Model Components
+
+</br>
+
+For each perspective, the following should be defined:
+
+-   A small set of strategic objectives
+
+-   For each objective, one (or more if necessary) metric as a performance indicator
+
+-   For each indicator, establish long- and short-term goals
+
+-   Initiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.
+
+## Strategic Map
+
+</br>
+
+-   The strategic map displays the strategic objectives within each perspective using a matrix.
+
+-   Possible causal relationships between objectives are also shown using arrows.
+
+-   If the organization's strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.
+
+## Strategy map structure
+
+</br></br>
+
+![](images/SM_structure.png){fig-align="center"}
+
+::: notes
+Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de abajo hacia arriba. Los niveles superiores son consecuencia de los niveles inferiores. No necesariamente todos están ligados.
+:::
+
+## 
+
+![](images/clipboard-2065731730.png){fig-align="center"}
+
+## 
+
+![](images/clipboard-1644569448.png){fig-align="center"}
+
+## Activity 1.2 (cooperative mode)
+
+</br></br>
+
+-   Form teams of three.
+-   Build a strategy map as part of the Balanced Scorecard model application.
+-   Read the introduction to the Muebles Finos MF mini-case study in CANVAS.
+-   The activity consists of mapping the company's objectives to the perspectives of the BSC model and to the business's strategic lines.
+
+## 
+
+</br></br>
+
+-   Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them.
+
+-   You are also asked to select three of the objectives and propose at least one suggested metric for each.
+
+-   Finally, you will write the justification for the established causal relationships.
+
+## Final comments
+
+-   Once the BSC model has been designed for the company, specific models are developed by functional area.
+
+-   In the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.
+
+-   It is more common to use performance indicators than impact indicators at the departmental level.
+
+-   Not all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives.
+
+## 
+
+</br></br>
+
+-   It is essential that functional managers fully understand the company's BSC and their area's contribution to the overall objectives.
+
+-   The person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.
+
+-   Some organizational-level indicators are simply aggregations of departmental indicators.
+
+# Indicator Documentation
+
+## Indicator documentation
+
+</br></br>
+
+When selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.
+
+Documentation is very useful because:
+
+-   It helps clarify the meaning of the indicators.
+
+-   It facilitates communication between users and indicator creators.
+
+-   It serves as a future reference when revising the system.
+
+## Basic documenting format
+
+![](images/KPIs_document.jpg){fig-align="center"}
+
+# Dashboards for Visualizing Indicators
+
+## The Balanced Scorecard
+
+Once the indicators are defined using the Balanced Scorecard and the documentation format, we design dashboards with:
+
+-   Screens
+-   Chart and table styles
+-   Aggregation levels
+-   Default reports
+-   Drill-down requirements.
+
+This applies to both the overall organizational level and the functional BSCs.
+
+## Dashboard deployment
+
+Various strategies can be followed to implement the dashboards, for example:
+
+-   Development on a specialized platform for indicator systems (<https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/>)
+
+-   Development with generic OLAP Online Analytical Processing tools (<https://www.softwaretestinghelp.com/best-olap-tools/>)
+
+-   Short-term, isolated implementations in spreadsheets.
+
+## Tableu dashboard example
+
+![](images/clipboard-3862420324.png)
+
+<https://www.tableau.com/es-mx>
+
+## Another Example
+
+![](images/clipboard-686396046.png)
+
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

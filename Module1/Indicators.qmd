@@ -1,0 +1,400 @@
+---
+title: "Indicators"
+subtitle: "IN2004B: Generation of Value with Data Analytics"
+author: 
+  - name: Alan R. Vazquez
+    affiliations:
+      - name: Department of Industrial Engineering
+format: 
+  revealjs:
+    chalkboard: false
+    multiplex: false
+    footer: "Tecnologico de Monterrey"
+    logo: IN2004B_logo.png
+    css: style.css
+    slide-number: True
+    html-math-method: mathjax
+editor: visual
+jupyter: python3
+---
+
+## Agenda
+
+</br>
+
+1.  Basic Indicator Concepts
+2.  Lagging and Leading Indicators
+
+
+# Basic Indicator Concepts
+
+## Management
+
+</br></br>
+
+> "Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals."
+
+Koontz, Harold, "Management," 14th Edition, McGraw Hill, Mexico, 2012
+
+## Functions of management
+
+The management process is broken down into five management functions:
+
+:::: incremental
+::: {style="font-size: 84%;"}
+1.  **Plan**: Choosing missions and objectives, and the actions to achieve them
+2.  **Organizing**: Establishing an intentional structure of roles for people to perform in an organization
+3.  **Staffing**: Filling and maintaining positions in the organizational structure
+4.  **Directing**: Influencing people to contribute to organizational and group goals
+5.  **Controlling**: Measuring and correcting individual and organizational performance to ensure that events conform to plans.
+:::
+::::
+
+## Integration of planning and control
+
+</br>
+
+![](images/planningintegration.png){fig-align="center"}
+
+## Planning
+
+As a result of the planning process, some of the following types of plans can be generated:
+
+::: {style="font-size: 90%;"}
+-   Objectives or goals. These are specific and measurable results.
+-   Strategies. Approaches or plans to achieve objectives.
+-   Procedures. These detail the execution of an activity.
+-   Programs. Organized sets of activities to achieve objectives.
+-   Budgets. Detailed financial plans to facilitate economic decision-making.
+:::
+
+::: center
+[**High need to measure progress**]{style="color:white;"}
+:::
+
+## Planning
+
+As a result of the planning process, some of the following types of plans can be generated:
+
+::: {style="font-size: 90%;"}
+-   [Objectives or goals. These are specific and measurable results.]{style="color:blue;"}
+-   [Strategies. Approaches or plans to achieve objectives.]{style="color:blue;"}
+-   Procedures. These detail the execution of an activity.
+-   Programs. Organized sets of activities to achieve objectives.
+-   Budgets. Detailed financial plans to facilitate economic decision-making.
+:::
+
+::: center
+[**High need to measure progress**]{style="color:blue;"}
+:::
+
+## Definition of SMART Objectives
+
+:::: incremental
+::: {style="font-size: 90%;"}
+-   [S]{style="color:green;"}pecific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.
+
+-   [M]{style="color:green;"}easurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.
+
+-   [A]{style="color:green;"}chievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.
+
+-   [R]{style="color:green;"}elevant: A goal should be relevant and aligned with the broader goals of the organization or individual.
+
+-   [T]{style="color:green;"}ime-bounded: A goal should have a clearly defined timeframe or deadline.
+:::
+::::
+
+## Examples
+
+Example 1:
+
+:::: incremental
+::: {style="font-size: 90%;"}
+-   **Objective**: Complete staff training
+
+-   **SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
+:::
+::::
+
+. . .
+
+Example 2
+
+:::: incremental
+::: {style="font-size: 90%;"}
+-   **Objective**: Increase sales by 20%.
+
+-   **SMART**: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
+:::
+::::
+
+## The need to measure
+
+::: {style="font-size: 90%;"}
+To carry out the Planning, Implementation, and Control processes, we need an information system to evaluate whether the planned objectives are being achieved and whether the implemented actions are being carried out in accordance with the plans.
+:::
+
+![](images/planningintegration.png){fig-align="center"}
+
+## What is an indicator?
+
+</br></br>
+
+> "It is the result of a quantitative or qualitative measurement, or some other criterion, by which the performance, efficiency, achievement, etc., of a person or organization can be evaluated, often compared to a standard or goal."
+
+Collins English Dictionary.
+
+## What is an indicator?
+
+</br>
+
+> "The qualitative and/or quantitative information on an examined phenomenon (or a process, or a result), which makes it possible to analyze its evolution and to check whether quality targets are met, driving actions and decisions."
+
+Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Management by Measurement: Designing Key Indicators and Performance Measurement Systems. 10.1007/978-3-540-73212-9.
+
+## Examples of indicators
+
+![](images/clipboard-504148956.png){fig-align="center"}
+
+## 
+
+</br>
+
+::::: columns
+::: {.column width="50%"}
+</br>
+
+![](images/clipboard-2486707330.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-4111043120.png){fig-align="center"}
+:::
+:::::
+
+## Characteristics of an indicator
+
+</br></br>
+
+[*Fundamental*]{style="color:purple;"}:
+
+-   *Validity*: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.
+
+-   *Stability*: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends).
+
+## 
+
+</br></br>
+
+[Ideal]{.underline}:
+
+-   Simple and easy to interpret.
+-   Able to indicate trends over time.
+-   Sensitive to changes within and outside the organization.
+-   Easy to collect and process data.
+-   Quick and easy to update.
+
+## Usefulness of indicators
+
+![](images/usefulindicators.png){fig-align="center"}
+
+## Analysis Dimensions
+
+</br>
+
+-   Indicators and the data that drive them are often stratified with respect to other variables.
+
+-   Variables used as stratification criteria are called "[Analysis Dimensions]{style="color:lightblue;"}" (they are dimensions from the perspective of data hypercubes).
+
+. . .
+
+*Example*: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes.
+
+## For example
+
+![](images/clipboard-1701530541.png){fig-align="center"}
+
+# Lagging and Leading Indicators
+
+## Selecting Indicators
+
+</br></br>
+
+Selecting indicators is a critical factor for an organization to move closer to fulfilling its mission and turning its strategies into reality. Indicators and strategies are inextricably linked.
+
+. . .
+
+> A strategy without indicators is useless; indicators without a strategy are irrelevant!
+
+## Two main types of indicators
+
+</br>
+
+A [lagging indicator]{style="color:darkblue;"} measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.
+
+. . .
+
+</br>
+
+A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators.
+
+## Lagging Indicator
+
+</br></br>
+
+**Goal**: Measures the outcome of performance [at the end of a period]{style="color:darkblue;"}.
+
+*Example*: Annual sales, market share, ROI.
+
+-   Advantage: They are objectives.
+
+-   Disadvantage: They reflect the effect of past actions.
+
+## Leading Indicator
+
+</br></br>
+
+**Goal**: Measures processes, activities, behaviors that tend to change [before the system starts]{style="color:darkgreen;"} to follow a particular pattern or trend
+
+*Example*: \# of customers visited, \# of courses offered
+
+-   Advantage: They are predictive, allowing for strategy corrections
+
+-   Disadvantage: Based on cause-and-effect hypotheses.
+
+## Other examples
+
+In the context of a YouTuber:
+
+-   Leading indicator: Number of views of a YouTube video in the first 24 hours.
+
+-   Lagging indicator: Monthly revenue generated from monetization.
+
+. . .
+
+In the context of Netflix's sales department:
+
+-   Leading indicator: Number of users who start a free trial in a given month.
+
+-   Lagging indicator: Monthly revenue from subscriptions.
+
+## 
+
+In the context of a GenAI company:
+
+-   Leading indicator: Number of programmers hired with expertise in AI.
+
+-   Lagging indicator: Number of licenses sold per year.
+
+. . .
+
+In the context of a mini-split maintenance company:
+
+-   Leading indicator: Average response time from technical support to support requests.
+
+-   Lagging indicator: Number of positive reviews on Google Maps in a month.
+
+## How do I define an indicator?
+
+</br>
+
+Selection criteria:
+
+-   Direct relationship with the objective to be measured
+
+-   Ease of communication focused on the strategy
+
+-   Repeatability and reliability
+
+-   Update frequency
+
+-   Usefulness in goal setting
+
+-   Usefulness in assigning responsibilities
+
+-   Usefulness for downward deployment
+
+## Basic and Derived Indicators
+
+A [basic indicator]{style="color:blue;"} is obtained from the direct measurement of a phenomenon or fact. For example: Number of orders delivered completely and on time during the week.
+
+A [derived indicator]{style="color:green;"} combines the information from two or more basic or derived indicators. For example: Percentage of orders delivered completely and on time during the week.
+
+. . .
+
+</br>
+
+*Example*: in Failure Modes and Effects Analysis
+
+-   Basic indicators: Severity, Occurrence, Detection
+
+-   Derived indicator: Risk Priority Number = S*O*D
+
+::: notes
+-   **Severity** (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.
+
+-   **Occurrence** (O): Evaluates the probability of the failure occurring. It is evaluated on a scale of 1 to 10, where 1 indicates that the occurrence is very rare and 10 indicates that it is highly probable or frequent.
+
+-   **Detection** (D): Represents the system's ability to detect the failure before it reaches the customer or end user. It is rated on a scale of 1 to 10, where 1 means that detection is almost certain and 10 means that it is very difficult or impossible to detect before a problem occurs.
+
+[Derived Indicator]{style="color:darkgreen;"}: Risk Priority Number = S$\times$O$\times$D
+:::
+
+## The format of an indicator
+
+An indicator should be measured numerically using:
+
+[Absolute Numbers]{style="color:brown;"}: Results of a measurement or counting process (volume produced, share price, number of employees, fixed costs, etc.)
+
+[Rates]{style="color:brown;"}: Relationship between two variables with different units (number of units / number of workers, energy consumption / liters produced, etc.)
+
+[Indexes]{style="color:brown;"}: Dimensionless quantity resulting from dividing the current value of a variable by a reference base value for that variable (consumer price index)
+
+## 
+
+</br></br>
+
+[Proportions]{style="color:brown;"}: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)
+
+[Growth or Decrease Percentages]{style="color:brown;"}: (Current Value – Previous Value)\*100/Previous Value.
+
+[Evaluations]{style="color:brown;"}: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent).
+
+## Activity 1.1 (cooperative mode)
+
+Get into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:
+
+::: {style="font-size: 90%;"}
+1.  Monthly productivity of a furniture production line
+
+2.  Annual staff turnover in a manufacturing company
+
+3.  Customer service level of a company that manufactures plastic packaging and delivers regionally
+
+4.  Business profitability for a medium-sized wholesale grocery company
+
+5.  Performance of the fundraising process of an association supporting homeless children
+:::
+
+## Remember that...
+
+</br>
+
+::::: columns
+::: {.column width="50%"}
+The purposes of an indicator are:
+
+-   Establish quantitative goals
+
+-   Organizational motivation, induction of desirable behaviors
+
+-   Strategy evaluation and strategic learning.
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-3372273709.png){fig-align="center"}
+:::
+:::::
+
+
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

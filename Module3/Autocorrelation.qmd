@@ -1,0 +1,1371 @@
+---
+title: "Autocorrelation Models"
+subtitle: "IN2004B: Generation of Value with Data Analytics"
+author: 
+  - name: Alan R. Vazquez
+    affiliations:
+      - name: Department of Industrial Engineering
+format: 
+  revealjs:
+    chalkboard: false
+    multiplex: false
+    footer: "Tecnologico de Monterrey"
+    logo: IN2004B_logo.png
+    css: style.css
+    slide-number: True
+    html-math-method: mathjax
+editor: visual
+jupyter: python3
+---
+
+## Agenda
+
+</br>
+
+1.  Autocorrelation
+2.  The ARIMA model
+3.  The SARIMA model
+
+## Load the libraries
+
+Before we start, let's import the data science libraries into Python.
+
+```{python}
+#| echo: true
+#| output: false
+
+# Importing necessary libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.statespace.tools import diff
+```
+
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**, **sklearn** and **statsmodels** libraries in Python.
+
+# Autocorrelation
+
+## Problem with linear regression models
+
+</br>
+
+Linear regression models do not incorporate the [dependence]{style="color:purple;"} between consecutive values in a time series.
+
+This is unfortunate because responses recorded over close time periods tend to be correlated. This correlation is called the [**autocorrelation**]{style="color:purple;"} of the time series.
+
+Autocorrelation helps us develop a model that can make better predictions of future responses.
+
+## What is correlation?
+
+:::::: center
+::::: columns
+::: {.column width="60%"}
+</br>
+
+-   It is a measure of the strength and direction of the *linear* relationship between two numerical variables.
+
+-   Specifically, it is used to assess the relationship between two sets of observations.
+
+-   Correlation is between $-1$ and 1.
+:::
+
+::: {.column width="40%"}
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Load the data into Python
+Ads_data = pd.read_excel('Advertising.xlsx')
+
+# Calculate correlation
+correlation = Ads_data['TV'].corr(Ads_data['Sales'])
+
+# Create scatter plot
+plt.figure(figsize=(5, 5))
+sns.scatterplot(data=Ads_data, x='TV', y='Sales')
+plt.xlabel('TV Advertising Budget')
+plt.ylabel('Sales')
+# Optionally, also add as text on the plot
+plt.text(0.05, 0.95, f'Correlation = {correlation:.2f}', transform=plt.gca().transAxes,
+         fontsize=12, color='blue', ha='left', va='top')
+plt.tight_layout()
+plt.show()
+```
+:::
+:::::
+::::::
+
+## How do we measure autocorrelation?
+
+</br></br></br>
+
+There are two formal tools for measuring the correlation between observations in a time series:
+
+::: incremental
+-   The [***autocorrelation***]{style="color:green;"} function.
+
+-   The [***partial autocorrelation***]{style="color:purple;"} function.
+:::
+
+## The autocorrelation function
+
+> Measures the correlation between responses separated by $j$ periods.
+
+For example, consider the autocorrelation between the current temperature and the temperature recorded the day before.
+
+. . .
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/correlation_1.png){fig-align="center" width="465" height="288"}
+:::
+
+::: {.column width="50%"}
+:::
+:::::
+::::::
+
+## The autocorrelation function
+
+> Measures the correlation between responses separated by $j$ periods.
+
+For example, consider the autocorrelation between the current temperature and the temperature recorded the day before.
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+![](images/correlation_1.png){fig-align="center" width="465" height="288"}
+:::
+
+::: {.column width="50%"}
+![](images/correlation_2.png){fig-align="center" width="465" height="288"}
+:::
+:::::
+::::::
+
+## The autocorrelation function
+
+> Measures the correlation between responses separated by $j$ periods.
+
+For example, consider the autocorrelation between the current temperature and the temperature recorded the day before. This would be the correlation between these two columns
+
+![](images/correlation_combined.png){fig-align="center"}
+
+## Example 1
+
+Let's consider again the dataset in the file "Amtrak.xlsx." The file contains records of Amtrak passenger numbers from January 1991 to March 2004.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+Amtrak_data = pd.read_excel('Amtrak.xlsx')
+Amtrak_data.head()
+```
+
+## 
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='Month', y='Ridership (in 000s)', data = Amtrak_data)
+plt.xlabel('Month')
+plt.ylabel('Ridership')
+plt.title('Amtrak Ridership Over Time')
+plt.show()
+```
+
+## Autocorrelation function
+
+</br>
+
+-   The autocorrelation function measures the correlation between responses that are separated by a specific number of periods.
+
+-   The autocorrelation function is commonly visualized using a bar chart.
+
+-   The vertical axis shows the differences (or [*lags*]{style="color:brown;"}) between the periods considered, and the horizontal axis shows the correlations between observations at different lags.
+
+## Autocorrelation plot
+
+</br>
+
+In Python, we use the `plot_acf` function from the **statsmodels** library.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+plt.figure(figsize=(10, 6))
+plot_acf(Amtrak_data['Ridership (in 000s)'], lags = 25)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+The `lags` parameter controls the number of periods for which to compute the autocorrelation function.
+
+## The resulting plot
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(10, 6))
+plot_acf(Amtrak_data['Ridership (in 000s)'], lags = 25)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+## 
+
+::::::: center
+:::::: columns
+:::: {.column width="50%"}
+::: {style="font-size: 80%;"}
+</br>
+
+-   The autocorrelation plot shows that the responses and those from zero periods ago have a correlation of 1.
+
+-   The autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45.
+
+-   The autocorrelation plot shows that the responses and those from 24 periods ago have a correlation of around 0.5.
+:::
+::::
+
+::: {.column width="50%"}
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(4, 4))
+plot_acf(Amtrak_data['Ridership (in 000s)'], lags = 25)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+::::::
+:::::::
+
+## Autocorrelation patterns
+
+</br>
+
+-   **A strong autocorrelation (positive or negative) with a lag** $j$ **greater than 1 and its multiples** ($2k, 3k, \ldots$) typically reflects a cyclical pattern or seasonality.
+
+-   **Positive lag-1 autocorrelation** describes a series in which consecutive values *generally* move in the same direction.
+
+-   **Negative lag-1 autocorrelation** reflects oscillations in the series, where high values (*generally*) are immediately followed by low values and vice versa.
+
+## More about the autocorrelation function
+
+Consider the problem of predicting the average price of a kilo of avocado this month.
+
+For this, we have the average price from last month and the month before that.
+
+![](images/Avocado1.png){fig-align="center"}
+
+## 
+
+</br></br>
+
+The autocorrelation function for $Y_t$ and $Y_{t-2}$ includes the direct and indirect effect of $Y_{t-2}$ on $Y_t$.
+
+![](images/Avocado3.png){fig-align="center"}
+
+## Partial autocorrelation function
+
+> Measures the correlation between responses that are separated by $j$ periods, **excluding correlation** due to responses separated by intervening periods.
+
+![](images/Avocado4.png){fig-align="center"}
+
+## 
+
+In technical terms, the partial autocorrelation function fits the following linear regression model
+
+$$\hat{Y}_t = \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}$$ Where:
+
+-   $\hat{Y}_{t}$ is the predicted response at the current time ($t$).
+-   $\hat{\beta}_1$ is the *direct effect* of $Y_{t-1}$ on predicting $Y_{t}$.
+-   $\hat{\beta}_2$ is the *direct effect* of $Y_{t-2}$ on predicting $Y_{t}$.
+
+The partial autocorrelation between $Y_t$ and $Y_{t-2}$ is equal to $\hat{\beta}_2$.
+
+## 
+
+-   The partial autocorrelation function is visualized using a graph similar to that for autocorrelation.
+
+-   The vertical axis shows the differences (or *lags*) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.
+
+In Python, we use the `plot_pacf` function from **statsmodels**.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+plt.figure(figsize=(10, 6))
+plot_pacf(Amtrak_data['Ridership (in 000s)'], lags = 25)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+## 
+
+</br>
+
+::::::: center
+:::::: columns
+:::: {.column width="50%"}
+::: {style="font-size: 80%;"}
+</br>
+
+-   The partial autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45. *This is the same for the autocorrelation plot.*
+
+-   The partial autocorrelation plot shows that the responses and those from two periods ago have a correlation near 0.
+:::
+::::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(10, 6))
+plot_pacf(Amtrak_data['Ridership (in 000s)'], lags = 25)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+::::::
+:::::::
+
+# The ARIMA Model
+
+## Autoregressive models
+
+*Autoregressive models* are a type of linear regression model that directly incorporate the autocorrelation of the time series to predict the current response.
+
+Their main characteristic is that the predictors of the current value of the series are its past values.
+
+-   An autoregressive model of order 2 has the mathematical form: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.$
+
+-   An order 3 model looks like this: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.$
+
+## ARIMA models
+
+</br>
+
+A special class of autoregressive models are [***ARIMA***]{style="color:purple;"} ([*Autoregressive Integrated Moving Average*]{style="color:purple;"}).
+
+. . .
+
+An ARIMA model consists of three elements:
+
+::: incremental
+1.  Integrated operators (*integrated*).
+2.  Autoregressive terms (*autoregressive*).
+3.  Stochastic terms (*moving average*).
+:::
+
+## 1. Integrated or differentiatedoperators (I)
+
+</br>
+
+They create a new variable $Z_t$, which equals the difference between the current response and the delayed response by a number of periods or lags.
+
+There are three common levels of differentiation:
+
+-   Level 0: $Z_t = Y_t$.
+-   Level 1: $Z_t = Y_t - Y_{t-1}$.
+-   Level 2: $Z_t = (Y_t - Y_{t-1}) - (Y_{t-1} - Y_{t-2})$.
+
+## Example 2
+
+We consider the time series "CanadianWorkHours.xlsx" that contains the average hours worked by a certain group of workers over a certain range of years.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+CanadianWorkHours = pd.read_excel('CanadianWorkHours.xlsx')
+CanadianWorkHours.head(4)
+```
+
+## Creating a train and a validation data
+
+Recall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Define the split point
+split_ratio = 0.8  # 80% train, 20% test
+split_point = int(len(CanadianWorkHours) * split_ratio)
+
+# Split the data
+Canadian_train = CanadianWorkHours[:split_point]
+Canadian_validation = CanadianWorkHours[split_point:]
+```
+
+We use 80% of the time series for training and the rest for validation.
+
+## Training data
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='Year', y='Hours per Week', data = Canadian_train)
+plt.xlabel('Year')
+plt.ylabel('Hours per Week')
+plt.title('Hours per Week Over Time')
+plt.show()
+```
+
+## 
+
+</br></br>
+
+In **statsmodels**, we apply the integration operator using the pre-loaded `diff()` function. The function's `k_diff` argument specifies the order or level of the operator.
+
+</br>
+
+First, let's use a level-1 operator.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Z_series_one = diff(Canadian_train['Hours per Week'], k_diff = 1)
+```
+
+## 
+
+The time series with a level-1 operator looks like this.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_one)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 1')
+plt.show()
+```
+
+## 
+
+A level-2 operator would work like this.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Z_series_two = diff(Canadian_train['Hours per Week'], k_diff = 2)
+```
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(9, 5))
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_two)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 2')
+plt.show()
+```
+
+## 
+
+We see that the level 2 operator is more successful in removing the trend from the original time series.
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_one)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 1')
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+sns.lineplot(x=Canadian_train['Year'], y=Z_series_two)
+plt.xlabel('Year')
+plt.ylabel('Difference Level 2')
+plt.show()
+```
+:::
+:::::
+::::::
+
+## Comments
+
+</br></br>
+
+The differentiation operator removes or de-trends the time series.
+
+-   The level 0 differentiation operator leaves the time series intact.
+-   The level 1 differentiation operator removes its linear trend.
+-   The level 2 differentiation operator removes its quadratic trend.
+
+## How do we determine the operator level?
+
+</br>
+
+Visualizing the time series and determining whether there is a linear or quadratic trend.
+
+If level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.
+
+[*Once this is done, we set our transformed variable* $Z_t$ as the new response variable.]{style="color:purple;"}
+
+## 2. Autoregressive (AR) terms
+
+</br>
+
+Here we use autoregressive models, but with the new response variable $Z_t$.
+
+We can have different levels of order (or number of terms) in the autoregression model. For example:
+
+-   Order 1 model: $\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1}$.
+
+-   Order 2 model: $\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2}$.
+
+If necessary, we can exclude the constant coefficient $\hat{\beta}_0$ from the model.
+
+## How do we determine the number of terms?
+
+</br></br></br>
+
+Using the correlation functions (ACF) and partial correlation functions (PACF) of the differenced series.
+
+## 
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_acf(Z_series_two, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_pacf(Z_series_two, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+:::::
+::::::
+
+To achieve this, we have some rules.
+
+## Rule 1
+
+</br></br>
+
+A first-order autoregressive model has:
+
+1.  An ACF with a single peak at the first period difference (lag).
+
+2.  An ACF with exponentially decreasing correlations.
+
+## Rule 2
+
+</br></br>
+
+A second-order autoregressive model has:
+
+1.  A PACF with two peaks at the first period differences (lags).
+
+2.  An ACF with correlations that decrease positively and negatively but approach zero.
+
+## Rule 3
+
+</br>
+
+If the PACF of the differenced series $Z_t$ shows a higher partial correlation than the others and/or the lag-1 autocorrelation is positive, then consider adding an AR term to the model.
+
+</br>
+
+The lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.
+
+## 
+
+Following part 1 of Rule 1, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_pacf(Z_series_two, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+## 3. Stochastic Terms (Moving Averages, MA)
+
+Instead of using past values of the response variable, a moving average model uses stochastic terms to predict the current response. The model has different versions depending on the number of errors used to predict the response. For example:
+
+-   MA of order 1: $Z_t = \theta_0 + \theta_1 a_{t-1}$;
+-   MA of order 2: $Z_t = \theta_0 + \theta_1 a_{t-1} + \theta_2 a_{t-2}$,
+
+where $\theta_0$ is a constant and $a_t$ are terms from a white noise series (i.e., random terms).
+
+## How do I choose the order of the MAs?
+
+</br></br>
+
+**Rule 4**: MA models have:
+
+1.  Correlations other than 0 in the ACF. The lags at which this occurs indicate the terms to include in the MA model.
+
+2.  Correlations in the PACF that gradually decrease to zero in some way.
+
+## 
+
+::: {style="font-size: 90%;"}
+This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it's the autocorrelation function of the series after it's been differentiated.
+:::
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_acf(Z_series_two, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+## 
+
+[*Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.*]{style="color:darkblue;"}
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_acf(Z_series_two, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+
+## ARIMA
+
+</br>
+
+::: incremental
+1.  Define the response differentiation level and create $Z_t$.
+
+2.  Define the order of the AR model (e.g., order 2).
+
+3.  Define the order of the MA model (e.g., order 1).
+:::
+
+. . .
+
+::: center
+$$\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2} + \theta_1 a_{t-1}$$
+:::
+
+. . .
+
+The ARIMA model coefficients are estimated using an advanced method that takes into account the dependencies between the time series responses.
+
+## ARIMA in Pyhon
+
+</br></br>
+
+To fit an ARIMA model, we use the `ARIMA()` function from **statsmodels**.
+
+The function has an important argument called `order`, which equals `(p,d,q)`, where
+
+-   `p` is the order of the autoregressive model.
+-   `d` is the level of the integration or differencing operator.
+-   `q` is the number of elements in the moving average.
+
+## 
+
+</br>
+
+From our previous analysis of the training data for the Canadian workhours example, we conclude that:
+
+-   We must use a level-2 differencing operator to remove the quadratic trend from the series. Therefore, `d = 2`.
+
+-   One autoregressive term should be sufficient to capture the patterns in the time series. Therefore, `p = 2`.
+
+-   It is not necessary to have moving average terms. Therefore, `q = 0`.
+
+## 
+
+</br></br>
+
+Once this is defined, we can train an ARIMA model using the training data with the following code:
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+Arima_Canadian = ARIMA(Canadian_train['Hours per Week'], 
+                       order=(2, 2, 0))
+results_ARIMA_Canadian = Arima_Canadian.fit()
+```
+
+Technically, `ARIMA()` defines the model and `.fit()` fits the model to the data using *maximum likelihood estimation*.
+
+## 
+
+After fitting, we can get a summary of the model fit using the following code.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+print(results_ARIMA_Canadian.summary())
+```
+
+## 
+
+</br></br>
+
+**The next step in evaluating an ARIMA model is to study the model's residuals to ensure there is nothing else to explain in the model.**
+
+</br>
+
+We can obtain the residuals using the following code.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+ARIMA_residuals = results_ARIMA_Canadian.resid
+ARIMA_residuals = ARIMA_residuals.drop(0)
+```
+
+## Time series of residuals
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x=Canadian_train['Year'], y=ARIMA_residuals)
+plt.xlabel('Year')
+plt.ylabel('Residuals')
+plt.show()
+```
+
+## Correlation plots
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plot_acf(ARIMA_residuals, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plot_pacf(ARIMA_residuals, lags = 10)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+:::::
+::::::
+
+## 
+
+</br></br></br>
+
+[**The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is correct.**]{style="color:darkgreen;"}
+
+## Forecast
+
+Once the model is validated, we make predictions for elements in the time series.
+
+</br>
+
+To predict the average number of hours worked in the next, say, 3 years, we use the `.forecast()` function. The `steps` argument indicates the number of steps in the future to make the predictions.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+results_ARIMA_Canadian.forecast(steps = 3)
+```
+
+## Model evaluation using MSE
+
+</br></br>
+
+Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more *data-driven* approach and evaluate the model using the mean squared error (MSE) or root MSE.
+
+To this end, we simply use the `mean_squared_error()` function with the validation responses and our predictions.
+
+## Validation data
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Canadian_validation
+```
+
+## 
+
+</br>
+
+The validation data has 7 time periods that can be determined using the command below.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+len(Canadian_validation)
+```
+
+So, we must forecast 7 periods ahead using our ARIMA model.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+forecast_Canadian = results_ARIMA_Canadian.forecast(steps = 7)
+forecast_Canadian
+```
+
+## 
+
+</br>
+
+Using the forecast and validation data, we compute the RMSE.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+mse = mean_squared_error(Canadian_validation["Hours per Week"], forecast_Canadian)  
+print(round(mse**(1/2), 2))
+```
+
+We can also compute the $R^2$ score.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+rtwo = r2_score(Canadian_validation["Hours per Week"], forecast_Canadian)  
+print(round(rtwo, 2))
+```
+
+> A negative signifies that the model's predictions are worse than simply predicting the average of the response
+
+## 
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Canadian_validation['Year'].values
+forecast_df = pd.DataFrame({
+    'Year': forecast_years,
+    'Hours per Week': forecast_Canadian,
+    'Type': 'Forecast'
+})
+
+# Add 'Type' column to training and validation data
+Canadian_train_plot = Canadian_train.copy()
+Canadian_train_plot['Type'] = 'Train'
+
+Canadian_validation_plot = Canadian_validation.copy()
+Canadian_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Canadian_train_plot, Canadian_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='Year', y='Hours per Week', hue='Type', style='Type', markers=False)
+plt.xlabel('Year')
+plt.ylabel('Hours per Week')
+plt.title('Actual and Forecasted Hours per Week Over Time')
+plt.tight_layout()
+plt.show()
+```
+
+# The SARIMA Model
+
+## Seasonality
+
+</br></br>
+
+-   Seasonality consists of repetitive or cyclical behavior that occurs with a constant frequency.
+
+-   It can be identified from the series graph or using the ACF and PACF.
+
+-   To do this, we must have removed the trend.
+
+## Example 3
+
+We use the Airline data containing the number of passengers of an international airline per month between 1949 and 1960.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Airline_data = pd.read_excel("Airline.xlsx")
+Airline_data.head()
+```
+
+## Create training and validation data
+
+</br></br>
+
+We use 80% of the time series for training and the rest for validation.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Define the split point
+split_ratio = 0.8  # 80% train, 20% test
+split_point = int(len(Airline_data) * split_ratio)
+
+# Split the data
+Airline_train = Airline_data[:split_point]
+Airline_validation = Airline_data[split_point:]
+```
+
+## Training data
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(8, 5))
+sns.lineplot(x='T', y='Number of passengers', data = Airline_train)
+plt.xlabel('T')
+plt.ylabel('Number of passengers')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+## 
+
+First, let's use a level-1 operator.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Z_series_one = diff(Airline_train['Number of passengers'], k_diff = 1)
+```
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(8, 5))
+sns.lineplot(x=Airline_train['Number of passengers'], y=Z_series_one)
+plt.xlabel('T')
+plt.ylabel('Difference Level 1')
+plt.show()
+```
+
+## Autocorrelation plots
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_acf(Z_series_one, lags = 13)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(3, 3))
+plot_pacf(Z_series_one, lags = 13)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+:::::
+::::::
+
+## SARIMA model
+
+The [S]{style="color:orange;"}ARIMA ([*Seasonal*]{style="color:orange;"} Autoregressive Integrated Moving Average) model is an extension of the ARIMA model for modeling seasonality patterns.
+
+The SARIMA model has three additional elements for modeling seasonality in time series.
+
+1.  Differenced or integrated operators (*integrated*) for seasonality.
+2.  Autoregressive terms (*autoregressive*) for seasonality.
+3.  Stochastic terms or moving averages (*moving average*) for seasonality.
+
+## Notation
+
+</br>
+
+Seasonality in a time series is a regular pattern of change that repeats over [$S$ time periods]{style="color:orange;"}, where $S$ defines the number of time periods until the pattern repeats again.
+
+For example, there is seasonality in monthly data, where high values always tend to occur in some particular months and low values always tend to occur in other particular months.
+
+In this case, $S=12$ (months per year) is the length of periodic seasonal behavior. For quarterly data, $S=4$ time periods per year.
+
+## Seasonal differentiation
+
+</br>
+
+This is the difference between a response and a response with a lag that is a multiple of $S$.
+
+For example, with monthly data $S=12$,
+
+-   A level 1 seasonal difference is $Y_{t} - Y_{t-12}$.
+-   A level 2 seasonal difference is $(Y_{t-12}) - (Y_{t-12} - Y_{t-24})$.
+
+Seasonal differencing eliminates the seasonal trend and can also eliminate a type of nonstationarity caused by a seasonal random walk.
+
+## Seasonal AR and MA Terms
+
+In SARIMA, the seasonal AR and MA component terms predict the current response ($Y_t$) using responses and errors at times with lags that are multiples of $S$.
+
+For example, with monthly data $S = 12$,
+
+::: {style="font-size: 85%;"}
+-   The first-order seasonal AR model would use $Y_{t-12}$ to predict $Y_{t}$.
+-   The second-order seasonal AR model would use $Y_{t-12}$ and $Y_{t-24}$ to predict $Y_{t}$.
+-   The first-order seasonal MA model would use the stochastic term $a_{t-12}$ as a predictor.
+-   The second-order seasonal MA model would use the stochastic terms $a_{t-12}$ and $a_{t-24}$ as predictors.
+:::
+
+## 
+
+</br></br>
+
+To fit the SARIMA model, we use the `ARIMA()` function from **statsmodels**, but with an additional argument, `seasonal_order=(0, 0, 0, 0)`.
+
+</br>
+
+This is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.
+
+::: notes
+Recall that the function has the argument `order = (p, d, q)` where `p` is the order of the autoregressive model, `d` is the differencing operator level, and `q` is the number of elements in the moving average.
+
+These arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality.
+:::
+
+## 
+
+</br></br></br>
+
+Let's fit a SARIMA model.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+SARIMA_model = ARIMA(Airline_train['Number of passengers'], order=(1, 2, 1), 
+                      seasonal_order=(1, 1, 0, 12))
+SARIMA_Airline = SARIMA_model.fit()
+```
+
+## Summary of fit
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+print(SARIMA_Airline.summary())
+```
+
+## Residual analysis
+
+We can have a graphical evaluation of the model's performance using a residual analysis.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+SARIMA_residuals = SARIMA_Airline.resid
+SARIMA_residuals = SARIMA_residuals.drop(0)
+```
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(8, 3.5))
+sns.lineplot(x=Airline_train['T'], y=SARIMA_residuals)
+plt.xlabel('Year')
+plt.ylabel('Residuals')
+plt.show()
+```
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+plot_acf(SARIMA_residuals, lags = 24)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+plot_pacf(SARIMA_residuals, lags = 24)
+plt.xlabel("Lag")
+plt.ylabel("Correlation")
+plt.show()
+```
+:::
+:::::
+::::::
+
+## Validation
+
+The validation data has 29 time periods that can be determined using the command below.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+len(Airline_validation)
+```
+
+</br>
+
+So, we must forecast 7 periods ahead using our SARIMA model.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+forecast_Airline = SARIMA_Airline.forecast(steps = 29)
+forecast_Airline.head(3)
+```
+
+## 
+
+</br></br>
+
+Using the forecast and validation data, we compute the RMSE.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+mse = mean_squared_error(Airline_validation["Number of passengers"], 
+                        forecast_Airline)  
+print(round(mse**(1/2), 2))
+```
+
+</br>
+
+We can also compute the $R^2$ score.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+rtwo = r2_score(Airline_validation["Number of passengers"], forecast_Airline)  
+print(round(rtwo, 2))
+```
+
+## 
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Airline_validation['T'].values
+forecast_df = pd.DataFrame({
+    'T': forecast_years,
+    'Number of passengers': forecast_Airline,
+    'Type': 'Forecast'
+})
+
+# Add 'Type' column to training and validation data
+Airline_train_plot = Airline_train.copy()
+Airline_train_plot['Type'] = 'Train'
+
+Airline_validation_plot = Airline_validation.copy()
+Airline_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Airline_train_plot, Airline_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='T', y='Number of passengers', hue='Type', style='Type', markers=False)
+plt.xlabel('Year')
+plt.ylabel('Hours per Week')
+plt.tight_layout()
+plt.show()
+```
+
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
