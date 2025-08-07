@@ -20,7 +20,7 @@ author:
 1.  Introduction to Data Science ([slides](/Module2/IntrotoDataScience.slides.html)) 
 2.  Decision trees for classification ([slides](/Module2/Classification.slides.html)) ([colab](https://drive.google.com/file/d/1iqtGTsLj0qL_zWwdkyrMsKltqOjvM496/view?usp=sharing))
 3.  Ensamble methods ([slides](/Module2/EnsembleMethods.slides.html))
-4.  *K*-nearest neighbours ([slides](/Module2/KNearestNeighbours.slides.html))
+4.  *K*-nearest neighbours ([slides](/Module2/KNearestNeighbours.slides.html)) ([colab](https://drive.google.com/file/d/1ItiD4OZrk46WSBHhh_d0va7F-5lY6f25/view?usp=sharing))
 
 ### Module 3
 
