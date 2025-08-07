@@ -1564,7 +1564,7 @@ print( round(accuracy, 2) )
 
 </br></br>
 
-To overcome this limitation of accuracy and error rate, there are several class-specific metrics. The most popular are:
+To overcome this limitation of accuracy, there are several class-specific metrics. The most popular are:
 
 -   [**Sensitivity**]{style="color:darkblue;"} or *recall*
 
