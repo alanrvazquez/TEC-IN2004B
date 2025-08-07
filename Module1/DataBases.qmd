@@ -146,7 +146,8 @@ Each record has one or more fields that uniquely identify each record; these fie
 
 ::::: columns
 ::: {.column width="60%"}
-- The medicine table has the following fields: medicine identifier, generic description, active agent, most common presentation, and contraindications.:::
+- The medicine table has the following fields: medicine identifier, generic description, active agent, most common presentation, and contraindications.
+:::
 
 ::: {.column width="40%"}
 ![](images/clipboard-3132665686.png)
