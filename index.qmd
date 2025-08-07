@@ -13,25 +13,25 @@ author:
 ### Module 1
 
 1.  Indicators ([slides](/Module1/Indicators.slides.html))
-2.  Introduction to Data Bases
+2.  Introduction to Data Bases ([slides](/Module1/DataBases.slides.html))
 
 ### Module 2
 
-1.  Introduction to Data Science ([slides](/LinearRegression/LinearRegression.slides.html))
-2.  Decision trees for classification
-3.  Ensambles of trees
-4.  *K*-nearest neighbours
+1.  Introduction to Data Science ([slides](/Module2/IntrotoDataScience.slides.html))
+2.  Decision trees for classification ([slides](/Module2/Classification.slides.html))
+3.  Ensamble methods ([slides](/Module2/EnsembleMethods.slides.html))
+4.  *K*-nearest neighbours ([slides](/Module2/KNearestNeighbours.slides.html))
 
 ### Module 3
 
-1.  Predictive Models
-2.  Autocorrelation Models
-3.  Tree-based methods
+1.  Predictive Models ([slides](/Module3/PredictiveModels.slides.html))
+2.  Autocorrelation Models ([slides](/Module3/Autocorrelation.slides.html))
+3.  Ensamble Methods for Time Series
 
 ### Module 4
 
-1.  Principal Component Analysis
-2.  Clustering Methods
+1.  Clustering Methods ([slides](/Module4/Clustering.slides.html))
+2.  Principal Component Analysis ([slides](/Module4/PCA.slides.html))
 
 ## About the author
 

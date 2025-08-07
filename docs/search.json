@@ -3098,7 +3098,7 @@
     "href": "index.html",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "",
-    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nIntroduction to Data Bases\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nDecision trees for classification\nEnsambles of trees\nK-nearest neighbours\n\n\n\nModule 3\n\nPredictive Models\nAutocorrelation Models\nTree-based methods\n\n\n\nModule 4\n\nPrincipal Component Analysis\nClustering Methods\n\n\n\n\nAbout the author\nAlan R. Vazquez (website) is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense",
+    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nIntroduction to Data Bases (slides)\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nDecision trees for classification (slides)\nEnsamble methods (slides)\nK-nearest neighbours (slides)\n\n\n\nModule 3\n\nPredictive Models (slides)\nAutocorrelation Models (slides)\nEnsamble Methods for Time Series\n\n\n\nModule 4\n\nClustering Methods (slides)\nPrincipal Component Analysis (slides)\n\n\n\n\nAbout the author\nAlan R. Vazquez (website) is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense",
     "crumbs": [
       "Home"
     ]
