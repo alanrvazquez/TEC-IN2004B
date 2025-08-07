@@ -3864,21 +3864,21 @@
     "href": "Module1/DataBases.slides.html#the-balanced-scorecard",
     "title": "Balance Score Card",
     "section": "The Balanced Scorecard",
-    "text": "The Balanced Scorecard\nOnce the indicators are defined using the Balanced Scorecard and the documentation format, the dashboards are designed:\n\nScreens,\nChart and table styles,\nAggregation levels,\nDefault reports,\nDrill-down requirements.\n\nThis applies to both the overall organizational level and the functional BSCs."
+    "text": "The Balanced Scorecard\nOnce the indicators are defined using the Balanced Scorecard and the documentation format, we design dashboards with:\n\nScreens\nChart and table styles\nAggregation levels\nDefault reports\nDrill-down requirements.\n\nThis applies to both the overall organizational level and the functional BSCs."
   },
   {
     "objectID": "Module1/DataBases.slides.html#dashboard-deployment",
     "href": "Module1/DataBases.slides.html#dashboard-deployment",
     "title": "Balance Score Card",
-    "section": "Dashboard Deployment",
-    "text": "Dashboard Deployment\nVarious strategies can be followed to implement the dashboards, for example:\n\nDevelopment on a specialized platform for indicator systems (https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/)\nDevelopment with generic OLAP Online Analytical Processing tools (https://www.softwaretestinghelp.com/best-olap-tools/)\nShort-term, isolated implementations in spreadsheets."
+    "section": "Dashboard deployment",
+    "text": "Dashboard deployment\nVarious strategies can be followed to implement the dashboards, for example:\n\nDevelopment on a specialized platform for indicator systems (https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/)\nDevelopment with generic OLAP Online Analytical Processing tools (https://www.softwaretestinghelp.com/best-olap-tools/)\nShort-term, isolated implementations in spreadsheets."
   },
   {
     "objectID": "Module1/DataBases.slides.html#tableu-dashboard-example",
     "href": "Module1/DataBases.slides.html#tableu-dashboard-example",
     "title": "Balance Score Card",
-    "section": "Tableu Dashboard Example",
-    "text": "Tableu Dashboard Example\n\nhttps://www.tableau.com/es-mx"
+    "section": "Tableu dashboard example",
+    "text": "Tableu dashboard example\n\nhttps://www.tableau.com/es-mx"
   },
   {
     "objectID": "Module1/DataBases.slides.html#another-example",

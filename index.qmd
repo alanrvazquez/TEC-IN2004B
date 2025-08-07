@@ -13,7 +13,7 @@ author:
 ### Module 1
 
 1.  Indicators ([slides](/Module1/Indicators.slides.html))
-2.  Introduction to Data Bases ([slides](/Module1/DataBases.slides.html))
+2.  Balanced Scorecard ([slides](/Module1/BSC.slides.html))
 
 ### Module 2
 

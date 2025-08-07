@@ -307,17 +307,17 @@ Documentation is very useful because:
 
 ## The Balanced Scorecard
 
-Once the indicators are defined using the Balanced Scorecard and the documentation format, the dashboards are designed:
+Once the indicators are defined using the Balanced Scorecard and the documentation format, we design dashboards with:
 
-- Screens,
-- Chart and table styles,
-- Aggregation levels,
-- Default reports,
+- Screens
+- Chart and table styles
+- Aggregation levels
+- Default reports
 - Drill-down requirements.
 
 This applies to both the overall organizational level and the functional BSCs.
 
-## Dashboard Deployment
+## Dashboard deployment
 
 Various strategies can be followed to implement the dashboards, for example:
 
@@ -327,7 +327,7 @@ Various strategies can be followed to implement the dashboards, for example:
 
 - Short-term, isolated implementations in spreadsheets.
 
-## Tableu Dashboard Example
+## Tableu dashboard example
 
 ![](images/clipboard-3862420324.png)
 
