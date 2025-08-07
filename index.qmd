@@ -31,7 +31,7 @@ author:
 ### Module 4
 
 1.  Clustering Methods ([slides](/Module4/Clustering.slides.html)) ([colab](https://colab.research.google.com/drive/1sL5LeIXI9YqYmebxWpF3sqPA92IxftYX?usp=sharing))
-2.  Principal Component Analysis ([slides](/Module4/PCA.slides.html))
+2.  Principal Component Analysis ([slides](/Module4/PCA.slides.html)) ([colab](https://colab.research.google.com/drive/1apdp8jOr7DQFIML_QQr1xofdy8-tyCK1?usp=sharing))
 
 ## About the author
 

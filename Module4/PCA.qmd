@@ -36,7 +36,6 @@ Before we start, let's import the data science libraries into Python.
 #| echo: true
 #| output: false
 
-# Importing necessary libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -471,7 +470,7 @@ Xs_tiktok = scaler.fit_transform(X_tiktok)
 
 </br></br>
 
-We tell Python that we want to apply PCA using the function `PCA()` from **sklearn**. Next, we run the algorithm using `.fit_transform()`
+We tell Python that we want to apply PCA using the function `PCA()` from **sklearn**. Next, we run the algorithm using `.fit_transform()`.
 
 ```{python}
 #| output: true
@@ -499,7 +498,6 @@ PCA_tiktok = pca.fit_transform(Xs_tiktok)
 #| echo: false
 #| fig-align: center
 
-# Optional: Explained variance
 explained_var = pca.explained_variance_ratio_
 
 plt.figure(figsize=(5, 5))
