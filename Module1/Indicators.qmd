@@ -30,6 +30,8 @@ jupyter: python3
 
 ## Management
 
+</br></br>
+
 > "Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals."
 
 Koontz, Harold, "Management," 14th Edition, McGraw Hill, Mexico, 2012
@@ -38,71 +40,115 @@ Koontz, Harold, "Management," 14th Edition, McGraw Hill, Mexico, 2012
 
 The management process is broken down into five management functions:
 
+::: incremental
+::: {style="font-size: 84%;"}
 1. **Plan**: Choosing missions and objectives, and the actions to achieve them
 2. **Organizing**: Establishing an intentional structure of roles for people to perform in an organization
 3. **Staffing**: Filling and maintaining positions in the organizational structure
 4. **Directing**: Influencing people to contribute to organizational and group goals
 5. **Controlling**: Measuring and correcting individual and organizational performance to ensure that events conform to plans.
+:::
+:::
 
 ## Integration of planning and control
 
-![](images/clipboard-761299163.png)
+</br>
+
+![](images/planningintegration.png){fig-align="center"}
 
 ## Planning
 
 As a result of the planning process, some of the following types of plans can be generated:
 
+::: {style="font-size: 90%;"}
 - Objectives or goals. These are specific and measurable results.
 - Strategies. Approaches or plans to achieve objectives.
 - Procedures. These detail the execution of an activity.
 - Programs. Organized sets of activities to achieve objectives.
 - Budgets. Detailed financial plans to facilitate economic decision-making.
+:::
 
+::: center
+[**High need to measure progress**]{style="color:white;"}
+:::
+
+## Planning
+
+As a result of the planning process, some of the following types of plans can be generated:
+
+::: {style="font-size: 90%;"}
+- [Objectives or goals. These are specific and measurable results.]{style="color:blue;"}
+- [Strategies. Approaches or plans to achieve objectives.]{style="color:blue;"}
+- Procedures. These detail the execution of an activity.
+- Programs. Organized sets of activities to achieve objectives.
+- Budgets. Detailed financial plans to facilitate economic decision-making.
+:::
+
+::: center
 [**High need to measure progress**]{style="color:blue;"}
+:::
 
 ## Definition of SMART Objectives
 
-[S]{style="color:green;"}Specific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.
+::: incremental
+::: {style="font-size: 90%;"}
+- [S]{style="color:green;"}pecific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.
 
-[M]{style="color:green;"}Measurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.
+- [M]{style="color:green;"}easurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.
 
-[A]{style="color:green;"}achievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.
+- [A]{style="color:green;"}chievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.
 
-[R]{style="color:green;"}elevated: A goal should be relevant and aligned with the broader goals of the organization or individual.
+- [R]{style="color:green;"}elevant: A goal should be relevant and aligned with the broader goals of the organization or individual.
 
-[T]{style="color:green;"}time-bound: A goal should have a clearly defined timeframe or deadline.
-
-## Example 1
-
-**Objective**: Complete staff training
-
-**SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
-
-## Example 2
-
-**Objective**: Increase sales by 20%.
-
-**SMART**: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
-
-## Need to measure
-
-::::: columns
-::: {.column width="50%"}
-- In order to carry out the Planning, Implementation, and Control processes, it is necessary to have an information system that allows us to evaluate whether the planned objectives are being achieved and whether the implemented actions are being carried out in accordance with the plans.
-
-- Information is necessary to correct plans or their implementation, and to produce new plans.
+- [T]{style="color:green;"}ime-bounded: A goal should have a clearly defined timeframe or deadline.
+:::
 :::
 
-::: {.column width="50%"}
-![](images/clipboard-761299163.png)
+## Examples
+
+Example 1:
+
+::: incremental
+::: {style="font-size: 90%;"}
+- **Objective**: Complete staff training
+
+- **SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
 :::
-:::::
+:::
+
+. . . 
+
+Example 2
+
+::: incremental
+::: {style="font-size: 90%;"}
+- **Objective**: Increase sales by 20%.
+
+- **SMART**: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
+:::
+:::
+
+## The need to measure
+
+::: {style="font-size: 90%;"}
+To carry out the Planning, Implementation, and Control processes, we need an information system to evaluate whether the planned objectives are being achieved and whether the implemented actions are being carried out in accordance with the plans.
+:::
+
+
+![](images/planningintegration.png){fig-align="center"}
+
 
 ## What is an indicator?
+
+</br></br>
 
 > "It is the result of a quantitative or qualitative measurement, or some other criterion, by which the performance, efficiency, achievement, etc., of a person or organization can be evaluated, often compared to a standard or goal."
 
 Collins English Dictionary.
+
+## What is an indicator?
+
+</br>
 
 > "The qualitative and/or quantitative information on an examined phenomenon (or a process, or a result), which makes it possible to analyze its evolution and to check whether quality targets are met, driving actions and decisions."
 
@@ -110,37 +156,39 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 
 ## Examples of indicators
 
-::::: columns
-::: {.column width="50%"}
-![](images/clipboard-352848008.png)
-:::
 
-::: {.column width="50%"}
-![](images/clipboard-504148956.png)
-:::
-:::::
+![](images/clipboard-504148956.png){fig-align="center"}
 
 ## 
 
+</br>
+
 ::::: columns
 ::: {.column width="50%"}
-![](images/clipboard-2486707330.png)
+
+</br>
+
+![](images/clipboard-2486707330.png){fig-align="center"}
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-4111043120.png)
+![](images/clipboard-4111043120.png){fig-align="center"}
 :::
 :::::
 
-## Characteristics of an Indicator
+## Characteristics of an indicator
 
-[*Fundamentals*]{style="color:lightblue;"}:
+</br></br>
+
+[*Fundamental*]{style="color:purple;"}:
 
 - *Validity*: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.
 
 - *Stability*: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends).
 
 ##
+
+</br></br>
 
 [Ideal]{.underline}:
 
@@ -152,42 +200,54 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 
 ## Usefulness of indicators
 
-![](images/clipboard-2039277193.png)
+![](images/usefulindicators.png){fig-align="center"}
 
 ## Analysis Dimensions
+
+</br>
 
 - Indicators and the data that drive them are often stratified with respect to other variables.
 
 - Variables used as stratification criteria are called "[Analysis Dimensions]{style="color:lightblue;"}" (they are dimensions from the perspective of data hypercubes).
 
+. . . 
+
 *Example*: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes.
 
 ## For example
 
-![](images/clipboard-1701530541.png)
+![](images/clipboard-1701530541.png){fig-align="center"}
 
 ## Selecting Indicators
 
+</br></br>
+
 Selecting indicators is a critical factor for an organization to move closer to fulfilling its mission and turning its strategies into reality. Indicators and strategies are inextricably linked.
+
+. . . 
 
 > A strategy without indicators is useless; indicators without a strategy are irrelevant!
 
-There are two main types of indicators:
 
-- Leading
-- Lagging
+## Two main types of indicators
 
-## Leading and Lagging Indicators
+</br>
 
 A [lagging indicator]{style="color:darkblue;"} measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.
+
+. . . 
+
+</br>
 
 A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators.
 
 ## Lagging Indicator
 
-Purpose: Measures the outcome of performance at the end of a period.
+</br></br>
 
-Example: Annual sales, market share, ROI.
+**Goal**: Measures the outcome of performance [at the end of a period]{style="color:darkblue;"}.
+
+*Example*: Annual sales, market share, ROI.
 
 - Advantage: They are objectives.
 
@@ -195,15 +255,17 @@ Example: Annual sales, market share, ROI.
 
 ## Leading Indicator
 
-Purpose: Measures processes, activities, behaviors
+</br></br>
 
-Example: \# of customers visited, \# of courses offered
+**Goal**: Measures processes, activities, behaviors that tend to change [before the system starts]{style="color:darkgreen;"} to follow a particular pattern or trend
+
+*Example*: \# of customers visited, \# of courses offered
 
 - Advantage: They are predictive, allowing for strategy corrections
 
 - Disadvantage: Based on cause-and-effect hypotheses.
 
-## Other Examples
+## Other examples
 
 In the context of a YouTuber:
 
@@ -211,19 +273,23 @@ In the context of a YouTuber:
 
 - Lagging indicator: Monthly revenue generated from monetization.
 
+. . . 
+
 In the context of Netflix's sales department:
 
 - Leading indicator: Number of users who start a free trial in a given month.
 
 - Lagging indicator: Monthly revenue from subscriptions.
 
-## Other Examples
+## 
 
 In the context of a GenAI company:
 
 - Leading indicator: Number of programmers hired with expertise in AI.
 
 - Lagging indicator: Number of licenses sold per year.
+
+. . . 
 
 In the context of a mini-split maintenance company:
 
@@ -232,6 +298,8 @@ In the context of a mini-split maintenance company:
 - Lagging indicator: Number of positive reviews on Google Maps in a month.
 
 ## How do I define an indicator?
+
+</br>
 
 Selection criteria:
 
@@ -255,17 +323,17 @@ A [basic indicator]{style="color:blue;"} is obtained from the direct measurement
 
 A [derived indicator]{style="color:green;"} combines the information from two or more basic or derived indicators. For example: Percentage of orders delivered completely and on time during the week.
 
+. . . 
+
+</br>
+
 *Example*: in Failure Modes and Effects Analysis
 
 - Basic indicators: Severity, Occurrence, Detection
 
 - Derived indicator: Risk Priority Number = S*O*D
 
-
-## Example 3
-
-In failure modes and effects analysis, we have the following basic indicators:
-
+::: notes
 - **Severity** (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.
 
 - **Occurrence** (O): Evaluates the probability of the failure occurring. It is evaluated on a scale of 1 to 10, where 1 indicates that the occurrence is very rare and 10 indicates that it is highly probable or frequent.
@@ -273,29 +341,33 @@ In failure modes and effects analysis, we have the following basic indicators:
 - **Detection** (D): Represents the system's ability to detect the failure before it reaches the customer or end user. It is rated on a scale of 1 to 10, where 1 means that detection is almost certain and 10 means that it is very difficult or impossible to detect before a problem occurs.
 
 [Derived Indicator]{style="color:darkgreen;"}: Risk Priority Number = S$\times$O$\times$D
+:::
 
-## The Format of an Indicator
+## The format of an indicator
 
 An indicator should be measured numerically using:
 
-[Absolute Numbers]{style="color:lightblue;"}: Results of a measurement or counting process (volume produced, share price, number of employees, fixed costs, etc.)
+[Absolute Numbers]{style="color:brown;"}: Results of a measurement or counting process (volume produced, share price, number of employees, fixed costs, etc.)
 
-[Rates]{style="color:lightblue;"}: Relationship between two variables with different units (number of units / number of workers, energy consumption / liters produced, etc.)
+[Rates]{style="color:brown;"}: Relationship between two variables with different units (number of units / number of workers, energy consumption / liters produced, etc.)
 
-[Indexes]{style="color:lightblue;"}: Dimensionless quantity resulting from dividing the current value of a variable by a reference base value for that variable (consumer price index)
+[Indexes]{style="color:brown;"}: Dimensionless quantity resulting from dividing the current value of a variable by a reference base value for that variable (consumer price index)
 
 ##
 
-[Proportions]{style="color:lightblue;"}: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)
+</br></br>
 
-[Growth or Decrease Percentages]{style="color:lightblue;"}: (Current Value – Previous Value)*100/Previous Value.
+[Proportions]{style="color:brown;"}: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)
 
-[Evaluations]{style="color:lightblue;"}: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent).
+[Growth or Decrease Percentages]{style="color:brown;"}: (Current Value – Previous Value)*100/Previous Value.
+
+[Evaluations]{style="color:brown;"}: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent).
 
 ## Activity 1.1 (cooperative mode)
 
 Get into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:
 
+::: {style="font-size: 90%;"}
 1. Monthly productivity of a furniture production line
 
 2. Annual staff turnover in a manufacturing company
@@ -305,8 +377,11 @@ Get into teams of 3 and ask ChatGPT a question! For the following concepts, sugg
 4. Business profitability for a medium-sized wholesale grocery company
 
 5. Performance of the fundraising process of an association supporting homeless children
+:::
 
 ## Remember that...
+
+</br>
 
 ::::: columns
 ::: {.column width="50%"}
@@ -320,43 +395,46 @@ The purposes of an indicator are:
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-3372273709.png)
+![](images/clipboard-3372273709.png){fig-align="center"}
 :::
 :::::
 
 # Models for Defining Indicators
 
-## Which indicators should we use?
+## Introduction
 
-- Once we know what indicators are, their role in the management process, and the types of indicators that exist, we ask ourselves: [How many indicators should we have? What is an appropriate set of indicators?]{style="color:lightblue;"} How do we document and share them?
+</br></br>
 
-- Although there are some indicators that could be generally applied to any company, each company has its own strategy, its own priorities, and its particular competitive environment; therefore, the most appropriate set of indicators depends on each organization.
+Once we know what indicators are, their role in the management process, and the types of indicators that exist, we ask ourselves:
 
-[Here we describe models for finding the appropriate number and set of indicators.]{style="color:darkgray;"}
+::: incremental
+-  Which indicators should we use?
 
-## Strategy and Execution
+-  How many indicators should we have?
 
-![](images/clipboard-969668090.png)
+-  What is an appropriate set of indicators? 
 
-- *The organization's planning and control structure* provides a framework for identifying and structuring the indicator system.
-
-- Since one of the primary challenges for any organization is aligning execution with strategy, or strategy with execution.
-
-- Indicator systems for performance measurement must help maintain the link between strategy and execution.
-
-::::: columns
-::: {.column width="50%"}
-![](images/clipboard-4157165515.png)
-
-<https://nationalpost.com/news/wal-marts-epic-strategy-fail>
+-  How do we document and share them?
 :::
 
-::: {.column width="50%"}
-![](images/clipboard-105559215.png)
-:::
-:::::
+## 
 
-## Models for Defining Indicators
+</br></br>
+
+Although there are some indicators that could be generally applied to any company, each company has its own strategy, its own priorities, and its particular competitive environment
+
+Therefore, the most appropriate set of indicators depends on each organization.
+
+. . . 
+
+</br>
+
+**Here we describe models for finding the appropriate number and set of indicators.**
+
+
+## Models for defining indicators
+
+</br></br>
 
 The models for defining indicators depend on the type of strategic planning.
 
@@ -366,20 +444,42 @@ Three strategic planning frameworks are:
 2. Hoshin Kanri
 3. Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)
 
+## Models for defining indicators
+
+</br></br>
+
+The models for defining indicators depend on the type of strategic planning.
+
+Three strategic planning frameworks are:
+
+1. Management by Objectives (MBO; Peter Drucker, 1954)
+2. Hoshin Kanri
+3. **Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)**
+
+
 ## Balanced Score Card (BSC)
 
-This is a model that [*helps organizations translate strategy into operational (measurable) objectives*]{style="color:lightblue;"}, resulting in actions, behaviors, and performance.
+</br>
+
+::::: columns
+::: {.column width="60%"}
+It's a model that [*helps organizations translate strategy into operational (measurable) objectives*]{style="color:blue;"}, resulting in actions, behaviors, and performance.
+
+</br>
 
 The BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals.
+:::
+::: {.column width="40%"}
+![](images/BSC_EN.png){fig-align="center"}
+:::
+:::
 
-## 
 
-![](images/BSC.png)
+## BSC's objectives
 
-<https://www.youtube.com/watch?v=QCi09LlI7Hs>
+</br></br>
 
-## BSC Objectives
-
+::: incremental
 1. Translate the strategy into measurable objectives.
 
 2. Align the strategy components: objectives, indicators, and initiatives.
@@ -387,21 +487,29 @@ The BSC includes all critical success factors in a measurement system, giving or
 3. Communicate the strategy to the organization.
 
 4. Create the basis for strategic management.
+:::
 
 ##
 
+</br>
+
 BSC transforms strategy into an integrated system defined through four perspectives:
+
+</br>
 
 ::::: columns
 ::: {.column width="50%"}
+
+::: incremental
 1. Financial
 2. Clients
 3. Internal Processes
 4. Learning and Growth
+::: 
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-3795496454.png)
+![](images/BSC_goals.jpg){fig-align="center"}
 :::
 :::::
 
@@ -411,57 +519,66 @@ BSC transforms strategy into an integrated system defined through 4 perspectives
 
 ::::: columns
 ::: {.column width="60%"}
-1. *Financial*. Includes [**objectives**]{style="color:lightblue;"} related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders' perspective.
+1. *Financial*. Includes [**objectives**]{style="color:purple;"} related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders' perspective.
 :::
 
 ::: {.column width="40%"}
-![](images/clipboard-3795496454.png)
+![](images/BSC_goals.jpg){fig-align="center"}
 :::
 :::::
 
 ## 
+
+</br></br>
 
 ::::: columns
 ::: {.column width="60%"}
-2. *Customers*. Includes [**objectives**]{style="color:lightblue;"} related to the company's value proposition, are market-oriented, and are established from the customer's perspective. Includes customer perception objectives regarding service, delivery time, quality, and value/price.
+2. *Customers*. Includes [**objectives**]{style="color:purple;"} related to the company's value proposition, are market-oriented, and are established from the customer's perspective. Includes customer perception objectives regarding service, delivery time, quality, and value/price.
 :::
 
 ::: {.column width="40%"}
-![](images/clipboard-3795496454.png)
+![](images/BSC_goals.jpg){fig-align="center"}
 :::
 :::::
 
 ## 
+
+</br></br>
 
 ::::: columns
 ::: {.column width="60%"}
-3. *Internal Processes*. Includes [**objectives**]{style="color:lightblue;"} related to the performance of processes that are critical to meeting customer perspective objectives. Performance objectives for the business's primary value chain.:::
-
+3. *Internal Processes*. Includes [**objectives**]{style="color:purple;"} related to the performance of processes that are critical to meeting customer perspective objectives. Performance objectives for the business's primary value chain.
+:::
 ::: {.column width="40%"}
-![](images/clipboard-3795496454.png)
+![](images/BSC_goals.jpg){fig-align="center"}
 :::
 :::::
 
 ## 
+
+</br></br>
 
 ::::: columns
 ::: {.column width="60%"}
-4. *Learning and growth*. These are the [**objectives**]{style="color:lightblue;"} related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.:::
+4. *Learning and growth*. These are the [**objectives**]{style="color:purple;"} related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.
+:::
 
 ::: {.column width="40%"}
-![](images/clipboard-3795496454.png)
+![](images/BSC_goals.jpg){fig-align="center"}
 :::
 :::::
 
-# Example: Planning Your Birthday Party
+## Planning Your Birthday Party
 
-![](images/EjemploBSC.png)
+![](images/BSC_party.png){fig-align="center"}
 
 ## 
 
-![](images/BSC_full.png)
+![](images/BSC_full_EN.jpg){fig-align="center"}
 
 ## Model Components
+
+</br>
 
 For each perspective, the following should be defined:
 
@@ -475,38 +592,53 @@ For each perspective, the following should be defined:
 
 ## Strategic Map
 
+</br>
+
 - The strategic map displays the strategic objectives within each perspective using a matrix.
 
 - Possible causal relationships between objectives are also shown using arrows.
 
 - If the organization's strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.
 
-# Strategy Map Structure
+## Strategy map structure
 
-![](images/clipboard-1407938894.png){fig-align="center"}
+</br></br>
 
-<https://www.youtube.com/watch?v=Brv3w1MZpRg&ab_channel=EstrategiaenAcci%C3%B3nconIv%C3%A1nMart%C3%ADnezLima>
+![](images/SM_structure.png){fig-align="center"}
+
+
+::: notes
+Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de abajo hacia arriba.
+Los niveles superiores son consecuencia de los niveles inferiores. No necesariamente todos están ligados.
+:::
+## 
+
+![](images/clipboard-2065731730.png){fig-align="center"}
 
 ## 
 
-![](images/clipboard-2065731730.png)
-
-## 
-
-![](images/clipboard-1644569448.png)
+![](images/clipboard-1644569448.png){fig-align="center"}
 
 ## Activity 1.2 (cooperative mode)
 
+</br></br>
+
 - Form teams of three.
 - Build a strategy map as part of the Balanced Scorecard model application.
-
-Read the introduction to the Muebles Finos MF mini-case study in CANVAS.
+- Read the introduction to the Muebles Finos MF mini-case study in CANVAS.
+- The activity consists of mapping the company's objectives to the perspectives of the BSC model and to the business's strategic lines. 
 
 ##
 
-The activity consists of mapping the company's objectives to the perspectives of the BSC model and to the business's strategic lines. Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them. You are also asked to select three of the objectives and propose at least one suggested metric for each. Finally, you will write the justification for the established causal relationships.
+</br></br>
 
-## Final Comments
+- Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them. 
+
+- You are also asked to select three of the objectives and propose at least one suggested metric for each. 
+
+- Finally, you will write the justification for the established causal relationships.
+
+## Final comments
 
 - Once the BSC model has been designed for the company, specific models are developed by functional area.
 
@@ -518,6 +650,8 @@ The activity consists of mapping the company's objectives to the perspectives of
 
 ##
 
+</br></br>
+
 - It is essential that functional managers fully understand the company's BSC and their area's contribution to the overall objectives.
 
 - The person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.
@@ -526,7 +660,9 @@ The activity consists of mapping the company's objectives to the perspectives of
 
 # Indicator Documentation
 
-## Indicator Documentation
+## Indicator documentation
+
+</br></br>
 
 When selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.
 
@@ -538,8 +674,8 @@ Documentation is very useful because:
 
 - It serves as a future reference when revising the system.
 
-## Basic Format
+## Basic documenting format
 
-![](images/clipboard-1958606.png)
+![](images/KPIs_document.jpg){fig-align="center"}
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

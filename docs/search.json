@@ -186,7 +186,7 @@
     "href": "Module1/Indicators.slides.html#section-2",
     "title": "Indicators",
     "section": "",
-    "text": "Proportions: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)\nGrowth or Decrease Percentages: (Current Value – Previous Value)*100/Previous Value.\nEvaluations: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent)."
+    "text": "In the context of a GenAI company:\n\nLeading indicator: Number of programmers hired with expertise in AI.\nLagging indicator: Number of licenses sold per year.\n\n\nIn the context of a mini-split maintenance company:\n\nLeading indicator: Average response time from technical support to support requests.\nLagging indicator: Number of positive reviews on Google Maps in a month."
   },
   {
     "objectID": "Module1/Indicators.slides.html#actividad-1.1-cooperative-mode",
@@ -235,7 +235,7 @@
     "href": "Module1/Indicators.slides.html#section-3",
     "title": "Indicators",
     "section": "",
-    "text": "https://www.youtube.com/watch?v=QCi09LlI7Hs"
+    "text": "Proportions: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)\nGrowth or Decrease Percentages: (Current Value – Previous Value)*100/Previous Value.\nEvaluations: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent)."
   },
   {
     "objectID": "Module1/Indicators.slides.html#objetivos-del-bsc",
@@ -249,7 +249,7 @@
     "href": "Module1/Indicators.slides.html#section-4",
     "title": "Indicators",
     "section": "",
-    "text": "BSC transforms strategy into an integrated system defined through four perspectives:\n\n\n\nFinancial\nClients\nInternal Processes\nLearning and Growth"
+    "text": "Although there are some indicators that could be generally applied to any company, each company has its own strategy, its own priorities, and its particular competitive environment\nTherefore, the most appropriate set of indicators depends on each organization.\n\n\nHere we describe models for finding the appropriate number and set of indicators."
   },
   {
     "objectID": "Module1/Indicators.slides.html#las-4-perspectivas",
@@ -263,21 +263,21 @@
     "href": "Module1/Indicators.slides.html#section-5",
     "title": "Indicators",
     "section": "",
-    "text": "Customers. Includes objectives related to the company’s value proposition, are market-oriented, and are established from the customer’s perspective. Includes customer perception objectives regarding service, delivery time, quality, and value/price."
+    "text": "BSC transforms strategy into an integrated system defined through four perspectives:\n\n\n\n\n\nFinancial\nClients\nInternal Processes\nLearning and Growth"
   },
   {
     "objectID": "Module1/Indicators.slides.html#section-6",
     "href": "Module1/Indicators.slides.html#section-6",
     "title": "Indicators",
     "section": "",
-    "text": "Internal Processes. Includes objectives related to the performance of processes that are critical to meeting customer perspective objectives. Performance objectives for the business’s primary value chain.:::\n\n\n\n\n\n\n\n\nLearning and growth. These are the objectives related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.:::\n\n\n\n\nExample: Planning Your Birthday Party\n\n\n\n\n\n\n\nModel Components\nFor each perspective, the following should be defined:\n\nA small set of strategic objectives\nFor each objective, one (or more if necessary) metric as a performance indicator\nFor each indicator, establish long- and short-term goals\nInitiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.\n\n\n\nStrategic Map\n\nThe strategic map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.\n\n\n\nStrategy Map Structure\n\nhttps://www.youtube.com/watch?v=Brv3w1MZpRg&ab_channel=EstrategiaenAcci%C3%B3nconIv%C3%A1nMart%C3%ADnezLima\n\n\n\n\n\n\n\n\n\n\nActivity 1.2 (cooperative mode)\n\nForm teams of three.\nBuild a strategy map as part of the Balanced Scorecard model application.\n\nRead the introduction to the Muebles Finos MF mini-case study in CANVAS.\n\n\n\nThe activity consists of mapping the company’s objectives to the perspectives of the BSC model and to the business’s strategic lines. Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them. You are also asked to select three of the objectives and propose at least one suggested metric for each. Finally, you will write the justification for the established causal relationships.\n\n\nFinal Comments\n\nOnce the BSC model has been designed for the company, specific models are developed by functional area.\nIn the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.\nIt is more common to use performance indicators than impact indicators at the departmental level.\nNot all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives.\n\n\n\n\n\nIt is essential that functional managers fully understand the company’s BSC and their area’s contribution to the overall objectives.\nThe person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.\nSome organizational-level indicators are simply aggregations of departmental indicators.\n\n\n\nIndicator Documentation\n\n\n\nIndicator Documentation\nWhen selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.\nDocumentation is very useful because:\n\nIt helps clarify the meaning of the indicators.\nIt facilitates communication between users and indicator creators.\nIt serves as a future reference when revising the system.\n\n\n\nBasic Format\n\n\n\nReturn to main page"
+    "text": "Customers. Includes objectives related to the company’s value proposition, are market-oriented, and are established from the customer’s perspective. Includes customer perception objectives regarding service, delivery time, quality, and value/price."
   },
   {
     "objectID": "Module1/Indicators.slides.html#section-7",
     "href": "Module1/Indicators.slides.html#section-7",
     "title": "Indicators",
     "section": "",
-    "text": "Learning and growth. These are the objectives related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.:::\n\n\n\n\nExample: Planning Your Birthday Party\n\n\n\n\n\n\n\nModel Components\nFor each perspective, the following should be defined:\n\nA small set of strategic objectives\nFor each objective, one (or more if necessary) metric as a performance indicator\nFor each indicator, establish long- and short-term goals\nInitiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.\n\n\n\nStrategic Map\n\nThe strategic map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.\n\n\n\nStrategy Map Structure\n\nhttps://www.youtube.com/watch?v=Brv3w1MZpRg&ab_channel=EstrategiaenAcci%C3%B3nconIv%C3%A1nMart%C3%ADnezLima\n\n\n\n\n\n\n\n\n\n\nActivity 1.2 (cooperative mode)\n\nForm teams of three.\nBuild a strategy map as part of the Balanced Scorecard model application.\n\nRead the introduction to the Muebles Finos MF mini-case study in CANVAS.\n\n\n\nThe activity consists of mapping the company’s objectives to the perspectives of the BSC model and to the business’s strategic lines. Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them. You are also asked to select three of the objectives and propose at least one suggested metric for each. Finally, you will write the justification for the established causal relationships.\n\n\nFinal Comments\n\nOnce the BSC model has been designed for the company, specific models are developed by functional area.\nIn the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.\nIt is more common to use performance indicators than impact indicators at the departmental level.\nNot all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives.\n\n\n\n\n\nIt is essential that functional managers fully understand the company’s BSC and their area’s contribution to the overall objectives.\nThe person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.\nSome organizational-level indicators are simply aggregations of departmental indicators.\n\n\n\nIndicator Documentation\n\n\n\nIndicator Documentation\nWhen selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.\nDocumentation is very useful because:\n\nIt helps clarify the meaning of the indicators.\nIt facilitates communication between users and indicator creators.\nIt serves as a future reference when revising the system.\n\n\n\nBasic Format\n\n\n\nReturn to main page"
+    "text": "Internal Processes. Includes objectives related to the performance of processes that are critical to meeting customer perspective objectives. Performance objectives for the business’s primary value chain."
   },
   {
     "objectID": "Module1/Indicators.slides.html#componentes-del-modelo",
@@ -298,7 +298,7 @@
     "href": "Module1/Indicators.slides.html#section-9",
     "title": "Indicators",
     "section": "",
-    "text": "https://www.youtube.com/watch?v=Brv3w1MZpRg&ab_channel=EstrategiaenAcci%C3%B3nconIv%C3%A1nMart%C3%ADnezLima"
+    "text": "Learning and growth. These are the objectives related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.:::\n\n\n\n\nExample: Planning Your Birthday Party\n\n\n\n\n\n\n\nModel Components\nFor each perspective, the following should be defined:\n\nA small set of strategic objectives\nFor each objective, one (or more if necessary) metric as a performance indicator\nFor each indicator, establish long- and short-term goals\nInitiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.\n\n\n\nStrategic Map\n\nThe strategic map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.\n\n\n\nStrategy Map Structure\n\nhttps://www.youtube.com/watch?v=Brv3w1MZpRg&ab_channel=EstrategiaenAcci%C3%B3nconIv%C3%A1nMart%C3%ADnezLima\n\n\n\n\n\n\n\n\n\n\nActivity 1.2 (cooperative mode)\n\nForm teams of three.\nBuild a strategy map as part of the Balanced Scorecard model application.\n\nRead the introduction to the Muebles Finos MF mini-case study in CANVAS.\n\n\n\nThe activity consists of mapping the company’s objectives to the perspectives of the BSC model and to the business’s strategic lines. Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them. You are also asked to select three of the objectives and propose at least one suggested metric for each. Finally, you will write the justification for the established causal relationships.\n\n\nFinal Comments\n\nOnce the BSC model has been designed for the company, specific models are developed by functional area.\nIn the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.\nIt is more common to use performance indicators than impact indicators at the departmental level.\nNot all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives.\n\n\n\n\n\nIt is essential that functional managers fully understand the company’s BSC and their area’s contribution to the overall objectives.\nThe person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.\nSome organizational-level indicators are simply aggregations of departmental indicators.\n\n\n\nIndicator Documentation\n\n\n\nIndicator Documentation\nWhen selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.\nDocumentation is very useful because:\n\nIt helps clarify the meaning of the indicators.\nIt facilitates communication between users and indicator creators.\nIt serves as a future reference when revising the system.\n\n\n\nBasic Format\n\n\n\nReturn to main page"
   },
   {
     "objectID": "Module1/Indicators.slides.html#actividad-1.2-cooperative-mode",
@@ -312,7 +312,7 @@
     "href": "Module1/Indicators.slides.html#section-12",
     "title": "Indicators",
     "section": "",
-    "text": "It is essential that functional managers fully understand the company’s BSC and their area’s contribution to the overall objectives.\nThe person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.\nSome organizational-level indicators are simply aggregations of departmental indicators."
+    "text": "Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them.\nYou are also asked to select three of the objectives and propose at least one suggested metric for each.\nFinally, you will write the justification for the established causal relationships."
   },
   {
     "objectID": "Module1/Indicators.slides.html#comentarios-finales",
@@ -326,7 +326,7 @@
     "href": "Module1/Indicators.slides.html#section-13",
     "title": "Indicators",
     "section": "",
-    "text": "Es indispensable que los gerentes funcionales entiendan perfectamente el BSC de la empresa y la contribución de su área a los objetivos globales.\nEl responsable del despliegue de BSC debe asegurar la congruencia y alineación de los BSC funcionales.\nAlgunos indicadores a nivel organizacional son simplemente agregaciones de los indicadores departamentales."
+    "text": "It is essential that functional managers fully understand the company’s BSC and their area’s contribution to the overall objectives.\nThe person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.\nSome organizational-level indicators are simply aggregations of departmental indicators."
   },
   {
     "objectID": "Module1/Indicators.slides.html#documentación-de-indicadores-1",
@@ -3591,14 +3591,14 @@
     "href": "Module1/Indicators.slides.html#management",
     "title": "Indicators",
     "section": "Management",
-    "text": "Management\n\n“Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals.”\n\nKoontz, Harold, “Management,” 14th Edition, McGraw Hill, Mexico, 2012"
+    "text": "Management\n\n\n“Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals.”\n\nKoontz, Harold, “Management,” 14th Edition, McGraw Hill, Mexico, 2012"
   },
   {
     "objectID": "Module1/Indicators.slides.html#functions-of-management",
     "href": "Module1/Indicators.slides.html#functions-of-management",
     "title": "Indicators",
     "section": "Functions of management",
-    "text": "Functions of management\nThe management process is broken down into five management functions:\n\nPlan: Choosing missions and objectives, and the actions to achieve them\nOrganizing: Establishing an intentional structure of roles for people to perform in an organization\nStaffing: Filling and maintaining positions in the organizational structure\nDirecting: Influencing people to contribute to organizational and group goals\nControlling: Measuring and correcting individual and organizational performance to ensure that events conform to plans."
+    "text": "Functions of management\nThe management process is broken down into five management functions:\n\n\n\nPlan: Choosing missions and objectives, and the actions to achieve them\nOrganizing: Establishing an intentional structure of roles for people to perform in an organization\nStaffing: Filling and maintaining positions in the organizational structure\nDirecting: Influencing people to contribute to organizational and group goals\nControlling: Measuring and correcting individual and organizational performance to ensure that events conform to plans."
   },
   {
     "objectID": "Module1/Indicators.slides.html#integration-of-planning-and-control",
@@ -3612,14 +3612,14 @@
     "href": "Module1/Indicators.slides.html#planning",
     "title": "Indicators",
     "section": "Planning",
-    "text": "Planning\nAs a result of the planning process, some of the following types of plans can be generated:\n\nObjectives or goals. These are specific and measurable results.\nStrategies. Approaches or plans to achieve objectives.\nProcedures. These detail the execution of an activity.\nPrograms. Organized sets of activities to achieve objectives.\nBudgets. Detailed financial plans to facilitate economic decision-making.\n\nHigh need to measure progress"
+    "text": "Planning\nAs a result of the planning process, some of the following types of plans can be generated:\n\n\nObjectives or goals. These are specific and measurable results.\nStrategies. Approaches or plans to achieve objectives.\nProcedures. These detail the execution of an activity.\nPrograms. Organized sets of activities to achieve objectives.\nBudgets. Detailed financial plans to facilitate economic decision-making.\n\n\n\nHigh need to measure progress"
   },
   {
     "objectID": "Module1/Indicators.slides.html#definition-of-smart-objectives",
     "href": "Module1/Indicators.slides.html#definition-of-smart-objectives",
     "title": "Indicators",
     "section": "Definition of SMART Objectives",
-    "text": "Definition of SMART Objectives\nSSpecific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.\nMMeasurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.\nAachievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.\nRelevated: A goal should be relevant and aligned with the broader goals of the organization or individual.\nTtime-bound: A goal should have a clearly defined timeframe or deadline."
+    "text": "Definition of SMART Objectives\n\n\n\nSpecific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.\nMeasurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.\nAchievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.\nRelevant: A goal should be relevant and aligned with the broader goals of the organization or individual.\nTime-bounded: A goal should have a clearly defined timeframe or deadline."
   },
   {
     "objectID": "Module1/Indicators.slides.html#example-1",
@@ -3640,14 +3640,14 @@
     "href": "Module1/Indicators.slides.html#need-to-measure",
     "title": "Indicators",
     "section": "Need to measure",
-    "text": "Need to measure\n\n\n\nIn order to carry out the Planning, Implementation, and Control processes, it is necessary to have an information system that allows us to evaluate whether the planned objectives are being achieved and whether the implemented actions are being carried out in accordance with the plans.\nInformation is necessary to correct plans or their implementation, and to produce new plans."
+    "text": "Need to measure\n\nTo carry out the Planning, Implementation, and Control processes, we need an information system to evaluate whether the planned objectives are being achieved and whether the implemented actions are being carried out in accordance with the plans."
   },
   {
     "objectID": "Module1/Indicators.slides.html#what-is-an-indicator",
     "href": "Module1/Indicators.slides.html#what-is-an-indicator",
     "title": "Indicators",
     "section": "What is an indicator?",
-    "text": "What is an indicator?\n\n“It is the result of a quantitative or qualitative measurement, or some other criterion, by which the performance, efficiency, achievement, etc., of a person or organization can be evaluated, often compared to a standard or goal.”\n\nCollins English Dictionary.\n\n“The qualitative and/or quantitative information on an examined phenomenon (or a process, or a result), which makes it possible to analyze its evolution and to check whether quality targets are met, driving actions and decisions.”\n\nFranceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Management by Measurement: Designing Key Indicators and Performance Measurement Systems. 10.1007/978-3-540-73212-9."
+    "text": "What is an indicator?\n\n\n“It is the result of a quantitative or qualitative measurement, or some other criterion, by which the performance, efficiency, achievement, etc., of a person or organization can be evaluated, often compared to a standard or goal.”\n\nCollins English Dictionary."
   },
   {
     "objectID": "Module1/Indicators.slides.html#examples-of-indicators",
@@ -3660,8 +3660,8 @@
     "objectID": "Module1/Indicators.slides.html#characteristics-of-an-indicator",
     "href": "Module1/Indicators.slides.html#characteristics-of-an-indicator",
     "title": "Indicators",
-    "section": "Characteristics of an Indicator",
-    "text": "Characteristics of an Indicator\nFundamentals:\n\nValidity: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.\nStability: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends)."
+    "section": "Characteristics of an indicator",
+    "text": "Characteristics of an indicator\n\nFundamental:\n\nValidity: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.\nStability: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends)."
   },
   {
     "objectID": "Module1/Indicators.slides.html#usefulness-of-indicators",
@@ -3675,7 +3675,7 @@
     "href": "Module1/Indicators.slides.html#analysis-dimensions",
     "title": "Indicators",
     "section": "Analysis Dimensions",
-    "text": "Analysis Dimensions\n\nIndicators and the data that drive them are often stratified with respect to other variables.\nVariables used as stratification criteria are called “Analysis Dimensions” (they are dimensions from the perspective of data hypercubes).\n\nExample: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes."
+    "text": "Analysis Dimensions\n\n\nIndicators and the data that drive them are often stratified with respect to other variables.\nVariables used as stratification criteria are called “Analysis Dimensions” (they are dimensions from the perspective of data hypercubes).\n\n\nExample: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes."
   },
   {
     "objectID": "Module1/Indicators.slides.html#for-example",
@@ -3689,7 +3689,7 @@
     "href": "Module1/Indicators.slides.html#selecting-indicators",
     "title": "Indicators",
     "section": "Selecting Indicators",
-    "text": "Selecting Indicators\nSelecting indicators is a critical factor for an organization to move closer to fulfilling its mission and turning its strategies into reality. Indicators and strategies are inextricably linked.\n\nA strategy without indicators is useless; indicators without a strategy are irrelevant!\n\nThere are two main types of indicators:\n\nLeading\nLagging"
+    "text": "Selecting Indicators\n\nSelecting indicators is a critical factor for an organization to move closer to fulfilling its mission and turning its strategies into reality. Indicators and strategies are inextricably linked.\n\n\nA strategy without indicators is useless; indicators without a strategy are irrelevant!"
   },
   {
     "objectID": "Module1/Indicators.slides.html#leading-and-lagging-indicators",
@@ -3703,21 +3703,21 @@
     "href": "Module1/Indicators.slides.html#lagging-indicator",
     "title": "Indicators",
     "section": "Lagging Indicator",
-    "text": "Lagging Indicator\nPurpose: Measures the outcome of performance at the end of a period.\nExample: Annual sales, market share, ROI.\n\nAdvantage: They are objectives.\nDisadvantage: They reflect the effect of past actions."
+    "text": "Lagging Indicator\n\nGoal: Measures the outcome of performance at the end of a period.\nExample: Annual sales, market share, ROI.\n\nAdvantage: They are objectives.\nDisadvantage: They reflect the effect of past actions."
   },
   {
     "objectID": "Module1/Indicators.slides.html#leading-indicator",
     "href": "Module1/Indicators.slides.html#leading-indicator",
     "title": "Indicators",
     "section": "Leading Indicator",
-    "text": "Leading Indicator\nPurpose: Measures processes, activities, behaviors\nExample: # of customers visited, # of courses offered\n\nAdvantage: They are predictive, allowing for strategy corrections\nDisadvantage: Based on cause-and-effect hypotheses."
+    "text": "Leading Indicator\n\nGoal: Measures processes, activities, behaviors that tend to change before the system starts to follow a particular pattern or trend\nExample: # of customers visited, # of courses offered\n\nAdvantage: They are predictive, allowing for strategy corrections\nDisadvantage: Based on cause-and-effect hypotheses."
   },
   {
     "objectID": "Module1/Indicators.slides.html#other-examples",
     "href": "Module1/Indicators.slides.html#other-examples",
     "title": "Indicators",
-    "section": "Other Examples",
-    "text": "Other Examples\nIn the context of a YouTuber:\n\nLeading indicator: Number of views of a YouTube video in the first 24 hours.\nLagging indicator: Monthly revenue generated from monetization.\n\nIn the context of Netflix’s sales department:\n\nLeading indicator: Number of users who start a free trial in a given month.\nLagging indicator: Monthly revenue from subscriptions."
+    "section": "Other examples",
+    "text": "Other examples\nIn the context of a YouTuber:\n\nLeading indicator: Number of views of a YouTube video in the first 24 hours.\nLagging indicator: Monthly revenue generated from monetization.\n\n\nIn the context of Netflix’s sales department:\n\nLeading indicator: Number of users who start a free trial in a given month.\nLagging indicator: Monthly revenue from subscriptions."
   },
   {
     "objectID": "Module1/Indicators.slides.html#other-examples-1",
@@ -3731,14 +3731,14 @@
     "href": "Module1/Indicators.slides.html#how-do-i-define-an-indicator",
     "title": "Indicators",
     "section": "How do I define an indicator?",
-    "text": "How do I define an indicator?\nSelection criteria:\n\nDirect relationship with the objective to be measured\nEase of communication focused on the strategy\nRepeatability and reliability\nUpdate frequency\nUsefulness in goal setting\nUsefulness in assigning responsibilities\nUsefulness for downward deployment"
+    "text": "How do I define an indicator?\n\nSelection criteria:\n\nDirect relationship with the objective to be measured\nEase of communication focused on the strategy\nRepeatability and reliability\nUpdate frequency\nUsefulness in goal setting\nUsefulness in assigning responsibilities\nUsefulness for downward deployment"
   },
   {
     "objectID": "Module1/Indicators.slides.html#basic-and-derived-indicators",
     "href": "Module1/Indicators.slides.html#basic-and-derived-indicators",
     "title": "Indicators",
     "section": "Basic and Derived Indicators",
-    "text": "Basic and Derived Indicators\nA basic indicator is obtained from the direct measurement of a phenomenon or fact. For example: Number of orders delivered completely and on time during the week.\nA derived indicator combines the information from two or more basic or derived indicators. For example: Percentage of orders delivered completely and on time during the week.\nExample: in Failure Modes and Effects Analysis\n\nBasic indicators: Severity, Occurrence, Detection\nDerived indicator: Risk Priority Number = SOD"
+    "text": "Basic and Derived Indicators\nA basic indicator is obtained from the direct measurement of a phenomenon or fact. For example: Number of orders delivered completely and on time during the week.\nA derived indicator combines the information from two or more basic or derived indicators. For example: Percentage of orders delivered completely and on time during the week.\n\n\nExample: in Failure Modes and Effects Analysis\n\nBasic indicators: Severity, Occurrence, Detection\nDerived indicator: Risk Priority Number = SOD\n\n\n\nSeverity (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.\nOccurrence (O): Evaluates the probability of the failure occurring. It is evaluated on a scale of 1 to 10, where 1 indicates that the occurrence is very rare and 10 indicates that it is highly probable or frequent.\nDetection (D): Represents the system’s ability to detect the failure before it reaches the customer or end user. It is rated on a scale of 1 to 10, where 1 means that detection is almost certain and 10 means that it is very difficult or impossible to detect before a problem occurs.\n\nDerived Indicator: Risk Priority Number = S\\(\\times\\)O\\(\\times\\)D"
   },
   {
     "objectID": "Module1/Indicators.slides.html#example-3",
@@ -3751,22 +3751,22 @@
     "objectID": "Module1/Indicators.slides.html#the-format-of-an-indicator",
     "href": "Module1/Indicators.slides.html#the-format-of-an-indicator",
     "title": "Indicators",
-    "section": "The Format of an Indicator",
-    "text": "The Format of an Indicator\nAn indicator should be measured numerically using:\nAbsolute Numbers: Results of a measurement or counting process (volume produced, share price, number of employees, fixed costs, etc.)\nRates: Relationship between two variables with different units (number of units / number of workers, energy consumption / liters produced, etc.)\nIndexes: Dimensionless quantity resulting from dividing the current value of a variable by a reference base value for that variable (consumer price index)"
+    "section": "The format of an indicator",
+    "text": "The format of an indicator\nAn indicator should be measured numerically using:\nAbsolute Numbers: Results of a measurement or counting process (volume produced, share price, number of employees, fixed costs, etc.)\nRates: Relationship between two variables with different units (number of units / number of workers, energy consumption / liters produced, etc.)\nIndexes: Dimensionless quantity resulting from dividing the current value of a variable by a reference base value for that variable (consumer price index)"
   },
   {
     "objectID": "Module1/Indicators.slides.html#activity-1.1-cooperative-mode",
     "href": "Module1/Indicators.slides.html#activity-1.1-cooperative-mode",
     "title": "Indicators",
     "section": "Activity 1.1 (cooperative mode)",
-    "text": "Activity 1.1 (cooperative mode)\nGet into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:\n\nMonthly productivity of a furniture production line\nAnnual staff turnover in a manufacturing company\nCustomer service level of a company that manufactures plastic packaging and delivers regionally\nBusiness profitability for a medium-sized wholesale grocery company\nPerformance of the fundraising process of an association supporting homeless children"
+    "text": "Activity 1.1 (cooperative mode)\nGet into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:\n\n\nMonthly productivity of a furniture production line\nAnnual staff turnover in a manufacturing company\nCustomer service level of a company that manufactures plastic packaging and delivers regionally\nBusiness profitability for a medium-sized wholesale grocery company\nPerformance of the fundraising process of an association supporting homeless children"
   },
   {
     "objectID": "Module1/Indicators.slides.html#remember-that",
     "href": "Module1/Indicators.slides.html#remember-that",
     "title": "Indicators",
     "section": "Remember that…",
-    "text": "Remember that…\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals\nOrganizational motivation, induction of desirable behaviors\nStrategy evaluation and strategic learning."
+    "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals\nOrganizational motivation, induction of desirable behaviors\nStrategy evaluation and strategic learning."
   },
   {
     "objectID": "Module1/Indicators.slides.html#which-indicators-should-we-use",
@@ -3786,22 +3786,22 @@
     "objectID": "Module1/Indicators.slides.html#models-for-defining-indicators-1",
     "href": "Module1/Indicators.slides.html#models-for-defining-indicators-1",
     "title": "Indicators",
-    "section": "Models for Defining Indicators",
-    "text": "Models for Defining Indicators\nThe models for defining indicators depend on the type of strategic planning.\nThree strategic planning frameworks are:\n\nManagement by Objectives (MBO; Peter Drucker, 1954)\nHoshin Kanri\nBalanced Score Card (BSC; Kaplan & Norton, 1992, 1996)"
+    "section": "Models for defining indicators",
+    "text": "Models for defining indicators\n\nThe models for defining indicators depend on the type of strategic planning.\nThree strategic planning frameworks are:\n\nManagement by Objectives (MBO; Peter Drucker, 1954)\nHoshin Kanri\nBalanced Score Card (BSC; Kaplan & Norton, 1992, 1996)"
   },
   {
     "objectID": "Module1/Indicators.slides.html#balanced-score-card-bsc",
     "href": "Module1/Indicators.slides.html#balanced-score-card-bsc",
     "title": "Indicators",
     "section": "Balanced Score Card (BSC)",
-    "text": "Balanced Score Card (BSC)\nThis is a model that helps organizations translate strategy into operational (measurable) objectives, resulting in actions, behaviors, and performance.\nThe BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals."
+    "text": "Balanced Score Card (BSC)\n\n\n\nIt’s a model that helps organizations translate strategy into operational (measurable) objectives, resulting in actions, behaviors, and performance.\n\nThe BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals."
   },
   {
     "objectID": "Module1/Indicators.slides.html#bsc-objectives",
     "href": "Module1/Indicators.slides.html#bsc-objectives",
     "title": "Indicators",
     "section": "BSC Objectives",
-    "text": "BSC Objectives\n\nTranslate the strategy into measurable objectives.\nAlign the strategy components: objectives, indicators, and initiatives.\nCommunicate the strategy to the organization.\nCreate the basis for strategic management."
+    "text": "BSC Objectives\n\n\n\nTranslate the strategy into measurable objectives.\nAlign the strategy components: objectives, indicators, and initiatives.\nCommunicate the strategy to the organization.\nCreate the basis for strategic management."
   },
   {
     "objectID": "Module1/Indicators.slides.html#the-4-perspectives",
@@ -3815,21 +3815,21 @@
     "href": "Module1/Indicators.slides.html#model-components",
     "title": "Indicators",
     "section": "Model Components",
-    "text": "Model Components\nFor each perspective, the following should be defined:\n\nA small set of strategic objectives\nFor each objective, one (or more if necessary) metric as a performance indicator\nFor each indicator, establish long- and short-term goals\nInitiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals."
+    "text": "Model Components\n\nFor each perspective, the following should be defined:\n\nA small set of strategic objectives\nFor each objective, one (or more if necessary) metric as a performance indicator\nFor each indicator, establish long- and short-term goals\nInitiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals."
   },
   {
     "objectID": "Module1/Indicators.slides.html#strategic-map",
     "href": "Module1/Indicators.slides.html#strategic-map",
     "title": "Indicators",
     "section": "Strategic Map",
-    "text": "Strategic Map\n\nThe strategic map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning."
+    "text": "Strategic Map\n\n\nThe strategic map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning."
   },
   {
     "objectID": "Module1/Indicators.slides.html#activity-1.2-cooperative-mode",
     "href": "Module1/Indicators.slides.html#activity-1.2-cooperative-mode",
     "title": "Indicators",
     "section": "Activity 1.2 (cooperative mode)",
-    "text": "Activity 1.2 (cooperative mode)\n\nForm teams of three.\nBuild a strategy map as part of the Balanced Scorecard model application.\n\nRead the introduction to the Muebles Finos MF mini-case study in CANVAS."
+    "text": "Activity 1.2 (cooperative mode)\n\n\nForm teams of three.\nBuild a strategy map as part of the Balanced Scorecard model application.\nRead the introduction to the Muebles Finos MF mini-case study in CANVAS.\nThe activity consists of mapping the company’s objectives to the perspectives of the BSC model and to the business’s strategic lines."
   },
   {
     "objectID": "Module1/Indicators.slides.html#section-11",
@@ -3842,15 +3842,15 @@
     "objectID": "Module1/Indicators.slides.html#final-comments",
     "href": "Module1/Indicators.slides.html#final-comments",
     "title": "Indicators",
-    "section": "Final Comments",
-    "text": "Final Comments\n\nOnce the BSC model has been designed for the company, specific models are developed by functional area.\nIn the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.\nIt is more common to use performance indicators than impact indicators at the departmental level.\nNot all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives."
+    "section": "Final comments",
+    "text": "Final comments\n\nOnce the BSC model has been designed for the company, specific models are developed by functional area.\nIn the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.\nIt is more common to use performance indicators than impact indicators at the departmental level.\nNot all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives."
   },
   {
     "objectID": "Module1/Indicators.slides.html#indicator-documentation-1",
     "href": "Module1/Indicators.slides.html#indicator-documentation-1",
     "title": "Indicators",
-    "section": "Indicator Documentation",
-    "text": "Indicator Documentation\nWhen selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.\nDocumentation is very useful because:\n\nIt helps clarify the meaning of the indicators.\nIt facilitates communication between users and indicator creators.\nIt serves as a future reference when revising the system."
+    "section": "Indicator documentation",
+    "text": "Indicator documentation\n\nWhen selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.\nDocumentation is very useful because:\n\nIt helps clarify the meaning of the indicators.\nIt facilitates communication between users and indicator creators.\nIt serves as a future reference when revising the system."
   },
   {
     "objectID": "Module1/Indicators.slides.html#basic-format",
@@ -3935,5 +3935,103 @@
     "title": "Introduction to Data Bases",
     "section": "Database Queries",
     "text": "Database Queries\nOnce you have the database, you can answer questions such as:\n\nIn which neighborhoods do the patients prescribed turbocycloxine live?\nHow many patients have been prescribed turbocycloxine in the last month?\nWhich active agents have been administered to patients living at Prados #520 in the last year?"
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#planning-1",
+    "href": "Module1/Indicators.slides.html#planning-1",
+    "title": "Indicators",
+    "section": "Planning",
+    "text": "Planning\nAs a result of the planning process, some of the following types of plans can be generated:\n\n\nObjectives or goals. These are specific and measurable results.\nStrategies. Approaches or plans to achieve objectives.\nProcedures. These detail the execution of an activity.\nPrograms. Organized sets of activities to achieve objectives.\nBudgets. Detailed financial plans to facilitate economic decision-making.\n\n\n\nHigh need to measure progress"
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#examples",
+    "href": "Module1/Indicators.slides.html#examples",
+    "title": "Indicators",
+    "section": "Examples",
+    "text": "Examples\nExample 1:\n\n\n\nObjective: Complete staff training\nSMART: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.\n\n\n\n\nExample 2\n\n\n\nObjective: Increase sales by 20%.\nSMART: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#the-need-to-measure",
+    "href": "Module1/Indicators.slides.html#the-need-to-measure",
+    "title": "Indicators",
+    "section": "The need to measure",
+    "text": "The need to measure\n\nTo carry out the Planning, Implementation, and Control processes, we need an information system to evaluate whether the planned objectives are being achieved and whether the implemented actions are being carried out in accordance with the plans."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#what-is-an-indicator-1",
+    "href": "Module1/Indicators.slides.html#what-is-an-indicator-1",
+    "title": "Indicators",
+    "section": "What is an indicator?",
+    "text": "What is an indicator?\n\n\n“The qualitative and/or quantitative information on an examined phenomenon (or a process, or a result), which makes it possible to analyze its evolution and to check whether quality targets are met, driving actions and decisions.”\n\nFranceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Management by Measurement: Designing Key Indicators and Performance Measurement Systems. 10.1007/978-3-540-73212-9."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#two-main-types-of-indicators",
+    "href": "Module1/Indicators.slides.html#two-main-types-of-indicators",
+    "title": "Indicators",
+    "section": "Two main types of indicators",
+    "text": "Two main types of indicators\n\nA lagging indicator measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.\n\n\nA leading indicator measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#section-8",
+    "href": "Module1/Indicators.slides.html#section-8",
+    "title": "Indicators",
+    "section": "",
+    "text": "Learning and growth. These are the objectives related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#introduction",
+    "href": "Module1/Indicators.slides.html#introduction",
+    "title": "Indicators",
+    "section": "Introduction",
+    "text": "Introduction\n\nOnce we know what indicators are, their role in the management process, and the types of indicators that exist, we ask ourselves:\n\n\nWhich indicators should we use?\nHow many indicators should we have?\nWhat is an appropriate set of indicators?\nHow do we document and share them?"
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#section-14",
+    "href": "Module1/Indicators.slides.html#section-14",
+    "title": "Indicators",
+    "section": "",
+    "text": "It is essential that functional managers fully understand the company’s BSC and their area’s contribution to the overall objectives.\nThe person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.\nSome organizational-level indicators are simply aggregations of departmental indicators."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#models-for-defining-indicators-2",
+    "href": "Module1/Indicators.slides.html#models-for-defining-indicators-2",
+    "title": "Indicators",
+    "section": "Models for defining indicators",
+    "text": "Models for defining indicators\n\nThe models for defining indicators depend on the type of strategic planning.\nThree strategic planning frameworks are:\n\nManagement by Objectives (MBO; Peter Drucker, 1954)\nHoshin Kanri\nBalanced Score Card (BSC; Kaplan & Norton, 1992, 1996)"
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#bscs-objectives",
+    "href": "Module1/Indicators.slides.html#bscs-objectives",
+    "title": "Indicators",
+    "section": "BSC’s objectives",
+    "text": "BSC’s objectives\n\n\n\nTranslate the strategy into measurable objectives.\nAlign the strategy components: objectives, indicators, and initiatives.\nCommunicate the strategy to the organization.\nCreate the basis for strategic management."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#example-planning-your-birthday-party",
+    "href": "Module1/Indicators.slides.html#example-planning-your-birthday-party",
+    "title": "Indicators",
+    "section": "Example: Planning Your Birthday Party",
+    "text": "Example: Planning Your Birthday Party"
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#planning-your-birthday-party",
+    "href": "Module1/Indicators.slides.html#planning-your-birthday-party",
+    "title": "Indicators",
+    "section": "Planning Your Birthday Party",
+    "text": "Planning Your Birthday Party"
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#strategy-map-structure",
+    "href": "Module1/Indicators.slides.html#strategy-map-structure",
+    "title": "Indicators",
+    "section": "Strategy map structure",
+    "text": "Strategy map structure\n\n\n\nSeguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de abajo hacia arriba. Los niveles superiores son consecuencia de los niveles inferiores. No necesariamente todos están ligados."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#basic-documenting-format",
+    "href": "Module1/Indicators.slides.html#basic-documenting-format",
+    "title": "Indicators",
+    "section": "Basic documenting format",
+    "text": "Basic documenting format"
   }
 ]
