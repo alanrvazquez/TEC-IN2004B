@@ -40,7 +40,6 @@ Before we start, let's import the data science libraries into Python.
 #| echo: true
 #| output: false
 
-# Importing necessary libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -688,7 +687,7 @@ cereal_data = pd.read_excel("cereals.xlsx")
 
 ## 
 
-Here, we will restrict to 7 numeric predictors
+Here, we will restrict to 7 numeric predictors.
 
 ```{python}
 #| output: true
