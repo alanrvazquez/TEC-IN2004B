@@ -1,5 +1,5 @@
 ---
-title: "Balance Score Card"
+title: "Development and Visualization of Indicators"
 subtitle: "IN2004B: Generation of Value with Data Analytics"
 author: 
   - name: Alan R. Vazquez
@@ -302,18 +302,17 @@ Documentation is very useful because:
 
 ![](images/KPIs_document.jpg){fig-align="center"}
 
-
 # Dashboards for Visualizing Indicators
 
 ## The Balanced Scorecard
 
 Once the indicators are defined using the Balanced Scorecard and the documentation format, we design dashboards with:
 
-- Screens
-- Chart and table styles
-- Aggregation levels
-- Default reports
-- Drill-down requirements.
+-   Screens
+-   Chart and table styles
+-   Aggregation levels
+-   Default reports
+-   Drill-down requirements.
 
 This applies to both the overall organizational level and the functional BSCs.
 
@@ -321,11 +320,11 @@ This applies to both the overall organizational level and the functional BSCs.
 
 Various strategies can be followed to implement the dashboards, for example:
 
-- Development on a specialized platform for indicator systems (<https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/>)
+-   Development on a specialized platform for indicator systems (<https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/>)
 
-- Development with generic OLAP Online Analytical Processing tools (<https://www.softwaretestinghelp.com/best-olap-tools/>)
+-   Development with generic OLAP Online Analytical Processing tools (<https://www.softwaretestinghelp.com/best-olap-tools/>)
 
-- Short-term, isolated implementations in spreadsheets.
+-   Short-term, isolated implementations in spreadsheets.
 
 ## Tableu dashboard example
 
@@ -336,6 +335,5 @@ Various strategies can be followed to implement the dashboards, for example:
 ## Another Example
 
 ![](images/clipboard-686396046.png)
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

@@ -13,7 +13,7 @@ author:
 ### Module 1
 
 1.  Indicators ([slides](/Module1/Indicators.slides.html))
-2.  Balanced Scorecard ([slides](/Module1/BSC.slides.html))
+2.  Development and Visualization of Indicators ([slides](/Module1/BSC.slides.html))
 
 ### Module 2
 
