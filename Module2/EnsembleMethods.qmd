@@ -100,7 +100,7 @@ Here, we will cover a popular ensamble method:
 ::: {style="font-size: 90%;"}
 Bootstrap samples are samples obtained *with replacement* from the original sample. So, an observation can occur more than one in a bootstrap sample.
 
-Bootstrap samples are the building block of the bootstrap method, which is a statistical technique for estimating quantities about a population by averaging estimates from multiple small data samples. 
+Bootstrap samples are the building block of the bootstrap method, which is a statistical technique for estimating quantities about a population by averaging estimates from multiple small data samples.
 :::
 
 ![](images/clipboard-2003681619.png){fig-align="center"}
@@ -193,8 +193,8 @@ Adult_data.head(3)
 #| output: false
 
 # Choose the predictors.
-Adult_Subset = Adult_data.filter(['age', 'education.num', 'capital.gain', 
-                                  'hours.per.week', 'income'])
+X_full = Adult_data.filter(['age', 'sex', 'race', 'education.num', 
+                            'hours.per.week'])
 ```
 
 ## Set the target class
@@ -206,9 +206,11 @@ Let's set the **target class** and the **reference class** using the `get_dummie
 #| output: true
 
 # Select answer
-Y = Adult_Subset['income']
+Y = Adult_data.filter(['income'])
+
 # Create dummy variables.
 Y_dummies = pd.get_dummies(Y, dtype = 'int')
+
 # Show.
 Y_dummies.head(4)
 ```
@@ -238,9 +240,6 @@ To evaluate a model's performance on unobserved data, we split the current datas
 ```{python}
 #| echo: true
 #| output: false
-
-# Create predictor matrix
-X_full = Adult_Subset.drop(columns = ['income'])
 
 # Split into training and validation
 X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target, 
@@ -318,7 +317,7 @@ print( round(accuracy, 2) )
 
 ## A single deep tree
 
-To compare the bagging, let's use a single tree with cost complexity pruning.
+To compare the bagging, let's use a single deep tree.
 
 ```{python}
 #| echo: true
