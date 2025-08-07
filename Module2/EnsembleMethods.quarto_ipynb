@@ -39,7 +39,7 @@
         "\n",
         "Before we start, let's import the data science libraries into Python.\n"
       ],
-      "id": "96d1dc50"
+      "id": "fb497d5b"
     },
     {
       "cell_type": "code",
@@ -60,7 +60,7 @@
         "from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \n",
         "from sklearn.metrics import accuracy_score, recall_score, precision_score"
       ],
-      "id": "562a47ae",
+      "id": "02107081",
       "execution_count": null,
       "outputs": []
     },
@@ -188,7 +188,7 @@
         "\n",
         "## Read the dataset\n"
       ],
-      "id": "558dec17"
+      "id": "7f8038f5"
     },
     {
       "cell_type": "code",
@@ -203,7 +203,7 @@
         "# Preview the data.\n",
         "Adult_data.head(3)"
       ],
-      "id": "f54af905",
+      "id": "190b28aa",
       "execution_count": null,
       "outputs": []
     },
@@ -219,7 +219,7 @@
         "-   education.num: number of years of education.\n",
         "-   hours.per.week: Number of work hours per week.\n"
       ],
-      "id": "9ecd700f"
+      "id": "be20db50"
     },
     {
       "cell_type": "code",
@@ -232,7 +232,7 @@
         "Adult_Subset = Adult_data.filter(['age', 'education.num', 'capital.gain', \n",
         "                                  'hours.per.week', 'income'])"
       ],
-      "id": "66727ecc",
+      "id": "97d1644c",
       "execution_count": null,
       "outputs": []
     },
@@ -244,7 +244,7 @@
         "\n",
         "Let's set the **target class** and the **reference class** using the `get_dummies()` function.\n"
       ],
-      "id": "aa85944d"
+      "id": "c894ed00"
     },
     {
       "cell_type": "code",
@@ -260,7 +260,7 @@
         "# Show.\n",
         "Y_dummies.head(4)"
       ],
-      "id": "618915ef",
+      "id": "5a3de851",
       "execution_count": null,
       "outputs": []
     },
@@ -274,7 +274,7 @@
         "\n",
         "Here we'll use the **large** target class. So, let's use the corresponding column as our response variable.\n"
       ],
-      "id": "d1b3ee39"
+      "id": "66fe0a90"
     },
     {
       "cell_type": "code",
@@ -288,7 +288,7 @@
         "\n",
         "Y_target.head()"
       ],
-      "id": "ee14f306",
+      "id": "91f8b4a3",
       "execution_count": null,
       "outputs": []
     },
@@ -302,7 +302,7 @@
         "\n",
         "To evaluate a model's performance on unobserved data, we split the current dataset into training and validation datasets. To do this, we use `train_test_split()` from **scikit-learn**.\n"
       ],
-      "id": "eebcb2ea"
+      "id": "0f1024ed"
     },
     {
       "cell_type": "code",
@@ -318,7 +318,7 @@
         "X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target, \n",
         "                                                      test_size = 0.2)"
       ],
-      "id": "1d4c4d1b",
+      "id": "8360390d",
       "execution_count": null,
       "outputs": []
     },
@@ -336,7 +336,7 @@
         "\n",
         "The `n_estimators` argument is the number of decision trees to generate in bagging. Ideally, it should be high, around 500.\n"
       ],
-      "id": "c0ac459c"
+      "id": "60caad9e"
     },
     {
       "cell_type": "code",
@@ -352,7 +352,7 @@
         "# Train the bagging algorithm.\n",
         "Baggingalgorithm.fit(X_train, Y_train)"
       ],
-      "id": "46a5f964",
+      "id": "d4e35416",
       "execution_count": null,
       "outputs": []
     },
@@ -366,7 +366,7 @@
         "\n",
         "Predict the classes using bagging.\n"
       ],
-      "id": "e8f227fe"
+      "id": "ed4b0fdd"
     },
     {
       "cell_type": "code",
@@ -379,7 +379,7 @@
         "\n",
         "predicted_class"
       ],
-      "id": "52c2c1bc",
+      "id": "13d45494",
       "execution_count": null,
       "outputs": []
     },
@@ -389,7 +389,7 @@
       "source": [
         "## Confusion matrix\n"
       ],
-      "id": "fc38eed5"
+      "id": "842fadab"
     },
     {
       "cell_type": "code",
@@ -405,7 +405,7 @@
         "# Visualize the matrix.\n",
         "ConfusionMatrixDisplay(cm).plot()"
       ],
-      "id": "9856b6ac",
+      "id": "c08fb156",
       "execution_count": null,
       "outputs": []
     },
@@ -419,7 +419,7 @@
         "\n",
         "The accuracy of the bagging classifier is 78%.\n"
       ],
-      "id": "392d2ec2"
+      "id": "009828a0"
     },
     {
       "cell_type": "code",
@@ -435,7 +435,7 @@
         "# Show accuracy.\n",
         "print( round(accuracy, 2) )"
       ],
-      "id": "a57dcf37",
+      "id": "e37ddc80",
       "execution_count": null,
       "outputs": []
     },
@@ -447,7 +447,7 @@
         "\n",
         "To compare the bagging, let's use a single tree with cost complexity pruning.\n"
       ],
-      "id": "c601cbaa"
+      "id": "66f18ff6"
     },
     {
       "cell_type": "code",
@@ -480,7 +480,7 @@
         "# We train the classification tree using the training data.\n",
         "clf_simple.fit(X_train, Y_train)"
       ],
-      "id": "19f0ee3d",
+      "id": "113b7ca0",
       "execution_count": null,
       "outputs": []
     },
@@ -490,7 +490,7 @@
       "source": [
         "Let's compute the accuracy of the pruned tree.\n"
       ],
-      "id": "b8eee910"
+      "id": "0138b2a7"
     },
     {
       "cell_type": "code",
@@ -503,7 +503,7 @@
         "accuracy = accuracy_score(Y_valid, single_tree_Y_pred)\n",
         "print( round(accuracy, 2) )"
       ],
-      "id": "1ff91ef8",
+      "id": "63101d6f",
       "execution_count": null,
       "outputs": []
     },
@@ -597,7 +597,7 @@
         "\n",
         "In Python, we define a RandomForest algorithm for classification using the `RandomForestClassifier` function from **scikit-learn**. The `n_estimators` argument is the number of decision trees to generate in the RandomForest, and `random_state` allows you to reprudce the results.\n"
       ],
-      "id": "9704bfaa"
+      "id": "ec8a6c94"
     },
     {
       "cell_type": "code",
@@ -613,7 +613,7 @@
         "# Train the bagging algorithm.\n",
         "RFalgorithm.fit(X_train, Y_train)"
       ],
-      "id": "9e66c45d",
+      "id": "adcd6765",
       "execution_count": null,
       "outputs": []
     },
@@ -625,7 +625,7 @@
         "\n",
         "Evaluate the performance of random forest.\n"
       ],
-      "id": "c9bc5054"
+      "id": "c6000718"
     },
     {
       "cell_type": "code",
@@ -645,7 +645,7 @@
         "# Visualize the matrix.\n",
         "ConfusionMatrixDisplay(cm).plot()"
       ],
-      "id": "7eac1aed",
+      "id": "a5de28cc",
       "execution_count": null,
       "outputs": []
     },
@@ -659,7 +659,7 @@
         "\n",
         "The accuracy of the random forest classifier is 79%.\n"
       ],
-      "id": "b98b243d"
+      "id": "f58000a5"
     },
     {
       "cell_type": "code",
@@ -675,7 +675,7 @@
         "# Show accuracy.\n",
         "print( round(accuracy, 2) )"
       ],
-      "id": "9c086cb9",
+      "id": "4a6adef7",
       "execution_count": null,
       "outputs": []
     },
@@ -685,14 +685,15 @@
       "source": [
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)"
       ],
-      "id": "34910757"
+      "id": "775bb5ff"
     }
   ],
   "metadata": {
     "kernelspec": {
-      "display_name": "Python 3",
+      "name": "python3",
       "language": "python",
-      "name": "python3"
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/alanvazquez/.virtualenvs/r-reticulate/share/jupyter/kernels/python3"
     }
   },
   "nbformat": 4,
