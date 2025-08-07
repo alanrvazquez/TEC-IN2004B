@@ -36,7 +36,6 @@ Before we start, let's import the data science libraries into Python.
 #| echo: true
 #| output: false
 
-# Importing necessary libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -988,7 +987,7 @@ $$\hat{Y}_i = 1866.84 - 4.65 T_i + 0.03 T^2_i.$$
 #| fig-align: center
 #| code-fold: true
 
-# Recuerda usar la misma matriz `X_quad`
+# Remember to use the same `X_quad`
 Y_pred_quad = QuadmodelAmtrak.predict(X_quad)
 residuals_quad = Y_train - Y_pred_quad
 
@@ -1413,13 +1412,13 @@ Next, we fit the model with all the terms in the matrix above.
 #| fig-align: center
 #| code-fold: false
 
-# 0. Asegurarnos que tenemos la respuesta del problema en `Y_full`.
+# 0. Ensure that we have the response in `Y_full`.
 Y_train = Amtrak_train['Ridership (in 000s)']
 
-# 1. Crear modelo de regresión lineal
+# 1. Create linear regression model.
 SeasonmodelAmtrak = LinearRegression()
 
-# 2. Ajustar el modelo usando los datos de entrenamiento
+# 2. Fit the linear regression model.
 SeasonmodelAmtrak.fit(X_quad_season, Y_train)
 ```
 
