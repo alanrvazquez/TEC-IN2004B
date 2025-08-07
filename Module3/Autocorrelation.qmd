@@ -972,8 +972,6 @@ print(round(rtwo, 2))
 #| output: true
 #| fig-align: center
 
-# Forecast the next steps (length of validation set)
-
 # Build a DataFrame for the forecast with corresponding years
 forecast_years = Canadian_validation['Year'].values
 forecast_df = pd.DataFrame({
@@ -1294,7 +1292,7 @@ len(Airline_validation)
 
 </br>
 
-So, we must forecast 7 periods ahead using our ARIMA model.
+So, we must forecast 7 periods ahead using our SARIMA model.
 
 ```{python}
 #| echo: true
@@ -1342,8 +1340,6 @@ print(round(rtwo, 2))
 #| echo: false
 #| output: true
 #| fig-align: center
-
-# Forecast the next steps (length of validation set)
 
 # Build a DataFrame for the forecast with corresponding years
 forecast_years = Airline_validation['T'].values
