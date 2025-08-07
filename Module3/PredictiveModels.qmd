@@ -1498,4 +1498,4 @@ print(round(mse_season, 2))
 
 -   Models that help us use past observations to predict future values of the response variable $Y$ are **autoregressive models**.
 
-# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

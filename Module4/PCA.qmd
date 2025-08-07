@@ -22,11 +22,13 @@ jupyter: python3
 
 </br>
 
-1. Introduction
-2. Dispersion in one or more dimensions
-3. Principal component analysis
+1.  Introduction
+2.  Dispersion in one or more dimensions
+3.  Principal component analysis
 
 # Introduction
+
+## Load the libraries
 
 Before we start, let's import the data science libraries into Python.
 
@@ -43,7 +45,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 ```
 
-Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**,  and **sklearn** libraries in Python.
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**, and **sklearn** libraries in Python.
 
 ## Types of learning
 
@@ -54,7 +56,6 @@ In data science, there are two main types of learning:
 -   [Supervised learning. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.]{style="color:gray;"}
 
 -   [Unsupervised learning]{style="color:green;"}. In which we have only multiple predictors. The goal is to discover patterns in your data.
-
 
 ## Unsupervised learning methods
 
@@ -122,7 +123,6 @@ In some cases, we can capture the spread of data in two dimensions (predictors) 
 :::
 
 ::: {.column width="50%"}
-
 </br>
 
 A single predictor $X_2$ captures much of the spread in the data.
@@ -158,7 +158,6 @@ A single predictor $X_2$ captures much of the spread in the data.
 :::
 
 ::: {.column width="50%"}
-
 A single predictor captures much of the dispersion in the data. In this case, the new predictor has the form $Z_1 = a X_1 + b X_2 + c.$
 
 ![](images/otroejemplo2.png){fig-align="center"}
@@ -167,7 +166,6 @@ A single predictor captures much of the dispersion in the data. In this case, th
 ::::::
 
 ## 
-
 
 </br>
 
@@ -180,7 +178,6 @@ Alternatively, we can use two alternative dimensions to capture the dispersion.
 :::
 
 ::: {.column width="50%"}
-
 ![](images/alternativas3.png){fig-align="center"}
 :::
 :::::
@@ -188,23 +185,23 @@ Alternatively, we can use two alternative dimensions to capture the dispersion.
 
 ## A new coordinate system
 
-:::::: center
-::::: columns
-::: {.column width="50%"}
+::::::: center
+:::::: columns
+:::: {.column width="50%"}
 ::: {style="font-size: 90%;"}
-- The new coordinate axis is given by two new predictors, $Z_1$ and $Z_2$. Both are given by linear equations of the new predictors.
+-   The new coordinate axis is given by two new predictors, $Z_1$ and $Z_2$. Both are given by linear equations of the new predictors.
 
-- The first axis, $Z_1$, captures a large portion of the dispersion, while $Z_2$ captures a small portion from another angle.
+-   The first axis, $Z_1$, captures a large portion of the dispersion, while $Z_2$ captures a small portion from another angle.
 
-- The new axes, $Z_1$ and $Z_2$, are called [***principal components***]{style="color:darkgray;"}.
+-   The new axes, $Z_1$ and $Z_2$, are called [***principal components***]{style="color:darkgray;"}.
 :::
-:::
+::::
 
 ::: {.column width="50%"}
 ![](images/alternativas3.png)
 :::
-:::::
 ::::::
+:::::::
 
 # Principal Component Analysis
 
@@ -214,11 +211,10 @@ Alternatively, we can use two alternative dimensions to capture the dispersion.
 
 [**Principal Components Analysis (PCA)**]{style="color:#017373;"} helps us reduce the dimension of the data.
 
-
 ::: incremental
-- It creates a new coordinate axis in two (or more) dimensions.
+-   It creates a new coordinate axis in two (or more) dimensions.
 
-- Technically, it creates new predictors by combining highly [*correlated*]{.underline} predictors. The new predictors are uncorrelated.
+-   Technically, it creates new predictors by combining highly [*correlated*]{.underline} predictors. The new predictors are uncorrelated.
 :::
 
 ## Setup
@@ -248,7 +244,7 @@ $${\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1}
 |              | 0.12        | -0.95       | 1.55        |
 |              | -0.29       | 0.97        | -0.13       |
 |              | 0.53        | 0.72        | 0.29        |
-| **Sum**     | *0*         | *0*         | *0*         |
+| **Sum**      | *0*         | *0*         | *0*         |
 | **Variance** | *1*         | *1*         | *1*         |
 
 ## 
@@ -275,9 +271,9 @@ The PCA algorithm has its origins in linear algebra.
 
 Its basic idea is:
 
-1. Create a matrix $\mathbf{C}$ with the correlations between the predictors of the matrix $\mathbf{X}$.
+1.  Create a matrix $\mathbf{C}$ with the correlations between the predictors of the matrix $\mathbf{X}$.
 
-2. Split the matrix $\mathbf{C}$ into three parts, which give us the new coordinate axis and the importance of each axis.
+2.  Split the matrix $\mathbf{C}$ into three parts, which give us the new coordinate axis and the importance of each axis.
 
 ## Correlation matrix
 
@@ -301,16 +297,15 @@ The $\mathbf{C}$ matrix is partitioned using the [*eigenvalue and eigenvector de
 
 ![](images/descomposition2.png)
 
-- The columns of $\mathbf{B}$ define the axes of the new coordinate system. These axes are called [***principal components***]{style="color:green;"}.
+-   The columns of $\mathbf{B}$ define the axes of the new coordinate system. These axes are called [***principal components***]{style="color:green;"}.
 
-- The diagonal values in $\mathbf{A}$ define the individual importance of each principal component (axis).
+-   The diagonal values in $\mathbf{A}$ define the individual importance of each principal component (axis).
 
 ## Proportion of the dispersion explained by the component
 
-:::::: center
-::::: columns
-::: {.column width="50%"}
-
+:::::::: center
+::::::: columns
+:::: {.column width="50%"}
 </br></br>
 
 ::: {style="font-size: 90%;"}
@@ -320,24 +315,23 @@ $$\mathbf{A} = \begin{pmatrix}
 0.00     &  0.00     &  0.33    \\
 \end{pmatrix}$$
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 </br></br>
 
 ::: {style="font-size: 90%;"}
 The proportion of the dispersion in the data that is captured by the first component is $\frac{a_{1,1}}{p} = \frac{1.60}{3} = 0.53$.
 :::
-:::
-:::::
-::::::
+::::
+:::::::
+::::::::
 
 ## 
 
-:::::: center
-::::: columns
-::: {.column width="50%"}
-
+:::::::: center
+::::::: columns
+:::: {.column width="50%"}
 </br></br>
 
 ::: {style="font-size: 90%;"}
@@ -347,19 +341,19 @@ $$\mathbf{A} = \begin{pmatrix}
 0.00     &  0.00     &  0.33    \\
 \end{pmatrix}$$
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 </br></br>
 
 ::: {style="font-size: 90%;"}
-The proportion captured by the second component is $\frac{a_{2,2}}{p} = \frac{1.07}{3} = 0.36$. 
+The proportion captured by the second component is $\frac{a_{2,2}}{p} = \frac{1.07}{3} = 0.36$.
 
 The proportion captured by the third component is $\frac{a_{3,3}}{p} = \frac{0.33}{3} = 0.11.$
 :::
-:::
-:::::
-::::::
+::::
+:::::::
+::::::::
 
 ## Comments
 
@@ -399,23 +393,23 @@ $$\approx \begin{pmatrix}
 
 ## 
 
-:::::: center
-::::: columns
-::: {.column width="40%"}
+::::::: center
+:::::: columns
+:::: {.column width="40%"}
 ::: {style="font-size: 90%;"}
-- Approximations are useful for storing large matrices.
+-   Approximations are useful for storing large matrices.
 
-- This is because we only need to store the largest eigenvalues and their corresponding eigenvectors to recover a high-quality approximation of the entire matrix.
+-   This is because we only need to store the largest eigenvalues and their corresponding eigenvectors to recover a high-quality approximation of the entire matrix.
 
-- This is the idea behind **image compression**.
+-   This is the idea behind **image compression**.
 :::
-:::
+::::
 
 ::: {.column width="60%"}
 ![](images/clipboard-2295232858.png)
 :::
-:::::
 ::::::
+:::::::
 
 ## Example 1
 
@@ -423,25 +417,25 @@ $$\approx \begin{pmatrix}
 
 Consider a database of the 100 most popular songs on TikTok. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:
 
-- Danceability describes how suitable a track is for dancing based on a combination of musical elements.
+-   Danceability describes how suitable a track is for dancing based on a combination of musical elements.
 
-- Energy is a measure from 0 to 1 and represents a perceptual measure of intensity and activity.
+-   Energy is a measure from 0 to 1 and represents a perceptual measure of intensity and activity.
 
-- The overall volume of a track in decibels (dB). Loudness values are averaged across the entire track.
+-   The overall volume of a track in decibels (dB). Loudness values are averaged across the entire track.
 
-##
+## 
 
 </br></br>
 
 Other predictors are:
 
-- Speech detects the presence of spoken words in a track. The more exclusively speech-like the recording is.
+-   Speech detects the presence of spoken words in a track. The more exclusively speech-like the recording is.
 
-- A confidence measure from 0 to 1 about whether the track is acoustic.
+-   A confidence measure from 0 to 1 about whether the track is acoustic.
 
-- Detects the presence of an audience in the recording.
+-   Detects the presence of an audience in the recording.
 
-- A measure from 0 to 1 that describes the musical positivity a track conveys.
+-   A measure from 0 to 1 that describes the musical positivity a track conveys.
 
 ## The data
 
@@ -487,17 +481,16 @@ pca = PCA()
 PCA_tiktok = pca.fit_transform(Xs_tiktok)
 ```
 
-
 ## 
 
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
-- The **Screen or Summary Plot** tells you the variability captured by each component. This variability is given by the *Eigenvalue*. From 1 to 8 components.
+-   The **Screen or Summary Plot** tells you the variability captured by each component. This variability is given by the *Eigenvalue*. From 1 to 8 components.
 
-- The first component covers most of the data dispersion.
+-   The first component covers most of the data dispersion.
 
-- This graph is used to define the total number of components to use.
+-   This graph is used to define the total number of components to use.
 :::
 
 ::: {.column width="50%"}
@@ -523,7 +516,7 @@ plt.show()
 :::::
 ::::::
 
-##
+## 
 
 </br></br>
 
@@ -553,9 +546,9 @@ plt.show()
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
-- Displays the graphical observations on the new coordinate axis given by the first two components.
-- Helps visualize data for three or more predictors using a two-dimensional scatter plot.
-- A red line indicates the growth direction of the labeled variable.
+-   Displays the graphical observations on the new coordinate axis given by the first two components.
+-   Helps visualize data for three or more predictors using a two-dimensional scatter plot.
+-   A red line indicates the growth direction of the labeled variable.
 :::
 
 ::: {.column width="50%"}
@@ -591,7 +584,7 @@ plt.show()
 :::::
 ::::::
 
-##
+## 
 
 The code to generate the biplot is lenghty but it can be broken into three steps.
 
@@ -628,11 +621,9 @@ plt.axvline(0, color='gray', linestyle='--', linewidth=0.5)
 plt.show()
 ```
 
-
-##
+## 
 
 Step 3. Add more information to the biplot.
-
 
 ```{python}
 #| output: true
@@ -659,7 +650,6 @@ for i, feature in enumerate(features):
 
 plt.show()
 ```
-
 
 ## 
 
@@ -702,4 +692,4 @@ for i, feature in enumerate(features):
 plt.show()
 ```
 
-# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

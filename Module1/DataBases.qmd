@@ -210,4 +210,4 @@ Una vez que se tiene la base de datos, es posible contestar preguntas como:
 
 -   En este módulo no estudiaremos SQL.
 
-# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

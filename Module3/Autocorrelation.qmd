@@ -1008,11 +1008,11 @@ plt.show()
 
 </br></br>
 
-- Seasonality consists of repetitive or cyclical behavior that occurs with a constant frequency.
+-   Seasonality consists of repetitive or cyclical behavior that occurs with a constant frequency.
 
-- It can be identified from the series graph or using the ACF and PACF.
+-   It can be identified from the series graph or using the ACF and PACF.
 
-- To do this, we must have removed the trend.
+-   To do this, we must have removed the trend.
 
 ## Example 3
 
@@ -1027,7 +1027,6 @@ We use the Airline data containing the number of passengers of an international 
 Airline_data = pd.read_excel("Airline.xlsx")
 Airline_data.head()
 ```
-
 
 ## Create training and validation data
 
@@ -1050,7 +1049,6 @@ Airline_train = Airline_data[:split_point]
 Airline_validation = Airline_data[split_point:]
 ```
 
-
 ## Training data
 
 ```{python}
@@ -1068,7 +1066,6 @@ plt.tight_layout()
 plt.show()
 ```
 
-
 ## 
 
 First, let's use a level-1 operator.
@@ -1080,7 +1077,6 @@ First, let's use a level-1 operator.
 
 Z_series_one = diff(Airline_train['Number of passengers'], k_diff = 1)
 ```
-
 
 ```{python}
 #| echo: true
@@ -1094,7 +1090,6 @@ plt.xlabel('T')
 plt.ylabel('Difference Level 1')
 plt.show()
 ```
-
 
 ## Autocorrelation plots
 
@@ -1138,9 +1133,9 @@ The [S]{style="color:orange;"}ARIMA ([*Seasonal*]{style="color:orange;"} Autoreg
 
 The SARIMA model has three additional elements for modeling seasonality in time series.
 
-1. Differenced or integrated operators (*integrated*) for seasonality.
-2. Autoregressive terms (*autoregressive*) for seasonality.
-3. Stochastic terms or moving averages (*moving average*) for seasonality.
+1.  Differenced or integrated operators (*integrated*) for seasonality.
+2.  Autoregressive terms (*autoregressive*) for seasonality.
+3.  Stochastic terms or moving averages (*moving average*) for seasonality.
 
 ## Notation
 
@@ -1160,39 +1155,36 @@ This is the difference between a response and a response with a lag that is a mu
 
 For example, with monthly data $S=12$,
 
-- A level 1 seasonal difference is $Y_{t} - Y_{t-12}$.
-- A level 2 seasonal difference is $(Y_{t-12}) - (Y_{t-12} - Y_{t-24})$.
+-   A level 1 seasonal difference is $Y_{t} - Y_{t-12}$.
+-   A level 2 seasonal difference is $(Y_{t-12}) - (Y_{t-12} - Y_{t-24})$.
 
 Seasonal differencing eliminates the seasonal trend and can also eliminate a type of nonstationarity caused by a seasonal random walk.
 
-## Seasonal AR and MA Terms 
+## Seasonal AR and MA Terms
 
 In SARIMA, the seasonal AR and MA component terms predict the current response ($Y_t$) using responses and errors at times with lags that are multiples of $S$.
 
 For example, with monthly data $S = 12$,
 
 ::: {style="font-size: 85%;"}
-- The first-order seasonal AR model would use $Y_{t-12}$ to predict $Y_{t}$.
-- The second-order seasonal AR model would use $Y_{t-12}$ and $Y_{t-24}$ to predict $Y_{t}$.
-- The first-order seasonal MA model would use the stochastic term $a_{t-12}$ as a predictor.
-- The second-order seasonal MA model would use the stochastic terms $a_{t-12}$ and $a_{t-24}$ as predictors.
+-   The first-order seasonal AR model would use $Y_{t-12}$ to predict $Y_{t}$.
+-   The second-order seasonal AR model would use $Y_{t-12}$ and $Y_{t-24}$ to predict $Y_{t}$.
+-   The first-order seasonal MA model would use the stochastic term $a_{t-12}$ as a predictor.
+-   The second-order seasonal MA model would use the stochastic terms $a_{t-12}$ and $a_{t-24}$ as predictors.
 :::
 
 ## 
 
 </br></br>
 
-To fit the SARIMA model, we use the `ARIMA()` function from **statsmodels**, but with an additional argument, `seasonal_order=(0, 0, 0, 0)`. 
+To fit the SARIMA model, we use the `ARIMA()` function from **statsmodels**, but with an additional argument, `seasonal_order=(0, 0, 0, 0)`.
 
 </br>
 
 This is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.
 
-
 ::: notes
-
-Recall that the function has the argument `order = (p, d, q)` where `p` is the order of the autoregressive model, `d` is the differencing operator level, and `q` is the number of elements in the moving average. 
-
+Recall that the function has the argument `order = (p, d, q)` where `p` is the order of the autoregressive model, `d` is the differencing operator level, and `q` is the number of elements in the moving average.
 
 These arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality.
 :::
@@ -1239,7 +1231,6 @@ SARIMA_residuals = SARIMA_Airline.resid
 SARIMA_residuals = SARIMA_residuals.drop(0)
 ```
 
-
 ```{python}
 #| echo: true
 #| output: true
@@ -1252,7 +1243,6 @@ plt.xlabel('Year')
 plt.ylabel('Residuals')
 plt.show()
 ```
-
 
 ## 
 
@@ -1344,7 +1334,6 @@ rtwo = r2_score(Airline_validation["Number of passengers"], forecast_Airline)
 print(round(rtwo, 2))
 ```
 
-
 ## 
 
 </br>
@@ -1383,6 +1372,4 @@ plt.tight_layout()
 plt.show()
 ```
 
-
-# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
-
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

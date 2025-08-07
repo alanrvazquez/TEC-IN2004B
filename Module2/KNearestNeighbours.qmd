@@ -559,4 +559,4 @@ KNN is intuitive and simple and can produce decent predictions. However, KNN has
 <https://aiaspirant.com/curse-of-dimensionality/>
 :::
 
-# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

@@ -50,7 +50,7 @@ from sklearn.cluster import KMeans, AgglomerativeClustering
 from scipy.cluster.hierarchy import dendrogram, linkage
 ```
 
-Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**,  **sklearn**, and **scipy** libraries in Python.
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**, **sklearn**, and **scipy** libraries in Python.
 
 ## Types of learning
 
@@ -825,4 +825,4 @@ plt.show()
 
 James et al. (2017)
 
-# [Return to main page](https://alanrvazquez.github.io/TEC-IN1002B-Website/)
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
