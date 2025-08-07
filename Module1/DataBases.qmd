@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Data Bases"
+title: "Balance Score Card"
 subtitle: "IN2004B: Generation of Value with Data Analytics"
 author: 
   - name: Alan R. Vazquez
@@ -22,8 +22,286 @@ jupyter: python3
 
 </br>
 
-1. Dashboards for Visualizing Indicators
-2. Databases for Storing Indicators
+1.  Models for Defining Indicators
+2.  Indicator Documentation
+3.  Dashboards for Visualizing Indicators
+
+# Models for Defining Indicators
+
+## Introduction
+
+</br></br>
+
+Once we know what indicators are, their role in the management process, and the types of indicators that exist, we ask ourselves:
+
+::: incremental
+-   Which indicators should we use?
+
+-   How many indicators should we have?
+
+-   What is an appropriate set of indicators?
+
+-   How do we document and share them?
+:::
+
+## 
+
+</br></br>
+
+Although there are some indicators that could be generally applied to any company, each company has its own strategy, its own priorities, and its particular competitive environment
+
+Therefore, the most appropriate set of indicators depends on each organization.
+
+. . .
+
+</br>
+
+**Here we describe models for finding the appropriate number and set of indicators.**
+
+## Models for defining indicators
+
+</br></br>
+
+The models for defining indicators depend on the type of strategic planning.
+
+Three strategic planning frameworks are:
+
+1.  Management by Objectives (MBO; Peter Drucker, 1954)
+2.  Hoshin Kanri
+3.  Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)
+
+## Models for defining indicators
+
+</br></br>
+
+The models for defining indicators depend on the type of strategic planning.
+
+Three strategic planning frameworks are:
+
+1.  Management by Objectives (MBO; Peter Drucker, 1954)
+2.  Hoshin Kanri
+3.  **Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)**
+
+## Balanced Score Card (BSC)
+
+</br>
+
+::::: columns
+::: {.column width="60%"}
+It's a model that [*helps organizations translate strategy into operational (measurable) objectives*]{style="color:blue;"}, resulting in actions, behaviors, and performance.
+
+</br>
+
+The BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_EN.png){fig-align="center"}
+:::
+:::::
+
+## BSC's objectives
+
+</br></br>
+
+::: incremental
+1.  Translate the strategy into measurable objectives.
+
+2.  Align the strategy components: objectives, indicators, and initiatives.
+
+3.  Communicate the strategy to the organization.
+
+4.  Create the basis for strategic management.
+:::
+
+## 
+
+</br>
+
+BSC transforms strategy into an integrated system defined through four perspectives:
+
+</br>
+
+:::::: columns
+:::: {.column width="50%"}
+::: incremental
+1.  Financial
+2.  Clients
+3.  Internal Processes
+4.  Learning and Growth
+:::
+::::
+
+::: {.column width="50%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+::::::
+
+## The 4 Perspectives
+
+BSC transforms strategy into an integrated system defined through 4 perspectives:
+
+::::: columns
+::: {.column width="60%"}
+1.  *Financial*. Includes [**objectives**]{style="color:purple;"} related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders' perspective.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## 
+
+</br></br>
+
+::::: columns
+::: {.column width="60%"}
+2.  *Customers*. Includes [**objectives**]{style="color:purple;"} related to the company's value proposition, are market-oriented, and are established from the customer's perspective. Includes customer perception objectives regarding service, delivery time, quality, and value/price.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## 
+
+</br></br>
+
+::::: columns
+::: {.column width="60%"}
+3.  *Internal Processes*. Includes [**objectives**]{style="color:purple;"} related to the performance of processes that are critical to meeting customer perspective objectives. Performance objectives for the business's primary value chain.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## 
+
+</br></br>
+
+::::: columns
+::: {.column width="60%"}
+4.  *Learning and growth*. These are the [**objectives**]{style="color:purple;"} related to the enablers for achieving the objectives of the other perspectives. These are objectives related to competency development, the work environment, the physical environment, technological infrastructure, etc.
+:::
+
+::: {.column width="40%"}
+![](images/BSC_goals.jpg){fig-align="center"}
+:::
+:::::
+
+## Planning Your Birthday Party
+
+![](images/BSC_party.png){fig-align="center"}
+
+## 
+
+![](images/BSC_full_EN.jpg){fig-align="center"}
+
+## Model Components
+
+</br>
+
+For each perspective, the following should be defined:
+
+-   A small set of strategic objectives
+
+-   For each objective, one (or more if necessary) metric as a performance indicator
+
+-   For each indicator, establish long- and short-term goals
+
+-   Initiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.
+
+## Strategic Map
+
+</br>
+
+-   The strategic map displays the strategic objectives within each perspective using a matrix.
+
+-   Possible causal relationships between objectives are also shown using arrows.
+
+-   If the organization's strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.
+
+## Strategy map structure
+
+</br></br>
+
+![](images/SM_structure.png){fig-align="center"}
+
+::: notes
+Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de abajo hacia arriba. Los niveles superiores son consecuencia de los niveles inferiores. No necesariamente todos están ligados.
+:::
+
+## 
+
+![](images/clipboard-2065731730.png){fig-align="center"}
+
+## 
+
+![](images/clipboard-1644569448.png){fig-align="center"}
+
+## Activity 1.2 (cooperative mode)
+
+</br></br>
+
+-   Form teams of three.
+-   Build a strategy map as part of the Balanced Scorecard model application.
+-   Read the introduction to the Muebles Finos MF mini-case study in CANVAS.
+-   The activity consists of mapping the company's objectives to the perspectives of the BSC model and to the business's strategic lines.
+
+## 
+
+</br></br>
+
+-   Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them.
+
+-   You are also asked to select three of the objectives and propose at least one suggested metric for each.
+
+-   Finally, you will write the justification for the established causal relationships.
+
+## Final comments
+
+-   Once the BSC model has been designed for the company, specific models are developed by functional area.
+
+-   In the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.
+
+-   It is more common to use performance indicators than impact indicators at the departmental level.
+
+-   Not all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives.
+
+## 
+
+</br></br>
+
+-   It is essential that functional managers fully understand the company's BSC and their area's contribution to the overall objectives.
+
+-   The person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.
+
+-   Some organizational-level indicators are simply aggregations of departmental indicators.
+
+# Indicator Documentation
+
+## Indicator documentation
+
+</br></br>
+
+When selecting and/or designing indicators, it is necessary to formally document the definition of each indicator.
+
+Documentation is very useful because:
+
+-   It helps clarify the meaning of the indicators.
+
+-   It facilitates communication between users and indicator creators.
+
+-   It serves as a future reference when revising the system.
+
+## Basic documenting format
+
+![](images/KPIs_document.jpg){fig-align="center"}
+
 
 # Dashboards for Visualizing Indicators
 
@@ -59,155 +337,5 @@ Various strategies can be followed to implement the dashboards, for example:
 
 ![](images/clipboard-686396046.png)
 
-# Databases for Storing Indicators
-
-## Context
-
-Although the data for calculating some indicators originates outside the organization, the vast majority of data comes from the business's internal databases.
-
-Companies vary widely, from those with isolated applications with scattered databases and spreadsheet files to highly organized companies with a centralized database system on a data server and linked applications.
-
-##
-
-To obtain the data needed to calculate indicators, it is often necessary to integrate data from various sources within the company. For this, ETL (extract-transform-load) and data warehousing tools are used.
-
-## What is a Database?
-
-Basically, a data table where rows represent a set of occurrences of an entity (customers, products, patients, orders) and columns represent attributes or characteristics that describe the entity (customer: ID + name + address + email + balance). In IT, the concept of a "database" does not refer to a table, but rather to a set of related tables.
-
-## Database Terminology
-
-Tables contain data that refers to:
-
-- an entity about which the organization needs to maintain information
-- relationships between entities
-
-The rows of the table are called *records*.
-
-The columns of the table are called *fields*.
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-Records are distinct occurrences of the corresponding entity.
-
-Fields are attributes that describe the entity.
-
-Each record has one or more fields that uniquely identify each record; these fields are called "keys."
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-1851897012.png)
-:::
-:::::
-
-## Relational Databases
-
-- Currently, the most widely used database model in the world is relational databases. See, for example:
-
-- <https://db-engines.com/en/ranking>
-
-- <https://www.dataversity.net/database-management-trends-in-2020/>
-
-- The emergence of big data applications makes these databases the primary source of data for business indicators.
-
-## Relational Database Example
-
-![](images/clipboard-2062527429.png)
-
-## Example
-
-::::: columns
-::: {.column width="60%"}
-- The database has four tables: Patients, Medicines, Prescriptions, and Prescription Details.
-
-- The table containing data for the "patient" entity has the following fields: unique identifier, name, address, date of birth, phone number, and photo.
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-- The prescription table contains the general data for each prescription issued: prescription number (this is the key), date, consultation time, an indicator of whether it contains controlled medications or not, and the patient identifier. This field allows you to ***relate the prescription data*** with the patient data.
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-- The medicine table has the following fields: medicine identifier, generic description, active agent, most common presentation, and contraindications.
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-- The prescription detail table contains the rows for each prescription. Since some prescriptions may have only one medication, and some may have two, three, or more medications, in the relational model, the rows for all prescriptions are stored in a single table. All the rows in a prescription have the same "prescription number" but a different "medication ID"...
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-- In the Prescription Detail table, there may be multiple records with the same prescription number, because the prescription may cover multiple medications. There may also be multiple records with the same medication ID, because a single medication may appear on multiple prescriptions.
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-## 
-
-::::: columns
-::: {.column width="60%"}
-- In this case, to uniquely identify a line of a particular prescription, both identifiers are required: the prescription identifier and the medication identifier. This constitutes a *composite key*.
-:::
-
-::: {.column width="40%"}
-![](images/clipboard-3132665686.png)
-:::
-:::::
-
-## Database Queries
-
-Once you have the database, you can answer questions such as:
-
-- In which neighborhoods do the patients prescribed turbocycloxine live?
-
-- How many patients have been prescribed turbocycloxine in the last month?
-
-- Which active agents have been administered to patients living at Prados #520 in the last year?
-
-## SQL
-
-- Our current Business Intelligence tools and platforms allow us to easily create queries like the one in the previous example, simply by dragging and dropping fields and applying filters on a design canvas.
-
-- Internally, the tools process queries using a database management language called SQL Structured Query Language.
-
-- To create more complex queries, it may be necessary to create the query directly by writing the SQL code.
-
-- We will not study SQL in this module.
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
