@@ -35,11 +35,11 @@
     "text": "Models for defining indicators\n\nThe models for defining indicators depend on the type of strategic planning.\nThree strategic planning frameworks are:\n\nManagement by Objectives (MBO; Peter Drucker, 1954).\nHoshin Kanri.\nBalanced Scorecard (BSC; Kaplan & Norton, 1992, 1996)."
   },
   {
-    "objectID": "Module1/BSC.slides.html#balanced-score-card-bsc",
-    "href": "Module1/BSC.slides.html#balanced-score-card-bsc",
+    "objectID": "Module1/BSC.slides.html#balanced-scorecard-bsc",
+    "href": "Module1/BSC.slides.html#balanced-scorecard-bsc",
     "title": "Selection of Indicators",
-    "section": "Balanced Score Card (BSC)",
-    "text": "Balanced Score Card (BSC)\n\n\n\nIt’s a model that helps organizations translate strategy into operational (measurable) objectives, resulting in actions, behaviors, and performance.\n\nThe BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals."
+    "section": "Balanced Scorecard (BSC)",
+    "text": "Balanced Scorecard (BSC)\n\n\n\nIt’s a model that helps organizations translate strategy into operational (measurable) objectives, resulting in actions, behaviors, and performance.\n\nThe BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals."
   },
   {
     "objectID": "Module1/BSC.slides.html#bscs-objectives",
@@ -56,11 +56,11 @@
     "text": "BSC transforms strategy into an integrated system defined through four perspectives:\n\n\n\n\n\nFinancial\nClients\nInternal Processes\nLearning and Growth"
   },
   {
-    "objectID": "Module1/BSC.slides.html#the-4-perspectives",
-    "href": "Module1/BSC.slides.html#the-4-perspectives",
+    "objectID": "Module1/BSC.slides.html#the-four-perspectives",
+    "href": "Module1/BSC.slides.html#the-four-perspectives",
     "title": "Selection of Indicators",
-    "section": "The 4 Perspectives",
-    "text": "The 4 Perspectives\nBSC transforms strategy into an integrated system defined through 4 perspectives:\n\n\n\nFinancial. Includes objectives related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders’ perspective."
+    "section": "The four perspectives",
+    "text": "The four perspectives\nBSC transforms strategy into an integrated system defined through 4 perspectives:\n\n\n\nFinancial. Includes objectives related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders’ perspective."
   },
   {
     "objectID": "Module1/BSC.slides.html#section-2",
@@ -98,11 +98,11 @@
     "text": "Model components\n\nFor each perspective, the following should be defined:\n\nA small set of strategic objectives\nFor each objective, one (or more if necessary) metric as a performance indicator\nFor each indicator, establish long- and short-term goals\nInitiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals."
   },
   {
-    "objectID": "Module1/BSC.slides.html#strategic-map",
-    "href": "Module1/BSC.slides.html#strategic-map",
+    "objectID": "Module1/BSC.slides.html#strategy-map",
+    "href": "Module1/BSC.slides.html#strategy-map",
     "title": "Selection of Indicators",
-    "section": "Strategic map",
-    "text": "Strategic map\n\n\nThe strategic map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning."
+    "section": "Strategy map",
+    "text": "Strategy map\n\n\nThe strategy map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning."
   },
   {
     "objectID": "Module1/BSC.slides.html#strategy-map-structure",
@@ -354,7 +354,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9833333333333333"
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9666666666666667"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#discussion",
@@ -529,14 +529,14 @@
     "href": "Module2/Classification.slides.html#section-5",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n108\n130.2\n129.9\n10.0\n11.9\n1\n\n\n165\n130.3\n130.6\n10.3\n12.0\n1\n\n\n181\n130.6\n130.6\n8.0\n11.4\n1\n\n\n188\n129.9\n130.2\n9.6\n11.9\n1"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n179\n130.2\n130.4\n8.2\n11.8\n1\n\n\n89\n129.9\n129.7\n8.0\n10.5\n0\n\n\n157\n130.1\n130.0\n11.3\n10.7\n1\n\n\n27\n130.3\n130.3\n9.8\n9.5\n0"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-6",
     "href": "Module2/Classification.slides.html#section-6",
     "title": "Classification Trees",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n169\n130.0\n129.9\n11.4\n10.9\n1\n\n\n120\n130.3\n130.4\n10.1\n12.1\n1\n\n\n48\n129.7\n129.8\n7.9\n10.3\n0\n\n\n27\n130.3\n130.3\n9.8\n9.5\n0\n\n\n31\n129.7\n129.7\n8.6\n9.1\n0"
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n22\n130.6\n130.0\n8.4\n10.8\n0\n\n\n197\n130.3\n130.4\n10.6\n11.1\n1\n\n\n44\n129.4\n129.1\n8.2\n10.2\n0\n\n\n8\n129.4\n129.7\n8.2\n11.0\n0\n\n\n12\n130.8\n129.6\n7.9\n10.8\n0"
   },
   {
     "objectID": "Module2/Classification.slides.html#work-on-your-training-dataset",
@@ -655,14 +655,14 @@
     "href": "Module2/Classification.slides.html#section-27",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])"
+    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-28",
     "href": "Module2/Classification.slides.html#section-28",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429]])"
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143]])"
   },
   {
     "objectID": "Module2/Classification.slides.html#confusion-matrix",
@@ -676,7 +676,7 @@
     "href": "Module2/Classification.slides.html#in-python-1",
     "title": "Classification Trees",
     "section": "In Python",
-    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[28  0]\n [32  0]]"
+    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[ 0 34]\n [ 0 26]]"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-29",
@@ -690,7 +690,7 @@
     "href": "Module2/Classification.slides.html#accuracy",
     "title": "Classification Trees",
     "section": "Accuracy",
-    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.47\n\n\nThe higher the accuracy, the better the performance of the classifier."
+    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.43\n\n\nThe higher the accuracy, the better the performance of the classifier."
   },
   {
     "objectID": "Module2/Classification.slides.html#lets-get-back-to-the-penalized-trees",
@@ -781,7 +781,7 @@
     "href": "Module2/Classification.slides.html#section-35",
     "title": "Classification Trees",
     "section": "",
-    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n0.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.0"
+    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n1.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.43"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-36",
@@ -795,7 +795,7 @@
     "href": "Module2/Classification.slides.html#section-37",
     "title": "Classification Trees",
     "section": "",
-    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.0"
+    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n1.0"
   },
   {
     "objectID": "Module2/Classification.slides.html#discussion",
@@ -1152,7 +1152,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-16",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Thu, 07 Aug 2025   AIC                             11.074\nTime:                        17:03:27   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Mon, 11 Aug 2025   AIC                             11.074\nTime:                        09:50:22   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-17",
@@ -1306,7 +1306,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Thu, 07 Aug 2025   AIC                            756.482\nTime:                                   17:03:29   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Mon, 11 Aug 2025   AIC                            756.482\nTime:                                   09:50:23   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -2608,7 +2608,7 @@
     "href": "Module2/EnsembleMethods.slides.html#predictions-1",
     "title": "Ensemble Methods",
     "section": "Predictions",
-    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 0, ..., 0, 0, 0])"
+    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 1, ..., 1, 1, 0])"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#confusion-matrix",
@@ -2622,14 +2622,14 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.78"
+    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "href": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "title": "Ensemble Methods",
     "section": "A single deep tree",
-    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.77"
+    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.76"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#advantages",
@@ -2706,7 +2706,7 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy-1",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.78"
+    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#agenda",
@@ -2930,7 +2930,7 @@
     "href": "index.slides.html#course-topics",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "Course topics",
-    "text": "Course topics\nModule 1\n\nIndicators (slides)\nDevelopment and Visualization of Indicators (slides)\n\nModule 2\n\nIntroduction to Data Science (slides)\nDecision trees for classification (slides) (colab)\nEnsemble methods (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\nModule 3\n\nPredictive Models (slides) (colab)\nAutocorrelation Models (slides) (colab)\nEnsemble Methods for Time Series\n\nModule 4\n\nClustering Methods (slides) (colab)\nPrincipal Component Analysis (slides) (colab)"
+    "text": "Course topics\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\nModule 2\n\nIntroduction to Data Science (slides)\nDecision trees for classification (slides) (colab)\nEnsemble methods (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\nModule 3\n\nPredictive Models (slides) (colab)\nAutocorrelation Models (slides) (colab)\nEnsemble Methods for Time Series\n\nModule 4\n\nClustering Methods (slides) (colab)\nPrincipal Component Analysis (slides) (colab)"
   },
   {
     "objectID": "index.slides.html#about-the-author",
@@ -2944,7 +2944,7 @@
     "href": "index.html",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "",
-    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nDevelopment and Visualization of Indicators (slides)\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nDecision trees for classification (slides) (colab)\nEnsemble methods (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\n\n\nModule 3\n\nPredictive Models (slides) (colab)\nAutocorrelation Models (slides) (colab)\nEnsemble Methods for Time Series\n\n\n\nModule 4\n\nClustering Methods (slides) (colab)\nPrincipal Component Analysis (slides) (colab)\n\n\n\n\nAbout the author\nAlan R. Vazquez is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense\nIN2004B Generation of Value with Data Analytics © 2025 by Alan R Vazquez is licensed under CC BY-NC-SA 4.0",
+    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nDecision trees for classification (slides) (colab)\nEnsemble methods (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\n\n\nModule 3\n\nPredictive Models (slides) (colab)\nAutocorrelation Models (slides) (colab)\nEnsemble Methods for Time Series\n\n\n\nModule 4\n\nClustering Methods (slides) (colab)\nPrincipal Component Analysis (slides) (colab)\n\n\n\n\nAbout the author\nAlan R. Vazquez is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense\nIN2004B Generation of Value with Data Analytics © 2025 by Alan R Vazquez is licensed under CC BY-NC-SA 4.0",
     "crumbs": [
       "Home"
     ]
@@ -3041,8 +3041,8 @@
     "text": "Characteristics of an indicator\n\nFundamental:\n\nValidity: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.\nStability: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends)."
   },
   {
-    "objectID": "Module1/Indicators.slides.html#section-1",
-    "href": "Module1/Indicators.slides.html#section-1",
+    "objectID": "Module1/Indicators.slides.html#section-2",
+    "href": "Module1/Indicators.slides.html#section-2",
     "title": "Indicators",
     "section": "",
     "text": "Ideal:\n\nSimple and easy to interpret.\nAble to indicate trends over time.\nSensitive to changes within and outside the organization.\nEasy to collect and process data.\nQuick and easy to update."
@@ -3055,11 +3055,11 @@
     "text": "Usefulness of indicators"
   },
   {
-    "objectID": "Module1/Indicators.slides.html#analysis-dimensions",
-    "href": "Module1/Indicators.slides.html#analysis-dimensions",
+    "objectID": "Module1/Indicators.slides.html#dimensions-of-analysis",
+    "href": "Module1/Indicators.slides.html#dimensions-of-analysis",
     "title": "Indicators",
-    "section": "Analysis Dimensions",
-    "text": "Analysis Dimensions\n\n\nIndicators and the data that drive them are often stratified with respect to other variables.\nVariables used as stratification criteria are called “Analysis Dimensions” (they are dimensions from the perspective of data hypercubes).\n\n\nExample: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes."
+    "section": "Dimensions of analysis",
+    "text": "Dimensions of analysis\n\n\nIndicators and the data that drive them are often stratified with respect to other variables.\nVariables used as stratification criteria are called “Analysis Dimensions” (they are dimensions from the perspective of data).\n\n\nExample: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes."
   },
   {
     "objectID": "Module1/Indicators.slides.html#for-example",
@@ -3104,11 +3104,11 @@
     "text": "Other examples\nIn the context of a YouTuber:\n\nLeading indicator: Number of views of a YouTube video in the first 24 hours.\nLagging indicator: Monthly revenue generated from monetization.\n\n\nIn the context of Netflix’s sales department:\n\nLeading indicator: Number of users who start a free trial in a given month.\nLagging indicator: Monthly revenue from subscriptions."
   },
   {
-    "objectID": "Module1/Indicators.slides.html#section-2",
-    "href": "Module1/Indicators.slides.html#section-2",
+    "objectID": "Module1/Indicators.slides.html#section-3",
+    "href": "Module1/Indicators.slides.html#section-3",
     "title": "Indicators",
     "section": "",
-    "text": "Ideal:\n\nSimple and easy to interpret.\nAble to indicate trends over time.\nSensitive to changes within and outside the organization.\nEasy to collect and process data.\nQuick and easy to update."
+    "text": "In the context of a GenAI company:\n\nLeading indicator: Number of programmers hired with expertise in AI.\nLagging indicator: Number of licenses sold per year.\n\n\nIn the context of a mini-split maintenance company:\n\nLeading indicator: Average response time from technical support to support requests.\nLagging indicator: Number of positive reviews on Google Maps in a month."
   },
   {
     "objectID": "Module1/Indicators.slides.html#how-do-i-define-an-indicator",
@@ -3132,39 +3132,11 @@
     "text": "The format of an indicator\nAn indicator should be measured numerically using:\nAbsolute Numbers: Results of a measurement or counting process (volume produced, share price, number of employees, fixed costs, etc.)\nRates: Relationship between two variables with different units (number of units / number of workers, energy consumption / liters produced, etc.)\nIndexes: Dimensionless quantity resulting from dividing the current value of a variable by a reference base value for that variable (consumer price index)"
   },
   {
-    "objectID": "Module1/Indicators.slides.html#section-3",
-    "href": "Module1/Indicators.slides.html#section-3",
-    "title": "Indicators",
-    "section": "",
-    "text": "In the context of a GenAI company:\n\nLeading indicator: Number of programmers hired with expertise in AI.\nLagging indicator: Number of licenses sold per year.\n\n\nIn the context of a mini-split maintenance company:\n\nLeading indicator: Average response time from technical support to support requests.\nLagging indicator: Number of positive reviews on Google Maps in a month."
-  },
-  {
-    "objectID": "Module1/Indicators.slides.html#activity-1.1-cooperative-mode",
-    "href": "Module1/Indicators.slides.html#activity-1.1-cooperative-mode",
-    "title": "Indicators",
-    "section": "Activity 1.1 (cooperative mode)",
-    "text": "Activity 1.1 (cooperative mode)\nGet into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:\n\n\nMonthly productivity of a furniture production line\nAnnual staff turnover in a manufacturing company\nCustomer service level of a company that manufactures plastic packaging and delivers regionally\nBusiness profitability for a medium-sized wholesale grocery company\nPerformance of the fundraising process of an association supporting homeless children"
-  },
-  {
-    "objectID": "Module1/Indicators.slides.html#remember-that",
-    "href": "Module1/Indicators.slides.html#remember-that",
-    "title": "Indicators",
-    "section": "Remember that…",
-    "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
     "objectID": "Module1/Indicators.slides.html#section-4",
     "href": "Module1/Indicators.slides.html#section-4",
     "title": "Indicators",
     "section": "",
     "text": "Proportions: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)\nGrowth or Decrease Percentages: (Current Value – Previous Value)*100/Previous Value.\nEvaluations: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent)."
-  },
-  {
-    "objectID": "Module1/Indicators.slides.html#dimensions-of-analysis",
-    "href": "Module1/Indicators.slides.html#dimensions-of-analysis",
-    "title": "Indicators",
-    "section": "Dimensions of analysis",
-    "text": "Dimensions of analysis\n\n\nIndicators and the data that drive them are often stratified with respect to other variables.\nVariables used as stratification criteria are called “Analysis Dimensions” (they are dimensions from the perspective of data).\n\n\nExample: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes."
   },
   {
     "objectID": "Module1/Indicators.slides.html#activity-1.1-solo-mode",
@@ -3174,24 +3146,10 @@
     "text": "Activity 1.1 (solo mode)\nFor the following concepts, propose one leading and one lagging (basic and derived) quantitative indicators:\n\n\nMonthly productivity of a furniture production line\nAnnual staff turnover in a manufacturing company\nCustomer service level of a company that manufactures plastic packaging and delivers regionally\nBusiness profitability for a medium-sized wholesale grocery company\nPerformance of the fundraising process of an association supporting homeless children"
   },
   {
-    "objectID": "Module1/BSC.slides.html#the-four-perspectives",
-    "href": "Module1/BSC.slides.html#the-four-perspectives",
-    "title": "Selection of Indicators",
-    "section": "The four perspectives",
-    "text": "The four perspectives\nBSC transforms strategy into an integrated system defined through 4 perspectives:\n\n\n\nFinancial. Includes objectives related to profitability, productivity, profits, stock price, etc.; these are the objectives that the organization must achieve from the shareholders’ perspective."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#balanced-scorecard-bsc",
-    "href": "Module1/BSC.slides.html#balanced-scorecard-bsc",
-    "title": "Selection of Indicators",
-    "section": "Balanced Scorecard (BSC)",
-    "text": "Balanced Scorecard (BSC)\n\n\n\nIt’s a model that helps organizations translate strategy into operational (measurable) objectives, resulting in actions, behaviors, and performance.\n\nThe BSC includes all critical success factors in a measurement system, giving organizations a better chance of achieving their goals."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#strategy-map",
-    "href": "Module1/BSC.slides.html#strategy-map",
-    "title": "Selection of Indicators",
-    "section": "Strategy map",
-    "text": "Strategy map\n\n\nThe strategy map displays the strategic objectives within each perspective using a matrix.\nPossible causal relationships between objectives are also shown using arrows.\nIf the organization’s strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning."
+    "objectID": "Module1/Indicators.slides.html#remember-that",
+    "href": "Module1/Indicators.slides.html#remember-that",
+    "title": "Indicators",
+    "section": "Remember that…",
+    "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
   }
 ]
