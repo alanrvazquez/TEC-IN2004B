@@ -1,5 +1,5 @@
 ---
-title: "Development and Visualization of Indicators"
+title: "Selection of Indicators"
 subtitle: "IN2004B: Generation of Value with Data Analytics"
 author: 
   - name: Alan R. Vazquez
@@ -66,9 +66,9 @@ The models for defining indicators depend on the type of strategic planning.
 
 Three strategic planning frameworks are:
 
-1.  Management by Objectives (MBO; Peter Drucker, 1954)
-2.  Hoshin Kanri
-3.  Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)
+1.  Management by Objectives (MBO; Peter Drucker, 1954).
+2.  Hoshin Kanri.
+3.  Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996).
 
 ## Models for defining indicators
 
@@ -78,11 +78,11 @@ The models for defining indicators depend on the type of strategic planning.
 
 Three strategic planning frameworks are:
 
-1.  Management by Objectives (MBO; Peter Drucker, 1954)
-2.  Hoshin Kanri
-3.  **Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)**
+1.  Management by Objectives (MBO; Peter Drucker, 1954).
+2.  Hoshin Kanri.
+3.  **Balanced Scorecard (BSC; Kaplan & Norton, 1992, 1996).**
 
-## Balanced Score Card (BSC)
+## Balanced Scorecard (BSC)
 
 </br>
 
@@ -137,7 +137,7 @@ BSC transforms strategy into an integrated system defined through four perspecti
 :::
 ::::::
 
-## The 4 Perspectives
+## The four perspectives
 
 BSC transforms strategy into an integrated system defined through 4 perspectives:
 
@@ -193,7 +193,7 @@ BSC transforms strategy into an integrated system defined through 4 perspectives
 :::
 :::::
 
-## Planning Your Birthday Party
+## Planning your birthday party
 
 ![](images/BSC_party.png){fig-align="center"}
 
@@ -201,7 +201,7 @@ BSC transforms strategy into an integrated system defined through 4 perspectives
 
 ![](images/BSC_full_EN.jpg){fig-align="center"}
 
-## Model Components
+## Model components
 
 </br>
 
@@ -215,11 +215,11 @@ For each perspective, the following should be defined:
 
 -   Initiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.
 
-## Strategic Map
+## Strategy map
 
 </br>
 
--   The strategic map displays the strategic objectives within each perspective using a matrix.
+-   The **strategy map** displays the strategic objectives within each perspective using a matrix.
 
 -   Possible causal relationships between objectives are also shown using arrows.
 

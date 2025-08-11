@@ -13,7 +13,7 @@ author:
 ### Module 1
 
 1.  Indicators ([slides](/Module1/Indicators.slides.html))
-2.  Development and Visualization of Indicators ([slides](/Module1/BSC.slides.html))
+2.  Selection of Indicators ([slides](/Module1/BSC.slides.html))
 
 ### Module 2
 
@@ -39,7 +39,4 @@ author:
 
 ### License
 
-<a href="https://alanrvazquez.github.io/TEC-IN2004B/">IN2004B Generation of Value with Data Analytics</a> © 2025 by <a href="https://alanrvazquez.netlify.app/">Alan R Vazquez</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-
-
-
+<a href="https://alanrvazquez.github.io/TEC-IN2004B/">IN2004B Generation of Value with Data Analytics</a> © 2025 by <a href="https://alanrvazquez.netlify.app/">Alan R Vazquez</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;"/><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;"/><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;"/><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;"/>
