@@ -2961,14 +2961,14 @@
     "href": "Module1/Indicators.slides.html#management",
     "title": "Indicators",
     "section": "Management",
-    "text": "Management\n\n\n“Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals.”\n\nKoontz, Harold, “Management,” 14th Edition, McGraw Hill, Mexico, 2012"
+    "text": "Management\n\n\n“Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals.”\n\nKoontz, Harold, “Management,” 14th Edition, McGraw Hill, 2012"
   },
   {
     "objectID": "Module1/Indicators.slides.html#functions-of-management",
     "href": "Module1/Indicators.slides.html#functions-of-management",
     "title": "Indicators",
     "section": "Functions of management",
-    "text": "Functions of management\nThe management process is broken down into five management functions:\n\n\n\nPlan: Choosing missions and objectives, and the actions to achieve them\nOrganizing: Establishing an intentional structure of roles for people to perform in an organization\nStaffing: Filling and maintaining positions in the organizational structure\nDirecting: Influencing people to contribute to organizational and group goals\nControlling: Measuring and correcting individual and organizational performance to ensure that events conform to plans."
+    "text": "Functions of management\nThe management process is broken down into five management functions:\n\n\n\nPlan: Choosing missions and objectives, and the actions to achieve them.\nOrganizing: Establishing an intentional structure of roles for people to perform in an organization.\nStaffing: Filling and maintaining positions in the organizational structure.\nDirecting: Influencing people to contribute to organizational and group goals.\nControlling: Measuring and correcting individual and organizational performance to ensure that events conform to plans."
   },
   {
     "objectID": "Module1/Indicators.slides.html#integration-of-planning-and-control",
@@ -3003,7 +3003,7 @@
     "href": "Module1/Indicators.slides.html#examples",
     "title": "Indicators",
     "section": "Examples",
-    "text": "Examples\nExample 1:\n\n\n\nObjective: Complete staff training\nSMART: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.\n\n\n\n\nExample 2\n\n\n\nObjective: Increase sales by 20%.\nSMART: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%."
+    "text": "Examples\nExample 1:\n\n\n\nObjective: Complete staff training.\nSMART: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.\n\n\n\n\nExample 2\n\n\n\nObjective: Increase sales by 20%.\nSMART: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%."
   },
   {
     "objectID": "Module1/Indicators.slides.html#the-need-to-measure",
@@ -3072,29 +3072,29 @@
     "objectID": "Module1/Indicators.slides.html#selecting-indicators",
     "href": "Module1/Indicators.slides.html#selecting-indicators",
     "title": "Indicators",
-    "section": "Selecting Indicators",
-    "text": "Selecting Indicators\n\nSelecting indicators is a critical factor for an organization to move closer to fulfilling its mission and turning its strategies into reality. Indicators and strategies are inextricably linked.\n\n\nA strategy without indicators is useless; indicators without a strategy are irrelevant!"
+    "section": "Selecting indicators",
+    "text": "Selecting indicators\n\nSelecting indicators is a critical factor for an organization to move closer to fulfilling its mission and turning its strategies into reality. Indicators and strategies are inextricably linked.\n\n\nA strategy without indicators is useless; indicators without a strategy are irrelevant!"
   },
   {
     "objectID": "Module1/Indicators.slides.html#two-main-types-of-indicators",
     "href": "Module1/Indicators.slides.html#two-main-types-of-indicators",
     "title": "Indicators",
     "section": "Two main types of indicators",
-    "text": "Two main types of indicators\n\nA lagging indicator measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.\n\n\nA leading indicator measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators."
+    "text": "Two main types of indicators\n\nA lagging indicator measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.\n\n\nA leading indicator measures the performance of factors that are critical now to achieving a desired outcome in the future."
   },
   {
     "objectID": "Module1/Indicators.slides.html#lagging-indicator",
     "href": "Module1/Indicators.slides.html#lagging-indicator",
     "title": "Indicators",
     "section": "Lagging Indicator",
-    "text": "Lagging Indicator\n\nGoal: Measures the outcome of performance at the end of a period.\nExample: Annual sales, market share, ROI.\n\nAdvantage: They are objectives.\nDisadvantage: They reflect the effect of past actions."
+    "text": "Lagging Indicator\n\nGoal: Measures the outcome of performance at the end of a period.\n\nExample: Annual sales, market share, ROI.\n\nAdvantage: They are objective.\nDisadvantage: They reflect the effect of past actions."
   },
   {
     "objectID": "Module1/Indicators.slides.html#leading-indicator",
     "href": "Module1/Indicators.slides.html#leading-indicator",
     "title": "Indicators",
-    "section": "Leading Indicator",
-    "text": "Leading Indicator\n\nGoal: Measures processes, activities, behaviors that tend to change before the system starts to follow a particular pattern or trend\nExample: # of customers visited, # of courses offered\n\nAdvantage: They are predictive, allowing for strategy corrections\nDisadvantage: Based on cause-and-effect hypotheses."
+    "section": "Leading indicator",
+    "text": "Leading indicator\n\nGoal: Measures processes, activities, behaviors that tend to change before the system starts to follow a particular pattern or trend.\n\nExample: # of customers visited, # of courses offered\n\nAdvantage: They are predictive, allowing for strategy corrections\nDisadvantage: Based on cause-and-effect hypotheses."
   },
   {
     "objectID": "Module1/Indicators.slides.html#other-examples",
@@ -3108,7 +3108,7 @@
     "href": "Module1/Indicators.slides.html#section-2",
     "title": "Indicators",
     "section": "",
-    "text": "In the context of a GenAI company:\n\nLeading indicator: Number of programmers hired with expertise in AI.\nLagging indicator: Number of licenses sold per year.\n\n\nIn the context of a mini-split maintenance company:\n\nLeading indicator: Average response time from technical support to support requests.\nLagging indicator: Number of positive reviews on Google Maps in a month."
+    "text": "Ideal:\n\nSimple and easy to interpret.\nAble to indicate trends over time.\nSensitive to changes within and outside the organization.\nEasy to collect and process data.\nQuick and easy to update."
   },
   {
     "objectID": "Module1/Indicators.slides.html#how-do-i-define-an-indicator",
@@ -3122,7 +3122,7 @@
     "href": "Module1/Indicators.slides.html#basic-and-derived-indicators",
     "title": "Indicators",
     "section": "Basic and Derived Indicators",
-    "text": "Basic and Derived Indicators\nA basic indicator is obtained from the direct measurement of a phenomenon or fact. For example: Number of orders delivered completely and on time during the week.\nA derived indicator combines the information from two or more basic or derived indicators. For example: Percentage of orders delivered completely and on time during the week.\n\n\nExample: in Failure Modes and Effects Analysis\n\nBasic indicators: Severity, Occurrence, Detection\nDerived indicator: Risk Priority Number = SOD\n\n\n\nSeverity (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.\nOccurrence (O): Evaluates the probability of the failure occurring. It is evaluated on a scale of 1 to 10, where 1 indicates that the occurrence is very rare and 10 indicates that it is highly probable or frequent.\nDetection (D): Represents the system’s ability to detect the failure before it reaches the customer or end user. It is rated on a scale of 1 to 10, where 1 means that detection is almost certain and 10 means that it is very difficult or impossible to detect before a problem occurs.\n\nDerived Indicator: Risk Priority Number = S\\(\\times\\)O\\(\\times\\)D"
+    "text": "Basic and Derived Indicators\nA basic indicator is obtained from the direct measurement of a phenomenon or fact. For example: Number of orders delivered completely and on time during the week.\nA derived indicator combines the information from two or more basic or derived indicators. For example: Percentage of orders delivered completely and on time during the week.\n\n\nExample: in Failure Modes and Effects Analysis\n\nBasic indicators: Severity, Occurrence, Detection\nDerived indicator: Risk Priority Number = S \\(\\times\\) O \\(\\times\\) D\n\n\n\nSeverity (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.\nOccurrence (O): Evaluates the probability of the failure occurring. It is evaluated on a scale of 1 to 10, where 1 indicates that the occurrence is very rare and 10 indicates that it is highly probable or frequent.\nDetection (D): Represents the system’s ability to detect the failure before it reaches the customer or end user. It is rated on a scale of 1 to 10, where 1 means that detection is almost certain and 10 means that it is very difficult or impossible to detect before a problem occurs.\n\nDerived Indicator: Risk Priority Number = S\\(\\times\\)O\\(\\times\\)D"
   },
   {
     "objectID": "Module1/Indicators.slides.html#the-format-of-an-indicator",
@@ -3136,7 +3136,7 @@
     "href": "Module1/Indicators.slides.html#section-3",
     "title": "Indicators",
     "section": "",
-    "text": "Proportions: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)\nGrowth or Decrease Percentages: (Current Value – Previous Value)*100/Previous Value.\nEvaluations: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent)."
+    "text": "In the context of a GenAI company:\n\nLeading indicator: Number of programmers hired with expertise in AI.\nLagging indicator: Number of licenses sold per year.\n\n\nIn the context of a mini-split maintenance company:\n\nLeading indicator: Average response time from technical support to support requests.\nLagging indicator: Number of positive reviews on Google Maps in a month."
   },
   {
     "objectID": "Module1/Indicators.slides.html#activity-1.1-cooperative-mode",
@@ -3150,6 +3150,27 @@
     "href": "Module1/Indicators.slides.html#remember-that",
     "title": "Indicators",
     "section": "Remember that…",
-    "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals\nOrganizational motivation, induction of desirable behaviors\nStrategy evaluation and strategic learning."
+    "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#section-4",
+    "href": "Module1/Indicators.slides.html#section-4",
+    "title": "Indicators",
+    "section": "",
+    "text": "Proportions: Relationships between two variables measured in the same units (men vs. women, admitted vs. rejected)\nGrowth or Decrease Percentages: (Current Value – Previous Value)*100/Previous Value.\nEvaluations: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent)."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#dimensions-of-analysis",
+    "href": "Module1/Indicators.slides.html#dimensions-of-analysis",
+    "title": "Indicators",
+    "section": "Dimensions of analysis",
+    "text": "Dimensions of analysis\n\n\nIndicators and the data that drive them are often stratified with respect to other variables.\nVariables used as stratification criteria are called “Analysis Dimensions” (they are dimensions from the perspective of data).\n\n\nExample: In a sales process, monthly sales can be stratified by distribution channel, region of the country, product family, etc., for analysis and visualization purposes."
+  },
+  {
+    "objectID": "Module1/Indicators.slides.html#activity-1.1-solo-mode",
+    "href": "Module1/Indicators.slides.html#activity-1.1-solo-mode",
+    "title": "Indicators",
+    "section": "Activity 1.1 (solo mode)",
+    "text": "Activity 1.1 (solo mode)\nFor the following concepts, propose one leading and one lagging (basic and derived) quantitative indicators:\n\n\nMonthly productivity of a furniture production line\nAnnual staff turnover in a manufacturing company\nCustomer service level of a company that manufactures plastic packaging and delivers regionally\nBusiness profitability for a medium-sized wholesale grocery company\nPerformance of the fundraising process of an association supporting homeless children"
   }
 ]

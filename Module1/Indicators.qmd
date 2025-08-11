@@ -25,7 +25,6 @@ jupyter: python3
 1.  Basic Indicator Concepts
 2.  Lagging and Leading Indicators
 
-
 # Basic Indicator Concepts
 
 ## Management
@@ -34,7 +33,7 @@ jupyter: python3
 
 > "Management is the process by which an environment is designed and maintained in which individuals working in groups effectively accomplish specific goals."
 
-Koontz, Harold, "Management," 14th Edition, McGraw Hill, Mexico, 2012
+Koontz, Harold, "Management," 14th Edition, McGraw Hill, 2012
 
 ## Functions of management
 
@@ -42,17 +41,17 @@ The management process is broken down into five management functions:
 
 :::: incremental
 ::: {style="font-size: 84%;"}
-1.  **Plan**: Choosing missions and objectives, and the actions to achieve them
-2.  **Organizing**: Establishing an intentional structure of roles for people to perform in an organization
-3.  **Staffing**: Filling and maintaining positions in the organizational structure
-4.  **Directing**: Influencing people to contribute to organizational and group goals
+1.  **Plan**: Choosing missions and objectives, and the actions to achieve them.
+2.  **Organizing**: Establishing an intentional structure of roles for people to perform in an organization.
+3.  **Staffing**: Filling and maintaining positions in the organizational structure.
+4.  **Directing**: Influencing people to contribute to organizational and group goals.
 5.  **Controlling**: Measuring and correcting individual and organizational performance to ensure that events conform to plans.
 :::
 ::::
 
 ## Integration of planning and control
 
-</br>
+</br></br>
 
 ![](images/planningintegration.png){fig-align="center"}
 
@@ -110,7 +109,7 @@ Example 1:
 
 :::: incremental
 ::: {style="font-size: 90%;"}
--   **Objective**: Complete staff training
+-   **Objective**: Complete staff training.
 
 -   **SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
 :::
@@ -156,6 +155,10 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 
 ![](images/clipboard-504148956.png){fig-align="center"}
 
+##
+
+![](images/KPI_tiktok.png){fig-align="center"}
+
 ## 
 
 </br>
@@ -178,9 +181,9 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 
 [*Fundamental*]{style="color:purple;"}:
 
--   *Validity*: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.
+-   **Validity**: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.
 
--   *Stability*: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends).
+-   **Stability**: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends).
 
 ## 
 
@@ -198,13 +201,13 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 
 ![](images/usefulindicators.png){fig-align="center"}
 
-## Analysis Dimensions
+## Dimensions of analysis 
 
 </br>
 
 -   Indicators and the data that drive them are often stratified with respect to other variables.
 
--   Variables used as stratification criteria are called "[Analysis Dimensions]{style="color:lightblue;"}" (they are dimensions from the perspective of data hypercubes).
+-   Variables used as stratification criteria are called "[Analysis Dimensions]{style="color:lightblue;"}" (they are dimensions from the perspective of data).
 
 . . .
 
@@ -216,7 +219,7 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 
 # Lagging and Leading Indicators
 
-## Selecting Indicators
+## Selecting indicators
 
 </br></br>
 
@@ -230,13 +233,13 @@ Selecting indicators is a critical factor for an organization to move closer to 
 
 </br>
 
-A [lagging indicator]{style="color:darkblue;"} measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.
+A [lagging indicator]{style="color:darkblue;"} measures the outcome of performance **at the end of a period**. It is backward-looking because it shows us the consequences of what has already been done. They are also known as *result* indicators.
 
 . . .
 
 </br>
 
-A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators.
+A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical **now** to achieving a desired outcome in the future.
 
 ## Lagging Indicator
 
@@ -244,17 +247,21 @@ A [leading indicator]{style="color:darkgreen;"} measures the performance of fact
 
 **Goal**: Measures the outcome of performance [at the end of a period]{style="color:darkblue;"}.
 
+</br>
+
 *Example*: Annual sales, market share, ROI.
 
--   Advantage: They are objectives.
+-   Advantage: They are objective.
 
 -   Disadvantage: They reflect the effect of past actions.
 
-## Leading Indicator
+## Leading indicator
 
-</br></br>
+</br>
 
-**Goal**: Measures processes, activities, behaviors that tend to change [before the system starts]{style="color:darkgreen;"} to follow a particular pattern or trend
+**Goal**: Measures processes, activities, behaviors that tend to change [before the system starts]{style="color:darkgreen;"} to follow a particular pattern or trend.
+
+</br>
 
 *Example*: \# of customers visited, \# of courses offered
 
@@ -328,7 +335,7 @@ A [derived indicator]{style="color:green;"} combines the information from two or
 
 -   Basic indicators: Severity, Occurrence, Detection
 
--   Derived indicator: Risk Priority Number = S*O*D
+-   Derived indicator: Risk Priority Number = S $\times$ O $\times$ D
 
 ::: notes
 -   **Severity** (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.
@@ -360,9 +367,9 @@ An indicator should be measured numerically using:
 
 [Evaluations]{style="color:brown;"}: Evaluations of a qualitative variable on a Likert-type ordinal scale (low, medium, high, terrible, bad, average, good, excellent).
 
-## Activity 1.1 (cooperative mode)
+## Activity 1.1 (*solo* mode)
 
-Get into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:
+For the following concepts, propose one leading and one lagging (basic and derived) quantitative indicators:
 
 ::: {style="font-size: 90%;"}
 1.  Monthly productivity of a furniture production line
@@ -384,9 +391,9 @@ Get into teams of 3 and ask ChatGPT a question! For the following concepts, sugg
 ::: {.column width="50%"}
 The purposes of an indicator are:
 
--   Establish quantitative goals
+-   Establish quantitative goals.
 
--   Organizational motivation, induction of desirable behaviors
+-   Organizational motivation, induction of desirable behaviors.
 
 -   Strategy evaluation and strategic learning.
 :::
@@ -395,6 +402,5 @@ The purposes of an indicator are:
 ![](images/clipboard-3372273709.png){fig-align="center"}
 :::
 :::::
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
