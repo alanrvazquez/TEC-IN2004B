@@ -235,6 +235,10 @@ For each perspective, the following should be defined:
 Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de abajo hacia arriba. Los niveles superiores son consecuencia de los niveles inferiores. No necesariamente todos están ligados.
 :::
 
+## Examples
+
+![](images/Strategy_map_2.jpg){fig-align="center"}
+
 ## 
 
 ![](images/clipboard-2065731730.png){fig-align="center"}
@@ -243,7 +247,13 @@ Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de 
 
 ![](images/clipboard-1644569448.png){fig-align="center"}
 
-## Activity 1.2 (cooperative mode)
+## More on strategy maps
+
+![](images/strategy_youtube.png){fig-align="center"}
+
+<https://www.youtube.com/watch?v=duHV65uVghc>
+
+## Activity 1.2 (*cooperative* mode)
 
 </br></br>
 
