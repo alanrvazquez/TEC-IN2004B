@@ -139,7 +139,7 @@ BSC transforms strategy into an integrated system defined through four perspecti
 
 ## The four perspectives
 
-BSC transforms strategy into an integrated system defined through 4 perspectives:
+</br></br>
 
 ::::: columns
 ::: {.column width="60%"}
@@ -193,13 +193,13 @@ BSC transforms strategy into an integrated system defined through 4 perspectives
 :::
 :::::
 
-## Planning your birthday party
-
-![](images/BSC_party.png){fig-align="center"}
-
 ## 
 
 ![](images/BSC_full_EN.jpg){fig-align="center"}
+
+## Planning your birthday party
+
+![](images/BSC_party.png){fig-align="center"}
 
 ## Model components
 
