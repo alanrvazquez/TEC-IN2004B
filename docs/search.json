@@ -112,6 +112,20 @@
     "text": "Strategy map structure\n\n\n\nSeguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de abajo hacia arriba. Los niveles superiores son consecuencia de los niveles inferiores. No necesariamente todos están ligados."
   },
   {
+    "objectID": "Module1/BSC.slides.html#examples",
+    "href": "Module1/BSC.slides.html#examples",
+    "title": "Selection of Indicators",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#more-on-strategy-maps",
+    "href": "Module1/BSC.slides.html#more-on-strategy-maps",
+    "title": "Selection of Indicators",
+    "section": "More on strategy maps",
+    "text": "More on strategy maps"
+  },
+  {
     "objectID": "Module1/BSC.slides.html#activity-1.2-cooperative-mode",
     "href": "Module1/BSC.slides.html#activity-1.2-cooperative-mode",
     "title": "Selection of Indicators",
@@ -154,11 +168,11 @@
     "text": "Basic documenting format"
   },
   {
-    "objectID": "Module1/BSC.slides.html#the-balanced-scorecard",
-    "href": "Module1/BSC.slides.html#the-balanced-scorecard",
+    "objectID": "Module1/BSC.slides.html#indicator-visualization",
+    "href": "Module1/BSC.slides.html#indicator-visualization",
     "title": "Selection of Indicators",
-    "section": "The Balanced Scorecard",
-    "text": "The Balanced Scorecard\nOnce the indicators are defined using the Balanced Scorecard and the documentation format, we design dashboards with:\n\nScreens\nChart and table styles\nAggregation levels\nDefault reports\nDrill-down requirements.\n\nThis applies to both the overall organizational level and the functional BSCs."
+    "section": "Indicator visualization",
+    "text": "Indicator visualization\nOnce the indicators are defined using the Balanced Scorecard (BSC) and the documentation format, we design dashboards with:\n\n\nScreens.\nChart and table styles.\nAggregation levels.\nDefault reports.\nDrill-down requirements.\n\n\nThis applies to both the overall organizational level and the functional BSCs."
   },
   {
     "objectID": "Module1/BSC.slides.html#dashboard-deployment",
@@ -180,6 +194,195 @@
     "title": "Selection of Indicators",
     "section": "Another example",
     "text": "Another example"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#google-looker-studio",
+    "href": "Module1/BSC.slides.html#google-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "Google Looker Studio",
+    "text": "Google Looker Studio\nFree online tool by Google for building interactive dashboards and reports. Works directly in the web browser and it connects to many data sources:\n\nGoogle Sheets\nCSV files\nBigQuery\nOther cloud and database services"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#getting-started",
+    "href": "Module1/BSC.slides.html#getting-started",
+    "title": "Selection of Indicators",
+    "section": "Getting started",
+    "text": "Getting started\n\nGo to https://lookerstudio.google.com/\nClick Blank Report"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-10",
+    "href": "Module1/BSC.slides.html#section-10",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Select Microsoft Excel as your data source"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-11",
+    "href": "Module1/BSC.slides.html#section-11",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Add the dataset."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-12",
+    "href": "Module1/BSC.slides.html#section-12",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "The variables in the dataset."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-13",
+    "href": "Module1/BSC.slides.html#section-13",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "The graphics available."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#example",
+    "href": "Module1/BSC.slides.html#example",
+    "title": "Selection of Indicators",
+    "section": "Example",
+    "text": "Example\n\nThe dataset “McDonalds Financial Statements.xlsx” includes McDonald’s annual financial data over two decades, offering insights into its economic performance. The dataset contains records of the following indicators:\n\n\n\nMarket cap ($B)\nRevenue ($B)\nEarnings ($B)\nP/E ratio\nP/S ratio\nP/B ratio\nOperating Margin\nEPS ($)\nShares Outstanding"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-14",
+    "href": "Module1/BSC.slides.html#section-14",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Let’s load the data into looker studio\n\n\n\n\n\nWe rename the report."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-15",
+    "href": "Module1/BSC.slides.html#section-15",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Let’s insert our first table\n\n\n\n\n\nWe can place the table anywhere in the dashboard canvas."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#the-default-table",
+    "href": "Module1/BSC.slides.html#the-default-table",
+    "title": "Selection of Indicators",
+    "section": "The default table",
+    "text": "The default table"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-16",
+    "href": "Module1/BSC.slides.html#section-16",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We change the graphic type by going to its properties."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#select-another-variable",
+    "href": "Module1/BSC.slides.html#select-another-variable",
+    "title": "Selection of Indicators",
+    "section": "Select another variable",
+    "text": "Select another variable"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-date",
+    "href": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-date",
+    "title": "Selection of Indicators",
+    "section": "We can sort the table according to date",
+    "text": "We can sort the table according to date"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#improving-the-table",
+    "href": "Module1/BSC.slides.html#improving-the-table",
+    "title": "Selection of Indicators",
+    "section": "Improving the table",
+    "text": "Improving the table\nWe can change the layout of the table by changing the metrics in the style of the table"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-17",
+    "href": "Module1/BSC.slides.html#section-17",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Change it to bars.\n\n\n\n\n\n\nShow the number too."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#the-result",
+    "href": "Module1/BSC.slides.html#the-result",
+    "title": "Selection of Indicators",
+    "section": "The result",
+    "text": "The result"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#lets-create-a-bar-chart",
+    "href": "Module1/BSC.slides.html#lets-create-a-bar-chart",
+    "title": "Selection of Indicators",
+    "section": "Let’s create a bar chart",
+    "text": "Let’s create a bar chart"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#lets-change-the-variable-or-metric",
+    "href": "Module1/BSC.slides.html#lets-change-the-variable-or-metric",
+    "title": "Selection of Indicators",
+    "section": "Let’s change the variable or metric",
+    "text": "Let’s change the variable or metric"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#we-can-also-add-a-box",
+    "href": "Module1/BSC.slides.html#we-can-also-add-a-box",
+    "title": "Selection of Indicators",
+    "section": "We can also add a box",
+    "text": "We can also add a box"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-20",
+    "href": "Module1/BSC.slides.html#section-20",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We can edit the properties or layout of the number."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#select-the-mean",
+    "href": "Module1/BSC.slides.html#select-the-mean",
+    "title": "Selection of Indicators",
+    "section": "Select the mean",
+    "text": "Select the mean"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#we-can-increase-the-font-size",
+    "href": "Module1/BSC.slides.html#we-can-increase-the-font-size",
+    "title": "Selection of Indicators",
+    "section": "We can increase the font size",
+    "text": "We can increase the font size"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#add-a-text-or-a-header-to-the-report",
+    "href": "Module1/BSC.slides.html#add-a-text-or-a-header-to-the-report",
+    "title": "Selection of Indicators",
+    "section": "Add a text or a header to the report",
+    "text": "Add a text or a header to the report"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#change-the-style",
+    "href": "Module1/BSC.slides.html#change-the-style",
+    "title": "Selection of Indicators",
+    "section": "Change the style",
+    "text": "Change the style"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#the-report",
+    "href": "Module1/BSC.slides.html#the-report",
+    "title": "Selection of Indicators",
+    "section": "The report",
+    "text": "The report"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#tutorials-on-looker-studio",
+    "href": "Module1/BSC.slides.html#tutorials-on-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "Tutorials on looker studio",
+    "text": "Tutorials on looker studio"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#tips-for-effective-dashboards",
+    "href": "Module1/BSC.slides.html#tips-for-effective-dashboards",
+    "title": "Selection of Indicators",
+    "section": "Tips for effective dashboards",
+    "text": "Tips for effective dashboards\n\n\nKeep it simple — focus on the key indicators.\nUse color to draw attention, not decorate.\nProvide context: compare current value vs. target.\nTest your dashboard on different screen sizes."
   },
   {
     "objectID": "about.html",
@@ -354,7 +557,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9666666666666667"
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9833333333333333"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#discussion",
@@ -529,14 +732,14 @@
     "href": "Module2/Classification.slides.html#section-5",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n179\n130.2\n130.4\n8.2\n11.8\n1\n\n\n89\n129.9\n129.7\n8.0\n10.5\n0\n\n\n157\n130.1\n130.0\n11.3\n10.7\n1\n\n\n27\n130.3\n130.3\n9.8\n9.5\n0"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n17\n129.9\n129.7\n9.0\n9.0\n0\n\n\n158\n130.4\n130.6\n12.5\n10.0\n1\n\n\n46\n129.9\n129.7\n8.3\n10.2\n0\n\n\n179\n130.2\n130.4\n8.2\n11.8\n1"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-6",
     "href": "Module2/Classification.slides.html#section-6",
     "title": "Classification Trees",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n22\n130.6\n130.0\n8.4\n10.8\n0\n\n\n197\n130.3\n130.4\n10.6\n11.1\n1\n\n\n44\n129.4\n129.1\n8.2\n10.2\n0\n\n\n8\n129.4\n129.7\n8.2\n11.0\n0\n\n\n12\n130.8\n129.6\n7.9\n10.8\n0"
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n9\n130.4\n130.3\n9.2\n10.0\n0\n\n\n157\n130.1\n130.0\n11.3\n10.7\n1\n\n\n89\n129.9\n129.7\n8.0\n10.5\n0\n\n\n103\n130.4\n130.6\n9.9\n10.9\n1\n\n\n114\n130.3\n130.0\n10.6\n10.8\n1"
   },
   {
     "objectID": "Module2/Classification.slides.html#work-on-your-training-dataset",
@@ -655,14 +858,14 @@
     "href": "Module2/Classification.slides.html#section-27",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])"
+    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-28",
     "href": "Module2/Classification.slides.html#section-28",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143],\n       [0.47142857, 0.52857143]])"
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429],\n       [0.51428571, 0.48571429]])"
   },
   {
     "objectID": "Module2/Classification.slides.html#confusion-matrix",
@@ -676,7 +879,7 @@
     "href": "Module2/Classification.slides.html#in-python-1",
     "title": "Classification Trees",
     "section": "In Python",
-    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[ 0 34]\n [ 0 26]]"
+    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[28  0]\n [32  0]]"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-29",
@@ -690,7 +893,7 @@
     "href": "Module2/Classification.slides.html#accuracy",
     "title": "Classification Trees",
     "section": "Accuracy",
-    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.43\n\n\nThe higher the accuracy, the better the performance of the classifier."
+    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.47\n\n\nThe higher the accuracy, the better the performance of the classifier."
   },
   {
     "objectID": "Module2/Classification.slides.html#lets-get-back-to-the-penalized-trees",
@@ -781,7 +984,7 @@
     "href": "Module2/Classification.slides.html#section-35",
     "title": "Classification Trees",
     "section": "",
-    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n1.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.43"
+    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n0.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.0"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-36",
@@ -795,7 +998,7 @@
     "href": "Module2/Classification.slides.html#section-37",
     "title": "Classification Trees",
     "section": "",
-    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n1.0"
+    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.0"
   },
   {
     "objectID": "Module2/Classification.slides.html#discussion",
@@ -1152,7 +1355,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-16",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Mon, 11 Aug 2025   AIC                             11.074\nTime:                        09:50:22   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 12 Aug 2025   AIC                             11.074\nTime:                        12:12:11   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-17",
@@ -1306,7 +1509,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Mon, 11 Aug 2025   AIC                            756.482\nTime:                                   09:50:23   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 12 Aug 2025   AIC                            756.482\nTime:                                   12:12:13   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -2608,7 +2811,7 @@
     "href": "Module2/EnsembleMethods.slides.html#predictions-1",
     "title": "Ensemble Methods",
     "section": "Predictions",
-    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 1, ..., 1, 1, 0])"
+    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([1, 1, 0, ..., 0, 1, 0])"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#confusion-matrix",
@@ -2622,14 +2825,14 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
+    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.76"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "href": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "title": "Ensemble Methods",
     "section": "A single deep tree",
-    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.76"
+    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.75"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#advantages",
@@ -2706,7 +2909,7 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy-1",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
+    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.76"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#agenda",
@@ -3151,320 +3354,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#examples",
-    "href": "Module1/BSC.slides.html#examples",
-    "title": "Selection of Indicators",
-    "section": "Examples",
-    "text": "Examples"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#more-on-strategy-maps",
-    "href": "Module1/BSC.slides.html#more-on-strategy-maps",
-    "title": "Selection of Indicators",
-    "section": "More on strategy maps",
-    "text": "More on strategy maps"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#indicator-visualization",
-    "href": "Module1/BSC.slides.html#indicator-visualization",
-    "title": "Selection of Indicators",
-    "section": "Indicator visualization",
-    "text": "Indicator visualization\nOnce the indicators are defined using the Balanced Scorecard (BSC) and the documentation format, we design dashboards with:\n\n\nScreens.\nChart and table styles.\nAggregation levels.\nDefault reports.\nDrill-down requirements.\n\n\nThis applies to both the overall organizational level and the functional BSCs."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#what-is-google-looker-studio",
-    "href": "Module1/BSC.slides.html#what-is-google-looker-studio",
-    "title": "Selection of Indicators",
-    "section": "What is Google Looker Studio?",
-    "text": "What is Google Looker Studio?\n\nFree online tool by Google for building interactive dashboards and reports.\nWorks directly in the web browser — no installation needed.\nConnects to many data sources:\n\nGoogle Sheets\nCSV files\nBigQuery\nOther cloud and database services"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#why-use-looker-studio",
-    "href": "Module1/BSC.slides.html#why-use-looker-studio",
-    "title": "Selection of Indicators",
-    "section": "Why Use Looker Studio?",
-    "text": "Why Use Looker Studio?\n\nVisualize indicators clearly and interactively\nTrack performance over time\nSupport decision making with data-driven insights\nShare reports via link or embed in a website\nUpdate automatically when the underlying data changes"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#balanced-scorecard-example",
-    "href": "Module1/BSC.slides.html#balanced-scorecard-example",
-    "title": "Selection of Indicators",
-    "section": "Balanced Scorecard Example",
-    "text": "Balanced Scorecard Example\nIn this session, we will:\n\nUse a Google Sheets dataset with Balanced Scorecard indicators.\nCreate:\n\nKPI cards\nTime series charts\nBar charts\nFilters by perspective or date\n\nShare the dashboard link with classmates."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#getting-started",
-    "href": "Module1/BSC.slides.html#getting-started",
-    "title": "Selection of Indicators",
-    "section": "Getting started",
-    "text": "Getting started\n\nGo to https://lookerstudio.google.com/\nClick Blank Report"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#building-the-dashboard",
-    "href": "Module1/BSC.slides.html#building-the-dashboard",
-    "title": "Selection of Indicators",
-    "section": "Building the Dashboard",
-    "text": "Building the Dashboard\nStep 1 — Add a KPI Scorecard\n\nInsert &gt; Scorecard\nSelect the metric (e.g., “Sales”, “Customer Satisfaction”)\nAdd a comparison field (e.g., “Target”) if available\nUse Style &gt; Color to highlight performance:\n\nGreen if above target\nRed if below target"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#sharing-your-dashboard",
-    "href": "Module1/BSC.slides.html#sharing-your-dashboard",
-    "title": "Selection of Indicators",
-    "section": "Sharing Your Dashboard",
-    "text": "Sharing Your Dashboard\n\nClick Share (top-right)\nSelect Anyone with the link (optional: View only)\nCopy and share the link with your peers"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#tips-for-effective-dashboards",
-    "href": "Module1/BSC.slides.html#tips-for-effective-dashboards",
-    "title": "Selection of Indicators",
-    "section": "Tips for effective dashboards",
-    "text": "Tips for effective dashboards\n\n\nKeep it simple — focus on the key indicators.\nUse color to draw attention, not decorate.\nProvide context: compare current value vs. target.\nTest your dashboard on different screen sizes."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#google-looker-studio",
-    "href": "Module1/BSC.slides.html#google-looker-studio",
-    "title": "Selection of Indicators",
-    "section": "Google Looker Studio",
-    "text": "Google Looker Studio\nFree online tool by Google for building interactive dashboards and reports. Works directly in the web browser and it connects to many data sources:\n\nGoogle Sheets\nCSV files\nBigQuery\nOther cloud and database services"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-10",
-    "href": "Module1/BSC.slides.html#section-10",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "Select Microsoft Excel as your data source"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-11",
-    "href": "Module1/BSC.slides.html#section-11",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "Add the dataset."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-12",
-    "href": "Module1/BSC.slides.html#section-12",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "The variables in the dataset."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-13",
-    "href": "Module1/BSC.slides.html#section-13",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "The graphics available."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#tutorials-on-looker-studio",
-    "href": "Module1/BSC.slides.html#tutorials-on-looker-studio",
-    "title": "Selection of Indicators",
-    "section": "Tutorials on looker studio",
-    "text": "Tutorials on looker studio"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#example",
-    "href": "Module1/BSC.slides.html#example",
-    "title": "Selection of Indicators",
-    "section": "Example",
-    "text": "Example\n\nThe dataset “McDonalds Financial Statements.xlsx” includes McDonald’s annual financial data over two decades, offering insights into its economic performance. The dataset contains records of the following indicators:\n\n\n\nMarket cap ($B)\nRevenue ($B)\nEarnings ($B)\nP/E ratio\nP/S ratio\nP/B ratio\nOperating Margin\nEPS ($)\nShares Outstanding"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#lets-load-the-data-into-looker-studio",
-    "href": "Module1/BSC.slides.html#lets-load-the-data-into-looker-studio",
-    "title": "Selection of Indicators",
-    "section": "Let’s load the data into looker studio",
-    "text": "Let’s load the data into looker studio\n\n\n\n\n\nWe rename the report."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#lets-insert-our-first-table",
-    "href": "Module1/BSC.slides.html#lets-insert-our-first-table",
-    "title": "Selection of Indicators",
-    "section": "Let’s insert our first table",
-    "text": "Let’s insert our first table\n\n\n\n\n\nWe can place the table anywhere in the dashboard canvas."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#the-default-table",
-    "href": "Module1/BSC.slides.html#the-default-table",
-    "title": "Selection of Indicators",
-    "section": "The default table",
-    "text": "The default table"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-14",
-    "href": "Module1/BSC.slides.html#section-14",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "Let’s load the data into looker studio\n\n\n\n\n\nWe rename the report."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#select-another-variable",
-    "href": "Module1/BSC.slides.html#select-another-variable",
-    "title": "Selection of Indicators",
-    "section": "Select another variable",
-    "text": "Select another variable"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-the-date",
-    "href": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-the-date",
-    "title": "Selection of Indicators",
-    "section": "We can sort the table according to the date",
-    "text": "We can sort the table according to the date"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#improving-the-table",
-    "href": "Module1/BSC.slides.html#improving-the-table",
-    "title": "Selection of Indicators",
-    "section": "Improving the table",
-    "text": "Improving the table\nWe can change the layout of the table by changing the metrics in the style of the table"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-16",
-    "href": "Module1/BSC.slides.html#section-16",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "We change the graphic type by going to its properties."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-17",
-    "href": "Module1/BSC.slides.html#section-17",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "Change it to bars.\n\n\n\n\n\n\nShow the number too."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#lets-create-a-bar-chart",
-    "href": "Module1/BSC.slides.html#lets-create-a-bar-chart",
-    "title": "Selection of Indicators",
-    "section": "Let’s create a bar chart",
-    "text": "Let’s create a bar chart"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#lets-change-the-variable",
-    "href": "Module1/BSC.slides.html#lets-change-the-variable",
-    "title": "Selection of Indicators",
-    "section": "Let’s change the variable",
-    "text": "Let’s change the variable"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#we-can-also-add-a-box",
-    "href": "Module1/BSC.slides.html#we-can-also-add-a-box",
-    "title": "Selection of Indicators",
-    "section": "We can also add a box",
-    "text": "We can also add a box"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-21",
-    "href": "Module1/BSC.slides.html#section-21",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "We can edit the properties or layout of the number."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#select-the-mean",
-    "href": "Module1/BSC.slides.html#select-the-mean",
-    "title": "Selection of Indicators",
-    "section": "Select the mean",
-    "text": "Select the mean"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#we-can-increase-the-font-size",
-    "href": "Module1/BSC.slides.html#we-can-increase-the-font-size",
-    "title": "Selection of Indicators",
-    "section": "We can increase the font size",
-    "text": "We can increase the font size"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#add-a-header-to-the-report",
-    "href": "Module1/BSC.slides.html#add-a-header-to-the-report",
-    "title": "Selection of Indicators",
-    "section": "Add a header to the report",
-    "text": "Add a header to the report"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#change-the-style",
-    "href": "Module1/BSC.slides.html#change-the-style",
-    "title": "Selection of Indicators",
-    "section": "Change the style",
-    "text": "Change the style"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#the-report",
-    "href": "Module1/BSC.slides.html#the-report",
-    "title": "Selection of Indicators",
-    "section": "The report",
-    "text": "The report"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-15",
-    "href": "Module1/BSC.slides.html#section-15",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "Let’s insert our first table\n\n\n\n\n\nWe can place the table anywhere in the dashboard canvas."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-18",
-    "href": "Module1/BSC.slides.html#section-18",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "Change it to bars.\n\n\n\n\n\n\nShow the number too."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-22",
-    "href": "Module1/BSC.slides.html#section-22",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "We can edit the properties or layout of the number."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-date",
-    "href": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-date",
-    "title": "Selection of Indicators",
-    "section": "We can sort the table according to date",
-    "text": "We can sort the table according to date"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-19",
-    "href": "Module1/BSC.slides.html#section-19",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "The result"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-23",
-    "href": "Module1/BSC.slides.html#section-23",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "We can edit the properties or layout of the number."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#the-result",
-    "href": "Module1/BSC.slides.html#the-result",
-    "title": "Selection of Indicators",
-    "section": "The result",
-    "text": "The result"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#section-20",
-    "href": "Module1/BSC.slides.html#section-20",
-    "title": "Selection of Indicators",
-    "section": "",
-    "text": "We can edit the properties or layout of the number."
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#lets-change-the-variable-or-metric",
-    "href": "Module1/BSC.slides.html#lets-change-the-variable-or-metric",
-    "title": "Selection of Indicators",
-    "section": "Let’s change the variable or metric",
-    "text": "Let’s change the variable or metric"
-  },
-  {
-    "objectID": "Module1/BSC.slides.html#add-a-text-or-a-header-to-the-report",
-    "href": "Module1/BSC.slides.html#add-a-text-or-a-header-to-the-report",
-    "title": "Selection of Indicators",
-    "section": "Add a text or a header to the report",
-    "text": "Add a text or a header to the report"
   }
 ]
