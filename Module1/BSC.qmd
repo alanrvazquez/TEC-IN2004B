@@ -249,9 +249,7 @@ Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de 
 
 ## More on strategy maps
 
-![](images/strategy_youtube.png){fig-align="center"}
-
-<https://www.youtube.com/watch?v=duHV65uVghc>
+{{< video https://www.youtube.com/watch?v=duHV65uVghc width="100%" height="85%">}}
 
 ## Activity 1.2 (*cooperative* mode)
 
@@ -314,15 +312,17 @@ Documentation is very useful because:
 
 # Dashboards for Visualizing Indicators
 
-## The Balanced Scorecard
+## Indicator visualization
 
-Once the indicators are defined using the Balanced Scorecard and the documentation format, we design dashboards with:
+Once the indicators are defined using the Balanced Scorecard (BSC) and the documentation format, we design dashboards with:
 
--   Screens
--   Chart and table styles
--   Aggregation levels
--   Default reports
+::: {style="font-size: 90%;"}
+-   Screens.
+-   Chart and table styles.
+-   Aggregation levels.
+-   Default reports.
 -   Drill-down requirements.
+:::
 
 This applies to both the overall organizational level and the functional BSCs.
 
@@ -338,12 +338,283 @@ Various strategies can be followed to implement the dashboards, for example:
 
 ## Tableu dashboard example
 
-![](images/clipboard-3862420324.png)
+![](images/clipboard-3862420324.png){fig-align="center"}
 
 <https://www.tableau.com/es-mx>
 
-## Another Example
+## Another example
 
-![](images/clipboard-686396046.png)
+![](images/clipboard-686396046.png){fig-align="center"}
+
+## Google Looker Studio
+
+Free online tool by Google for building interactive dashboards and reports. Works directly in the web browser and it connects to many data sources:
+
+-   Google Sheets
+-   CSV files
+-   BigQuery
+-   Other cloud and database services
+
+![](images/Looker-Studio-Logo.png){fig-align="center" width="422"}
+
+## Getting started
+
+1.  Go to <https://lookerstudio.google.com/>
+2.  Click **Blank Report**
+
+![](images/LS_1.png){fig-align="center"}
+
+## 
+
+</br></br>
+
+3.  Select **Microsoft Excel** as your data source
+
+![](images/LS_2.png){fig-align="center"}
+
+## 
+
+4.  Add the dataset.
+
+![](images/LS_3.png){fig-align="center" width="471"}
+
+![](images/LS_4.png){fig-align="center" width="419"}
+
+## 
+
+::::: columns
+::: {.column width="40%"}
+The variables in the dataset.
+:::
+
+::: {.column width="60%"}
+![](images/LS_5.png){fig-align="center"}
+:::
+:::::
+
+## 
+
+::::: columns
+::: {.column width="40%"}
+The graphics available.
+:::
+
+::: {.column width="60%"}
+![](images/LS_6.png){fig-align="center" width="345"}
+:::
+:::::
+
+## Example
+
+::: {style="font-size: 85%;"}
+The dataset "McDonalds Financial Statements.xlsx" includes McDonald’s annual financial data over two decades, offering insights into its economic performance. The dataset contains records of the following indicators:
+:::
+
+::: {style="font-size: 75%;"}
+-   Market cap (\$B)
+-   Revenue (\$B)
+-   Earnings (\$B)
+-   P/E ratio
+-   P/S ratio
+-   P/B ratio
+-   Operating Margin
+-   EPS (\$)
+-   Shares Outstanding
+:::
+
+## 
+
+Let's load the data into looker studio
+
+![](images/LS_7.png){fig-align="center" width="510"}
+
+We rename the report.
+
+![](images/LS_8.png){fig-align="center" width="440" height="76"}
+
+## 
+
+Let's insert our first table
+
+![](images/LS_9.png){fig-align="center" width="345"}
+
+We can place the table anywhere in the dashboard canvas.
+
+![](images/LS_10.png){fig-align="center" width="345"}
+
+## The default table
+
+![](images/LS_11.png){fig-align="center" width="345"}
+
+## 
+
+We change the graphic type by going to its properties.
+
+![](images/LS_12.png){fig-align="center" width="345"}
+
+## Select another variable
+
+::::: columns
+::: {.column width="40%"}
+![](images/LS_13.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="40%"}
+![](images/LS_14.png){fig-align="center" width="345"}
+:::
+:::::
+
+## We can sort the table according to date
+
+</br></br>
+
+::::: columns
+::: {.column width="50%"}
+![](images/LS_15.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="50%"}
+![](images/LS_16.png){fig-align="center" width="345"}
+:::
+:::::
+
+## Improving the table
+
+We can change the layout of the table by changing the metrics in the style of the table
+
+::::: columns
+::: {.column width="50%"}
+![](images/LS_17.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="50%"}
+![](images/LS_18.png){fig-align="center" width="345"}
+:::
+:::::
+
+## 
+
+::::: columns
+::: {.column width="50%"}
+Change it to bars.
+
+![](images/LS_19.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="50%"}
+Show the number too.
+
+![](images/LS_21.png){fig-align="center" width="345"}
+:::
+:::::
+
+## The result
+
+![](images/LS_20.png){fig-align="center" width="345"}
+
+## Let's create a bar chart
+
+![](images/LS_22.png){fig-align="center" width="345"}
+
+## 
+
+![](images/LS_24.png){fig-align="center" width="345"}
+
+## Let's change the variable or metric
+
+::::: columns
+::: {.column width="50%"}
+![](images/LS_25.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="50%"}
+![](images/LS_26.png){fig-align="center" width="345"}
+:::
+:::::
+
+## 
+
+![](images/LS_bar.png){fig-align="center" width="345"}
+
+## We can also add a box
+
+![](images/LS_27.png){fig-align="center" width="345"}
+
+## 
+
+::::: columns
+::: {.column width="50%"}
+![](images/LS_28.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="50%"}
+We can edit the properties or layout of the number.
+
+![](images/LS_29.png){fig-align="center" width="345"}
+:::
+:::::
+
+## Select the mean
+
+![](images/LS_30.png){fig-align="center" width="345"}
+
+## 
+
+![](images/LS_31.png){fig-align="center" width="345"}
+
+## We can increase the font size
+
+::::: columns
+::: {.column width="50%"}
+![](images/LS_33.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="50%"}
+![](images/LS_34.png){fig-align="center" width="345"}
+:::
+:::::
+
+## Add a text or a header to the report
+
+</br></br></br>
+
+::::: columns
+::: {.column width="70%"}
+![](images/LS_35.png){fig-align="center" width="508"}
+:::
+
+::: {.column width="30%"}
+![](images/LS_header.png){fig-align="center" width="345"}
+:::
+:::::
+
+## Change the style
+
+::::: columns
+::: {.column width="50%"}
+![](images/LS_37.png){fig-align="center" width="345"}
+:::
+
+::: {.column width="50%"}
+![](images/LS_38.png){fig-align="center" width="226"}
+:::
+:::::
+
+## The report
+
+![](images/LS_41.png){fig-align="center" width="452"}
+
+## Tutorials on looker studio
+
+{{< video https://www.youtube.com/watch?v=1CXgd4pm1dA width="100%" height="85%">}}
+
+## Tips for effective dashboards
+
+</br></br>
+
+-   Keep it simple — focus on the **key indicators**.
+-   Use color to draw attention, not decorate.
+-   Provide context: compare current value vs. target.
+-   Test your dashboard on different screen sizes.
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

@@ -178,8 +178,8 @@
     "objectID": "Module1/BSC.slides.html#another-example",
     "href": "Module1/BSC.slides.html#another-example",
     "title": "Selection of Indicators",
-    "section": "Another Example",
-    "text": "Another Example"
+    "section": "Another example",
+    "text": "Another example"
   },
   {
     "objectID": "about.html",
@@ -3164,6 +3164,307 @@
     "href": "Module1/BSC.slides.html#more-on-strategy-maps",
     "title": "Selection of Indicators",
     "section": "More on strategy maps",
-    "text": "More on strategy maps\n\nhttps://www.youtube.com/watch?v=duHV65uVghc"
+    "text": "More on strategy maps"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#indicator-visualization",
+    "href": "Module1/BSC.slides.html#indicator-visualization",
+    "title": "Selection of Indicators",
+    "section": "Indicator visualization",
+    "text": "Indicator visualization\nOnce the indicators are defined using the Balanced Scorecard (BSC) and the documentation format, we design dashboards with:\n\n\nScreens.\nChart and table styles.\nAggregation levels.\nDefault reports.\nDrill-down requirements.\n\n\nThis applies to both the overall organizational level and the functional BSCs."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#what-is-google-looker-studio",
+    "href": "Module1/BSC.slides.html#what-is-google-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "What is Google Looker Studio?",
+    "text": "What is Google Looker Studio?\n\nFree online tool by Google for building interactive dashboards and reports.\nWorks directly in the web browser — no installation needed.\nConnects to many data sources:\n\nGoogle Sheets\nCSV files\nBigQuery\nOther cloud and database services"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#why-use-looker-studio",
+    "href": "Module1/BSC.slides.html#why-use-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "Why Use Looker Studio?",
+    "text": "Why Use Looker Studio?\n\nVisualize indicators clearly and interactively\nTrack performance over time\nSupport decision making with data-driven insights\nShare reports via link or embed in a website\nUpdate automatically when the underlying data changes"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#balanced-scorecard-example",
+    "href": "Module1/BSC.slides.html#balanced-scorecard-example",
+    "title": "Selection of Indicators",
+    "section": "Balanced Scorecard Example",
+    "text": "Balanced Scorecard Example\nIn this session, we will:\n\nUse a Google Sheets dataset with Balanced Scorecard indicators.\nCreate:\n\nKPI cards\nTime series charts\nBar charts\nFilters by perspective or date\n\nShare the dashboard link with classmates."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#getting-started",
+    "href": "Module1/BSC.slides.html#getting-started",
+    "title": "Selection of Indicators",
+    "section": "Getting started",
+    "text": "Getting started\n\nGo to https://lookerstudio.google.com/\nClick Blank Report"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#building-the-dashboard",
+    "href": "Module1/BSC.slides.html#building-the-dashboard",
+    "title": "Selection of Indicators",
+    "section": "Building the Dashboard",
+    "text": "Building the Dashboard\nStep 1 — Add a KPI Scorecard\n\nInsert &gt; Scorecard\nSelect the metric (e.g., “Sales”, “Customer Satisfaction”)\nAdd a comparison field (e.g., “Target”) if available\nUse Style &gt; Color to highlight performance:\n\nGreen if above target\nRed if below target"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#sharing-your-dashboard",
+    "href": "Module1/BSC.slides.html#sharing-your-dashboard",
+    "title": "Selection of Indicators",
+    "section": "Sharing Your Dashboard",
+    "text": "Sharing Your Dashboard\n\nClick Share (top-right)\nSelect Anyone with the link (optional: View only)\nCopy and share the link with your peers"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#tips-for-effective-dashboards",
+    "href": "Module1/BSC.slides.html#tips-for-effective-dashboards",
+    "title": "Selection of Indicators",
+    "section": "Tips for effective dashboards",
+    "text": "Tips for effective dashboards\n\n\nKeep it simple — focus on the key indicators.\nUse color to draw attention, not decorate.\nProvide context: compare current value vs. target.\nTest your dashboard on different screen sizes."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#google-looker-studio",
+    "href": "Module1/BSC.slides.html#google-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "Google Looker Studio",
+    "text": "Google Looker Studio\nFree online tool by Google for building interactive dashboards and reports. Works directly in the web browser and it connects to many data sources:\n\nGoogle Sheets\nCSV files\nBigQuery\nOther cloud and database services"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-10",
+    "href": "Module1/BSC.slides.html#section-10",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Select Microsoft Excel as your data source"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-11",
+    "href": "Module1/BSC.slides.html#section-11",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Add the dataset."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-12",
+    "href": "Module1/BSC.slides.html#section-12",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "The variables in the dataset."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-13",
+    "href": "Module1/BSC.slides.html#section-13",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "The graphics available."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#tutorials-on-looker-studio",
+    "href": "Module1/BSC.slides.html#tutorials-on-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "Tutorials on looker studio",
+    "text": "Tutorials on looker studio"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#example",
+    "href": "Module1/BSC.slides.html#example",
+    "title": "Selection of Indicators",
+    "section": "Example",
+    "text": "Example\n\nThe dataset “McDonalds Financial Statements.xlsx” includes McDonald’s annual financial data over two decades, offering insights into its economic performance. The dataset contains records of the following indicators:\n\n\n\nMarket cap ($B)\nRevenue ($B)\nEarnings ($B)\nP/E ratio\nP/S ratio\nP/B ratio\nOperating Margin\nEPS ($)\nShares Outstanding"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#lets-load-the-data-into-looker-studio",
+    "href": "Module1/BSC.slides.html#lets-load-the-data-into-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "Let’s load the data into looker studio",
+    "text": "Let’s load the data into looker studio\n\n\n\n\n\nWe rename the report."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#lets-insert-our-first-table",
+    "href": "Module1/BSC.slides.html#lets-insert-our-first-table",
+    "title": "Selection of Indicators",
+    "section": "Let’s insert our first table",
+    "text": "Let’s insert our first table\n\n\n\n\n\nWe can place the table anywhere in the dashboard canvas."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#the-default-table",
+    "href": "Module1/BSC.slides.html#the-default-table",
+    "title": "Selection of Indicators",
+    "section": "The default table",
+    "text": "The default table"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-14",
+    "href": "Module1/BSC.slides.html#section-14",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Let’s load the data into looker studio\n\n\n\n\n\nWe rename the report."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#select-another-variable",
+    "href": "Module1/BSC.slides.html#select-another-variable",
+    "title": "Selection of Indicators",
+    "section": "Select another variable",
+    "text": "Select another variable"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-the-date",
+    "href": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-the-date",
+    "title": "Selection of Indicators",
+    "section": "We can sort the table according to the date",
+    "text": "We can sort the table according to the date"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#improving-the-table",
+    "href": "Module1/BSC.slides.html#improving-the-table",
+    "title": "Selection of Indicators",
+    "section": "Improving the table",
+    "text": "Improving the table\nWe can change the layout of the table by changing the metrics in the style of the table"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-16",
+    "href": "Module1/BSC.slides.html#section-16",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We change the graphic type by going to its properties."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-17",
+    "href": "Module1/BSC.slides.html#section-17",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Change it to bars.\n\n\n\n\n\n\nShow the number too."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#lets-create-a-bar-chart",
+    "href": "Module1/BSC.slides.html#lets-create-a-bar-chart",
+    "title": "Selection of Indicators",
+    "section": "Let’s create a bar chart",
+    "text": "Let’s create a bar chart"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#lets-change-the-variable",
+    "href": "Module1/BSC.slides.html#lets-change-the-variable",
+    "title": "Selection of Indicators",
+    "section": "Let’s change the variable",
+    "text": "Let’s change the variable"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#we-can-also-add-a-box",
+    "href": "Module1/BSC.slides.html#we-can-also-add-a-box",
+    "title": "Selection of Indicators",
+    "section": "We can also add a box",
+    "text": "We can also add a box"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-21",
+    "href": "Module1/BSC.slides.html#section-21",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We can edit the properties or layout of the number."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#select-the-mean",
+    "href": "Module1/BSC.slides.html#select-the-mean",
+    "title": "Selection of Indicators",
+    "section": "Select the mean",
+    "text": "Select the mean"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#we-can-increase-the-font-size",
+    "href": "Module1/BSC.slides.html#we-can-increase-the-font-size",
+    "title": "Selection of Indicators",
+    "section": "We can increase the font size",
+    "text": "We can increase the font size"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#add-a-header-to-the-report",
+    "href": "Module1/BSC.slides.html#add-a-header-to-the-report",
+    "title": "Selection of Indicators",
+    "section": "Add a header to the report",
+    "text": "Add a header to the report"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#change-the-style",
+    "href": "Module1/BSC.slides.html#change-the-style",
+    "title": "Selection of Indicators",
+    "section": "Change the style",
+    "text": "Change the style"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#the-report",
+    "href": "Module1/BSC.slides.html#the-report",
+    "title": "Selection of Indicators",
+    "section": "The report",
+    "text": "The report"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-15",
+    "href": "Module1/BSC.slides.html#section-15",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Let’s insert our first table\n\n\n\n\n\nWe can place the table anywhere in the dashboard canvas."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-18",
+    "href": "Module1/BSC.slides.html#section-18",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Change it to bars.\n\n\n\n\n\n\nShow the number too."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-22",
+    "href": "Module1/BSC.slides.html#section-22",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We can edit the properties or layout of the number."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-date",
+    "href": "Module1/BSC.slides.html#we-can-sort-the-table-according-to-date",
+    "title": "Selection of Indicators",
+    "section": "We can sort the table according to date",
+    "text": "We can sort the table according to date"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-19",
+    "href": "Module1/BSC.slides.html#section-19",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "The result"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-23",
+    "href": "Module1/BSC.slides.html#section-23",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We can edit the properties or layout of the number."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#the-result",
+    "href": "Module1/BSC.slides.html#the-result",
+    "title": "Selection of Indicators",
+    "section": "The result",
+    "text": "The result"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-20",
+    "href": "Module1/BSC.slides.html#section-20",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We can edit the properties or layout of the number."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#lets-change-the-variable-or-metric",
+    "href": "Module1/BSC.slides.html#lets-change-the-variable-or-metric",
+    "title": "Selection of Indicators",
+    "section": "Let’s change the variable or metric",
+    "text": "Let’s change the variable or metric"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#add-a-text-or-a-header-to-the-report",
+    "href": "Module1/BSC.slides.html#add-a-text-or-a-header-to-the-report",
+    "title": "Selection of Indicators",
+    "section": "Add a text or a header to the report",
+    "text": "Add a text or a header to the report"
   }
 ]
