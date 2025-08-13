@@ -2965,14 +2965,14 @@
     "href": "Module2/IntrotoDataScience.slides.html#crisp-model",
     "title": "Introduction to Data Science",
     "section": "CRISP Model",
-    "text": "CRISP Model\n\n\nBusiness Understanding: What does the business need?\nData Understanding: What data do we have or need? Is it clean?\nData Preparation: How do we organize the data for modeling?\nModeling: What modeling techniques should we apply?\nEvaluation: Which model best meets business objectives?\nImplementation: How do stakeholders access the results?"
+    "text": "CRISP Model\n\n\nBusiness Understanding: What does the business need?\nData Understanding: What data do we have or need? Is it clean?\nData Preparation: How do we organize the data for modeling?\nModeling: What modeling techniques should we apply?\nEvaluation: Which model best meets business objectives?\nDeployment: How do stakeholders access the results?"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#business-understanding",
     "href": "Module2/IntrotoDataScience.slides.html#business-understanding",
     "title": "Introduction to Data Science",
-    "section": "Business Understanding",
-    "text": "Business Understanding\n\n\nBusiness understanding refers to defining the business problem you are trying to solve.\nThe goal is to reframe the business problem as a data science problem.\nReframing the problem and designing a solution is often an iterative process."
+    "section": "Business understanding",
+    "text": "Business understanding\n\n\nBusiness understanding refers to defining the business problem you are trying to solve.\nThe goal is to reframe the business problem as a data science problem.\nReframing the problem and designing a solution is often an iterative process."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#problems-in-data-science",
@@ -2999,43 +2999,43 @@
     "objectID": "Module2/IntrotoDataScience.slides.html#data-understanding-i",
     "href": "Module2/IntrotoDataScience.slides.html#data-understanding-i",
     "title": "Introduction to Data Science",
-    "section": "Data Understanding I",
-    "text": "Data Understanding I\n\n\n\nIf the goal is to solve a business problem, data constitutes the raw material available from which the solution will be built.\nThe available data rarely matches the problem.\nFor example, historical data is often collected for purposes unrelated to the current business problem or without any explicit purpose."
+    "section": "Data understanding I",
+    "text": "Data understanding I\n\n\n\nIf the goal is to solve a business problem, data constitutes the raw material available from which the solution will be built.\nThe available data rarely matches the problem.\nFor example, historical data is often collected for purposes unrelated to the current business problem or without any explicit purpose."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#data-understanding-ii",
     "href": "Module2/IntrotoDataScience.slides.html#data-understanding-ii",
     "title": "Introduction to Data Science",
-    "section": "Data Understanding II",
-    "text": "Data Understanding II\n\n\nData costs vary. Some data will be available for free, while others will require effort to obtain.\n\n\n\nA key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.\nEven after acquiring all the data sets, compiling them may require additional effort."
+    "section": "Data understanding II",
+    "text": "Data understanding II\n\n\nData costs vary. Some data will be available for free, while others will require effort to obtain.\n\n\n\nA key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.\nEven after acquiring all the data sets, compiling them may require additional effort."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#example",
     "href": "Module2/IntrotoDataScience.slides.html#example",
     "title": "Introduction to Data Science",
     "section": "Example",
-    "text": "Example\n\nIn the 1980s, credit cards were essentially priced uniformly because companies didn’t have adequate information systems to deal with differential pricing on a massive scale.\n\nAround 1990, Richard Fairbanks and Nigel Morris realized that information technology was powerful enough to enable more sophisticated predictive models and offer different terms (today: pricing, credit limits, low introductory rate balance transfers, cash back, and loyalty points)."
+    "text": "Example\n\n\nIn the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.\nBy 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).\nSignet Bank’s strategy: model profitability, not just probability of default, since a small fraction of customers generate most profits."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#section-2",
     "href": "Module2/IntrotoDataScience.slides.html#section-2",
     "title": "Introduction to Data Science",
     "section": "",
-    "text": "Signet Bank’s management was convinced that modeling profitability, not just the probability of default, was the right strategy.\nThey knew that a small proportion of customers actually account for more than 100% of a bank’s profit from credit card transactions (because the rest are either breaking even or losing money).\nIf they could model profitability, they could make better offers to the best customers and “skim the cream” of the big banks’ clientele."
+    "text": "Problem: They lacked data on how different credit terms affected profitability.\n\n\n\nSolution: Acquire data at a cost — run experiments offering varied terms to different customers. Losses from these offers were considered investments in data."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#section-3",
     "href": "Module2/IntrotoDataScience.slides.html#section-3",
     "title": "Introduction to Data Science",
     "section": "",
-    "text": "But Signet Bank had a really big problem implementing this strategy.\nThey didn’t have the right data to model profitability for offering different terms to different customers!\nSince the bank offered credit with a specific set of terms and a specific default model, they had the data to model profitability (1) for the terms they actually offered in the past, and (2) for the type of customer actually offered credit."
+    "text": "The experiments caused bad accounts — and losses — to rise for few years.\nData scientists used the new data to build and evaluate profitability models, then implement them.\nThe persistence paid off:\n- Profits surged after model implementation.\n- The credit card division became so successful it was spun off into a separate company.\nLesson: Sometimes you must invest (and even lose money) to get the data needed for long-term strategic gains."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#section-4",
     "href": "Module2/IntrotoDataScience.slides.html#section-4",
     "title": "Introduction to Data Science",
     "section": "",
-    "text": "What could Signet Bank do? They put into play a fundamental data science strategy: acquire the necessary data at a cost!\nIn this case, data on customer profitability with different credit terms could be generated by conducting experiments. Different terms were randomly offered to different customers.\nThis might seem silly outside the context of data analytics thinking: you’re likely to lose money!\nThis is true. In this case, the losses are the cost of data acquisition."
+    "text": "A supervised algorithm attempts to construct an approximation \\(\\hat{f}(\\boldsymbol{X})\\) to the true function \\(f(\\boldsymbol{X})\\) using available data on the predictors and response.\nIdeally, the algorithm builds an \\(\\hat{f}(\\boldsymbol{X})\\) that is interpretable, but not necessarily."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#what-happened",
@@ -3055,8 +3055,8 @@
     "objectID": "Module2/IntrotoDataScience.slides.html#most-used-data-science-tools",
     "href": "Module2/IntrotoDataScience.slides.html#most-used-data-science-tools",
     "title": "Introduction to Data Science",
-    "section": "Most Used Data Science Tools",
-    "text": "Most Used Data Science Tools\n\nPython\nR\nSAS\nExcel\nPower BI\nTableau\nApache Spark\n\nhttps://hackr.io/blog/top-data-analytics-tools"
+    "section": "Most used data science tools",
+    "text": "Most used data science tools\n\nPython\nR\nSAS\nExcel\nPower BI\nTableau\nApache Spark\n\nhttps://hackr.io/blog/top-data-analytics-tools"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#other-tools-used",
@@ -3070,35 +3070,35 @@
     "href": "Module2/IntrotoDataScience.slides.html#terminology",
     "title": "Introduction to Data Science",
     "section": "Terminology",
-    "text": "Terminology\n\nPredictors. They are represented using the notation \\(X_1\\) for the first predictor, \\(X_p\\) for the second predictor, …, and \\(X_p\\) for the p-th predictor.\nResponse. \\(Y\\) represents the response variable, which we will attempt to predict.\n\n\nWe want to establish the following relationship\n\\[\nY = f(X_1, X_2, \\ldots, X_p) + \\epsilon,\n\\]\nwhere \\(f\\) is a function of the predictors and \\(\\epsilon\\) is a natural (random) error."
+    "text": "Terminology\n\n\nPredictors. They are represented using the notation \\(X_1\\) for the first predictor, \\(X_p\\) for the second predictor, …, and \\(X_p\\) for the p-th predictor.\n\\(\\boldsymbol{X} = (X_1, X_2, \\ldots, X_p)\\) represents a whole collection of \\(p\\) predictors.\nResponse. \\(Y\\) represents the response variable, which we will attempt to predict."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#types-of-learning",
     "href": "Module2/IntrotoDataScience.slides.html#types-of-learning",
     "title": "Introduction to Data Science",
-    "section": "Types of Learning",
-    "text": "Types of Learning\n\nIn data science (and machine learning), there are two main types of learning:\n\nSupervised learning\nUnsupervised learning"
+    "section": "Types of learning",
+    "text": "Types of learning\n\nIn data science (and machine learning), there are two main types of learning:\n\nSupervised learning\nUnsupervised learning"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#supervised-learning",
     "href": "Module2/IntrotoDataScience.slides.html#supervised-learning",
     "title": "Introduction to Data Science",
-    "section": "Supervised Learning…",
-    "text": "Supervised Learning…\nIncludes algorithms that learn by example. The user provides the supervised algorithm with a known data set that includes the corresponding known inputs and outputs. The algorithm must find a method to determine how to reach those inputs and outputs.\nWhile the user knows the correct answers to the problem, the algorithm identifies patterns in the data, learns from observations, and makes predictions.\nThe algorithm makes predictions that can be corrected by the user, and this process continues until the algorithm reaches a high level of accuracy and performance."
+    "section": "Supervised learning…",
+    "text": "Supervised learning…\n\nIncludes algorithms that learn by example. That is, we provide the supervised algorithm with a data set with known predictor and response values. The algorithm must find a way to determine the responses from the predictors.\nSince we have the correct (true) responses, the algorithm can identify patterns in the data, learn from its mistakes, and make better predictions of the responses.\nThe algorithm is trained to reach a high level of accuracy and performance for predicting the responses."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#popular-supervised-algorithms",
     "href": "Module2/IntrotoDataScience.slides.html#popular-supervised-algorithms",
     "title": "Introduction to Data Science",
-    "section": "Popular Supervised Algorithms",
-    "text": "Popular Supervised Algorithms"
+    "section": "Popular supervised algorithms",
+    "text": "Popular supervised algorithms"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#unsupervised-learning",
     "href": "Module2/IntrotoDataScience.slides.html#unsupervised-learning",
     "title": "Introduction to Data Science",
-    "section": "Unsupervised Learning…",
-    "text": "Unsupervised Learning…\n\nstudies data to identify patterns. There is no answer key or human operator to provide instruction. The machine determines correlations and relationships by analyzing the available data.\nIn this process, the unsupervised algorithm is left to interpret large data sets. The algorithm attempts to organize that data in some way to describe its structure.\nAs it evaluates more data, its ability to make decisions about it gradually improves and becomes more refined."
+    "section": "Unsupervised learning…",
+    "text": "Unsupervised learning…\n\nstudies data of the predictors (\\(\\boldsymbol{X}\\)) to identify patterns. There are no responses.\nAn unsupervised algorithm identifies correlations and relationships by analyzing available training data. So, the unsupervised algorithm is left to interpret the data set and organize it in some way to describe its structure.\nIn technical terms, we want the algorithm to say something about the joint probability distribution of the predictors \\(P(X_1, X_2, \\ldots, X_p)\\)."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#popular-unsupervised-algorithms",
@@ -3111,8 +3111,8 @@
     "objectID": "Module2/IntrotoDataScience.slides.html#two-data-sets",
     "href": "Module2/IntrotoDataScience.slides.html#two-data-sets",
     "title": "Introduction to Data Science",
-    "section": "Two Data Sets",
-    "text": "Two Data Sets\n\nIn supervised learning, there are several types of data.\nTraining data is the data used to construct \\(\\hat{f}(\\boldsymbol{X})\\).\nTest data is the data that was NOT used in the fitting process, but is used to test the model’s performance on unanalyzed data."
+    "section": "Two data sets",
+    "text": "Two data sets\nIn supervised learning, there are two main types of data:\n\nTraining data is data used by the supervised algorithm to construct \\(\\hat{f}(\\boldsymbol{X})\\).\nTest data is data NOT used in the algorithm’s training process, but is used to evaluate the quality of \\(\\hat{f}(\\boldsymbol{X})\\)."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#yogi-berra",
@@ -3125,8 +3125,8 @@
     "objectID": "Module2/IntrotoDataScience.slides.html#lets-play",
     "href": "Module2/IntrotoDataScience.slides.html#lets-play",
     "title": "Introduction to Data Science",
-    "section": "Let’s Play",
-    "text": "Let’s Play\n\nLet’s play with supervised models.\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
+    "section": "Let’s play",
+    "text": "Let’s play\n\nLet’s play with supervised models.\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
   },
   {
     "objectID": "index.slides.html#course-topics",
@@ -3354,5 +3354,75 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#similar-concepts",
+    "href": "Module2/IntrotoDataScience.slides.html#similar-concepts",
+    "title": "Introduction to Data Science",
+    "section": "Similar concepts",
+    "text": "Similar concepts\n\n\n\nData mining is a process of discovering patterns in large data sets using methods at the intersection of statistics and database systems.\nPredictive modeling is the process of developing a model so that we can understand and quantify the accuracy of the model’s prediction in yet-to-be-seen future data sets.\nStatistical learning refers to a set of tools (statistical models and data mining methods) for modeling and understanding complex data sets."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#data-understanding-the-signet-bank-story-slide-1",
+    "href": "Module2/IntrotoDataScience.slides.html#data-understanding-the-signet-bank-story-slide-1",
+    "title": "Introduction to Data Science",
+    "section": "Data Understanding: The Signet Bank Story (Slide 1)",
+    "text": "Data Understanding: The Signet Bank Story (Slide 1)\nIn the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.\nBy 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).\nSignet Bank’s strategy: model profitability, not just probability of default, since a small fraction of customers generate most profits.\nProblem: They lacked data on how different credit terms affected profitability.\nSolution: Acquire data at a cost — run experiments offering varied terms to different customers. Losses from these offers were considered investments in data."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#data-understanding-the-outcome-slide-2",
+    "href": "Module2/IntrotoDataScience.slides.html#data-understanding-the-outcome-slide-2",
+    "title": "Introduction to Data Science",
+    "section": "Data Understanding: The Outcome (Slide 2)",
+    "text": "Data Understanding: The Outcome (Slide 2)\nThe experiments caused bad accounts — and losses — to rise for years.\nData scientists used the new data to build and evaluate profitability models, then implement them.\nThe persistence paid off:\n- Profits surged after model implementation.\n- The credit card division became so successful it was spun off into a separate company.\nLesson: Sometimes you must invest (and even lose money) to get the data needed for long-term strategic gains."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#example-1",
+    "href": "Module2/IntrotoDataScience.slides.html#example-1",
+    "title": "Introduction to Data Science",
+    "section": "Example",
+    "text": "Example\n\nIn the 1980s, credit cards were essentially priced uniformly because companies didn’t have adequate information systems to deal with differential pricing on a massive scale.\n\nAround 1990, Richard Fairbanks and Nigel Morris realized that information technology was powerful enough to enable more sophisticated predictive models and offer different terms (today: pricing, credit limits, low introductory rate balance transfers, cash back, and loyalty points)."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#section-5",
+    "href": "Module2/IntrotoDataScience.slides.html#section-5",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "But Signet Bank had a really big problem implementing this strategy.\nThey didn’t have the right data to model profitability for offering different terms to different customers!\nSince the bank offered credit with a specific set of terms and a specific default model, they had the data to model profitability (1) for the terms they actually offered in the past, and (2) for the type of customer actually offered credit."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#section-6",
+    "href": "Module2/IntrotoDataScience.slides.html#section-6",
+    "title": "Introduction to Data Science",
+    "section": "",
+    "text": "What could Signet Bank do? They put into play a fundamental data science strategy: acquire the necessary data at a cost!\nIn this case, data on customer profitability with different credit terms could be generated by conducting experiments. Different terms were randomly offered to different customers.\nThis might seem silly outside the context of data analytics thinking: you’re likely to lose money!\nThis is true. In this case, the losses are the cost of data acquisition."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#what-happened-1",
+    "href": "Module2/IntrotoDataScience.slides.html#what-happened-1",
+    "title": "Introduction to Data Science",
+    "section": "What happened?",
+    "text": "What happened?\nAs expected, Signet’s number of bad accounts skyrocketed.\nThe losses continued for several years while data scientists worked to build predictive models from the data, evaluate them, and implement them to improve profits.\nBecause the company viewed these losses as investments in data, they persisted despite complaints from stakeholders.\nEventually, Signet’s credit card business turned around and became so profitable that it was spun off to separate it from the bank’s other operations, which were now overshadowing the success of its consumer lending business."
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#other-tools",
+    "href": "Module2/IntrotoDataScience.slides.html#other-tools",
+    "title": "Introduction to Data Science",
+    "section": "Other tools",
+    "text": "Other tools\n\nRapidMiner (https://rapidminer.com/products/studio/)\nJMP (https://www.jmp.com/es_mx/home.html)\nMinitab (https://www.minitab.com/es-mx/products/minitab/)\nTrifacta (https://www.trifacta.com/)\nBigML (https://bigml.com/)\nMLBase (http://www.mlbase.org/)\nGoogle Cloud AutoML (https://cloud.google.com/automl/)"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#mathematically",
+    "href": "Module2/IntrotoDataScience.slides.html#mathematically",
+    "title": "Introduction to Data Science",
+    "section": "Mathematically",
+    "text": "Mathematically\n\nWe want to establish the following relationship\n\\[\nY = f(\\boldsymbol{X}) + \\epsilon,\n\\]\nwhere \\(f\\) is a function of the predictors and \\(\\epsilon\\) is a natural (random) error.\n\n\n\\(f(\\boldsymbol{X})\\) represents the true relationship between the response (\\(Y\\)) and predictors (\\(\\boldsymbol{X}\\)).\n\n\n\n\nHowever, \\(f(\\boldsymbol{X})\\) is unknown and very complex!"
+  },
+  {
+    "objectID": "Module2/IntrotoDataScience.slides.html#lets-play-with-supervised-models.",
+    "href": "Module2/IntrotoDataScience.slides.html#lets-play-with-supervised-models.",
+    "title": "Introduction to Data Science",
+    "section": "Let’s play with supervised models.",
+    "text": "Let’s play with supervised models.\n\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
   }
 ]
