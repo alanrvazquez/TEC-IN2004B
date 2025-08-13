@@ -382,12 +382,6 @@ In technical terms, we want the algorithm to say something about the joint proba
 
 ![](images/clipboard-1531600765.png){fig-align="center"}
 
-## Yogi Berra
-
-</br></br></br>
-
-> It’s though to make predictions, especially about the future.
-
 ## Let's play with supervised models.
 
 </br></br>
