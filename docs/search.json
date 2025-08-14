@@ -2748,7 +2748,7 @@
     "href": "Tools/Tools1.slides.html#python",
     "title": "Introduction to Python and Pandas",
     "section": "Python",
-    "text": "Python\n\n\n\nA versatile programming language.\nIt is free!\nIt is widely used for data cleaning, data visualization, and data modelling.\nIt can be extended with packages (libraries) developed by other users."
+    "text": "Python\n\n\n\n\nA versatile programming language.\nIt is free!\nIt is widely used for data cleaning, data visualization, and data modelling.\nIt can be extended with packages (libraries) developed by other users."
   },
   {
     "objectID": "Tools/Tools1.slides.html#google-colab",
@@ -2783,7 +2783,7 @@
     "href": "Tools/Tools1.slides.html#pandas-library",
     "title": "Introduction to Python and Pandas",
     "section": "pandas library",
-    "text": "pandas library\n\n\n\n\n\n\n\n\n\n\npandas is an open-source Python library for data manipulation and analysis.\nIt is built on top of numpy for high-performance data operations..\nIt allows the user to import, clean, transform, and analyze data efficiently\nhttps://pandas.pydata.org/"
+    "text": "pandas library\n\n\n\n\n\n\n\n\n\n\npandas is an open-source Python library for data manipulation and analysis.\nIt is built on top of numpy for high-performance data operations.\nIt allows the user to import, clean, transform, and analyze data efficiently.\nhttps://pandas.pydata.org/"
   },
   {
     "objectID": "Tools/Tools1.slides.html#importing-pandas",
