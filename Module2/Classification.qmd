@@ -1831,13 +1831,6 @@ print( round(type_I_error, 2) )
 
 -   Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
 
-## Activity 2.1: Classification and Metrics (*solo* mode)
-
-Using the data in the "weight-height.csv" table, apply the CART procedure to build a decision tree useful for predicting a person's sex based on their weight and height.
-
-In this example, the predictor variables are continuous, and the predictor variable is binary.
-
-Interpret the Precision, Accuracy, Sensitivity, and Type 1 Error values for the validation set. If the software doesn't report them, perform the calculations using the confusion matrix. Use "Female" as the target class. Discuss the effectiveness of the resulting model.
 
 ## Disadvantages of decision trees
 
