@@ -578,14 +578,14 @@
     "href": "Module2/Classification.slides.html#agenda",
     "title": "Classification Trees",
     "section": "Agenda",
-    "text": "Agenda\n\n\nIntroduction\nClassification Trees\nClassification Algorithm Metrics"
+    "text": "Agenda\n\n\nIntroduction\nTraining, Validation, and Test Data\nClassification Trees\nClassification Algorithm Metrics"
   },
   {
     "objectID": "Module2/Classification.slides.html#load-the-libraries",
     "href": "Module2/Classification.slides.html#load-the-libraries",
     "title": "Classification Trees",
     "section": "Load the libraries",
-    "text": "Load the libraries\nBefore we start, let’s import the data science libraries into Python.\n\n# Importing necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score, recall_score, precision_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \nfrom sklearn.metrics import accuracy_score, recall_score, precision_score\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
   },
   {
     "objectID": "Module2/Classification.slides.html#main-data-science-problems",
@@ -662,14 +662,14 @@
     "href": "Module2/Classification.slides.html#two-datasets",
     "title": "Classification Trees",
     "section": "Two datasets",
-    "text": "Two datasets\n\nThe application of data science algorithms needs two data sets:\n\n\nTraining data is data that we use to train or construct the estimated function \\(\\hat{f}(\\boldsymbol{X})\\).\nTest data is data that we use to evaluate the predictive performance of \\(\\hat{f}(\\boldsymbol{X})\\) only."
+    "text": "Two datasets\n\nThe application of data science algorithms needs two data sets:\n\n\nTraining data is data that we use to train or construct an approximation \\(\\hat{C}(\\boldsymbol{X})\\) to the true Bayes Classifier \\(C(\\boldsymbol{X})\\).\nTest data is data that we use to evaluate the classification performance of \\(\\hat{C}(\\boldsymbol{X})\\) only."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-4",
     "href": "Module2/Classification.slides.html#section-4",
     "title": "Classification Trees",
     "section": "",
-    "text": "A random sample of \\(n\\) observations.\nUse it to construct \\(\\hat{f}(\\boldsymbol{X})\\).\n\n\n\n\n\nAnother random sample of \\(n_t\\) observations, which is independent of the training data.\nUse it to evaluate \\(\\hat{f}(\\boldsymbol{X})\\)."
+    "text": "A random sample of \\(n\\) observations.\nUse it to construct \\(\\hat{C}(\\boldsymbol{X})\\).\n\n\n\n\n\nAnother random sample of \\(n_t\\) observations, which is independent of the training data.\nUse it to evaluate \\(\\hat{C}(\\boldsymbol{X})\\)."
   },
   {
     "objectID": "Module2/Classification.slides.html#validation-dataset",
@@ -704,7 +704,7 @@
     "href": "Module2/Classification.slides.html#create-the-predictor-matrix",
     "title": "Classification Trees",
     "section": "Create the predictor matrix",
-    "text": "Create the predictor matrix\nWe use the function .drop() from pandas. This function drops one or more columns from a data frame. Let’s drop the response column Status and store the result in X_full.\n\n# Set full matrix of predictors.\nX_full = bank_data.drop(columns = ['Status']) \nX_full.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\n\n\n\n\n0\n131.0\n131.1\n9.0\n9.7\n\n\n1\n129.7\n129.7\n8.1\n9.5\n\n\n2\n129.7\n129.7\n8.7\n9.6\n\n\n3\n129.7\n129.6\n7.5\n10.4"
+    "text": "Create the predictor matrix\nWe use the function .filter() from pandas to select two predictors: Bottom and Top.\n\n# Set full matrix of predictors.\nX_full = bank_data.filter(['Bottom', 'Top'])\nX_full.head(4)\n\n\n\n\n\n\n\n\nBottom\nTop\n\n\n\n\n0\n9.0\n9.7\n\n\n1\n8.1\n9.5\n\n\n2\n8.7\n9.6\n\n\n3\n7.5\n10.4"
   },
   {
     "objectID": "Module2/Classification.slides.html#create-the-response-column",
@@ -732,21 +732,21 @@
     "href": "Module2/Classification.slides.html#section-5",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n165\n130.3\n130.6\n10.3\n12.0\n1\n\n\n172\n130.5\n130.3\n11.8\n10.5\n1\n\n\n38\n130.3\n130.1\n8.5\n9.3\n0\n\n\n180\n130.4\n130.1\n11.4\n10.7\n1"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n144\n11.4\n10.0\n1\n\n\n195\n9.9\n12.1\n1\n\n\n127\n10.2\n11.8\n1\n\n\n104\n11.8\n10.9\n1"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-6",
     "href": "Module2/Classification.slides.html#section-6",
     "title": "Classification Trees",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nLeft\nRight\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n6\n129.5\n129.7\n7.9\n9.6\n0\n\n\n103\n130.4\n130.6\n9.9\n10.9\n1\n\n\n173\n129.6\n130.0\n10.4\n11.6\n1\n\n\n48\n129.7\n129.8\n7.9\n10.3\n0\n\n\n152\n129.7\n129.3\n10.4\n11.0\n1"
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n111\n10.6\n11.5\n1\n\n\n163\n11.6\n10.9\n1\n\n\n162\n11.5\n10.6\n1\n\n\n4\n10.4\n7.7\n0\n\n\n82\n9.0\n9.7\n0"
   },
   {
     "objectID": "Module2/Classification.slides.html#work-on-your-training-dataset",
     "href": "Module2/Classification.slides.html#work-on-your-training-dataset",
     "title": "Classification Trees",
     "section": "Work on your training dataset",
-    "text": "Work on your training dataset\nAfter we have partitioned the data, we work on the training data to develop our predictive pipeline.\nThe pipeline has two main steps:\n\nData preprocessing.\nModel development.\n\nWe will now discuss preprocessing techniques applied to the predictor columns in the training dataset.\nNote that all preprocessing techniques will also be applied to the validation and test datasets to prepare it for your model!"
+    "text": "Work on your training dataset\n\nAfter we have partitioned the data, we work on the training data to develop our predictive pipeline.\nThe pipeline has two main steps:\n\nData preprocessing.\nAlgorithm development.\n\nNote that all preprocessing techniques will also be applied to the validation and test datasets to prepare it for your algorithm!"
   },
   {
     "objectID": "Module2/Classification.slides.html#decision-tree",
@@ -809,14 +809,14 @@
     "href": "Module2/Classification.slides.html#section-24",
     "title": "Classification Trees",
     "section": "",
-    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThe algorithm has a tuning parameter called \\(\\alpha\\), which places greater weight on the number of tree nodes (or size):\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
+    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThe algorithm has a tuning parameter called \\(\\alpha\\), which places greater weight on the number of tree nodes (or size):\n\\[\\text{Overall Impurity of Terminal Nodes} + \\alpha \\times \\text{# terminal nodes}\\]\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
   },
   {
     "objectID": "Module2/Classification.slides.html#in-python",
     "href": "Module2/Classification.slides.html#in-python",
     "title": "Classification Trees",
     "section": "In Python",
-    "text": "In Python\n\nIn Python, we can use the DecisionTreeClassifier() and fit() functions from scikit-learn to train a decision tree.\n\n# We tell Python we want a classification tree\nclf = DecisionTreeClassifier(max_depth=5, random_state=507134)\n\n# We train the classification tree using the training data.\nclf.fit(X_train, Y_train)\n\nThe parameters max_depth of DecisionTreeClassifier() controls the depth of the tree. The parameter random_state allows you to reproduce the same tree in different runs of the Python code."
+    "text": "In Python\nIn Python, we can use the DecisionTreeClassifier() and fit() functions from scikit-learn to train a decision tree.\n\n# We tell Python we want a classification tree\nclf = DecisionTreeClassifier(min_samples_leaf= 5, ccp_alpha=0, \n                              random_state=507134)\n\n# We train the classification tree using the training data.\nclf.fit(X_train, Y_train)\n\nThe parameter min_samples_leaf controls the minimum number of observations in a terminal node, and the cc_alpha controls the tree complexity (to be described later). The parameter random_state allows you to reproduce the same tree in different runs of the Python code."
   },
   {
     "objectID": "Module2/Classification.slides.html#plotting-the-tree",
@@ -858,14 +858,14 @@
     "href": "Module2/Classification.slides.html#section-27",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])"
+    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-28",
     "href": "Module2/Classification.slides.html#section-28",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857],\n       [0.47857143, 0.52142857]])"
+    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThe algorithm has a tuning parameter called \\(\\alpha\\), which places greater weight on the number of tree nodes (or size):\n\\[\\text{Overall impurity of terminal nodes} + \\alpha (\\text{\\# terminal nodes})\\]\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
   },
   {
     "objectID": "Module2/Classification.slides.html#confusion-matrix",
@@ -879,7 +879,7 @@
     "href": "Module2/Classification.slides.html#in-python-1",
     "title": "Classification Trees",
     "section": "In Python",
-    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[ 0 33]\n [ 0 27]]"
+    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[32  1]\n [ 2 25]]"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-29",
@@ -893,7 +893,7 @@
     "href": "Module2/Classification.slides.html#accuracy",
     "title": "Classification Trees",
     "section": "Accuracy",
-    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.45\n\n\nThe higher the accuracy, the better the performance of the classifier."
+    "text": "Accuracy\nA simple metric for summarizing the information in the confusion matrix is accuracy. It is the proportion of correct classifications for both classes, out of the total classifications performed.\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.95\n\n\nThe higher the accuracy, the better the performance of the classifier."
   },
   {
     "objectID": "Module2/Classification.slides.html#lets-get-back-to-the-penalized-trees",
@@ -907,28 +907,28 @@
     "href": "Module2/Classification.slides.html#section-30",
     "title": "Classification Trees",
     "section": "",
-    "text": "We visualize the results using the following plot.\n\n\nCode\nfig, ax = plt.subplots()\nax.set_xlabel(\"alpha\")\nax.set_ylabel(\"Accuracy\")\nax.set_title(\"Accuracy vs alpha for training and validation data\")\nax.plot(ccp_alphas, train_scores, marker=\"o\", label=\"train\", drawstyle=\"steps-post\")\nax.plot(ccp_alphas, validation_scores, marker=\"o\", label=\"validation\", drawstyle=\"steps-post\")\nax.legend()\nplt.show()"
+    "text": "The ccp_alphas and impurities objects contain the different values of the \\(\\alpha\\) parameter used, as well as the impurity performance of the generated trees.\nTo train a decision tree using different alpha values, we use the following code that iterates over the values contained in ccp_alphas.\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf_alpha = DecisionTreeClassifier(random_state=507134, min_samples_leaf= 5, \n                                       ccp_alpha=ccp_alpha)\n    clf_alpha.fit(X_train, Y_train)\n    clfs.append(clf)\n\nIn the next section, we will evaluate the performance of these decision trees."
   },
   {
     "objectID": "Module2/Classification.slides.html#choosing-the-best-tree",
     "href": "Module2/Classification.slides.html#choosing-the-best-tree",
     "title": "Classification Trees",
     "section": "Choosing the best tree",
-    "text": "Choosing the best tree\nWe can see that the best \\(\\alpha\\) value for the validation dataset is 0.01.\nTo train our new reduced tree, we use the DecisionTreeClassifier() function again with the ccp_alpha parameter set to the best \\(\\alpha\\) value. The object containing this new tree is clf_simple.\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.01)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)"
+    "text": "Choosing the best tree\nWe can see that the best \\(\\alpha\\) value for the validation dataset is 0.01.\nTo train our new reduced tree, we use the DecisionTreeClassifier() function again with the ccp_alpha parameter set to the best \\(\\alpha\\) value. The object containing this new tree is clf_simple.\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0, min_samples_leaf= 5)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-31",
     "href": "Module2/Classification.slides.html#section-31",
     "title": "Classification Trees",
     "section": "",
-    "text": "Once this is done, we can visualize the small tree using the plot_tree() function.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf_simple, filled=True, rounded=True)\nplt.show()"
+    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1,\n       0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0,\n       0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1])"
   },
   {
     "objectID": "Module2/Classification.slides.html#evaluation-1",
     "href": "Module2/Classification.slides.html#evaluation-1",
     "title": "Classification Trees",
     "section": "Evaluation",
-    "text": "Evaluation\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.93"
+    "text": "Evaluation\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.97"
   },
   {
     "objectID": "Module2/Classification.slides.html#comments",
@@ -949,7 +949,7 @@
     "href": "Module2/Classification.slides.html#section-32",
     "title": "Classification Trees",
     "section": "",
-    "text": "In other words, we want to avoid making wrong decisions about customers who will churn.\nWrong decisions about loyal customers aren’t as relevant.\nBecause if we classify a loyal customer as one who will churn, the customer will get a good deal. They’ll probably pay less but stay anyway."
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.5       , 0.5       ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.42857143, 0.57142857],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.85714286, 0.14285714],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.42857143, 0.57142857],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.85714286, 0.14285714],\n       [1.        , 0.        ],\n       [0.42857143, 0.57142857],\n       [1.        , 0.        ],\n       [0.42857143, 0.57142857],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.42857143, 0.57142857],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.42857143, 0.57142857],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.5       , 0.5       ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.5       , 0.5       ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.85714286, 0.14285714],\n       [1.        , 0.        ],\n       [0.5       , 0.5       ],\n       [1.        , 0.        ],\n       [0.5       , 0.5       ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.85714286, 0.14285714],\n       [1.        , 0.        ],\n       [0.        , 1.        ]])"
   },
   {
     "objectID": "Module2/Classification.slides.html#another-example",
@@ -970,35 +970,35 @@
     "href": "Module2/Classification.slides.html#section-33",
     "title": "Classification Trees",
     "section": "",
-    "text": "Sensitivity or recall = OO/(OO + OR) “How many records of the target class did we predict correctly?”"
+    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\nConfusionMatrixDisplay(cm).plot()"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-34",
     "href": "Module2/Classification.slides.html#section-34",
     "title": "Classification Trees",
     "section": "",
-    "text": "Precision = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?"
+    "text": "We visualize the results using the following plot.\n\n\nCode\nfig, ax = plt.subplots()\nax.set_xlabel(\"alpha\")\nax.set_ylabel(\"Accuracy\")\nax.set_title(\"Accuracy vs alpha for training and validation data\")\nax.plot(ccp_alphas, train_scores, marker=\"o\", label=\"train\", drawstyle=\"steps-post\")\nax.plot(ccp_alphas, validation_scores, marker=\"o\", label=\"validation\", drawstyle=\"steps-post\")\nax.legend()\nplt.show()"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-35",
     "href": "Module2/Classification.slides.html#section-35",
     "title": "Classification Trees",
     "section": "",
-    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n1.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.45"
+    "text": "Once this is done, we can visualize the small tree using the plot_tree() function.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf_simple, filled=True, rounded=True)\nplt.show()"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-36",
     "href": "Module2/Classification.slides.html#section-36",
     "title": "Classification Trees",
     "section": "",
-    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
+    "text": "In other words, we want to avoid making wrong decisions about customers who will churn.\nWrong decisions about loyal customers aren’t as relevant.\nBecause if we classify a loyal customer as one who will churn, the customer will get a good deal. They’ll probably pay less but stay anyway."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-37",
     "href": "Module2/Classification.slides.html#section-37",
     "title": "Classification Trees",
     "section": "",
-    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n1.0"
+    "text": "Sensitivity or recall = OO/(OO + OR) “How many records of the target class did we predict correctly?”"
   },
   {
     "objectID": "Module2/Classification.slides.html#discussion",
@@ -4117,5 +4117,47 @@
     "title": "Data Wrangling and Visualization",
     "section": "Example 1",
     "text": "Example 1\nConsider an industrial engineer who receives a messy Excel file from a manufacturing client. The data file is called “industrial_dataset.xlsx”, which file includes data about machine maintenance logs, production output, and operator comments.\nThe goal is to clean and prepare this dataset using pandas so it can be analyzed.\nLet’s load pandas and read the data set into Python.\n\nimport pandas as pd\n\n# Load the Excel file into a pandas DataFrame.\nclient_data = pd.read_excel(\"industrial_dataset.xlsx\")"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-25",
+    "href": "Module2/Classification.slides.html#section-25",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "We repeat the partitioning process until the terminal nodes have no less than, say, 5 observations."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-38",
+    "href": "Module2/Classification.slides.html#section-38",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Precision = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-39",
+    "href": "Module2/Classification.slides.html#section-39",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n0.93\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.96"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-40",
+    "href": "Module2/Classification.slides.html#section-40",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-41",
+    "href": "Module2/Classification.slides.html#section-41",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.03"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#accuracy-in-python",
+    "href": "Module2/Classification.slides.html#accuracy-in-python",
+    "title": "Classification Trees",
+    "section": "Accuracy in Python",
+    "text": "Accuracy in Python\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.95"
   }
 ]

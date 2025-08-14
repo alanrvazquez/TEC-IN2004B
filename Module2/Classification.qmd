@@ -23,12 +23,15 @@ jupyter: python3
 </br>
 
 1.  Introduction
-2.  Classification Trees
-3.  Classification Algorithm Metrics
+2. Training, Validation, and Test Data
+3.  Classification Trees
+4.  Classification Algorithm Metrics
 
 # Introduction
 
 ## Load the libraries
+
+</br>
 
 Before we start, let's import the data science libraries into Python.
 
@@ -36,13 +39,11 @@ Before we start, let's import the data science libraries into Python.
 #| echo: true
 #| output: false
 
-# Importing necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay 
 from sklearn.metrics import accuracy_score, recall_score, precision_score
@@ -193,6 +194,8 @@ To overcome this issue, we several standard solutions:
 -   [**Ensemble methods**]{style="color:orange;"} and [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (If time permits).
 :::
 
+# Training, Validation, and Test Data
+
 ## Two datasets
 
 </br></br>
@@ -200,9 +203,9 @@ To overcome this issue, we several standard solutions:
 The application of data science algorithms needs two data sets:
 
 ::: incremental
--   [**Training data**]{style="color:blue;"} is data that we use to train or construct the estimated function $\hat{f}(\boldsymbol{X})$.
+-   [**Training data**]{style="color:blue;"} is data that we use to train or construct an approximation $\hat{C}(\boldsymbol{X})$ to the true Bayes Classifier $C(\boldsymbol{X})$.
 
--   [**Test data**]{style="color:green;"} is data that we use to evaluate the predictive performance of $\hat{f}(\boldsymbol{X})$ only.
+-   [**Test data**]{style="color:green;"} is data that we use to evaluate the classification performance of $\hat{C}(\boldsymbol{X})$ only.
 :::
 
 ## 
@@ -217,7 +220,7 @@ The application of data science algorithms needs two data sets:
 
 A random sample of $n$ observations.
 
-Use it to **construct** $\hat{f}(\boldsymbol{X})$.
+Use it to **construct** $\hat{C}(\boldsymbol{X})$.
 :::
 :::::
 
@@ -229,7 +232,7 @@ Use it to **construct** $\hat{f}(\boldsymbol{X})$.
 ::: {.column width="70%"}
 Another random sample of $n_t$ observations, which is independent of the training data.
 
-Use it to **evaluate** $\hat{f}(\boldsymbol{X})$.
+Use it to **evaluate** $\hat{C}(\boldsymbol{X})$.
 :::
 :::::
 
@@ -277,14 +280,14 @@ The function has three main inputs:
 
 ## Create the predictor matrix
 
-We use the function `.drop()` from **pandas**. This function drops one or more columns from a data frame. Let's drop the response column `Status` and store the result in `X_full`.
+We use the function `.filter()` from **pandas** to select two predictors: Bottom and Top.
 
 ```{python}
 #| echo: true
 #| output: true
 
 # Set full matrix of predictors.
-X_full = bank_data.drop(columns = ['Status']) 
+X_full = bank_data.filter(['Bottom', 'Top'])
 X_full.head(4)
 ```
 
@@ -364,16 +367,16 @@ validation_dataset.head()
 
 ## Work on your training dataset
 
+</br>
+
 After we have partitioned the data, we **work on the** [**training data**]{style="color:blue;"} to develop our predictive pipeline.
 
 The pipeline has two main steps:
 
 1.  Data preprocessing.
-2.  Model development.
+2.  Algorithm development.
 
-We will now discuss preprocessing techniques applied to the predictor columns in the training dataset.
-
-Note that all preprocessing techniques will also be applied to the [**validation**]{style="color:orange;"} and [**test**]{style="color:green;"} datasets to prepare it for your model!
+Note that all preprocessing techniques will also be applied to the [**validation**]{style="color:orange;"} and [**test**]{style="color:green;"} datasets to prepare it for your algorithm!
 
 # Classification Trees
 
@@ -735,6 +738,186 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axvline(x=7.8, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axvline(x=8.0, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axvline(x=8.2, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+
+:::
+:::::
+::::::
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=bank_data,
+    x='Top',
+    y='Bottom',
+    hue='Status',
+    palette={'genuine': 'blue', 'counterfeit': 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axvline(x=12.5, color='black', linewidth=3)  # Left vertical
+
+# Axis labels
+plt.xlabel("Top", color = "red")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+
 :::
 :::::
 ::::::
@@ -1236,19 +1419,19 @@ plt.show()
 
 ## 
 
-</br></br></br>
+</br></br>
 
 To prune a tree, we use an advanced algorithm to measure the contribution of the tree's branches.
 
 The algorithm has a tuning parameter called $\alpha$, which **places greater weight on the number of tree nodes** (or size):
+
+$$\text{Overall impurity of terminal nodes} + \alpha (\text{\# terminal nodes})$$
 
 -   Large values of $\alpha$ result in small trees with few nodes.
 
 -   Small values of $\alpha$ result in large trees with many nodes.
 
 ## In Python
-
-</br>
 
 In Python, we can use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a decision tree.
 
@@ -1257,13 +1440,14 @@ In Python, we can use the `DecisionTreeClassifier()` and `fit()` functions from 
 #| output: false
 
 # We tell Python we want a classification tree
-clf = DecisionTreeClassifier(max_depth=5, random_state=507134)
+clf = DecisionTreeClassifier(min_samples_leaf= 5, ccp_alpha=0, 
+                              random_state=507134)
 
 # We train the classification tree using the training data.
 clf.fit(X_train, Y_train)
 ```
 
-The parameters `max_depth` of `DecisionTreeClassifier()` controls the depth of the tree. The parameter `random_state` allows you to reproduce the same tree in different runs of the Python code.
+The parameter `min_samples_leaf` controls the minimum number of observations in a terminal node, and the `cc_alpha` controls the tree complexity (to be described later). The parameter `random_state` allows you to reproduce the same tree in different runs of the Python code.
 
 ## Plotting the tree
 
@@ -1333,8 +1517,9 @@ To train a decision tree using different alpha values, we use the following code
 
 clfs = []
 for ccp_alpha in ccp_alphas:
-    clf = DecisionTreeClassifier(random_state=507134, ccp_alpha=ccp_alpha)
-    clf.fit(X_train, Y_train)
+    clf_alpha = DecisionTreeClassifier(random_state=507134, min_samples_leaf= 5, 
+                                       ccp_alpha=ccp_alpha)
+    clf_alpha.fit(X_train, Y_train)
     clfs.append(clf)
 ```
 
@@ -1487,7 +1672,7 @@ To train our new reduced tree, we use the `DecisionTreeClassifier()` function ag
 #| output: false
 
 # We tell Python that we want a classification tree
-clf_simple = DecisionTreeClassifier(ccp_alpha=0.01)
+clf_simple = DecisionTreeClassifier(ccp_alpha=0, min_samples_leaf= 5)
 
 # We train the classification tree using the training data.
 clf_simple.fit(X_train, Y_train)
@@ -1507,7 +1692,9 @@ plot_tree(clf_simple, filled=True, rounded=True)
 plt.show()
 ```
 
-## Evaluation
+## Accuracy in Python
+
+</br></br>
 
 Let's compute the accuracy of the pruned tree.
 
@@ -1644,7 +1831,7 @@ print( round(type_I_error, 2) )
 
 -   Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
 
-## Activity 2.1: Classification and Metrics (solo mode)
+## Activity 2.1: Classification and Metrics (*solo* mode)
 
 Using the data in the "weight-height.csv" table, apply the CART procedure to build a decision tree useful for predicting a person's sex based on their weight and height.
 
