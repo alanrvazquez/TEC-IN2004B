@@ -2433,7 +2433,7 @@
     "href": "Tools/Tools2.slides.html#example-2",
     "title": "Data Wrangling and Visualization",
     "section": "Example 2",
-    "text": "Example 2\nConsider an industrial engineer who receives a messy Excel file from a manufacturing client. The data file is called “industrial_dataset.xlsx”, which file includes data about machine maintenance logs, production output, and operator comments.\nThe goal is to clean and prepare this dataset using pandas so it can be analyzed.\nLet’s load pandas and read the data set into Python.\n\nimport pandas as pd\n\n# Load the Excel file into a pandas DataFrame.\nclient_data = pd.read_excel(\"industrial_dataset.xlsx\")"
+    "text": "Example 2\n\nA criminologist is developing a rule-based system to classify the types of glasses encountered in criminal investigations.\nThe data consist of 214 glass samples labeled as one of seven class categories.\nThere are nine predictors, including refractive index and percentages of eight elements: Na, Mg, AL, Is, K, Ca, Ba, and Fe. The response is the type of glass."
   },
   {
     "objectID": "Tools/Tools2.slides.html#section",
@@ -4110,5 +4110,12 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Tools/Tools2.slides.html#example-1",
+    "href": "Tools/Tools2.slides.html#example-1",
+    "title": "Data Wrangling and Visualization",
+    "section": "Example 1",
+    "text": "Example 1\nConsider an industrial engineer who receives a messy Excel file from a manufacturing client. The data file is called “industrial_dataset.xlsx”, which file includes data about machine maintenance logs, production output, and operator comments.\nThe goal is to clean and prepare this dataset using pandas so it can be analyzed.\nLet’s load pandas and read the data set into Python.\n\nimport pandas as pd\n\n# Load the Excel file into a pandas DataFrame.\nclient_data = pd.read_excel(\"industrial_dataset.xlsx\")"
   }
 ]

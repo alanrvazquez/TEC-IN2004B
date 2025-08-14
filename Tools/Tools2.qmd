@@ -37,7 +37,7 @@ jupyter: python3
 
 -   Here, we illustrate some special functions of the **pandas** for cleaning common issues with a dataset.
 
-## Example 2
+## Example 1
 
 Consider an industrial engineer who receives a messy Excel file from a manufacturing client. The data file is called "industrial_dataset.xlsx", which file includes data about machine maintenance logs, production output, and operator comments.
 
