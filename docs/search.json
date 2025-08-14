@@ -732,14 +732,14 @@
     "href": "Module2/Classification.slides.html#section-5",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n185\n11.5\n10.7\n1\n\n\n69\n8.0\n11.2\n0\n\n\n109\n10.4\n11.2\n1\n\n\n75\n7.6\n10.7\n0"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n126\n9.4\n11.6\n1\n\n\n128\n10.1\n11.3\n1\n\n\n183\n10.1\n11.4\n1\n\n\n104\n11.8\n10.9\n1"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-6",
     "href": "Module2/Classification.slides.html#section-6",
     "title": "Classification Trees",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n141\n10.2\n11.0\n1\n\n\n120\n10.1\n12.1\n1\n\n\n169\n11.4\n10.9\n1\n\n\n48\n7.9\n10.3\n0\n\n\n96\n9.1\n10.2\n0"
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nBottom\nTop\nStatus_counterfeit\n\n\n\n\n114\n10.6\n10.8\n1\n\n\n127\n10.2\n11.8\n1\n\n\n144\n11.4\n10.0\n1\n\n\n9\n9.2\n10.0\n0\n\n\n59\n8.2\n10.3\n0"
   },
   {
     "objectID": "Module2/Classification.slides.html#work-on-your-training-dataset",
@@ -858,14 +858,14 @@
     "href": "Module2/Classification.slides.html#section-31",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0,\n       1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,\n       1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0])"
+    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0,\n       1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1,\n       0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0])"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-32",
     "href": "Module2/Classification.slides.html#section-32",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0. , 1. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [0.6, 0.4],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0.2, 0.8],\n       [0.6, 0.4],\n       [1. , 0. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0.4, 0.6],\n       [0. , 1. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0.6, 0.4],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0.6, 0.4],\n       [0. , 1. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [1. , 0. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [1. , 0. ],\n       [0.4, 0.6],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [0. , 1. ],\n       [1. , 0. ]])"
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.4       , 0.6       ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.4       , 0.6       ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.83333333, 0.16666667],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.8       , 0.2       ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.4       , 0.6       ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ]])"
   },
   {
     "objectID": "Module2/Classification.slides.html#confusion-matrix",
@@ -879,7 +879,7 @@
     "href": "Module2/Classification.slides.html#in-python-1",
     "title": "Classification Trees",
     "section": "In Python",
-    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[26  1]\n [ 1 32]]"
+    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[36  2]\n [ 0 22]]"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-33",
@@ -984,7 +984,7 @@
     "href": "Module2/Classification.slides.html#section-39",
     "title": "Classification Trees",
     "section": "",
-    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n0.97\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.97"
+    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n1.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.92"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-40",
@@ -998,7 +998,7 @@
     "href": "Module2/Classification.slides.html#section-41",
     "title": "Classification Trees",
     "section": "",
-    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.04"
+    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.05"
   },
   {
     "objectID": "Module2/Classification.slides.html#discussion",
@@ -1348,7 +1348,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-16",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Thu, 14 Aug 2025   AIC                             11.074\nTime:                        11:03:42   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Thu, 14 Aug 2025   AIC                             11.074\nTime:                        14:27:45   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-17",
@@ -1502,7 +1502,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Thu, 14 Aug 2025   AIC                            756.482\nTime:                                   11:03:44   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Thu, 14 Aug 2025   AIC                            756.482\nTime:                                   14:27:47   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -2436,11 +2436,11 @@
     "text": "# Preview the dataset.\nclient_data.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n\n\n3\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n"
   },
   {
-    "objectID": "Tools/Tools2.slides.html#remove-duplicate-rows",
-    "href": "Tools/Tools2.slides.html#remove-duplicate-rows",
+    "objectID": "Tools/Tools2.slides.html#add-an-index-column",
+    "href": "Tools/Tools2.slides.html#add-an-index-column",
     "title": "Data Wrangling and Visualization",
-    "section": "Remove duplicate rows",
-    "text": "Remove duplicate rows\nDuplicate rows have the same entries in every column in the dataset. If only one row is needed for the analysis, we can remove the duplicates using .drop_duplicates(). For example, we can see the unique names of the operators.\n\noperators = complete_data['Operator'].str.title()\n\n(operators\n.drop_duplicates()\n)\n\n0         Ana\n2         Bob\n3     Charlie\n5     Unknown\n6        Dave\n14        Eve\nName: Operator, dtype: object"
+    "section": "Add an index column",
+    "text": "Add an index column\n\nIn some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function .assign with some extra syntax.\n\nclient_data_single = (client_data\n                      .assign(ID = lambda x: x.index + 1)\n                      )"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-1",
@@ -2450,25 +2450,11 @@
     "text": "The new column is appended to the end of the dataframe.\n\nclient_data_single.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\nID\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\n1\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\n2\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n3\n\n\n3\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n4\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n\n5"
   },
   {
-    "objectID": "Tools/Tools2.slides.html#add-an-index-column",
-    "href": "Tools/Tools2.slides.html#add-an-index-column",
-    "title": "Data Wrangling and Visualization",
-    "section": "Add an index column",
-    "text": "Add an index column\n\nIn some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function .assign with some extra syntax.\n\nclient_data_single = (client_data\n                      .assign(ID = lambda x: x.index + 1)\n                      )"
-  },
-  {
     "objectID": "Tools/Tools2.slides.html#section-2",
     "href": "Tools/Tools2.slides.html#section-2",
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "To bring it to the begining of the array, we can use the .filter() function.\n\nclient_data_single = (client_data_single\n.filter(['ID', 'Machine ID',    'Output (units)',   \n        'Maintenance Date', 'Operator', 'Comment'])\n)\nclient_data_single.head(3)  \n\n\n\n\n\n\n\n\nID\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n2\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n3\n102\n1050\n2023-01-12\nBob\nNeeds oil!"
-  },
-  {
-    "objectID": "Tools/Tools2.slides.html#section-3",
-    "href": "Tools/Tools2.slides.html#section-3",
-    "title": "Data Wrangling and Visualization",
-    "section": "",
-    "text": "complete_data.head()\n\n\n\n\n\n\n\n\nID\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n2\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n3\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n\n\n3\n4\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n\n\n4\n5\n103\n950\n2023-01-13\nCharlie\nAll good\\n"
   },
   {
     "objectID": "Tools/Tools2.slides.html#fill-blank-cells",
@@ -2478,11 +2464,11 @@
     "text": "Fill blank cells\nIn the dataset, there are columns with missing values. If we would like to fill them with specific values or text, we use the .fillna() function. In this function, we use the syntaxis 'Variable': 'Replace', where the Variable is the column in the dataset and Replace is the text or number to fill the entry in.\nLet’s fill in the missing entries of the columns Operator, Maintenance Date, and Comment.\n\ncomplete_data = (client_data_single\n                .fillna({'Operator': 'Unknown', \n                'Maintenance Date': '2023-01-01',\n                'Comment': 'None'})\n                )"
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-4",
-    "href": "Tools/Tools2.slides.html#section-4",
+    "objectID": "Tools/Tools2.slides.html#section-3",
+    "href": "Tools/Tools2.slides.html#section-3",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "We can replace the “error” in this column by a user-specified value, say, 0. To this end, we use the function .replace(). The function has two inputs. The first one is the value to replace and the second one is the replacement value.\n\ncomplete_data['Output (units)'] = complete_data['Output (units)'].replace('error', 0)"
+    "text": "complete_data.head()\n\n\n\n\n\n\n\n\nID\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n2\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n3\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n\n\n3\n4\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n\n\n4\n5\n103\n950\n2023-01-13\nCharlie\nAll good\\n"
   },
   {
     "objectID": "Tools/Tools2.slides.html#replace-values",
@@ -2492,6 +2478,13 @@
     "text": "Replace values\n\nThere are some cases in which columns have some undesired or unwatned values. Consider the Output (units) as an example.\n\ncomplete_data['Output (units)'].head()\n\n0     1200\n1     1200\n2     1050\n3    error\n4      950\nName: Output (units), dtype: object\n\n\nThe column has the numbers of units but also text such as “error”."
   },
   {
+    "objectID": "Tools/Tools2.slides.html#section-4",
+    "href": "Tools/Tools2.slides.html#section-4",
+    "title": "Data Wrangling and Visualization",
+    "section": "",
+    "text": "We can replace the “error” in this column by a user-specified value, say, 0. To this end, we use the function .replace(). The function has two inputs. The first one is the value to replace and the second one is the replacement value.\n\ncomplete_data['Output (units)'] = complete_data['Output (units)'].replace('error', 0)"
+  },
+  {
     "objectID": "Tools/Tools2.slides.html#section-5",
     "href": "Tools/Tools2.slides.html#section-5",
     "title": "Data Wrangling and Visualization",
@@ -2499,18 +2492,18 @@
     "text": "Let’s check the new column.\n\ncomplete_data['Output (units)']\n\n0     1200\n1     1200\n2     1050\n3        0\n4      950\n      ... \n95     800\n96    1100\n97     950\n98     950\n99    1100\nName: Output (units), Length: 100, dtype: int64\n\n\nNote that the new column is now numeric."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-6",
-    "href": "Tools/Tools2.slides.html#section-6",
-    "title": "Data Wrangling and Visualization",
-    "section": "",
-    "text": "The column has some values such as “Requires part: valve” and “Delay: maintenance” that we may want to split into columns.\n\n\n0                       ok\n1                       ok\n2               Needs oil!\n3               All good\\n\n4               All good\\n\n              ...         \n95    Requires part: valve\n96                      ok\n97    Delay: maintenance\\n\n98              Needs oil!\n99              All good\\n\nName: Comment, Length: 100, dtype: object"
-  },
-  {
     "objectID": "Tools/Tools2.slides.html#split-column-into-multiple-ones",
     "href": "Tools/Tools2.slides.html#split-column-into-multiple-ones",
     "title": "Data Wrangling and Visualization",
     "section": "Split column into multiple ones",
     "text": "Split column into multiple ones\nThere are some cases in which we want to split a column according to a character. For example, consider the column Comment from the dataset.\n\ncomplete_data['Comment']\n\n0                       ok\n1                       ok\n2               Needs oil!\n3               All good\\n\n4               All good\\n\n              ...         \n95    Requires part: valve\n96                      ok\n97    Delay: maintenance\\n\n98              Needs oil!\n99              All good\\n\nName: Comment, Length: 100, dtype: object"
+  },
+  {
+    "objectID": "Tools/Tools2.slides.html#section-6",
+    "href": "Tools/Tools2.slides.html#section-6",
+    "title": "Data Wrangling and Visualization",
+    "section": "",
+    "text": "The column has some values such as “Requires part: valve” and “Delay: maintenance” that we may want to split into columns.\n\n\n0                       ok\n1                       ok\n2               Needs oil!\n3               All good\\n\n4               All good\\n\n              ...         \n95    Requires part: valve\n96                      ok\n97    Delay: maintenance\\n\n98              Needs oil!\n99              All good\\n\nName: Comment, Length: 100, dtype: object"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-7",
@@ -2541,13 +2534,6 @@
     "text": "augmented_data.head()\n\n\n\n\n\n\n\n\nID\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\nFirst_comment\nSecond_comment\n\n\n\n\n0\n1\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n1\n2\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n2\n3\n102\n1050\n2023-01-12\nBob\nNeeds oil!\nNeeds oil!\nNone\n\n\n3\n4\n103\n0\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone\n\n\n4\n5\n103\n950\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone"
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-11",
-    "href": "Tools/Tools2.slides.html#section-11",
-    "title": "Data Wrangling and Visualization",
-    "section": "",
-    "text": "Let’s see the cleaned column.\n\naugmented_data['First_comment']\n\n0                ok\n1                ok\n2        Needs oil!\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98       Needs oil!\n99         All good\nName: First_comment, Length: 100, dtype: object"
-  },
-  {
     "objectID": "Tools/Tools2.slides.html#remove-characters",
     "href": "Tools/Tools2.slides.html#remove-characters",
     "title": "Data Wrangling and Visualization",
@@ -2555,18 +2541,18 @@
     "text": "Remove characters\n\nSomething that we notice is that the column First_Comment has some extra characters like “” that may be useless when working with the data.\nWe can remove them using the function str.strip(). The input of the function is the character to remove.\n\naugmented_data['First_comment'] = augmented_data['First_comment'].str.strip(\"\\n\")"
   },
   {
+    "objectID": "Tools/Tools2.slides.html#section-11",
+    "href": "Tools/Tools2.slides.html#section-11",
+    "title": "Data Wrangling and Visualization",
+    "section": "",
+    "text": "Let’s see the cleaned column.\n\naugmented_data['First_comment']\n\n0                ok\n1                ok\n2        Needs oil!\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98       Needs oil!\n99         All good\nName: First_comment, Length: 100, dtype: object"
+  },
+  {
     "objectID": "Tools/Tools2.slides.html#section-12",
     "href": "Tools/Tools2.slides.html#section-12",
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "We can also remove other characters.\n\naugmented_data['First_comment'].str.strip(\"!\")\n\n0                ok\n1                ok\n2         Needs oil\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98        Needs oil\n99         All good\nName: First_comment, Length: 100, dtype: object"
-  },
-  {
-    "objectID": "Tools/Tools2.slides.html#section-13",
-    "href": "Tools/Tools2.slides.html#section-13",
-    "title": "Data Wrangling and Visualization",
-    "section": "",
-    "text": "The dataset is in the file “glass.xlsx”. Let’s load it using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nglass_data = pd.read_excel(\"glass.xlsx\")\n\n\nThe variable Type is categorical. So, let’s ensure Python knows this using the code below.\n\nglass_data['Type'] = pd.Categorical(glass_data['Type'])"
   },
   {
     "objectID": "Tools/Tools2.slides.html#transform-text-case",
@@ -2604,6 +2590,13 @@
     "text": "Capitalize the first letter\n\nWe can convert all names to title case using the function str.title().\n\ncomplete_data['Operator'].str.title()\n\n0         Ana\n1         Ana\n2         Bob\n3     Charlie\n4     Charlie\n       ...   \n95    Charlie\n96        Ana\n97        Ana\n98    Charlie\n99        Ana\nName: Operator, Length: 100, dtype: object"
   },
   {
+    "objectID": "Tools/Tools2.slides.html#remove-duplicate-rows",
+    "href": "Tools/Tools2.slides.html#remove-duplicate-rows",
+    "title": "Data Wrangling and Visualization",
+    "section": "Remove duplicate rows",
+    "text": "Remove duplicate rows\nDuplicate rows have the same entries in every column in the dataset. If only one row is needed for the analysis, we can remove the duplicates using .drop_duplicates(). For example, we can see the unique names of the operators.\n\noperators = complete_data['Operator'].str.title()\n\n(operators\n.drop_duplicates()\n)\n\n0         Ana\n2         Bob\n3     Charlie\n5     Unknown\n6        Dave\n14        Eve\nName: Operator, dtype: object"
+  },
+  {
     "objectID": "Tools/Tools2.slides.html#example-2",
     "href": "Tools/Tools2.slides.html#example-2",
     "title": "Data Wrangling and Visualization",
@@ -2611,11 +2604,11 @@
     "text": "Example 2\n\nA criminologist is developing a rule-based system to classify the types of glasses encountered in criminal investigations.\nThe data consist of 214 glass samples labeled as one of seven class categories.\nThere are nine predictors, including refractive index and percentages of eight elements: Na, Mg, AL, Is, K, Ca, Ba, and Fe. The response is the type of glass."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-14",
-    "href": "Tools/Tools2.slides.html#section-14",
+    "objectID": "Tools/Tools2.slides.html#section-13",
+    "href": "Tools/Tools2.slides.html#section-13",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "We create the bar chart using the function countplot() from seaborn.\n\n\nCode\n# Create plot.\nplt.figure(figsize=(7,4)) # Create space for the plot.\nsns.countplot(data = glass_data, x = 'Type') # Show the plot.\nplt.title(\"Bar chart of Type of Glasses\") # Set plot title.\nplt.ylabel(\"Frequency\") # Set label for Y axis.\nplt.show() # Show plot."
+    "text": "The dataset is in the file “glass.xlsx”. Let’s load it using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nglass_data = pd.read_excel(\"glass.xlsx\")\n\n\nThe variable Type is categorical. So, let’s ensure Python knows this using the code below.\n\nglass_data['Type'] = pd.Categorical(glass_data['Type'])"
   },
   {
     "objectID": "Tools/Tools2.slides.html#matplotlib-library",
@@ -2702,11 +2695,11 @@
     "text": "Bar charts\nBar charts are commonly used to describe qualitative data classified into various categories based on sector, region, different time periods, or other such factors.\nDifferent sectors, different regions, or different time periods are then labeled as specific categories.\nA bar chart is constructed by creating categories that are represented by labeling each category and which are represented by intervals of equal length on a horizontal axis.\nThe count or frequency within the corresponding category is represented by a bar of height proportional to the frequency."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-15",
-    "href": "Tools/Tools2.slides.html#section-15",
+    "objectID": "Tools/Tools2.slides.html#section-14",
+    "href": "Tools/Tools2.slides.html#section-14",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "plt.figure(figsize=(5, 5))\nsns.countplot(data = glass_data, x = 'Type')\nplt.title('Relative Frequency of Each Category', fontsize = 12)\nplt.ylabel('Relative Frequency', fontsize = 12)\nplt.xlabel('Category', fontsize = 15)\nplt.xticks(fontsize = 12)\nplt.yticks(fontsize = 12)\nplt.savefig('bar_chart.png',dpi=300)"
+    "text": "We create the bar chart using the function countplot() from seaborn.\n\n\nCode\n# Create plot.\nplt.figure(figsize=(7,4)) # Create space for the plot.\nsns.countplot(data = glass_data, x = 'Type') # Show the plot.\nplt.title(\"Bar chart of Type of Glasses\") # Set plot title.\nplt.ylabel(\"Frequency\") # Set label for Y axis.\nplt.show() # Show plot."
   },
   {
     "objectID": "Tools/Tools2.slides.html#saving-plots",
@@ -2723,8 +2716,8 @@
     "text": "Improving the figure\n\nWe can also use other functions to improve the aspect of the figure:\n\nplt.title(fontsize): Font size of the title.\nplt.ylabel(fontsize): Font size of y axis title.\nplt.xlabel(fontsize): Font size of x axis title.\nplt.yticks(fontsize): Font size of the y axis labels.\nplt.xticks(fontsize): Font size of the x axis labels."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-16",
-    "href": "Tools/Tools2.slides.html#section-16",
+    "objectID": "Tools/Tools2.slides.html#section-15",
+    "href": "Tools/Tools2.slides.html#section-15",
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "plt.figure(figsize=(5, 5))\nsns.countplot(data = glass_data, x = 'Type')\nplt.title('Relative Frequency of Each Category', fontsize = 12)\nplt.ylabel('Relative Frequency', fontsize = 12)\nplt.xlabel('Category', fontsize = 15)\nplt.xticks(fontsize = 12)\nplt.yticks(fontsize = 12)\nplt.savefig('bar_chart.png',dpi=300)"
@@ -2860,7 +2853,7 @@
     "href": "Tools/Tools1.slides.html#example-1",
     "title": "Introduction to Python and Pandas",
     "section": "Example 1",
-    "text": "Example 1\nLet’s load the dataset and the pandas library.\n\nimport pandas as pd\n\n# Load the Excel file into a pandas DataFrame.\npenguins_data = pd.read_excel(\"penguins.xlsx\")\n\n# Preview the dataset.\npenguins_data.head(4)\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007"
+    "text": "Example 1\nLet’s use the “penguins.xlsx” dataset.\n\n# Preview the dataset.\npenguins_data.head(4)\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007"
   },
   {
     "objectID": "Tools/Tools1.slides.html#selecting-columns-with-.filter",
@@ -3378,7 +3371,7 @@
     "href": "Module2/EnsembleMethods.slides.html#predictions-1",
     "title": "Ensemble Methods",
     "section": "Predictions",
-    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 0, ..., 1, 0, 0])"
+    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 0, ..., 0, 0, 0])"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#confusion-matrix",
@@ -3392,14 +3385,14 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
+    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.76"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "href": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "title": "Ensemble Methods",
     "section": "A single deep tree",
-    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.76"
+    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.74"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#advantages",
@@ -3476,7 +3469,7 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy-1",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
+    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.76"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#agenda",
