@@ -2629,14 +2629,14 @@
     "href": "Tools/Tools2.slides.html#matplotlib-library",
     "title": "Data Wrangling and Visualization",
     "section": "matplotlib library",
-    "text": "matplotlib library\n\nmatplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python\nIt is widely used in the data science community for plotting data in various formats\nIdeal for creating simple visualizations like line plots, bar charts, scatter plots, and more\nhttps://matplotlib.org/"
+    "text": "matplotlib library\n\nmatplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.\nIt is widely used in the data science community for plotting data in various formats.\nIdeal for creating simple visualizations like line plots, bar charts, scatter plots, and more.\nhttps://matplotlib.org/"
   },
   {
     "objectID": "Tools/Tools2.slides.html#seaborn-library",
     "href": "Tools/Tools2.slides.html#seaborn-library",
     "title": "Data Wrangling and Visualization",
     "section": "seaborn library",
-    "text": "seaborn library\n\nseaborn is a Python library built on top of Matplotlib\nDesigned to make statistical data visualization easy and beautiful\nIdeal for creating informative and attractive visualizations with minimal code\nhttps://seaborn.pydata.org/index.html"
+    "text": "seaborn library\n\nseaborn is a Python library built on top of Matplotlib.\nDesigned to make statistical data visualization easy and beautiful.\nIdeal for creating informative and attractive visualizations with minimal code.\nhttps://seaborn.pydata.org/index.html"
   },
   {
     "objectID": "Tools/Tools2.slides.html#importing-the-libraries",

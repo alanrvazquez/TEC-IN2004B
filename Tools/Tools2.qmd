@@ -204,6 +204,8 @@ complete_data['Comment']
 
 ## 
 
+</br>
+
 The column has some values such as "Requires part: valve" and "Delay: maintenance\n" that we may want to split into columns.
 
 ```{python}
@@ -232,6 +234,8 @@ complete_data['Comment'].str.split(':', expand = True)
 
 ## 
 
+</br>
+
 The result is two columns.
 
 ```{python}
@@ -244,7 +248,7 @@ split_column.head()
 
 ## 
 
-</br>
+</br></br>
 
 We can assign them to new columns in the dataset using the following code.
 
@@ -405,18 +409,18 @@ glass_data['Type'] = pd.Categorical(glass_data['Type'])
 
 ## matplotlib library
 
--   **matplotlib** is a comprehensive library for creating static, animated, and interactive visualizations in Python
--   It is widely used in the data science community for plotting data in various formats
--   Ideal for creating simple visualizations like line plots, bar charts, scatter plots, and more
+-   **matplotlib** is a comprehensive library for creating static, animated, and interactive visualizations in Python.
+-   It is widely used in the data science community for plotting data in various formats.
+-   Ideal for creating simple visualizations like line plots, bar charts, scatter plots, and more.
 -   <https://matplotlib.org/>
 
 ![](images/matplotlib.png){fig-align="center"}
 
 ## seaborn library
 
--   **seaborn** is a Python library built on top of Matplotlib
--   Designed to make statistical data visualization easy and beautiful
--   Ideal for creating informative and attractive visualizations with minimal code
+-   **seaborn** is a Python library built on top of Matplotlib.
+-   Designed to make statistical data visualization easy and beautiful.
+-   Ideal for creating informative and attractive visualizations with minimal code.
 -   <https://seaborn.pydata.org/index.html>
 
 ![](images/seaborn.png){fig-align="center"}
