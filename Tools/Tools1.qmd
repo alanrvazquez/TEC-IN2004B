@@ -59,7 +59,6 @@ jupyter: python3
 
 ![](images/Google_Colaboratory_SVG_Logo.svg.png){fig-align="right" width="2560"}
 
-
 ## Python libraries
 
 </br>
@@ -73,7 +72,6 @@ In this course, we will be working mostly with the following libraries:
 -   `statsmodels` and `scikit-learn` for data modelling
 
 # Reading data with Pandas
-
 
 ## Loading data in Python
 
@@ -244,15 +242,10 @@ To practice, we will use the dataset `penguins_data`.
 
 ## Example 1
 
-Let's load the dataset and the **pandas** library.
+Let's use the "penguins.xlsx" dataset.
 
 ```{python}
 #| echo: true
-
-import pandas as pd
-
-# Load the Excel file into a pandas DataFrame.
-penguins_data = pd.read_excel("penguins.xlsx")
 
 # Preview the dataset.
 penguins_data.head(4)
@@ -492,6 +485,5 @@ mean_penguins_data
 ::: {style="font-size: 50%;"}
 <https://wesmckinney.com/book/>
 :::
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
