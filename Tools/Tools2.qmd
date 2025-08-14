@@ -63,43 +63,17 @@ client_data = pd.read_excel("industrial_dataset.xlsx")
 client_data.head()
 ```
 
-## Remove duplicate rows
-
-</br></br>
-
-Duplicate or identical rows are rows that have the same entries in every column in the dataset.
-
-If only one row is needed for the analysis, we can remove the duplicates using the `.drop_duplicates()` function.
-
-```{python}
-#| echo: true
-
-client_data_single = (client_data
-                     .drop_duplicates()
-                      )
-```
-
-## 
-
-The `client_data_single` dataframe does not have duplicate rows.
-
-```{python}
-#| echo: true
-
-client_data_single.head()
-```
 
 ## Add an index column
 
 </br>
 
-In some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function `.assign` with some extra syntaxis.
+In some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function `.assign` with some extra syntax.
 
 ```{python}
 #| echo: true
 
-client_data_single = (client_data_single
-                      .reset_index(drop = True)
+client_data_single = (client_data
                       .assign(ID = lambda x: x.index + 1)
                       ) 
 ```
@@ -370,6 +344,21 @@ We can convert all names to title case using the function `str.title()`.
 complete_data['Operator'].str.title()
 ```
 
+## Remove duplicate rows
+
+Duplicate rows have the same entries in every column in the dataset. If only one row is needed for the analysis, we can remove the duplicates using `.drop_duplicates()`. For example, we can see the unique names of the operators.
+
+```{python}
+#| echo: true
+
+operators = complete_data['Operator'].str.title()
+
+(operators
+.drop_duplicates()
+)
+```
+
+
 # Data Visualization
 
 ## Example 2
@@ -611,6 +600,5 @@ plt.xticks(fontsize = 12)
 plt.yticks(fontsize = 12)
 plt.savefig('bar_chart.png',dpi=300)
 ```
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
