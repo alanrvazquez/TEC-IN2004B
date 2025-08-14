@@ -215,23 +215,21 @@ Dillman said
 
 </br>
 
-- In the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.
+-   In the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.
 
-- By 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).
+-   By 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).
 
-- Signet Bank’s strategy: model **profitability**, not just probability of default, since a small fraction of customers generate most profits.  
+-   Signet Bank’s strategy: model **profitability**, not just probability of default, since a small fraction of customers generate most profits.
 
-##
+## 
 
 </br></br></br>
 
+-   **Problem:** They lacked data on how different credit terms affected profitability.
 
-- **Problem:** They lacked data on how different credit terms affected profitability.
+. . .
 
-. . . 
-
-- **Solution:** Acquire data at a cost — run experiments offering varied terms to different customers. Losses from these offers were considered **investments in data**.
-
+-   **Solution:** Acquire data at a cost — run experiments offering varied terms to different customers. Losses from these offers were considered **investments in data**.
 
 ## What happened?
 
@@ -242,7 +240,6 @@ The losses continued for several years while data scientists worked to build pre
 Because the company viewed these losses as investments in data, they persisted despite complaints from stakeholders.
 
 Eventually, Signet's credit card business turned around and became so profitable that it was spun off to separate it from the bank's other operations, which were now overshadowing the success of its consumer lending business.
-
 
 ## Richard Fairbanks and Nigel Morris
 
@@ -257,34 +254,6 @@ Founders of
 ![](images/Capital_One_logo.png){fig-align="center" width="323"}
 :::
 :::::
-
-## Most used data science tools
-
-1.  Python
-2.  R
-3.  SAS
-4.  Excel
-5.  Power BI
-6.  Tableau
-7.  Apache Spark
-
-<https://hackr.io/blog/top-data-analytics-tools>
-
-## Other tools
-
--   RapidMiner (<https://rapidminer.com/products/studio/>)
-
--   JMP (<https://www.jmp.com/es_mx/home.html>)
-
--   Minitab (<https://www.minitab.com/es-mx/products/minitab/>)
-
--   Trifacta (<https://www.trifacta.com/>)
-
--   BigML (<https://bigml.com/>)
-
--   MLBase (<http://www.mlbase.org/>)
-
--   Google Cloud AutoML (<https://cloud.google.com/automl/>)
 
 # Supervised and Unsupervised Learning
 
@@ -322,7 +291,7 @@ Since we have the correct (true) responses, the algorithm can identify patterns 
 
 The algorithm is *trained* to reach a high level of accuracy and performance for predicting the responses.
 
-## Mathematically 
+## Mathematically
 
 </br>
 
@@ -334,19 +303,19 @@ $$
 
 where $f$ is a function of the predictors and $\epsilon$ is a natural (random) error.
 
-. . . 
+. . .
 
-- $f(\boldsymbol{X})$ represents the true relationship between the response ($Y$) and predictors ($\boldsymbol{X}$). 
+-   $f(\boldsymbol{X})$ represents the true relationship between the response ($Y$) and predictors ($\boldsymbol{X}$).
 
-. . . 
+. . .
 
-- However, $f(\boldsymbol{X})$ is unknown and very complex! 
+-   However, $f(\boldsymbol{X})$ is unknown and very complex!
 
 ## 
 
 </br></br></br>
 
-A supervised algorithm attempts to construct an approximation $\hat{f}(\boldsymbol{X})$ to the true function $f(\boldsymbol{X})$ using available data on the predictors and response. 
+A supervised algorithm attempts to construct an approximation $\hat{f}(\boldsymbol{X})$ to the true function $f(\boldsymbol{X})$ using available data on the predictors and response.
 
 Ideally, the algorithm builds an $\hat{f}(\boldsymbol{X})$ that is interpretable, but not necessarily.
 
@@ -372,11 +341,11 @@ In supervised learning, there are two main types of data:
 
 </br>
 
-studies [data of the predictors]{style="color:green;"} ($\boldsymbol{X}$) to identify patterns. [There are no responses.]{style="color:green;"} 
+studies [data of the predictors]{style="color:green;"} ($\boldsymbol{X}$) to identify patterns. [There are no responses.]{style="color:green;"}
 
 An unsupervised algorithm identifies correlations and relationships by analyzing available training data. So, the unsupervised algorithm is left to interpret the data set and organize it in some way to describe its structure.
 
-In technical terms, we want the algorithm to say something about the joint probability distribution of the predictors $P(X_1, X_2, \ldots, X_p)$. 
+In technical terms, we want the algorithm to say something about the joint probability distribution of the predictors $P(X_1, X_2, \ldots, X_p)$.
 
 ## Popular Unsupervised Algorithms
 
