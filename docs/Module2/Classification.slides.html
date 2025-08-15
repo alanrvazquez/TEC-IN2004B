@@ -230,7 +230,7 @@ Alan R. Vazquez
 <h2>Load the libraries</h2>
 <p><br></p>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="9126400d" class="cell" data-execution_count="1">
+<div id="7ce8bd85" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -247,21 +247,21 @@ Alan R. Vazquez
 <p><br></p>
 <p><span style="color:green;"><strong>Regression Problems</strong></span>. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.</p>
 <p><span style="color:blue;"><strong>Classification Problems</strong></span>. The response is categorical and involves <em>K</em> different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).</p>
-<p>The predictors (<span class="math inline">\(\boldsymbol{X}\)</span>) can be <em>numerical</em> or <em>categorical</em>.</p>
+<p>The predictors can be <em>numerical</em> or <em>categorical</em>.</p>
 </section>
 <section id="main-data-science-problems-1" class="slide level2">
 <h2>Main data science problems</h2>
 <p><br></p>
 <p><span style="color:gray;"><strong>Regression Problems</strong>. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.</span></p>
 <p><span style="color:blue;"><strong>Classification Problems</strong></span>. The response is categorical and involves <em>K</em> different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).</p>
-<p>The predictors (<span class="math inline">\(\boldsymbol{X}\)</span>) can be <em>numerical</em> or <em>categorical</em>.</p>
+<p>The predictors can be <em>numerical</em> or <em>categorical</em>.</p>
 </section>
 <section id="terminology" class="slide level2">
 <h2>Terminology</h2>
 <p><br><br></p>
-<p>Explanatory variables or predictors:</p>
+<p>Recall that</p>
 <ul>
-<li><span class="math inline">\(X\)</span> represents an explanatory variable or predictor.</li>
+<li><span class="math inline">\(X\)</span> represents a predictor or explanatory variable.</li>
 <li><span class="math inline">\(\boldsymbol{X} = (X_1, X_2, \ldots, X_p)\)</span> represents a collection of <span class="math inline">\(p\)</span> predictors.</li>
 </ul>
 </section>
@@ -283,16 +283,14 @@ Alan R. Vazquez
 </section>
 <section id="classification-algorithms" class="slide level2">
 <h2>Classification algorithms</h2>
-<p><br></p>
-<p>Classification algorithms use predictor values <span style="color:blue;">to predict the class</span> of the response (target or reference).</p>
+<p><br><br></p>
+<p>Classification algorithms use predictor values <span style="color:#4682B4;"><em>to predict the class</em></span> of the response (either target or reference).</p>
 <p><br></p>
 <p>That is, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not.</p>
-<p><br></p>
-<p>Technically, <span style="color:purple;"><strong>they predict the probability</strong></span> that the record belongs to the target class.</p>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><br><br></p>
+<section id="the-goal-of-classification-algorithms" class="slide level2">
+<h2>The goal of classification algorithms</h2>
+<p><br></p>
 <p><span style="color:darkgreen;"><strong>Goal</strong></span>: Develop a function <span class="math inline">\(C(\boldsymbol{X})\)</span> for predicting <span class="math inline">\(Y = \{0, 1\}\)</span> from <span class="math inline">\(\boldsymbol{X}\)</span>.</p>
 <p><br></p>
 <div class="fragment">
@@ -321,7 +319,7 @@ Alan R. Vazquez
 <p>Both emails would be classified as spam. However, we would have greater confidence in our classification for the second email.</p>
 </div>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>Technically, <span class="math inline">\(C(\boldsymbol{X})\)</span> works with the <em>conditional probability</em>:</p>
@@ -344,13 +342,13 @@ Alan R. Vazquez
     \end{cases}.\]</span></p>
 <p>This function classifies to the most probable class using the conditional distribution <span class="math inline">\(P(Y | \boldsymbol{X} = \boldsymbol{x})\)</span>.</p>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p><span style="color:red;">HOWEVER, we don’t (and will never) know the true form of <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span>!</span></p>
 <p><br></p>
 <div class="fragment">
-<p>To overcome this issue, we several standard solutions:</p>
+<p>To overcome this issue, we several methods:</p>
 <div>
 <ul>
 <li class="fragment"><span style="color:brown;"><strong>Logistic Regression</strong></span>: Impose an structure on <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span>. This was covered in IN1002B.</li>
@@ -359,6 +357,21 @@ Alan R. Vazquez
 </ul>
 </div>
 </div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p>Once we estimate <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span> using one of these methods, we plug it into the Bayes classifier:</p>
+<p><span class="math display">\[\hat{C}(\boldsymbol{X}) =
+    \begin{cases}
+      1, &amp; \text{if}\ \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x}) &gt; 0.5 \\
+      0, &amp; \text{if}\ \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x}) \leq 0.5
+    \end{cases}.\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span> is an estimate of <span class="math inline">\(P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})\)</span>.</li>
+<li><span class="math inline">\(\hat{C}(\boldsymbol{X})\)</span> is an estimate of the true Bayes Classifier <span class="math inline">\(C(\boldsymbol{X})\)</span></li>
+</ul>
 </section></section>
 <section>
 <section id="training-validation-and-test-data" class="title-slide slide level1 center">
@@ -371,7 +384,7 @@ Alan R. Vazquez
 <p>The application of data science algorithms needs two data sets:</p>
 <div>
 <ul>
-<li class="fragment"><p><span style="color:blue;"><strong>Training data</strong></span> is data that we use to train or construct an approximation <span class="math inline">\(\hat{C}(\boldsymbol{X})\)</span> to the true Bayes Classifier <span class="math inline">\(C(\boldsymbol{X})\)</span>.</p></li>
+<li class="fragment"><p><span style="color:blue;"><strong>Training data</strong></span> is data that we use to train or construct the approximation <span class="math inline">\(\hat{C}(\boldsymbol{X})\)</span>.</p></li>
 <li class="fragment"><p><span style="color:green;"><strong>Test data</strong></span> is data that we use to evaluate the classification performance of <span class="math inline">\(\hat{C}(\boldsymbol{X})\)</span> only.</p></li>
 </ul>
 </div>
@@ -410,12 +423,12 @@ Alan R. Vazquez
 <section id="dataset" class="slide level2">
 <h2>Dataset</h2>
 <p>The data is located in the file “banknotes.xlsx”.</p>
-<div id="070f600c" class="cell" data-execution_count="2">
+<div id="65975658" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>bank_data <span class="op">=</span> pd.read_excel(<span class="st">"banknotes.xlsx"</span>)</span>
 <span id="cb2-2"><a></a><span class="co"># Set response variable as categorical.</span></span>
 <span id="cb2-3"><a></a>bank_data[<span class="st">'Status'</span>] <span class="op">=</span> pd.Categorical(bank_data[<span class="st">'Status'</span>])</span>
 <span id="cb2-4"><a></a>bank_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="278">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -503,12 +516,12 @@ Alan R. Vazquez
 </section>
 <section id="create-the-predictor-matrix" class="slide level2">
 <h2>Create the predictor matrix</h2>
-<p>We use the function <code>.filter()</code> from <strong>pandas</strong> to select two predictors: Bottom and Top.</p>
-<div id="d7ca8be5" class="cell" data-execution_count="3">
+<p>We use the function <code>.filter()</code> from <strong>pandas</strong> to select two predictors: Top and Bottom.</p>
+<div id="b94067c4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Set full matrix of predictors.</span></span>
-<span id="cb3-2"><a></a>X_full <span class="op">=</span> bank_data.<span class="bu">filter</span>([<span class="st">'Bottom'</span>, <span class="st">'Top'</span>])</span>
+<span id="cb3-2"><a></a>X_full <span class="op">=</span> bank_data.<span class="bu">filter</span>([<span class="st">'Top'</span>, <span class="st">'Bottom'</span>])</span>
 <span id="cb3-3"><a></a>X_full.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="279">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -528,30 +541,30 @@ Alan R. Vazquez
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Bottom</th>
 <th data-quarto-table-cell-role="th">Top</th>
+<th data-quarto-table-cell-role="th">Bottom</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>9.0</td>
 <td>9.7</td>
+<td>9.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>8.1</td>
 <td>9.5</td>
+<td>8.1</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>8.7</td>
 <td>9.6</td>
+<td>8.7</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>7.5</td>
 <td>10.4</td>
+<td>7.5</td>
 </tr>
 </tbody>
 </table>
@@ -562,12 +575,12 @@ Alan R. Vazquez
 </section>
 <section id="create-the-response-column" class="slide level2">
 <h2>Create the response column</h2>
-<p>We use the function <code>.filter()</code> from <strong>pandas</strong> to extract the column <code>Status</code> from the data frame. We store the result in <code>Y_full</code>.</p>
-<div id="9dda5176" class="cell" data-execution_count="4">
+<p>We do the same to extract the column <code>Status</code> from the data frame. We store the result in <code>Y_full</code>.</p>
+<div id="7d2faba1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Set full matrix of responses.</span></span>
 <span id="cb4-2"><a></a>Y_full <span class="op">=</span> bank_data.<span class="bu">filter</span>([<span class="st">'Status'</span>])</span>
 <span id="cb4-3"><a></a>Y_full.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="280">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -617,7 +630,7 @@ Alan R. Vazquez
 <section id="set-the-target-category" class="slide level2">
 <h2>Set the target category</h2>
 <p>To set the target category in the response we use the <code>get_dummies()</code> function.</p>
-<div id="526f234a" class="cell" data-execution_count="5">
+<div id="f3802bb5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Create dummy variables.</span></span>
 <span id="cb5-2"><a></a>Y_dummies <span class="op">=</span> pd.get_dummies(Y_full, dtype <span class="op">=</span> <span class="st">'int'</span>)</span>
 <span id="cb5-3"><a></a></span>
@@ -626,7 +639,7 @@ Alan R. Vazquez
 <span id="cb5-6"><a></a></span>
 <span id="cb5-7"><a></a><span class="co"># Show target variable.</span></span>
 <span id="cb5-8"><a></a>Y_target_full.head() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="281">
 <pre><code>0    0
 1    0
 2    0
@@ -639,10 +652,10 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <section id="lets-partition-the-dataset" class="slide level2">
 <h2>Let’s partition the dataset</h2>
 <p><br></p>
-<div id="57b9ced9" class="cell" data-execution_count="6">
+<div id="8e6ac09d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Split the dataset into training and validation.</span></span>
 <span id="cb7-2"><a></a>X_train, X_valid, Y_train, Y_valid <span class="op">=</span> train_test_split(X_full, Y_target_full, </span>
-<span id="cb7-3"><a></a>                                                      test_size <span class="op">=</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a></a>                                                      test_size <span class="op">=</span> <span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">507134</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>The function makes a clever partition of the data using the <em>empirical</em> distribution of the response.</p></li>
@@ -653,10 +666,10 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <section id="section-5" class="slide level2">
 <h2></h2>
 <p>The predictors and response in the training dataset are in the objects <code>X_train</code> and <code>Y_train</code>, respectively. We compile these objects into a single dataset using the function <code>.concat()</code> from <strong>pandas</strong>. The argument <code>axis = 1</code> tells <code>.concat()</code> to concatenate the datasets by their rows.</p>
-<div id="ccfa9d87" class="cell" data-execution_count="7">
+<div id="00b7dd28" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>training_dataset <span class="op">=</span> pd.concat([X_train, Y_train], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb8-2"><a></a>training_dataset.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="283">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -676,35 +689,35 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Bottom</th>
 <th data-quarto-table-cell-role="th">Top</th>
+<th data-quarto-table-cell-role="th">Bottom</th>
 <th data-quarto-table-cell-role="th">Status_counterfeit</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">126</td>
-<td>9.4</td>
-<td>11.6</td>
-<td>1</td>
+<td data-quarto-table-cell-role="th">49</td>
+<td>9.8</td>
+<td>7.8</td>
+<td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">128</td>
-<td>10.1</td>
-<td>11.3</td>
-<td>1</td>
+<td data-quarto-table-cell-role="th">95</td>
+<td>9.5</td>
+<td>9.0</td>
+<td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">183</td>
-<td>10.1</td>
-<td>11.4</td>
-<td>1</td>
+<td data-quarto-table-cell-role="th">40</td>
+<td>9.4</td>
+<td>8.9</td>
+<td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">104</td>
-<td>11.8</td>
-<td>10.9</td>
-<td>1</td>
+<td data-quarto-table-cell-role="th">48</td>
+<td>10.3</td>
+<td>7.9</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -716,10 +729,10 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <section id="section-6" class="slide level2">
 <h2></h2>
 <p>Equivalently, the predictors and response in the validation dataset are in the objects <code>X_valid</code> and <code>Y_valid</code>, respectively.</p>
-<div id="e18be551" class="cell" data-execution_count="8">
+<div id="674da311" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>validation_dataset <span class="op">=</span> pd.concat([X_valid, Y_valid], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb9-2"><a></a>validation_dataset.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="284">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -739,41 +752,41 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Bottom</th>
 <th data-quarto-table-cell-role="th">Top</th>
+<th data-quarto-table-cell-role="th">Bottom</th>
 <th data-quarto-table-cell-role="th">Status_counterfeit</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">114</td>
-<td>10.6</td>
-<td>10.8</td>
+<td data-quarto-table-cell-role="th">154</td>
+<td>11.5</td>
+<td>11.0</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">127</td>
-<td>10.2</td>
-<td>11.8</td>
+<td data-quarto-table-cell-role="th">109</td>
+<td>11.2</td>
+<td>10.4</td>
 <td>1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">144</td>
-<td>11.4</td>
-<td>10.0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>9.2</td>
-<td>10.0</td>
+<td data-quarto-table-cell-role="th">57</td>
+<td>9.0</td>
+<td>8.8</td>
 <td>0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">59</td>
-<td>8.2</td>
 <td>10.3</td>
+<td>8.2</td>
 <td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">160</td>
+<td>12.2</td>
+<td>7.4</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -812,8 +825,8 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 </section>
 <section id="basic-idea-of-a-decision-tree" class="slide level2">
 <h2>Basic idea of a decision tree</h2>
-<p>Stratify or segment the prediction space into several simpler regions.</p>
-<div id="99e17ef7" class="cell" data-execution_count="9">
+<p>Stratify or segment the predictor space into several simpler regions.</p>
+<div id="f3e327e1" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -829,7 +842,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="4c67793f" class="cell" data-execution_count="10">
+<div id="86481892" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -880,7 +893,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="169e6f6e" class="cell" data-execution_count="11">
+<div id="bbbbae9d" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -900,7 +913,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="6a8d18d2" class="cell" data-execution_count="12">
+<div id="009989c3" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -920,7 +933,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="8029c1c4" class="cell" data-execution_count="13">
+<div id="9b46a1e6" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -940,7 +953,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="7d886c79" class="cell" data-execution_count="14">
+<div id="61839457" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -960,7 +973,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="b083aa8e" class="cell" data-execution_count="15">
+<div id="b19eaddd" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -980,7 +993,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="ef7579e1" class="cell" data-execution_count="16">
+<div id="274ca1aa" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1000,7 +1013,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="360e254b" class="cell" data-execution_count="17">
+<div id="d6d512f1" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1020,7 +1033,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="e1ffdcca" class="cell" data-execution_count="18">
+<div id="1f0050e8" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1040,7 +1053,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="b1a18313" class="cell" data-execution_count="19">
+<div id="58434788" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1060,7 +1073,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="9c4d5857" class="cell" data-execution_count="20">
+<div id="6183d78c" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1084,7 +1097,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="7e7a3a50" class="cell" data-execution_count="21">
+<div id="43092e90" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1108,7 +1121,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="6746cf91" class="cell" data-execution_count="22">
+<div id="f8b8c6b1" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1132,7 +1145,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="abad5cd8" class="cell" data-execution_count="23">
+<div id="2da413d7" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1156,7 +1169,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="b3a2ae26" class="cell" data-execution_count="24">
+<div id="c76906cb" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1180,7 +1193,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="324df87c" class="cell" data-execution_count="25">
+<div id="04087372" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1204,7 +1217,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="9f826925" class="cell" data-execution_count="26">
+<div id="3b9ea835" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1264,19 +1277,30 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:40%;">
+<p><br></p>
 <p>There are three different metrics for impurity:</p>
 <ul>
-<li><p>Risk of misclassification.</p></li>
+<li><p>Misclassification risk.</p></li>
 <li><p>Cross entropy.</p></li>
 <li><p>Gini impurity index.</p></li>
 </ul>
 </div><div class="column" style="width:60%;">
 <p><img data-src="images/Metrics1.png" class="quarto-figure quarto-figure-center" width="469"> <img data-src="images/Metrics2.png" class="quarto-figure quarto-figure-center" width="396"></p>
 <div style="font-size: 50%;">
-<p>Proportion of elements in a class</p>
+<p>p: Proportion of elements in the target class</p>
 </div>
 </div></div>
 </div>
+</section>
+<section id="mathematically" class="slide level2">
+<h2>Mathematically</h2>
+<p><br></p>
+<p>Let <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> be the proportion of observations in the target and reference class, respectively, in a node.</p>
+<ul>
+<li><p>Misclassification risk: <span class="math inline">\(1 - \max\{p_1, p_2\}\)</span></p></li>
+<li><p>Cross entropy: <span class="math inline">\(- (p_1 \log(p_1) + p_2 \log(p_2))\)</span></p></li>
+<li><p>Gini impurity index: <span class="math inline">\(p_1(1 - p_1) + p_2(1 - p_2)\)</span></p></li>
+</ul>
 </section>
 <section id="pruning-the-tree" class="slide level2">
 <h2>Pruning the tree</h2>
@@ -1289,7 +1313,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="2c5caf9f" class="cell" data-execution_count="27">
+<div id="d1a125d8" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1313,7 +1337,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="ae178338" class="cell" data-execution_count="28">
+<div id="2344a907" class="cell" data-execution_count="28">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1336,7 +1360,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <p><br><br></p>
 <p>To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.</p>
 <p>The algorithm has a tuning parameter called <span class="math inline">\(\alpha\)</span>, which <strong>places greater weight on the number of tree nodes</strong> (or size):</p>
-<p><span class="math display">\[\text{Overall impurity of terminal nodes} + \alpha (\text{\# terminal nodes})\]</span></p>
+<p><span class="math display">\[\text{Classification performance of tree} + \alpha (\text{\# terminal nodes})\]</span></p>
 <ul>
 <li><p>Large values of <span class="math inline">\(\alpha\)</span> result in small trees with few nodes.</p></li>
 <li><p>Small values of <span class="math inline">\(\alpha\)</span> result in large trees with many nodes.</p></li>
@@ -1344,8 +1368,8 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 </section>
 <section id="in-python" class="slide level2">
 <h2>In Python</h2>
-<p>In Python, we can use the <code>DecisionTreeClassifier()</code> and <code>fit()</code> functions from <strong>scikit-learn</strong> to train a decision tree.</p>
-<div id="d89bf9db" class="cell" data-execution_count="29">
+<p>In Python, we use the <code>DecisionTreeClassifier()</code> and <code>fit()</code> functions from <strong>scikit-learn</strong> to train a classification tree.</p>
+<div id="38a8553a" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># We tell Python we want a classification tree</span></span>
 <span id="cb10-2"><a></a>clf <span class="op">=</span> DecisionTreeClassifier(min_samples_leaf<span class="op">=</span> <span class="dv">5</span>, ccp_alpha<span class="op">=</span><span class="dv">0</span>, </span>
 <span id="cb10-3"><a></a>                              random_state<span class="op">=</span><span class="dv">507134</span>)</span>
@@ -1359,7 +1383,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <h2>Plotting the tree</h2>
 <p><br></p>
 <p>To see the decision tree, we use the <code>plot_tree</code> function from <strong>scikit-learn</strong> and some commands from <strong>matplotlib</strong>. Specifically, we use the <code>plt.figure()</code> functions to define the size of the figure and <code>plt.show()</code> to display the figure.</p>
-<div id="a003e751" class="cell" data-execution_count="30">
+<div id="8c868e9a" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
 <span id="cb11-2"><a></a>plot_tree(clf, filled<span class="op">=</span><span class="va">True</span>, rounded<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-3"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1368,11 +1392,37 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <section id="section-29" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="45e726a2" class="cell" data-execution_count="31">
+<div id="09b4cbd6" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="Classification_files/figure-revealjs/cell-32-output-1.png" class="quarto-figure quarto-figure-center" width="614" height="463"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="simplified-decision-boundary" class="slide level2">
+<h2>Simplified decision boundary</h2>
+<p><br></p>
+<div id="48098406" class="cell" data-execution_count="32">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Classification_files/figure-revealjs/cell-33-output-1.png" class="quarto-figure quarto-figure-center" width="812" height="455"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="decision-boundary-logistic-regression" class="slide level2">
+<h2>Decision boundary logistic regression</h2>
+<p><br></p>
+<div id="298df623" class="cell" data-execution_count="33">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Classification_files/figure-revealjs/cell-34-output-1.png" class="quarto-figure quarto-figure-center" width="812" height="455"></p>
 </figure>
 </div>
 </div>
@@ -1392,16 +1442,16 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <p>Now, let’s illustrate the pruning technique to find a small decision tree that performs well. To do this, we will train several decision trees using different values of the <span class="math inline">\(\alpha\)</span> parameter, which weighs the contribution of the tree branches.</p>
 <p><br></p>
 <p>In Python, this is achieved using the <code>cost_complexity_pruning_path()</code> function with the following syntax.</p>
-<div id="5e8512b2" class="cell" data-execution_count="32">
+<div id="9097b3c2" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>path <span class="op">=</span> clf.cost_complexity_pruning_path(X_train, Y_train)</span>
-<span id="cb12-2"><a></a>ccp_alphas, impurities <span class="op">=</span> path.ccp_alphas, path.impurities</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a></a>ccp_alphas <span class="op">=</span> path.ccp_alphas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-30" class="slide level2">
 <h2></h2>
 <p>The <code>ccp_alphas</code> and <code>impurities</code> objects contain the different values of the <span class="math inline">\(\alpha\)</span> parameter used, as well as the impurity performance of the generated trees.</p>
 <p>To train a decision tree using different alpha values, we use the following code that iterates over the values contained in <code>ccp_alphas</code>.</p>
-<div id="882c6fb5" class="cell" data-execution_count="33">
+<div id="7ee432a8" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>clfs <span class="op">=</span> []</span>
 <span id="cb13-2"><a></a><span class="cf">for</span> ccp_alpha <span class="kw">in</span> ccp_alphas:</span>
 <span id="cb13-3"><a></a>    clf_alpha <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">507134</span>, min_samples_leaf<span class="op">=</span> <span class="dv">5</span>, </span>
@@ -1422,7 +1472,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <p>We evaluate a classification tree by classifying observations that were not used for training.</p>
 <p>That is, we use the classifier to predict categories in the validation data set using only the predictor values from this set.</p>
 <p>In Python, we use the commands:</p>
-<div id="063278bd" class="cell" data-execution_count="34">
+<div id="d9f91e42" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Predict classes.</span></span>
 <span id="cb14-2"><a></a>predicted_class <span class="op">=</span> clf.predict(X_valid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1431,69 +1481,51 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <h2></h2>
 <p><br></p>
 <p>The <code>predict()</code> function generates actual classes to which each observation was assigned.</p>
-<div id="baca78b9" class="cell" data-execution_count="35">
+<div id="dbef5531" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>predicted_class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>array([1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0,
-       1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1,
-       0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="313">
+<pre><code>array([1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+       0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,
+       1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1])</code></pre>
 </div>
 </div>
 </section>
 <section id="section-32" class="slide level2">
 <h2></h2>
+<p><br></p>
+<div id="1f69d8f2" class="cell" data-execution_count="38">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Classification_files/figure-revealjs/cell-39-output-1.png" class="quarto-figure quarto-figure-center" width="812" height="455"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-33" class="slide level2">
+<h2></h2>
 <p>The <code>predict_proba()</code> function generates the probabilities used by the algorithm to assign the classes.</p>
-<div id="529cfc90" class="cell" data-execution_count="36">
+<div id="690e2979" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Predict probabilities.</span></span>
 <span id="cb17-2"><a></a>predicted_probability <span class="op">=</span> clf.predict_proba(X_valid)</span>
 <span id="cb17-3"><a></a>predicted_probability</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="315">
 <pre><code>array([[0.        , 1.        ],
        [0.        , 1.        ],
+       [1.        , 0.        ],
+       [1.        , 0.        ],
+       [0.28571429, 0.71428571],
        [0.        , 1.        ],
        [1.        , 0.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [0.        , 1.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [0.        , 1.        ],
-       [1.        , 0.        ],
+       [0.28571429, 0.71428571],
        [1.        , 0.        ],
        [0.        , 1.        ],
        [0.        , 1.        ],
-       [0.        , 1.        ],
-       [0.4       , 0.6       ],
-       [0.        , 1.        ],
-       [0.        , 1.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [0.4       , 0.6       ],
-       [1.        , 0.        ],
        [1.        , 0.        ],
        [0.        , 1.        ],
-       [1.        , 0.        ],
+       [0.28571429, 0.71428571],
        [0.        , 1.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [0.83333333, 0.16666667],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
-       [0.8       , 0.2       ],
-       [1.        , 0.        ],
-       [0.        , 1.        ],
-       [0.4       , 0.6       ],
-       [1.        , 0.        ],
-       [0.        , 1.        ],
-       [1.        , 0.        ],
-       [0.        , 1.        ],
-       [1.        , 0.        ],
-       [1.        , 0.        ],
        [0.        , 1.        ],
        [1.        , 0.        ],
        [0.        , 1.        ],
@@ -1503,11 +1535,42 @@ Name: Status_counterfeit, dtype: int64</code></pre>
        [0.        , 1.        ],
        [1.        , 0.        ],
        [0.        , 1.        ],
+       [0.28571429, 0.71428571],
+       [0.        , 1.        ],
+       [1.        , 0.        ],
+       [0.        , 1.        ],
        [1.        , 0.        ],
        [1.        , 0.        ],
+       [0.        , 1.        ],
+       [0.        , 1.        ],
+       [0.        , 1.        ],
+       [0.        , 1.        ],
+       [1.        , 0.        ],
+       [0.        , 1.        ],
+       [0.28571429, 0.71428571],
+       [0.28571429, 0.71428571],
+       [1.        , 0.        ],
+       [0.28571429, 0.71428571],
+       [1.        , 0.        ],
+       [0.        , 1.        ],
+       [1.        , 0.        ],
+       [0.28571429, 0.71428571],
+       [0.        , 1.        ],
+       [0.        , 1.        ],
+       [0.28571429, 0.71428571],
+       [0.28571429, 0.71428571],
+       [0.        , 1.        ],
+       [0.28571429, 0.71428571],
+       [0.        , 1.        ],
        [1.        , 0.        ],
        [1.        , 0.        ],
-       [1.        , 0.        ]])</code></pre>
+       [0.        , 1.        ],
+       [0.        , 1.        ],
+       [0.        , 1.        ],
+       [1.        , 0.        ],
+       [1.        , 0.        ],
+       [0.        , 1.        ],
+       [0.        , 1.        ]])</code></pre>
 </div>
 </div>
 </section>
@@ -1524,28 +1587,28 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <h2>In Python</h2>
 <p><br></p>
 <p>We calculate the confusion matrix using the homonymous function <strong>scikit-learn</strong>.</p>
-<div id="68a501ff" class="cell" data-execution_count="37">
+<div id="2cf1ca41" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># Compute confusion matrix.</span></span>
 <span id="cb19-2"><a></a>cm <span class="op">=</span> confusion_matrix(Y_valid, predicted_class)</span>
 <span id="cb19-3"><a></a></span>
 <span id="cb19-4"><a></a><span class="co"># Show confusion matrix.</span></span>
 <span id="cb19-5"><a></a><span class="bu">print</span>(cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[36  2]
- [ 0 22]]</code></pre>
+<pre><code>[[19  4]
+ [ 0 37]]</code></pre>
 </div>
 </div>
 </section>
-<section id="section-33" class="slide level2">
+<section id="section-34" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>We can display the confusion matrix using the <code>ConfusionMatrixDisplay()</code> function.</p>
-<div id="8854fe02" class="cell" data-execution_count="38">
+<div id="eab49f35" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>ConfusionMatrixDisplay(cm).plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Classification_files/figure-revealjs/cell-39-output-1.png" class="quarto-figure quarto-figure-center" width="514" height="435"></p>
+<p><img data-src="Classification_files/figure-revealjs/cell-42-output-1.png" class="quarto-figure quarto-figure-center" width="514" height="435"></p>
 </figure>
 </div>
 </div>
@@ -1555,11 +1618,11 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <h2>Accuracy</h2>
 <p>A simple metric for summarizing the information in the confusion matrix is <strong>accuracy</strong>. It is the proportion of correct classifications for both classes, out of the total classifications performed.</p>
 <p>In Python, we calculate accuracy using the <strong>scikit-learn</strong> <code>accuracy_score()</code> function.</p>
-<div id="c3912ec0" class="cell" data-execution_count="39">
+<div id="d886fcc5" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>accuracy <span class="op">=</span> accuracy_score(Y_valid, predicted_class)</span>
 <span id="cb22-2"><a></a><span class="bu">print</span>( <span class="bu">round</span>(accuracy, <span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.97</code></pre>
+<pre><code>0.93</code></pre>
 </div>
 </div>
 <p>The higher the accuracy, the better the performance of the classifier.</p>
@@ -1568,15 +1631,16 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <h2>Let’s get back to the penalized trees</h2>
 <p><br></p>
 <p>Now, for each of those trees contained in <code>clfs</code>, we evaluate the performance in terms of accuracy for the training and validation data.</p>
-<div id="5ab46b21" class="cell" data-execution_count="40">
+<div id="44d19b51" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>train_scores <span class="op">=</span> [clf.score(X_train, Y_train) <span class="cf">for</span> clf <span class="kw">in</span> clfs]</span>
 <span id="cb24-2"><a></a>validation_scores <span class="op">=</span> [clf.score(X_valid, Y_valid) <span class="cf">for</span> clf <span class="kw">in</span> clfs]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The <code>.score()</code> function computes the accuracy of a classification tree.</p>
 </section>
-<section id="section-34" class="slide level2">
+<section id="section-35" class="slide level2">
 <h2></h2>
 <p>We visualize the results using the following plot.</p>
-<div id="152078cd" class="cell" data-execution_count="41">
+<div id="7d0fbdc6" class="cell" data-execution_count="44">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -1591,7 +1655,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Classification_files/figure-revealjs/cell-42-output-1.png" class="quarto-figure quarto-figure-center" width="833" height="455"></p>
+<p><img data-src="Classification_files/figure-revealjs/cell-45-output-1.png" class="quarto-figure quarto-figure-center" width="833" height="455"></p>
 </figure>
 </div>
 </div>
@@ -1601,7 +1665,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <h2>Choosing the best tree</h2>
 <p>We can see that the best <span class="math inline">\(\alpha\)</span> value for the validation dataset is 0.01.</p>
 <p>To train our new reduced tree, we use the <code>DecisionTreeClassifier()</code> function again with the <code>ccp_alpha</code> parameter set to the best <span class="math inline">\(\alpha\)</span> value. The object containing this new tree is <code>clf_simple</code>.</p>
-<div id="3101c434" class="cell" data-execution_count="42">
+<div id="2439fd83" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co"># We tell Python that we want a classification tree</span></span>
 <span id="cb26-2"><a></a>clf_simple <span class="op">=</span> DecisionTreeClassifier(ccp_alpha<span class="op">=</span><span class="dv">0</span>, min_samples_leaf<span class="op">=</span> <span class="dv">5</span>)</span>
 <span id="cb26-3"><a></a></span>
@@ -1609,17 +1673,17 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <span id="cb26-5"><a></a>clf_simple.fit(X_train, Y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-35" class="slide level2">
+<section id="section-36" class="slide level2">
 <h2></h2>
 <p>Once this is done, we can visualize the small tree using the <code>plot_tree()</code> function.</p>
-<div id="c55c226d" class="cell" data-execution_count="43">
+<div id="d47e9963" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
 <span id="cb27-2"><a></a>plot_tree(clf_simple, filled<span class="op">=</span><span class="va">True</span>, rounded<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb27-3"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Classification_files/figure-revealjs/cell-44-output-1.png" class="quarto-figure quarto-figure-center" width="466" height="463"></p>
+<p><img data-src="Classification_files/figure-revealjs/cell-47-output-1.png" class="quarto-figure quarto-figure-center" width="466" height="463"></p>
 </figure>
 </div>
 </div>
@@ -1629,12 +1693,12 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <h2>Accuracy in Python</h2>
 <p><br><br></p>
 <p>Let’s compute the accuracy of the pruned tree.</p>
-<div id="1d0de837" class="cell" data-execution_count="44">
+<div id="1af889e8" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>single_tree_Y_pred <span class="op">=</span> clf_simple.predict(X_valid)</span>
 <span id="cb28-2"><a></a>accuracy <span class="op">=</span> accuracy_score(Y_valid, single_tree_Y_pred)</span>
 <span id="cb28-3"><a></a><span class="bu">print</span>( <span class="bu">round</span>(accuracy, <span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.97</code></pre>
+<pre><code>0.93</code></pre>
 </div>
 </div>
 </section>
@@ -1657,7 +1721,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <li><p>Ideally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay.</p></li>
 </ul>
 </section>
-<section id="section-36" class="slide level2">
+<section id="section-37" class="slide level2">
 <h2></h2>
 <p><br><br><br></p>
 <ul>
@@ -1685,21 +1749,21 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 </ul>
 <p>These metrics are calculated from the confusion matrix.</p>
 </section>
-<section id="section-37" class="slide level2">
+<section id="section-38" class="slide level2">
 <h2></h2>
 
 <img data-src="images/classspecific_metrics.png" class="quarto-figure quarto-figure-center r-stretch"><p><span style="color:darkblue;"><strong>Sensitivity</strong></span> or <em>recall</em> = OO/(OO + OR) “How many records of the target class did we predict correctly?”</p>
 </section>
-<section id="section-38" class="slide level2">
+<section id="section-39" class="slide level2">
 <h2></h2>
 
 <img data-src="images/classspecific_metrics.png" class="quarto-figure quarto-figure-center r-stretch"><p><span style="color:darkgreen;"><strong>Precision</strong></span> = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?</p>
 </section>
-<section id="section-39" class="slide level2">
+<section id="section-40" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>In Python, we compute sensitivity and precision using the following commands:</p>
-<div id="442d710b" class="cell" data-execution_count="45">
+<div id="215fcdf3" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>recall <span class="op">=</span> recall_score(Y_valid, predicted_class)</span>
 <span id="cb30-2"><a></a><span class="bu">print</span>( <span class="bu">round</span>(recall, <span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1707,24 +1771,24 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="d2b6e6a7" class="cell" data-execution_count="46">
+<div id="1aeab087" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>precision <span class="op">=</span> precision_score(Y_valid, predicted_class)</span>
 <span id="cb32-2"><a></a><span class="bu">print</span>( <span class="bu">round</span>(precision, <span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.92</code></pre>
+<pre><code>0.9</code></pre>
 </div>
 </div>
 </section>
-<section id="section-40" class="slide level2">
+<section id="section-41" class="slide level2">
 <h2></h2>
 
 <img data-src="images/classspecific_metrics.png" class="quarto-figure quarto-figure-center r-stretch"><p><strong>Type I error</strong> = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”</p>
 </section>
-<section id="section-41" class="slide level2">
+<section id="section-42" class="slide level2">
 <h2></h2>
 <p><br><br><br></p>
 <p>Unfortunately, there is no simple command to calculate the type-I error in <strong>sklearn</strong>. To overcome this issue, we must calculate it manually.</p>
-<div id="0d5f2ce8" class="cell" data-execution_count="47">
+<div id="f968389f" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co"># Confusion matrix to compute Type-I error</span></span>
 <span id="cb34-2"><a></a>tn, fp, fn, tp <span class="op">=</span> confusion_matrix(Y_valid, predicted_class).ravel()</span>
 <span id="cb34-3"><a></a></span>
@@ -1732,7 +1796,7 @@ Name: Status_counterfeit, dtype: int64</code></pre>
 <span id="cb34-5"><a></a>type_I_error <span class="op">=</span> fp <span class="op">/</span> (fp <span class="op">+</span> tn)</span>
 <span id="cb34-6"><a></a><span class="bu">print</span>( <span class="bu">round</span>(type_I_error, <span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.05</code></pre>
+<pre><code>0.17</code></pre>
 </div>
 </div>
 </section>

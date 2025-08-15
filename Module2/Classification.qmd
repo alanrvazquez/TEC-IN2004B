@@ -59,7 +59,7 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 [**Classification Problems**]{style="color:blue;"}. The response is categorical and involves *K* different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).
 
-The predictors ($\boldsymbol{X}$) can be *numerical* or *categorical*.
+The predictors can be *numerical* or *categorical*.
 
 ## Main data science problems
 
@@ -69,15 +69,15 @@ The predictors ($\boldsymbol{X}$) can be *numerical* or *categorical*.
 
 [**Classification Problems**]{style="color:blue;"}. The response is categorical and involves *K* different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).
 
-The predictors ($\boldsymbol{X}$) can be *numerical* or *categorical*.
+The predictors can be *numerical* or *categorical*.
 
 ## Terminology
 
 </br></br>
 
-Explanatory variables or predictors:
+Recall that
 
--   $X$ represents an explanatory variable or predictor.
+-   $X$ represents a predictor or explanatory variable.
 -   $\boldsymbol{X} = (X_1, X_2, \ldots, X_p)$ represents a collection of $p$ predictors.
 
 ## 
@@ -99,21 +99,18 @@ Explanatory variables or predictors:
 
 ## Classification algorithms
 
-</br>
+</br></br>
 
-Classification algorithms use predictor values [to predict the class]{style="color:blue;"} of the response (target or reference).
+Classification algorithms use predictor values [*to predict the class*]{style="color:#4682B4;"} of the response (either target or reference).
 
 </br>
 
 That is, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not.
 
+
+## The goal of classification algorithms
+
 </br>
-
-Technically, [**they predict the probability**]{style="color:purple;"} that the record belongs to the target class.
-
-## 
-
-</br></br>
 
 [**Goal**]{style="color:darkgreen;"}: Develop a function $C(\boldsymbol{X})$ for predicting $Y = \{0, 1\}$ from $\boldsymbol{X}$.
 
@@ -186,13 +183,30 @@ This function classifies to the most probable class using the conditional distri
 
 . . .
 
-To overcome this issue, we several standard solutions:
+To overcome this issue, we several methods:
 
 ::: incremental
 -   [**Logistic Regression**]{style="color:brown;"}: Impose an structure on $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$. This was covered in IN1002B.
 -   [**Classification Trees**]{style="color:darkblue;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. What we will cover today.
 -   [**Ensemble methods**]{style="color:orange;"} and [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (If time permits).
 :::
+
+##
+
+</br>
+
+Once we estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ using one of these methods, we plug it into the Bayes classifier:
+
+$$\hat{C}(\boldsymbol{X}) =
+    \begin{cases}
+      1, & \text{if}\ \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x}) > 0.5 \\
+      0, & \text{if}\ \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x}) \leq 0.5
+    \end{cases}.$$
+
+where 
+
+- $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ is an estimate of $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
+- $\hat{C}(\boldsymbol{X})$ is an estimate of the true Bayes Classifier $C(\boldsymbol{X})$
 
 # Training, Validation, and Test Data
 
@@ -203,7 +217,7 @@ To overcome this issue, we several standard solutions:
 The application of data science algorithms needs two data sets:
 
 ::: incremental
--   [**Training data**]{style="color:blue;"} is data that we use to train or construct an approximation $\hat{C}(\boldsymbol{X})$ to the true Bayes Classifier $C(\boldsymbol{X})$.
+-   [**Training data**]{style="color:blue;"} is data that we use to train or construct the approximation $\hat{C}(\boldsymbol{X})$.
 
 -   [**Test data**]{style="color:green;"} is data that we use to evaluate the classification performance of $\hat{C}(\boldsymbol{X})$ only.
 :::
@@ -280,20 +294,20 @@ The function has three main inputs:
 
 ## Create the predictor matrix
 
-We use the function `.filter()` from **pandas** to select two predictors: Bottom and Top.
+We use the function `.filter()` from **pandas** to select two predictors: Top and Bottom.
 
 ```{python}
 #| echo: true
 #| output: true
 
 # Set full matrix of predictors.
-X_full = bank_data.filter(['Bottom', 'Top'])
+X_full = bank_data.filter(['Top', 'Bottom'])
 X_full.head(4)
 ```
 
 ## Create the response column
 
-We use the function `.filter()` from **pandas** to extract the column `Status` from the data frame. We store the result in `Y_full`.
+We do the same to extract the column `Status` from the data frame. We store the result in `Y_full`.
 
 ```{python}
 #| echo: true
@@ -332,7 +346,7 @@ Y_target_full.head()
 
 # Split the dataset into training and validation.
 X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, 
-                                                      test_size = 0.3)
+                                                      test_size = 0.3, random_state=507134)
 ```
 
 -   The function makes a clever partition of the data using the *empirical* distribution of the response.
@@ -398,7 +412,7 @@ Main characteristics:
 
 ## Basic idea of a decision tree
 
-Stratify or segment the prediction space into several simpler regions.
+Stratify or segment the predictor space into several simpler regions.
 
 ```{python}
 #| fig-align: center
@@ -1287,9 +1301,12 @@ Node impurity refers to the homogeneity of the response classes at that node.
 ::::::: center
 :::::: columns
 ::: {.column width="40%"}
+
+</br>
+
 There are three different metrics for impurity:
 
--   Risk of misclassification.
+-   Misclassification risk.
 
 -   Cross entropy.
 
@@ -1300,11 +1317,23 @@ There are three different metrics for impurity:
 ![](images/Metrics1.png){fig-align="center" width="469"} ![](images/Metrics2.png){fig-align="center" width="396"}
 
 ::: {style="font-size: 50%;"}
-Proportion of elements in a class
+p: Proportion of elements in the target class
 :::
 ::::
 ::::::
 :::::::
+
+## Mathematically
+
+</br>
+
+Let $p_1$ and $p_2$ be the proportion of observations in the target and reference class, respectively, in a node. 
+
+-   Misclassification risk: $1 - \max\{p_1, p_2\}$
+
+-   Cross entropy: $- (p_1 \log(p_1) + p_2 \log(p_2))$
+
+-   Gini impurity index: $p_1(1 - p_1) + p_2(1 - p_2)$
 
 ## Pruning the tree
 
@@ -1425,7 +1454,7 @@ To prune a tree, we use an advanced algorithm to measure the contribution of the
 
 The algorithm has a tuning parameter called $\alpha$, which **places greater weight on the number of tree nodes** (or size):
 
-$$\text{Overall impurity of terminal nodes} + \alpha (\text{\# terminal nodes})$$
+$$\text{Classification performance of tree} + \alpha (\text{\# terminal nodes})$$
 
 -   Large values of $\alpha$ result in small trees with few nodes.
 
@@ -1433,7 +1462,7 @@ $$\text{Overall impurity of terminal nodes} + \alpha (\text{\# terminal nodes})$
 
 ## In Python
 
-In Python, we can use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a decision tree.
+In Python, we use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a classification tree.
 
 ```{python}
 #| echo: true
@@ -1479,6 +1508,91 @@ plot_tree(clf, filled=True, rounded=True)
 plt.show()
 ```
 
+
+## Simplified decision boundary
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+from sklearn.inspection import DecisionBoundaryDisplay
+
+# Make sure the feature order matches exactly what was used in clf.fit
+X = X_train[['Top', 'Bottom']]  
+
+
+# Create decision boundary plot
+disp = DecisionBoundaryDisplay.from_estimator(
+    clf,
+    X,
+    response_method="predict",
+    xlabel="Top",
+    ylabel="Bottom",
+    grid_resolution=200,
+    cmap=plt.cm.Paired,
+    alpha=0.5
+)
+
+# Overlay actual data points
+disp.ax_.scatter(
+    X['Top'],
+    X['Bottom'],
+    c=Y_train,
+    cmap=plt.cm.Paired,
+    edgecolor='k'
+)
+
+disp.ax_.set_title("Decision Boundary of Classification Tree")
+plt.show()
+```
+
+## Decision boundary logistic regression
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+from sklearn.linear_model import LogisticRegression
+
+# Prepare features in the same order: Top (x-axis), Bottom (y-axis)
+X = X_train[['Top', 'Bottom']]
+
+# Train logistic regression
+log_reg = LogisticRegression()
+log_reg.fit(X, Y_train)
+
+# Create decision boundary plot
+disp = DecisionBoundaryDisplay.from_estimator(
+    log_reg,
+    X,
+    response_method="predict",
+    xlabel="Top",
+    ylabel="Bottom",
+    grid_resolution=200,
+    cmap=plt.cm.Paired,
+    alpha=0.5
+)
+
+# Overlay actual training data points
+disp.ax_.scatter(
+    X['Top'],
+    X['Bottom'],
+    c=Y_train,
+    cmap=plt.cm.Paired,
+    edgecolor='k'
+)
+
+disp.ax_.set_title("Decision Boundary of Logistic Regression")
+plt.show()
+
+```
+
 ## Implementation details
 
 -   Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
@@ -1502,7 +1616,7 @@ In Python, this is achieved using the `cost_complexity_pruning_path()` function 
 #| output: false
 
 path = clf.cost_complexity_pruning_path(X_train, Y_train)
-ccp_alphas, impurities = path.ccp_alphas, path.impurities
+ccp_alphas = path.ccp_alphas
 ```
 
 ## 
@@ -1556,6 +1670,56 @@ The `predict()` function generates actual classes to which each observation was 
 
 predicted_class
 ```
+
+##
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Ensure feature order matches the training model
+X_train_plot = X_train[['Top', 'Bottom']]
+X_valid_plot = X_valid[['Top', 'Bottom']]
+
+# Create decision boundary plot
+disp = DecisionBoundaryDisplay.from_estimator(
+    clf,
+    X_train_plot,
+    response_method="predict",
+    xlabel="Top",
+    ylabel="Bottom",
+    grid_resolution=200,
+    cmap=plt.cm.Paired,
+    alpha=0.5
+)
+
+# Overlay training points (colored by class)
+disp.ax_.scatter(
+    X_train_plot['Top'],
+    X_train_plot['Bottom'],
+    c=Y_train,
+    cmap=plt.cm.Paired,
+    edgecolor='k'
+)
+
+# Overlay validation points (black)
+disp.ax_.scatter(
+    X_valid_plot['Top'],
+    X_valid_plot['Bottom'],
+    c='black',
+    edgecolor='k',
+    label='Validation'
+)
+
+disp.ax_.set_title("Decision Boundary of Classification Tree")
+disp.ax_.legend()
+plt.show()
+
+```
+
 
 ## 
 
@@ -1640,6 +1804,8 @@ Now, for each of those trees contained in `clfs`, we evaluate the performance in
 train_scores = [clf.score(X_train, Y_train) for clf in clfs]
 validation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]
 ```
+
+The `.score()` function computes the accuracy of a classification tree. 
 
 ## 
 
