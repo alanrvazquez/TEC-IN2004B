@@ -812,20 +812,6 @@
     "text": "Mathematically\n\nLet \\(p_1\\) and \\(p_2\\) be the proportion of observations in the target and reference class, respectively, in a node.\n\nMisclassification risk: \\(1 - \\max\\{p_1, p_2\\}\\)\nCross entropy: \\(- (p_1 \\log(p_1) + p_2 \\log(p_2))\\)\nGini impurity index: \\(p_1(1 - p_1) + p_2(1 - p_2)\\)"
   },
   {
-    "objectID": "Module2/Classification.slides.html#pruning-the-tree",
-    "href": "Module2/Classification.slides.html#pruning-the-tree",
-    "title": "Classification Trees",
-    "section": "Pruning the tree",
-    "text": "Pruning the tree\nIn some cases, we can optimize the performance of the tree by pruning it. That is, we collapse two internal (non-terminal) nodes."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-28",
-    "href": "Module2/Classification.slides.html#section-28",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,\n       0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,\n       1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1])"
-  },
-  {
     "objectID": "Module2/Classification.slides.html#in-python",
     "href": "Module2/Classification.slides.html#in-python",
     "title": "Classification Trees",
@@ -838,6 +824,41 @@
     "title": "Classification Trees",
     "section": "Plotting the tree",
     "text": "Plotting the tree\n\nTo see the decision tree, we use the plot_tree function from scikit-learn and some commands from matplotlib. Specifically, we use the plt.figure() functions to define the size of the figure and plt.show() to display the figure.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf, filled=True, rounded=True)\nplt.show()"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#the-tree-in-the-predictor-space",
+    "href": "Module2/Classification.slides.html#the-tree-in-the-predictor-space",
+    "title": "Classification Trees",
+    "section": "The tree in the predictor space",
+    "text": "The tree in the predictor space"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#estimated-conditional-probabilities",
+    "href": "Module2/Classification.slides.html#estimated-conditional-probabilities",
+    "title": "Classification Trees",
+    "section": "Estimated conditional probabilities",
+    "text": "Estimated conditional probabilities\n\nAfter training a classification tree, we can calculate the estimated conditional probability \\(\\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\).\nTo this end, let\n\n\\(\\hat{p}_1(\\boldsymbol{x}) = \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\)\n\\(\\hat{p}_0(\\boldsymbol{x}) = 1 - \\hat{p}_1(\\boldsymbol{x})\\)\n\nbe the estimated probabilities that \\(\\boldsymbol{x}\\) belongs to class 1 or 0."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-27",
+    "href": "Module2/Classification.slides.html#section-27",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Essentially, we calculate \\(\\hat{p}_1(\\boldsymbol{x})\\) and \\(\\hat{p}_0(\\boldsymbol{x})\\) as follows:\n\nSelect the region or terminal node where \\(\\boldsymbol{x}\\) belongs.\n\\(\\hat{p}_1(\\boldsymbol{x})\\) is the proportion of observations in that terminal node that belong to class 1. \\(\\hat{p}_0(\\boldsymbol{x})\\) is the proportion of observations that belong to class 0."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#visually",
+    "href": "Module2/Classification.slides.html#visually",
+    "title": "Classification Trees",
+    "section": "Visually",
+    "text": "Visually\nLet \\((\\hat{p}_0(\\boldsymbol{x}), \\hat{p}_1(\\boldsymbol{x}))\\) be the estimated probabilities."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#estimated-bayes-classifier",
+    "href": "Module2/Classification.slides.html#estimated-bayes-classifier",
+    "title": "Classification Trees",
+    "section": "Estimated Bayes Classifier",
+    "text": "Estimated Bayes Classifier\n\nOnce we have estimated the conditional probability using the classification tree, we plug it into the Bayes classifier to have our approximated function:\n\\[\\hat{C}(\\boldsymbol{x}) =\n    \\begin{cases}\n      1, & \\text{if}\\ \\hat{p}_1(\\boldsymbol{x}) &gt; 0.5 \\\\\n      0, & \\text{if}\\ \\hat{p}_1(\\boldsymbol{x}) \\leq 0.5\n    \\end{cases},\\]\nwhere \\(\\hat{p}_1(\\boldsymbol{x})\\) depends on the region or terminal node \\(\\boldsymbol{x}\\) falls in."
   },
   {
     "objectID": "Module2/Classification.slides.html#simplified-decision-boundary",
@@ -861,20 +882,6 @@
     "text": "Implementation details\n\nCategorical predictors with unordered levels \\(\\{A, B, C\\}\\). We order the levels in a specific way (works for binary and regression problems).\nPredictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new “NA” level.\nTertiary or quartary splits. There is not much improvement.\nDiagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability."
   },
   {
-    "objectID": "Module2/Classification.slides.html#apply-penalty-for-large-trees",
-    "href": "Module2/Classification.slides.html#apply-penalty-for-large-trees",
-    "title": "Classification Trees",
-    "section": "Apply penalty for large trees",
-    "text": "Apply penalty for large trees\nNow, let’s illustrate the pruning technique to find a small decision tree that performs well. To do this, we will train several decision trees using different values of \\(\\alpha\\), which weighs the contribution of the tree branches.\n\nIn Python, this is achieved using the cost_complexity_pruning_path() function with the following syntax.\n\npath = clf.cost_complexity_pruning_path(X_train, Y_train)\nccp_alphas = path.ccp_alphas"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-30",
-    "href": "Module2/Classification.slides.html#section-30",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ]])"
-  },
-  {
     "objectID": "Module2/Classification.slides.html#evaluation",
     "href": "Module2/Classification.slides.html#evaluation",
     "title": "Classification Trees",
@@ -882,18 +889,18 @@
     "text": "Evaluation\n\nWe evaluate a classification tree by classifying observations that were not used for training.\nThat is, we use the classifier to predict categories in the validation data set using only the predictor values from this set.\nIn Python, we use the commands:\n\n# Predict classes.\npredicted_class = clf.predict(X_valid)"
   },
   {
-    "objectID": "Module2/Classification.slides.html#section-31",
-    "href": "Module2/Classification.slides.html#section-31",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\nConfusionMatrixDisplay(cm).plot()"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-33",
-    "href": "Module2/Classification.slides.html#section-33",
+    "objectID": "Module2/Classification.slides.html#section-28",
+    "href": "Module2/Classification.slides.html#section-28",
     "title": "Classification Trees",
     "section": "",
     "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,\n       0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,\n       1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1])"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-30",
+    "href": "Module2/Classification.slides.html#section-30",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ]])"
   },
   {
     "objectID": "Module2/Classification.slides.html#confusion-matrix",
@@ -910,11 +917,11 @@
     "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[19  4]\n [ 0 37]]"
   },
   {
-    "objectID": "Module2/Classification.slides.html#section-34",
-    "href": "Module2/Classification.slides.html#section-34",
+    "objectID": "Module2/Classification.slides.html#section-31",
+    "href": "Module2/Classification.slides.html#section-31",
     "title": "Classification Trees",
     "section": "",
-    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThis algorithm optimizes the following function:\n\n\\[\\text{Classification performance of tree} + \\alpha (\\text{\\# terminal nodes}),\\]\n\nwhere \\(\\alpha\\) is a tuning parameter that places greater weight on the number of tree nodes (or size).\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
+    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\nConfusionMatrixDisplay(cm).plot()"
   },
   {
     "objectID": "Module2/Classification.slides.html#accuracy",
@@ -924,11 +931,25 @@
     "text": "Accuracy\nIt is a simple metric for summarizing the information in the confusion matrix. It is the proportion of correct classifications for both classes, out of the total classifications performed.\n\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.93\n\n\nThe higher the accuracy, the better the performance of the classification algorithm."
   },
   {
-    "objectID": "Module2/Classification.slides.html#lets-get-back-to-the-penalized-trees",
-    "href": "Module2/Classification.slides.html#lets-get-back-to-the-penalized-trees",
+    "objectID": "Module2/Classification.slides.html#pruning-the-tree",
+    "href": "Module2/Classification.slides.html#pruning-the-tree",
     "title": "Classification Trees",
-    "section": "Let’s get back to the penalized trees",
-    "text": "Let’s get back to the penalized trees\n\nNow, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the training and validation data.\n\ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\nThe .score() function computes the accuracy of a classification tree."
+    "section": "Pruning the tree",
+    "text": "Pruning the tree\nIn some cases, we can optimize the performance of the tree by pruning it. That is, we collapse two internal (non-terminal) nodes."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-34",
+    "href": "Module2/Classification.slides.html#section-34",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThis algorithm optimizes the following function:\n\n\\[\\text{Classification performance of tree} + \\alpha (\\text{\\# terminal nodes}),\\]\n\nwhere \\(\\alpha\\) is a tuning parameter that places greater weight on the number of tree nodes (or size).\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#apply-penalty-for-large-trees",
+    "href": "Module2/Classification.slides.html#apply-penalty-for-large-trees",
+    "title": "Classification Trees",
+    "section": "Apply penalty for large trees",
+    "text": "Apply penalty for large trees\nNow, let’s illustrate the pruning technique to find a small decision tree that performs well. To do this, we will train several decision trees using different values of \\(\\alpha\\), which weighs the contribution of the tree branches.\n\nIn Python, this is achieved using the cost_complexity_pruning_path() function with the following syntax.\n\npath = clf.cost_complexity_pruning_path(X_train, Y_train)\nccp_alphas = path.ccp_alphas"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-35",
@@ -938,39 +959,11 @@
     "text": "The ccp_alphas object contains the different values of \\(\\alpha\\) used. To train a decision tree using different \\(\\alpha\\) values, we use the following code that iterates over the values contained in ccp_alphas.\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf_alpha = DecisionTreeClassifier(min_samples_leaf= 5, \n                                       ccp_alpha=ccp_alpha, random_state=507134)\n    clf_alpha.fit(X_train, Y_train)\n    clfs.append(clf_alpha)"
   },
   {
-    "objectID": "Module2/Classification.slides.html#choosing-the-best-tree",
-    "href": "Module2/Classification.slides.html#choosing-the-best-tree",
-    "title": "Classification Trees",
-    "section": "Choosing the best tree",
-    "text": "Choosing the best tree\n\nWe can see that the best \\(\\alpha\\) value for the validation dataset is 0.\nTo train our new reduced tree, we use the DecisionTreeClassifier() function again with the ccp_alpha parameter set to the best \\(\\alpha\\) value. The object containing this new tree is clf_simple.\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0, min_samples_leaf= 5)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)"
-  },
-  {
     "objectID": "Module2/Classification.slides.html#section-36",
     "href": "Module2/Classification.slides.html#section-36",
     "title": "Classification Trees",
     "section": "",
     "text": "Now, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the training and validation data.\n\ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\nThe .score() function computes the accuracy of a classification tree."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#accuracy-in-python",
-    "href": "Module2/Classification.slides.html#accuracy-in-python",
-    "title": "Classification Trees",
-    "section": "Accuracy in Python",
-    "text": "Accuracy in Python\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.93"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#comments",
-    "href": "Module2/Classification.slides.html#comments",
-    "title": "Classification Trees",
-    "section": "Comments",
-    "text": "Comments\n\n\nAccuracy is easy to calculate and interpret.\nIt works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).\nHowever, there are situations in which identifying the target class is more important than the reference class.\nFor example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#an-example",
-    "href": "Module2/Classification.slides.html#an-example",
-    "title": "Classification Trees",
-    "section": "An example",
-    "text": "An example\n\n\nLet’s say we want to create a classifier that tells us whether a mobile phone company’s customer will churn next month.\nCustomers who churn significantly decrease the company’s revenue. That’s why it’s important to retain these customers.\nTo retain that customer, the company will send them a text message with an offer for a low-cost mobile plan.\nIdeally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-37",
@@ -980,18 +973,11 @@
     "text": "We visualize the results using the following plot.\n\n\nCode\nfig, ax = plt.subplots()\nax.set_xlabel(\"alpha\")\nax.set_ylabel(\"Accuracy\")\nax.set_title(\"Accuracy vs alpha for training and validation data\")\nax.plot(ccp_alphas, train_scores, marker=\"o\", label=\"train\", drawstyle=\"steps-post\")\nax.plot(ccp_alphas, validation_scores, marker=\"o\", label=\"validation\", drawstyle=\"steps-post\")\nax.legend()\nplt.show()"
   },
   {
-    "objectID": "Module2/Classification.slides.html#another-example",
-    "href": "Module2/Classification.slides.html#another-example",
+    "objectID": "Module2/Classification.slides.html#choosing-the-best-tree",
+    "href": "Module2/Classification.slides.html#choosing-the-best-tree",
     "title": "Classification Trees",
-    "section": "Another example",
-    "text": "Another example\n\nAnother example is developing an algorithm (classifier) that can quickly identify patients who may have a rare disease and need a more extensive and expensive medical evaluation.\nThe classifier must make correct decisions about patients with the rare disease, so they can be evaluated and eventually treated.\nA healthy patient who is misclassified with the disease will only incur a few extra dollars to pay for the next test, only to discover that the patient does not have the disease."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#classification-specific-metrics",
-    "href": "Module2/Classification.slides.html#classification-specific-metrics",
-    "title": "Classification Trees",
-    "section": "Classification-specific metrics",
-    "text": "Classification-specific metrics\n\nTo overcome this limitation of accuracy, there are several class-specific metrics. The most popular are:\n\nSensitivity or recall\nPrecision\nType I error\n\nThese metrics are calculated from the confusion matrix."
+    "section": "Choosing the best tree",
+    "text": "Choosing the best tree\n\nWe can see that the best \\(\\alpha\\) value for the validation dataset is 0.\nTo train our new reduced tree, we use the DecisionTreeClassifier() function again with the ccp_alpha parameter set to the best \\(\\alpha\\) value. The object containing this new tree is clf_simple.\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0, min_samples_leaf= 5)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-38",
@@ -1008,11 +994,39 @@
     "text": "The accuracy of the pruned tree is:\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.93"
   },
   {
+    "objectID": "Module2/Classification.slides.html#comments-on-accuracy",
+    "href": "Module2/Classification.slides.html#comments-on-accuracy",
+    "title": "Classification Trees",
+    "section": "Comments on accuracy",
+    "text": "Comments on accuracy\n\n\nAccuracy is easy to calculate and interpret.\nIt works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).\nHowever, there are situations in which identifying the target class is more important than the reference class.\nFor example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#an-example",
+    "href": "Module2/Classification.slides.html#an-example",
+    "title": "Classification Trees",
+    "section": "An example",
+    "text": "An example\n\n\nLet’s say we want to create a classifier that tells us whether a mobile phone company’s customer will churn next month.\nCustomers who churn significantly decrease the company’s revenue. That’s why it’s important to retain these customers.\nTo retain that customer, the company will send them a text message with an offer for a low-cost mobile plan.\nIdeally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay."
+  },
+  {
     "objectID": "Module2/Classification.slides.html#section-40",
     "href": "Module2/Classification.slides.html#section-40",
     "title": "Classification Trees",
     "section": "",
     "text": "In other words, we want to avoid making wrong decisions about customers who will churn.\nWrong decisions about loyal customers aren’t as relevant.\nBecause if we classify a loyal customer as one who will churn, the customer will get a good deal. They’ll probably pay less but stay anyway."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#another-example",
+    "href": "Module2/Classification.slides.html#another-example",
+    "title": "Classification Trees",
+    "section": "Another example",
+    "text": "Another example\n\nAnother example is developing an algorithm (classifier) that can quickly identify patients who may have a rare disease and need a more extensive and expensive medical evaluation.\nThe classifier must make correct decisions about patients with the rare disease, so they can be evaluated and eventually treated.\nA healthy patient who is misclassified with the disease will only incur a few extra dollars to pay for the next test, only to discover that the patient does not have the disease."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#classification-specific-metrics",
+    "href": "Module2/Classification.slides.html#classification-specific-metrics",
+    "title": "Classification Trees",
+    "section": "Classification-specific metrics",
+    "text": "Classification-specific metrics\n\nTo overcome this limitation of accuracy, there are several class-specific metrics. The most popular are:\n\nSensitivity or recall\nPrecision\nType I error\n\nThese metrics are calculated from the confusion matrix."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-41",
@@ -1027,6 +1041,27 @@
     "title": "Classification Trees",
     "section": "",
     "text": "Precision = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-43",
+    "href": "Module2/Classification.slides.html#section-43",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n1.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.9"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-44",
+    "href": "Module2/Classification.slides.html#section-44",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-45",
+    "href": "Module2/Classification.slides.html#section-45",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.17"
   },
   {
     "objectID": "Module2/Classification.slides.html#discussion",
@@ -1376,7 +1411,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-16",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Fri, 15 Aug 2025   AIC                             11.074\nTime:                        10:59:16   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Mon, 18 Aug 2025   AIC                             11.074\nTime:                        10:27:58   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-17",
@@ -1530,7 +1565,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Fri, 15 Aug 2025   AIC                            756.482\nTime:                                   10:59:18   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Mon, 18 Aug 2025   AIC                            756.482\nTime:                                   10:27:59   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -3360,11 +3395,11 @@
     "text": "Selected predictors.\n\nage: Age of the individual.\nsex: Sex of the individual (male or female).\nrace: Race of the individual (W, B, Amer-Indian, Amer-Pacific, or Other).\neducation.num: number of years of education.\nhours.per.week: Number of work hours per week.\n\n\n# Choose the predictors.\nX_full = Adult_data.filter(['age', 'sex', 'race', 'education.num', \n                            'hours.per.week'])"
   },
   {
-    "objectID": "Module2/EnsembleMethods.slides.html#pre-processing-for-categorical-predictors",
-    "href": "Module2/EnsembleMethods.slides.html#pre-processing-for-categorical-predictors",
+    "objectID": "Module2/EnsembleMethods.slides.html#pre-processing-categorical-predictors",
+    "href": "Module2/EnsembleMethods.slides.html#pre-processing-categorical-predictors",
     "title": "Ensemble Methods",
-    "section": "Pre-processing for categorical predictors",
-    "text": "Pre-processing for categorical predictors\n\nUnfortunately, bagging does not work with categorical predictors. We must transform them into dummy variables using the code below.\n\n# Turn categorical predictors into dummy variables.\nX_dummies = pd.get_dummies(X_full[['sex', 'race']])\n\n# Drop original predictors from the test.\nX_other = X_full.drop(['sex', 'race'], axis=1)\n\n# Update the predictor matrix.\nX_full = pd.concat([X_other, X_dummies], axis=1)"
+    "section": "Pre-processing categorical predictors",
+    "text": "Pre-processing categorical predictors\n\nUnfortunately, bagging does not work with categorical predictors. We must transform them into dummy variables using the code below.\n\n# Turn categorical predictors into dummy variables.\nX_dummies = pd.get_dummies(X_full[['sex', 'race']])\n\n# Drop original predictors from the dataset.\nX_other = X_full.drop(['sex', 'race'], axis=1)\n\n# Update the predictor matrix.\nX_full = pd.concat([X_other, X_dummies], axis=1)"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#set-the-target-class",
@@ -3921,96 +3956,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module2/EnsembleMethods.slides.html#pre-processing-categorical-predictors",
-    "href": "Module2/EnsembleMethods.slides.html#pre-processing-categorical-predictors",
-    "title": "Ensemble Methods",
-    "section": "Pre-processing categorical predictors",
-    "text": "Pre-processing categorical predictors\n\nUnfortunately, bagging does not work with categorical predictors. We must transform them into dummy variables using the code below.\n\n# Turn categorical predictors into dummy variables.\nX_dummies = pd.get_dummies(X_full[['sex', 'race']])\n\n# Drop original predictors from the dataset.\nX_other = X_full.drop(['sex', 'race'], axis=1)\n\n# Update the predictor matrix.\nX_full = pd.concat([X_other, X_dummies], axis=1)"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-32",
-    "href": "Module2/Classification.slides.html#section-32",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,\n       0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,\n       1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1])"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-43",
-    "href": "Module2/Classification.slides.html#section-43",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n1.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.9"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#estimated-conditional-probability",
-    "href": "Module2/Classification.slides.html#estimated-conditional-probability",
-    "title": "Classification Trees",
-    "section": "Estimated conditional probability",
-    "text": "Estimated conditional probability\nLet \\(\\hat{p}_0(\\boldsymbol{x})\\) and \\(\\hat{p}_1(\\boldsymbol{x})\\) be the estimated probabilities."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-29",
-    "href": "Module2/Classification.slides.html#section-29",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThe algorithm has a tuning parameter called \\(\\alpha\\), which places greater weight on the number of tree nodes (or size):\n\\[\\text{Classification performance of tree} + \\alpha (\\text{\\# terminal nodes})\\]\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#estimated-conditional-probabilities",
-    "href": "Module2/Classification.slides.html#estimated-conditional-probabilities",
-    "title": "Classification Trees",
-    "section": "Estimated conditional probabilities",
-    "text": "Estimated conditional probabilities\n\nAfter training a classification tree, we can calculate the estimated conditional probability \\(\\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\).\nTo this end, let\n\n\\(\\hat{p}_1(\\boldsymbol{x}) = \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\)\n\\(\\hat{p}_0(\\boldsymbol{x}) = 1 - \\hat{p}_1(\\boldsymbol{x})\\)\n\nbe the estimated probabilities that \\(\\boldsymbol{x}\\) belongs to class 1 or 0."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-27",
-    "href": "Module2/Classification.slides.html#section-27",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "Essentially, we calculate \\(\\hat{p}_1(\\boldsymbol{x})\\) and \\(\\hat{p}_0(\\boldsymbol{x})\\) as follows:\n\nSelect the region or terminal node where \\(\\boldsymbol{x}\\) belongs.\n\\(\\hat{p}_1(\\boldsymbol{x})\\) is the proportion of observations in that terminal node that belong to class 1. \\(\\hat{p}_0(\\boldsymbol{x})\\) is the proportion of observations that belong to class 0."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#visually",
-    "href": "Module2/Classification.slides.html#visually",
-    "title": "Classification Trees",
-    "section": "Visually",
-    "text": "Visually\nLet \\((\\hat{p}_0(\\boldsymbol{x}), \\hat{p}_1(\\boldsymbol{x}))\\) be the estimated probabilities."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#estimated-bayes-classifier",
-    "href": "Module2/Classification.slides.html#estimated-bayes-classifier",
-    "title": "Classification Trees",
-    "section": "Estimated Bayes Classifier",
-    "text": "Estimated Bayes Classifier\n\nOnce we have estimated the conditional probability using the classification tree, we plug it into the Bayes classifier to have our approximated function:\n\\[\\hat{C}(\\boldsymbol{x}) =\n    \\begin{cases}\n      1, & \\text{if}\\ \\hat{p}_1(\\boldsymbol{x}) &gt; 0.5 \\\\\n      0, & \\text{if}\\ \\hat{p}_1(\\boldsymbol{x}) \\leq 0.5\n    \\end{cases},\\]\nwhere \\(\\hat{p}_1(\\boldsymbol{x})\\) depends on the region or terminal node \\(\\boldsymbol{x}\\) falls in."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-44",
-    "href": "Module2/Classification.slides.html#section-44",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#the-tree-in-the-predictor-space",
-    "href": "Module2/Classification.slides.html#the-tree-in-the-predictor-space",
-    "title": "Classification Trees",
-    "section": "The tree in the predictor space",
-    "text": "The tree in the predictor space"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#comments-on-accuracy",
-    "href": "Module2/Classification.slides.html#comments-on-accuracy",
-    "title": "Classification Trees",
-    "section": "Comments on accuracy",
-    "text": "Comments on accuracy\n\n\nAccuracy is easy to calculate and interpret.\nIt works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).\nHowever, there are situations in which identifying the target class is more important than the reference class.\nFor example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#section-45",
-    "href": "Module2/Classification.slides.html#section-45",
-    "title": "Classification Trees",
-    "section": "",
-    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.17"
   }
 ]
