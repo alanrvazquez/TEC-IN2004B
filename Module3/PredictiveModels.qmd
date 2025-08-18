@@ -30,6 +30,8 @@ jupyter: python3
 
 ## Load the libraries
 
+</br>
+
 Before we start, let's import the data science libraries into Python.
 
 ```{python}
@@ -153,25 +155,25 @@ $$\hat{Y}_i = \hat{f}(X_i) = \hat{\beta}_0 + \hat{\beta}_1 X_i.$$
 
 -   $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ associated with a predictor value equal to $X_i$.
 
--   The values $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the [*coefficients*]{style="color:lightblue;"} of the model.
+-   $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the  [*estimated coefficients*]{style="color:lightblue;"} of the model.
 
 ## 
 
-</br>
+The values of $\hat{\beta}_0$ and $\hat{\beta}_1$ are obtained using the training dataset and the least squares method.
 
-The values of $\hat{\beta}_0$ and $\hat{\beta}_1$ are obtained using the test data set and the least squares method.
-
-This method finds the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the error made by the model $\hat{f}(X_i)$ when trying to predict the responses of the training set.
+This method finds the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the error made by the model $\hat{f}(X_i)$ when trying to predict the responses of the training dataset.
 
 </br>
 
-Technically, the method minimizes the following expression
+. . . 
+
+Technically, the least squares method finds the $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the following expression
 
 ::: {style="font-size: 75%;"}
 $$(Y_1 - (\hat{\beta}_0 + \hat{\beta}_1 X_1 ))^2 + (Y_2 - (\hat{\beta}_0 + \hat{\beta}_1 X_2 ))^2 + \cdots + (Y_{n_t} - (\hat{\beta}_0 + \hat{\beta}_1 X_{n_t} ))^2 $$
 :::
 
-For the $n_t$ the [training data]{style="color:blue;"}!
+For the $n_t$ observations in the [training data]{style="color:blue;"}!
 
 ## The idea in two dimensions
 
@@ -210,7 +212,7 @@ Ads_data.head()
 
 </br></br>
 
-Now, let's choose our predictor and response. In the definition of `X_full`, the double bracket in `[]` is important because it allows us to have a pandas DataFrame as output. This makes it easier to fit the linear regression model with **scikit-learn**.
+Now, let's choose our predictor and response. 
 
 ```{python}
 #| echo: true
@@ -227,7 +229,7 @@ Y_full = Ads_data.filter(['Sales'])
 
 </br>
 
-To evaluate a model's performance on unobserved data, we split the current dataset into a training dataset and a validation dataset. To do this, we use the scikit-learn `train_test_split()` function.
+To evaluate a model's performance on unobserved data, we split the current dataset into a training dataset and a validation dataset. To do this, we use `train_test_split()`.
 
 ```{python}
 #| echo: true
@@ -259,7 +261,7 @@ LRmodel.fit(X_train, Y_train)
 
 ## 
 
-The following commands allow you to show the estimated coefficients of the model.
+The following commands show the estimated coefficients of the model.
 
 ```{python}
 #| echo: true
@@ -278,6 +280,8 @@ print("Intercept:", LRmodel.intercept_)
 ```
 
 </br>
+
+. . . 
 
 The estimated model thus is
 

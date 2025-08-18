@@ -23,7 +23,7 @@ jupyter: python3
 </br>
 
 1.  Introduction
-2. Training, Validation, and Test Data
+2.  Training, Validation, and Test Data
 3.  Classification Trees
 4.  Classification Algorithm Metrics
 
@@ -107,7 +107,6 @@ Classification algorithms use predictor values [*to predict the class*]{style="c
 
 That is, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not.
 
-
 ## The goal of classification algorithms
 
 </br>
@@ -147,7 +146,9 @@ Both emails would be classified as spam. However, we would have greater confiden
 
 Technically, $C(\boldsymbol{X})$ works with the *conditional probability*:
 
+::: {style="font-size: 90%;"}
 $$P(Y = 1 | X_1 = x_1, X_2 = x_2, \ldots, X_p = x_p) = P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$$
+:::
 
 In words, this is the probability that $Y$ takes a value of 1 [**given that**]{style="color:brown;"} the predictors $\boldsymbol{X}$ have taken the values $\boldsymbol{x} = (x_1, x_2, \ldots, x_p)$.
 
@@ -191,7 +192,7 @@ To overcome this issue, we several methods:
 -   [**Ensemble methods**]{style="color:orange;"} and [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (If time permits).
 :::
 
-##
+## 
 
 </br>
 
@@ -203,10 +204,10 @@ $$\hat{C}(\boldsymbol{X}) =
       0, & \text{if}\ \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x}) \leq 0.5
     \end{cases}.$$
 
-where 
+where
 
-- $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ is an estimate of $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
-- $\hat{C}(\boldsymbol{X})$ is an estimate of the true Bayes Classifier $C(\boldsymbol{X})$
+-   $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ is an estimate of $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
+-   $\hat{C}(\boldsymbol{X})$ is an estimate of the true Bayes Classifier $C(\boldsymbol{X})$
 
 # Training, Validation, and Test Data
 
@@ -314,7 +315,7 @@ We do the same to extract the column `Status` from the data frame. We store the 
 #| output: true
 
 # Set full matrix of responses.
-Y_full = bank_data.filter(['Status'])
+Y_full = bank_data['Status']
 Y_full.head(4)
 ```
 
@@ -330,7 +331,7 @@ To set the target category in the response we use the `get_dummies()` function.
 Y_dummies = pd.get_dummies(Y_full, dtype = 'int')
 
 # Select target variable.
-Y_target_full = Y_dummies['Status_counterfeit']
+Y_target_full = Y_dummies['counterfeit']
 
 # Show target variable.
 Y_target_full.head() 
@@ -796,7 +797,6 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
-
 :::
 :::::
 ::::::
@@ -841,7 +841,6 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
-
 :::
 :::::
 ::::::
@@ -886,7 +885,6 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
-
 :::
 :::::
 ::::::
@@ -931,7 +929,6 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
-
 :::
 :::::
 ::::::
@@ -1301,7 +1298,6 @@ Node impurity refers to the homogeneity of the response classes at that node.
 ::::::: center
 :::::: columns
 ::: {.column width="40%"}
-
 </br>
 
 There are three different metrics for impurity:
@@ -1327,7 +1323,7 @@ p: Proportion of elements in the target class
 
 </br>
 
-Let $p_1$ and $p_2$ be the proportion of observations in the target and reference class, respectively, in a node. 
+Let $p_1$ and $p_2$ be the proportion of observations in the target and reference class, respectively, in a node.
 
 -   Misclassification risk: $1 - \max\{p_1, p_2\}$
 
@@ -1335,9 +1331,429 @@ Let $p_1$ and $p_2$ be the proportion of observations in the target and referenc
 
 -   Gini impurity index: $p_1(1 - p_1) + p_2(1 - p_2)$
 
+
+## In Python
+
+In Python, we use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a classification tree.
+
+```{python}
+#| echo: true
+#| output: false
+
+# We tell Python we want a classification tree
+clf = DecisionTreeClassifier(min_samples_leaf= 5, ccp_alpha=0, 
+                              random_state=507134)
+
+# We train the classification tree using the training data.
+clf.fit(X_train, Y_train)
+```
+
+The parameter `min_samples_leaf` controls the minimum number of observations in a terminal node, and the `cc_alpha` controls the tree complexity (to be described later). The parameter `random_state` allows you to reproduce the same tree in different runs of the Python code.
+
+## Plotting the tree
+
+</br>
+
+To see the decision tree, we use the `plot_tree` function from **scikit-learn** and some commands from **matplotlib**. Specifically, we use the `plt.figure()` functions to define the size of the figure and `plt.show()` to display the figure.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+
+plt.figure(figsize=(6, 6))
+plot_tree(clf, filled=True, rounded=True)
+plt.show()
+```
+
+
+## 
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+plt.figure(figsize=(8, 6))
+plot_tree(clf, filled=True, rounded=True)
+plt.show()
+```
+
+
+## The tree in the predictor space
+
+</br>
+
+```{python}
+#| fig-align: center
+
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(9.3, 5.3))
+sns.scatterplot(
+    data=training_dataset,
+    x='Top',
+    y='Bottom',
+    hue='counterfeit',
+    palette={0: 'blue', 1: 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.25, color='black', linewidth=3)     # Horizontal line
+plt.axvline(x=10.95, ymin=0, ymax=0.41, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=10.25, ymin=0.41, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.3, ymin=0, ymax=0.41, color='black', linewidth=3)  # Right vertical
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+
+
+## Estimated conditional probabilities
+
+</br>
+
+After training a classification tree, we can calculate the estimated conditional probability $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$. 
+
+To this end, let 
+
+- $\hat{p}_1(\boldsymbol{x}) = \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ 
+- $\hat{p}_0(\boldsymbol{x}) = 1 - \hat{p}_1(\boldsymbol{x})$ 
+
+be the estimated probabilities that $\boldsymbol{x}$ belongs to class 1 or 0.
+
+## 
+
+</br></br>
+
+Essentially, we calculate $\hat{p}_1(\boldsymbol{x})$ and $\hat{p}_0(\boldsymbol{x})$ as follows:
+
+1. Select the region or terminal node where $\boldsymbol{x}$ belongs.
+2. $\hat{p}_1(\boldsymbol{x})$ is the proportion of observations in *that* terminal node that belong to class 1. $\hat{p}_0(\boldsymbol{x})$ is the proportion of observations that belong to class 0.
+
+## Visually
+
+Let $(\hat{p}_0(\boldsymbol{x}), \hat{p}_1(\boldsymbol{x}))$ be the estimated probabilities.
+
+```{python}
+#| fig-align: center
+
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(9.3, 5.3))
+sns.scatterplot(
+    data=training_dataset,
+    x='Top',
+    y='Bottom',
+    hue='counterfeit',
+    palette={0: 'blue', 1: 'orange'},
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=9.25, color='black', linewidth=3)     # Horizontal line
+plt.axvline(x=10.95, ymin=0, ymax=0.41, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=10.25, ymin=0.41, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.3, ymin=0, ymax=0.41, color='black', linewidth=3)  # Right vertical
+
+# Add region labels
+plt.text(9.05, 11.5, r"(0.3, 0.7)", fontsize=30)
+plt.text(11.5, 11.5, r"(0, 1)", fontsize=30)
+plt.text(9.05, 7.2, r"(1, 0)", fontsize=30)
+plt.text(11.05, 7.2, r"(0.7, 0.3)", fontsize=20, rotation=90)
+plt.text(11.5, 7.2, r"(0.3, 0.7)", fontsize=30)
+
+# Axis labels
+plt.xlabel("Top")
+plt.ylabel("Bottom")
+
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+
+## Estimated Bayes Classifier
+
+</br>
+
+Once we have estimated the conditional probability using the classification tree, we plug it into the Bayes classifier to have our approximated function:
+
+$$\hat{C}(\boldsymbol{x}) =
+    \begin{cases}
+      1, & \text{if}\ \hat{p}_1(\boldsymbol{x}) > 0.5 \\
+      0, & \text{if}\ \hat{p}_1(\boldsymbol{x}) \leq 0.5
+    \end{cases},$$
+
+where $\hat{p}_1(\boldsymbol{x})$ depends on the region or terminal node $\boldsymbol{x}$ falls in.
+
+## Simplified decision boundary
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+from sklearn.inspection import DecisionBoundaryDisplay
+
+# Make sure the feature order matches exactly what was used in clf.fit
+X = X_train[['Top', 'Bottom']]  
+
+
+# Create decision boundary plot
+disp = DecisionBoundaryDisplay.from_estimator(
+    clf,
+    X,
+    response_method="predict",
+    xlabel="Top",
+    ylabel="Bottom",
+    grid_resolution=200,
+    cmap=plt.cm.Paired,
+    alpha=0.5
+)
+
+# Overlay actual data points
+disp.ax_.scatter(
+    X['Top'],
+    X['Bottom'],
+    c=Y_train,
+    cmap=plt.cm.Paired,
+    edgecolor='k'
+)
+
+disp.ax_.set_title("Decision Boundary of Classification Tree")
+plt.show()
+```
+
+
+
+## Decision boundary logistic regression
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+from sklearn.linear_model import LogisticRegression
+
+# Prepare features in the same order: Top (x-axis), Bottom (y-axis)
+X = X_train[['Top', 'Bottom']]
+
+# Train logistic regression
+log_reg = LogisticRegression()
+log_reg.fit(X, Y_train)
+
+# Create decision boundary plot
+disp = DecisionBoundaryDisplay.from_estimator(
+    log_reg,
+    X,
+    response_method="predict",
+    xlabel="Top",
+    ylabel="Bottom",
+    grid_resolution=200,
+    cmap=plt.cm.Paired,
+    alpha=0.5
+)
+
+# Overlay actual training data points
+disp.ax_.scatter(
+    X['Top'],
+    X['Bottom'],
+    c=Y_train,
+    cmap=plt.cm.Paired,
+    edgecolor='k'
+)
+
+disp.ax_.set_title("Decision Boundary of Logistic Regression")
+plt.show()
+
+```
+
+## Implementation details
+
+-   Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
+
+-   Predictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new "NA" level.
+
+-   Tertiary or quartary splits. There is not much improvement.
+
+-   Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
+
+# Classification Metrics
+
+## Evaluation
+
+</br>
+
+We evaluate a classification tree by classifying observations that were not used for training.
+
+That is, we use the classifier to predict categories in the validation data set using only the predictor values from this set.
+
+In Python, we use the commands:
+
+```{python}
+#| echo: true
+
+# Predict classes.
+predicted_class = clf.predict(X_valid)
+```
+
+## 
+
+</br>
+
+The `predict()` function generates actual classes to which each observation was assigned.
+
+```{python}
+#| echo: true
+#| output: true
+
+predicted_class
+```
+
+## 
+
+</br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Ensure feature order matches the training model
+X_train_plot = X_train[['Top', 'Bottom']]
+X_valid_plot = X_valid[['Top', 'Bottom']]
+
+# Create decision boundary plot
+disp = DecisionBoundaryDisplay.from_estimator(
+    clf,
+    X_train_plot,
+    response_method="predict",
+    xlabel="Top",
+    ylabel="Bottom",
+    grid_resolution=200,
+    cmap=plt.cm.Paired,
+    alpha=0.5
+)
+
+# Overlay training points (colored by class)
+disp.ax_.scatter(
+    X_train_plot['Top'],
+    X_train_plot['Bottom'],
+    c=Y_train,
+    cmap=plt.cm.Paired,
+    edgecolor='k'
+)
+
+# Overlay validation points (black)
+disp.ax_.scatter(
+    X_valid_plot['Top'],
+    X_valid_plot['Bottom'],
+    c='black',
+    edgecolor='k',
+    label='Validation'
+)
+
+disp.ax_.set_title("Decision Boundary of Classification Tree")
+disp.ax_.legend()
+plt.show()
+
+```
+
+## 
+
+The `predict_proba()` function generates the probabilities used by the algorithm to assign the classes.
+
+```{python}
+#| echo: true
+#| output: true
+
+# Predict probabilities.
+predicted_probability = clf.predict_proba(X_valid)
+predicted_probability
+```
+
+## Confusion matrix
+
+-   Table to evaluate the performance of a classifier.
+
+-   Compares actual values with the predicted values of a classifier.
+
+-   Useful for binary and multiclass classification problems.
+
+![](images/confusion_matrix.png){fig-align="center"}
+
+## In Python
+
+</br>
+
+We calculate the confusion matrix using the homonymous function **scikit-learn**.
+
+```{python}
+#| echo: true
+#| output: true
+
+# Compute confusion matrix.
+cm = confusion_matrix(Y_valid, predicted_class)
+
+# Show confusion matrix.
+print(cm)
+```
+
+## 
+
+</br>
+
+We can display the confusion matrix using the `ConfusionMatrixDisplay()` function.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+ConfusionMatrixDisplay(cm).plot()
+```
+
+## Accuracy
+
+It is a simple metric for summarizing the information in the confusion matrix. It is the proportion of correct classifications for both classes, out of the total classifications performed.
+
+</br>
+
+In Python, we calculate accuracy using the **scikit-learn** `accuracy_score()` function.
+
+```{python}
+#| echo: true
+#| output: true
+
+accuracy = accuracy_score(Y_valid, predicted_class)
+print( round(accuracy, 2) )
+```
+
+The higher the accuracy, the better the performance of the classification algorithm.
+
 ## Pruning the tree
 
-To avoid overfitting, we pruned some of the tree's branches. More specifically, we collapsed two internal (non-terminal) nodes.
+In some cases, we can optimize the performance of the tree by pruning it. That is, we collapse two internal (non-terminal) nodes.
 
 ![](images/clipboard-1949573140.png){fig-align="center"}
 
@@ -1448,164 +1864,25 @@ plt.show()
 
 ## 
 
-</br></br>
+</br>
 
 To prune a tree, we use an advanced algorithm to measure the contribution of the tree's branches.
 
-The algorithm has a tuning parameter called $\alpha$, which **places greater weight on the number of tree nodes** (or size):
+This algorithm optimizes the following function:
 
-$$\text{Classification performance of tree} + \alpha (\text{\# terminal nodes})$$
+::: {style="font-size: 90%;"}
+$$\text{Classification performance of tree} + \alpha (\text{\# terminal nodes}),$$
+:::
+
+where $\alpha$ is a tuning parameter that **places greater weight on the number of tree nodes** (or size).
 
 -   Large values of $\alpha$ result in small trees with few nodes.
 
 -   Small values of $\alpha$ result in large trees with many nodes.
 
-## In Python
-
-In Python, we use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a classification tree.
-
-```{python}
-#| echo: true
-#| output: false
-
-# We tell Python we want a classification tree
-clf = DecisionTreeClassifier(min_samples_leaf= 5, ccp_alpha=0, 
-                              random_state=507134)
-
-# We train the classification tree using the training data.
-clf.fit(X_train, Y_train)
-```
-
-The parameter `min_samples_leaf` controls the minimum number of observations in a terminal node, and the `cc_alpha` controls the tree complexity (to be described later). The parameter `random_state` allows you to reproduce the same tree in different runs of the Python code.
-
-## Plotting the tree
-
-</br>
-
-To see the decision tree, we use the `plot_tree` function from **scikit-learn** and some commands from **matplotlib**. Specifically, we use the `plt.figure()` functions to define the size of the figure and `plt.show()` to display the figure.
-
-```{python}
-#| echo: true
-#| output: false
-#| fig-align: center
-
-plt.figure(figsize=(6, 6))
-plot_tree(clf, filled=True, rounded=True)
-plt.show()
-```
-
-## 
-
-</br>
-
-```{python}
-#| echo: false
-#| output: true
-#| fig-align: center
-
-plt.figure(figsize=(8, 6))
-plot_tree(clf, filled=True, rounded=True)
-plt.show()
-```
-
-
-## Simplified decision boundary
-
-</br>
-
-```{python}
-#| echo: false
-#| output: true
-#| fig-align: center
-
-from sklearn.inspection import DecisionBoundaryDisplay
-
-# Make sure the feature order matches exactly what was used in clf.fit
-X = X_train[['Top', 'Bottom']]  
-
-
-# Create decision boundary plot
-disp = DecisionBoundaryDisplay.from_estimator(
-    clf,
-    X,
-    response_method="predict",
-    xlabel="Top",
-    ylabel="Bottom",
-    grid_resolution=200,
-    cmap=plt.cm.Paired,
-    alpha=0.5
-)
-
-# Overlay actual data points
-disp.ax_.scatter(
-    X['Top'],
-    X['Bottom'],
-    c=Y_train,
-    cmap=plt.cm.Paired,
-    edgecolor='k'
-)
-
-disp.ax_.set_title("Decision Boundary of Classification Tree")
-plt.show()
-```
-
-## Decision boundary logistic regression
-
-</br>
-
-```{python}
-#| echo: false
-#| output: true
-#| fig-align: center
-
-from sklearn.linear_model import LogisticRegression
-
-# Prepare features in the same order: Top (x-axis), Bottom (y-axis)
-X = X_train[['Top', 'Bottom']]
-
-# Train logistic regression
-log_reg = LogisticRegression()
-log_reg.fit(X, Y_train)
-
-# Create decision boundary plot
-disp = DecisionBoundaryDisplay.from_estimator(
-    log_reg,
-    X,
-    response_method="predict",
-    xlabel="Top",
-    ylabel="Bottom",
-    grid_resolution=200,
-    cmap=plt.cm.Paired,
-    alpha=0.5
-)
-
-# Overlay actual training data points
-disp.ax_.scatter(
-    X['Top'],
-    X['Bottom'],
-    c=Y_train,
-    cmap=plt.cm.Paired,
-    edgecolor='k'
-)
-
-disp.ax_.set_title("Decision Boundary of Logistic Regression")
-plt.show()
-
-```
-
-## Implementation details
-
--   Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
-
--   Predictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new "NA" level.
-
--   Tertiary or quartary splits. There is not much improvement.
-
--   Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
-
 ## Apply penalty for large trees
 
-Now, let's illustrate the pruning technique to find a small decision tree that performs well. To do this, we will train several decision trees using different values of the $\alpha$ parameter, which weighs the contribution of the tree branches.
+Now, let's illustrate the pruning technique to find a small decision tree that performs well. To do this, we will train several decision trees using different values of $\alpha$, which weighs the contribution of the tree branches.
 
 </br>
 
@@ -1621,9 +1898,9 @@ ccp_alphas = path.ccp_alphas
 
 ## 
 
-The `ccp_alphas` and `impurities` objects contain the different values of the $\alpha$ parameter used, as well as the impurity performance of the generated trees.
+</br>
 
-To train a decision tree using different alpha values, we use the following code that iterates over the values contained in `ccp_alphas`.
+The `ccp_alphas` object contains the different values of $\alpha$ used. To train a decision tree using different $\alpha$ values, we use the following code that iterates over the values contained in `ccp_alphas`.
 
 ```{python}
 #| echo: true
@@ -1631,167 +1908,14 @@ To train a decision tree using different alpha values, we use the following code
 
 clfs = []
 for ccp_alpha in ccp_alphas:
-    clf_alpha = DecisionTreeClassifier(random_state=507134, min_samples_leaf= 5, 
-                                       ccp_alpha=ccp_alpha)
+    clf_alpha = DecisionTreeClassifier(min_samples_leaf= 5, 
+                                       ccp_alpha=ccp_alpha, random_state=507134)
     clf_alpha.fit(X_train, Y_train)
-    clfs.append(clf)
-```
-
-In the next section, we will evaluate the performance of these decision trees.
-
-# Classification Metrics
-
-## Evaluation
-
-</br>
-
-We evaluate a classification tree by classifying observations that were not used for training.
-
-That is, we use the classifier to predict categories in the validation data set using only the predictor values from this set.
-
-In Python, we use the commands:
-
-```{python}
-#| echo: true
-
-# Predict classes.
-predicted_class = clf.predict(X_valid)
-```
-
-## 
-
-</br>
-
-The `predict()` function generates actual classes to which each observation was assigned.
-
-```{python}
-#| echo: true
-#| output: true
-
-predicted_class
-```
-
-##
-
-</br>
-
-```{python}
-#| echo: false
-#| output: true
-#| fig-align: center
-
-# Ensure feature order matches the training model
-X_train_plot = X_train[['Top', 'Bottom']]
-X_valid_plot = X_valid[['Top', 'Bottom']]
-
-# Create decision boundary plot
-disp = DecisionBoundaryDisplay.from_estimator(
-    clf,
-    X_train_plot,
-    response_method="predict",
-    xlabel="Top",
-    ylabel="Bottom",
-    grid_resolution=200,
-    cmap=plt.cm.Paired,
-    alpha=0.5
-)
-
-# Overlay training points (colored by class)
-disp.ax_.scatter(
-    X_train_plot['Top'],
-    X_train_plot['Bottom'],
-    c=Y_train,
-    cmap=plt.cm.Paired,
-    edgecolor='k'
-)
-
-# Overlay validation points (black)
-disp.ax_.scatter(
-    X_valid_plot['Top'],
-    X_valid_plot['Bottom'],
-    c='black',
-    edgecolor='k',
-    label='Validation'
-)
-
-disp.ax_.set_title("Decision Boundary of Classification Tree")
-disp.ax_.legend()
-plt.show()
-
+    clfs.append(clf_alpha)
 ```
 
 
 ## 
-
-The `predict_proba()` function generates the probabilities used by the algorithm to assign the classes.
-
-```{python}
-#| echo: true
-#| output: true
-
-# Predict probabilities.
-predicted_probability = clf.predict_proba(X_valid)
-predicted_probability
-```
-
-## Confusion matrix
-
--   Table to evaluate the performance of a classifier.
-
--   Compares actual values with the predicted values of a classifier.
-
--   Useful for binary and multiclass classification problems.
-
-![](images/confusion_matrix.png){fig-align="center"}
-
-## In Python
-
-</br>
-
-We calculate the confusion matrix using the homonymous function **scikit-learn**.
-
-```{python}
-#| echo: true
-#| output: true
-
-# Compute confusion matrix.
-cm = confusion_matrix(Y_valid, predicted_class)
-
-# Show confusion matrix.
-print(cm)
-```
-
-## 
-
-</br>
-
-We can display the confusion matrix using the `ConfusionMatrixDisplay()` function.
-
-```{python}
-#| echo: true
-#| output: true
-#| fig-align: center
-
-ConfusionMatrixDisplay(cm).plot()
-```
-
-## Accuracy
-
-A simple metric for summarizing the information in the confusion matrix is **accuracy**. It is the proportion of correct classifications for both classes, out of the total classifications performed.
-
-In Python, we calculate accuracy using the **scikit-learn** `accuracy_score()` function.
-
-```{python}
-#| echo: true
-#| output: true
-
-accuracy = accuracy_score(Y_valid, predicted_class)
-print( round(accuracy, 2) )
-```
-
-The higher the accuracy, the better the performance of the classifier.
-
-## Let's get back to the penalized trees
 
 </br>
 
@@ -1805,7 +1929,7 @@ train_scores = [clf.score(X_train, Y_train) for clf in clfs]
 validation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]
 ```
 
-The `.score()` function computes the accuracy of a classification tree. 
+The `.score()` function computes the accuracy of a classification tree.
 
 ## 
 
@@ -1829,7 +1953,9 @@ plt.show()
 
 ## Choosing the best tree
 
-We can see that the best $\alpha$ value for the validation dataset is 0.01.
+</br>
+
+We can see that the best $\alpha$ value for the validation dataset is 0.
 
 To train our new reduced tree, we use the `DecisionTreeClassifier()` function again with the `ccp_alpha` parameter set to the best $\alpha$ value. The object containing this new tree is `clf_simple`.
 
@@ -1858,11 +1984,11 @@ plot_tree(clf_simple, filled=True, rounded=True)
 plt.show()
 ```
 
-## Accuracy in Python
+## 
 
 </br></br>
 
-Let's compute the accuracy of the pruned tree.
+The accuracy of the pruned tree is:
 
 ```{python}
 #| echo: true
@@ -1873,7 +1999,7 @@ accuracy = accuracy_score(Y_valid, single_tree_Y_pred)
 print( round(accuracy, 2) )
 ```
 
-## Comments
+## Comments on accuracy
 
 </br>
 
@@ -1886,6 +2012,8 @@ print( round(accuracy, 2) )
 -   For example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading.
 
 ## An example
+
+</br>
 
 -   Let's say we want to create a classifier that tells us whether a mobile phone company's customer will churn next month.
 
@@ -1996,7 +2124,6 @@ print( round(type_I_error, 2) )
 -   Intuitively, increasing the sensitivity of a classifier is likely to increase Type I error, because more observations are predicted as positive.
 
 -   Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
-
 
 ## Disadvantages of decision trees
 
