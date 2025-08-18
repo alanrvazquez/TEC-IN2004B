@@ -1266,7 +1266,10 @@ plt.show()
 :::::: center
 ::::: columns
 ::: {.column width="40%"}
-We repeat the partitioning process until the terminal nodes have no less than, say, 5 observations.
+We repeat the partitioning process until:
+
+- *impurity* does not improve in any of the terminal nodes, or 
+- each terminal node has no less than, say, 5 observations.
 :::
 
 ::: {.column width="60%"}

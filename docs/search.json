@@ -788,7 +788,7 @@
     "href": "Module2/Classification.slides.html#section-25",
     "title": "Classification Trees",
     "section": "",
-    "text": "We repeat the partitioning process until the terminal nodes have no less than, say, 5 observations."
+    "text": "We repeat the partitioning process until:\n\nimpurity does not improve in any of the terminal nodes, or\neach terminal node has no less than, say, 5 observations."
   },
   {
     "objectID": "Module2/Classification.slides.html#what-is-impurity",
