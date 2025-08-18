@@ -44,7 +44,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score, PredictionErrorDisplay
 ```
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
@@ -145,7 +145,7 @@ Test data is independent of the training data.
 :::::
 ::::::
 
-## Linear Regression Model
+## Linear regression model
 
 A common candidate function for predicting a response is the linear regression model. It has the mathematical form:
 
@@ -155,7 +155,7 @@ $$\hat{Y}_i = \hat{f}(X_i) = \hat{\beta}_0 + \hat{\beta}_1 X_i.$$
 
 -   $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ associated with a predictor value equal to $X_i$.
 
--   $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the  [*estimated coefficients*]{style="color:lightblue;"} of the model.
+-   $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the [*estimated coefficients*]{style="color:lightblue;"} of the model.
 
 ## 
 
@@ -165,7 +165,7 @@ This method finds the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimiz
 
 </br>
 
-. . . 
+. . .
 
 Technically, the least squares method finds the $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the following expression
 
@@ -212,7 +212,7 @@ Ads_data.head()
 
 </br></br>
 
-Now, let's choose our predictor and response. 
+Now, let's choose our predictor and response.
 
 ```{python}
 #| echo: true
@@ -281,7 +281,7 @@ print("Intercept:", LRmodel.intercept_)
 
 </br>
 
-. . . 
+. . .
 
 The estimated model thus is
 
@@ -301,79 +301,78 @@ These assumptions are evaluated using a *graphical analysis of residuals* (model
 
 ## In Python
 
-To conduct a residual analysis, we need to obtain the predicted values and residuals of the model first (on the training data).
+For a residual analysis, we need to compute the residuals and predictions using the training dataset. Additionally, we place these objects together with the ID of the observations in a pandas dataframe for further processing. 
 
 ```{python}
 #| echo: true
 #| output: true
 
 # Fitted values.
-fitted = LRmodel.predict(X_train)
+fitted = LRmodel.predict(X_train) + 0*Y_train
 
 # Residuals
 residuals = Y_train - fitted
+
+# Construct a pandas data.frame
+residual_data = pd.DataFrame()
+residual_data["Fitted"] = fitted
+residual_data["Residuals"] = residuals
+residual_data["ID"] = residuals.index
 ```
 
-For plotting, we put everything together in a pandas dataframe.
+##
+
+To validate assumptions 1 and 2, we use a "residuals versus fitted values" plot
 
 ```{python}
 #| echo: true
 #| output: true
+#| code-fold: true
+#| fig-align: center
 
-# Create a DataFrame for plotting
-#results_df = pd.DataFrame()
-#results_df['predicted'] = list(fitted)
-#results_df['actual'] = list(Y_train)
-#results_df['residual'] = results_df['predicted'] - results_df['actual']
-#results_df = results_df.sort_values(by='residual').reset_index(drop=True)
-#results_df.describe()
+# Residual vs Fitted Values Plot
+plt.figure(figsize=(8, 5))
+sns.scatterplot(data = residual_data, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.title('Residuals vs Fitted Values')
+plt.xlabel('Fitted (predicted) Values', fontsize = 14)
+plt.ylabel('Residuals', fontsize = 14)
+plt.show()
 ```
 
 ## 
 
-```{python}
-#| echo: true
-#| output: true
-#| fig-align: center
-#| code-fold: true
-
-# Plot 1: Residuals vs Fitted
-#plt.figure(figsize=(6, 4))
-#sns.scatterplot(x = fitted, y = residuals)
-#plt.axhline(0, color='red', linestyle='--')
-#plt.title("Residuals vs Fitted")
-#plt.xlabel("Fitted values")
-#plt.ylabel("Residuals")
-#plt.show()
-```
+To validate assumption 3, we use the "residuals versus time" plot. Here, we use the ID as a time variable.
 
 ```{python}
 #| echo: true
 #| output: true
-#| fig-align: center
 #| code-fold: true
+#| fig-align: center
 
-# Plot 1: Residuals vs Fitted
-#plt.figure(figsize=(6, 4))
-#sns.scatterplot(x = range(len(residuals)), y = residuals)
-#plt.axhline(0, color='red', linestyle='--')
-#plt.title("Residuals vs Row Order")
-#plt.xlabel("Observation Order")
-#plt.ylabel("Residuals")
-#plt.show()
+# Residual vs ID Plot
+plt.figure(figsize=(8, 5))
+sns.scatterplot(data = residual_data, x = "ID", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.title('Residuals vs Time')
+plt.xlabel('ID', fontsize = 14)
+plt.ylabel('Residuals', fontsize = 14)
+plt.show()
 ```
 
 ## Prediction error
 
-After estimating and validating the linear regression model, we can check the quality of its predictions on [**unobserved**]{style="color:darkred;"} data. That is, on the data in the validation set.
+After estimating and validating the linear regression model, we can check the quality of its predictions on [**unobserved**]{style="color:darkred;"} data. That is, on the data in the [validation set]{style="color:orange;"}.
+
+</br>
 
 One metric for this is the **mean prediction error** (MSE$_v$):
 
-::: {style="font-size: 75%;"}
+::: {style="font-size: 65%;"}
 $$\text{MSE}_v = \frac{(Y_1 - (\hat{\beta}_0 + \hat{\beta}_1 X_1 ))^2 + (Y_2 - (\hat{\beta}_0 + \hat{\beta}_1 X_2 ))^2 + \cdots + (Y_{n_v} - (\hat{\beta}_0 + \hat{\beta}_1 X_{n_v} ))^2}{n_v}$$
 :::
 
--   For $n_v$, the validation data!
+-   For the $n_v$ observations in the the validation data!
 
 The smaller $\text{MSE}_v$, the better the predictions.
 
@@ -459,7 +458,7 @@ rtwo_sc = r2_score(Y_valid, Y_pred)  # Rsquared
 print(round(rtwo_sc, 2))
 ```
 
-## Mini-Activity (cooperative mode)
+## Mini-Activity (*cooperative* mode)
 
 </br></br>
 
@@ -473,9 +472,7 @@ print(round(rtwo_sc, 2))
 
 ## Other candidate functions
 
-The linear regression model is one of the most common models for predicting a response. It is simple and easy to calculate and interpret.
-
-However, it can be limited for very complex problems.
+The linear regression model is one of the most common models for predicting a response. It is simple and easy to calculate and interpret. However, it can be limited for complex problems.
 
 For this purpose, there are other, more advanced candidate functions $\hat{f}(X)$, such as:
 
@@ -758,7 +755,7 @@ To help us do this properly, we use the code below.
 #| code-fold: false
 
 # Define the split point
-split_ratio = 0.8  # 80% train, 20% test
+split_ratio = 0.8  # 80% train, 20% validation
 split_point = int(len(Amtrak_data) * split_ratio)
 
 # Split the data
@@ -825,6 +822,8 @@ X_train = Amtrak_train.filter(['t'])
 Y_train = Amtrak_train.filter(['Ridership (in 000s)'])
 ```
 
+</br>
+
 Next, we fit the model using `LinearRegression()` and `fit()` from **scikit-learn**.
 
 ```{python}
@@ -868,7 +867,7 @@ $$\hat{Y}_i = 1810.777 - 1.281 T_i.$$
 
 ## Residual analysis
 
-</br></br></br>
+</br></br>
 
 We can validate the model using a residual analysis on the training data. To this end, we first compute the predicted values and residuals of the model.
 
@@ -876,8 +875,14 @@ We can validate the model using a residual analysis on the training data. To thi
 #| echo: true
 #| output: true
 
-Y_pred = LRmodelAmtrak.predict(X_train)
+Y_pred = LRmodelAmtrak.predict(X_train) + Y_train*0
 residuals = Y_train - Y_pred
+
+# Construct a pandas data.frame
+residual_data = pd.DataFrame()
+residual_data["Fitted"] = Y_pred
+residual_data["Residuals"] = residuals
+residual_data["Time"] = residuals.index
 ```
 
 ## 
@@ -891,8 +896,10 @@ residuals = Y_train - Y_pred
 #| fig-align: center
 #| code-fold: true
 
+# Residual vs Fitted Values Plot
 plt.figure(figsize=(8, 6))
-sns.residplot(x=Y_pred, y=residuals, lowess=True, line_kws={'color': 'red'})
+sns.scatterplot(data = residual_data, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
 plt.xlabel("Fitted Values (Y_pred)")
 plt.ylabel("Residuals")
 plt.title("Residuals vs. Fitted Values")
@@ -907,12 +914,13 @@ plt.show()
 #| fig-align: center
 #| code-fold: true
 
-#plt.figure(figsize=(8, 6))
-#sns.scatterplot(x=X_train, y=residuals)
-#plt.xlabel("Time (t)")
-#plt.ylabel("Residuals")
-#plt.title("Residuals vs. Time")
-#plt.show()
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data = residual_data, x = "Time", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Time")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Time")
+plt.show()
 ```
 :::
 :::::
@@ -992,11 +1000,18 @@ $$\hat{Y}_i = 1866.84 - 4.65 T_i + 0.03 T^2_i.$$
 #| code-fold: true
 
 # Remember to use the same `X_quad`
-Y_pred_quad = QuadmodelAmtrak.predict(X_quad)
+Y_pred_quad = QuadmodelAmtrak.predict(X_quad) + Y_train*0
 residuals_quad = Y_train - Y_pred_quad
+# Construct a pandas data.frame
+residual_data_quad = pd.DataFrame()
+residual_data_quad["Fitted"] = Y_pred_quad
+residual_data_quad["Residuals"] = residuals_quad
+residual_data_quad["Time"] = residuals_quad.index
+
 
 plt.figure(figsize=(8, 6))
-sns.residplot(x=Y_pred_quad, y=residuals_quad, lowess=True, line_kws={'color': 'red'})
+sns.scatterplot(data = residual_data_quad, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
 plt.xlabel("Fitted Values (Y_pred_quad)")
 plt.ylabel("Residuals")
 plt.title("Residuals vs. Fitted Values")
@@ -1011,12 +1026,13 @@ plt.show()
 #| fig-align: center
 #| code-fold: true
 
-#plt.figure(figsize=(8, 6))
-#sns.scatterplot(x=Amtrak_train['t'], y=residuals_quad)
-#plt.xlabel("Time (t)")
-#plt.ylabel("Residuals")
-#plt.title("Residuals vs. Time")
-#plt.show()
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data = residual_data_quad, x = "Time", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Time (t)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Time")
+plt.show()
 ```
 :::
 :::::
@@ -1072,7 +1088,7 @@ print(round(mse_quad, 2))
 
 We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{MSE}_v$ of the former is smaller than for the latter.
 
-## Mini-Activity (cooperative mode)
+## Mini-Activity (*cooperative* mode)
 
 1.  Consider the dataset *CanadianWorkHours.xlsx* in Canvas.
 
@@ -1085,8 +1101,6 @@ We conclude that the linear model with a quadratic term is better than the linea
 -   Linear trend regression model.
 
 -   Quadratic trend regression model.
-
--   Exponential trend regression model.
 
 ## Identifying Heteroskedasticity
 
@@ -1174,11 +1188,21 @@ LRmodelAirline.fit(X_full, Y_full)
 #| fig-align: center
 #| code-fold: true
 
-Y_pred = LRmodelAirline.predict(X_full)
+# Remember to use the same `X_quad`
+Y_pred = LRmodelAirline.predict(X_full) + Y_full*0
 residuals = Y_full - Y_pred
+
+# Construct a pandas data.frame
+residual_data = pd.DataFrame()
+residual_data["Fitted"] = Y_pred
+residual_data["Residuals"] = residuals
+residual_data["Time"] = residuals.index
+
+
 plt.figure(figsize=(6, 4))
-sns.residplot(x=Y_pred, y=residuals, lowess=True, line_kws={'color': 'red'})
-plt.xlabel("Fitted Values (Y_pred)")
+sns.scatterplot(data = residual_data, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred_quad)")
 plt.ylabel("Residuals")
 plt.title("Residuals vs. Fitted Values")
 plt.show()
@@ -1239,11 +1263,21 @@ With transformation
 #| fig-align: center
 #| code-fold: true
 
-Y_pred_log = LRmodelAirlineTransformed.predict(X_full)
+# Remember to use the same `X_quad`
+Y_pred_log = LRmodelAirlineTransformed.predict(X_full) + log_Y_full*0
 residuals_log = log_Y_full - Y_pred_log
+
+# Construct a pandas data.frame
+residual_data_log = pd.DataFrame()
+residual_data_log["Fitted"] = Y_pred_log
+residual_data_log["Residuals"] = residuals_log
+residual_data_log["Time"] = residuals_log.index
+
+
 plt.figure(figsize=(6, 4))
-sns.residplot(x=Y_pred_log, y=residuals_log, lowess=True, line_kws={'color': 'red'})
-plt.xlabel("Fitted Values")
+sns.scatterplot(data = residual_data_log, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred_quad)")
 plt.ylabel("Residuals")
 plt.title("Residuals vs. Fitted Values")
 plt.show()
@@ -1259,11 +1293,22 @@ Without transformation
 #| fig-align: center
 #| code-fold: true
 
-Y_pred = LRmodelAirline.predict(X_full)
+
+# Remember to use the same `X_quad`
+Y_pred = LRmodelAirline.predict(X_full) + Y_full*0
 residuals = Y_full - Y_pred
+
+# Construct a pandas data.frame
+residual_data = pd.DataFrame()
+residual_data["Fitted"] = Y_pred
+residual_data["Residuals"] = residuals
+residual_data["Time"] = residuals.index
+
+
 plt.figure(figsize=(6, 4))
-sns.residplot(x=Y_pred, y=residuals, lowess=True, line_kws={'color': 'red'})
-plt.xlabel("Fitted Values")
+sns.scatterplot(data = residual_data, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred_quad)")
 plt.ylabel("Residuals")
 plt.title("Residuals vs. Fitted Values")
 plt.show()
@@ -1328,6 +1373,9 @@ Behind the scenes, the additional categorical predictor is transformed into seve
 :::
 
 ::: {.column width="40%"}
+
+</br>
+
 ![](images/clipboard-2320382344.png)
 :::
 :::::
@@ -1493,7 +1541,7 @@ mse_season = mean_squared_error(Y_valid, Y_pred_valid)
 print(round(mse_season, 2))
 ```
 
-## Disadvantages of linear regression models
+## Disadvantages of linear regression
 
 -   Despite their simplicity and versatility, linear regression models are not the best for describing a time series.
 
