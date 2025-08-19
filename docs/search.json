@@ -480,14 +480,14 @@
     "href": "Module2/KNearestNeighbours.slides.html#section",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "KNN uses the Euclidean distance between points. So it ignores units.\n\nExample: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).\nThese people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.\nTherefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.\n\n\nTherefore, as a first step, we must transform the predictors so that they have the same units!"
+    "text": "KNN uses the Euclidean distance between points. So it ignores units.\n\nExample: two predictors: height in cm and arm span in feet. Compare two people: (152.4, 1.52) and (182.88, 1.85).\nThese people are separated by 30.48 units of distance in the first variable, but only by 0.33 units in the second.\nTherefore, the first predictor plays a much more important role in classification and can bias the results to the point where the second variable becomes useless.\n\n\nTherefore, as a first step, we must standardize the predictors so that they have the same units!"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#standardization",
     "href": "Module2/KNearestNeighbours.slides.html#standardization",
     "title": "K nearest neighbors",
     "section": "Standardization",
-    "text": "Standardization\n\nStandardization refers to centering and scaling each numerical predictor individually. This places all predictors on the same scale.\nIn mathematical terms, we standardize a predictor \\(\\mathbf{X}\\) as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{x_i}{n}\\)."
+    "text": "Standardization\n\nStandardization refers to centering and scaling each numerical predictor individually. This places all predictors on the same scale.\nIn mathematical terms, we standardize a predictor \\(X\\) as:\n\\[{\\color{blue} \\tilde{X}_{i}} = \\frac{{ X_{i} - \\bar{X}}}{ \\sqrt{\\frac{1}{n -1} \\sum_{i=1}^{n} (X_{i} - \\bar{X})^2}},\\]\nwith \\(\\bar{X} = \\sum_{i=1}^n \\frac{X_i}{n}\\) and \\(X_i\\) is the i-th observation of \\(X\\)."
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#example",
@@ -501,7 +501,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#create-the-predictor-matrix-and-response-column",
     "title": "K nearest neighbors",
     "section": "Create the predictor matrix and response column",
-    "text": "Create the predictor matrix and response column\nLet’s create the predictor matrix or response column\n\n# Set full matrix of predictors.\nX_full = bank_data.drop(columns = ['Status']) \n\n# Vector with responses\nY_full = bank_data.filter(['Status'])\n\nTo set the target category in the response we use the get_dummies() function.\n\n# Create dummy variables.\nY_dummies = pd.get_dummies(Y_full, dtype = 'int')\n\n# Select target variable.\nY_target_full = Y_dummies['Status_counterfeit']"
+    "text": "Create the predictor matrix and response column\nLet’s create the predictor matrix or response column\n\n# Set full matrix of predictors.\nX_full = bank_data.filter(['Top', 'Bottom']) \n\n# Vector with responses\nY_full = bank_data['Status']\n\nTo set the target category in the response we use the get_dummies() function.\n\n# Create dummy variables.\nY_dummies = pd.get_dummies(Y_full, dtype = 'int')\n\n# Select target variable.\nY_target_full = Y_dummies['counterfeit']"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#lets-partition-the-dataset",
@@ -515,21 +515,21 @@
     "href": "Module2/KNearestNeighbours.slides.html#standardization-in-python",
     "title": "K nearest neighbors",
     "section": "Standardization in Python",
-    "text": "Standardization in Python\n\nTo standardize numeric predictors, we use the StandardScaler() function. We also apply the function to variables using the fit_transform() function.\n\n\nscaler = StandardScaler()\nXs_train = scaler.fit_transform(X_train)"
+    "text": "Standardization in Python\nTo standardize numeric predictors, we use the StandardScaler() .fit() functions using the predictors in the training dataset\n\nscaler = StandardScaler()\nscaler.fit(X_train)\n\n\nTechnically, the code above computes the standarization formulas for each predictor using the training data.\n\nNow, we apply the formulas and compute the standardized predictor matrix using the .transform() function.\n\nXs_train = scaler.transform(X_train)"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#knn-in-python",
     "href": "Module2/KNearestNeighbours.slides.html#knn-in-python",
     "title": "K nearest neighbors",
     "section": "KNN in Python",
-    "text": "KNN in Python\n\nIn Python, we can use the KNeighborsClassifier() and fit() from scikit-learn to train a KNN.\nIn the KNeighborsClassifier function, we can define the number of nearest neighbors using the n_neighbors parameter.\n\n# For example, let's use KNN with three neighbours\nknn = KNeighborsClassifier(n_neighbors=3)\n\n# Now, we train the algorithm.\nknn.fit(Xs_train, Y_train)"
+    "text": "KNN in Python\n\nIn Python, we can use the KNeighborsClassifier() and fit() from scikit-learn to train a KNN.\nIn KNeighborsClassifier(), we set the number of nearest neighbors using the n_neighbors parameter.\n\n# For example, let's use KNN with three neighbours\nknn = KNeighborsClassifier(n_neighbors=3)\n\n# Now, we train the algorithm.\nknn.fit(Xs_train, Y_train)"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#evaluation",
     "href": "Module2/KNearestNeighbours.slides.html#evaluation",
     "title": "K nearest neighbors",
     "section": "Evaluation",
-    "text": "Evaluation\n\nTo evaluate KNN, we make predictions on the validation data (not used to train the KNN). To do this, we must first perform standardization operations on the predictors in the validation dataset.\n\nXs_valid = scaler.fit_transform(X_valid)\n\n\nNext, we make predictions.\n\nY_pred_knn = knn.predict(Xs_valid)"
+    "text": "Evaluation\nTo evaluate KNN, we make predictions on the validation data (not used to train the KNN). To do this, we must first perform standardization operations on the predictors in the validation dataset.\n\nXs_valid = scaler.transform(X_valid)\n\n\nTechnicaly, the code above applies the standarization formulas (computed using training data) to the validation dataset.\n\nNext, we make predictions.\n\nY_pred_knn = knn.predict(Xs_valid)"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#confusion-matrix",
@@ -557,14 +557,14 @@
     "href": "Module2/KNearestNeighbours.slides.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9166666666666666"
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9666666666666667"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#discussion",
     "href": "Module2/KNearestNeighbours.slides.html#discussion",
     "title": "K nearest neighbors",
     "section": "Discussion",
-    "text": "Discussion\n\nKNN is intuitive and simple and can produce decent predictions. However, KNN has some disadvantages:\n\nWhen the training dataset is very large, KNN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. (“Lazy learner”).\nIn this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with."
+    "text": "Discussion\n\nKNN is intuitive and simple and can produce decent predictions. However, it has some disadvantages:\n\nWhen the training dataset is very large, KNN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. (“Lazy learner”).\nIn this case, a decision tree is more advantageous because it is easy to build, store, and make predictions with."
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#section-2",

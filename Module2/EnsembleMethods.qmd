@@ -113,7 +113,7 @@ Given a training dataset, [**bagging**]{style="color:purple;"} averages the pred
 
 </br>
 
-Let $\boldsymbol{x} = (x_1, x_2, \ldots, x_p)$ be a vector of new predictor values. 
+Let $\boldsymbol{x} = (x_1, x_2, \ldots, x_p)$ be a vector of new predictor values.
 
 </br>
 
@@ -161,19 +161,19 @@ $$p_{bag, 1} = \frac{1}{B} (\text{\#} \hat{T}_{b}\text{'s that output a } 1).$$
 -   No pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.
 
 -   The size of bootstrap samples is the same as the size of the training dataset, but we can use a different size.
-::: 
+:::
 
 ## Example 1
 
 </br>
 
-- The data “AdultReduced.xlsx” comes from the UCI Machine Learning Repository and is derived from US census records. 
+-   The data “AdultReduced.xlsx” comes from the UCI Machine Learning Repository and is derived from US census records.
 
-- In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than \$50,000) or low.
+-   In this data, the goal is to predict whether a person's income was high (defined in 1994 as more than \$50,000) or low.
 
-- Predictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc. 
+-   Predictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc.
 
-- The data contains 7,508 records.
+-   The data contains 7,508 records.
 
 ## Read the dataset
 

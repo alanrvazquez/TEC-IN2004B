@@ -323,7 +323,7 @@ Using $K = 3$, that's 3 votes for "counterfeit" and 0 for "genuine." So we class
 
 . . .
 
-**Therefore, as a first step, we must transform the predictors so that they have the same units!**
+**Therefore, as a first step, we must standardize the predictors so that they have the same units!**
 
 ## Standardization
 
@@ -331,11 +331,11 @@ Using $K = 3$, that's 3 votes for "counterfeit" and 0 for "genuine." So we class
 
 Standardization refers to *centering* and *scaling* each numerical predictor individually. This places all predictors on the same scale.
 
-In mathematical terms, we standardize a predictor $\mathbf{X}$ as:
+In mathematical terms, we standardize a predictor $X$ as:
 
 $${\color{blue} \tilde{X}_{i}} = \frac{{ X_{i} - \bar{X}}}{ \sqrt{\frac{1}{n -1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2}},$$
 
-with $\bar{X} = \sum_{i=1}^n \frac{x_i}{n}$.
+with $\bar{X} = \sum_{i=1}^n \frac{X_i}{n}$ and $X_i$ is the *i*-th observation of $X$.
 
 ## Example
 
@@ -360,10 +360,10 @@ Let's create the predictor matrix or response column
 #| output: true
 
 # Set full matrix of predictors.
-X_full = bank_data.drop(columns = ['Status']) 
+X_full = bank_data.filter(['Top', 'Bottom']) 
 
 # Vector with responses
-Y_full = bank_data.filter(['Status'])
+Y_full = bank_data['Status']
 ```
 
 To set the target category in the response we use the `get_dummies()` function.
@@ -376,7 +376,7 @@ To set the target category in the response we use the `get_dummies()` function.
 Y_dummies = pd.get_dummies(Y_full, dtype = 'int')
 
 # Select target variable.
-Y_target_full = Y_dummies['Status_counterfeit']
+Y_target_full = Y_dummies['counterfeit']
 ```
 
 ## Let's partition the dataset
@@ -396,17 +396,24 @@ X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full,
 
 ## Standardization in Python
 
-</br>
+To standardize **numeric** predictors, we use the `StandardScaler()` `.fit()` functions using the predictors in the training dataset
 
-To standardize **numeric** predictors, we use the `StandardScaler()` function. We also apply the function to variables using the `fit_transform()` function.
+```{python}
+#| echo: true
+#| output: false
 
-</br>
+scaler = StandardScaler()
+scaler.fit(X_train)
+```
+
+> Technically, the code above computes the standarization formulas for each predictor using the training data.
+
+Now, we apply the formulas and compute the standardized predictor matrix using the `.transform()` function.
 
 ```{python}
 #| echo: true
 
-scaler = StandardScaler()
-Xs_train = scaler.fit_transform(X_train)
+Xs_train = scaler.transform(X_train)
 ```
 
 ## KNN in Python
@@ -415,7 +422,7 @@ Xs_train = scaler.fit_transform(X_train)
 
 In Python, we can use the `KNeighborsClassifier()` and `fit()` from **scikit-learn** to train a KNN.
 
-In the `KNeighborsClassifier` function, we can define the number of nearest neighbors using the `n_neighbors` parameter.
+In `KNeighborsClassifier()`, we set the number of nearest neighbors using the `n_neighbors` parameter.
 
 ```{python}
 #| echo: true
@@ -430,17 +437,15 @@ knn.fit(Xs_train, Y_train)
 
 ## Evaluation
 
-</br>
-
 To evaluate KNN, we make predictions on the validation data (not used to train the KNN). To do this, we must first perform standardization operations on the predictors in the validation dataset.
 
 ```{python}
 #| echo: true
 
-Xs_valid = scaler.fit_transform(X_valid)
+Xs_valid = scaler.transform(X_valid)
 ```
 
-</br>
+> Technicaly, the code above applies the standarization formulas (computed using training data) to the validation dataset. 
 
 Next, we make predictions.
 
@@ -537,7 +542,7 @@ print(valid_accuracy)
 
 </br>
 
-KNN is intuitive and simple and can produce decent predictions. However, KNN has some disadvantages:
+KNN is intuitive and simple and can produce decent predictions. However, it has some disadvantages:
 
 -   When the training dataset is very large, KNN is computationally expensive. This is because, to predict an observation, we need to calculate the distance between that observation and all the others in the dataset. ("*Lazy learner*").
 

@@ -1268,8 +1268,8 @@ plt.show()
 ::: {.column width="40%"}
 We repeat the partitioning process until:
 
-- *impurity* does not improve in any of the terminal nodes, or 
-- each terminal node has no less than, say, 5 observations.
+-   *impurity* does not improve in any of the terminal nodes, or
+-   each terminal node has no less than, say, 5 observations.
 :::
 
 ::: {.column width="60%"}
@@ -1334,7 +1334,6 @@ Let $p_1$ and $p_2$ be the proportion of observations in the target and referenc
 
 -   Gini impurity index: $p_1(1 - p_1) + p_2(1 - p_2)$
 
-
 ## In Python
 
 In Python, we use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a classification tree.
@@ -1369,7 +1368,6 @@ plot_tree(clf, filled=True, rounded=True)
 plt.show()
 ```
 
-
 ## 
 
 </br>
@@ -1383,7 +1381,6 @@ plt.figure(figsize=(8, 6))
 plot_tree(clf, filled=True, rounded=True)
 plt.show()
 ```
-
 
 ## The tree in the predictor space
 
@@ -1423,17 +1420,16 @@ plt.tight_layout()
 plt.show()
 ```
 
-
 ## Estimated conditional probabilities
 
 </br>
 
-After training a classification tree, we can calculate the estimated conditional probability $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$. 
+After training a classification tree, we can calculate the estimated conditional probability $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
 
-To this end, let 
+To this end, let
 
-- $\hat{p}_1(\boldsymbol{x}) = \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ 
-- $\hat{p}_0(\boldsymbol{x}) = 1 - \hat{p}_1(\boldsymbol{x})$ 
+-   $\hat{p}_1(\boldsymbol{x}) = \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$
+-   $\hat{p}_0(\boldsymbol{x}) = 1 - \hat{p}_1(\boldsymbol{x})$
 
 be the estimated probabilities that $\boldsymbol{x}$ belongs to class 1 or 0.
 
@@ -1443,8 +1439,8 @@ be the estimated probabilities that $\boldsymbol{x}$ belongs to class 1 or 0.
 
 Essentially, we calculate $\hat{p}_1(\boldsymbol{x})$ and $\hat{p}_0(\boldsymbol{x})$ as follows:
 
-1. Select the region or terminal node where $\boldsymbol{x}$ belongs.
-2. $\hat{p}_1(\boldsymbol{x})$ is the proportion of observations in *that* terminal node that belong to class 1. $\hat{p}_0(\boldsymbol{x})$ is the proportion of observations that belong to class 0.
+1.  Select the region or terminal node where $\boldsymbol{x}$ belongs.
+2.  $\hat{p}_1(\boldsymbol{x})$ is the proportion of observations in *that* terminal node that belong to class 1. $\hat{p}_0(\boldsymbol{x})$ is the proportion of observations that belong to class 0.
 
 ## Visually
 
@@ -1544,8 +1540,6 @@ disp.ax_.scatter(
 disp.ax_.set_title("Decision Boundary of Classification Tree")
 plt.show()
 ```
-
-
 
 ## Decision boundary logistic regression
 
@@ -1916,7 +1910,6 @@ for ccp_alpha in ccp_alphas:
     clf_alpha.fit(X_train, Y_train)
     clfs.append(clf_alpha)
 ```
-
 
 ## 
 
