@@ -60,7 +60,6 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 ![](images/scikitlearn.png){fig-align="center"}
 
-
 ## Main data science problems
 
 </br>
@@ -1875,10 +1874,10 @@ plt.show()
 
 To prune a tree, we use an advanced algorithm to measure the contribution of the tree's branches.
 
-This algorithm optimizes the following function:
+This algorithm minimizes the following function:
 
 ::: {style="font-size: 90%;"}
-$$\text{Classification performance of tree} + \alpha (\text{\# terminal nodes}),$$
+$$\text{Missclassification rate of tree} + \alpha (\text{\# terminal nodes}),$$
 :::
 
 where $\alpha$ is a tuning parameter that **places greater weight on the number of tree nodes** (or size).

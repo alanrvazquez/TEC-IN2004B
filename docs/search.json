@@ -949,7 +949,7 @@
     "href": "Module2/Classification.slides.html#section-34",
     "title": "Classification Trees",
     "section": "",
-    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThis algorithm optimizes the following function:\n\n\\[\\text{Classification performance of tree} + \\alpha (\\text{\\# terminal nodes}),\\]\n\nwhere \\(\\alpha\\) is a tuning parameter that places greater weight on the number of tree nodes (or size).\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
+    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThis algorithm minimizes the following function:\n\n\\[\\text{Missclassification rate of tree} + \\alpha (\\text{\\# terminal nodes}),\\]\n\nwhere \\(\\alpha\\) is a tuning parameter that places greater weight on the number of tree nodes (or size).\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
   },
   {
     "objectID": "Module2/Classification.slides.html#apply-penalty-for-large-trees",
