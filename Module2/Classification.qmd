@@ -51,6 +51,16 @@ from sklearn.metrics import accuracy_score, recall_score, precision_score
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
 
+## scikit-learn library
+
+-   **scikit-learn** is a robust and popular library for machine learning in Python
+-   It provides simple, efficient tools for data mining and data analysis
+-   It is built on top of libraries such as **NumPy**, **SciPy**, and **Matplotlib**
+-   <https://scikit-learn.org/stable/>
+
+![](images/scikitlearn.png){fig-align="center"}
+
+
 ## Main data science problems
 
 </br>

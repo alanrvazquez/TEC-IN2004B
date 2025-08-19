@@ -438,7 +438,7 @@ To obtain the **root mean squared error (RMSE)**, we simply take the square root
 print(round(mse**(1/2), 2))
 ```
 
-## Mini-Activity (*cooperative* mode)
+## Mini-Activity (*solo* mode)
 
 </br></br>
 
@@ -1068,19 +1068,11 @@ print(round(mse_quad, 2))
 
 We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{MSE}_v$ of the former is smaller than for the latter.
 
-## Mini-Activity (*cooperative* mode)
+## Activity (*solo* mode)
 
-1.  Consider the dataset *CanadianWorkHours.xlsx* in Canvas.
+The Office of Transportation Statistics of the Innovative Research and Technology Administration conducted a study to assess the impact of the September 11, 2001, terrorist attack on U.S. transportation. The report analyzes monthly passenger movement data from January 1990 to May 2004. Time series data are provided for (1) Real Revenue Passenger Miles Traveled (Air RPM), (2) Rail Passenger Miles Traveled (Rail PM), and (3) Car Miles Traveled (VMT).
 
-2.  Split the data into training and validation
-
-3.  Visualize the series in Python. The response variable is Working Hours and the predictor is Year.
-
-4.  Using Python, answer the question: Which of the following models best fits the series?
-
--   Linear trend regression model.
-
--   Quadratic trend regression model.
+In this activity, you will fit different linear regression models to data in the file "Sept11Travel.xlsx" in CANVAS.
 
 ## Identifying Heteroskedasticity
 

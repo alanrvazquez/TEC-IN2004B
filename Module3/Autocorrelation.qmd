@@ -49,7 +49,14 @@ from statsmodels.tsa.statespace.tools import diff
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**, **sklearn** and **statsmodels** libraries in Python.
 
-# Autocorrelation
+## statsmodels library
+
+-   **statsmodels** is a powerful Python library for statistical modeling, data analysis, and hypothesis testing.
+-   It provides classes and functions for estimating statistical models.
+-   It is built on top of libraries such as **NumPy**, **SciPy**, and **pandas**
+-   <https://www.statsmodels.org/stable/index.html>
+
+![](images/statsmodels-logo-v2-horizontal-dark.svg){fig-align="center"}
 
 ## Problem with linear regression models
 
