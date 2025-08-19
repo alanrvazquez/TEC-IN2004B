@@ -41,7 +41,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.tools import diff
@@ -382,9 +382,11 @@ plt.show()
 
 Their main characteristic is that the predictors of the current value of the series are its past values.
 
+::: incremental
 -   An autoregressive model of order 2 has the mathematical form: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.$
 
 -   An order 3 model looks like this: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.$
+:::
 
 ## ARIMA models
 
@@ -402,7 +404,7 @@ An ARIMA model consists of three elements:
 3.  Stochastic terms (*moving average*).
 :::
 
-## 1. Integrated or differentiatedoperators (I)
+## 1. Integrated or differentiated operators (I)
 
 </br>
 
@@ -564,7 +566,7 @@ plt.show()
 
 </br></br>
 
-The differentiation operator removes or de-trends the time series.
+The differentiation operator removes or *de-trends* the time series.
 
 -   The level 0 differentiation operator leaves the time series intact.
 -   The level 1 differentiation operator removes its linear trend.
@@ -944,7 +946,7 @@ forecast_Canadian
 
 ## 
 
-</br>
+</br></br>
 
 Using the forecast and validation data, we compute the RMSE.
 
@@ -957,18 +959,6 @@ mse = mean_squared_error(Canadian_validation["Hours per Week"], forecast_Canadia
 print(round(mse**(1/2), 2))
 ```
 
-We can also compute the $R^2$ score.
-
-```{python}
-#| echo: true
-#| output: true
-#| fig-align: center
-
-rtwo = r2_score(Canadian_validation["Hours per Week"], forecast_Canadian)  
-print(round(rtwo, 2))
-```
-
-> A negative signifies that the model's predictions are worse than simply predicting the average of the response
 
 ## 
 
@@ -1326,18 +1316,6 @@ mse = mean_squared_error(Airline_validation["Number of passengers"],
 print(round(mse**(1/2), 2))
 ```
 
-</br>
-
-We can also compute the $R^2$ score.
-
-```{python}
-#| echo: true
-#| output: true
-#| fig-align: center
-
-rtwo = r2_score(Airline_validation["Number of passengers"], forecast_Airline)  
-print(round(rtwo, 2))
-```
 
 ## 
 
