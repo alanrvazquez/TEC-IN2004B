@@ -229,7 +229,7 @@ Alan R. Vazquez
 <h2>Load the libraries</h2>
 <p><br></p>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="9b6c90f6" class="cell" data-execution_count="1">
+<div id="f6510d0b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -360,7 +360,7 @@ Alan R. Vazquez
 <li>Sales: Sales generated from the product ($).</li>
 <li>200 markets</li>
 </ul>
-<div id="65c73edf" class="cell" data-execution_count="2">
+<div id="d8770a6c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Load the data into Python</span></span>
 <span id="cb2-2"><a></a>Ads_data <span class="op">=</span> pd.read_excel(<span class="st">'Advertising.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -368,7 +368,7 @@ Alan R. Vazquez
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="77ed3d6a" class="cell" data-execution_count="3">
+<div id="8431a2de" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>Ads_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -443,7 +443,7 @@ Alan R. Vazquez
 <h2></h2>
 <p><br><br></p>
 <p>Now, let’s choose our predictor and response.</p>
-<div id="bddec6cc" class="cell" data-execution_count="4">
+<div id="3eff96e0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Chose the predictor.</span></span>
 <span id="cb4-2"><a></a>X_full <span class="op">=</span> Ads_data.<span class="bu">filter</span>([<span class="st">'TV'</span>])</span>
 <span id="cb4-3"><a></a></span>
@@ -455,7 +455,7 @@ Alan R. Vazquez
 <h2>Create training and validation data</h2>
 <p><br></p>
 <p>To evaluate a model’s performance on unobserved data, we split the current dataset into a training dataset and a validation dataset. To do this, we use <code>train_test_split()</code>.</p>
-<div id="e35bb743" class="cell" data-execution_count="5">
+<div id="8b4905de" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>X_train, X_valid, Y_train, Y_valid <span class="op">=</span> train_test_split(X_full, Y_full, </span>
 <span id="cb5-2"><a></a>                                                      test_size <span class="op">=</span> <span class="fl">0.25</span>,</span>
 <span id="cb5-3"><a></a>                                                      random_state <span class="op">=</span> <span class="dv">301655</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -466,7 +466,7 @@ Alan R. Vazquez
 <h2>Fit a linear regression model in Python</h2>
 <p><br></p>
 <p>In Python, we use the <code>LinearRegression()</code> and <code>.fit()</code> functions from the <strong>scikit-learn</strong> to fit a linear regression model.</p>
-<div id="f237a655" class="cell" data-execution_count="6">
+<div id="a1f54e1e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># 1. Create the linear regression model</span></span>
 <span id="cb6-2"><a></a>LRmodel <span class="op">=</span> LinearRegression()</span>
 <span id="cb6-3"><a></a></span>
@@ -477,14 +477,14 @@ Alan R. Vazquez
 <section id="section-3" class="slide level2">
 <h2></h2>
 <p>The following commands show the estimated coefficients of the model.</p>
-<div id="38d519e0" class="cell" data-execution_count="7">
+<div id="5a751af5" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="bu">print</span>(<span class="st">"Coefficients:"</span>, LRmodel.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coefficients: [[0.05185463]]</code></pre>
 </div>
 </div>
 <p>We can also show the estimated intercept.</p>
-<div id="5b902bce" class="cell" data-execution_count="8">
+<div id="39a4e7ee" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>(<span class="st">"Intercept:"</span>, LRmodel.intercept_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intercept: [6.69303889]</code></pre>
@@ -510,7 +510,7 @@ Alan R. Vazquez
 <section id="in-python" class="slide level2">
 <h2>In Python</h2>
 <p>For a residual analysis, we need to compute the residuals and predictions using the training dataset. Additionally, we place these objects together with the ID of the observations in a pandas dataframe for further processing.</p>
-<div id="92c8eadd" class="cell" data-execution_count="9">
+<div id="238cb064" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Fitted values.</span></span>
 <span id="cb11-2"><a></a>fitted <span class="op">=</span> LRmodel.predict(X_train) <span class="op">+</span> <span class="dv">0</span><span class="op">*</span>Y_train</span>
 <span id="cb11-3"><a></a></span>
@@ -527,7 +527,7 @@ Alan R. Vazquez
 <section id="section-4" class="slide level2">
 <h2></h2>
 <p>To validate assumptions 1 and 2, we use a “residuals versus fitted values” plot</p>
-<div id="19870092" class="cell" data-execution_count="10">
+<div id="b7d94153" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Residual vs Fitted Values Plot</span></span>
@@ -551,7 +551,7 @@ Alan R. Vazquez
 <section id="section-5" class="slide level2">
 <h2></h2>
 <p>To validate assumption 3, we use the “residuals versus time” plot. Here, we use the ID as a time variable.</p>
-<div id="5d815299" class="cell" data-execution_count="11">
+<div id="b7ac921a" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Residual vs ID Plot</span></span>
@@ -602,7 +602,7 @@ Alan R. Vazquez
 <p>To evaluate the model’s performance, we use the validation dataset. Specifically, we use the predictor matrix stored in <code>X_valid</code>.</p>
 <p><br></p>
 <p>In Python, we make the prediction using the pre-trained <code>LRmodel</code>.</p>
-<div id="2ef3461f" class="cell" data-execution_count="12">
+<div id="5245c517" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>Y_pred <span class="op">=</span> LRmodel.predict(X_valid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -610,7 +610,7 @@ Alan R. Vazquez
 <h2></h2>
 <p><br></p>
 <p>To evaluate the model, we use the <em>mean squared error</em> in the Python <code>mse()</code> function. Recall that the responses from the validation dataset are in <code>Y_valid</code>, and the model predictions are in <code>Y_pred</code>.</p>
-<div id="57c43212" class="cell" data-execution_count="13">
+<div id="56b88a88" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>mse <span class="op">=</span> mean_squared_error(Y_valid, Y_pred)  <span class="co"># Mean Squared Error (MSE)</span></span>
 <span id="cb15-2"><a></a><span class="bu">print</span>(<span class="bu">round</span>(mse, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -619,7 +619,7 @@ Alan R. Vazquez
 </div>
 <p><br></p>
 <p>To obtain the <strong>root mean squared error (RMSE)</strong>, we simply take the square root of the MSE.</p>
-<div id="491b22c1" class="cell" data-execution_count="14">
+<div id="1d157ee7" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="bu">print</span>(<span class="bu">round</span>(mse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.94</code></pre>
@@ -723,14 +723,14 @@ Alan R. Vazquez
 <li><p>Records are available from January 1991 to March 2004.</p></li>
 <li><p>The data is available in “Amtrak.xlsx” on Canvas.</p></li>
 </ul>
-<div id="bb2838ef" class="cell" data-execution_count="15">
+<div id="1c414dd7" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>Amtrak_data <span class="op">=</span> pd.read_excel(<span class="st">'Amtrak.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-9" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="8bf5c694" class="cell" data-execution_count="16">
+<div id="43177a97" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>Amtrak_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
@@ -804,7 +804,7 @@ Alan R. Vazquez
 <section id="time-series-plot-in-python" class="slide level2">
 <h2>Time series plot in Python</h2>
 <p>We can create a line graph to visualize the evolution of Amtrak train ridership over time using <code>lineplot</code> from <strong>seaborn</strong>.</p>
-<div id="3861c396" class="cell" data-execution_count="17">
+<div id="616ab1e0" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
@@ -849,7 +849,7 @@ Alan R. Vazquez
 <li><p>Although not immediately visible, we can use the previous values of the series to describe the future ones.</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="e0f45afd" class="cell" data-execution_count="18">
+<div id="af606650" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -873,7 +873,7 @@ Alan R. Vazquez
 <li><p>It is used to describe random or <em>natural</em> error.</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="3352630f" class="cell" data-execution_count="19">
+<div id="c3d8ab20" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -926,7 +926,7 @@ Alan R. Vazquez
 <h2>Example 3: Amtrak data (cont.)</h2>
 <p><br></p>
 <p>Let’s fit a linear regression model to the ridership data from Amtrak.</p>
-<div id="0da494af" class="cell" data-execution_count="20">
+<div id="d92e8210" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -946,7 +946,7 @@ Alan R. Vazquez
 <h2></h2>
 <p>Instead, we want to mimic real-world forecasting: train the model on earlier time periods and test it on later ones.</p>
 <p>To help us do this properly, we use the code below.</p>
-<div id="aec612c3" class="cell" data-execution_count="21">
+<div id="180b8886" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Define the split point</span></span>
 <span id="cb22-2"><a></a>split_ratio <span class="op">=</span> <span class="fl">0.8</span>  <span class="co"># 80% train, 20% validation</span></span>
 <span id="cb22-3"><a></a>split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(Amtrak_data) <span class="op">*</span> split_ratio)</span>
@@ -960,7 +960,7 @@ Alan R. Vazquez
 <section id="section-11" class="slide level2">
 <h2></h2>
 <p><br><br></p>
-<div id="40a8272b" class="cell" data-execution_count="22">
+<div id="174af610" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -973,7 +973,7 @@ Alan R. Vazquez
 <section id="fit-linear-regression-model" class="slide level2">
 <h2>Fit linear regression model</h2>
 <p>We first set the predictor and response.</p>
-<div id="7e2e674e" class="cell" data-execution_count="23">
+<div id="9941b499" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># Set predictor.</span></span>
 <span id="cb23-2"><a></a>X_train <span class="op">=</span> Amtrak_train.<span class="bu">filter</span>([<span class="st">'t'</span>])</span>
 <span id="cb23-3"><a></a></span>
@@ -982,7 +982,7 @@ Alan R. Vazquez
 </div>
 <p><br></p>
 <p>Next, we fit the model using <code>LinearRegression()</code> and <code>fit()</code> from <strong>scikit-learn</strong>.</p>
-<div id="5db890ed" class="cell" data-execution_count="24">
+<div id="75d142f9" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co"># 1. Create linear regression model.</span></span>
 <span id="cb24-2"><a></a>LRmodelAmtrak <span class="op">=</span> LinearRegression()</span>
 <span id="cb24-3"><a></a></span>
@@ -994,14 +994,14 @@ Alan R. Vazquez
 <h2></h2>
 <p><br></p>
 <p>Let’s inspect the estimated coefficient for the predictor (<em>time</em>).</p>
-<div id="65180f70" class="cell" data-execution_count="25">
+<div id="1c6ce799" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="bu">print</span>(LRmodelAmtrak.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[-1.2818326]]</code></pre>
 </div>
 </div>
 <p>And the intercept.</p>
-<div id="58988504" class="cell" data-execution_count="26">
+<div id="a971954c" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="bu">print</span>(LRmodelAmtrak.intercept_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1810.77686661]</code></pre>
@@ -1014,7 +1014,7 @@ Alan R. Vazquez
 <h2>Residual analysis</h2>
 <p><br><br></p>
 <p>We can validate the model using a residual analysis on the training data. To this end, we first compute the predicted values and residuals of the model.</p>
-<div id="1fb20390" class="cell" data-execution_count="27">
+<div id="6c8d6fe4" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>Y_pred <span class="op">=</span> LRmodelAmtrak.predict(X_train) <span class="op">+</span> Y_train<span class="op">*</span><span class="dv">0</span></span>
 <span id="cb29-2"><a></a>residuals <span class="op">=</span> Y_train <span class="op">-</span> Y_pred</span>
 <span id="cb29-3"><a></a></span>
@@ -1030,7 +1030,7 @@ Alan R. Vazquez
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="40a68a81" class="cell" data-execution_count="28">
+<div id="9ccd0532" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># Residual vs Fitted Values Plot</span></span>
@@ -1051,7 +1051,7 @@ Alan R. Vazquez
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="4664bdaf" class="cell" data-execution_count="29">
+<div id="5e7a9289" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
@@ -1086,11 +1086,11 @@ Alan R. Vazquez
 <section id="in-python-2" class="slide level2">
 <h2>In Python</h2>
 <p>To include a quadratic term, we must augment our predictor matrix with an additional column. The following code shows how to augment <code>X_full</code> by the square of the <code>Amtrak_data['t']</code> column. This is done using the <strong>pandas</strong> <code>.concat()</code> function. The resulting matrix is stored in <code>X_quad</code>.</p>
-<div id="1c9b995d" class="cell" data-execution_count="30">
+<div id="28046ccb" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>X_quad <span class="op">=</span> pd.concat([X_train, Amtrak_train[<span class="st">'t'</span>]<span class="op">**</span><span class="dv">2</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we follow the same steps to fit this model.</p>
-<div id="cd0d2424" class="cell" data-execution_count="31">
+<div id="d33740cf" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># 1. Create linear regression model</span></span>
 <span id="cb33-2"><a></a>QuadmodelAmtrak <span class="op">=</span> LinearRegression()</span>
 <span id="cb33-3"><a></a></span>
@@ -1102,7 +1102,7 @@ Alan R. Vazquez
 <h2></h2>
 <p><br></p>
 <p>We show the estimated coefficients in Python.</p>
-<div id="b2dbd912" class="cell" data-execution_count="32">
+<div id="b72603cb" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="bu">print</span>(<span class="st">"Intercept = "</span>, QuadmodelAmtrak.intercept_)</span>
 <span id="cb34-2"><a></a><span class="bu">print</span>(<span class="st">"Coefficients = "</span>, QuadmodelAmtrak.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1119,7 +1119,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="d5b8519f" class="cell" data-execution_count="33">
+<div id="79f83ff7" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="co"># Remember to use the same `X_quad`</span></span>
@@ -1149,7 +1149,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="cebde4a8" class="cell" data-execution_count="34">
+<div id="c23b2b95" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
@@ -1175,7 +1175,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <h2>Model evaluation using validation data</h2>
 <p><br></p>
 <p>Remember that another way to evaluate the performance of a model is using the <span class="math inline">\(\text{MSE}_v\)</span> or <span class="math inline">\(\text{RMSE}_v\)</span> on the validation data. To this end, we need some Python objects.</p>
-<div id="709cac7f" class="cell" data-execution_count="35">
+<div id="a07925b2" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="co"># Set predictor.</span></span>
 <span id="cb38-2"><a></a>X_valid <span class="op">=</span> Amtrak_validation.<span class="bu">filter</span>([<span class="st">'t'</span>])</span>
 <span id="cb38-3"><a></a></span>
@@ -1186,7 +1186,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <section id="section-15" class="slide level2">
 <h2></h2>
 <p>Let’s compute the <span class="math inline">\(\text{MSE}_v\)</span> for the linear regression model.</p>
-<div id="3ff346a1" class="cell" data-execution_count="36">
+<div id="e8579679" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>Y_val_pred_lin <span class="op">=</span> LRmodelAmtrak.predict(X_valid)</span>
 <span id="cb39-2"><a></a>mse <span class="op">=</span> mean_squared_error(Y_valid, Y_val_pred_lin)  </span>
 <span id="cb39-3"><a></a><span class="bu">print</span>(<span class="bu">round</span>(mse, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1195,7 +1195,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 </div>
 </div>
 <p>Let’s do the same for the the linear regression model with a quadratic term.</p>
-<div id="f5f190cd" class="cell" data-execution_count="37">
+<div id="2f989821" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a>X_quad_valid <span class="op">=</span> pd.concat([X_valid, Amtrak_validation[<span class="st">'t'</span>]<span class="op">**</span><span class="dv">2</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb41-2"><a></a>Y_val_pred_quad <span class="op">=</span> QuadmodelAmtrak.predict(X_quad_valid)</span>
 <span id="cb41-3"><a></a>mse_quad <span class="op">=</span> mean_squared_error(Y_valid, Y_val_pred_quad)  <span class="co"># Mean Squared Error (MSE)</span></span>
@@ -1216,14 +1216,14 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <p><br><br></p>
 <p>Heteroskedasticity arises when the dispersion of model errors is not constant over time.</p>
 <p>To see it, let’s go back to the Airline data, which contains the number of passengers of an international airline per month between 1949 and 1960.</p>
-<div id="f5e53c31" class="cell" data-execution_count="38">
+<div id="5a737506" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a>Airline_data <span class="op">=</span> pd.read_excel(<span class="st">"Airline.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-16" class="slide level2">
 <h2></h2>
 <p><br><br></p>
-<div id="ae33d1c5" class="cell" data-execution_count="39">
+<div id="07acb349" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a>Airline_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
@@ -1285,7 +1285,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <section id="section-17" class="slide level2">
 <h2></h2>
 <p>For illustrative purposes, we will not split the time series into training and validation datasets.</p>
-<div id="8a36a80a" class="cell" data-execution_count="40">
+<div id="9fdd62c5" class="cell" data-execution_count="40">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
@@ -1309,7 +1309,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <h2></h2>
 <p><br><br></p>
 <p>Let’s fit a linear regression model.</p>
-<div id="e415e437" class="cell" data-execution_count="41">
+<div id="588e75e7" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="co"># Set predictor.</span></span>
 <span id="cb46-2"><a></a>X_full <span class="op">=</span> Airline_data.<span class="bu">filter</span>([<span class="st">'T'</span>])</span>
 <span id="cb46-3"><a></a></span>
@@ -1328,7 +1328,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <div style="font-size: 90%;">
 <p><strong>Heteroskedasticity</strong>: Dispersion of the residuals increases with the predicted value.</p>
 </div>
-<div id="bc6b4566" class="cell" data-execution_count="42">
+<div id="72716254" class="cell" data-execution_count="42">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="co"># Remember to use the same `X_quad`</span></span>
@@ -1371,13 +1371,13 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <section id="in-python-3" class="slide level2">
 <h2>In Python</h2>
 <p>The easiest way to apply the logarithm in Python is to use the <code>log()</code> function from the <strong>numpy</strong> library</p>
-<div id="6c4b27d4" class="cell" data-execution_count="43">
+<div id="3d70bccb" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>log_Y_full <span class="op">=</span> np.log( Y_full )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, the response to use is in <code>log_Y_full</code>.</p>
 <p><br></p>
 <p>The steps to fit a linear regression model are similar.</p>
-<div id="a96bc2f2" class="cell" data-execution_count="44">
+<div id="2dbcbd27" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a><span class="co"># 1. Create linear regression</span></span>
 <span id="cb49-2"><a></a>LRmodelAirlineTransformed <span class="op">=</span> LinearRegression()</span>
 <span id="cb49-3"><a></a></span>
@@ -1391,7 +1391,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>With transformation</p>
-<div id="2563b006" class="cell" data-execution_count="45">
+<div id="1e8e48b2" class="cell" data-execution_count="45">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a></a><span class="co"># Remember to use the same `X_quad`</span></span>
@@ -1423,7 +1423,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Without transformation</p>
-<div id="745cbf36" class="cell" data-execution_count="46">
+<div id="562b54a4" class="cell" data-execution_count="46">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a></a><span class="co"># Remember to use the same `X_quad`</span></span>
@@ -1477,7 +1477,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <li><p>Amount of rainfall throughout the year.</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="92ee0fb9" class="cell" data-execution_count="47">
+<div id="e77f51ef" class="cell" data-execution_count="47">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1506,7 +1506,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <section id="analyzing-seasonal-series-in-python" class="slide level2">
 <h2>Analyzing seasonal series in Python</h2>
 <p>Consider the data in <code>Amtrak_train</code> with the additional predictor of <code>Season</code> to model seasonality.</p>
-<div id="1e6631d6" class="cell" data-execution_count="48">
+<div id="64d708f1" class="cell" data-execution_count="48">
 <div class="cell-output cell-output-display" data-execution_count="48">
 <div>
 <style scoped="">
@@ -1579,7 +1579,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <section id="section-19" class="slide level2">
 <h2></h2>
 <p>To fit a linear regression model with a categorical variable like <code>Season</code>, we must transform the text categories into numbers. To do this, we use dummy variables constructed using the following commands.</p>
-<div id="2afe4007" class="cell" data-execution_count="49">
+<div id="36bf3b9f" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a>dummy_data <span class="op">=</span> pd.get_dummies(Amtrak_train[<span class="st">'Season'</span>], dtype <span class="op">=</span> <span class="st">'int'</span>)</span>
 <span id="cb52-2"><a></a>dummy_data.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
@@ -1687,7 +1687,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <section id="section-20" class="slide level2">
 <h2></h2>
 <p>Simply put, the matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column <code>Apr</code> has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.</p>
-<div id="2acb6054" class="cell" data-execution_count="50">
+<div id="7fd7d021" class="cell" data-execution_count="50">
 <div class="cell-output cell-output-display" data-execution_count="50">
 <div>
 <style scoped="">
@@ -1796,20 +1796,20 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <p>Unfortunately, we cannot use the matrix as is in the linear regression model. This is due to multicollinearity issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.</p>
 <p><br></p>
 <p>To solve this problem, we arbitrarily remove a column from the matrix above. For example, let’s remove <code>Dec</code>.</p>
-<div id="bfcbf3ca" class="cell" data-execution_count="51">
+<div id="5c19c6bb" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a></a>dummy_data <span class="op">=</span> dummy_data.drop([<span class="st">"Dec"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-22" class="slide level2">
 <h2></h2>
 <p>Now, let’s build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.</p>
-<div id="267b2b92" class="cell" data-execution_count="52">
+<div id="dc1ca411" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a></a>X_quad_season <span class="op">=</span> pd.concat([Amtrak_train[<span class="st">'t'</span>], Amtrak_train[<span class="st">'t'</span>]<span class="op">**</span><span class="dv">2</span>, dummy_data], </span>
 <span id="cb54-2"><a></a>                          axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>Next, we fit the model with all the terms in the matrix above.</p>
-<div id="f70abdfb" class="cell" data-execution_count="53">
+<div id="f5d88b49" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a></a><span class="co"># 0. Ensure that we have the response in `Y_full`.</span></span>
 <span id="cb55-2"><a></a>Y_train <span class="op">=</span> Amtrak_train[<span class="st">'Ridership (in 000s)'</span>]</span>
 <span id="cb55-3"><a></a></span>
@@ -1823,7 +1823,7 @@ Coefficients =  [[-4.64563238  0.03397778]]</code></pre>
 <section id="estimated-model-coefficients" class="slide level2">
 <h2>Estimated model coefficients</h2>
 <p><br></p>
-<div id="e9665896" class="cell" data-execution_count="54">
+<div id="af85257c" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a><span class="bu">print</span>(<span class="st">"Intercept = "</span>, SeasonmodelAmtrak.intercept_)</span>
 <span id="cb56-2"><a></a><span class="bu">print</span>(<span class="st">"Coefficients = "</span>, SeasonmodelAmtrak.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1837,7 +1837,7 @@ Coefficients =  [-6.12171259e+00  4.96085283e-02  1.22309969e+01  1.77720172e+02
 </section>
 <section id="residual-analysis-4" class="slide level2">
 <h2>Residual analysis</h2>
-<div id="762b0a05" class="cell" data-execution_count="55">
+<div id="97b60433" class="cell" data-execution_count="55">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a>Y_pred <span class="op">=</span> SeasonmodelAmtrak.predict(X_quad_season)</span>
@@ -1861,7 +1861,7 @@ Coefficients =  [-6.12171259e+00  4.96085283e-02  1.22309969e+01  1.77720172e+02
 <section id="predictions-on-the-validation-dataset" class="slide level2">
 <h2>Predictions on the validation dataset</h2>
 <p>Prepare the validation data using dummy variables.</p>
-<div id="00f86ea8" class="cell" data-execution_count="56">
+<div id="d34ddcf9" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a></a>Y_valid <span class="op">=</span> Amtrak_validation[<span class="st">'Ridership (in 000s)'</span>]</span>
 <span id="cb59-2"><a></a></span>
 <span id="cb59-3"><a></a>dummy_valid <span class="op">=</span> pd.get_dummies(Amtrak_validation[<span class="st">'Season'</span>], dtype <span class="op">=</span> <span class="st">'int'</span>)</span>
@@ -1872,7 +1872,7 @@ Coefficients =  [-6.12171259e+00  4.96085283e-02  1.22309969e+01  1.77720172e+02
 </div>
 <p><br></p>
 <p>Now, we compute the validation <span class="math inline">\(\text{MSE}_v\)</span>.</p>
-<div id="c9f1db03" class="cell" data-execution_count="57">
+<div id="efdc9301" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a></a>Y_pred_valid <span class="op">=</span> SeasonmodelAmtrak.predict(X_qs_valid)</span>
 <span id="cb60-2"><a></a></span>
 <span id="cb60-3"><a></a>mse_season <span class="op">=</span> mean_squared_error(Y_valid, Y_pred_valid) </span>
