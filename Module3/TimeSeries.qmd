@@ -49,8 +49,6 @@ from sklearn.metrics import mean_squared_error
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
 
-
-
 ## What is a time series?
 
 </br>
@@ -665,7 +663,7 @@ We conclude that the linear model with a quadratic term is better than the linea
 
 ## 
 
-Predictions of linear model
+Predictions of linear model.
 
 ```{python}
 #| echo: false
@@ -701,7 +699,7 @@ plt.show()
 
 ## 
 
-Predictions of linear model with quadratic trend
+Predictions of linear model with quadratic trend.
 
 ```{python}
 #| echo: false
