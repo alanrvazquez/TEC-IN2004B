@@ -1619,28 +1619,28 @@
   {
     "objectID": "Module3/PredictiveModels.slides.html#load-the-libraries",
     "href": "Module3/PredictiveModels.slides.html#load-the-libraries",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Load the libraries",
     "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#main-data-science-problems",
     "href": "Module3/PredictiveModels.slides.html#main-data-science-problems",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Main data science problems",
     "text": "Main data science problems\n\nRegression Problems. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.\nClassification Problems. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).\nThe predictors (\\(\\boldsymbol{X}\\)) can be numerical or categorical."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#main-data-science-problems-1",
     "href": "Module3/PredictiveModels.slides.html#main-data-science-problems-1",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Main data science problems",
     "text": "Main data science problems\n\nRegression Problems. The response is numerical. For example, a person’s income, the value of a house, or a patient’s blood pressure.\nClassification Problems. The response is categorical and involves K different categories. For example, the brand of a product purchased (A, B, C) or whether a person defaults on a debt (yes or no).\nThe predictors (\\(\\boldsymbol{X}\\)) can be numerical or categorical."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#regression-problem",
     "href": "Module3/PredictiveModels.slides.html#regression-problem",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Regression problem",
     "text": "Regression problem\n\nGoal: Find the best function \\(f(\\boldsymbol{X})\\) of the predictors \\(\\boldsymbol{X} = (X_1, \\ldots, X_p)\\) that predicts the response \\(Y\\).\nIn mathematical terms, we want to establish the following relationship:\n\\[Y = f(\\boldsymbol{X}) + \\epsilon\\]\n\nWhere \\(\\epsilon\\) is a natural (random) error."
   },
@@ -1675,28 +1675,28 @@
   {
     "objectID": "Module3/PredictiveModels.slides.html#moreover",
     "href": "Module3/PredictiveModels.slides.html#moreover",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Moreover…",
     "text": "Moreover…\n\n\n\n\nWe can use test data for a final evaluation of the model.\nTest data is data obtained from the process that generated the training data.\nTest data is independent of the training data."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#linear-regression-model",
     "href": "Module3/PredictiveModels.slides.html#linear-regression-model",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Linear regression model",
     "text": "Linear regression model\nA common candidate function for predicting a response is the linear regression model. It has the mathematical form:\n\\[\\hat{Y}_i = \\hat{f}(X_i) = \\hat{\\beta}_0 + \\hat{\\beta}_1 X_i.\\]\n\nWhere \\(i = 1, \\ldots, n_t\\) is the index of the \\(n_t\\) training data.\n\\(\\hat{Y}_i\\) is the prediction of the actual value of the response \\(Y_i\\) associated with a predictor value equal to \\(X_i\\).\n\\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are called the estimated coefficients of the model."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#section",
     "href": "Module3/PredictiveModels.slides.html#section",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "The values of \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are obtained using the training dataset and the least squares method.\nThis method finds the values of \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) that minimize the error made by the model \\(\\hat{f}(X_i)\\) when trying to predict the responses (\\(Y_i\\)) of the training dataset.\n\n\nTechnically, the least squares method finds the \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) that minimize the following expression\n\n\\[(Y_1 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 ))^2 + (Y_2 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_2 ))^2 + \\cdots + (Y_{n_t} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_{n_t} ))^2 \\]\n\nFor the \\(n_t\\) observations in the training data!"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#the-idea-in-two-dimensions",
     "href": "Module3/PredictiveModels.slides.html#the-idea-in-two-dimensions",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "The idea in two dimensions",
     "text": "The idea in two dimensions"
   },
@@ -1710,35 +1710,35 @@
   {
     "objectID": "Module3/PredictiveModels.slides.html#section-1",
     "href": "Module3/PredictiveModels.slides.html#section-1",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "Ads_data.head()\n\n\n\n\n\n\n\n\nTV\nRadio\nNewspaper\nSales\n\n\n\n\n0\n230.1\n37.8\n69.2\n22.1\n\n\n1\n44.5\n39.3\n45.1\n10.4\n\n\n2\n17.2\n45.9\n69.3\n9.3\n\n\n3\n151.5\n41.3\n58.5\n18.5\n\n\n4\n180.8\n10.8\n58.4\n12.9"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#section-2",
     "href": "Module3/PredictiveModels.slides.html#section-2",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "Now, let’s choose our predictor and response.\n\n# Chose the predictor.\nX_full = Ads_data.filter(['TV'])\n\n# Set the response.\nY_full = Ads_data.filter(['Sales'])"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#create-training-and-validation-data",
     "href": "Module3/PredictiveModels.slides.html#create-training-and-validation-data",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Create training and validation data",
     "text": "Create training and validation data\n\nTo evaluate a model’s performance on unobserved data, we split the current dataset into a training dataset and a validation dataset. To do this, we use train_test_split().\n\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.25,\n                                                      random_state = 301655)\n\nWe use 75% of the data for training and the rest for validation."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#fit-a-linear-regression-model-in-python",
     "href": "Module3/PredictiveModels.slides.html#fit-a-linear-regression-model-in-python",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Fit a linear regression model in Python",
     "text": "Fit a linear regression model in Python\n\nIn Python, we use the LinearRegression() and .fit() functions from the scikit-learn to fit a linear regression model.\n\n# 1. Create the linear regression model\nLRmodel = LinearRegression()\n\n# 2. Fit the model.\nLRmodel.fit(X_train, Y_train)"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#section-3",
     "href": "Module3/PredictiveModels.slides.html#section-3",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "The following commands show the estimated coefficients of the model.\n\nprint(\"Coefficients:\", LRmodel.coef_)\n\nCoefficients: [[0.05185463]]\n\n\nWe can also show the estimated intercept.\n\nprint(\"Intercept:\", LRmodel.intercept_)\n\nIntercept: [6.69303889]\n\n\n\n\nThe estimated model thus is\n\\[\\hat{Y}_i = 6.69 + 0.051 X_i.\\]"
   },
@@ -1752,63 +1752,63 @@
   {
     "objectID": "Module3/PredictiveModels.slides.html#in-python",
     "href": "Module3/PredictiveModels.slides.html#in-python",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "In Python",
     "text": "In Python\nFor a residual analysis, we need to compute the residuals and predictions using the training dataset. Additionally, we place these objects together with the ID of the observations in a pandas dataframe for further processing.\n\n# Fitted values.\nfitted = LRmodel.predict(X_train) + 0*Y_train\n\n# Residuals\nresiduals = Y_train - fitted\n\n# Construct a pandas data.frame\nresidual_data = pd.DataFrame()\nresidual_data[\"Fitted\"] = fitted\nresidual_data[\"Residuals\"] = residuals\nresidual_data[\"ID\"] = residuals.index"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#section-4",
     "href": "Module3/PredictiveModels.slides.html#section-4",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "To validate assumptions 1 and 2, we use a “residuals versus fitted values” plot\n\n\nCode\n# Residual vs Fitted Values Plot\nplt.figure(figsize=(8, 5))\nsns.scatterplot(data = residual_data, x = \"Fitted\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.title('Residuals vs Fitted Values')\nplt.xlabel('Fitted (predicted) Values', fontsize = 14)\nplt.ylabel('Residuals', fontsize = 14)\nplt.show()"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#section-5",
     "href": "Module3/PredictiveModels.slides.html#section-5",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "To validate assumption 3, we use the “residuals versus time” plot. Here, we use the ID as a time variable.\n\n\nCode\n# Residual vs ID Plot\nplt.figure(figsize=(8, 5))\nsns.scatterplot(data = residual_data, x = \"ID\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.title('Residuals vs Time')\nplt.xlabel('ID', fontsize = 14)\nplt.ylabel('Residuals', fontsize = 14)\nplt.show()"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#prediction-error",
     "href": "Module3/PredictiveModels.slides.html#prediction-error",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Prediction error",
     "text": "Prediction error\nAfter estimating and validating the linear regression model, we can check the quality of its predictions on unobserved data. That is, on the data in the validation set.\n\nOne metric for this is the mean prediction error (MSE\\(_v\\)):\n\n\\[\\text{MSE}_v = \\frac{(Y_1 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 ))^2 + (Y_2 - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_2 ))^2 + \\cdots + (Y_{n_v} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 X_{n_v} ))^2}{n_v}\\]\n\n\nFor the \\(n_v\\) observations in the the validation data!\n\nThe smaller \\(\\text{MSE}_v\\), the better the predictions."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#section-6",
     "href": "Module3/PredictiveModels.slides.html#section-6",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "In practice, we use the square root of the mean prediction error:\n\\[\\text{RMSE}_v = \\sqrt{\\text{MSE}_v}.\\]\nThe advantage of \\(\\text{RMSE}_v\\) is that it is in the same units as the response \\(Y\\), which facilitates its interpretation.\nFor example, if \\(\\text{RMSE}_v = 1\\), then a prediction of \\(\\hat{Y} = 5\\) will have an (average) error rate of \\(\\pm 1\\).\n\nPrediction of tesla car next month, 1000 USD. Prediction of ON running shoes next month, 20 USD."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#in-python-1",
     "href": "Module3/PredictiveModels.slides.html#in-python-1",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "In Python",
     "text": "In Python\n\nTo evaluate the model’s performance, we use the validation dataset.\n\nFirst, we predict the responses using the predictor matrix in X_valid and our pre-trained model in LRmodel. To this end, we use the .predict() function.\n\nY_pred = LRmodel.predict(X_valid)"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#section-7",
     "href": "Module3/PredictiveModels.slides.html#section-7",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "",
     "text": "Next, we use the mean squared error in the mse() function. Recall that the responses from the validation dataset are in Y_valid, and the model predictions are in Y_pred.\n\nmse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)\nprint(round(mse, 2))\n\n15.49\n\n\n\nTo obtain the root mean squared error (RMSE), we simply take the square root of the MSE.\n\nprint(round(mse**(1/2), 2))\n\n3.94"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#mini-activity-solo-mode",
     "href": "Module3/PredictiveModels.slides.html#mini-activity-solo-mode",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Mini-Activity (solo mode)",
     "text": "Mini-Activity (solo mode)\n\n\nConsider the Advertising.xlsx dataset in Canvas.\nUse a model to predict Sales that includes the Radio predictor (money spent on radio ads for a product ($)). What is the \\(\\text{RMSE}_v\\)?\nNow, use a model to predict Sales that includes two predictors: TV and Radio. What is the \\(\\text{RMSE}_v\\)?\nWhich model do you prefer?"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#other-candidate-functions",
     "href": "Module3/PredictiveModels.slides.html#other-candidate-functions",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Other candidate functions",
     "text": "Other candidate functions\nThe linear regression model is one of the most common models for predicting a response. It is simple and easy to calculate and interpret. However, it can be limited for complex problems.\nFor this purpose, there are other, more advanced candidate functions \\(\\hat{f}(\\boldsymbol{X})\\), such as:\n\nDecision or regression trees.\nEnsamble methods (bagging and random forest).\nK nearest neighbors."
   },
@@ -3974,42 +3974,42 @@
   {
     "objectID": "Module3/PredictiveModels.slides.html#how-to-find-the-shape-of-fboldsymbolx",
     "href": "Module3/PredictiveModels.slides.html#how-to-find-the-shape-of-fboldsymbolx",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "How to find the shape of \\(f(\\boldsymbol{X})\\)?",
     "text": "How to find the shape of \\(f(\\boldsymbol{X})\\)?\n\nUsing training data."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#how-to-find-the-shape-of-fboldsymbolx-1",
     "href": "Module3/PredictiveModels.slides.html#how-to-find-the-shape-of-fboldsymbolx-1",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "How to find the shape of \\(f(\\boldsymbol{X})\\)?",
     "text": "How to find the shape of \\(f(\\boldsymbol{X})\\)?\n\nUsing training data."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#how-to-evaluate-the-quality-of-the-candidate-function-hatfboldsymbolx",
     "href": "Module3/PredictiveModels.slides.html#how-to-evaluate-the-quality-of-the-candidate-function-hatfboldsymbolx",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "How to evaluate the quality of the candidate function \\(\\hat{f}(\\boldsymbol{X})\\)?",
     "text": "How to evaluate the quality of the candidate function \\(\\hat{f}(\\boldsymbol{X})\\)?\n\n\n\nUsing validation data."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#how-to-evaluate-the-quality-of-the-candidate-function-hatfboldsymbolx-1",
     "href": "Module3/PredictiveModels.slides.html#how-to-evaluate-the-quality-of-the-candidate-function-hatfboldsymbolx-1",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "How to evaluate the quality of the candidate function \\(\\hat{f}(\\boldsymbol{X})\\)?",
     "text": "How to evaluate the quality of the candidate function \\(\\hat{f}(\\boldsymbol{X})\\)?\n\n\n\nUsing validation data."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#model-assumptions",
     "href": "Module3/PredictiveModels.slides.html#model-assumptions",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "Model assumptions",
     "text": "Model assumptions\n\nTo use the regression model, the model errors \\(e_i = Y_i - \\hat{Y}_i\\) obtained on the training data must meet three conditions:\n\nOn average, they must be equal to 0.\nThey must have the same dispersion or variability.\nThey must be independent of each other.\n\nThese assumptions are evaluated using a graphical analysis of residuals (model errors)."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#a-technical-python-note",
     "href": "Module3/PredictiveModels.slides.html#a-technical-python-note",
-    "title": "Predictive Models and Time Series",
+    "title": "Introduction to Predictive Models",
     "section": "A technical Python note",
     "text": "A technical Python note\nNote that we have this weird way of saving the predictions of the model on the training dataset, since we added 0*Y_train.\n\n\n# Fitted values.\nfitted = LRmodel.predict(X_train) + 0*Y_train\n\n\nThe addition of 0*Y_train does not impact the predicted responses. Instead, it allows the fitted object to have the same indices as the residuals object in the previous section.\nIn this way, these two objects can be put together in a pandas dataframe and being visualized using seaborn."
   },
@@ -4054,5 +4054,404 @@
     "title": "Predictive Models and Time Series",
     "section": "",
     "text": "Predictions of the linear model with seasonality."
+  },
+  {
+    "objectID": "Module3/PredictiveModels.slides.html#example",
+    "href": "Module3/PredictiveModels.slides.html#example",
+    "title": "Introduction to Predictive Models",
+    "section": "Example",
+    "text": "Example\n\nWe used the dataset called “Advertising.xlsx” in Canvas.\n\nTV: Money spent on TV ads for a product ($).\nSales: Sales generated from the product ($).\n200 markets\n\n\n# Load the data into Python\nAds_data = pd.read_excel('Advertising.xlsx')"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#agenda",
+    "href": "Module3/TimeSeries.slides.html#agenda",
+    "title": "Introduction to Time Series",
+    "section": "Agenda",
+    "text": "Agenda\n\n\nTime Series\nLinear Regression Model for Time Series\nModels with Seasonality"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#load-the-libraries",
+    "href": "Module3/TimeSeries.slides.html#load-the-libraries",
+    "title": "Introduction to Time Series",
+    "section": "Load the libraries",
+    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#what-is-a-time-series",
+    "href": "Module3/TimeSeries.slides.html#what-is-a-time-series",
+    "title": "Introduction to Time Series",
+    "section": "What is a time series?",
+    "text": "What is a time series?\n\n\nIt is a sequence of observations collected at successive time intervals.\nTime series data is commonly used in finance, economics, weather forecasting, signal processing, and many others.\nAnalyzing time series data helps us understand patterns, trends, and behaviors over time, enabling prediction, anomaly detection, and decision-making."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-2-teslas-stock-price",
+    "href": "Module3/TimeSeries.slides.html#example-2-teslas-stock-price",
+    "title": "Introduction to Time Series",
+    "section": "Example 2: Tesla’s stock price",
+    "text": "Example 2: Tesla’s stock price"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section",
+    "href": "Module3/TimeSeries.slides.html#section",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Technically, a time series is a set of observations about a (discrete) predictor \\(T\\) and a response \\(Y\\).\nObservations of \\(Y\\) are recorded at the moments or times given by the predictor \\(T\\).\nThe special feature of the time series is that the observations of \\(Y\\) are not independent!\n\n\n\n\n\nDay\nT\nTemperature (Y)\n\n\n\n\nMonday\n1\n10\n\n\nTuesday\n2\n12\n\n\nWednesday\n3\n15\n\n\nThursday\n4\n14\n\n\nFriday\n5\n18"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-3-amtrak-data",
+    "href": "Module3/TimeSeries.slides.html#example-3-amtrak-data",
+    "title": "Introduction to Time Series",
+    "section": "Example 3: Amtrak data",
+    "text": "Example 3: Amtrak data\n\n\nThe Amtrak train company in the USA collects data on the number of passengers traveling on its trains.\nRecords are available from January 1991 to March 2004.\nThe data is available in “Amtrak.xlsx” on Canvas.\n\n\nAmtrak_data = pd.read_excel('Amtrak.xlsx')"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-1",
+    "href": "Module3/TimeSeries.slides.html#section-1",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Amtrak_data.head()\n\n\n\n\n\n\n\n\nMonth\nt\nRidership (in 000s)\nSeason\n\n\n\n\n0\n1991-01-01\n1\n1708.917\nJan\n\n\n1\n1991-02-01\n2\n1620.586\nFeb\n\n\n2\n1991-03-04\n3\n1972.715\nMar\n\n\n3\n1991-04-04\n4\n1811.665\nApr\n\n\n4\n1991-05-05\n5\n1974.964\nMay"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#time-series-plot-in-python",
+    "href": "Module3/TimeSeries.slides.html#time-series-plot-in-python",
+    "title": "Introduction to Time Series",
+    "section": "Time series plot in Python",
+    "text": "Time series plot in Python\nWe can create a line graph to visualize the evolution of Amtrak train ridership over time using lineplot from seaborn.\n\n\nCode\nplt.figure(figsize=(6, 4))\nsns.lineplot(x='Month', y='Ridership (in 000s)', data = Amtrak_data)\nplt.xlabel('Month')\nplt.ylabel('Ridership')\nplt.title('Amtrak Ridership Over Time')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#informative-series",
+    "href": "Module3/TimeSeries.slides.html#informative-series",
+    "title": "Introduction to Time Series",
+    "section": "Informative Series",
+    "text": "Informative Series\n\nAn informative time series is a series that contains patterns that we can use to predict future values of the series.\nThe three possible patterns are:\n\n\nTrend: the series has an increasing/decreasing behavior.\nSeasonality: the series has a repeating cyclical pattern in its values.\nAutocorrelation: the series follows a pattern that can be described by previous values of the series."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-4-airline-data",
+    "href": "Module3/TimeSeries.slides.html#example-4-airline-data",
+    "title": "Introduction to Time Series",
+    "section": "Example 4: Airline data",
+    "text": "Example 4: Airline data\n\n\n\n\n\nThis series has an upper trend.\nThis series has cyclical patterns in its values.\nAlthough not immediately visible, we can use the previous values of the series to describe the future ones."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#non-informative-series-white-noise",
+    "href": "Module3/TimeSeries.slides.html#non-informative-series-white-noise",
+    "title": "Introduction to Time Series",
+    "section": "Non-informative series: White noise",
+    "text": "Non-informative series: White noise\n\n\n\n\n\nWhite noise is a series whose values, on average, are 0 and have a constant variation.\nIts values are also independent of each other.\nIt is used to describe random or natural error."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#linear-regression-model",
+    "href": "Module3/TimeSeries.slides.html#linear-regression-model",
+    "title": "Introduction to Time Series",
+    "section": "Linear regression model",
+    "text": "Linear regression model\n\nThe linear regression model is useful for capturing patterns in a time series. In this context, the model takes the form:\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i\\]\n\nWhere \\(i = 1, \\ldots, n_t\\) is the index of the \\(n_t\\) training data.\n\\(\\hat{Y}_i\\) is the prediction of the actual value of the response \\(Y_i\\) at time \\(T_i\\)."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#trend",
+    "href": "Module3/TimeSeries.slides.html#trend",
+    "title": "Introduction to Time Series",
+    "section": "Trend",
+    "text": "Trend\n\nThe trend of the time series is captured by the value of \\(\\hat{\\beta}_1\\) at\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i\\]\n\nIf \\(\\hat{\\beta}_1\\) is positive, the series has an upward trend.\nIf \\(\\hat{\\beta}_1\\) is negative, the series has a downward trend.\n\nThe values of \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are obtained using the least squares method."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#model-evaluation",
+    "href": "Module3/TimeSeries.slides.html#model-evaluation",
+    "title": "Introduction to Time Series",
+    "section": "Model evaluation",
+    "text": "Model evaluation\n\nRemember that the errors of the linear regression model (\\(e_i = Y_i - \\hat{Y}_i\\)) must meet three conditions:\n\nOn average, they must be equal to 0.\nThey must have the same dispersion or variability.\nThey must be independent of each other.\n\nIn the context of time series, this means that the model errors \\(e_i\\) must behave like white noise that contains no patterns."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-3-amtrak-data-cont.",
+    "href": "Module3/TimeSeries.slides.html#example-3-amtrak-data-cont.",
+    "title": "Introduction to Time Series",
+    "section": "Example 3: Amtrak data (cont.)",
+    "text": "Example 3: Amtrak data (cont.)\n\nLet’s fit a linear regression model to the ridership data from Amtrak."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#creating-a-train-and-a-validation-data",
+    "href": "Module3/TimeSeries.slides.html#creating-a-train-and-a-validation-data",
+    "title": "Introduction to Time Series",
+    "section": "Creating a train and a validation data",
+    "text": "Creating a train and a validation data\n\n\nIn time series, the order of the data matters because each observation is tied to a specific point in time.\nBecause of this, we cannot randomly split the data using a function like train_test_split().\nDoing so might result in a situation where the model learns from future values to predict past ones—which doesn’t make sense and would lead to overly optimistic performance."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-2",
+    "href": "Module3/TimeSeries.slides.html#section-2",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Instead, we want to train the model on earlier time periods and test it on later ones.\nTo this end, we use the code below.\n\n# Define the split point\nsplit_ratio = 0.8  # 80% train, 20% validation\nsplit_point = int(len(Amtrak_data) * split_ratio)\n\n# Split the data\nAmtrak_train = Amtrak_data[:split_point]\nAmtrak_validation = Amtrak_data[split_point:]\n\nThis code ensures that the training data always comes before the validation data in time, preserving the temporal order. The proportion of data that goes to training is set using split_ratio."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#fit-linear-regression-model",
+    "href": "Module3/TimeSeries.slides.html#fit-linear-regression-model",
+    "title": "Introduction to Time Series",
+    "section": "Fit linear regression model",
+    "text": "Fit linear regression model\nWe first set the predictor and response.\n\n# Set predictor.\nX_train = Amtrak_train.filter(['t'])\n\n# Set response.\nY_train = Amtrak_train.filter(['Ridership (in 000s)'])\n\n\nNext, we fit the model using LinearRegression() and fit() from scikit-learn.\n\n# 1. Create linear regression model.\nLRmodelAmtrak = LinearRegression()\n\n# 2. Fit the model to the training data.\nLRmodelAmtrak.fit(X_train, Y_train)"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-4",
+    "href": "Module3/TimeSeries.slides.html#section-4",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Let’s inspect the estimated coefficient for the predictor (time).\n\nprint(LRmodelAmtrak.coef_)\n\n[[-1.2818326]]\n\n\nAnd the intercept.\n\nprint(LRmodelAmtrak.intercept_)\n\n[1810.77686661]\n\n\nThe estimated model then is:\n\\[\\hat{Y}_i = 1810.777 - 1.281 T_i.\\]"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#residual-analysis",
+    "href": "Module3/TimeSeries.slides.html#residual-analysis",
+    "title": "Introduction to Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\nWe can validate the model using a residual analysis on the training data. To this end, we first compute the predicted values and residuals of the model.\n\nfitted = LRmodelAmtrak.predict(X_train) + Y_train*0\nresiduals = Y_train - fitted\n\n# Construct a pandas data.frame\nresidual_data = pd.DataFrame()\nresidual_data[\"Fitted\"] = fitted\nresidual_data[\"Residuals\"] = residuals\nresidual_data[\"Time\"] = residuals.index\n\nRemember that we are using + Y_train*0 to visualize the objects fitted and residuals effectively."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-5",
+    "href": "Module3/TimeSeries.slides.html#section-5",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Code\n# Residual vs Fitted Values Plot\nplt.figure(figsize=(8, 6))\nsns.scatterplot(data = residual_data, x = \"Fitted\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.xlabel(\"Fitted Values (Y_pred)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplt.figure(figsize=(8, 6))\nsns.scatterplot(data = residual_data, x = \"Time\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.xlabel(\"Time\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Time\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#the-model-is-more-flexible-than-that",
+    "href": "Module3/TimeSeries.slides.html#the-model-is-more-flexible-than-that",
+    "title": "Introduction to Time Series",
+    "section": "The model is more flexible than that",
+    "text": "The model is more flexible than that\n\nIf necessary, the linear regression model can be extended to capture quadratic relationships. For this, the model takes the following form:\n\\[\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i + \\hat{\\beta}_2 T^{2}_i \\]\n\nWhere \\(T^{2}_i\\) is the squared value of the time index.\n\\(\\hat{\\beta}_2\\) is a term that captures possible curvature in the time series."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#in-python",
+    "href": "Module3/TimeSeries.slides.html#in-python",
+    "title": "Introduction to Time Series",
+    "section": "In Python",
+    "text": "In Python\nTo include a quadratic term, we must augment our predictor matrix with an additional column. The following code shows how to augment X_full by the square of the Amtrak_data['t'] column. This is done using the pandas .concat() function. The resulting matrix is stored in X_quad.\n\nX_quad = pd.concat([X_train, Amtrak_train['t']**2], axis = 1)\n\nNext, we follow the same steps to fit this model.\n\n# 1. Create linear regression model\nQuadmodelAmtrak = LinearRegression()\n\n# 2. Fit linear regression model\nQuadmodelAmtrak.fit(X_quad, Y_train)"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-6",
+    "href": "Module3/TimeSeries.slides.html#section-6",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "We show the estimated coefficients in Python.\n\nprint(\"Intercept = \", QuadmodelAmtrak.intercept_)\nprint(\"Coefficients = \", QuadmodelAmtrak.coef_)\n\nIntercept =  [1866.84019635]\nCoefficients =  [[-4.64563238  0.03397778]]\n\n\n\nThe estimated model thus is\n\\[\\hat{Y}_i = 1866.84 - 4.65 T_i + 0.03 T^2_i.\\]"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#residual-analysis-1",
+    "href": "Module3/TimeSeries.slides.html#residual-analysis-1",
+    "title": "Introduction to Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\n\n\n\n\nCode\n# Remember to use the same `X_quad`\nY_pred_quad = QuadmodelAmtrak.predict(X_quad) + Y_train*0\nresiduals_quad = Y_train - Y_pred_quad\n# Construct a pandas data.frame\nresidual_data_quad = pd.DataFrame()\nresidual_data_quad[\"Fitted\"] = Y_pred_quad\nresidual_data_quad[\"Residuals\"] = residuals_quad\nresidual_data_quad[\"Time\"] = residuals_quad.index\n\n\nplt.figure(figsize=(8, 6))\nsns.scatterplot(data = residual_data_quad, x = \"Fitted\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.xlabel(\"Fitted Values (Y_pred_quad)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplt.figure(figsize=(8, 6))\nsns.scatterplot(data = residual_data_quad, x = \"Time\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.xlabel(\"Time (t)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Time\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#model-evaluation-using-validation-data",
+    "href": "Module3/TimeSeries.slides.html#model-evaluation-using-validation-data",
+    "title": "Introduction to Time Series",
+    "section": "Model evaluation using validation data",
+    "text": "Model evaluation using validation data\n\nRemember that another way to evaluate the performance of a model is using the \\(\\text{MSE}_v\\) or \\(\\text{RMSE}_v\\) on the validation data.\n\nTo this end, we need some Python objects.\n\n# Set predictor.\nX_valid = Amtrak_validation.filter(['t'])\n\n# Set response.\nY_valid = Amtrak_validation.filter(['Ridership (in 000s)'])"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-7",
+    "href": "Module3/TimeSeries.slides.html#section-7",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Let’s compute the \\(\\text{RMSE}_v\\) for the linear regression model.\n\nY_val_pred_lin = LRmodelAmtrak.predict(X_valid)\nmse = mean_squared_error(Y_valid, Y_val_pred_lin)  \nprint(round(mse**(1/2), 2))\n\n250.03\n\n\nLet’s do the same for the the linear regression model with a quadratic term.\n\nX_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)\nY_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)\nmse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (MSE)\nprint(round(mse_quad**(1/2), 2))\n\n173.99\n\n\nWe conclude that the linear model with a quadratic term is better than the linear regression model because the \\(\\text{RMSE}_v\\) of the former is smaller than for the latter."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-8",
+    "href": "Module3/TimeSeries.slides.html#section-8",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Predictions of linear model"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-9",
+    "href": "Module3/TimeSeries.slides.html#section-9",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Predictions of linear model with quadratic trend"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#activity-solo-mode",
+    "href": "Module3/TimeSeries.slides.html#activity-solo-mode",
+    "title": "Introduction to Time Series",
+    "section": "Activity (solo mode)",
+    "text": "Activity (solo mode)\nThe Office of Transportation Statistics of the Innovative Research and Technology Administration conducted a study to assess the impact of the September 11, 2001, terrorist attack on U.S. transportation. The report analyzes monthly passenger movement data from January 1990 to May 2004. Time series data are provided for (1) Real Revenue Passenger Miles Traveled (Air RPM), (2) Rail Passenger Miles Traveled (Rail PM), and (3) Car Miles Traveled (VMT).\nIn this activity, you will fit different linear regression models to data in the file “Sept11Travel.xlsx” in CANVAS."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#identifying-heteroskedasticity",
+    "href": "Module3/TimeSeries.slides.html#identifying-heteroskedasticity",
+    "title": "Introduction to Time Series",
+    "section": "Identifying Heteroskedasticity",
+    "text": "Identifying Heteroskedasticity\n\nHeteroskedasticity arises when the dispersion of model errors is not constant over time.\nTo see it, let’s go back to the Airline data, which contains the number of passengers of an international airline per month between 1949 and 1960.\n\nAirline_data = pd.read_excel(\"Airline.xlsx\")"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-10",
+    "href": "Module3/TimeSeries.slides.html#section-10",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Airline_data.head()\n\n\n\n\n\n\n\n\nT\nNumber of passengers\n\n\n\n\n0\n1\n112\n\n\n1\n2\n118\n\n\n2\n3\n132\n\n\n3\n4\n129\n\n\n4\n5\n121"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-11",
+    "href": "Module3/TimeSeries.slides.html#section-11",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "For illustrative purposes, we will not split the time series into training and validation datasets.\n\n\nCode\nplt.figure(figsize=(10, 5))\nsns.lineplot(x='T', y='Number of passengers', data = Airline_data)\nplt.xlabel('Time')\nplt.ylabel('Number of passengers')\nplt.title('Number of passengers across time')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-12",
+    "href": "Module3/TimeSeries.slides.html#section-12",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Let’s fit a linear regression model.\n\n# Set predictor.\nX_full = Airline_data.filter(['T'])\n\n# Set response.\nY_full = Airline_data.filter(['Number of passengers'])\n\n# 1. Create linear regression\nLRmodelAirline = LinearRegression()\n\n# 2. Fit the model\nLRmodelAirline.fit(X_full, Y_full)"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#residual-analysis-2",
+    "href": "Module3/TimeSeries.slides.html#residual-analysis-2",
+    "title": "Introduction to Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\nHeteroskedasticity: Dispersion of the residuals increases with the predicted value.\n\n\n\nCode\n# Remember to use the same `X_quad`\nY_pred = LRmodelAirline.predict(X_full) + Y_full*0\nresiduals = Y_full - Y_pred\n\n# Construct a pandas data.frame\nresidual_data = pd.DataFrame()\nresidual_data[\"Fitted\"] = Y_pred\nresidual_data[\"Residuals\"] = residuals\nresidual_data[\"Time\"] = residuals.index\n\n\nplt.figure(figsize=(6, 4))\nsns.scatterplot(data = residual_data, x = \"Fitted\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.xlabel(\"Fitted Values (Y_pred_quad)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#solution",
+    "href": "Module3/TimeSeries.slides.html#solution",
+    "title": "Introduction to Time Series",
+    "section": "Solution",
+    "text": "Solution\n\nIf we identify heteroskedasticity in the regression model errors, we have several transformation options for our original series.\n\nA common transformations to the time series \\(Y_i\\) is the Natural Logarithm\nIf the original time series contains negative values, it can be lagged by adding the negative of its minimum value."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#in-python-1",
+    "href": "Module3/TimeSeries.slides.html#in-python-1",
+    "title": "Introduction to Time Series",
+    "section": "In Python",
+    "text": "In Python\nThe easiest way to apply the logarithm in Python is to use the log() function from the numpy library\n\nlog_Y_full = np.log( Y_full )\n\nNow, the response to use is in log_Y_full.\n\nThe steps to fit a linear regression model are similar.\n\n# 1. Create linear regression\nLRmodelAirlineTransformed = LinearRegression()\n\n# 2. Fit the model\nLRmodelAirlineTransformed.fit(X_full, log_Y_full)"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#residual-analysis-3",
+    "href": "Module3/TimeSeries.slides.html#residual-analysis-3",
+    "title": "Introduction to Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\n\n\nWith transformation\n\n\nCode\n# Remember to use the same `X_quad`\nY_pred_log = LRmodelAirlineTransformed.predict(X_full) + log_Y_full*0\nresiduals_log = log_Y_full - Y_pred_log\n\n# Construct a pandas data.frame\nresidual_data_log = pd.DataFrame()\nresidual_data_log[\"Fitted\"] = Y_pred_log\nresidual_data_log[\"Residuals\"] = residuals_log\nresidual_data_log[\"Time\"] = residuals_log.index\n\n\nplt.figure(figsize=(6, 4))\nsns.scatterplot(data = residual_data_log, x = \"Fitted\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.xlabel(\"Fitted Values (Y_pred_quad)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\nWithout transformation\n\n\nCode\n# Remember to use the same `X_quad`\nY_pred = LRmodelAirline.predict(X_full) + Y_full*0\nresiduals = Y_full - Y_pred\n\n# Construct a pandas data.frame\nresidual_data = pd.DataFrame()\nresidual_data[\"Fitted\"] = Y_pred\nresidual_data[\"Residuals\"] = residuals\nresidual_data[\"Time\"] = residuals.index\n\n\nplt.figure(figsize=(6, 4))\nsns.scatterplot(data = residual_data, x = \"Fitted\", y = \"Residuals\")\nplt.axhline(y=0, color='red', linestyle='--')\nplt.xlabel(\"Fitted Values (Y_pred_quad)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Fitted Values\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#what-do-i-do-if-the-transformation-doesnt-work",
+    "href": "Module3/TimeSeries.slides.html#what-do-i-do-if-the-transformation-doesnt-work",
+    "title": "Introduction to Time Series",
+    "section": "What do I do if the transformation doesn’t work?",
+    "text": "What do I do if the transformation doesn’t work?\n\n\nIf the log transformation doesn’t significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.\nYou can find literature on these models and their software implementations in a time series textbook such as Time Series Analysis with Applications in R by Cryer and Chan."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#seasonality",
+    "href": "Module3/TimeSeries.slides.html#seasonality",
+    "title": "Introduction to Time Series",
+    "section": "Seasonality",
+    "text": "Seasonality\nSeasonality refers to repetitive or cyclical behavior that occurs with a constant frequency.\n\n\n\n\nExamples:\n\nDemand for winter clothing\nDemand for tourist travel\nAmount of rainfall throughout the year."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#capturing-seasonality",
+    "href": "Module3/TimeSeries.slides.html#capturing-seasonality",
+    "title": "Introduction to Time Series",
+    "section": "Capturing seasonality",
+    "text": "Capturing seasonality\n\n\n\nThe linear regression model can be extended to capture seasonal patterns in the time series.\nTo do this, an additional categorical predictor is created that indicates the season to which each data item belongs.\nThe additional categorical predictor is transformed into several auxiliary numerical predictors."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#analyzing-seasonal-series-in-python",
+    "href": "Module3/TimeSeries.slides.html#analyzing-seasonal-series-in-python",
+    "title": "Introduction to Time Series",
+    "section": "Analyzing seasonal series in Python",
+    "text": "Analyzing seasonal series in Python\nConsider the data in Amtrak_train with the additional predictor of Season to model seasonality.\n\n\n\n\n\n\n\n\n\nMonth\nt\nRidership (in 000s)\nSeason\n\n\n\n\n0\n1991-01-01\n1\n1708.917\nJan\n\n\n1\n1991-02-01\n2\n1620.586\nFeb\n\n\n2\n1991-03-04\n3\n1972.715\nMar\n\n\n3\n1991-04-04\n4\n1811.665\nApr\n\n\n4\n1991-05-05\n5\n1974.964\nMay"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-13",
+    "href": "Module3/TimeSeries.slides.html#section-13",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "To fit a linear regression model with a categorical variable like Season, we must transform the text categories into numbers. To do this, we use dummy variables constructed using the following commands.\n\ndummy_data = pd.get_dummies(Amtrak_train['Season'], dtype = 'int')\ndummy_data.head(4)\n\n\n\n\n\n\n\n\nApr\nAug\nDec\nFeb\nJan\nJul\nJun\nMar\nMay\nNov\nOct\nSep\n\n\n\n\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n2\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n3\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-14",
+    "href": "Module3/TimeSeries.slides.html#section-14",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "The matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column Apr has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.\n\n\n\n\n\n\n\n\n\nApr\nAug\nDec\nFeb\nJan\nJul\nJun\nMar\nMay\nNov\nOct\nSep\n\n\n\n\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n2\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n3\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-15",
+    "href": "Module3/TimeSeries.slides.html#section-15",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Unfortunately, we cannot use the matrix as is in the linear regression model due to multicollinearity issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.\n\nTo solve this problem, we arbitrarily remove a column from the matrix above. For example, let’s remove Dec.\n\ndummy_data = dummy_data.drop([\"Dec\"], axis = 1)"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-16",
+    "href": "Module3/TimeSeries.slides.html#section-16",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Now, let’s build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.\n\nX_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, dummy_data], \n                          axis = 1)\n\n\nNext, we fit the model with all the terms in the matrix above.\n\n# 0. Ensure that we have the response in `Y_full`.\nY_train = Amtrak_train['Ridership (in 000s)']\n\n# 1. Create linear regression model.\nSeasonmodelAmtrak = LinearRegression()\n\n# 2. Fit the linear regression model.\nSeasonmodelAmtrak.fit(X_quad_season, Y_train)"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#estimated-model-coefficients",
+    "href": "Module3/TimeSeries.slides.html#estimated-model-coefficients",
+    "title": "Introduction to Time Series",
+    "section": "Estimated model coefficients",
+    "text": "Estimated model coefficients\n\n\nprint(\"Intercept = \", SeasonmodelAmtrak.intercept_)\nprint(\"Coefficients = \", SeasonmodelAmtrak.coef_)\n\nIntercept =  1924.3205889003025\nCoefficients =  [-6.12171259e+00  4.96085283e-02  1.22309969e+01  1.77720172e+02\n -2.83088245e+02 -2.25659158e+02  1.15685204e+02 -7.31735621e+00\n  1.59876604e+01  5.17037414e+01 -4.77796001e+01 -3.19949172e+01\n -1.45366826e+02]"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#residual-analysis-4",
+    "href": "Module3/TimeSeries.slides.html#residual-analysis-4",
+    "title": "Introduction to Time Series",
+    "section": "Residual analysis",
+    "text": "Residual analysis\n\n\nCode\nY_pred = SeasonmodelAmtrak.predict(X_quad_season)\nresiduals = Y_train - Y_pred\nplt.figure(figsize=(8, 6))\nsns.scatterplot(x=Amtrak_data['t'], y=residuals)\nplt.xlabel(\"Time (t)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residuals vs. Time\")\nplt.show()"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#predictions-on-the-validation-dataset",
+    "href": "Module3/TimeSeries.slides.html#predictions-on-the-validation-dataset",
+    "title": "Introduction to Time Series",
+    "section": "Predictions on the validation dataset",
+    "text": "Predictions on the validation dataset\nPrepare the validation data using dummy variables.\n\nY_valid = Amtrak_validation['Ridership (in 000s)']\n\ndummy_valid = pd.get_dummies(Amtrak_validation['Season'], dtype = 'int')\ndummy_valid = dummy_valid.drop([\"Dec\"], axis = 1)\n\nX_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2, \n                        dummy_valid], axis = 1)\n\n\nNow, we compute the validation \\(\\text{RMSE}_v\\).\n\nY_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)\n\nmse_season = mean_squared_error(Y_valid, Y_pred_valid) \nprint(round(mse_season**(1/2), 2))\n\n69.93"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#section-17",
+    "href": "Module3/TimeSeries.slides.html#section-17",
+    "title": "Introduction to Time Series",
+    "section": "",
+    "text": "Predictions of the linear model with seasonality."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#disadvantages-of-linear-regression",
+    "href": "Module3/TimeSeries.slides.html#disadvantages-of-linear-regression",
+    "title": "Introduction to Time Series",
+    "section": "Disadvantages of linear regression",
+    "text": "Disadvantages of linear regression\n\n\nDespite their simplicity and versatility, linear regression models are not the best for describing a time series.\nThis is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, \\(Y_1\\) can help us predict \\(Y_2\\), and \\(Y_2\\) can help us predict \\(Y_3\\), etc.\nModels that help us use past observations to predict future values of the response variable \\(Y\\) are autoregressive models."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#yogi-berra",
+    "href": "Module3/TimeSeries.slides.html#yogi-berra",
+    "title": "Introduction to Time Series",
+    "section": "Yogi Berra",
+    "text": "Yogi Berra\n\n\nIt’s though to make predictions, especially about the future."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-1-teslas-stock-price",
+    "href": "Module3/TimeSeries.slides.html#example-1-teslas-stock-price",
+    "title": "Introduction to Time Series",
+    "section": "Example 1: Tesla’s stock price",
+    "text": "Example 1: Tesla’s stock price"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-2-amtrak-data",
+    "href": "Module3/TimeSeries.slides.html#example-2-amtrak-data",
+    "title": "Introduction to Time Series",
+    "section": "Example 2: Amtrak data",
+    "text": "Example 2: Amtrak data\n\n\nThe Amtrak train company in the USA collects data on the number of passengers traveling on its trains.\nRecords are available from January 1991 to March 2004.\nThe data is available in “Amtrak.xlsx” on Canvas.\n\n\nAmtrak_data = pd.read_excel('Amtrak.xlsx')"
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-3-airline-data",
+    "href": "Module3/TimeSeries.slides.html#example-3-airline-data",
+    "title": "Introduction to Time Series",
+    "section": "Example 3: Airline data",
+    "text": "Example 3: Airline data\n\n\n\n\n\nThis series has an upper trend.\nThis series has cyclical patterns in its values.\nAlthough not immediately visible, we can use the previous values of the series to describe the future ones."
+  },
+  {
+    "objectID": "Module3/TimeSeries.slides.html#example-2-amtrak-data-cont.",
+    "href": "Module3/TimeSeries.slides.html#example-2-amtrak-data-cont.",
+    "title": "Introduction to Time Series",
+    "section": "Example 2: Amtrak data (cont.)",
+    "text": "Example 2: Amtrak data (cont.)\n\nLet’s fit a linear regression model to the ridership data from Amtrak."
   }
 ]

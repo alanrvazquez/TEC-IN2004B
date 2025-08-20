@@ -1,0 +1,1238 @@
+---
+title: "Introduction to Time Series"
+subtitle: "IN2004B: Generation of Value with Data Analytics"
+author: 
+  - name: Alan R. Vazquez
+    affiliations:
+      - name: Department of Industrial Engineering
+format: 
+  revealjs:
+    chalkboard: false
+    multiplex: false
+    footer: "Tecnologico de Monterrey"
+    logo: IN2004B_logo.png
+    css: style.css
+    slide-number: True
+    html-math-method: mathjax
+editor: visual
+jupyter: python3
+---
+
+## Agenda
+
+</br>
+
+1.  Time Series
+2.  Linear Regression Model for Time Series
+3.  Models with Seasonality
+
+# Time Series
+
+## Load the libraries
+
+</br>
+
+Before we start, let's import the data science libraries into Python.
+
+```{python}
+#| echo: true
+#| output: false
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+```
+
+Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
+
+
+
+## What is a time series?
+
+</br>
+
+-   It is a sequence of observations collected at successive time intervals.
+
+-   Time series data is commonly used in finance, economics, weather forecasting, signal processing, and many others.
+
+-   Analyzing time series data helps us understand patterns, trends, and behaviors over time, enabling prediction, anomaly detection, and decision-making.
+
+## Example 1: Tesla's stock price
+
+![](images/Tesla_stock_price.jpg)
+
+## 
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="60%"}
+-   Technically, a time series is a set of observations about a (discrete) predictor $T$ and a response $Y$.
+
+-   Observations of $Y$ are recorded at the moments or times given by the predictor $T$.
+
+-   The special feature of the time series is that the [observations of $Y$ are not independent!]{style="color:#4682B4;"}
+:::
+
+::: {.column width="40%"}
+| Day       | T   | Temperature (Y) |
+|-----------|-----|-----------------|
+| Monday    | 1   | 10              |
+| Tuesday   | 2   | 12              |
+| Wednesday | 3   | 15              |
+| Thursday  | 4   | 14              |
+| Friday    | 5   | 18              |
+:::
+:::::
+::::::
+
+## Example 2: Amtrak data
+
+</br>
+
+-   The Amtrak train company in the USA collects data on the number of passengers traveling on its trains.
+
+-   Records are available from January 1991 to March 2004.
+
+-   The data is available in "Amtrak.xlsx" on Canvas.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Amtrak_data = pd.read_excel('Amtrak.xlsx')
+```
+
+## 
+
+</br>
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Amtrak_data.head()
+```
+
+## Time series plot in Python
+
+We can create a line graph to visualize the evolution of Amtrak train ridership over time using `lineplot` from **seaborn**.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(6, 4))
+sns.lineplot(x='Month', y='Ridership (in 000s)', data = Amtrak_data)
+plt.xlabel('Month')
+plt.ylabel('Ridership')
+plt.title('Amtrak Ridership Over Time')
+plt.tight_layout()
+plt.show()
+```
+
+## Informative Series
+
+</br>
+
+An informative time series is a series that contains patterns that we can use to predict future values of the series.
+
+The three possible patterns are:
+
+::: incremental
+-   [**Trend**]{style="color:darkgreen;"}: the series has an **increasing/decreasing** behavior.
+-   [**Seasonality**]{style="color:purple;"}: the series has a repeating **cyclical** pattern in its values.
+-   [**Autocorrelation**]{style="color:darkblue;"}: the series follows a pattern that can be described by **previous** values of the series.
+:::
+
+## Example 3: Airline data
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+-   This series has an upper **trend**.
+
+-   This series has **cyclical** patterns in its values.
+
+-   Although not immediately visible, we can use the previous values of the series to describe the future ones.
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Airline_data = pd.read_excel("Airline.xlsx")
+
+plt.figure(figsize=(6, 4))
+sns.lineplot(x='T', y='Number of passengers', data = Airline_data)
+plt.xlabel('Time')
+plt.ylabel('Number of passengers')
+plt.title('Number of passengers across time')
+plt.tight_layout()
+plt.show()
+```
+:::
+:::::
+::::::
+
+## Non-informative series: White noise
+
+</br>
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+-   White noise is a series whose values, on average, are **0** and have a constant variation.
+
+-   Its values are also independent of each other.
+
+-   It is used to describe random or *natural* error.
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Generate white noise series (mean 0, std dev 1)
+np.random.seed(3301655)  # for reproducibility
+white_noise = np.random.normal(loc=0, scale=1, size=100)
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'Time': range(1, 101),
+    'Value': white_noise
+})
+
+# Plot using seaborn
+sns.set(style="whitegrid")
+plt.figure(figsize=(6, 4))
+sns.lineplot(data=df, x='Time', y='Value', marker='o', linewidth=1)
+plt.axhline(y=0, color='red', linestyle='-', linewidth=1.5, label='Mean = 0')
+plt.axhline(y=1, color='red', linestyle='--', linewidth=1, label='+1 SD')
+plt.axhline(y=-1, color='red', linestyle='--', linewidth=1, label='-1 SD')
+plt.title('White Noise Series (n = 100)')
+plt.xlabel('Time')
+plt.ylabel('Response')
+plt.tight_layout()
+plt.show()
+```
+:::
+:::::
+::::::
+
+# Linear Regression Model for Time Series
+
+## Linear regression model
+
+</br>
+
+The linear regression model is useful for capturing patterns in a time series. In this context, the model takes the form:
+
+$$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i$$
+
+-   Where $i = 1, \ldots, n_t$ is the index of the $n_t$ training data.
+
+-   $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ *at time* $T_i$.
+
+## Trend
+
+</br>
+
+The trend of the time series is captured by the value of $\hat{\beta}_1$ at
+
+$$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i$$
+
+-   If $\hat{\beta}_1$ is positive, the series has an upward trend.
+
+-   If $\hat{\beta}_1$ is negative, the series has a downward trend.
+
+The values of $\hat{\beta}_0$ and $\hat{\beta}_1$ are obtained using the least squares method.
+
+## Model evaluation
+
+</br>
+
+Remember that the errors of the linear regression model ($e_i = Y_i - \hat{Y}_i$) must meet three conditions:
+
+1.  On average, they must be equal to 0.
+
+2.  They must have the same dispersion or variability.
+
+3.  They must be independent of each other.
+
+In the context of time series, **this means that the model errors** $e_i$ must behave like [white noise]{style="color:darkgray;"} that contains no patterns.
+
+## Example 2: Amtrak data (cont.)
+
+</br>
+
+Let's fit a linear regression model to the ridership data from Amtrak.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+plt.figure(figsize=(6, 4))
+sns.lineplot(x='Month', y='Ridership (in 000s)', data = Amtrak_data)
+plt.xlabel('Month')
+plt.ylabel('Ridership')
+plt.title('Amtrak Ridership Over Time')
+plt.tight_layout()
+plt.show()
+```
+
+## Creating a train and a validation data
+
+</br>
+
+-   In time series, the order of the data matters because each observation is tied to a specific point in time.
+
+-   Because of this, we cannot randomly split the data using a function like `train_test_split()`.
+
+-   Doing so might result in a situation where the model learns from future values to predict past ones—which doesn’t make sense and would lead to overly optimistic performance.
+
+## 
+
+Instead, we want to train the model on earlier time periods and test it on later ones.
+
+To this end, we use the code below.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Define the split point
+split_ratio = 0.8  # 80% train, 20% validation
+split_point = int(len(Amtrak_data) * split_ratio)
+
+# Split the data
+Amtrak_train = Amtrak_data[:split_point]
+Amtrak_validation = Amtrak_data[split_point:]
+```
+
+This code ensures that the training data always comes before the validation data in time, preserving the temporal order. The proportion of data that goes to training is set using `split_ratio`.
+
+## 
+
+</br></br>
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+# Create the plot
+plt.figure(figsize=(8, 5))
+
+# Plot training data
+sns.lineplot(
+    data=Amtrak_train,
+    x='Month',
+    y='Ridership (in 000s)',
+    label='Training',
+    color='blue'
+)
+
+# Plot validation data
+sns.lineplot(
+    data=Amtrak_validation,
+    x='Month',
+    y='Ridership (in 000s)',
+    label='Validation',
+    color='orange'
+)
+
+# Customize labels and title
+plt.xlabel('Month')
+plt.ylabel('Ridership (in 000s)')
+plt.title('Amtrak Ridership: Training and Validation Split')
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+## Fit linear regression model
+
+We first set the predictor and response.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Set predictor.
+X_train = Amtrak_train.filter(['t'])
+
+# Set response.
+Y_train = Amtrak_train.filter(['Ridership (in 000s)'])
+```
+
+</br>
+
+Next, we fit the model using `LinearRegression()` and `fit()` from **scikit-learn**.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# 1. Create linear regression model.
+LRmodelAmtrak = LinearRegression()
+
+# 2. Fit the model to the training data.
+LRmodelAmtrak.fit(X_train, Y_train)
+```
+
+## 
+
+</br>
+
+Let's inspect the estimated coefficient for the predictor (*time*).
+
+```{python}
+#| echo: true
+#| output: true
+
+print(LRmodelAmtrak.coef_)
+```
+
+And the intercept.
+
+```{python}
+#| echo: true
+#| output: true
+
+print(LRmodelAmtrak.intercept_)
+```
+
+The estimated model then is:
+
+$$\hat{Y}_i = 1810.777 - 1.281 T_i.$$
+
+## Residual analysis
+
+</br>
+
+We can validate the model using a residual analysis on the training data. To this end, we first compute the predicted values and residuals of the model.
+
+```{python}
+#| echo: true
+#| output: true
+
+fitted = LRmodelAmtrak.predict(X_train) + Y_train*0
+residuals = Y_train - fitted
+
+# Construct a pandas data.frame
+residual_data = pd.DataFrame()
+residual_data["Fitted"] = fitted
+residual_data["Residuals"] = residuals
+residual_data["Time"] = residuals.index
+```
+
+Remember that we are using `+ Y_train*0` to visualize the objects `fitted` and `residuals` effectively.
+
+## 
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+# Residual vs Fitted Values Plot
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data = residual_data, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data = residual_data, x = "Time", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Time")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Time")
+plt.show()
+```
+:::
+:::::
+::::::
+
+## The model is more flexible than that
+
+</br>
+
+If necessary, the linear regression model can be extended to capture quadratic relationships. For this, the model takes the following form:
+
+$$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 T_i + \hat{\beta}_2 T^{2}_i $$
+
+-   Where $T^{2}_i$ is the squared value of the time index.
+
+-   $\hat{\beta}_2$ is a term that captures possible curvature in the time series.
+
+## In Python
+
+To include a quadratic term, we must augment our predictor matrix with an additional column. The following code shows how to augment `X_full` by the square of the `Amtrak_data['t']` column. This is done using the **pandas** `.concat()` function. The resulting matrix is stored in `X_quad`.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+X_quad = pd.concat([X_train, Amtrak_train['t']**2], axis = 1)
+```
+
+Next, we follow the same steps to fit this model.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# 1. Create linear regression model
+QuadmodelAmtrak = LinearRegression()
+
+# 2. Fit linear regression model
+QuadmodelAmtrak.fit(X_quad, Y_train)
+```
+
+## 
+
+</br>
+
+We show the estimated coefficients in Python.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+print("Intercept = ", QuadmodelAmtrak.intercept_)
+print("Coefficients = ", QuadmodelAmtrak.coef_)
+```
+
+</br>
+
+The estimated model thus is
+
+$$\hat{Y}_i = 1866.84 - 4.65 T_i + 0.03 T^2_i.$$
+
+## Residual analysis
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+# Remember to use the same `X_quad`
+Y_pred_quad = QuadmodelAmtrak.predict(X_quad) + Y_train*0
+residuals_quad = Y_train - Y_pred_quad
+# Construct a pandas data.frame
+residual_data_quad = pd.DataFrame()
+residual_data_quad["Fitted"] = Y_pred_quad
+residual_data_quad["Residuals"] = residuals_quad
+residual_data_quad["Time"] = residuals_quad.index
+
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data = residual_data_quad, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred_quad)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data = residual_data_quad, x = "Time", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Time (t)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Time")
+plt.show()
+```
+:::
+:::::
+::::::
+
+## Model evaluation using validation data
+
+</br>
+
+Remember that another way to evaluate the performance of a model is using the $\text{MSE}_v$ or $\text{RMSE}_v$ on the validation data.
+
+</br>
+
+To this end, we need some Python objects.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Set predictor.
+X_valid = Amtrak_validation.filter(['t'])
+
+# Set response.
+Y_valid = Amtrak_validation.filter(['Ridership (in 000s)'])
+```
+
+## 
+
+Let's compute the $\text{RMSE}_v$ for the linear regression model.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Y_val_pred_lin = LRmodelAmtrak.predict(X_valid)
+mse = mean_squared_error(Y_valid, Y_val_pred_lin)  
+print(round(mse**(1/2), 2))
+```
+
+Let's do the same for the the linear regression model with a quadratic term.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+X_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)
+Y_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)
+mse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (MSE)
+print(round(mse_quad**(1/2), 2))
+```
+
+We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{RMSE}_v$ of the former is smaller than for the latter.
+
+## 
+
+Predictions of linear model
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Amtrak_validation['t'].values
+forecast_df = pd.DataFrame({
+    't': forecast_years,
+    'Ridership (in 000s)': Y_val_pred_lin.reshape((25,)),
+    'Type': 'Prediction'
+})
+
+# Add 'Type' column to training and validation data
+Amtrak_train_plot = Amtrak_train.copy()
+Amtrak_train_plot['Type'] = 'Train'
+
+Amtrak_validation_plot = Amtrak_validation.copy()
+Amtrak_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)
+plt.xlabel('Time')
+plt.ylabel('Ridership (in 000s)')
+plt.tight_layout()
+plt.show()
+```
+
+## 
+
+Predictions of linear model with quadratic trend
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Amtrak_validation['t'].values
+forecast_df = pd.DataFrame({
+    't': forecast_years,
+    'Ridership (in 000s)': Y_val_pred_quad.reshape((25,)),
+    'Type': 'Prediction'
+})
+
+# Add 'Type' column to training and validation data
+Amtrak_train_plot = Amtrak_train.copy()
+Amtrak_train_plot['Type'] = 'Train'
+
+Amtrak_validation_plot = Amtrak_validation.copy()
+Amtrak_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)
+plt.xlabel('Time')
+plt.ylabel('Ridership (in 000s)')
+plt.tight_layout()
+plt.show()
+```
+
+## Activity (*solo* mode)
+
+The Office of Transportation Statistics of the Innovative Research and Technology Administration conducted a study to assess the impact of the September 11, 2001, terrorist attack on U.S. transportation. The report analyzes monthly passenger movement data from January 1990 to May 2004. Time series data are provided for (1) Real Revenue Passenger Miles Traveled (Air RPM), (2) Rail Passenger Miles Traveled (Rail PM), and (3) Car Miles Traveled (VMT).
+
+In this activity, you will fit different linear regression models to data in the file "Sept11Travel.xlsx" in CANVAS.
+
+## Identifying Heteroskedasticity
+
+</br></br>
+
+Heteroskedasticity arises when the dispersion of model errors is not constant over time.
+
+To see it, let's go back to the Airline data, which contains the number of passengers of an international airline per month between 1949 and 1960.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Airline_data = pd.read_excel("Airline.xlsx")
+```
+
+## 
+
+</br></br>
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Airline_data.head()
+```
+
+## 
+
+For illustrative purposes, we will not split the time series into training and validation datasets.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(10, 5))
+sns.lineplot(x='T', y='Number of passengers', data = Airline_data)
+plt.xlabel('Time')
+plt.ylabel('Number of passengers')
+plt.title('Number of passengers across time')
+plt.tight_layout()
+plt.show()
+```
+
+## 
+
+</br></br>
+
+Let's fit a linear regression model.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# Set predictor.
+X_full = Airline_data.filter(['T'])
+
+# Set response.
+Y_full = Airline_data.filter(['Number of passengers'])
+
+# 1. Create linear regression
+LRmodelAirline = LinearRegression()
+
+# 2. Fit the model
+LRmodelAirline.fit(X_full, Y_full)
+```
+
+## Residual analysis
+
+::: {style="font-size: 90%;"}
+**Heteroskedasticity**: Dispersion of the residuals increases with the predicted value.
+:::
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+# Remember to use the same `X_quad`
+Y_pred = LRmodelAirline.predict(X_full) + Y_full*0
+residuals = Y_full - Y_pred
+
+# Construct a pandas data.frame
+residual_data = pd.DataFrame()
+residual_data["Fitted"] = Y_pred
+residual_data["Residuals"] = residuals
+residual_data["Time"] = residuals.index
+
+
+plt.figure(figsize=(6, 4))
+sns.scatterplot(data = residual_data, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred_quad)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+
+## Solution
+
+</br>
+
+If we identify heteroskedasticity in the regression model errors, we have several transformation options for our **original** series.
+
+-   A common transformations to the time series $Y_i$ is the **Natural Logarithm**
+
+-   If the original time series contains negative values, it can be **lagged** by adding the negative of its minimum value.
+
+## In Python
+
+The easiest way to apply the logarithm in Python is to use the `log()` function from the **numpy** library
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+log_Y_full = np.log( Y_full )
+```
+
+Now, the response to use is in `log_Y_full`.
+
+</br>
+
+The steps to fit a linear regression model are similar.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# 1. Create linear regression
+LRmodelAirlineTransformed = LinearRegression()
+
+# 2. Fit the model
+LRmodelAirlineTransformed.fit(X_full, log_Y_full)
+```
+
+## Residual analysis
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+With transformation
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+# Remember to use the same `X_quad`
+Y_pred_log = LRmodelAirlineTransformed.predict(X_full) + log_Y_full*0
+residuals_log = log_Y_full - Y_pred_log
+
+# Construct a pandas data.frame
+residual_data_log = pd.DataFrame()
+residual_data_log["Fitted"] = Y_pred_log
+residual_data_log["Residuals"] = residuals_log
+residual_data_log["Time"] = residuals_log.index
+
+
+plt.figure(figsize=(6, 4))
+sns.scatterplot(data = residual_data_log, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred_quad)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+:::
+
+::: {.column width="50%"}
+Without transformation
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+
+# Remember to use the same `X_quad`
+Y_pred = LRmodelAirline.predict(X_full) + Y_full*0
+residuals = Y_full - Y_pred
+
+# Construct a pandas data.frame
+residual_data = pd.DataFrame()
+residual_data["Fitted"] = Y_pred
+residual_data["Residuals"] = residuals
+residual_data["Time"] = residuals.index
+
+
+plt.figure(figsize=(6, 4))
+sns.scatterplot(data = residual_data, x = "Fitted", y = "Residuals")
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Fitted Values (Y_pred_quad)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Fitted Values")
+plt.show()
+```
+:::
+:::::
+::::::
+
+## What do I do if the transformation doesn't work?
+
+</br>
+
+-   If the log transformation doesn't significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.
+
+-   You can find literature on these models and their software implementations in a time series textbook such as *Time Series Analysis with Applications in R* by Cryer and Chan.
+
+# Models with Seasonality
+
+## Seasonality
+
+Seasonality refers to repetitive or cyclical behavior that occurs with a constant frequency.
+
+:::::: center
+::::: columns
+::: {.column width="50%"}
+</br>
+
+Examples:
+
+-   Demand for winter clothing
+
+-   Demand for tourist travel
+
+-   Amount of rainfall throughout the year.
+:::
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+plt.figure(figsize=(5, 5))
+sns.lineplot(x='T', y='Number of passengers', data = Airline_data)
+plt.xlabel('Time')
+plt.ylabel('Number of passengers')
+plt.title('Number of passengers across time')
+plt.tight_layout()
+plt.show()
+```
+:::
+:::::
+::::::
+
+## Capturing seasonality
+
+:::::: center
+::::: columns
+::: {.column width="60%"}
+The linear regression model can be extended to capture seasonal patterns in the time series.
+
+To do this, an additional categorical predictor is created that indicates the season to which each data item belongs.
+
+The additional categorical predictor is transformed into several auxiliary numerical predictors.
+:::
+
+::: {.column width="40%"}
+</br>
+
+![](images/clipboard-2320382344.png)
+:::
+:::::
+::::::
+
+## Analyzing seasonal series in Python
+
+Consider the data in `Amtrak_train` with the additional predictor of `Season` to model seasonality.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Amtrak_train.head()
+```
+
+## 
+
+To fit a linear regression model with a categorical variable like `Season`, we must transform the text categories into numbers. To do this, we use dummy variables constructed using the following commands.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+dummy_data = pd.get_dummies(Amtrak_train['Season'], dtype = 'int')
+dummy_data.head(4)
+```
+
+## 
+
+The matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column `Apr` has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+dummy_data.head(4)
+```
+
+## 
+
+</br>
+
+Unfortunately, we cannot use the matrix as is in the linear regression model due to **multicollinearity** issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.
+
+</br>
+
+To solve this problem, we arbitrarily remove a column from the matrix above. For example, let's remove `Dec`.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+dummy_data = dummy_data.drop(["Dec"], axis = 1)
+```
+
+## 
+
+Now, let's build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+X_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, dummy_data], 
+                          axis = 1)
+```
+
+</br>
+
+Next, we fit the model with all the terms in the matrix above.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+# 0. Ensure that we have the response in `Y_full`.
+Y_train = Amtrak_train['Ridership (in 000s)']
+
+# 1. Create linear regression model.
+SeasonmodelAmtrak = LinearRegression()
+
+# 2. Fit the linear regression model.
+SeasonmodelAmtrak.fit(X_quad_season, Y_train)
+```
+
+## Estimated model coefficients
+
+</br>
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+print("Intercept = ", SeasonmodelAmtrak.intercept_)
+print("Coefficients = ", SeasonmodelAmtrak.coef_)
+```
+
+## Residual analysis
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: true
+
+Y_pred = SeasonmodelAmtrak.predict(X_quad_season)
+residuals = Y_train - Y_pred
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=Amtrak_data['t'], y=residuals)
+plt.xlabel("Time (t)")
+plt.ylabel("Residuals")
+plt.title("Residuals vs. Time")
+plt.show()
+```
+
+## Predictions on the validation dataset
+
+Prepare the validation data using dummy variables.
+
+```{python}
+#| echo: true
+#| output: false
+#| fig-align: center
+#| code-fold: false
+
+Y_valid = Amtrak_validation['Ridership (in 000s)']
+
+dummy_valid = pd.get_dummies(Amtrak_validation['Season'], dtype = 'int')
+dummy_valid = dummy_valid.drop(["Dec"], axis = 1)
+
+X_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2, 
+                        dummy_valid], axis = 1)
+```
+
+</br>
+
+Now, we compute the validation $\text{RMSE}_v$.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+#| code-fold: false
+
+Y_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)
+
+mse_season = mean_squared_error(Y_valid, Y_pred_valid) 
+print(round(mse_season**(1/2), 2))
+```
+
+## 
+
+Predictions of the linear model with seasonality.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Amtrak_validation['t'].values
+forecast_df = pd.DataFrame({
+    't': forecast_years,
+    'Ridership (in 000s)': Y_pred_valid.reshape((25,)),
+    'Type': 'Prediction'
+})
+
+# Add 'Type' column to training and validation data
+Amtrak_train_plot = Amtrak_train.copy()
+Amtrak_train_plot['Type'] = 'Train'
+
+Amtrak_validation_plot = Amtrak_validation.copy()
+Amtrak_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)
+plt.xlabel('Time')
+plt.ylabel('Ridership (in 000s)')
+plt.tight_layout()
+plt.show()
+```
+
+## Disadvantages of linear regression
+
+</br>
+
+-   Despite their simplicity and versatility, linear regression models are not the best for describing a time series.
+
+-   This is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, $Y_1$ can help us predict $Y_2$, and $Y_2$ can help us predict $Y_3$, etc.
+
+-   Models that help us use past observations to predict future values of the response variable $Y$ are **autoregressive models**.
+
+## Yogi Berra
+
+</br></br></br>
+
+> It’s though to make predictions, especially about the future.
+
+# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
