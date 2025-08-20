@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alan R. Vazquez">
+
+<title>Autocorrelation Models – IN2004B Generation of Value with Data Analytics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      IN2004B Generation of Value with Data Analytics
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">IN2004B Generation of Value with Data Analytics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#load-the-libraries" id="toc-load-the-libraries" class="nav-link" data-scroll-target="#load-the-libraries">Load the libraries</a></li>
+  <li><a href="#statsmodels-library" id="toc-statsmodels-library" class="nav-link" data-scroll-target="#statsmodels-library">statsmodels library</a></li>
+  <li><a href="#problem-with-linear-regression-models" id="toc-problem-with-linear-regression-models" class="nav-link" data-scroll-target="#problem-with-linear-regression-models">Problem with linear regression models</a></li>
+  <li><a href="#what-is-correlation" id="toc-what-is-correlation" class="nav-link" data-scroll-target="#what-is-correlation">What is correlation?</a></li>
+  <li><a href="#how-do-we-measure-autocorrelation" id="toc-how-do-we-measure-autocorrelation" class="nav-link" data-scroll-target="#how-do-we-measure-autocorrelation">How do we measure autocorrelation?</a></li>
+  <li><a href="#the-autocorrelation-function" id="toc-the-autocorrelation-function" class="nav-link" data-scroll-target="#the-autocorrelation-function">The autocorrelation function</a></li>
+  <li><a href="#the-autocorrelation-function-1" id="toc-the-autocorrelation-function-1" class="nav-link" data-scroll-target="#the-autocorrelation-function-1">The autocorrelation function</a></li>
+  <li><a href="#the-autocorrelation-function-2" id="toc-the-autocorrelation-function-2" class="nav-link" data-scroll-target="#the-autocorrelation-function-2">The autocorrelation function</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#autocorrelation-function" id="toc-autocorrelation-function" class="nav-link" data-scroll-target="#autocorrelation-function">Autocorrelation function</a></li>
+  <li><a href="#autocorrelation-plot" id="toc-autocorrelation-plot" class="nav-link" data-scroll-target="#autocorrelation-plot">Autocorrelation plot</a></li>
+  <li><a href="#the-resulting-plot" id="toc-the-resulting-plot" class="nav-link" data-scroll-target="#the-resulting-plot">The resulting plot</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#autocorrelation-patterns" id="toc-autocorrelation-patterns" class="nav-link" data-scroll-target="#autocorrelation-patterns">Autocorrelation patterns</a></li>
+  <li><a href="#more-about-the-autocorrelation-function" id="toc-more-about-the-autocorrelation-function" class="nav-link" data-scroll-target="#more-about-the-autocorrelation-function">More about the autocorrelation function</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#partial-autocorrelation-function" id="toc-partial-autocorrelation-function" class="nav-link" data-scroll-target="#partial-autocorrelation-function">Partial autocorrelation function</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  <li><a href="#the-arima-model" id="toc-the-arima-model" class="nav-link" data-scroll-target="#the-arima-model">The ARIMA Model</a>
+  <ul class="collapse">
+  <li><a href="#autoregressive-models" id="toc-autoregressive-models" class="nav-link" data-scroll-target="#autoregressive-models">Autoregressive models</a></li>
+  <li><a href="#arima-models" id="toc-arima-models" class="nav-link" data-scroll-target="#arima-models">ARIMA models</a></li>
+  <li><a href="#integrated-or-differentiated-operators-i" id="toc-integrated-or-differentiated-operators-i" class="nav-link" data-scroll-target="#integrated-or-differentiated-operators-i">1. Integrated or differentiated operators (I)</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  <li><a href="#creating-a-train-and-a-validation-data" id="toc-creating-a-train-and-a-validation-data" class="nav-link" data-scroll-target="#creating-a-train-and-a-validation-data">Creating a train and a validation data</a></li>
+  <li><a href="#training-data" id="toc-training-data" class="nav-link" data-scroll-target="#training-data">Training data</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"></a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
+  <li><a href="#how-do-we-determine-the-operator-level" id="toc-how-do-we-determine-the-operator-level" class="nav-link" data-scroll-target="#how-do-we-determine-the-operator-level">How do we determine the operator level?</a></li>
+  <li><a href="#autoregressive-ar-terms" id="toc-autoregressive-ar-terms" class="nav-link" data-scroll-target="#autoregressive-ar-terms">2. Autoregressive (AR) terms</a></li>
+  <li><a href="#how-do-we-determine-the-number-of-terms" id="toc-how-do-we-determine-the-number-of-terms" class="nav-link" data-scroll-target="#how-do-we-determine-the-number-of-terms">How do we determine the number of terms?</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"></a></li>
+  <li><a href="#rule-1" id="toc-rule-1" class="nav-link" data-scroll-target="#rule-1">Rule 1</a></li>
+  <li><a href="#rule-2" id="toc-rule-2" class="nav-link" data-scroll-target="#rule-2">Rule 2</a></li>
+  <li><a href="#rule-3" id="toc-rule-3" class="nav-link" data-scroll-target="#rule-3">Rule 3</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"></a></li>
+  <li><a href="#stochastic-terms-moving-averages-ma" id="toc-stochastic-terms-moving-averages-ma" class="nav-link" data-scroll-target="#stochastic-terms-moving-averages-ma">3. Stochastic Terms (Moving Averages, MA)</a></li>
+  <li><a href="#how-do-i-choose-the-order-of-the-mas" id="toc-how-do-i-choose-the-order-of-the-mas" class="nav-link" data-scroll-target="#how-do-i-choose-the-order-of-the-mas">How do I choose the order of the MAs?</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"></a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"></a></li>
+  <li><a href="#arima" id="toc-arima" class="nav-link" data-scroll-target="#arima">ARIMA</a></li>
+  <li><a href="#arima-in-pyhon" id="toc-arima-in-pyhon" class="nav-link" data-scroll-target="#arima-in-pyhon">ARIMA in Pyhon</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"></a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"></a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"></a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"></a></li>
+  <li><a href="#time-series-of-residuals" id="toc-time-series-of-residuals" class="nav-link" data-scroll-target="#time-series-of-residuals">Time series of residuals</a></li>
+  <li><a href="#correlation-plots" id="toc-correlation-plots" class="nav-link" data-scroll-target="#correlation-plots">Correlation plots</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"></a></li>
+  <li><a href="#forecast" id="toc-forecast" class="nav-link" data-scroll-target="#forecast">Forecast</a></li>
+  <li><a href="#model-evaluation-using-mse" id="toc-model-evaluation-using-mse" class="nav-link" data-scroll-target="#model-evaluation-using-mse">Model evaluation using MSE</a></li>
+  <li><a href="#validation-data" id="toc-validation-data" class="nav-link" data-scroll-target="#validation-data">Validation data</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"></a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"></a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"></a></li>
+  </ul></li>
+  <li><a href="#the-sarima-model" id="toc-the-sarima-model" class="nav-link" data-scroll-target="#the-sarima-model">The SARIMA Model</a>
+  <ul class="collapse">
+  <li><a href="#seasonality" id="toc-seasonality" class="nav-link" data-scroll-target="#seasonality">Seasonality</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
+  <li><a href="#create-training-and-validation-data" id="toc-create-training-and-validation-data" class="nav-link" data-scroll-target="#create-training-and-validation-data">Create training and validation data</a></li>
+  <li><a href="#training-data-1" id="toc-training-data-1" class="nav-link" data-scroll-target="#training-data-1">Training data</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22"></a></li>
+  <li><a href="#autocorrelation-plots" id="toc-autocorrelation-plots" class="nav-link" data-scroll-target="#autocorrelation-plots">Autocorrelation plots</a></li>
+  <li><a href="#sarima-model" id="toc-sarima-model" class="nav-link" data-scroll-target="#sarima-model">SARIMA model</a></li>
+  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
+  <li><a href="#seasonal-differentiation" id="toc-seasonal-differentiation" class="nav-link" data-scroll-target="#seasonal-differentiation">Seasonal differentiation</a></li>
+  <li><a href="#seasonal-ar-and-ma-terms" id="toc-seasonal-ar-and-ma-terms" class="nav-link" data-scroll-target="#seasonal-ar-and-ma-terms">Seasonal AR and MA Terms</a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23"></a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24"></a></li>
+  <li><a href="#summary-of-fit" id="toc-summary-of-fit" class="nav-link" data-scroll-target="#summary-of-fit">Summary of fit</a></li>
+  <li><a href="#residual-analysis" id="toc-residual-analysis" class="nav-link" data-scroll-target="#residual-analysis">Residual analysis</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25"></a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26"></a></li>
+  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27"></a></li>
+  </ul></li>
+  <li><a href="#return-to-main-page" id="toc-return-to-main-page" class="nav-link" data-scroll-target="#return-to-main-page">Return to main page</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Autocorrelation.slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Autocorrelation Models</h1>
+<p class="subtitle lead">IN2004B: Generation of Value with Data Analytics</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Alan R. Vazquez </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Industrial Engineering
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="agenda" class="level3">
+<h3 class="anchored" data-anchor-id="agenda">Agenda</h3>
+<p><br></p>
+<ol type="1">
+<li>Autocorrelation</li>
+<li>The ARIMA model</li>
+<li>The SARIMA model</li>
+</ol>
+</section>
+<section id="load-the-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="load-the-libraries">Load the libraries</h3>
+<p>Before we start, let’s import the data science libraries into Python.</p>
+<div id="ba662c3c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing necessary libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf, plot_pacf</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.arima.model <span class="im">import</span> ARIMA</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.statespace.tools <span class="im">import</span> diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, we use specific functions from the <strong>pandas</strong>, <strong>matplotlib</strong>, <strong>seaborn</strong>, <strong>sklearn</strong> and <strong>statsmodels</strong> libraries in Python.</p>
+</section>
+<section id="statsmodels-library" class="level3">
+<h3 class="anchored" data-anchor-id="statsmodels-library">statsmodels library</h3>
+<ul>
+<li><strong>statsmodels</strong> is a powerful Python library for statistical modeling, data analysis, and hypothesis testing.</li>
+<li>It provides classes and functions for estimating statistical models.</li>
+<li>It is built on top of libraries such as <strong>NumPy</strong>, <strong>SciPy</strong>, and <strong>pandas</strong></li>
+<li><a href="https://www.statsmodels.org/stable/index.html" class="uri">https://www.statsmodels.org/stable/index.html</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/statsmodels-logo-v2-horizontal-dark.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="problem-with-linear-regression-models" class="level3">
+<h3 class="anchored" data-anchor-id="problem-with-linear-regression-models">Problem with linear regression models</h3>
+<p><br></p>
+<p>Linear regression models do not incorporate the <span style="color:purple;">dependence</span> between consecutive values in a time series.</p>
+<p>This is unfortunate because responses recorded over close time periods tend to be correlated. This correlation is called the <span style="color:purple;"><strong>autocorrelation</strong></span> of the time series.</p>
+<p>Autocorrelation helps us develop a model that can make better predictions of future responses.</p>
+</section>
+<section id="what-is-correlation" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-correlation">What is correlation?</h3>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><br></p>
+<ul>
+<li><p>It is a measure of the strength and direction of the <em>linear</em> relationship between two numerical variables.</p></li>
+<li><p>Specifically, it is used to assess the relationship between two sets of observations.</p></li>
+<li><p>Correlation is between <span class="math inline">\(-1\)</span> and 1.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><br></p>
+<div id="adb9f4ba" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-3-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="470" height="470"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-do-we-measure-autocorrelation" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-measure-autocorrelation">How do we measure autocorrelation?</h3>
+<p><br><br><br></p>
+<p>There are two formal tools for measuring the correlation between observations in a time series:</p>
+<div class="incremental">
+<ul class="incremental">
+<li><p>The <span style="color:green;"><strong><em>autocorrelation</em></strong></span> function.</p></li>
+<li><p>The <span style="color:purple;"><strong><em>partial autocorrelation</em></strong></span> function.</p></li>
+</ul>
+</div>
+</section>
+<section id="the-autocorrelation-function" class="level3">
+<h3 class="anchored" data-anchor-id="the-autocorrelation-function">The autocorrelation function</h3>
+<blockquote class="blockquote">
+<p>Measures the correlation between responses separated by <span class="math inline">\(j\)</span> periods.</p>
+</blockquote>
+<p>For example, consider the autocorrelation between the current temperature and the temperature recorded the day before.</p>
+<p>. . .</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/correlation_1.png" class="quarto-figure quarto-figure-center figure-img" width="465" height="288"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="the-autocorrelation-function-1" class="level3">
+<h3 class="anchored" data-anchor-id="the-autocorrelation-function-1">The autocorrelation function</h3>
+<blockquote class="blockquote">
+<p>Measures the correlation between responses separated by <span class="math inline">\(j\)</span> periods.</p>
+</blockquote>
+<p>For example, consider the autocorrelation between the current temperature and the temperature recorded the day before.</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/correlation_1.png" class="quarto-figure quarto-figure-center figure-img" width="465" height="288"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/correlation_2.png" class="quarto-figure quarto-figure-center figure-img" width="465" height="288"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-autocorrelation-function-2" class="level3">
+<h3 class="anchored" data-anchor-id="the-autocorrelation-function-2">The autocorrelation function</h3>
+<blockquote class="blockquote">
+<p>Measures the correlation between responses separated by <span class="math inline">\(j\)</span> periods.</p>
+</blockquote>
+<p>For example, consider the autocorrelation between the current temperature and the temperature recorded the day before. This would be the correlation between these two columns</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/correlation_combined.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example 1</h3>
+<p>Let’s consider again the dataset in the file “Amtrak.xlsx.” The file contains records of Amtrak passenger numbers from January 1991 to March 2004.</p>
+<div id="6ead6651" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">Ridership (in 000s)</th>
+<th data-quarto-table-cell-role="th">Season</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1991-01-01</td>
+<td>1</td>
+<td>1708.917</td>
+<td>Jan</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1991-02-01</td>
+<td>2</td>
+<td>1620.586</td>
+<td>Feb</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1991-03-04</td>
+<td>3</td>
+<td>1972.715</td>
+<td>Mar</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1991-04-04</td>
+<td>4</td>
+<td>1811.665</td>
+<td>Apr</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1991-05-05</td>
+<td>5</td>
+<td>1974.964</td>
+<td>May</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+<p><br></p>
+<div id="cfe7f21b" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-5-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="825" height="523"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="autocorrelation-function" class="level3">
+<h3 class="anchored" data-anchor-id="autocorrelation-function">Autocorrelation function</h3>
+<p><br></p>
+<ul>
+<li><p>The autocorrelation function measures the correlation between responses that are separated by a specific number of periods.</p></li>
+<li><p>The autocorrelation function is commonly visualized using a bar chart.</p></li>
+<li><p>The vertical axis shows the differences (or <span style="color:brown;"><em>lags</em></span>) between the periods considered, and the horizontal axis shows the correlations between observations at different lags.</p></li>
+</ul>
+</section>
+<section id="autocorrelation-plot" class="level3">
+<h3 class="anchored" data-anchor-id="autocorrelation-plot">Autocorrelation plot</h3>
+<p><br></p>
+<p>In Python, we use the <code>plot_acf</code> function from the <strong>statsmodels</strong> library.</p>
+<div id="e2a1ae4d" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plot_acf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Correlation"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>lags</code> parameter controls the number of periods for which to compute the autocorrelation function.</p>
+</section>
+<section id="the-resulting-plot" class="level3">
+<h3 class="anchored" data-anchor-id="the-resulting-plot">The resulting plot</h3>
+<p><br></p>
+<div id="96b6083e" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-7-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1"></h3>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 80%;">
+<p><br></p>
+<ul>
+<li><p>The autocorrelation plot shows that the responses and those from zero periods ago have a correlation of 1.</p></li>
+<li><p>The autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45.</p></li>
+<li><p>The autocorrelation plot shows that the responses and those from 24 periods ago have a correlation of around 0.5.</p></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<div id="5d4e36c8" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 384x384 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-8-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="autocorrelation-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="autocorrelation-patterns">Autocorrelation patterns</h3>
+<p><br></p>
+<ul>
+<li><p><strong>A strong autocorrelation (positive or negative) with a lag</strong> <span class="math inline">\(j\)</span> <strong>greater than 1 and its multiples</strong> (<span class="math inline">\(2k, 3k, \ldots\)</span>) typically reflects a cyclical pattern or seasonality.</p></li>
+<li><p><strong>Positive lag-1 autocorrelation</strong> describes a series in which consecutive values <em>generally</em> move in the same direction.</p></li>
+<li><p><strong>Negative lag-1 autocorrelation</strong> reflects oscillations in the series, where high values (<em>generally</em>) are immediately followed by low values and vice versa.</p></li>
+</ul>
+</section>
+<section id="more-about-the-autocorrelation-function" class="level3">
+<h3 class="anchored" data-anchor-id="more-about-the-autocorrelation-function">More about the autocorrelation function</h3>
+<p>Consider the problem of predicting the average price of a kilo of avocado this month.</p>
+<p>For this, we have the average price from last month and the month before that.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Avocado1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2"></h3>
+<p><br><br></p>
+<p>The autocorrelation function for <span class="math inline">\(Y_t\)</span> and <span class="math inline">\(Y_{t-2}\)</span> includes the direct and indirect effect of <span class="math inline">\(Y_{t-2}\)</span> on <span class="math inline">\(Y_t\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Avocado3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="partial-autocorrelation-function" class="level3">
+<h3 class="anchored" data-anchor-id="partial-autocorrelation-function">Partial autocorrelation function</h3>
+<blockquote class="blockquote">
+<p>Measures the correlation between responses that are separated by <span class="math inline">\(j\)</span> periods, <strong>excluding correlation</strong> due to responses separated by intervening periods.</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Avocado4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3"></h3>
+<p>In technical terms, the partial autocorrelation function fits the following linear regression model</p>
+<p><span class="math display">\[\hat{Y}_t = \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}\]</span> Where:</p>
+<ul>
+<li><span class="math inline">\(\hat{Y}_{t}\)</span> is the predicted response at the current time (<span class="math inline">\(t\)</span>).</li>
+<li><span class="math inline">\(\hat{\beta}_1\)</span> is the <em>direct effect</em> of <span class="math inline">\(Y_{t-1}\)</span> on predicting <span class="math inline">\(Y_{t}\)</span>.</li>
+<li><span class="math inline">\(\hat{\beta}_2\)</span> is the <em>direct effect</em> of <span class="math inline">\(Y_{t-2}\)</span> on predicting <span class="math inline">\(Y_{t}\)</span>.</li>
+</ul>
+<p>The partial autocorrelation between <span class="math inline">\(Y_t\)</span> and <span class="math inline">\(Y_{t-2}\)</span> is equal to <span class="math inline">\(\hat{\beta}_2\)</span>.</p>
+</section>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4"></h3>
+<ul>
+<li><p>The partial autocorrelation function is visualized using a graph similar to that for autocorrelation.</p></li>
+<li><p>The vertical axis shows the differences (or <em>lags</em>) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.</p></li>
+</ul>
+<p>In Python, we use the <code>plot_pacf</code> function from <strong>statsmodels</strong>.</p>
+<div id="3e41ce9e" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plot_pacf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Correlation"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5"></h3>
+<p><br></p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 80%;">
+<p><br></p>
+<ul>
+<li><p>The partial autocorrelation plot shows that the responses and those from one period ago have a correlation of around 0.45. <em>This is the same for the autocorrelation plot.</em></p></li>
+<li><p>The partial autocorrelation plot shows that the responses and those from two periods ago have a correlation near 0.</p></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="3841839d" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-10-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-arima-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-arima-model">The ARIMA Model</h2>
+<section id="autoregressive-models" class="level3">
+<h3 class="anchored" data-anchor-id="autoregressive-models">Autoregressive models</h3>
+<p><em>Autoregressive models</em> are a type of linear regression model that directly incorporate the autocorrelation of the time series to predict the current response.</p>
+<p>Their main characteristic is that the predictors of the current value of the series are its past values.</p>
+<div class="incremental">
+<ul class="incremental">
+<li><p>An autoregressive model of order 2 has the mathematical form: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.\)</span></p></li>
+<li><p>An order 3 model looks like this: <span class="math inline">\(\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="arima-models" class="level3">
+<h3 class="anchored" data-anchor-id="arima-models">ARIMA models</h3>
+<p><br></p>
+<p>A special class of autoregressive models are <span style="color:purple;"><strong><em>ARIMA</em></strong></span> (<span style="color:purple;"><em>Autoregressive Integrated Moving Average</em></span>).</p>
+<p>. . .</p>
+<p>An ARIMA model consists of three elements:</p>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li>Integrated operators (<em>integrated</em>).</li>
+<li>Autoregressive terms (<em>autoregressive</em>).</li>
+<li>Stochastic terms (<em>moving average</em>).</li>
+</ol>
+</div>
+</section>
+<section id="integrated-or-differentiated-operators-i" class="level3">
+<h3 class="anchored" data-anchor-id="integrated-or-differentiated-operators-i">1. Integrated or differentiated operators (I)</h3>
+<p><br></p>
+<p>They create a new variable <span class="math inline">\(Z_t\)</span>, which equals the difference between the current response and the delayed response by a number of periods or lags.</p>
+<p>There are three common levels of differentiation:</p>
+<ul>
+<li>Level 0: <span class="math inline">\(Z_t = Y_t\)</span>.</li>
+<li>Level 1: <span class="math inline">\(Z_t = Y_t - Y_{t-1}\)</span>.</li>
+<li>Level 2: <span class="math inline">\(Z_t = (Y_t - Y_{t-1}) - (Y_{t-1} - Y_{t-2})\)</span>.</li>
+</ul>
+</section>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example 2</h3>
+<p>We consider the time series “CanadianWorkHours.xlsx” that contains the average hours worked by a certain group of workers over a certain range of years.</p>
+<div id="a49061c1" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>CanadianWorkHours <span class="op">=</span> pd.read_excel(<span class="st">'CanadianWorkHours.xlsx'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>CanadianWorkHours.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Hours per Week</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1966</td>
+<td>37.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1967</td>
+<td>37.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1968</td>
+<td>37.4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1969</td>
+<td>37.5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-train-and-a-validation-data" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-train-and-a-validation-data">Creating a train and a validation data</h3>
+<p>Recall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.</p>
+<div id="eecbadbd" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the split point</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>split_ratio <span class="op">=</span> <span class="fl">0.8</span>  <span class="co"># 80% train, 20% test</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(CanadianWorkHours) <span class="op">*</span> split_ratio)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>Canadian_train <span class="op">=</span> CanadianWorkHours[:split_point]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Canadian_validation <span class="op">=</span> CanadianWorkHours[split_point:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We use 80% of the time series for training and the rest for validation.</p>
+</section>
+<section id="training-data" class="level3">
+<h3 class="anchored" data-anchor-id="training-data">Training data</h3>
+<div id="a0539575" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Hours per Week'</span>, data <span class="op">=</span> Canadian_train)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Hours per Week'</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Hours per Week Over Time'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-13-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="821" height="523"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6"></h3>
+<p><br><br></p>
+<p>In <strong>statsmodels</strong>, we apply the integration operator using the pre-loaded <code>diff()</code> function. The function’s <code>k_diff</code> argument specifies the order or level of the operator.</p>
+<p><br></p>
+<p>First, let’s use a level-1 operator.</p>
+<div id="2fa7b22c" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Z_series_one <span class="op">=</span> diff(Canadian_train[<span class="st">'Hours per Week'</span>], k_diff <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7"></h3>
+<p>The time series with a level-1 operator looks like this.</p>
+<div id="d1c70413" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>Canadian_train[<span class="st">'Year'</span>], y<span class="op">=</span>Z_series_one)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Difference Level 1'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-15-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="823" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8"></h3>
+<p>A level-2 operator would work like this.</p>
+<div id="59f3983a" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Z_series_two <span class="op">=</span> diff(Canadian_train[<span class="st">'Hours per Week'</span>], k_diff <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="a1c45a8f" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>Canadian_train[<span class="st">'Year'</span>], y<span class="op">=</span>Z_series_two)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Difference Level 2'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-17-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="749" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9"></h3>
+<p>We see that the level 2 operator is more successful in removing the trend from the original time series.</p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="89affbfd" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-18-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="526" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="a4e8c8a4" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-19-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="526" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="comments" class="level3">
+<h3 class="anchored" data-anchor-id="comments">Comments</h3>
+<p><br><br></p>
+<p>The differentiation operator removes or <em>de-trends</em> the time series.</p>
+<ul>
+<li>The level 0 differentiation operator leaves the time series intact.</li>
+<li>The level 1 differentiation operator removes its linear trend.</li>
+<li>The level 2 differentiation operator removes its quadratic trend.</li>
+</ul>
+</section>
+<section id="how-do-we-determine-the-operator-level" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-determine-the-operator-level">How do we determine the operator level?</h3>
+<p><br></p>
+<p>Visualizing the time series and determining whether there is a linear or quadratic trend.</p>
+<p>If level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.</p>
+<p><span style="color:purple;"><em>Once this is done, we set our transformed variable</em> <span class="math inline">\(Z_t\)</span> as the new response variable.</span></p>
+</section>
+<section id="autoregressive-ar-terms" class="level3">
+<h3 class="anchored" data-anchor-id="autoregressive-ar-terms">2. Autoregressive (AR) terms</h3>
+<p><br></p>
+<p>Here we use autoregressive models, but with the new response variable <span class="math inline">\(Z_t\)</span>.</p>
+<p>We can have different levels of order (or number of terms) in the autoregression model. For example:</p>
+<ul>
+<li><p>Order 1 model: <span class="math inline">\(\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1}\)</span>.</p></li>
+<li><p>Order 2 model: <span class="math inline">\(\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2}\)</span>.</p></li>
+</ul>
+<p>If necessary, we can exclude the constant coefficient <span class="math inline">\(\hat{\beta}_0\)</span> from the model.</p>
+</section>
+<section id="how-do-we-determine-the-number-of-terms" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-determine-the-number-of-terms">How do we determine the number of terms?</h3>
+<p><br><br><br></p>
+<p>Using the correlation functions (ACF) and partial correlation functions (PACF) of the differenced series.</p>
+</section>
+<section id="section-10" class="level3">
+<h3 class="anchored" data-anchor-id="section-10"></h3>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="b9037e2b" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-20-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="618a3ad6" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-21-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>To achieve this, we have some rules.</p>
+</section>
+<section id="rule-1" class="level3">
+<h3 class="anchored" data-anchor-id="rule-1">Rule 1</h3>
+<p><br><br></p>
+<p>A first-order autoregressive model has:</p>
+<ol type="1">
+<li><p>An ACF with a single peak at the first period difference (lag).</p></li>
+<li><p>An ACF with exponentially decreasing correlations.</p></li>
+</ol>
+</section>
+<section id="rule-2" class="level3">
+<h3 class="anchored" data-anchor-id="rule-2">Rule 2</h3>
+<p><br><br></p>
+<p>A second-order autoregressive model has:</p>
+<ol type="1">
+<li><p>A PACF with two peaks at the first period differences (lags).</p></li>
+<li><p>An ACF with correlations that decrease positively and negatively but approach zero.</p></li>
+</ol>
+</section>
+<section id="rule-3" class="level3">
+<h3 class="anchored" data-anchor-id="rule-3">Rule 3</h3>
+<p><br></p>
+<p>If the PACF of the differenced series <span class="math inline">\(Z_t\)</span> shows a higher partial correlation than the others and/or the lag-1 autocorrelation is positive, then consider adding an AR term to the model.</p>
+<p><br></p>
+<p>The lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.</p>
+</section>
+<section id="section-11" class="level3">
+<h3 class="anchored" data-anchor-id="section-11"></h3>
+<p>Following part 1 of Rule 1, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.</p>
+<div id="13b9a3e8" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-22-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="stochastic-terms-moving-averages-ma" class="level3">
+<h3 class="anchored" data-anchor-id="stochastic-terms-moving-averages-ma">3. Stochastic Terms (Moving Averages, MA)</h3>
+<p>Instead of using past values of the response variable, a moving average model uses stochastic terms to predict the current response. The model has different versions depending on the number of errors used to predict the response. For example:</p>
+<ul>
+<li>MA of order 1: <span class="math inline">\(Z_t = \theta_0 + \theta_1 a_{t-1}\)</span>;</li>
+<li>MA of order 2: <span class="math inline">\(Z_t = \theta_0 + \theta_1 a_{t-1} + \theta_2 a_{t-2}\)</span>,</li>
+</ul>
+<p>where <span class="math inline">\(\theta_0\)</span> is a constant and <span class="math inline">\(a_t\)</span> are terms from a white noise series (i.e., random terms).</p>
+</section>
+<section id="how-do-i-choose-the-order-of-the-mas" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-i-choose-the-order-of-the-mas">How do I choose the order of the MAs?</h3>
+<p><br><br></p>
+<p><strong>Rule 4</strong>: MA models have:</p>
+<ol type="1">
+<li><p>Correlations other than 0 in the ACF. The lags at which this occurs indicate the terms to include in the MA model.</p></li>
+<li><p>Correlations in the PACF that gradually decrease to zero in some way.</p></li>
+</ol>
+</section>
+<section id="section-12" class="level3">
+<h3 class="anchored" data-anchor-id="section-12"></h3>
+<div style="font-size: 90%;">
+<p>This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it’s the autocorrelation function of the series after it’s been differentiated.</p>
+</div>
+<div id="ecf42593" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-23-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-13" class="level3">
+<h3 class="anchored" data-anchor-id="section-13"></h3>
+<p><span style="color:darkblue;"><em>Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.</em></span></p>
+<div id="e2d6b688" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-24-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="arima" class="level3">
+<h3 class="anchored" data-anchor-id="arima">ARIMA</h3>
+<p><br></p>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li><p>Define the response differentiation level and create <span class="math inline">\(Z_t\)</span>.</p></li>
+<li><p>Define the order of the AR model (e.g., order 2).</p></li>
+<li><p>Define the order of the MA model (e.g., order 1).</p></li>
+</ol>
+</div>
+<p>. . .</p>
+<div class="center">
+<p><span class="math display">\[\hat{Z}_t = \hat{\beta}_0 + \hat{\beta}_1 Z_{t-1} + \hat{\beta}_2 Z_{t-2} + \theta_1 a_{t-1}\]</span></p>
+</div>
+<p>. . .</p>
+<p>The ARIMA model coefficients are estimated using an advanced method that takes into account the dependencies between the time series responses.</p>
+</section>
+<section id="arima-in-pyhon" class="level3">
+<h3 class="anchored" data-anchor-id="arima-in-pyhon">ARIMA in Pyhon</h3>
+<p><br><br></p>
+<p>To fit an ARIMA model, we use the <code>ARIMA()</code> function from <strong>statsmodels</strong>.</p>
+<p>The function has an important argument called <code>order</code>, which equals <code>(p,d,q)</code>, where</p>
+<ul>
+<li><code>p</code> is the order of the autoregressive model.</li>
+<li><code>d</code> is the level of the integration or differencing operator.</li>
+<li><code>q</code> is the number of elements in the moving average.</li>
+</ul>
+</section>
+<section id="section-14" class="level3">
+<h3 class="anchored" data-anchor-id="section-14"></h3>
+<p><br></p>
+<p>From our previous analysis of the training data for the Canadian workhours example, we conclude that:</p>
+<ul>
+<li><p>We must use a level-2 differencing operator to remove the quadratic trend from the series. Therefore, <code>d = 2</code>.</p></li>
+<li><p>One autoregressive term should be sufficient to capture the patterns in the time series. Therefore, <code>p = 2</code>.</p></li>
+<li><p>It is not necessary to have moving average terms. Therefore, <code>q = 0</code>.</p></li>
+</ul>
+</section>
+<section id="section-15" class="level3">
+<h3 class="anchored" data-anchor-id="section-15"></h3>
+<p><br><br></p>
+<p>Once this is defined, we can train an ARIMA model using the training data with the following code:</p>
+<div id="4a8f42e7" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Arima_Canadian <span class="op">=</span> ARIMA(Canadian_train[<span class="st">'Hours per Week'</span>], </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                       order<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>results_ARIMA_Canadian <span class="op">=</span> Arima_Canadian.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Technically, <code>ARIMA()</code> defines the model and <code>.fit()</code> fits the model to the data using <em>maximum likelihood estimation</em>.</p>
+</section>
+<section id="section-16" class="level3">
+<h3 class="anchored" data-anchor-id="section-16"></h3>
+<p>After fitting, we can get a summary of the model fit using the following code.</p>
+<div id="94526bc6" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_ARIMA_Canadian.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:         Hours per Week   No. Observations:                   28
+Model:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537
+Date:                Wed, 20 Aug 2025   AIC                             11.074
+Time:                        10:26:21   BIC                             14.849
+Sample:                             0   HQIC                            12.161
+                                 - 28                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466
+ar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050
+sigma2         0.0699      0.021      3.356      0.001       0.029       0.111
+===================================================================================
+Ljung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02
+Prob(Q):                              0.61   Prob(JB):                         0.22
+Heteroskedasticity (H):               1.48   Skew:                             0.74
+Prob(H) (two-sided):                  0.57   Kurtosis:                         3.75
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).</code></pre>
+</div>
+</div>
+</section>
+<section id="section-17" class="level3">
+<h3 class="anchored" data-anchor-id="section-17"></h3>
+<p><br><br></p>
+<p><strong>The next step in evaluating an ARIMA model is to study the model’s residuals to ensure there is nothing else to explain in the model.</strong></p>
+<p><br></p>
+<p>We can obtain the residuals using the following code.</p>
+<div id="4cef7bdf" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ARIMA_residuals <span class="op">=</span> results_ARIMA_Canadian.resid</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>ARIMA_residuals <span class="op">=</span> ARIMA_residuals.drop(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="time-series-of-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="time-series-of-residuals">Time series of residuals</h3>
+<div id="2d8a0a23" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>Canadian_train[<span class="st">'Year'</span>], y<span class="op">=</span>ARIMA_residuals)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Residuals'</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-28-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="832" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation-plots" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-plots">Correlation plots</h3>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="01c8ad08" class="cell" data-execution_count="28">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-29-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="ac155803" class="cell" data-execution_count="29">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-30-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-18" class="level3">
+<h3 class="anchored" data-anchor-id="section-18"></h3>
+<p><br><br><br></p>
+<p><span style="color:darkgreen;"><strong>The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is correct.</strong></span></p>
+</section>
+<section id="forecast" class="level3">
+<h3 class="anchored" data-anchor-id="forecast">Forecast</h3>
+<p>Once the model is validated, we make predictions for elements in the time series.</p>
+<p><br></p>
+<p>To predict the average number of hours worked in the next, say, 3 years, we use the <code>.forecast()</code> function. The <code>steps</code> argument indicates the number of steps in the future to make the predictions.</p>
+<div id="ba3edde3" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>results_ARIMA_Canadian.forecast(steps <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>28    36.102917
+29    36.205233
+30    36.382827
+Name: predicted_mean, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="model-evaluation-using-mse" class="level3">
+<h3 class="anchored" data-anchor-id="model-evaluation-using-mse">Model evaluation using MSE</h3>
+<p><br><br></p>
+<p>Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more <em>data-driven</em> approach and evaluate the model using the mean squared error (MSE) or root MSE.</p>
+<p>To this end, we simply use the <code>mean_squared_error()</code> function with the validation responses and our predictions.</p>
+</section>
+<section id="validation-data" class="level3">
+<h3 class="anchored" data-anchor-id="validation-data">Validation data</h3>
+<div id="f022f415" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Canadian_validation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Hours per Week</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>1994</td>
+<td>36.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>1995</td>
+<td>35.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">30</td>
+<td>1996</td>
+<td>35.7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">31</td>
+<td>1997</td>
+<td>35.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32</td>
+<td>1998</td>
+<td>35.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">33</td>
+<td>1999</td>
+<td>36.3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">34</td>
+<td>2000</td>
+<td>36.5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="section-19" class="level3">
+<h3 class="anchored" data-anchor-id="section-19"></h3>
+<p><br></p>
+<p>The validation data has 7 time periods that can be determined using the command below.</p>
+<div id="5e8bf922" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(Canadian_validation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>7</code></pre>
+</div>
+</div>
+<p>So, we must forecast 7 periods ahead using our ARIMA model.</p>
+<div id="ecda3eaa" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>forecast_Canadian <span class="op">=</span> results_ARIMA_Canadian.forecast(steps <span class="op">=</span> <span class="dv">7</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>forecast_Canadian</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>28    36.102917
+29    36.205233
+30    36.382827
+31    36.580331
+32    36.738265
+33    36.900243
+34    37.078325
+Name: predicted_mean, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="section-20" class="level3">
+<h3 class="anchored" data-anchor-id="section-20"></h3>
+<p><br><br></p>
+<p>Using the forecast and validation data, we compute the RMSE.</p>
+<div id="17b12bd9" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(Canadian_validation[<span class="st">"Hours per Week"</span>], forecast_Canadian)  </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(mse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.75</code></pre>
+</div>
+</div>
+</section>
+<section id="section-21" class="level3">
+<h3 class="anchored" data-anchor-id="section-21"></h3>
+<p><br></p>
+<div id="d971963f" class="cell" data-execution_count="35">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-36-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="950" height="566"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-sarima-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-sarima-model">The SARIMA Model</h2>
+<section id="seasonality" class="level3">
+<h3 class="anchored" data-anchor-id="seasonality">Seasonality</h3>
+<p><br><br></p>
+<ul>
+<li><p>Seasonality consists of repetitive or cyclical behavior that occurs with a constant frequency.</p></li>
+<li><p>It can be identified from the series graph or using the ACF and PACF.</p></li>
+<li><p>To do this, we must have removed the trend.</p></li>
+</ul>
+</section>
+<section id="example-3" class="level3">
+<h3 class="anchored" data-anchor-id="example-3">Example 3</h3>
+<p>We use the Airline data containing the number of passengers of an international airline per month between 1949 and 1960.</p>
+<div id="2ed0657d" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Airline_data <span class="op">=</span> pd.read_excel(<span class="st">"Airline.xlsx"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>Airline_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">T</th>
+<th data-quarto-table-cell-role="th">Number of passengers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>112</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>118</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>132</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>129</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>121</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="create-training-and-validation-data" class="level3">
+<h3 class="anchored" data-anchor-id="create-training-and-validation-data">Create training and validation data</h3>
+<p><br><br></p>
+<p>We use 80% of the time series for training and the rest for validation.</p>
+<div id="abfca848" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the split point</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>split_ratio <span class="op">=</span> <span class="fl">0.8</span>  <span class="co"># 80% train, 20% test</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(Airline_data) <span class="op">*</span> split_ratio)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>Airline_train <span class="op">=</span> Airline_data[:split_point]</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>Airline_validation <span class="op">=</span> Airline_data[split_point:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="training-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="training-data-1">Training data</h3>
+<div id="430ef5e5" class="cell" data-execution_count="38">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">'T'</span>, y<span class="op">=</span><span class="st">'Number of passengers'</span>, data <span class="op">=</span> Airline_train)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'T'</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of passengers'</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-39-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="758" height="470"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-22" class="level3">
+<h3 class="anchored" data-anchor-id="section-22"></h3>
+<p>First, let’s use a level-1 operator.</p>
+<div id="e556fc91" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Z_series_one <span class="op">=</span> diff(Airline_train[<span class="st">'Number of passengers'</span>], k_diff <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4b877608" class="cell" data-execution_count="40">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>Airline_train[<span class="st">'Number of passengers'</span>], y<span class="op">=</span>Z_series_one)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'T'</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Difference Level 1'</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-41-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="670" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="autocorrelation-plots" class="level3">
+<h3 class="anchored" data-anchor-id="autocorrelation-plots">Autocorrelation plots</h3>
+<p><br></p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="771f6b62" class="cell" data-execution_count="41">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-42-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="611" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="a7381e9d" class="cell" data-execution_count="42">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-43-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="611" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sarima-model" class="level3">
+<h3 class="anchored" data-anchor-id="sarima-model">SARIMA model</h3>
+<p>The <span style="color:orange;">S</span>ARIMA (<span style="color:orange;"><em>Seasonal</em></span> Autoregressive Integrated Moving Average) model is an extension of the ARIMA model for modeling seasonality patterns.</p>
+<p>The SARIMA model has three additional elements for modeling seasonality in time series.</p>
+<ol type="1">
+<li>Differenced or integrated operators (<em>integrated</em>) for seasonality.</li>
+<li>Autoregressive terms (<em>autoregressive</em>) for seasonality.</li>
+<li>Stochastic terms or moving averages (<em>moving average</em>) for seasonality.</li>
+</ol>
+</section>
+<section id="notation" class="level3">
+<h3 class="anchored" data-anchor-id="notation">Notation</h3>
+<p><br></p>
+<p>Seasonality in a time series is a regular pattern of change that repeats over <span style="color:orange;"><span class="math inline">\(S\)</span> time periods</span>, where <span class="math inline">\(S\)</span> defines the number of time periods until the pattern repeats again.</p>
+<p>For example, there is seasonality in monthly data, where high values always tend to occur in some particular months and low values always tend to occur in other particular months.</p>
+<p>In this case, <span class="math inline">\(S=12\)</span> (months per year) is the length of periodic seasonal behavior. For quarterly data, <span class="math inline">\(S=4\)</span> time periods per year.</p>
+</section>
+<section id="seasonal-differentiation" class="level3">
+<h3 class="anchored" data-anchor-id="seasonal-differentiation">Seasonal differentiation</h3>
+<p><br></p>
+<p>This is the difference between a response and a response with a lag that is a multiple of <span class="math inline">\(S\)</span>.</p>
+<p>For example, with monthly data <span class="math inline">\(S=12\)</span>,</p>
+<ul>
+<li>A level 1 seasonal difference is <span class="math inline">\(Y_{t} - Y_{t-12}\)</span>.</li>
+<li>A level 2 seasonal difference is <span class="math inline">\((Y_{t-12}) - (Y_{t-12} - Y_{t-24})\)</span>.</li>
+</ul>
+<p>Seasonal differencing eliminates the seasonal trend and can also eliminate a type of nonstationarity caused by a seasonal random walk.</p>
+</section>
+<section id="seasonal-ar-and-ma-terms" class="level3">
+<h3 class="anchored" data-anchor-id="seasonal-ar-and-ma-terms">Seasonal AR and MA Terms</h3>
+<p>In SARIMA, the seasonal AR and MA component terms predict the current response (<span class="math inline">\(Y_t\)</span>) using responses and errors at times with lags that are multiples of <span class="math inline">\(S\)</span>.</p>
+<p>For example, with monthly data <span class="math inline">\(S = 12\)</span>,</p>
+<div style="font-size: 85%;">
+<ul>
+<li>The first-order seasonal AR model would use <span class="math inline">\(Y_{t-12}\)</span> to predict <span class="math inline">\(Y_{t}\)</span>.</li>
+<li>The second-order seasonal AR model would use <span class="math inline">\(Y_{t-12}\)</span> and <span class="math inline">\(Y_{t-24}\)</span> to predict <span class="math inline">\(Y_{t}\)</span>.</li>
+<li>The first-order seasonal MA model would use the stochastic term <span class="math inline">\(a_{t-12}\)</span> as a predictor.</li>
+<li>The second-order seasonal MA model would use the stochastic terms <span class="math inline">\(a_{t-12}\)</span> and <span class="math inline">\(a_{t-24}\)</span> as predictors.</li>
+</ul>
+</div>
+</section>
+<section id="section-23" class="level3">
+<h3 class="anchored" data-anchor-id="section-23"></h3>
+<p><br><br></p>
+<p>To fit the SARIMA model, we use the <code>ARIMA()</code> function from <strong>statsmodels</strong>, but with an additional argument, <code>seasonal_order=(0, 0, 0, 0)</code>.</p>
+<p><br></p>
+<p>This is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.</p>
+<div class="notes">
+<p>Recall that the function has the argument <code>order = (p, d, q)</code> where <code>p</code> is the order of the autoregressive model, <code>d</code> is the differencing operator level, and <code>q</code> is the number of elements in the moving average.</p>
+<p>These arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality.</p>
+</div>
+</section>
+<section id="section-24" class="level3">
+<h3 class="anchored" data-anchor-id="section-24"></h3>
+<p><br><br><br></p>
+<p>Let’s fit a SARIMA model.</p>
+<div id="9b026fe9" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>SARIMA_model <span class="op">=</span> ARIMA(Airline_train[<span class="st">'Number of passengers'</span>], order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>), </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>                      seasonal_order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">12</span>))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>SARIMA_Airline <span class="op">=</span> SARIMA_model.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summary-of-fit" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-fit">Summary of fit</h3>
+<div id="14461bf4" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(SARIMA_Airline.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                     SARIMAX Results                                     
+=========================================================================================
+Dep. Variable:              Number of passengers   No. Observations:                  115
+Model:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241
+Date:                           Wed, 20 Aug 2025   AIC                            756.482
+Time:                                   10:26:23   BIC                            766.943
+Sample:                                        0   HQIC                           760.717
+                                           - 115                                         
+Covariance Type:                             opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012
+ma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300
+ar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035
+sigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719
+===================================================================================
+Ljung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18
+Prob(Q):                              0.98   Prob(JB):                         0.20
+Heteroskedasticity (H):               1.13   Skew:                             0.39
+Prob(H) (two-sided):                  0.73   Kurtosis:                         2.64
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).</code></pre>
+</div>
+</div>
+</section>
+<section id="residual-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="residual-analysis">Residual analysis</h3>
+<p>We can have a graphical evaluation of the model’s performance using a residual analysis.</p>
+<div id="9e282356" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>SARIMA_residuals <span class="op">=</span> SARIMA_Airline.resid</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>SARIMA_residuals <span class="op">=</span> SARIMA_residuals.drop(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="2a829d1b" class="cell" data-execution_count="46">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>))</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>Airline_train[<span class="st">'T'</span>], y<span class="op">=</span>SARIMA_residuals)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Residuals'</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-47-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="680" height="319"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-25" class="level3">
+<h3 class="anchored" data-anchor-id="section-25"></h3>
+<p><br></p>
+<div class="center">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="4fa2cdde" class="cell" data-execution_count="47">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 576x576 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-48-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="7b0e4c0e" class="cell" data-execution_count="48">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 576x576 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-49-output-2.png" class="quarto-figure quarto-figure-center figure-img" width="608" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="validation" class="level3">
+<h3 class="anchored" data-anchor-id="validation">Validation</h3>
+<p>The validation data has 29 time periods that can be determined using the command below.</p>
+<div id="bdcaaa93" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(Airline_validation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>29</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>So, we must forecast 7 periods ahead using our SARIMA model.</p>
+<div id="0cdc897d" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>forecast_Airline <span class="op">=</span> SARIMA_Airline.forecast(steps <span class="op">=</span> <span class="dv">29</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>forecast_Airline.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>115    489.635426
+116    428.961078
+117    373.169684
+Name: predicted_mean, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="section-26" class="level3">
+<h3 class="anchored" data-anchor-id="section-26"></h3>
+<p><br><br></p>
+<p>Using the forecast and validation data, we compute the RMSE.</p>
+<div id="0059f8b1" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(Airline_validation[<span class="st">"Number of passengers"</span>], </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>                        forecast_Airline)  </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(mse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>26.39</code></pre>
+</div>
+</div>
+</section>
+<section id="section-27" class="level3">
+<h3 class="anchored" data-anchor-id="section-27"></h3>
+<p><br></p>
+<div id="7748f071" class="cell" data-execution_count="52">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Autocorrelation_files/figure-html/cell-53-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="950" height="566"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="return-to-main-page" class="level2">
+<h2 class="anchored" data-anchor-id="return-to-main-page"><a href="https://alanrvazquez.github.io/TEC-IN2004B/">Return to main page</a></h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -26,9 +26,10 @@ author:
 
 ### Module 3
 
-1.  Predictive models ([slides](/Module3/PredictiveModels.slides.html)) ([colab](https://drive.google.com/file/d/12x5bgN_Tt5DAO38DGbeqhPM36gEETCqb/view?usp=sharing))
-2.  Autocorrelation models ([slides](/Module3/Autocorrelation.slides.html)) ([colab](https://drive.google.com/file/d/1G2EzXu1iOV5UpP_qzU1nUknGJ5FPY0lg/view?usp=sharing))
-3.  Ensemble methods for time series
+1.  Introduction to predictive models ([slides](/Module3/PredictiveModels.slides.html)) ([colab](https://drive.google.com/file/d/1Taxu9SFkYc6VQkDFgFUNnvS1VqS1tClM/view?usp=sharing))
+2.  Introduction to time series ([slides](/Module3/TimeSeries.slides.html)) ([colab](https://drive.google.com/file/d/12x5bgN_Tt5DAO38DGbeqhPM36gEETCqb/view?usp=sharing))
+3.  Autocorrelation models ([slides](/Module3/Autocorrelation.slides.html)) ([colab](https://drive.google.com/file/d/1G2EzXu1iOV5UpP_qzU1nUknGJ5FPY0lg/view?usp=sharing))
+4.  Ensemble methods for time series
 
 ### Module 4
 
