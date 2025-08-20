@@ -312,8 +312,7 @@ residual_data["ID"] = residuals.index
 
 ## A technical Python note
 
-
-Note that we have this weird way of saving the predictions of the model on the training dataset, since we added `0*Y_train`. 
+Note that we have this weird way of saving the predictions of the model on the training dataset, since we added `0*Y_train`.
 
 </br>
 
@@ -327,7 +326,7 @@ fitted = LRmodel.predict(X_train) + 0*Y_train
 
 </br>
 
-The addition of `0*Y_train` does not impact the predicted responses. Instead, it allows the `fitted` object to have the same indices as the `residuals` object in the previous section. 
+The addition of `0*Y_train` does not impact the predicted responses. Instead, it allows the `fitted` object to have the same indices as the `residuals` object in the previous section.
 
 In this way, these two objects can be put together in a pandas dataframe and being visualized using **seaborn**.
 
@@ -377,7 +376,7 @@ After estimating and validating the linear regression model, we can check the qu
 
 </br>
 
-One metric for this is the **mean prediction error** (MSE$_v$):
+One metric for this is the **mean squared error** (MSE$_v$):
 
 ::: {style="font-size: 65%;"}
 $$\text{MSE}_v = \frac{(Y_1 - (\hat{\beta}_0 + \hat{\beta}_1 X_1 ))^2 + (Y_2 - (\hat{\beta}_0 + \hat{\beta}_1 X_2 ))^2 + \cdots + (Y_{n_v} - (\hat{\beta}_0 + \hat{\beta}_1 X_{n_v} ))^2}{n_v}$$
@@ -391,7 +390,7 @@ The smaller $\text{MSE}_v$, the better the predictions.
 
 </br>
 
-In practice, we use the square root of the mean prediction error:
+In practice, we use the square root of the mean squared error:
 
 $$\text{RMSE}_v = \sqrt{\text{MSE}_v}.$$
 
@@ -400,15 +399,14 @@ The advantage of $\text{RMSE}_v$ is that it is in the same units as the response
 For example, if $\text{RMSE}_v = 1$, then a prediction of $\hat{Y} = 5$ will have an (average) error rate of $\pm 1$.
 
 ::: notes
-Prediction of tesla car next month, 1000 USD.
-Prediction of ON running shoes next month, 20 USD.
+Prediction of tesla car next month, 1000 USD. Prediction of ON running shoes next month, 20 USD.
 :::
 
 ## In Python
 
 </br>
 
-To evaluate the model's performance, we use the validation dataset. 
+To evaluate the model's performance, we use the validation dataset.
 
 </br>
 
@@ -473,6 +471,5 @@ For this purpose, there are other, more advanced candidate functions $\hat{f}(\b
 -   Decision or *regression* trees.
 -   Ensamble methods (bagging and random forest).
 -   *K* nearest neighbors.
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
