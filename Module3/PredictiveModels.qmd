@@ -25,6 +25,7 @@ jupyter: python3
 1.  Introduction
 2.  Time Series
 3.  Linear Regression Model for Time Series
+4.  Models with Seasonality
 
 # Introduction
 
@@ -73,21 +74,21 @@ The predictors ($\boldsymbol{X}$) can be *numerical* or *categorical*.
 
 </br>
 
-**Goal**: Find the best function $f(\mathbf{X})$ of the predictors $\mathbf{X} = (X_1, \ldots, X_p)$ that describes the response $Y$.
+**Goal**: Find the best function $f(\boldsymbol{X})$ of the predictors $\boldsymbol{X} = (X_1, \ldots, X_p)$ that predicts the response $Y$.
 
 In mathematical terms, we want to establish the following relationship:
 
-$$Y = f(\mathbf{X}) + \epsilon$$
+$$Y = f(\boldsymbol{X}) + \epsilon$$
 
 -   Where $\epsilon$ is a natural (random) error.
 
-## How to find the shape of $f(X)$?
+## How to find the shape of $f(\boldsymbol{X})$?
 
 </br>
 
 Using training data. ![](images/TrainVal1.png){fig-align="center"}
 
-## How to find the shape of $f(X)$?
+## How to find the shape of $f(\boldsymbol{X})$?
 
 </br>
 
@@ -95,7 +96,7 @@ Using training data.
 
 ![](images/TrainVal2.png){fig-align="center"}
 
-## How to evaluate the quality of the candidate function $\hat{f}(X)$?
+## How to evaluate the quality of the candidate function $\hat{f}(\boldsymbol{X})$?
 
 :::::: center
 ::::: columns
@@ -109,7 +110,7 @@ Using validation data.
 :::::
 ::::::
 
-## How to evaluate the quality of the candidate function $\hat{f}(X)$?
+## How to evaluate the quality of the candidate function $\hat{f}(\boldsymbol{X})$?
 
 :::::: center
 ::::: columns
@@ -155,13 +156,13 @@ $$\hat{Y}_i = \hat{f}(X_i) = \hat{\beta}_0 + \hat{\beta}_1 X_i.$$
 
 -   $\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ associated with a predictor value equal to $X_i$.
 
--   $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the [*estimated coefficients*]{style="color:lightblue;"} of the model.
+-   $\hat{\beta}_0$ and $\hat{\beta}_1$ are called the [*estimated coefficients*]{style="color:#4682B4;"} of the model.
 
 ## 
 
-The values of $\hat{\beta}_0$ and $\hat{\beta}_1$ are obtained using the training dataset and the least squares method.
+The values of $\hat{\beta}_0$ and $\hat{\beta}_1$ are obtained using the training dataset and the **least squares method**.
 
-This method finds the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the error made by the model $\hat{f}(X_i)$ when trying to predict the responses of the training dataset.
+This method finds the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the error made by the model $\hat{f}(X_i)$ when trying to predict the responses ($Y_i$) of the training dataset.
 
 </br>
 
@@ -287,7 +288,7 @@ The estimated model thus is
 
 $$\hat{Y}_i = 6.69 + 0.051 X_i.$$
 
-## Linear regression model assumptions
+## Model assumptions
 
 </br>
 
@@ -301,7 +302,7 @@ These assumptions are evaluated using a *graphical analysis of residuals* (model
 
 ## In Python
 
-For a residual analysis, we need to compute the residuals and predictions using the training dataset. Additionally, we place these objects together with the ID of the observations in a pandas dataframe for further processing. 
+For a residual analysis, we need to compute the residuals and predictions using the training dataset. Additionally, we place these objects together with the ID of the observations in a pandas dataframe for further processing.
 
 ```{python}
 #| echo: true
@@ -320,7 +321,28 @@ residual_data["Residuals"] = residuals
 residual_data["ID"] = residuals.index
 ```
 
-##
+## A technical Python note
+
+
+Note that we have this weird way of saving the predictions of the model on the training dataset, since we added `0*Y_train`. 
+
+</br>
+
+```{python}
+#| echo: true
+#| output: true
+
+# Fitted values.
+fitted = LRmodel.predict(X_train) + 0*Y_train
+```
+
+</br>
+
+The addition of `0*Y_train` does not impact the predicted responses. Instead, it allows the `fitted` object to have the same indices as the `residuals` object in the previous section. 
+
+In this way, these two objects can be put together in a pandas dataframe and being visualized using **seaborn**.
+
+## 
 
 To validate assumptions 1 and 2, we use a "residuals versus fitted values" plot
 
@@ -380,25 +402,28 @@ The smaller $\text{MSE}_v$, the better the predictions.
 
 </br>
 
-In practice, the square root of the mean prediction error is used:
+In practice, we use the square root of the mean prediction error:
 
 $$\text{RMSE}_v = \sqrt{\text{MSE}_v}.$$
 
-The advantage of $\text{RMSE}_v$ is that it can be interpreted as:
-
-> The average variability of a model prediction.
+The advantage of $\text{RMSE}_v$ is that it is in the same units as the response $Y$, which facilitates its interpretation.
 
 For example, if $\text{RMSE}_v = 1$, then a prediction of $\hat{Y} = 5$ will have an (average) error rate of $\pm 1$.
+
+::: notes
+Prediction of tesla car next month, 1000 USD.
+Prediction of ON running shoes next month, 20 USD.
+:::
 
 ## In Python
 
 </br>
 
-To evaluate the model's performance, we use the validation dataset. Specifically, we use the predictor matrix stored in `X_valid`.
+To evaluate the model's performance, we use the validation dataset. 
 
 </br>
 
-In Python, we make the prediction using the pre-trained `LRmodel`.
+First, we predict the responses using the predictor matrix in `X_valid` and our pre-trained model in `LRmodel`. To this end, we use the `.predict()` function.
 
 ```{python}
 #| echo: true
@@ -413,7 +438,7 @@ Y_pred = LRmodel.predict(X_valid)
 
 </br>
 
-To evaluate the model, we use the *mean squared error* in the Python `mse()` function. Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`.
+Next, we use the *mean squared error* in the `mse()` function. Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`.
 
 ```{python}
 #| echo: true
@@ -454,13 +479,11 @@ print(round(mse**(1/2), 2))
 
 The linear regression model is one of the most common models for predicting a response. It is simple and easy to calculate and interpret. However, it can be limited for complex problems.
 
-For this purpose, there are other, more advanced candidate functions $\hat{f}(X)$, such as:
-
--   *K* nearest neighbors.
+For this purpose, there are other, more advanced candidate functions $\hat{f}(\boldsymbol{X})$, such as:
 
 -   Decision or *regression* trees.
-
 -   Ensamble methods (bagging and random forest).
+-   *K* nearest neighbors.
 
 # Time Series
 
@@ -470,11 +493,11 @@ For this purpose, there are other, more advanced candidate functions $\hat{f}(X)
 
 -   It is a sequence of observations collected at successive time intervals.
 
--   Time series data is commonly used in fields such as finance, economics, weather forecasting, signal processing, and many others.
+-   Time series data is commonly used in finance, economics, weather forecasting, signal processing, and many others.
 
 -   Analyzing time series data helps us understand patterns, trends, and behaviors over time, enabling prediction, anomaly detection, and decision-making.
 
-## Example 2
+## Example 2: Tesla's stock price
 
 ![](images/Tesla_stock_price.jpg)
 
@@ -489,7 +512,7 @@ For this purpose, there are other, more advanced candidate functions $\hat{f}(X)
 
 -   Observations of $Y$ are recorded at the moments or times given by the predictor $T$.
 
--   The special feature of the time series is that the [observations of $Y$ are not independent!]{style="color:lightblue;"}
+-   The special feature of the time series is that the [observations of $Y$ are not independent!]{style="color:#4682B4;"}
 :::
 
 ::: {.column width="40%"}
@@ -716,17 +739,19 @@ plt.show()
 
 ## Creating a train and a validation data
 
-In time series, the order of the data matters because each observation is tied to a specific point in time.
+</br>
 
-Unlike typical datasets where observations are independent of one another, time series data follows a sequence where past values influence future ones.
+- In time series, the order of the data matters because each observation is tied to a specific point in time.
 
-Because of this, we cannot randomly split the data using a function like `train_test_split()`. Doing so might result in a situation where the model learns from future values to predict past ones—which doesn’t make sense and would lead to overly optimistic performance.
+- Because of this, we cannot randomly split the data using a function like `train_test_split()`. 
+
+- Doing so might result in a situation where the model learns from future values to predict past ones—which doesn’t make sense and would lead to overly optimistic performance.
 
 ## 
 
-Instead, we want to mimic real-world forecasting: train the model on earlier time periods and test it on later ones.
+Instead, we want to train the model on earlier time periods and test it on later ones.
 
-To help us do this properly, we use the code below.
+To this end, we use the code below.
 
 ```{python}
 #| echo: true
@@ -847,7 +872,7 @@ $$\hat{Y}_i = 1810.777 - 1.281 T_i.$$
 
 ## Residual analysis
 
-</br></br>
+</br>
 
 We can validate the model using a residual analysis on the training data. To this end, we first compute the predicted values and residuals of the model.
 
@@ -855,15 +880,17 @@ We can validate the model using a residual analysis on the training data. To thi
 #| echo: true
 #| output: true
 
-Y_pred = LRmodelAmtrak.predict(X_train) + Y_train*0
-residuals = Y_train - Y_pred
+fitted = LRmodelAmtrak.predict(X_train) + Y_train*0
+residuals = Y_train - fitted
 
 # Construct a pandas data.frame
 residual_data = pd.DataFrame()
-residual_data["Fitted"] = Y_pred
+residual_data["Fitted"] = fitted
 residual_data["Residuals"] = residuals
 residual_data["Time"] = residuals.index
 ```
+
+Remember that we are using `+ Y_train*0` to visualize the objects `fitted` and `residuals` effectively.
 
 ## 
 
@@ -1022,7 +1049,11 @@ plt.show()
 
 </br>
 
-Remember that another way to evaluate the performance of a model is using the $\text{MSE}_v$ or $\text{RMSE}_v$ on the validation data. To this end, we need some Python objects.
+Remember that another way to evaluate the performance of a model is using the $\text{MSE}_v$ or $\text{RMSE}_v$ on the validation data. 
+
+</br>
+
+To this end, we need some Python objects.
 
 ```{python}
 #| echo: true
@@ -1039,7 +1070,7 @@ Y_valid = Amtrak_validation.filter(['Ridership (in 000s)'])
 
 ## 
 
-Let's compute the $\text{MSE}_v$ for the linear regression model.
+Let's compute the $\text{RMSE}_v$ for the linear regression model.
 
 ```{python}
 #| echo: true
@@ -1049,7 +1080,7 @@ Let's compute the $\text{MSE}_v$ for the linear regression model.
 
 Y_val_pred_lin = LRmodelAmtrak.predict(X_valid)
 mse = mean_squared_error(Y_valid, Y_val_pred_lin)  
-print(round(mse, 2))
+print(round(mse**(1/2), 2))
 ```
 
 Let's do the same for the the linear regression model with a quadratic term.
@@ -1063,10 +1094,82 @@ Let's do the same for the the linear regression model with a quadratic term.
 X_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)
 Y_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)
 mse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (MSE)
-print(round(mse_quad, 2))
+print(round(mse_quad**(1/2), 2))
 ```
 
-We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{MSE}_v$ of the former is smaller than for the latter.
+We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{RMSE}_v$ of the former is smaller than for the latter.
+
+## 
+
+Predictions of linear model
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Amtrak_validation['t'].values
+forecast_df = pd.DataFrame({
+    't': forecast_years,
+    'Ridership (in 000s)': Y_val_pred_lin.reshape((25,)),
+    'Type': 'Prediction'
+})
+
+# Add 'Type' column to training and validation data
+Amtrak_train_plot = Amtrak_train.copy()
+Amtrak_train_plot['Type'] = 'Train'
+
+Amtrak_validation_plot = Amtrak_validation.copy()
+Amtrak_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)
+plt.xlabel('Time')
+plt.ylabel('Ridership (in 000s)')
+plt.tight_layout()
+plt.show()
+```
+
+## 
+
+Predictions of linear model with quadratic trend
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Amtrak_validation['t'].values
+forecast_df = pd.DataFrame({
+    't': forecast_years,
+    'Ridership (in 000s)': Y_val_pred_quad.reshape((25,)),
+    'Type': 'Prediction'
+})
+
+# Add 'Type' column to training and validation data
+Amtrak_train_plot = Amtrak_train.copy()
+Amtrak_train_plot['Type'] = 'Train'
+
+Amtrak_validation_plot = Amtrak_validation.copy()
+Amtrak_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)
+plt.xlabel('Time')
+plt.ylabel('Ridership (in 000s)')
+plt.tight_layout()
+plt.show()
+```
 
 ## Activity (*solo* mode)
 
@@ -1297,6 +1400,8 @@ plt.show()
 
 -   You can find literature on these models and their software implementations in a time series textbook such as *Time Series Analysis with Applications in R* by Cryer and Chan.
 
+# Models with Seasonality
+
 ## Seasonality
 
 Seasonality refers to repetitive or cyclical behavior that occurs with a constant frequency.
@@ -1304,6 +1409,9 @@ Seasonality refers to repetitive or cyclical behavior that occurs with a constan
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
+
+</br>
+
 Examples:
 
 -   Demand for winter clothing
@@ -1341,11 +1449,10 @@ The linear regression model can be extended to capture seasonal patterns in the 
 
 To do this, an additional categorical predictor is created that indicates the season to which each data item belongs.
 
-Behind the scenes, the additional categorical predictor is transformed into several auxiliary numerical predictors.
+The additional categorical predictor is transformed into several auxiliary numerical predictors.
 :::
 
 ::: {.column width="40%"}
-
 </br>
 
 ![](images/clipboard-2320382344.png)
@@ -1382,7 +1489,7 @@ dummy_data.head(4)
 
 ## 
 
-Simply put, the matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column `Apr` has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.
+The matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column `Apr` has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.
 
 ```{python}
 #| echo: false
@@ -1397,7 +1504,7 @@ dummy_data.head(4)
 
 </br>
 
-Unfortunately, we cannot use the matrix as is in the linear regression model. This is due to multicollinearity issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.
+Unfortunately, we cannot use the matrix as is in the linear regression model due to **multicollinearity** issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.
 
 </br>
 
@@ -1499,7 +1606,7 @@ X_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2,
 
 </br>
 
-Now, we compute the validation $\text{MSE}_v$.
+Now, we compute the validation $\text{RMSE}_v$.
 
 ```{python}
 #| echo: true
@@ -1510,10 +1617,48 @@ Now, we compute the validation $\text{MSE}_v$.
 Y_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)
 
 mse_season = mean_squared_error(Y_valid, Y_pred_valid) 
-print(round(mse_season, 2))
+print(round(mse_season**(1/2), 2))
+```
+
+## 
+
+Predictions of the linear model with seasonality.
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Build a DataFrame for the forecast with corresponding years
+forecast_years = Amtrak_validation['t'].values
+forecast_df = pd.DataFrame({
+    't': forecast_years,
+    'Ridership (in 000s)': Y_pred_valid.reshape((25,)),
+    'Type': 'Prediction'
+})
+
+# Add 'Type' column to training and validation data
+Amtrak_train_plot = Amtrak_train.copy()
+Amtrak_train_plot['Type'] = 'Train'
+
+Amtrak_validation_plot = Amtrak_validation.copy()
+Amtrak_validation_plot['Type'] = 'Validation'
+
+# Concatenate everything
+plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])
+
+# Plot using seaborn
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)
+plt.xlabel('Time')
+plt.ylabel('Ridership (in 000s)')
+plt.tight_layout()
+plt.show()
 ```
 
 ## Disadvantages of linear regression
+
+</br>
 
 -   Despite their simplicity and versatility, linear regression models are not the best for describing a time series.
 
