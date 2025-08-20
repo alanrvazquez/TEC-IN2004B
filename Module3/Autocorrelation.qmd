@@ -959,7 +959,6 @@ mse = mean_squared_error(Canadian_validation["Hours per Week"], forecast_Canadia
 print(round(mse**(1/2), 2))
 ```
 
-
 ## 
 
 </br>
@@ -1315,7 +1314,6 @@ mse = mean_squared_error(Airline_validation["Number of passengers"],
                         forecast_Airline)  
 print(round(mse**(1/2), 2))
 ```
-
 
 ## 
 
