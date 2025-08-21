@@ -206,7 +206,7 @@ plt.show()
 
 -   The autocorrelation function is commonly visualized using a bar chart.
 
--   The vertical axis shows the differences (or [*lags*]{style="color:brown;"}) between the periods considered, and the horizontal axis shows the correlations between observations at different lags.
+-   The horizontal axis shows the differences (or [*lags*]{style="color:brown;"}) between the periods considered, and the vertical axis shows the correlations between observations at different lags.
 
 ## Autocorrelation plot
 
