@@ -28,7 +28,6 @@ Before we start, let's import the data science libraries into Python.
 #| echo: true
 #| output: false
 
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns

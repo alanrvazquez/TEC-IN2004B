@@ -125,7 +125,7 @@
         "\n",
         "However, we need to inform Google Colab that we want to use **pandas** and its functions using the following command:\n"
       ],
-      "id": "10c665d6"
+      "id": "4f5ee641"
     },
     {
       "cell_type": "code",
@@ -135,7 +135,7 @@
         "\n",
         "import pandas as pd"
       ],
-      "id": "c0e17193",
+      "id": "c86f2f9e",
       "execution_count": null,
       "outputs": []
     },
@@ -153,7 +153,7 @@
         "\n",
         "The following code shows how to read the data in the file \"penguins.xlsx\" into Python.\n"
       ],
-      "id": "8a8d9fb5"
+      "id": "fc916fd9"
     },
     {
       "cell_type": "code",
@@ -164,7 +164,7 @@
         "# Load the Excel file into a pandas DataFrame.\n",
         "penguins_data = pd.read_excel(\"penguins.xlsx\")"
       ],
-      "id": "5dc074e7",
+      "id": "ad2ed749",
       "execution_count": null,
       "outputs": []
     },
@@ -176,7 +176,7 @@
         "\n",
         "The function `head()` allows you to print the first rows of a pandas data frame.\n"
       ],
-      "id": "cb163b0e"
+      "id": "f293ab91"
     },
     {
       "cell_type": "code",
@@ -186,7 +186,7 @@
         "# Print the first 4 rows of the dataset.\n",
         "penguins_data.head(4)"
       ],
-      "id": "25fdf66c",
+      "id": "96edb4f3",
       "execution_count": null,
       "outputs": []
     },
@@ -198,7 +198,7 @@
         "\n",
         "We can select a specific variables of a data frame using the syntaxis below.\n"
       ],
-      "id": "ec1c5bb6"
+      "id": "7aba1fc9"
     },
     {
       "cell_type": "code",
@@ -208,7 +208,7 @@
         "\n",
         "penguins_data['bill_length_mm']"
       ],
-      "id": "f25b55d2",
+      "id": "5640b896",
       "execution_count": null,
       "outputs": []
     },
@@ -222,7 +222,7 @@
         "\n",
         "To index multiple variables of a data frame, we put the names of the variables in a list object. For example, we select `bill_length_mm`, `species`, and `island` as follows:\n"
       ],
-      "id": "a93c749c"
+      "id": "cc8902f0"
     },
     {
       "cell_type": "code",
@@ -233,7 +233,7 @@
         "sub_penguins_data = penguins_data[ ['bill_length_mm',  'species', 'island'] ]\n",
         "sub_penguins_data.head()"
       ],
-      "id": "a2f2e841",
+      "id": "0f996b66",
       "execution_count": null,
       "outputs": []
     },
@@ -245,7 +245,7 @@
         "\n",
         "To index rows in a dataset, we use the argument `loc` from **pandas**. For example, we select the rows 3 to 6 of the `penguins_dataset` dataset:\n"
       ],
-      "id": "ef654c28"
+      "id": "e32e3083"
     },
     {
       "cell_type": "code",
@@ -256,7 +256,7 @@
         "rows_penguins_data = penguins_data.loc[2:5]\n",
         "rows_penguins_data"
       ],
-      "id": "09184a70",
+      "id": "9ead477b",
       "execution_count": null,
       "outputs": []
     },
@@ -268,7 +268,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "5505f66d"
+      "id": "33f10cef"
     },
     {
       "cell_type": "code",
@@ -278,7 +278,7 @@
         "\n",
         "rows_penguins_data"
       ],
-      "id": "3bbe31e2",
+      "id": "83f09364",
       "execution_count": null,
       "outputs": []
     },
@@ -292,7 +292,7 @@
         "\n",
         "Using `loc`, we can also retrieve a subset from the dataset by selecting specific columns and rows.\n"
       ],
-      "id": "835f119d"
+      "id": "2978b38d"
     },
     {
       "cell_type": "code",
@@ -303,7 +303,7 @@
         "sub_rows_pdata = penguins_data.loc[2:5, ['bill_length_mm',  'species', 'island'] ]\n",
         "sub_rows_pdata"
       ],
-      "id": "cd651bb3",
+      "id": "90042fe0",
       "execution_count": null,
       "outputs": []
     },
@@ -347,7 +347,7 @@
         "\n",
         "Let's use the \"penguins.xlsx\" dataset.\n"
       ],
-      "id": "f8a4e609"
+      "id": "5db13471"
     },
     {
       "cell_type": "code",
@@ -358,7 +358,7 @@
         "# Preview the dataset.\n",
         "penguins_data.head(4)"
       ],
-      "id": "7ffeed9a",
+      "id": "c99d5458",
       "execution_count": null,
       "outputs": []
     },
@@ -370,7 +370,7 @@
         "\n",
         "Select the columns `species`, `body_mass_g` and `sex`.\n"
       ],
-      "id": "45d28eda"
+      "id": "f92c15de"
     },
     {
       "cell_type": "code",
@@ -383,7 +383,7 @@
         "  .filter([\"species\", \"body_mass_g\", \"sex\"], axis = 1)\n",
         ").head()"
       ],
-      "id": "e04736a7",
+      "id": "b72f4aaa",
       "execution_count": null,
       "outputs": []
     },
@@ -397,7 +397,7 @@
         "\n",
         "The `axis` argument tells `.filter()` whether to select rows (`0`) or columns (`1`) from the dataframe.\n"
       ],
-      "id": "396aec3b"
+      "id": "98666da4"
     },
     {
       "cell_type": "code",
@@ -410,7 +410,7 @@
         "  .filter([\"species\", \"body_mass_g\", \"sex\"], axis = 1)\n",
         ").head()"
       ],
-      "id": "78bf40f1",
+      "id": "7be869ac",
       "execution_count": null,
       "outputs": []
     },
@@ -428,7 +428,7 @@
         "\n",
         "We can also use `.filter()` to select rows too. To this end, we set `axis = 1`. We can select specific rows, such as 0 and 10.\n"
       ],
-      "id": "5d55e55f"
+      "id": "515c3b81"
     },
     {
       "cell_type": "code",
@@ -441,7 +441,7 @@
         "  .filter([0, 10], axis = 0)\n",
         ")"
       ],
-      "id": "ee69b1b2",
+      "id": "826d034b",
       "execution_count": null,
       "outputs": []
     },
@@ -453,7 +453,7 @@
         "\n",
         "Or, we can select a set of rows using the function `range()`. For example, let's select the first 5 rows.\n"
       ],
-      "id": "b0985659"
+      "id": "e7b2a638"
     },
     {
       "cell_type": "code",
@@ -466,7 +466,7 @@
         "  .filter(range(5), axis = 0)\n",
         ")"
       ],
-      "id": "47ffe74b",
+      "id": "36573449",
       "execution_count": null,
       "outputs": []
     },
@@ -484,7 +484,7 @@
         "\n",
         "For example, let's filter the data for the species \"Gentoo.\"\n"
       ],
-      "id": "850aa1a8"
+      "id": "c7b3efd5"
     },
     {
       "cell_type": "code",
@@ -497,7 +497,7 @@
         "  .query(\"species == 'Gentoo'\")\n",
         ")"
       ],
-      "id": "18d0b2c0",
+      "id": "2312af14",
       "execution_count": null,
       "outputs": []
     },
@@ -509,7 +509,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "f947d153"
+      "id": "50b50eae"
     },
     {
       "cell_type": "code",
@@ -522,7 +522,7 @@
         "  .query(\"species == 'Gentoo'\")\n",
         ").head()"
       ],
-      "id": "804d71d3",
+      "id": "48cb909c",
       "execution_count": null,
       "outputs": []
     },
@@ -534,7 +534,7 @@
         "\n",
         "We can also filter the data to get penguins with a body mass greater than 5000g.\n"
       ],
-      "id": "bae9f71e"
+      "id": "61270087"
     },
     {
       "cell_type": "code",
@@ -547,7 +547,7 @@
         "  .query(\"body_mass_g > 5000\")\n",
         ").head()"
       ],
-      "id": "d4b84c53",
+      "id": "6d082990",
       "execution_count": null,
       "outputs": []
     },
@@ -559,7 +559,7 @@
         "\n",
         "We can even **combine** `.filter()` and `.query()`. For example, let's select the columns `species`, `body_mass_g` and `sex`, then filter the data for the \"Gentoo\" species.\n"
       ],
-      "id": "b0417871"
+      "id": "c9ed6b1f"
     },
     {
       "cell_type": "code",
@@ -573,7 +573,7 @@
         "  .query(\"species == 'Gentoo'\")\n",
         ").head(4)"
       ],
-      "id": "4ee77626",
+      "id": "65369e4a",
       "execution_count": null,
       "outputs": []
     },
@@ -587,7 +587,7 @@
         "\n",
         "For example, we create a new variable `LDRatio` equaling the ratio of `bill_length_mm` and `bill_depth_mm`.\n"
       ],
-      "id": "c63526ca"
+      "id": "ffae331e"
     },
     {
       "cell_type": "code",
@@ -600,7 +600,7 @@
         "  .assign(LDRatio = lambda df: df[\"bill_length_mm\"] / df[\"bill_depth_mm\"])\n",
         ")"
       ],
-      "id": "89a48b48",
+      "id": "5496bf92",
       "execution_count": null,
       "outputs": []
     },
@@ -614,7 +614,7 @@
         "\n",
         "In this code, the `df` after `lambda` indicates that the dataframe (`penguins_data`) will be referred to as `df` inside the function. The colon `:` sets the start of the function.\n"
       ],
-      "id": "d947bb88"
+      "id": "ac9d4dcc"
     },
     {
       "cell_type": "code",
@@ -627,7 +627,7 @@
         "  .assign(LDRatio = lambda df: df[\"bill_length_mm\"] / df[\"bill_depth_mm\"])\n",
         ")"
       ],
-      "id": "27c504b6",
+      "id": "5377b07e",
       "execution_count": null,
       "outputs": []
     },
@@ -641,7 +641,7 @@
         "\n",
         "We can see the new variable using `.filter()`.\n"
       ],
-      "id": "87a80e71"
+      "id": "50b06fde"
     },
     {
       "cell_type": "code",
@@ -655,7 +655,7 @@
         "  .filter([\"bill_length_mm\", \"bill_depth_mm\", \"LDRatio\"], axis = 1)\n",
         ").head()"
       ],
-      "id": "bc06c433",
+      "id": "c2a9ce79",
       "execution_count": null,
       "outputs": []
     },
@@ -667,7 +667,7 @@
         "\n",
         "We can sort the data based on a column like `bill_length_mm`.\n"
       ],
-      "id": "9a350a75"
+      "id": "30deaf79"
     },
     {
       "cell_type": "code",
@@ -680,7 +680,7 @@
         "  .sort_values(\"bill_length_mm\")\n",
         ").head(4)"
       ],
-      "id": "bbc166cc",
+      "id": "dd1edff0",
       "execution_count": null,
       "outputs": []
     },
@@ -692,7 +692,7 @@
         "\n",
         "To sort in descending order, use `ascending=False` inside `sort_values()`.\n"
       ],
-      "id": "6c0bcf25"
+      "id": "c1e4b127"
     },
     {
       "cell_type": "code",
@@ -705,7 +705,7 @@
         "  .sort_values(\"bill_length_mm\", ascending=False)\n",
         ").head()"
       ],
-      "id": "a55211c8",
+      "id": "db685956",
       "execution_count": null,
       "outputs": []
     },
@@ -717,7 +717,7 @@
         "\n",
         "We can calculate summary statistics of the columns `bill_length_mm`, `bill_depth_mm`, and `body_mass_g`.\n"
       ],
-      "id": "1ef5de48"
+      "id": "e5b25edf"
     },
     {
       "cell_type": "code",
@@ -731,7 +731,7 @@
         "  .agg([\"mean\"])\n",
         ")"
       ],
-      "id": "998001cd",
+      "id": "5ecfb1e0",
       "execution_count": null,
       "outputs": []
     },
@@ -749,7 +749,7 @@
         "\n",
         "After performing operations on our data, we can save the modified dataset as a new object.\n"
       ],
-      "id": "43753590"
+      "id": "e7835b0c"
     },
     {
       "cell_type": "code",
@@ -765,7 +765,7 @@
         "\n",
         "mean_penguins_data"
       ],
-      "id": "28640dd7",
+      "id": "adc4a6c3",
       "execution_count": null,
       "outputs": []
     },
@@ -783,7 +783,7 @@
         "\n",
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
       ],
-      "id": "5bd4fa3f"
+      "id": "0c8a736c"
     }
   ],
   "metadata": {

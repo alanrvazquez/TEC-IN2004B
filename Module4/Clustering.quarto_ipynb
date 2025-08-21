@@ -43,7 +43,7 @@
         "\n",
         "Before we start, let's import the data science libraries into Python.\n"
       ],
-      "id": "d54ebf73"
+      "id": "b037d073"
     },
     {
       "cell_type": "code",
@@ -60,7 +60,7 @@
         "from sklearn.cluster import KMeans, AgglomerativeClustering\n",
         "from scipy.cluster.hierarchy import dendrogram, linkage"
       ],
-      "id": "840d317f",
+      "id": "d74906e3",
       "execution_count": null,
       "outputs": []
     },
@@ -176,7 +176,7 @@
         "\n",
         "## Data\n"
       ],
-      "id": "c2fe89a0"
+      "id": "4fe8bc9c"
     },
     {
       "cell_type": "code",
@@ -188,7 +188,7 @@
         "penguins_data = pd.read_excel(\"penguins.xlsx\")\n",
         "penguins_data.head()"
       ],
-      "id": "8c8856e8",
+      "id": "9cd3cb2f",
       "execution_count": null,
       "outputs": []
     },
@@ -200,7 +200,7 @@
         "\n",
         "Can we group penguins based on their characteristics?\n"
       ],
-      "id": "865fab18"
+      "id": "d3d9d41e"
     },
     {
       "cell_type": "code",
@@ -215,7 +215,7 @@
         "sns.scatterplot(data=penguins_data, x=\"bill_depth_mm\", y=\"bill_length_mm\") # Define type of plot.\n",
         "plt.show() # Display the plot."
       ],
-      "id": "2e33fabf",
+      "id": "8739899f",
       "execution_count": null,
       "outputs": []
     },
@@ -322,7 +322,7 @@
         "\n",
         "Let's apply the algorithm to the predictors `bill_depth_mm` and `bill_length_mm` of the penguins dataset.\n"
       ],
-      "id": "1ebb478c"
+      "id": "cb58b7a1"
     },
     {
       "cell_type": "code",
@@ -336,7 +336,7 @@
         "X_penguins = penguins_data.filter(['bill_depth_mm', 'bill_length_mm'])\n",
         "X_penguins.head()"
       ],
-      "id": "2611cbe2",
+      "id": "7bd62f07",
       "execution_count": null,
       "outputs": []
     },
@@ -348,7 +348,7 @@
         "\n",
         "Since the K-means algorithm works with Euclidean distance, we must standardize the predictors before we start. In this way, all of them will be equally informative in the process.\n"
       ],
-      "id": "1ea36feb"
+      "id": "61cd5a86"
     },
     {
       "cell_type": "code",
@@ -363,7 +363,7 @@
         "scaler = StandardScaler()\n",
         "Xs_penguins = scaler.fit_transform(X_penguins)"
       ],
-      "id": "5f2317ad",
+      "id": "2a30ad94",
       "execution_count": null,
       "outputs": []
     },
@@ -377,7 +377,7 @@
         "\n",
         "In Python, we use the `KMeans()` function of **sklearn** to apply K-means clustering. `KMeans()` tells Python we want to train a K-means clustering algorithm and `.fit_predict()` actually trains it using the data.\n"
       ],
-      "id": "24f34a09"
+      "id": "3ef53f70"
     },
     {
       "cell_type": "code",
@@ -392,7 +392,7 @@
         "kmeans = KMeans(n_clusters = 3, random_state = 301655)\n",
         "clusters = kmeans.fit_predict(Xs_penguins)"
       ],
-      "id": "6d0b898c",
+      "id": "3abb0dc5",
       "execution_count": null,
       "outputs": []
     },
@@ -406,7 +406,7 @@
         "\n",
         "The clusters created are contained in the `clusters` object.\n"
       ],
-      "id": "2a37b23f"
+      "id": "5e6b9851"
     },
     {
       "cell_type": "code",
@@ -419,7 +419,7 @@
         "\n",
         "clusters"
       ],
-      "id": "1e24a688",
+      "id": "ffab03f7",
       "execution_count": null,
       "outputs": []
     },
@@ -431,7 +431,7 @@
         "\n",
         "To visualize the clusters, we augment the original dataset `X_penguins` (without standarization) with the `clusters` object. usign the code below.\n"
       ],
-      "id": "a136f0be"
+      "id": "e3302a61"
     },
     {
       "cell_type": "code",
@@ -448,7 +448,7 @@
         "\n",
         "clustered_penguins.head()"
       ],
-      "id": "fd744b7d",
+      "id": "5e528252",
       "execution_count": null,
       "outputs": []
     },
@@ -458,7 +458,7 @@
       "source": [
         "## \n"
       ],
-      "id": "c45c7a37"
+      "id": "896f2af0"
     },
     {
       "cell_type": "code",
@@ -478,7 +478,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "6289a772",
+      "id": "40e84da4",
       "execution_count": null,
       "outputs": []
     },
@@ -488,7 +488,7 @@
       "source": [
         "## The truth: 3 groups of penguins\n"
       ],
-      "id": "de80675f"
+      "id": "789e1585"
     },
     {
       "cell_type": "code",
@@ -504,7 +504,7 @@
         "                hue=\"species\", palette = 'Set1') # Define type of plot.\n",
         "plt.show() # Display the plot."
       ],
-      "id": "70b1a20f",
+      "id": "07950f0e",
       "execution_count": null,
       "outputs": []
     },
@@ -520,7 +520,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "ba2a8e32"
+      "id": "0ec1c1a9"
     },
     {
       "cell_type": "code",
@@ -540,7 +540,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "e1d6f753",
+      "id": "e3e52e1a",
       "execution_count": null,
       "outputs": []
     },
@@ -552,7 +552,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "2442b935"
+      "id": "f2ef6b46"
     },
     {
       "cell_type": "code",
@@ -568,7 +568,7 @@
         "                hue=\"species\", palette = 'Set1') # Define type of plot.\n",
         "plt.show() # Display the plot."
       ],
-      "id": "8f434225",
+      "id": "29da60be",
       "execution_count": null,
       "outputs": []
     },
@@ -584,7 +584,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "fa039937"
+      "id": "a896c1d2"
     },
     {
       "cell_type": "code",
@@ -611,7 +611,7 @@
         "              .assign(Cluster = clusters)\n",
         "              )"
       ],
-      "id": "0e95c88b",
+      "id": "7cfb8e24",
       "execution_count": null,
       "outputs": []
     },
@@ -625,7 +625,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "8929b832"
+      "id": "299b1a6b"
     },
     {
       "cell_type": "code",
@@ -644,7 +644,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "62089eb1",
+      "id": "0fbec748",
       "execution_count": null,
       "outputs": []
     },
@@ -656,7 +656,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "57848baa"
+      "id": "2f77aee4"
     },
     {
       "cell_type": "code",
@@ -672,7 +672,7 @@
         "                hue=\"species\", palette = 'Set1') # Define type of plot.\n",
         "plt.show() # Display the plot."
       ],
-      "id": "06576a41",
+      "id": "0f2feec0",
       "execution_count": null,
       "outputs": []
     },
@@ -724,7 +724,7 @@
         "\n",
         "To record the intertias for different numbers of clusters, we use the code below.\n"
       ],
-      "id": "d1142057"
+      "id": "db9a358e"
     },
     {
       "cell_type": "code",
@@ -742,7 +742,7 @@
         "    kmeans.fit(Xs_penguins)\n",
         "    inertias.append(kmeans.inertia_)"
       ],
-      "id": "da267da1",
+      "id": "6236385f",
       "execution_count": null,
       "outputs": []
     },
@@ -764,7 +764,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "9b75a37a"
+      "id": "6fb56e60"
     },
     {
       "cell_type": "code",
@@ -782,7 +782,7 @@
         "plt.ylabel('Inertia')\n",
         "plt.show()"
       ],
-      "id": "91c7c63a",
+      "id": "f93c761c",
       "execution_count": null,
       "outputs": []
     },
@@ -899,7 +899,7 @@
         "\n",
         "Let's consider a dataset called \"Cereals.xlsx.\" The data includes nutritional information for 77 cereals, among other data.\n"
       ],
-      "id": "e0c7a3c7"
+      "id": "f5fb2022"
     },
     {
       "cell_type": "code",
@@ -910,7 +910,7 @@
         "\n",
         "cereal_data = pd.read_excel(\"cereals.xlsx\")"
       ],
-      "id": "1666988c",
+      "id": "f0d0d970",
       "execution_count": null,
       "outputs": []
     },
@@ -922,7 +922,7 @@
         "\n",
         "Here, we will restrict to 7 numeric predictors.\n"
       ],
-      "id": "9588fd0f"
+      "id": "0e8283ea"
     },
     {
       "cell_type": "code",
@@ -935,7 +935,7 @@
         "                              'carbo', 'sugars', 'potass', 'vitamins'])\n",
         "X_cereal.head()"
       ],
-      "id": "66263891",
+      "id": "9e80ab68",
       "execution_count": null,
       "outputs": []
     },
@@ -949,7 +949,7 @@
         "\n",
         "Since the hierarchical clustering algorithm also works with distances, we must standardize the predictors to have an accurate analysis.\n"
       ],
-      "id": "890641d4"
+      "id": "3f54c700"
     },
     {
       "cell_type": "code",
@@ -961,7 +961,7 @@
         "scaler = StandardScaler()\n",
         "Xs_cereal = scaler.fit_transform(X_cereal)"
       ],
-      "id": "16c4972d",
+      "id": "a363fcfe",
       "execution_count": null,
       "outputs": []
     },
@@ -975,7 +975,7 @@
         "\n",
         "Unfortunately, the `Agglomerative()` function in **sklearn** is not as user friendly compared to other available functions in Python. In particular, the **scipy** library has a function called `linkage()` for hierarchical clustering that works as follows.\n"
       ],
-      "id": "ee197eeb"
+      "id": "832f0bcc"
     },
     {
       "cell_type": "code",
@@ -986,7 +986,7 @@
         "\n",
         "Clust_Cereal = linkage(Xs_cereal, method = 'complete')"
       ],
-      "id": "72dd7c33",
+      "id": "cd631048",
       "execution_count": null,
       "outputs": []
     },
@@ -1055,7 +1055,7 @@
         "\n",
         "To produce a nice dendrogram in Python, we use the function `dendrogram` from **scipy**.\n"
       ],
-      "id": "7ef31200"
+      "id": "cb7ef8ca"
     },
     {
       "cell_type": "code",
@@ -1074,7 +1074,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "161e056d",
+      "id": "d2020b88",
       "execution_count": null,
       "outputs": []
     },
@@ -1107,7 +1107,7 @@
         "\n",
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
       ],
-      "id": "71c7ef3c"
+      "id": "d0dabd98"
     }
   ],
   "metadata": {

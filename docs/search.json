@@ -1236,7 +1236,7 @@
     "href": "Module3/Autocorrelation.slides.html#autoregressive-models",
     "title": "Autocorrelation Models",
     "section": "Autoregressive models",
-    "text": "Autoregressive models\nAutoregressive models are a type of linear regression model that directly incorporate the autocorrelation of the time series to predict the current response.\nTheir main characteristic is that the predictors of the current value of the series are its past values.\n\n\nAn autoregressive model of order 2 has the mathematical form: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}.\\)\nAn order 3 model looks like this: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2} + \\hat{\\beta}_3 Y_{t-3}.\\)"
+    "text": "Autoregressive models\nAutoregressive models are a type of linear regression model that directly incorporate the autocorrelation of the time series to predict the current response.\nTheir main characteristic is that the predictors of the current value of the series are its past values.\n\n\nAn autoregressive model of order 2 has the mathematical form: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2}.\\)\nA model of order 3 looks like this: \\(\\hat{Y}_t = \\hat{\\beta}_0 + \\hat{\\beta}_1 Y_{t-1} + \\hat{\\beta}_2 Y_{t-2} + \\hat{\\beta}_3 Y_{t-3}.\\)"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#arima-models",
@@ -1264,7 +1264,7 @@
     "href": "Module3/Autocorrelation.slides.html#creating-a-train-and-a-validation-data",
     "title": "Autocorrelation Models",
     "section": "Creating a train and a validation data",
-    "text": "Creating a train and a validation data\nRecall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.\n\n# Define the split point\nsplit_ratio = 0.8  # 80% train, 20% test\nsplit_point = int(len(CanadianWorkHours) * split_ratio)\n\n# Split the data\nCanadian_train = CanadianWorkHours[:split_point]\nCanadian_validation = CanadianWorkHours[split_point:]\n\nWe use 80% of the time series for training and the rest for validation."
+    "text": "Creating a train and a validation data\n\nRecall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.\n\n# Define the split point\nsplit_ratio = 0.8  # 80% train, 20% test\nsplit_point = int(len(CanadianWorkHours) * split_ratio)\n\n# Split the data\nCanadian_train = CanadianWorkHours[:split_point]\nCanadian_validation = CanadianWorkHours[split_point:]\n\nWe use 80% of the time series for training and the rest for validation."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#training-data",
@@ -1306,14 +1306,14 @@
     "href": "Module3/Autocorrelation.slides.html#comments",
     "title": "Autocorrelation Models",
     "section": "Comments",
-    "text": "Comments\n\nThe differentiation operator removes or de-trends the time series.\n\nThe level 0 differentiation operator leaves the time series intact.\nThe level 1 differentiation operator removes its linear trend.\nThe level 2 differentiation operator removes its quadratic trend."
+    "text": "Comments\n\nThe differentiation operator de-trends the time series.\n\nThe level 0 differentiation operator leaves the time series intact.\nThe level 1 differentiation operator removes its linear trend.\nThe level 2 differentiation operator removes its quadratic trend."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#how-do-we-determine-the-operator-level",
     "href": "Module3/Autocorrelation.slides.html#how-do-we-determine-the-operator-level",
     "title": "Autocorrelation Models",
     "section": "How do we determine the operator level?",
-    "text": "How do we determine the operator level?\n\nVisualizing the time series and determining whether there is a linear or quadratic trend.\nIf level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.\nOnce this is done, we set our transformed variable \\(Z_t\\) as the new response variable."
+    "text": "How do we determine the operator level?\n\nVisualizing the time series and determining whether there is a linear or quadratic trend.\nIf level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.\nOnce this is done, we set our transformed variable \\(Z_t\\) as the new response variable!"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#autoregressive-ar-terms",
@@ -1327,14 +1327,14 @@
     "href": "Module3/Autocorrelation.slides.html#how-do-we-determine-the-number-of-terms",
     "title": "Autocorrelation Models",
     "section": "How do we determine the number of terms?",
-    "text": "How do we determine the number of terms?\n\nUsing the correlation functions (ACF) and partial correlation functions (PACF) of the differenced series."
+    "text": "How do we determine the number of terms?\nUsing the partial autocorrelation function (PACF) of the differenced series.\n\nA first-order autoregressive model has a PACF with a single peak at the first period difference (lag).\nA second-order autoregressive model has a PACF with two peaks at the first lags.\nIn general, the lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-10",
     "href": "Module3/Autocorrelation.slides.html#section-10",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\nTo achieve this, we have some rules."
+    "text": "&lt;Figure size 288x288 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#rule-1",
@@ -1362,7 +1362,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-11",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Following part 1 of Rule 1, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+    "text": "Using the PACF, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#stochastic-terms-moving-averages-ma",
@@ -1376,21 +1376,21 @@
     "href": "Module3/Autocorrelation.slides.html#how-do-i-choose-the-order-of-the-mas",
     "title": "Autocorrelation Models",
     "section": "How do I choose the order of the MAs?",
-    "text": "How do I choose the order of the MAs?\n\nRule 4: MA models have:\n\nCorrelations other than 0 in the ACF. The lags at which this occurs indicate the terms to include in the MA model.\nCorrelations in the PACF that gradually decrease to zero in some way."
+    "text": "How do I choose the order of the MAs?\n\nUsing the autocorrelation function (ACF) of the differenced series.\n\nIn general, the lag at which the ACF cuts off from the confidence limits in the software is the indicated number of MA terms."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-12",
     "href": "Module3/Autocorrelation.slides.html#section-12",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it’s the autocorrelation function of the series after it’s been differentiated.\n\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+    "text": "Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-13",
     "href": "Module3/Autocorrelation.slides.html#section-13",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.\n\n\n&lt;Figure size 288x288 with 0 Axes&gt;"
+    "text": "From our previous analysis of the training data for the Canadian workhours example, we conclude that:\n\nWe must use a level-2 differencing operator to remove the quadratic trend from the series. Therefore, d = 2.\nOne autoregressive term should be sufficient to capture the patterns in the time series. Therefore, p = 2.\nIt is not necessary to have moving average terms. Therefore, q = 0."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#arima",
@@ -1411,28 +1411,28 @@
     "href": "Module3/Autocorrelation.slides.html#section-14",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "From our previous analysis of the training data for the Canadian workhours example, we conclude that:\n\nWe must use a level-2 differencing operator to remove the quadratic trend from the series. Therefore, d = 2.\nOne autoregressive term should be sufficient to capture the patterns in the time series. Therefore, p = 2.\nIt is not necessary to have moving average terms. Therefore, q = 0."
+    "text": "Once this is defined, we can train an ARIMA model using the training data with the following code:\n\nArima_Canadian = ARIMA(Canadian_train['Hours per Week'], \n                       order=(2, 2, 0))\nresults_ARIMA_Canadian = Arima_Canadian.fit()\n\nTechnically, ARIMA() defines the model and .fit() fits the model to the data using maximum likelihood estimation."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-15",
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Once this is defined, we can train an ARIMA model using the training data with the following code:\n\nArima_Canadian = ARIMA(Canadian_train['Hours per Week'], \n                       order=(2, 2, 0))\nresults_ARIMA_Canadian = Arima_Canadian.fit()\n\nTechnically, ARIMA() defines the model and .fit() fits the model to the data using maximum likelihood estimation."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Thu, 21 Aug 2025   AIC                             11.074\nTime:                        10:00:42   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
     "href": "Module3/Autocorrelation.slides.html#section-16",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Wed, 20 Aug 2025   AIC                             11.074\nTime:                        12:21:45   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "The next step in evaluating an ARIMA model is to study the model’s residuals to ensure there is nothing else to explain in the model.\n\nHowever, since the ARIMA model has two AR terms, we must inspect the residuals starting from the third observation. We achieve this using the code below.\n\n# Extract the residuals.\nARIMA_residuals = results_ARIMA_Canadian.resid\n\n# Select residuals starting from observation 3 and onwards.\nARIMA_residuals = ARIMA_residuals[2:]"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-17",
     "href": "Module3/Autocorrelation.slides.html#section-17",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "The next step in evaluating an ARIMA model is to study the model’s residuals to ensure there is nothing else to explain in the model.\n\nWe can obtain the residuals using the following code.\n\nARIMA_residuals = results_ARIMA_Canadian.resid\nARIMA_residuals = ARIMA_residuals.drop(0)"
+    "text": "The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is good."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#time-series-of-residuals",
@@ -1453,7 +1453,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-18",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is correct."
+    "text": "The validation data has 7 time periods that can be determined using the command below.\n\nlen(Canadian_validation)\n\n7\n\n\nSo, we must forecast 7 periods ahead using our ARIMA model.\n\nforecast_Canadian = results_ARIMA_Canadian.forecast(steps = 7)\nforecast_Canadian\n\n28    36.102917\n29    36.205233\n30    36.382827\n31    36.580331\n32    36.738265\n33    36.900243\n34    37.078325\nName: predicted_mean, dtype: float64"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#forecast",
@@ -1481,14 +1481,14 @@
     "href": "Module3/Autocorrelation.slides.html#section-19",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "The validation data has 7 time periods that can be determined using the command below.\n\nlen(Canadian_validation)\n\n7\n\n\nSo, we must forecast 7 periods ahead using our ARIMA model.\n\nforecast_Canadian = results_ARIMA_Canadian.forecast(steps = 7)\nforecast_Canadian\n\n28    36.102917\n29    36.205233\n30    36.382827\n31    36.580331\n32    36.738265\n33    36.900243\n34    37.078325\nName: predicted_mean, dtype: float64"
+    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Canadian_validation[\"Hours per Week\"], forecast_Canadian)  \nprint(round(mse**(1/2), 2))\n\n0.75"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-20",
     "href": "Module3/Autocorrelation.slides.html#section-20",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Canadian_validation[\"Hours per Week\"], forecast_Canadian)  \nprint(round(mse**(1/2), 2))\n\n0.75"
+    "text": "Second, we notice that the first element of the shifted series is missing or not available (NaN). We thus fill it in with the last observation in our training dataset, which we can obtain using the .iloc() function.\n\nCanadian_train.iloc[-1]\n\nYear              1993.0\nHours per Week      35.9\nName: 27, dtype: float64\n\n\n\nWe now input 35.9 as the first record in naive_forecast. The first record of the object is indexed by a 28.\n\nnaive_forecast[28] = 35.9"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#seasonality",
@@ -1523,7 +1523,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-22",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "First, let’s use a level-1 operator.\n\nZ_series_one = diff(Airline_train['Number of passengers'], k_diff = 1)\n\n\n\nCode\nplt.figure(figsize=(8, 5))\nsns.lineplot(x=Airline_train['Number of passengers'], y=Z_series_one)\nplt.xlabel('T')\nplt.ylabel('Difference Level 1')\nplt.show()"
+    "text": "The RMSE of the naive forecast is calculated below.\n\nnaive_rmse = mean_squared_error(Canadian_validation[\"Hours per Week\"], naive_forecast)\nprint(round(naive_rmse**(1/2), 2))\n\n0.31\n\n\n\nWe conclude that predicting with the previous response is a better approach than predicting with an ARIMA model. This is because the RMSE for the naive forecast is 0.31, and that of the ARIMA model is 0.75."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#autocorrelation-plots",
@@ -1565,21 +1565,21 @@
     "href": "Module3/Autocorrelation.slides.html#section-23",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "To fit the SARIMA model, we use the ARIMA() function from statsmodels, but with an additional argument, seasonal_order=(0, 0, 0, 0).\n\nThis is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.\n\nRecall that the function has the argument order = (p, d, q) where p is the order of the autoregressive model, d is the differencing operator level, and q is the number of elements in the moving average.\nThese arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality."
+    "text": "First, let’s use a level-1 operator.\n\nZ_series_one = diff(Airline_train['Number of passengers'], k_diff = 1)\n\n\n\nCode\nplt.figure(figsize=(8, 5))\nsns.lineplot(x=Airline_train['Number of passengers'], y=Z_series_one)\nplt.xlabel('T')\nplt.ylabel('Difference Level 1')\nplt.show()"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-24",
     "href": "Module3/Autocorrelation.slides.html#section-24",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Let’s fit a SARIMA model.\n\nSARIMA_model = ARIMA(Airline_train['Number of passengers'], order=(1, 2, 1), \n                      seasonal_order=(1, 1, 0, 12))\nSARIMA_Airline = SARIMA_model.fit()"
+    "text": "First, let’s use a level-1 operator.\n\nZ_series_one = diff(Airline_train['Number of passengers'], k_diff = 1)\n\n\n\nCode\nplt.figure(figsize=(8, 5))\nsns.lineplot(x=Airline_train['Number of passengers'], y=Z_series_one)\nplt.xlabel('T')\nplt.ylabel('Difference Level 1')\nplt.show()"
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Wed, 20 Aug 2025   AIC                            756.482\nTime:                                   12:21:46   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Thu, 21 Aug 2025   AIC                            756.482\nTime:                                   10:00:44   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -1593,7 +1593,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-25",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "&lt;Figure size 576x576 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 576x576 with 0 Axes&gt;"
+    "text": "To fit the SARIMA model, we use the ARIMA() function from statsmodels, but with an additional argument, seasonal_order=(0, 0, 0, 0).\n\nThis is the order (P, D, Q, s) of the seasonal component of the model for the autoregressive parameters, differencing operator levels, moving average parameters, and periodicity.\n\nRecall that the function has the argument order = (p, d, q) where p is the order of the autoregressive model, d is the differencing operator level, and q is the number of elements in the moving average.\nThese arguments capture the detailed information of the time series, while seasonal_order captures the patterns given by seasonality."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#validation",
@@ -1607,7 +1607,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-26",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Airline_validation[\"Number of passengers\"], \n                        forecast_Airline)  \nprint(round(mse**(1/2), 2))\n\n26.39"
+    "text": "Let’s fit a SARIMA model.\n\nSARIMA_model = ARIMA(Airline_train['Number of passengers'], order=(1, 2, 1), \n                      seasonal_order=(1, 1, 0, 12))\nSARIMA_Airline = SARIMA_model.fit()"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#agenda",
@@ -4005,5 +4005,40 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.slides.html#section-21",
+    "href": "Module3/Autocorrelation.slides.html#section-21",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Our naive forecast of the time series in the validation data would be these one:\n\n\n\n\n\n\n\n\n\nNaive Forecast\nHours per week\n\n\n\n\n28\n35.9\n36.0\n\n\n29\n36.0\n35.7\n\n\n30\n35.7\n35.7\n\n\n31\n35.7\n35.5\n\n\n32\n35.5\n35.6\n\n\n33\n35.6\n36.3\n\n\n34\n36.3\n36.5"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.slides.html#model-evaluation-using-rmse",
+    "href": "Module3/Autocorrelation.slides.html#model-evaluation-using-rmse",
+    "title": "Autocorrelation Models",
+    "section": "Model evaluation using RMSE",
+    "text": "Model evaluation using RMSE\n\n\nInstead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more data-driven approach and evaluate the model using the root mean squared error (RMSE).\nTo this end, we use the mean_squared_error() function with the validation responses and our predictions. We take the square root of the result to obtain the RMSE."
+  },
+  {
+    "objectID": "Module3/Autocorrelation.slides.html#naive-forecast",
+    "href": "Module3/Autocorrelation.slides.html#naive-forecast",
+    "title": "Autocorrelation Models",
+    "section": "Naive forecast",
+    "text": "Naive forecast\nTo determine if the RMSE is high or small, we must compare it with a naive forecast that predicts the response \\(Y_t\\) with the previous one \\(Y_{t-1}\\). To build this forecast, we follow two steps.\nFirst, we shift the time series in the validation data by one position using the .shit(1) function.\n\nnaive_forecast = Canadian_validation[\"Hours per Week\"].shift(1)\nnaive_forecast.head()\n\n28     NaN\n29    36.0\n30    35.7\n31    35.7\n32    35.5\nName: Hours per Week, dtype: float64"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.slides.html#section-27",
+    "href": "Module3/Autocorrelation.slides.html#section-27",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "&lt;Figure size 576x576 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;Figure size 576x576 with 0 Axes&gt;"
+  },
+  {
+    "objectID": "Module3/Autocorrelation.slides.html#section-28",
+    "href": "Module3/Autocorrelation.slides.html#section-28",
+    "title": "Autocorrelation Models",
+    "section": "",
+    "text": "Using the forecast and validation data, we compute the RMSE.\n\nmse = mean_squared_error(Airline_validation[\"Number of passengers\"], \n                        forecast_Airline)  \nprint(round(mse**(1/2), 2))\n\n26.39"
   }
 ]

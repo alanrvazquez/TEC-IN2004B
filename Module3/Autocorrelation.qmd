@@ -385,7 +385,7 @@ Their main characteristic is that the predictors of the current value of the ser
 ::: incremental
 -   An autoregressive model of order 2 has the mathematical form: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2}.$
 
--   An order 3 model looks like this: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.$
+-   A model of order 3 looks like this: $\hat{Y}_t = \hat{\beta}_0 + \hat{\beta}_1 Y_{t-1} + \hat{\beta}_2 Y_{t-2} + \hat{\beta}_3 Y_{t-3}.$
 :::
 
 ## ARIMA models
@@ -430,6 +430,8 @@ CanadianWorkHours.head(4)
 ```
 
 ## Creating a train and a validation data
+
+</br>
 
 Recall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.
 
@@ -566,7 +568,7 @@ plt.show()
 
 </br></br>
 
-The differentiation operator removes or *de-trends* the time series.
+The differentiation operator [*de-trends*]{style="color:#4682B4;"} the time series.
 
 -   The level 0 differentiation operator leaves the time series intact.
 -   The level 1 differentiation operator removes its linear trend.
@@ -580,7 +582,7 @@ Visualizing the time series and determining whether there is a linear or quadrat
 
 If level 1 and level 2 operators yield similar results, we choose level 1 because it is simpler.
 
-[*Once this is done, we set our transformed variable* $Z_t$ as the new response variable.]{style="color:purple;"}
+[*Once this is done, we set our transformed variable* $Z_t$ as the new response variable!]{style="color:purple;"}
 
 ## 2. Autoregressive (AR) terms
 
@@ -598,29 +600,18 @@ If necessary, we can exclude the constant coefficient $\hat{\beta}_0$ from the m
 
 ## How do we determine the number of terms?
 
-</br></br></br>
+Using the partial autocorrelation function (PACF) of the differenced series.
 
-Using the correlation functions (ACF) and partial correlation functions (PACF) of the differenced series.
+- A first-order autoregressive model has a PACF with a single peak at the first period difference (lag).
+
+- A second-order autoregressive model has a PACF with two peaks at the first lags.
+
+- In general, the lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.
 
 ## 
 
-:::::: center
-::::: columns
-::: {.column width="50%"}
-```{python}
-#| echo: false
-#| output: true
-#| fig-align: center
+</br>
 
-plt.figure(figsize=(3, 3))
-plot_acf(Z_series_two, lags = 10)
-plt.xlabel("Lag")
-plt.ylabel("Correlation")
-plt.show()
-```
-:::
-
-::: {.column width="50%"}
 ```{python}
 #| echo: false
 #| output: true
@@ -632,45 +623,11 @@ plt.xlabel("Lag")
 plt.ylabel("Correlation")
 plt.show()
 ```
-:::
-:::::
-::::::
 
-To achieve this, we have some rules.
-
-## Rule 1
-
-</br></br>
-
-A first-order autoregressive model has:
-
-1.  An ACF with a single peak at the first period difference (lag).
-
-2.  An ACF with exponentially decreasing correlations.
-
-## Rule 2
-
-</br></br>
-
-A second-order autoregressive model has:
-
-1.  A PACF with two peaks at the first period differences (lags).
-
-2.  An ACF with correlations that decrease positively and negatively but approach zero.
-
-## Rule 3
-
-</br>
-
-If the PACF of the differenced series $Z_t$ shows a higher partial correlation than the others and/or the lag-1 autocorrelation is positive, then consider adding an AR term to the model.
-
-</br>
-
-The lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.
 
 ## 
 
-Following part 1 of Rule 1, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.
+Using the PACF, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.
 
 ```{python}
 #| echo: false
@@ -697,31 +654,11 @@ where $\theta_0$ is a constant and $a_t$ are terms from a white noise series (i.
 
 </br></br>
 
-**Rule 4**: MA models have:
+Using the autocorrelation function (ACF) of the differenced series.
 
-1.  Correlations other than 0 in the ACF. The lags at which this occurs indicate the terms to include in the MA model.
+- In general, the lag at which the ACF cuts off from the confidence limits in the software is the indicated number of MA terms.
 
-2.  Correlations in the PACF that gradually decrease to zero in some way.
-
-## 
-
-::: {style="font-size: 90%;"}
-This means that to determine the order, we focus primarily on the autocorrelation function. Remember, it's the autocorrelation function of the series after it's been differentiated.
-:::
-
-```{python}
-#| echo: false
-#| output: true
-#| fig-align: center
-
-plt.figure(figsize=(3, 3))
-plot_acf(Z_series_two, lags = 10)
-plt.xlabel("Lag")
-plt.ylabel("Correlation")
-plt.show()
-```
-
-## 
+##
 
 [*Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.*]{style="color:darkblue;"}
 
@@ -815,21 +752,22 @@ print(results_ARIMA_Canadian.summary())
 
 ## 
 
-</br></br>
-
 **The next step in evaluating an ARIMA model is to study the model's residuals to ensure there is nothing else to explain in the model.**
 
 </br>
 
-We can obtain the residuals using the following code.
+However, since the ARIMA model has two AR terms, we must inspect the residuals starting from the third observation. We achieve this using the code below.
 
 ```{python}
 #| echo: true
 #| output: false
 #| fig-align: center
 
+# Extract the residuals.
 ARIMA_residuals = results_ARIMA_Canadian.resid
-ARIMA_residuals = ARIMA_residuals.drop(0)
+
+# Select residuals starting from observation 3 and onwards.
+ARIMA_residuals = ARIMA_residuals[2:]
 ```
 
 ## Time series of residuals
@@ -883,7 +821,7 @@ plt.show()
 
 </br></br></br>
 
-[**The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is correct.**]{style="color:darkgreen;"}
+[**The three graphs show no obvious patterns or significant correlations between the residuals. Therefore, we say the model is good.**]{style="color:darkgreen;"}
 
 ## Forecast
 
@@ -901,13 +839,13 @@ To predict the average number of hours worked in the next, say, 3 years, we use 
 results_ARIMA_Canadian.forecast(steps = 3)
 ```
 
-## Model evaluation using MSE
+## Model evaluation using RMSE
 
 </br></br>
 
-Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more *data-driven* approach and evaluate the model using the mean squared error (MSE) or root MSE.
+- Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more *data-driven* approach and evaluate the model using the root mean squared error (RMSE).
 
-To this end, we simply use the `mean_squared_error()` function with the validation responses and our predictions.
+- To this end, we use the `mean_squared_error()` function with the validation responses and our predictions. We take the square root of the result to obtain the RMSE.
 
 ## Validation data
 
@@ -958,6 +896,84 @@ Using the forecast and validation data, we compute the RMSE.
 mse = mean_squared_error(Canadian_validation["Hours per Week"], forecast_Canadian)  
 print(round(mse**(1/2), 2))
 ```
+
+## *Naive* forecast
+
+To determine if the RMSE is high or small, we must compare it with a *naive* forecast that predicts the response $Y_t$ with the previous one $Y_{t-1}$. To build this forecast, we follow two steps. 
+
+First, we shift the time series in the validation data by one position using the `.shit(1)` function.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+naive_forecast = Canadian_validation["Hours per Week"].shift(1)
+naive_forecast.head()
+```
+
+##
+
+Second, we notice that the first element of the shifted series is missing or not available (`NaN`). We thus fill it in with the last observation in our training dataset, which we can obtain using the `.iloc()` function.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+Canadian_train.iloc[-1]
+```
+
+</br>
+
+We now input 35.9 as the first record in `naive_forecast`. The first record of the object is indexed by a 28.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+naive_forecast[28] = 35.9
+```
+
+##
+
+Our naive forecast of the time series in the validation data would be these one:
+
+```{python}
+#| echo: false
+#| output: true
+#| fig-align: center
+
+# Combine into a DataFrame
+df_combined = pd.concat(
+    [naive_forecast, Canadian_validation["Hours per Week"]],
+    axis=1
+)
+
+# Rename columns
+df_combined.columns = ["Naive Forecast", "Hours per week"]
+df_combined
+```
+
+## 
+
+</br>
+
+The RMSE of the naive forecast is calculated below.
+
+```{python}
+#| echo: true
+#| output: true
+#| fig-align: center
+
+naive_rmse = mean_squared_error(Canadian_validation["Hours per Week"], naive_forecast)
+print(round(naive_rmse**(1/2), 2))
+```
+
+</br>
+
+We conclude that predicting with the previous response is a better approach than predicting with an ARIMA model. This is because the RMSE for the naive forecast is 0.31, and that of the ARIMA model is 0.75.
 
 ## 
 

@@ -29,7 +29,7 @@
         "\n",
         "Before we start, let's import the data science libraries into Python.\n"
       ],
-      "id": "a4145498"
+      "id": "1a42063f"
     },
     {
       "cell_type": "code",
@@ -49,7 +49,7 @@
         "from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \n",
         "from sklearn.metrics import accuracy_score"
       ],
-      "id": "f8880e38",
+      "id": "22b14258",
       "execution_count": null,
       "outputs": []
     },
@@ -120,7 +120,7 @@
         "::::: columns\n",
         "::: {.column width=\"70%\"}"
       ],
-      "id": "67a15462"
+      "id": "7d2c0194"
     },
     {
       "cell_type": "code",
@@ -159,7 +159,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "8de807be",
+      "id": "71eb2d14",
       "execution_count": null,
       "outputs": []
     },
@@ -180,7 +180,7 @@
         "::::: columns\n",
         "::: {.column width=\"70%\"}"
       ],
-      "id": "2ae1b808"
+      "id": "6448676e"
     },
     {
       "cell_type": "code",
@@ -222,7 +222,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "8c6ceed6",
+      "id": "9cee7b94",
       "execution_count": null,
       "outputs": []
     },
@@ -243,7 +243,7 @@
         "::::: columns\n",
         "::: {.column width=\"70%\"}"
       ],
-      "id": "104e9c65"
+      "id": "b71498e6"
     },
     {
       "cell_type": "code",
@@ -289,7 +289,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "fff6e200",
+      "id": "1fe357d0",
       "execution_count": null,
       "outputs": []
     },
@@ -311,7 +311,7 @@
         "::::: columns\n",
         "::: {.column width=\"70%\"}"
       ],
-      "id": "1a3b56cd"
+      "id": "db85991c"
     },
     {
       "cell_type": "code",
@@ -357,7 +357,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "d094f9d3",
+      "id": "00f6b104",
       "execution_count": null,
       "outputs": []
     },
@@ -416,7 +416,7 @@
         "\n",
         "The data is located in the file \"banknotes.xlsx\".\n"
       ],
-      "id": "3f0c60e9"
+      "id": "aa667e7d"
     },
     {
       "cell_type": "code",
@@ -430,7 +430,7 @@
         "bank_data['Status'] = pd.Categorical(bank_data['Status'])\n",
         "bank_data.head()"
       ],
-      "id": "481a8bba",
+      "id": "756cc3ef",
       "execution_count": null,
       "outputs": []
     },
@@ -442,7 +442,7 @@
         "\n",
         "Let's create the predictor matrix or response column\n"
       ],
-      "id": "13630e32"
+      "id": "f09cd848"
     },
     {
       "cell_type": "code",
@@ -457,7 +457,7 @@
         "# Vector with responses\n",
         "Y_full = bank_data['Status']"
       ],
-      "id": "be2be5da",
+      "id": "8981a497",
       "execution_count": null,
       "outputs": []
     },
@@ -467,7 +467,7 @@
       "source": [
         "To set the target category in the response we use the `get_dummies()` function.\n"
       ],
-      "id": "4aba3460"
+      "id": "6bbdf327"
     },
     {
       "cell_type": "code",
@@ -482,7 +482,7 @@
         "# Select target variable.\n",
         "Y_target_full = Y_dummies['counterfeit']"
       ],
-      "id": "624cf950",
+      "id": "a52cf876",
       "execution_count": null,
       "outputs": []
     },
@@ -496,7 +496,7 @@
         "\n",
         "We use 70% for training and the rest for validation.\n"
       ],
-      "id": "86727e33"
+      "id": "1e2b40dc"
     },
     {
       "cell_type": "code",
@@ -509,7 +509,7 @@
         "X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n",
         "                                                      test_size = 0.3)"
       ],
-      "id": "5b5e9d28",
+      "id": "4a9da82e",
       "execution_count": null,
       "outputs": []
     },
@@ -521,7 +521,7 @@
         "\n",
         "To standardize **numeric** predictors, we use the `StandardScaler()` `.fit()` functions using the predictors in the training dataset\n"
       ],
-      "id": "eda52ec9"
+      "id": "9ac15d3b"
     },
     {
       "cell_type": "code",
@@ -533,7 +533,7 @@
         "scaler = StandardScaler()\n",
         "scaler.fit(X_train)"
       ],
-      "id": "0b5ed6c8",
+      "id": "5c6958c3",
       "execution_count": null,
       "outputs": []
     },
@@ -545,7 +545,7 @@
         "\n",
         "Now, we apply the formulas and compute the standardized predictor matrix using the `.transform()` function.\n"
       ],
-      "id": "e68712f2"
+      "id": "6dbee3c5"
     },
     {
       "cell_type": "code",
@@ -555,7 +555,7 @@
         "\n",
         "Xs_train = scaler.transform(X_train)"
       ],
-      "id": "f003d575",
+      "id": "4e7e3d15",
       "execution_count": null,
       "outputs": []
     },
@@ -571,7 +571,7 @@
         "\n",
         "In `KNeighborsClassifier()`, we set the number of nearest neighbors using the `n_neighbors` parameter.\n"
       ],
-      "id": "d582f384"
+      "id": "cf0c172a"
     },
     {
       "cell_type": "code",
@@ -586,7 +586,7 @@
         "# Now, we train the algorithm.\n",
         "knn.fit(Xs_train, Y_train)"
       ],
-      "id": "d790ffc3",
+      "id": "48e2fc2c",
       "execution_count": null,
       "outputs": []
     },
@@ -598,7 +598,7 @@
         "\n",
         "To evaluate KNN, we make predictions on the validation data (not used to train the KNN). To do this, we must first perform standardization operations on the predictors in the validation dataset.\n"
       ],
-      "id": "a44ea420"
+      "id": "e2f8e920"
     },
     {
       "cell_type": "code",
@@ -608,7 +608,7 @@
         "\n",
         "Xs_valid = scaler.transform(X_valid)"
       ],
-      "id": "db747287",
+      "id": "d6186833",
       "execution_count": null,
       "outputs": []
     },
@@ -620,7 +620,7 @@
         "\n",
         "Next, we make predictions.\n"
       ],
-      "id": "cc0ee422"
+      "id": "cacc741a"
     },
     {
       "cell_type": "code",
@@ -630,7 +630,7 @@
         "\n",
         "Y_pred_knn = knn.predict(Xs_valid)"
       ],
-      "id": "3680b939",
+      "id": "ae5d38f3",
       "execution_count": null,
       "outputs": []
     },
@@ -640,7 +640,7 @@
       "source": [
         "## Confusion matrix\n"
       ],
-      "id": "484dc117"
+      "id": "e7401f11"
     },
     {
       "cell_type": "code",
@@ -656,7 +656,7 @@
         "# Mostrar matriz de confusión.\n",
         "ConfusionMatrixDisplay(cm).plot()"
       ],
-      "id": "dce81e03",
+      "id": "b68b1406",
       "execution_count": null,
       "outputs": []
     },
@@ -668,7 +668,7 @@
         "\n",
         "We can determine the best value of *K* for the KNN algorithm. To this end, we evaluate the performance of the KNN for different values of $K$ in terms of accuracy on the validation dataset.\n"
       ],
-      "id": "5c8667aa"
+      "id": "eb7c2fc6"
     },
     {
       "cell_type": "code",
@@ -692,7 +692,7 @@
         "        best_accuracy = val_accuracy\n",
         "        best_k = k"
       ],
-      "id": "ca6c2bd0",
+      "id": "55658e2c",
       "execution_count": null,
       "outputs": []
     },
@@ -704,7 +704,7 @@
         "\n",
         "We can then visualize the accuracy for different values of $K$ using the following graph and code.\n"
       ],
-      "id": "4822d490"
+      "id": "5dfa3a98"
     },
     {
       "cell_type": "code",
@@ -722,7 +722,7 @@
         "plt.title(\"Choosing the Best k for KNN\")\n",
         "plt.show()"
       ],
-      "id": "88a26ad1",
+      "id": "7552e4c6",
       "execution_count": null,
       "outputs": []
     },
@@ -736,7 +736,7 @@
         "\n",
         "Finally, we select the best number of nearest neighbors contained in the `best_k` object.\n"
       ],
-      "id": "7c225d2c"
+      "id": "282a22c7"
     },
     {
       "cell_type": "code",
@@ -748,7 +748,7 @@
         "KNN_final = KNeighborsClassifier(n_neighbors = best_k)\n",
         "KNN_final.fit(Xs_train, Y_train)"
       ],
-      "id": "2a82abce",
+      "id": "7d60aa68",
       "execution_count": null,
       "outputs": []
     },
@@ -760,7 +760,7 @@
         "\n",
         "The accuracy of the best KNN is\n"
       ],
-      "id": "5a5d4ef0"
+      "id": "5442ca92"
     },
     {
       "cell_type": "code",
@@ -773,7 +773,7 @@
         "valid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\n",
         "print(valid_accuracy)"
       ],
-      "id": "55fa9b88",
+      "id": "c15bda3b",
       "execution_count": null,
       "outputs": []
     },
@@ -809,7 +809,7 @@
         "\n",
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
       ],
-      "id": "b36c38a2"
+      "id": "b7bd37f1"
     }
   ],
   "metadata": {

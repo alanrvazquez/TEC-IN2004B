@@ -52,7 +52,7 @@
         "\n",
         "Let's load pandas and read the data set into Python.\n"
       ],
-      "id": "755be909"
+      "id": "5668ee14"
     },
     {
       "cell_type": "code",
@@ -65,7 +65,7 @@
         "# Load the Excel file into a pandas DataFrame.\n",
         "client_data = pd.read_excel(\"industrial_dataset.xlsx\")"
       ],
-      "id": "b23b054a",
+      "id": "df01d914",
       "execution_count": null,
       "outputs": []
     },
@@ -75,7 +75,7 @@
       "source": [
         "## \n"
       ],
-      "id": "88733c4b"
+      "id": "031b97c1"
     },
     {
       "cell_type": "code",
@@ -86,7 +86,7 @@
         "# Preview the dataset.\n",
         "client_data.head()"
       ],
-      "id": "f00dea36",
+      "id": "43fa679b",
       "execution_count": null,
       "outputs": []
     },
@@ -100,7 +100,7 @@
         "\n",
         "In some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function `.assign` with some extra syntax.\n"
       ],
-      "id": "e7350114"
+      "id": "c1959969"
     },
     {
       "cell_type": "code",
@@ -112,7 +112,7 @@
         "                      .assign(ID = lambda x: x.index + 1)\n",
         "                      ) "
       ],
-      "id": "83d31ff3",
+      "id": "27569a6f",
       "execution_count": null,
       "outputs": []
     },
@@ -124,7 +124,7 @@
         "\n",
         "The new column is appended to the end of the dataframe.\n"
       ],
-      "id": "a4aa8143"
+      "id": "85549187"
     },
     {
       "cell_type": "code",
@@ -134,7 +134,7 @@
         "\n",
         "client_data_single.head()"
       ],
-      "id": "7ca3e7ab",
+      "id": "8747b9a0",
       "execution_count": null,
       "outputs": []
     },
@@ -146,7 +146,7 @@
         "\n",
         "To bring it to the begining of the array, we can use the `.filter()` function.\n"
       ],
-      "id": "8e41009e"
+      "id": "3c0a3d09"
     },
     {
       "cell_type": "code",
@@ -160,7 +160,7 @@
         ")\n",
         "client_data_single.head(3)  "
       ],
-      "id": "9fde8ab0",
+      "id": "9f3c79ed",
       "execution_count": null,
       "outputs": []
     },
@@ -174,7 +174,7 @@
         "\n",
         "Let's fill in the missing entries of the columns `Operator`, `Maintenance Date`, and `Comment`.\n"
       ],
-      "id": "50f86962"
+      "id": "cc04907d"
     },
     {
       "cell_type": "code",
@@ -188,7 +188,7 @@
         "                'Comment': 'None'})\n",
         "                ) "
       ],
-      "id": "987ec477",
+      "id": "8465ead1",
       "execution_count": null,
       "outputs": []
     },
@@ -198,7 +198,7 @@
       "source": [
         "## \n"
       ],
-      "id": "d0369119"
+      "id": "7809eaaa"
     },
     {
       "cell_type": "code",
@@ -208,7 +208,7 @@
         "\n",
         "complete_data.head()"
       ],
-      "id": "9ab69611",
+      "id": "22a34801",
       "execution_count": null,
       "outputs": []
     },
@@ -222,7 +222,7 @@
         "\n",
         "There are some cases in which columns have some undesired or unwatned values. Consider the `Output (units)` as an example.\n"
       ],
-      "id": "c282e078"
+      "id": "996be143"
     },
     {
       "cell_type": "code",
@@ -232,7 +232,7 @@
         "\n",
         "complete_data['Output (units)'].head()"
       ],
-      "id": "2480c074",
+      "id": "84c45c23",
       "execution_count": null,
       "outputs": []
     },
@@ -248,7 +248,7 @@
         "\n",
         "We can replace the \"error\" in this column by a user-specified value, say, 0. To this end, we use the function `.replace()`. The function has two inputs. The first one is the value to replace and the second one is the replacement value.\n"
       ],
-      "id": "3188059b"
+      "id": "85bf7929"
     },
     {
       "cell_type": "code",
@@ -258,7 +258,7 @@
         "\n",
         "complete_data['Output (units)'] = complete_data['Output (units)'].replace('error', 0)"
       ],
-      "id": "f9fe2be2",
+      "id": "912d281a",
       "execution_count": null,
       "outputs": []
     },
@@ -272,7 +272,7 @@
         "\n",
         "Let's check the new column.\n"
       ],
-      "id": "11ede80f"
+      "id": "db9bb1ef"
     },
     {
       "cell_type": "code",
@@ -282,7 +282,7 @@
         "\n",
         "complete_data['Output (units)']"
       ],
-      "id": "bbc51df0",
+      "id": "7acdf4be",
       "execution_count": null,
       "outputs": []
     },
@@ -296,7 +296,7 @@
         "\n",
         "There are some cases in which we want to split a column according to a character. For example, consider the column `Comment` from the dataset.\n"
       ],
-      "id": "84ac8bca"
+      "id": "717dfba6"
     },
     {
       "cell_type": "code",
@@ -306,7 +306,7 @@
         "\n",
         "complete_data['Comment']"
       ],
-      "id": "45be5bee",
+      "id": "d516f7f0",
       "execution_count": null,
       "outputs": []
     },
@@ -320,7 +320,7 @@
         "\n",
         "The column has some values such as \"Requires part: valve\" and \"Delay: maintenance\\n\" that we may want to split into columns.\n"
       ],
-      "id": "7c92b87d"
+      "id": "5149a853"
     },
     {
       "cell_type": "code",
@@ -331,7 +331,7 @@
         "\n",
         "complete_data['Comment']"
       ],
-      "id": "6610bff2",
+      "id": "0541479e",
       "execution_count": null,
       "outputs": []
     },
@@ -349,7 +349,7 @@
         "\n",
         "One input of the function is the symbol or character for which we cant to make a split. The other input, `expand = True` tells Python that we want to create new columns.\n"
       ],
-      "id": "7685842b"
+      "id": "a986fb92"
     },
     {
       "cell_type": "code",
@@ -360,7 +360,7 @@
         "\n",
         "complete_data['Comment'].str.split(':', expand = True)"
       ],
-      "id": "7021f973",
+      "id": "ebfbd72b",
       "execution_count": null,
       "outputs": []
     },
@@ -374,7 +374,7 @@
         "\n",
         "The result is two columns.\n"
       ],
-      "id": "dd2fc0b0"
+      "id": "c2d0a30a"
     },
     {
       "cell_type": "code",
@@ -386,7 +386,7 @@
         "split_column = complete_data['Comment'].str.split(':', expand = True)\n",
         "split_column.head()"
       ],
-      "id": "6051c109",
+      "id": "a9aa3bb1",
       "execution_count": null,
       "outputs": []
     },
@@ -400,7 +400,7 @@
         "\n",
         "We can assign them to new columns in the dataset using the following code.\n"
       ],
-      "id": "c818c3d2"
+      "id": "918f664a"
     },
     {
       "cell_type": "code",
@@ -414,7 +414,7 @@
         "                  Second_comment = split_column.filter([1]))\n",
         "                  )"
       ],
-      "id": "d6931178",
+      "id": "27872a7c",
       "execution_count": null,
       "outputs": []
     },
@@ -424,7 +424,7 @@
       "source": [
         "## \n"
       ],
-      "id": "5accb248"
+      "id": "c4545779"
     },
     {
       "cell_type": "code",
@@ -435,7 +435,7 @@
         "\n",
         "augmented_data.head()"
       ],
-      "id": "85425f62",
+      "id": "e43baa4d",
       "execution_count": null,
       "outputs": []
     },
@@ -451,7 +451,7 @@
         "\n",
         "We can remove them using the function `str.strip()`. The input of the function is the character to remove.\n"
       ],
-      "id": "c0ec3f8c"
+      "id": "3abd23d0"
     },
     {
       "cell_type": "code",
@@ -461,7 +461,7 @@
         "\n",
         "augmented_data['First_comment'] = augmented_data['First_comment'].str.strip(\"\\n\")"
       ],
-      "id": "337685b2",
+      "id": "1a22e27d",
       "execution_count": null,
       "outputs": []
     },
@@ -475,7 +475,7 @@
         "\n",
         "Let's see the cleaned column.\n"
       ],
-      "id": "e2a6dae1"
+      "id": "132c6f62"
     },
     {
       "cell_type": "code",
@@ -485,7 +485,7 @@
         "\n",
         "augmented_data['First_comment']"
       ],
-      "id": "9445be18",
+      "id": "587ad00a",
       "execution_count": null,
       "outputs": []
     },
@@ -499,7 +499,7 @@
         "\n",
         "We can also remove other characters.\n"
       ],
-      "id": "8e877df7"
+      "id": "19234dcd"
     },
     {
       "cell_type": "code",
@@ -509,7 +509,7 @@
         "\n",
         "augmented_data['First_comment'].str.strip(\"!\")"
       ],
-      "id": "4d37387d",
+      "id": "82c80fe6",
       "execution_count": null,
       "outputs": []
     },
@@ -523,7 +523,7 @@
         "\n",
         "For example, consider the column `Operator` containing the names of the operators.\n"
       ],
-      "id": "d2aa8213"
+      "id": "9310086a"
     },
     {
       "cell_type": "code",
@@ -533,7 +533,7 @@
         "\n",
         "complete_data['Operator'].head()"
       ],
-      "id": "4fe8545a",
+      "id": "36eb0140",
       "execution_count": null,
       "outputs": []
     },
@@ -547,7 +547,7 @@
         "\n",
         "To deal with names, we first use the `.str.strip()` to remove leading and trailing characters from strings.\n"
       ],
-      "id": "735095e5"
+      "id": "6be1fd97"
     },
     {
       "cell_type": "code",
@@ -558,7 +558,7 @@
         "complete_data['Operator'] = complete_data['Operator'].str.strip()\n",
         "complete_data['Operator']"
       ],
-      "id": "569657c9",
+      "id": "6db3a066",
       "execution_count": null,
       "outputs": []
     },
@@ -572,7 +572,7 @@
         "\n",
         "We can turn all names to lowercase using the function `str.lower()`.\n"
       ],
-      "id": "0ec4d008"
+      "id": "0f9f6720"
     },
     {
       "cell_type": "code",
@@ -582,7 +582,7 @@
         "\n",
         "complete_data['Operator'].str.lower()"
       ],
-      "id": "7611f347",
+      "id": "32ac8375",
       "execution_count": null,
       "outputs": []
     },
@@ -596,7 +596,7 @@
         "\n",
         "We can turn all names to lowercase using the function `str.upper()`.\n"
       ],
-      "id": "9a4bc870"
+      "id": "6a1f7118"
     },
     {
       "cell_type": "code",
@@ -606,7 +606,7 @@
         "\n",
         "complete_data['Operator'].str.upper()"
       ],
-      "id": "b64d0d01",
+      "id": "5c50ce8f",
       "execution_count": null,
       "outputs": []
     },
@@ -620,7 +620,7 @@
         "\n",
         "We can convert all names to title case using the function `str.title()`.\n"
       ],
-      "id": "c55e4afd"
+      "id": "e5a029ff"
     },
     {
       "cell_type": "code",
@@ -630,7 +630,7 @@
         "\n",
         "complete_data['Operator'].str.title()"
       ],
-      "id": "18d2b0d4",
+      "id": "82bec793",
       "execution_count": null,
       "outputs": []
     },
@@ -642,7 +642,7 @@
         "\n",
         "Duplicate rows have the same entries in every column in the dataset. If only one row is needed for the analysis, we can remove the duplicates using `.drop_duplicates()`. For example, we can see the unique names of the operators.\n"
       ],
-      "id": "164303f0"
+      "id": "5f106fc4"
     },
     {
       "cell_type": "code",
@@ -656,7 +656,7 @@
         ".drop_duplicates()\n",
         ")"
       ],
-      "id": "1edcc107",
+      "id": "46a23d5c",
       "execution_count": null,
       "outputs": []
     },
@@ -682,7 +682,7 @@
         "\n",
         "The dataset is in the file \"glass.xlsx\". Let's load it using **pandas**.\n"
       ],
-      "id": "0b6e81ed"
+      "id": "2a019dcd"
     },
     {
       "cell_type": "code",
@@ -694,7 +694,7 @@
         "# Load the Excel file into a pandas DataFrame.\n",
         "glass_data = pd.read_excel(\"glass.xlsx\")"
       ],
-      "id": "b555d089",
+      "id": "8cd88539",
       "execution_count": null,
       "outputs": []
     },
@@ -706,7 +706,7 @@
         "\n",
         "The variable `Type` is categorical. So, let's ensure Python knows this using the code below.\n"
       ],
-      "id": "4c459cb7"
+      "id": "b2fdee12"
     },
     {
       "cell_type": "code",
@@ -717,7 +717,7 @@
         "\n",
         "glass_data['Type'] = pd.Categorical(glass_data['Type'])"
       ],
-      "id": "db483888",
+      "id": "70b2653f",
       "execution_count": null,
       "outputs": []
     },
@@ -749,7 +749,7 @@
         "\n",
         "The **matplotlib** and **seaborn** libraries are pre-installed in Google Colab. However, we need to inform Google Colab that we want to use them and its functions using the following command:\n"
       ],
-      "id": "9f26ed91"
+      "id": "f3331cb5"
     },
     {
       "cell_type": "code",
@@ -760,7 +760,7 @@
         "import matplotlib.pyplot as plt\n",
         "import seaborn as sns"
       ],
-      "id": "c4cf0d31",
+      "id": "734b828c",
       "execution_count": null,
       "outputs": []
     },
@@ -784,7 +784,7 @@
         "\n",
         "To create a histogram, we use the function `histplot()` from **seabron**.\n"
       ],
-      "id": "03af0f94"
+      "id": "b241b3ab"
     },
     {
       "cell_type": "code",
@@ -801,7 +801,7 @@
         "plt.xlabel(\"Na\") # X label\n",
         "plt.show() # Display the plot"
       ],
-      "id": "7ba52674",
+      "id": "14ebfd14",
       "execution_count": null,
       "outputs": []
     },
@@ -829,7 +829,7 @@
         "\n",
         "To create a boxplot, we use the function `boxplot()` from **seabron**.\n"
       ],
-      "id": "8856a837"
+      "id": "05d30de3"
     },
     {
       "cell_type": "code",
@@ -845,7 +845,7 @@
         "plt.title(\"Box plot of Na\") # Add title.\n",
         "plt.show() # Show the plot."
       ],
-      "id": "10a620a6",
+      "id": "b6d9d1a2",
       "execution_count": null,
       "outputs": []
     },
@@ -877,7 +877,7 @@
         "\n",
         "To create a scatter plot, we use the function `scatter()` from **seabron**. In this function, you must state the\n"
       ],
-      "id": "c732b942"
+      "id": "705ec813"
     },
     {
       "cell_type": "code",
@@ -895,7 +895,7 @@
         "plt.ylabel(\"RI\") # Set label for Y axis.\n",
         "plt.show() # Show plot."
       ],
-      "id": "b919249e",
+      "id": "a8eb9acd",
       "execution_count": null,
       "outputs": []
     },
@@ -917,7 +917,7 @@
         "\n",
         "We create the bar chart using the function `countplot()` from **seaborn**.\n"
       ],
-      "id": "696d1005"
+      "id": "cf85a9a9"
     },
     {
       "cell_type": "code",
@@ -935,7 +935,7 @@
         "plt.ylabel(\"Frequency\") # Set label for Y axis.\n",
         "plt.show() # Show plot."
       ],
-      "id": "0fb1abbf",
+      "id": "537adeb6",
       "execution_count": null,
       "outputs": []
     },
@@ -949,7 +949,7 @@
         "\n",
         "We save a figure using the `save.fig` function from **matplotlib**. The `dpi` argument of this function sets the resolution of the image. The higher the `dpi`, the better the resolution.\n"
       ],
-      "id": "58dafa48"
+      "id": "fc85978e"
     },
     {
       "cell_type": "code",
@@ -965,7 +965,7 @@
         "plt.xlabel('Category')\n",
         "plt.savefig('bar_chart.png',dpi=300)"
       ],
-      "id": "e7bc2e6f",
+      "id": "b4f7f882",
       "execution_count": null,
       "outputs": []
     },
@@ -987,7 +987,7 @@
         "\n",
         "## \n"
       ],
-      "id": "4dd559ed"
+      "id": "d27fa9bd"
     },
     {
       "cell_type": "code",
@@ -1006,7 +1006,7 @@
         "plt.yticks(fontsize = 12)\n",
         "plt.savefig('bar_chart.png',dpi=300)"
       ],
-      "id": "f37d674b",
+      "id": "f6aaee9a",
       "execution_count": null,
       "outputs": []
     },
@@ -1016,7 +1016,7 @@
       "source": [
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
       ],
-      "id": "b26f0ae6"
+      "id": "2ad5e262"
     }
   ],
   "metadata": {
