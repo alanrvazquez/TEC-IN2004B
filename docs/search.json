@@ -1159,7 +1159,7 @@
     "href": "Module3/Autocorrelation.slides.html#autocorrelation-function",
     "title": "Autocorrelation Models",
     "section": "Autocorrelation function",
-    "text": "Autocorrelation function\n\n\nThe autocorrelation function measures the correlation between responses that are separated by a specific number of periods.\nThe autocorrelation function is commonly visualized using a bar chart.\nThe vertical axis shows the differences (or lags) between the periods considered, and the horizontal axis shows the correlations between observations at different lags."
+    "text": "Autocorrelation function\n\n\nThe autocorrelation function measures the correlation between responses that are separated by a specific number of periods.\nThe autocorrelation function is commonly visualized using a bar chart.\nThe horizontal axis shows the differences (or lags) between the periods considered, and the vertical axis shows the correlations between observations at different lags."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#autocorrelation-plot",
@@ -1397,7 +1397,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Thu, 21 Aug 2025   AIC                             11.074\nTime:                        10:16:31   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Mon, 25 Aug 2025   AIC                             11.074\nTime:                        08:07:00   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
@@ -1579,7 +1579,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Thu, 21 Aug 2025   AIC                            756.482\nTime:                                   10:16:33   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Mon, 25 Aug 2025   AIC                            756.482\nTime:                                   08:07:02   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -2555,11 +2555,11 @@
     "text": "For this, the method requires two elements:\n\n\nA measure of “closeness” between observations.\nAn algorithm that groups observations that are close to each other.\n\n\n\nGood clustering is one in which observations within a group are close together and observations in different groups are far apart."
   },
   {
-    "objectID": "Module4/Clustering.slides.html#how-do-we-measure-the-distance-between-observations",
-    "href": "Module4/Clustering.slides.html#how-do-we-measure-the-distance-between-observations",
+    "objectID": "Module4/Clustering.slides.html#distance-between-observations",
+    "href": "Module4/Clustering.slides.html#distance-between-observations",
     "title": "Clustering Methods",
-    "section": "How do we measure the distance between observations?",
-    "text": "How do we measure the distance between observations?\nFor quantitative predictors, we use the Euclidean distance.\nFor example, if we have two predictors \\(X_1\\) and \\(X_2\\) with observations given in the table:\n\n\n\nObservation\n\\(X_1\\)\n\\(X_2\\)\n\n\n\n\n1\n\\(X_{1,1}\\)\n\\(X_{1,2}\\)\n\n\n2\n\\(X_{2,1}\\)\n\\(X_{2,2}\\)"
+    "section": "Distance between observations",
+    "text": "Distance between observations\n\nFor quantitative predictors, we use the Euclidean distance.\nFor example, let’s consider two predictors \\(X_1\\) and \\(X_2\\) with observations given in the table:\n\n\n\n\nObservation\n\\(X_1\\)\n\\(X_2\\)\n\n\n\n\n1\n\\(X_{1,1}\\)\n\\(X_{1,2}\\)\n\n\n2\n\\(X_{2,1}\\)\n\\(X_{2,2}\\)"
   },
   {
     "objectID": "Module4/Clustering.slides.html#euclidean-distance",
@@ -2664,14 +2664,14 @@
     "href": "Module4/Clustering.slides.html#section-8",
     "title": "Clustering Methods",
     "section": "",
-    "text": "To record the intertias for different numbers of clusters, we use the code below.\n\ninertias = []\nk_max = 11 # Maximum number of clusters to test.\n\nfor i in range(1,k_max):\n    kmeans = KMeans(n_clusters=i) # Define K-means.\n    kmeans.fit(Xs_penguins) # Fit K-means to data.\n    inertias.append(kmeans.inertia_) # Save the intertia."
+    "text": "To record the intertias for different numbers of clusters, we use the code below.\n\ninertias = []\nk_max = 11 # Maximum number of clusters to test.\n\nfor i in range(1,k_max):\n    kmeans = KMeans(n_clusters=i) # Define K-means.\n    kmeans.fit(Xs_penguins) # Fit K-means to data.\n    inertias.append(kmeans.inertia_) # Save the inertia."
   },
   {
     "objectID": "Module4/Clustering.slides.html#section-9",
     "href": "Module4/Clustering.slides.html#section-9",
     "title": "Clustering Methods",
     "section": "",
-    "text": "Next, we plot the intertias and look for the elbow in the plot.\nThe elbow represents a number of clusters for which there is no significant improvement in the quality of the clustering.\nIn this case, the number of clusters recommended by this elbow method is 3.\n\n\n\nCode\nplt.figure(figsize=(6, 6))\nplt.plot(range(1,11), inertias, marker='o')\nplt.title('Elbow method')\nplt.xlabel('Number of clusters')\nplt.ylabel('Inertia')\nplt.show()"
+    "text": "Next, we plot the intertias and look for the elbow in the plot.\nThe elbow represents a number of clusters for which there is no significant improvement in the quality of the clustering.\nIn this case, the number of clusters recommended by this elbow method is 3.\n\n\n\nCode\nplt.figure(figsize=(6, 6))\nplt.plot(range(1,k_max), inertias, marker='o')\nplt.title('Elbow method')\nplt.xlabel('Number of clusters')\nplt.ylabel('Inertia')\nplt.show()"
   },
   {
     "objectID": "Module4/Clustering.slides.html#comments",
@@ -4026,12 +4026,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module4/Clustering.slides.html#distance-between-observations",
-    "href": "Module4/Clustering.slides.html#distance-between-observations",
-    "title": "Clustering Methods",
-    "section": "Distance between observations",
-    "text": "Distance between observations\n\nFor quantitative predictors, we use the Euclidean distance.\nFor example, let’s consider two predictors \\(X_1\\) and \\(X_2\\) with observations given in the table:\n\n\n\n\nObservation\n\\(X_1\\)\n\\(X_2\\)\n\n\n\n\n1\n\\(X_{1,1}\\)\n\\(X_{1,2}\\)\n\n\n2\n\\(X_{2,1}\\)\n\\(X_{2,2}\\)"
   }
 ]
