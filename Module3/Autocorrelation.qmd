@@ -893,7 +893,8 @@ Using the forecast and validation data, we compute the RMSE.
 #| output: true
 #| fig-align: center
 
-mse = mean_squared_error(Canadian_validation["Hours per Week"], forecast_Canadian)  
+mse = mean_squared_error(Canadian_validation["Hours per Week"], 
+                         forecast_Canadian)  
 print(round(mse**(1/2), 2))
 ```
 
@@ -967,7 +968,8 @@ The RMSE of the naive forecast is calculated below.
 #| output: true
 #| fig-align: center
 
-naive_rmse = mean_squared_error(Canadian_validation["Hours per Week"], naive_forecast)
+naive_rmse = mean_squared_error(Canadian_validation["Hours per Week"], 
+                                naive_forecast)
 print(round(naive_rmse**(1/2), 2))
 ```
 
@@ -1333,6 +1335,8 @@ print(round(mse**(1/2), 2))
 
 ## Comparison with a naive forecast
 
+</br></br>
+
 Now, we build a naive forecast to study the performance of our SARIMA model. To this end, we shift the validation data by one period using the code below.
 
 ```{python}
@@ -1344,6 +1348,8 @@ naive_forecast = Airline_validation["Number of passengers"].shift(1)
 naive_forecast.head()
 ```
 
+##
+
 Next, we determine the last element of the training data.
 
 ```{python}
@@ -1354,7 +1360,6 @@ Next, we determine the last element of the training data.
 Airline_validation.iloc[-1]
 ```
 
-##
 
 Finally, we assemble our naive forecast by replacing the first entry of `naive_forecast` with the last entry of the response in the training dataset.
 
@@ -1368,6 +1373,8 @@ naive_forecast.head()
 ```
 
 ## 
+
+</br></br>
 
 Let's calculate the RMSE of the naive forecast.
 

@@ -1,0 +1,1031 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Data Wrangling and Visualization\"\n",
+        "subtitle: \"IN2004B: Generation of Value with Data Analytics\"\n",
+        "author: \n",
+        "  - name: Alan R. Vazquez\n",
+        "    affiliations:\n",
+        "      - name: Department of Industrial Engineering\n",
+        "format: \n",
+        "  revealjs:\n",
+        "    chalkboard: false\n",
+        "    multiplex: true\n",
+        "    footer: \"Tecnologico de Monterrey\"\n",
+        "    logo: IN2004B_logo.png\n",
+        "    css: style.css\n",
+        "    slide-number: True\n",
+        "    html-math-method: mathjax\n",
+        "editor: visual\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "\n",
+        "## Agenda\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "1.  Basic Data Wrangling\n",
+        "2.  Data Visualization\n",
+        "\n",
+        "# Basic Data Wrangling\n",
+        "\n",
+        "## Data wrangling\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "-   Data wrangling is the process of transforming raw data into a clean and structured format.\n",
+        "\n",
+        "-   It involves merging, reshaping, filtering, and organizing data for analysis.\n",
+        "\n",
+        "-   Here, we illustrate some special functions of the **pandas** for cleaning common issues with a dataset.\n",
+        "\n",
+        "## Example 1\n",
+        "\n",
+        "Consider an industrial engineer who receives a messy Excel file from a manufacturing client. The data file is called \"industrial_dataset.xlsx\", which file includes data about machine maintenance logs, production output, and operator comments.\n",
+        "\n",
+        "The **goal** is to clean and prepare this dataset using pandas so it can be analyzed.\n",
+        "\n",
+        "Let's load pandas and read the data set into Python.\n"
+      ],
+      "id": "2ed38f46"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "import pandas as pd\n",
+        "\n",
+        "# Load the Excel file into a pandas DataFrame.\n",
+        "client_data = pd.read_excel(\"industrial_dataset.xlsx\")"
+      ],
+      "id": "8559cb8d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n"
+      ],
+      "id": "44c2699b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "# Preview the dataset.\n",
+        "client_data.head()"
+      ],
+      "id": "dc5cebf0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Add an index column\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "In some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function `.assign` with some extra syntax.\n"
+      ],
+      "id": "5aaa8a55"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "client_data_single = (client_data\n",
+        "                      .assign(ID = lambda x: x.index + 1)\n",
+        "                      ) "
+      ],
+      "id": "baecdd31",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "The new column is appended to the end of the dataframe.\n"
+      ],
+      "id": "137b3bf2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "client_data_single.head()"
+      ],
+      "id": "5a2be44d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "To bring it to the begining of the array, we can use the `.filter()` function.\n"
+      ],
+      "id": "46212b34"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "client_data_single = (client_data_single\n",
+        ".filter(['ID', 'Machine ID',\t'Output (units)',\t\n",
+        "        'Maintenance Date', 'Operator', 'Comment'])\n",
+        ")\n",
+        "client_data_single.head(3)  "
+      ],
+      "id": "82e684cf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Fill blank cells\n",
+        "\n",
+        "In the dataset, there are columns with missing values. If we would like to fill them with specific values or text, we use the `.fillna()` function. In this function, we use the syntaxis `'Variable': 'Replace'`, where the `Variable` is the column in the dataset and `Replace` is the text or number to fill the entry in.\n",
+        "\n",
+        "Let's fill in the missing entries of the columns `Operator`, `Maintenance Date`, and `Comment`.\n"
+      ],
+      "id": "3dca94d3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data = (client_data_single\n",
+        "                .fillna({'Operator': 'Unknown', \n",
+        "                'Maintenance Date': '2023-01-01',\n",
+        "                'Comment': 'None'})\n",
+        "                ) "
+      ],
+      "id": "bdd618bc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n"
+      ],
+      "id": "ac043d14"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data.head()"
+      ],
+      "id": "5dd637d7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Replace values\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "There are some cases in which columns have some undesired or unwatned values. Consider the `Output (units)` as an example.\n"
+      ],
+      "id": "9008054b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Output (units)'].head()"
+      ],
+      "id": "d9a92780",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The column has the numbers of units but also text such as \"error\".\n",
+        "\n",
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can replace the \"error\" in this column by a user-specified value, say, 0. To this end, we use the function `.replace()`. The function has two inputs. The first one is the value to replace and the second one is the replacement value.\n"
+      ],
+      "id": "f2641f55"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Output (units)'] = complete_data['Output (units)'].replace('error', 0)"
+      ],
+      "id": "cd2d0cdd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Let's check the new column.\n"
+      ],
+      "id": "ea1448f4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Output (units)']"
+      ],
+      "id": "a0b2bce7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Note that the new column is now numeric.\n",
+        "\n",
+        "## Split column into multiple ones\n",
+        "\n",
+        "There are some cases in which we want to split a column according to a character. For example, consider the column `Comment` from the dataset.\n"
+      ],
+      "id": "176df082"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Comment']"
+      ],
+      "id": "ab10a06b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The column has some values such as \"Requires part: valve\" and \"Delay: maintenance\\n\" that we may want to split into columns.\n"
+      ],
+      "id": "bef8343e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "\n",
+        "complete_data['Comment']"
+      ],
+      "id": "8a674afb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can split the values in the column according to the colon \":\".\n",
+        "\n",
+        "That is, everything before the colon will be in a column. Everything after the colon will be in another column. To achieve this, we use the function `str.split()`.\n",
+        "\n",
+        "One input of the function is the symbol or character for which we cant to make a split. The other input, `expand = True` tells Python that we want to create new columns.\n"
+      ],
+      "id": "18756d5c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "\n",
+        "complete_data['Comment'].str.split(':', expand = True)"
+      ],
+      "id": "7fbdbdd7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The result is two columns.\n"
+      ],
+      "id": "c0f98b4b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "split_column = complete_data['Comment'].str.split(':', expand = True)\n",
+        "split_column.head()"
+      ],
+      "id": "f2fbcb34",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br></br>\n",
+        "\n",
+        "We can assign them to new columns in the dataset using the following code.\n"
+      ],
+      "id": "e86327d7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "augmented_data = (complete_data\n",
+        "                  .assign(First_comment = split_column.filter([0]),\n",
+        "                  Second_comment = split_column.filter([1]))\n",
+        "                  )"
+      ],
+      "id": "70f397a1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n"
+      ],
+      "id": "132c3af6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "augmented_data.head()"
+      ],
+      "id": "572a666b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Remove characters\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Something that we notice is that the column `First_Comment` has some extra characters like \"\\n\" that may be useless when working with the data.\n",
+        "\n",
+        "We can remove them using the function `str.strip()`. The input of the function is the character to remove.\n"
+      ],
+      "id": "29818f52"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "augmented_data['First_comment'] = augmented_data['First_comment'].str.strip(\"\\n\")"
+      ],
+      "id": "e0f38f4b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Let's see the cleaned column.\n"
+      ],
+      "id": "6b3de494"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "augmented_data['First_comment']"
+      ],
+      "id": "7af46871",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can also remove other characters.\n"
+      ],
+      "id": "fb50388e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "augmented_data['First_comment'].str.strip(\"!\")"
+      ],
+      "id": "5af244a3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Transform text case\n",
+        "\n",
+        "When working with text columns such as those containing names, it might be possible to have different ways of writing. A common case is when having lower case or upper case names or a combination thereof.\n",
+        "\n",
+        "For example, consider the column `Operator` containing the names of the operators.\n"
+      ],
+      "id": "bbcc47b4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Operator'].head()"
+      ],
+      "id": "d46f7080",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Remove extra spaces\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "To deal with names, we first use the `.str.strip()` to remove leading and trailing characters from strings.\n"
+      ],
+      "id": "62ddf6bf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Operator'] = complete_data['Operator'].str.strip()\n",
+        "complete_data['Operator']"
+      ],
+      "id": "2ae792cf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Change to lowercase letters\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can turn all names to lowercase using the function `str.lower()`.\n"
+      ],
+      "id": "d7f96dda"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Operator'].str.lower()"
+      ],
+      "id": "2d4a962d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Change to uppercase letters\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can turn all names to lowercase using the function `str.upper()`.\n"
+      ],
+      "id": "ce38ba99"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Operator'].str.upper()"
+      ],
+      "id": "b1c20401",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Capitalize the first letter\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can convert all names to title case using the function `str.title()`.\n"
+      ],
+      "id": "48fab23a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "complete_data['Operator'].str.title()"
+      ],
+      "id": "4cf1f75c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Remove duplicate rows\n",
+        "\n",
+        "Duplicate rows have the same entries in every column in the dataset. If only one row is needed for the analysis, we can remove the duplicates using `.drop_duplicates()`. For example, we can see the unique names of the operators.\n"
+      ],
+      "id": "08a3590e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "operators = complete_data['Operator'].str.title()\n",
+        "\n",
+        "(operators\n",
+        ".drop_duplicates()\n",
+        ")"
+      ],
+      "id": "bdd5de69",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Data Visualization\n",
+        "\n",
+        "## Example 2\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "A criminologist is developing a rule-based system to classify the types of glasses encountered in criminal investigations.\n",
+        "\n",
+        "The data consist of 214 glass samples labeled as one of seven class categories.\n",
+        "\n",
+        "There are nine predictors, including refractive index and percentages of eight elements: Na, Mg, AL, Is, K, Ca, Ba, and Fe. The response is the type of glass.\n",
+        "\n",
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The dataset is in the file \"glass.xlsx\". Let's load it using **pandas**.\n"
+      ],
+      "id": "8766907b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "# Load the Excel file into a pandas DataFrame.\n",
+        "glass_data = pd.read_excel(\"glass.xlsx\")"
+      ],
+      "id": "19339295",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "</br>\n",
+        "\n",
+        "The variable `Type` is categorical. So, let's ensure Python knows this using the code below.\n"
+      ],
+      "id": "09de4fbe"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "glass_data['Type'] = pd.Categorical(glass_data['Type'])"
+      ],
+      "id": "47467e52",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## matplotlib library\n",
+        "\n",
+        "-   **matplotlib** is a comprehensive library for creating static, animated, and interactive visualizations in Python.\n",
+        "-   It is widely used in the data science community for plotting data in various formats.\n",
+        "-   Ideal for creating simple visualizations like line plots, bar charts, scatter plots, and more.\n",
+        "-   <https://matplotlib.org/>\n",
+        "\n",
+        "![](images/matplotlib.png){fig-align=\"center\"}\n",
+        "\n",
+        "## seaborn library\n",
+        "\n",
+        "-   **seaborn** is a Python library built on top of Matplotlib.\n",
+        "-   Designed to make statistical data visualization easy and beautiful.\n",
+        "-   Ideal for creating informative and attractive visualizations with minimal code.\n",
+        "-   <https://seaborn.pydata.org/index.html>\n",
+        "\n",
+        "![](images/seaborn.png){fig-align=\"center\"}\n",
+        "\n",
+        "## Importing the libraries\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The **matplotlib** and **seaborn** libraries are pre-installed in Google Colab. However, we need to inform Google Colab that we want to use them and its functions using the following command:\n"
+      ],
+      "id": "ddde754d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns"
+      ],
+      "id": "d0bfb208",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Similar to **pandas**, the command `as sns` allows us to have a short name for **seaborn**. Similarly, we rename **matplotlib** as **plt**.\n",
+        "\n",
+        "## Histogram\n",
+        "\n",
+        "</br></br>\n",
+        "\n",
+        "Graphical display that gives an idea of the “shape” of the sample, indicating regions where sample points are concentrated and regions where they are sparse.\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The bars of the histogram touch each other. A space indicates that there are no observations in that interval.\n",
+        "\n",
+        "## Histogram of Na\n",
+        "\n",
+        "To create a histogram, we use the function `histplot()` from **seabron**.\n"
+      ],
+      "id": "94a268d9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "plt.figure(figsize=(7,4)) # Create space for figure.\n",
+        "sns.histplot(data = glass_data, x = 'Na') # Create the histogram.\n",
+        "plt.title(\"Histogram of Na\") # Plot title.\n",
+        "plt.xlabel(\"Na\") # X label\n",
+        "plt.show() # Display the plot"
+      ],
+      "id": "c9a06f6c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Box plot\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "A box plot is a graphic that presents the median, the first and third quartiles, and any “outliers” present in the sample.\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The interquartile range (IQR) is the difference between the third quartile and the first quartile ($Q_3 - Q_1$). This is the distance needed to span the middle half of the data.\n",
+        "\n",
+        "## Anatomy of a box plot\n",
+        "\n",
+        "![](images/anatomy.png){fig-align=\"center\"}\n",
+        "\n",
+        "See also [**https://towardsdatascience.com/why-1-5-in-iqr-method-of-outlier-detection-5d07fdc82097**](#0){.uri}\n",
+        "\n",
+        "## Box plot of Na\n",
+        "\n",
+        "To create a boxplot, we use the function `boxplot()` from **seabron**.\n"
+      ],
+      "id": "1a385cfb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "plt.figure(figsize=(7,4)) # Create space for the figure.\n",
+        "sns.boxplot(data = glass_data, y = 'Na') # Create boxplot.\n",
+        "plt.title(\"Box plot of Na\") # Add title.\n",
+        "plt.show() # Show the plot."
+      ],
+      "id": "81154ca4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Outliers\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Outliers are points that are much larger or smaller than the rest of the sample points.\n",
+        "\n",
+        "Outliers may be data entry errors or they may be points that really are different from the rest.\n",
+        "\n",
+        "Outliers should not be deleted without considerable thought—sometimes calculations and analyses will be done with and without outliers and then compared.\n",
+        "\n",
+        "## Scatter plot\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Data for which items consists of a pair of numeric values is called bivariate. The graphical summary for bivariate data is a *scatterplot*.\n",
+        "\n",
+        "The variables $X$ and $Y$ are placed on the horizontal and vertical axes, respectively. Each point on the graph marks the position of a pair of values of $X$ and $Y$.\n",
+        "\n",
+        "A scatterplot allows us to explore lineal and nonlinear relationships between two variables.\n",
+        "\n",
+        "## Scatter plot of Na versus RI\n",
+        "\n",
+        "To create a scatter plot, we use the function `scatter()` from **seabron**. In this function, you must state the\n"
+      ],
+      "id": "2d1b4f59"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "plt.figure(figsize=(7,4)) # Create space for the plot.\n",
+        "sns.scatterplot(data = glass_data, x = 'Na', y = 'RI') # Show the plot.\n",
+        "plt.title(\"Scatter plot of Na vs RI\") # Set plot title.\n",
+        "plt.xlabel(\"Na\") # Set label for X axis.\n",
+        "plt.ylabel(\"RI\") # Set label for Y axis.\n",
+        "plt.show() # Show plot."
+      ],
+      "id": "3d309149",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Bar charts\n",
+        "\n",
+        "Bar charts are commonly used to describe [**qualitative**]{style=\"color:pink;\"} data classified into various categories based on sector, region, different time periods, or other such factors.\n",
+        "\n",
+        "Different sectors, different regions, or different time periods are then labeled as specific categories.\n",
+        "\n",
+        "A bar chart is constructed by creating categories that are represented by labeling each category and which are represented by intervals of equal length on a horizontal axis.\n",
+        "\n",
+        "The count or frequency within the corresponding category is represented by a bar of height proportional to the frequency.\n",
+        "\n",
+        "## \n",
+        "\n",
+        "We create the bar chart using the function `countplot()` from **seaborn**.\n"
+      ],
+      "id": "a8b4847c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "# Create plot.\n",
+        "plt.figure(figsize=(7,4)) # Create space for the plot.\n",
+        "sns.countplot(data = glass_data, x = 'Type') # Show the plot.\n",
+        "plt.title(\"Bar chart of Type of Glasses\") # Set plot title.\n",
+        "plt.ylabel(\"Frequency\") # Set label for Y axis.\n",
+        "plt.show() # Show plot."
+      ],
+      "id": "8da87f7c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Saving plots\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We save a figure using the `save.fig` function from **matplotlib**. The `dpi` argument of this function sets the resolution of the image. The higher the `dpi`, the better the resolution.\n"
+      ],
+      "id": "218a95ce"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "\n",
+        "plt.figure(figsize=(5, 7))\n",
+        "sns.countplot(data = glass_data, x = 'Type')\n",
+        "plt.title('Frequency of Each Category')\n",
+        "plt.ylabel('Frequency')\n",
+        "plt.xlabel('Category')\n",
+        "plt.savefig('bar_chart.png',dpi=300)"
+      ],
+      "id": "ddb28f33",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Improving the figure\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can also use other functions to improve the aspect of the figure:\n",
+        "\n",
+        "-   `plt.title(fontsize)`: Font size of the title.\n",
+        "-   `plt.ylabel(fontsize)`: Font size of y axis title.\n",
+        "-   `plt.xlabel(fontsize)`: Font size of x axis title.\n",
+        "-   `plt.yticks(fontsize)`: Font size of the y axis labels.\n",
+        "-   `plt.xticks(fontsize)`: Font size of the x axis labels.\n",
+        "\n",
+        "## \n"
+      ],
+      "id": "108f4913"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "\n",
+        "plt.figure(figsize=(5, 5))\n",
+        "sns.countplot(data = glass_data, x = 'Type')\n",
+        "plt.title('Relative Frequency of Each Category', fontsize = 12)\n",
+        "plt.ylabel('Relative Frequency', fontsize = 12)\n",
+        "plt.xlabel('Category', fontsize = 15)\n",
+        "plt.xticks(fontsize = 12)\n",
+        "plt.yticks(fontsize = 12)\n",
+        "plt.savefig('bar_chart.png',dpi=300)"
+      ],
+      "id": "57da5311",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
+      ],
+      "id": "a9f6a499"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
