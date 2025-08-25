@@ -37,7 +37,7 @@
         "\n",
         "Before we start, let's import the data science libraries into Python.\n"
       ],
-      "id": "7651e0b2"
+      "id": "7fd70be2"
     },
     {
       "cell_type": "code",
@@ -58,7 +58,7 @@
         "from statsmodels.tsa.arima.model import ARIMA\n",
         "from statsmodels.tsa.statespace.tools import diff"
       ],
-      "id": "0113a043",
+      "id": "8db4f3e9",
       "execution_count": null,
       "outputs": []
     },
@@ -104,7 +104,7 @@
         "::: {.column width=\"40%\"}\n",
         "</br>\n"
       ],
-      "id": "14f4c495"
+      "id": "dc2f98b0"
     },
     {
       "cell_type": "code",
@@ -131,7 +131,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "9ba02554",
+      "id": "edb2ef70",
       "execution_count": null,
       "outputs": []
     },
@@ -204,7 +204,7 @@
         "\n",
         "Let's consider again the dataset in the file \"Amtrak.xlsx.\" The file contains records of Amtrak passenger numbers from January 1991 to March 2004.\n"
       ],
-      "id": "3c95f2cb"
+      "id": "bfcba624"
     },
     {
       "cell_type": "code",
@@ -217,7 +217,7 @@
         "Amtrak_data = pd.read_excel('Amtrak.xlsx')\n",
         "Amtrak_data.head()"
       ],
-      "id": "ae325225",
+      "id": "deb80181",
       "execution_count": null,
       "outputs": []
     },
@@ -229,7 +229,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "45cf9a5b"
+      "id": "b4d97e20"
     },
     {
       "cell_type": "code",
@@ -246,7 +246,7 @@
         "plt.title('Amtrak Ridership Over Time')\n",
         "plt.show()"
       ],
-      "id": "f9d731c4",
+      "id": "e42227e1",
       "execution_count": null,
       "outputs": []
     },
@@ -270,7 +270,7 @@
         "\n",
         "In Python, we use the `plot_acf` function from the **statsmodels** library.\n"
       ],
-      "id": "951c7be8"
+      "id": "ef5e00f7"
     },
     {
       "cell_type": "code",
@@ -286,7 +286,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "481329cd",
+      "id": "cf6d286d",
       "execution_count": null,
       "outputs": []
     },
@@ -300,7 +300,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "cd5fcfc0"
+      "id": "3dcf2a39"
     },
     {
       "cell_type": "code",
@@ -316,7 +316,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "a80490f3",
+      "id": "5010edc5",
       "execution_count": null,
       "outputs": []
     },
@@ -343,7 +343,7 @@
         "::: {.column width=\"50%\"}\n",
         "</br>\n"
       ],
-      "id": "639531c0"
+      "id": "e6045563"
     },
     {
       "cell_type": "code",
@@ -359,7 +359,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "d254a732",
+      "id": "2772fc45",
       "execution_count": null,
       "outputs": []
     },
@@ -423,7 +423,7 @@
         "\n",
         "In Python, we use the `plot_pacf` function from **statsmodels**.\n"
       ],
-      "id": "3c1cd4a3"
+      "id": "dc08e6ad"
     },
     {
       "cell_type": "code",
@@ -439,7 +439,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "291f0253",
+      "id": "bef4166d",
       "execution_count": null,
       "outputs": []
     },
@@ -465,7 +465,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "e10a722b"
+      "id": "41d5ae66"
     },
     {
       "cell_type": "code",
@@ -481,7 +481,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "85bc3648",
+      "id": "6204e427",
       "execution_count": null,
       "outputs": []
     },
@@ -539,7 +539,7 @@
         "\n",
         "We consider the time series \"CanadianWorkHours.xlsx\" that contains the average hours worked by a certain group of workers over a certain range of years.\n"
       ],
-      "id": "fff84591"
+      "id": "9d015979"
     },
     {
       "cell_type": "code",
@@ -552,7 +552,7 @@
         "CanadianWorkHours = pd.read_excel('CanadianWorkHours.xlsx')\n",
         "CanadianWorkHours.head(4)"
       ],
-      "id": "95964909",
+      "id": "4dfa388a",
       "execution_count": null,
       "outputs": []
     },
@@ -566,7 +566,7 @@
         "\n",
         "Recall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.\n"
       ],
-      "id": "5e2240ed"
+      "id": "7dfde7df"
     },
     {
       "cell_type": "code",
@@ -585,7 +585,7 @@
         "Canadian_train = CanadianWorkHours[:split_point]\n",
         "Canadian_validation = CanadianWorkHours[split_point:]"
       ],
-      "id": "999263c2",
+      "id": "83e9a1a9",
       "execution_count": null,
       "outputs": []
     },
@@ -597,7 +597,7 @@
         "\n",
         "## Training data\n"
       ],
-      "id": "2d6e0b29"
+      "id": "01eba3d2"
     },
     {
       "cell_type": "code",
@@ -615,7 +615,7 @@
         "plt.title('Hours per Week Over Time')\n",
         "plt.show()"
       ],
-      "id": "0cf2e9e0",
+      "id": "dc0c5e58",
       "execution_count": null,
       "outputs": []
     },
@@ -633,7 +633,7 @@
         "\n",
         "First, let's use a level-1 operator.\n"
       ],
-      "id": "dd53ebd2"
+      "id": "eedfaaee"
     },
     {
       "cell_type": "code",
@@ -645,7 +645,7 @@
         "\n",
         "Z_series_one = diff(Canadian_train['Hours per Week'], k_diff = 1)"
       ],
-      "id": "3e9c0730",
+      "id": "1d51eb9f",
       "execution_count": null,
       "outputs": []
     },
@@ -657,7 +657,7 @@
         "\n",
         "The time series with a level-1 operator looks like this.\n"
       ],
-      "id": "e23169d8"
+      "id": "cbf45cdd"
     },
     {
       "cell_type": "code",
@@ -674,7 +674,7 @@
         "plt.ylabel('Difference Level 1')\n",
         "plt.show()"
       ],
-      "id": "687f6c9e",
+      "id": "d25763b3",
       "execution_count": null,
       "outputs": []
     },
@@ -686,7 +686,7 @@
         "\n",
         "A level-2 operator would work like this.\n"
       ],
-      "id": "cd920325"
+      "id": "d94f3e6b"
     },
     {
       "cell_type": "code",
@@ -698,7 +698,7 @@
         "\n",
         "Z_series_two = diff(Canadian_train['Hours per Week'], k_diff = 2)"
       ],
-      "id": "1895b926",
+      "id": "275a2094",
       "execution_count": null,
       "outputs": []
     },
@@ -717,7 +717,7 @@
         "plt.ylabel('Difference Level 2')\n",
         "plt.show()"
       ],
-      "id": "c78c27a4",
+      "id": "bf705bcb",
       "execution_count": null,
       "outputs": []
     },
@@ -733,7 +733,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "5e763e63"
+      "id": "b3380fbc"
     },
     {
       "cell_type": "code",
@@ -749,7 +749,7 @@
         "plt.ylabel('Difference Level 1')\n",
         "plt.show()"
       ],
-      "id": "b51d39b7",
+      "id": "57ec8963",
       "execution_count": null,
       "outputs": []
     },
@@ -761,7 +761,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "bd714ed3"
+      "id": "aa9da340"
     },
     {
       "cell_type": "code",
@@ -777,7 +777,7 @@
         "plt.ylabel('Difference Level 2')\n",
         "plt.show()"
       ],
-      "id": "80ae2b18",
+      "id": "6f351f4e",
       "execution_count": null,
       "outputs": []
     },
@@ -837,7 +837,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "1273a7de"
+      "id": "2e4b31f2"
     },
     {
       "cell_type": "code",
@@ -853,7 +853,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "ae972ff3",
+      "id": "0b953224",
       "execution_count": null,
       "outputs": []
     },
@@ -865,7 +865,7 @@
         "\n",
         "Using the PACF, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.\n"
       ],
-      "id": "fbff712b"
+      "id": "96c33bbe"
     },
     {
       "cell_type": "code",
@@ -881,7 +881,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "51bfb8a8",
+      "id": "2b5101fb",
       "execution_count": null,
       "outputs": []
     },
@@ -910,7 +910,7 @@
         "\n",
         "[*Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.*]{style=\"color:darkblue;\"}\n"
       ],
-      "id": "b14d1225"
+      "id": "d7ad86f3"
     },
     {
       "cell_type": "code",
@@ -926,7 +926,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "4ea5af93",
+      "id": "5c3c619a",
       "execution_count": null,
       "outputs": []
     },
@@ -986,7 +986,7 @@
         "\n",
         "Once this is defined, we can train an ARIMA model using the training data with the following code:\n"
       ],
-      "id": "e33f2b5e"
+      "id": "bbe9c46e"
     },
     {
       "cell_type": "code",
@@ -1000,7 +1000,7 @@
         "                       order=(2, 2, 0))\n",
         "results_ARIMA_Canadian = Arima_Canadian.fit()"
       ],
-      "id": "646b6758",
+      "id": "cce24f30",
       "execution_count": null,
       "outputs": []
     },
@@ -1014,7 +1014,7 @@
         "\n",
         "After fitting, we can get a summary of the model fit using the following code.\n"
       ],
-      "id": "3feaef45"
+      "id": "5b3b2462"
     },
     {
       "cell_type": "code",
@@ -1026,7 +1026,7 @@
         "\n",
         "print(results_ARIMA_Canadian.summary())"
       ],
-      "id": "0333c051",
+      "id": "e373dcc0",
       "execution_count": null,
       "outputs": []
     },
@@ -1042,7 +1042,7 @@
         "\n",
         "However, since the ARIMA model has two AR terms, we must inspect the residuals starting from the third observation. We achieve this using the code below.\n"
       ],
-      "id": "655faec5"
+      "id": "8a831817"
     },
     {
       "cell_type": "code",
@@ -1058,7 +1058,7 @@
         "# Select residuals starting from observation 3 and onwards.\n",
         "ARIMA_residuals = ARIMA_residuals[2:]"
       ],
-      "id": "363ff7f0",
+      "id": "e7e93ef0",
       "execution_count": null,
       "outputs": []
     },
@@ -1068,7 +1068,7 @@
       "source": [
         "## Time series of residuals\n"
       ],
-      "id": "296c834a"
+      "id": "bac2012e"
     },
     {
       "cell_type": "code",
@@ -1085,7 +1085,7 @@
         "plt.ylabel('Residuals')\n",
         "plt.show()"
       ],
-      "id": "6672cf3d",
+      "id": "ad34cafc",
       "execution_count": null,
       "outputs": []
     },
@@ -1099,7 +1099,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "857580e9"
+      "id": "504f399a"
     },
     {
       "cell_type": "code",
@@ -1114,7 +1114,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "2d79e9b9",
+      "id": "aaf183b2",
       "execution_count": null,
       "outputs": []
     },
@@ -1126,7 +1126,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "8b90cc27"
+      "id": "06c9e688"
     },
     {
       "cell_type": "code",
@@ -1141,7 +1141,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "69fb376d",
+      "id": "f0c43df0",
       "execution_count": null,
       "outputs": []
     },
@@ -1167,7 +1167,7 @@
         "\n",
         "To predict the average number of hours worked in the next, say, 3 years, we use the `.forecast()` function. The `steps` argument indicates the number of steps in the future to make the predictions.\n"
       ],
-      "id": "72c28420"
+      "id": "497bad11"
     },
     {
       "cell_type": "code",
@@ -1179,7 +1179,7 @@
         "\n",
         "results_ARIMA_Canadian.forecast(steps = 3)"
       ],
-      "id": "0b33da42",
+      "id": "29d726e9",
       "execution_count": null,
       "outputs": []
     },
@@ -1197,7 +1197,7 @@
         "\n",
         "## Validation data\n"
       ],
-      "id": "4ec092d5"
+      "id": "22c0a4af"
     },
     {
       "cell_type": "code",
@@ -1209,7 +1209,7 @@
         "\n",
         "Canadian_validation"
       ],
-      "id": "2e72d92e",
+      "id": "5018ca5e",
       "execution_count": null,
       "outputs": []
     },
@@ -1223,7 +1223,7 @@
         "\n",
         "The validation data has 7 time periods that can be determined using the command below.\n"
       ],
-      "id": "664ebbbb"
+      "id": "0be536ed"
     },
     {
       "cell_type": "code",
@@ -1235,7 +1235,7 @@
         "\n",
         "len(Canadian_validation)"
       ],
-      "id": "0dc08407",
+      "id": "1ba70cb0",
       "execution_count": null,
       "outputs": []
     },
@@ -1245,7 +1245,7 @@
       "source": [
         "So, we must forecast 7 periods ahead using our ARIMA model.\n"
       ],
-      "id": "4a1d60d9"
+      "id": "839c3c71"
     },
     {
       "cell_type": "code",
@@ -1258,7 +1258,7 @@
         "forecast_Canadian = results_ARIMA_Canadian.forecast(steps = 7)\n",
         "forecast_Canadian"
       ],
-      "id": "00fab9fa",
+      "id": "5e7532c4",
       "execution_count": null,
       "outputs": []
     },
@@ -1272,7 +1272,7 @@
         "\n",
         "Using the forecast and validation data, we compute the RMSE.\n"
       ],
-      "id": "607cb392"
+      "id": "56da8281"
     },
     {
       "cell_type": "code",
@@ -1286,7 +1286,7 @@
         "                         forecast_Canadian)  \n",
         "print(round(mse**(1/2), 2))"
       ],
-      "id": "f9140c4e",
+      "id": "c2932b9a",
       "execution_count": null,
       "outputs": []
     },
@@ -1300,7 +1300,7 @@
         "\n",
         "First, we shift the time series in the validation data by one position using the `.shit(1)` function.\n"
       ],
-      "id": "55ab37aa"
+      "id": "80b00802"
     },
     {
       "cell_type": "code",
@@ -1313,7 +1313,7 @@
         "naive_forecast = Canadian_validation[\"Hours per Week\"].shift(1)\n",
         "naive_forecast.head()"
       ],
-      "id": "249b5620",
+      "id": "7dfb754d",
       "execution_count": null,
       "outputs": []
     },
@@ -1325,7 +1325,7 @@
         "\n",
         "Second, we notice that the first element of the shifted series is missing or not available (`NaN`). We thus fill it in with the last observation in our training dataset, which we can obtain using the `.iloc()` function.\n"
       ],
-      "id": "1526b94d"
+      "id": "b1a73250"
     },
     {
       "cell_type": "code",
@@ -1337,7 +1337,7 @@
         "\n",
         "Canadian_train.iloc[-1]"
       ],
-      "id": "f286c95f",
+      "id": "84d082be",
       "execution_count": null,
       "outputs": []
     },
@@ -1349,7 +1349,7 @@
         "\n",
         "Third, we input 35.9 as the first record in `naive_forecast`. The first record of the object is indexed by a 28.\n"
       ],
-      "id": "1f96ea3d"
+      "id": "f91cf1e7"
     },
     {
       "cell_type": "code",
@@ -1361,7 +1361,7 @@
         "\n",
         "naive_forecast[28] = 35.9"
       ],
-      "id": "dedafdc3",
+      "id": "b6fc2fb2",
       "execution_count": null,
       "outputs": []
     },
@@ -1373,7 +1373,7 @@
         "\n",
         "Our naive forecast of the time series in the validation data would be these one:\n"
       ],
-      "id": "db566a29"
+      "id": "ad16e365"
     },
     {
       "cell_type": "code",
@@ -1393,7 +1393,7 @@
         "df_combined.columns = [\"Naive Forecast\", \"Hours per week\"]\n",
         "df_combined"
       ],
-      "id": "e827d74a",
+      "id": "3c68b97d",
       "execution_count": null,
       "outputs": []
     },
@@ -1407,7 +1407,7 @@
         "\n",
         "The RMSE of the naive forecast is calculated below.\n"
       ],
-      "id": "007445fe"
+      "id": "eb9cc731"
     },
     {
       "cell_type": "code",
@@ -1421,7 +1421,7 @@
         "                                naive_forecast)\n",
         "print(round(naive_rmse**(1/2), 2))"
       ],
-      "id": "cdc600de",
+      "id": "09f8f615",
       "execution_count": null,
       "outputs": []
     },
@@ -1437,7 +1437,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "301cdb2a"
+      "id": "51c4dadf"
     },
     {
       "cell_type": "code",
@@ -1474,7 +1474,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "56e7c50f",
+      "id": "733031fa",
       "execution_count": null,
       "outputs": []
     },
@@ -1498,7 +1498,7 @@
         "\n",
         "We use the Airline data containing the number of passengers of an international airline per month between 1949 and 1960.\n"
       ],
-      "id": "863a5bee"
+      "id": "b47915d2"
     },
     {
       "cell_type": "code",
@@ -1512,7 +1512,7 @@
         "Airline_data = pd.read_excel(\"Airline.xlsx\")\n",
         "Airline_data.head()"
       ],
-      "id": "1a34e272",
+      "id": "391a0f4a",
       "execution_count": null,
       "outputs": []
     },
@@ -1526,7 +1526,7 @@
         "\n",
         "We use 80% of the time series for training and the rest for validation.\n"
       ],
-      "id": "b9092e73"
+      "id": "c43a9174"
     },
     {
       "cell_type": "code",
@@ -1545,7 +1545,7 @@
         "Airline_train = Airline_data[:split_point]\n",
         "Airline_validation = Airline_data[split_point:]"
       ],
-      "id": "3d3b833a",
+      "id": "951b281d",
       "execution_count": null,
       "outputs": []
     },
@@ -1555,7 +1555,7 @@
       "source": [
         "## Training data\n"
       ],
-      "id": "a47124c2"
+      "id": "39ec9e2b"
     },
     {
       "cell_type": "code",
@@ -1574,7 +1574,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "0f9d1b81",
+      "id": "77f7be3c",
       "execution_count": null,
       "outputs": []
     },
@@ -1586,7 +1586,7 @@
         "\n",
         "First, let's use a level-1 operator.\n"
       ],
-      "id": "3731b9bf"
+      "id": "db0b0921"
     },
     {
       "cell_type": "code",
@@ -1598,7 +1598,7 @@
         "\n",
         "Z_series_one = diff(Airline_train['Number of passengers'], k_diff = 1)"
       ],
-      "id": "1c2bc5b0",
+      "id": "e68e92b6",
       "execution_count": null,
       "outputs": []
     },
@@ -1617,7 +1617,7 @@
         "plt.ylabel('Difference Level 1')\n",
         "plt.show()"
       ],
-      "id": "eadff638",
+      "id": "fd4eb3e7",
       "execution_count": null,
       "outputs": []
     },
@@ -1633,7 +1633,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "8084a718"
+      "id": "cf7df0b8"
     },
     {
       "cell_type": "code",
@@ -1649,7 +1649,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "d230cfd8",
+      "id": "ff8308b0",
       "execution_count": null,
       "outputs": []
     },
@@ -1661,7 +1661,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "1b225c98"
+      "id": "ee1b331d"
     },
     {
       "cell_type": "code",
@@ -1677,7 +1677,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "7f8050ac",
+      "id": "97d05de3",
       "execution_count": null,
       "outputs": []
     },
@@ -1757,7 +1757,7 @@
         "\n",
         "Let's fit a SARIMA model.\n"
       ],
-      "id": "268c353a"
+      "id": "0f3e63ce"
     },
     {
       "cell_type": "code",
@@ -1772,7 +1772,7 @@
         "                      seasonal_order=(1, 1, 0, 12))\n",
         "SARIMA_Airline = SARIMA_model.fit()"
       ],
-      "id": "a501643d",
+      "id": "965ef8ff",
       "execution_count": null,
       "outputs": []
     },
@@ -1782,7 +1782,7 @@
       "source": [
         "## Summary of fit\n"
       ],
-      "id": "92ac2ec7"
+      "id": "1820698c"
     },
     {
       "cell_type": "code",
@@ -1795,7 +1795,7 @@
         "\n",
         "print(SARIMA_Airline.summary())"
       ],
-      "id": "bd8e9837",
+      "id": "069fae13",
       "execution_count": null,
       "outputs": []
     },
@@ -1807,7 +1807,7 @@
         "\n",
         "We can have a graphical evaluation of the model's performance using a residual analysis.\n"
       ],
-      "id": "5ba7b96a"
+      "id": "77ddce50"
     },
     {
       "cell_type": "code",
@@ -1821,7 +1821,7 @@
         "SARIMA_residuals = SARIMA_Airline.resid\n",
         "SARIMA_residuals = SARIMA_residuals[2:]"
       ],
-      "id": "007f0c21",
+      "id": "064774c8",
       "execution_count": null,
       "outputs": []
     },
@@ -1840,7 +1840,7 @@
         "plt.ylabel('Residuals')\n",
         "plt.show()"
       ],
-      "id": "50d41b60",
+      "id": "3e2d8439",
       "execution_count": null,
       "outputs": []
     },
@@ -1856,7 +1856,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "ba93150a"
+      "id": "705dbbe7"
     },
     {
       "cell_type": "code",
@@ -1872,7 +1872,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "02683d4b",
+      "id": "e881a437",
       "execution_count": null,
       "outputs": []
     },
@@ -1884,7 +1884,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "ec3b68ce"
+      "id": "3e2a4c4d"
     },
     {
       "cell_type": "code",
@@ -1900,7 +1900,7 @@
         "plt.ylabel(\"Correlation\")\n",
         "plt.show()"
       ],
-      "id": "301e8bb4",
+      "id": "4a3b57e9",
       "execution_count": null,
       "outputs": []
     },
@@ -1916,7 +1916,7 @@
         "\n",
         "The validation data has 29 time periods that can be determined using the command below.\n"
       ],
-      "id": "c0433ade"
+      "id": "28359192"
     },
     {
       "cell_type": "code",
@@ -1928,7 +1928,7 @@
         "\n",
         "len(Airline_validation)"
       ],
-      "id": "7260658b",
+      "id": "b803fb8d",
       "execution_count": null,
       "outputs": []
     },
@@ -1940,7 +1940,7 @@
         "\n",
         "So, we must forecast 7 periods ahead using our SARIMA model.\n"
       ],
-      "id": "2156fe65"
+      "id": "4ca4279a"
     },
     {
       "cell_type": "code",
@@ -1953,7 +1953,7 @@
         "forecast_Airline = SARIMA_Airline.forecast(steps = 29)\n",
         "forecast_Airline.head(3)"
       ],
-      "id": "48dbc859",
+      "id": "c1a7d924",
       "execution_count": null,
       "outputs": []
     },
@@ -1967,7 +1967,7 @@
         "\n",
         "Using the forecast and validation data, we compute the RMSE.\n"
       ],
-      "id": "7e79b23f"
+      "id": "fb51b987"
     },
     {
       "cell_type": "code",
@@ -1981,7 +1981,7 @@
         "                        forecast_Airline)  \n",
         "print(round(mse**(1/2), 2))"
       ],
-      "id": "a70e046a",
+      "id": "0999e5a5",
       "execution_count": null,
       "outputs": []
     },
@@ -1995,7 +1995,7 @@
         "\n",
         "Now, we build a naive forecast to study the performance of our SARIMA model. To this end, we shift the validation data by one period using the code below.\n"
       ],
-      "id": "2aa79f02"
+      "id": "c9bb0fe6"
     },
     {
       "cell_type": "code",
@@ -2005,10 +2005,10 @@
         "#| output: true\n",
         "#| fig-align: center\n",
         "\n",
-        "naive_forecast = Airline_validation[\"Number of passengers\"].shift(1)\n",
+        "naive_forecast = Airline_train[\"Number of passengers\"].shift(1)\n",
         "naive_forecast.head()"
       ],
-      "id": "97accc4b",
+      "id": "67eb7a41",
       "execution_count": null,
       "outputs": []
     },
@@ -2020,7 +2020,7 @@
         "\n",
         "Next, we determine the last element of the training data.\n"
       ],
-      "id": "7d6db3bf"
+      "id": "f812a7f0"
     },
     {
       "cell_type": "code",
@@ -2032,7 +2032,7 @@
         "\n",
         "Airline_validation.iloc[-1]"
       ],
-      "id": "267cd1f3",
+      "id": "e11a428c",
       "execution_count": null,
       "outputs": []
     },
@@ -2042,7 +2042,7 @@
       "source": [
         "Finally, we assemble our naive forecast by replacing the first entry of `naive_forecast` with the last entry of the response in the training dataset.\n"
       ],
-      "id": "a2da247c"
+      "id": "eecb0fac"
     },
     {
       "cell_type": "code",
@@ -2052,10 +2052,10 @@
         "#| output: true\n",
         "#| fig-align: center\n",
         "\n",
-        "naive_forecast[115] = 432\n",
+        "naive_forecast[115] = 491\n",
         "naive_forecast.head()"
       ],
-      "id": "05cba6a5",
+      "id": "13dba842",
       "execution_count": null,
       "outputs": []
     },
@@ -2069,7 +2069,7 @@
         "\n",
         "Let's calculate the RMSE of the naive forecast.\n"
       ],
-      "id": "ad5eef26"
+      "id": "233593df"
     },
     {
       "cell_type": "code",
@@ -2082,7 +2082,7 @@
         "naive_rmse = mean_squared_error(Airline_validation[\"Number of passengers\"], naive_forecast)\n",
         "print(round(naive_rmse**(1/2), 2))"
       ],
-      "id": "e7ff10f2",
+      "id": "6876201e",
       "execution_count": null,
       "outputs": []
     },
@@ -2096,7 +2096,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "1b5a74a7"
+      "id": "9803bfc3"
     },
     {
       "cell_type": "code",
@@ -2132,7 +2132,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "d89d4a1a",
+      "id": "ca462807",
       "execution_count": null,
       "outputs": []
     },
@@ -2142,14 +2142,15 @@
       "source": [
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
       ],
-      "id": "83be796f"
+      "id": "fe0822a3"
     }
   ],
   "metadata": {
     "kernelspec": {
-      "display_name": "Python 3",
+      "name": "python3",
       "language": "python",
-      "name": "python3"
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/alanvazquez/.virtualenvs/r-reticulate/share/jupyter/kernels/python3"
     }
   },
   "nbformat": 4,

@@ -215,7 +215,7 @@ Alan R. Vazquez
 <h2>Load the libraries</h2>
 <p><br></p>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="e054fc5a" class="cell" data-execution_count="1">
+<div id="86cbf3ac" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -345,7 +345,7 @@ Alan R. Vazquez
 <li>Sales: Sales generated from the product ($).</li>
 <li>200 markets</li>
 </ul>
-<div id="a27404e5" class="cell" data-execution_count="2">
+<div id="9edcd489" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Load the data into Python</span></span>
 <span id="cb2-2"><a></a>Ads_data <span class="op">=</span> pd.read_excel(<span class="st">'Advertising.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -353,7 +353,7 @@ Alan R. Vazquez
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="eefa4410" class="cell" data-execution_count="3">
+<div id="32a7d471" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>Ads_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -428,7 +428,7 @@ Alan R. Vazquez
 <h2></h2>
 <p><br><br></p>
 <p>Now, let’s choose our predictor and response.</p>
-<div id="bfc58976" class="cell" data-execution_count="4">
+<div id="a2d8667c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Chose the predictor.</span></span>
 <span id="cb4-2"><a></a>X_full <span class="op">=</span> Ads_data.<span class="bu">filter</span>([<span class="st">'TV'</span>])</span>
 <span id="cb4-3"><a></a></span>
@@ -440,7 +440,7 @@ Alan R. Vazquez
 <h2>Create training and validation data</h2>
 <p><br></p>
 <p>To evaluate a model’s performance on unobserved data, we split the current dataset into a training dataset and a validation dataset. To do this, we use <code>train_test_split()</code>.</p>
-<div id="fe1d6573" class="cell" data-execution_count="5">
+<div id="e90545c4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>X_train, X_valid, Y_train, Y_valid <span class="op">=</span> train_test_split(X_full, Y_full, </span>
 <span id="cb5-2"><a></a>                                                      test_size <span class="op">=</span> <span class="fl">0.25</span>,</span>
 <span id="cb5-3"><a></a>                                                      random_state <span class="op">=</span> <span class="dv">301655</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -451,7 +451,7 @@ Alan R. Vazquez
 <h2>Fit a linear regression model in Python</h2>
 <p><br></p>
 <p>In Python, we use the <code>LinearRegression()</code> and <code>.fit()</code> functions from the <strong>scikit-learn</strong> to fit a linear regression model.</p>
-<div id="a1f5453f" class="cell" data-execution_count="6">
+<div id="037cbaad" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># 1. Create the linear regression model</span></span>
 <span id="cb6-2"><a></a>LRmodel <span class="op">=</span> LinearRegression()</span>
 <span id="cb6-3"><a></a></span>
@@ -462,14 +462,14 @@ Alan R. Vazquez
 <section id="section-3" class="slide level2">
 <h2></h2>
 <p>The following commands show the estimated coefficients of the model.</p>
-<div id="87d6f716" class="cell" data-execution_count="7">
+<div id="11573d09" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="bu">print</span>(<span class="st">"Coefficients:"</span>, LRmodel.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coefficients: [[0.05185463]]</code></pre>
 </div>
 </div>
 <p>We can also show the estimated intercept.</p>
-<div id="21e1b08c" class="cell" data-execution_count="8">
+<div id="6d6c5b42" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>(<span class="st">"Intercept:"</span>, LRmodel.intercept_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intercept: [6.69303889]</code></pre>
@@ -495,7 +495,7 @@ Alan R. Vazquez
 <section id="in-python" class="slide level2">
 <h2>In Python</h2>
 <p>For a residual analysis, we need to compute the residuals and predictions using the training dataset. Additionally, we place these objects together with the ID of the observations in a pandas dataframe for further processing.</p>
-<div id="92b6fe25" class="cell" data-execution_count="9">
+<div id="707b15d0" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Fitted values.</span></span>
 <span id="cb11-2"><a></a>fitted <span class="op">=</span> LRmodel.predict(X_train) <span class="op">+</span> <span class="dv">0</span><span class="op">*</span>Y_train</span>
 <span id="cb11-3"><a></a></span>
@@ -513,7 +513,7 @@ Alan R. Vazquez
 <h2>A technical Python note</h2>
 <p>Note that we have this weird way of saving the predictions of the model on the training dataset, since we added <code>0*Y_train</code>.</p>
 <p><br></p>
-<div id="e8a123aa" class="cell" data-execution_count="10">
+<div id="c2e6858e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Fitted values.</span></span>
 <span id="cb12-2"><a></a>fitted <span class="op">=</span> LRmodel.predict(X_train) <span class="op">+</span> <span class="dv">0</span><span class="op">*</span>Y_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -524,7 +524,7 @@ Alan R. Vazquez
 <section id="section-4" class="slide level2">
 <h2></h2>
 <p>To validate assumptions 1 and 2, we use a “residuals versus fitted values” plot</p>
-<div id="326abaad" class="cell" data-execution_count="11">
+<div id="daded2da" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Residual vs Fitted Values Plot</span></span>
@@ -548,7 +548,7 @@ Alan R. Vazquez
 <section id="section-5" class="slide level2">
 <h2></h2>
 <p>To validate assumption 3, we use the “residuals versus time” plot. Here, we use the ID as a time variable.</p>
-<div id="06b0968a" class="cell" data-execution_count="12">
+<div id="bc2bc776" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Residual vs ID Plot</span></span>
@@ -609,7 +609,7 @@ Alan R. Vazquez
 <p>To evaluate the model’s performance, we use the validation dataset.</p>
 <p><br></p>
 <p>First, we predict the responses using the predictor matrix in <code>X_valid</code> and our pre-trained model in <code>LRmodel</code>. To this end, we use the <code>.predict()</code> function.</p>
-<div id="7ff1f24c" class="cell" data-execution_count="13">
+<div id="cb4fdfd3" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>Y_pred <span class="op">=</span> LRmodel.predict(X_valid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -617,7 +617,7 @@ Alan R. Vazquez
 <h2></h2>
 <p><br></p>
 <p>Next, we use the <em>mean squared error</em> in the <code>mse()</code> function. Recall that the responses from the validation dataset are in <code>Y_valid</code>, and the model predictions are in <code>Y_pred</code>.</p>
-<div id="d1ffeab3" class="cell" data-execution_count="14">
+<div id="8ed21f68" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>mse <span class="op">=</span> mean_squared_error(Y_valid, Y_pred)  <span class="co"># Mean Squared Error (MSE)</span></span>
 <span id="cb16-2"><a></a><span class="bu">print</span>(<span class="bu">round</span>(mse, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -626,7 +626,7 @@ Alan R. Vazquez
 </div>
 <p><br></p>
 <p>To obtain the <strong>root mean squared error (RMSE)</strong>, we simply take the square root of the MSE.</p>
-<div id="4fd97985" class="cell" data-execution_count="15">
+<div id="5b8e88bc" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="bu">print</span>(<span class="bu">round</span>(mse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.94</code></pre>
