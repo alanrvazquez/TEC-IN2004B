@@ -1344,7 +1344,7 @@ Now, we build a naive forecast to study the performance of our SARIMA model. To 
 #| output: true
 #| fig-align: center
 
-naive_forecast = Airline_validation["Number of passengers"].shift(1)
+naive_forecast = Airline_train["Number of passengers"].shift(1)
 naive_forecast.head()
 ```
 
@@ -1368,7 +1368,7 @@ Finally, we assemble our naive forecast by replacing the first entry of `naive_f
 #| output: true
 #| fig-align: center
 
-naive_forecast[115] = 432
+naive_forecast[115] = 491
 naive_forecast.head()
 ```
 
