@@ -34,13 +34,14 @@ jupyter: python3
 
 ## Load the libraries
 
+</br>
+
 Before we start, let's import the data science libraries into Python.
 
 ```{python}
 #| echo: true
 #| output: false
 
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -86,7 +87,7 @@ Unsupervised learning is more challenging than supervised learning because it is
 
 It is also known as *exploratory data analysis*.
 
-## Examples of Unsupervised Learning
+## Examples of unsupervised learning
 
 </br>
 
@@ -132,9 +133,11 @@ They group data in different ways to discover groups with common traits.
 
 Two classic clustering methods are:
 
--   [**K-Means Method**]{style="color:pink;"}. We seek to divide the observations into *K* groups.
+::: incremental
+1.  [**K-Means Method**]{style="color:pink;"}. We seek to divide the observations into *K* groups.
 
--   [**Hierarchical Clustering**]{style="color:darkpink;"}. We divide the *n* observations into 1 group, 2 groups, 3 groups, ..., up to *n* groups. We visualize the divisions using a graph called a **dendrogram**.
+2.  [**Hierarchical Clustering**]{style="color:darkpink;"}. We divide the *n* observations into 1 group, 2 groups, 3 groups, ..., up to *n* groups. We visualize the divisions using a graph called a **dendrogram**.
+:::
 
 ## Example 1
 
@@ -204,13 +207,17 @@ For this, the method requires two elements:
 
 . . .
 
-Good clustering is one in which observations within a group are close together and observations in different groups are far apart.
+[Good clustering is one in which observations within a group are close together and observations in different groups are far apart.]{style="color:#4682B4;"}
 
-## How do we measure the distance between observations?
+## Distance between observations
+
+</br>
 
 For quantitative predictors, we use the **Euclidean distance**.
 
-For example, if we have two predictors $X_1$ and $X_2$ with observations given in the table:
+For example, let's consider two predictors $X_1$ and $X_2$ with observations given in the table:
+
+</br>
 
 | Observation | $X_1$     | $X_2$     |
 |-------------|-----------|-----------|
@@ -229,7 +236,7 @@ $$d = \sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 }$$
 
 ## 
 
-We can extend the Euclidean distance to measure the distance between observations when we have more predictors. For example, with 3 predictors we have
+We can extend the Euclidean distance to measure the distance between observations when we have more predictors. For example, let's consider three predictors:
 
 | Observation | $X_1$     | $X_2$     | $X_3$     |
 |-------------|-----------|-----------|-----------|
@@ -238,7 +245,7 @@ We can extend the Euclidean distance to measure the distance between observation
 
 </br>
 
-Where the Euclidean distance is
+The Euclidean distance is
 
 $$d = \sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^2 }$$
 
@@ -252,9 +259,9 @@ $$d = \sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^
 
 -   This is not good since we want all predictors to have equal importance when calculating the Euclidean distance between two observations.
 
--   The solution is to **standardize** the units of the predictors.
+-   [The solution is to **standardize** the units of the predictors.]{style="color:darkgreen;"}
 
-## K-Means Algorithm
+## K-Means algorithm
 
 ::::::: center
 :::::: columns
@@ -291,13 +298,19 @@ X_penguins.head()
 
 ## Standarization
 
+</br>
+
 Since the K-means algorithm works with Euclidean distance, we must standardize the predictors before we start. In this way, all of them will be equally informative in the process.
+
+</br>
+
+We do this using the function `StandardScaler()` and `fit_transform()`.
 
 ```{python}
 #| output: true
 #| echo: true
 #| fig-align: center
-#| code-fold: true 
+#| code-fold: false 
 
 ## Standardize
 scaler = StandardScaler()
@@ -350,7 +363,7 @@ clustered_penguins = (X_penguins
               .assign(Cluster = clusters)
               )
 
-clustered_penguins.head()
+clustered_penguins.head(4)
 ```
 
 ## 
@@ -362,11 +375,11 @@ clustered_penguins.head()
 #| code-fold: true 
 
 plt.figure(figsize=(9, 6))
-sns.scatterplot(data = clustered_penguins, x = 'bill_length_mm', y = 'bill_depth_mm', 
+sns.scatterplot(data = clustered_penguins, y = 'bill_length_mm', x = 'bill_depth_mm', 
                 hue = 'Cluster', palette = 'Set1')
 plt.title('K-means Clustering of Penguins')
-plt.xlabel('Bill Length (mm)')
-plt.ylabel('Bill Depth (mm)')
+plt.ylabel('Bill Length (mm)')
+plt.xlabel('Bill Depth (mm)')
 plt.tight_layout()
 plt.show()
 ```
@@ -399,11 +412,11 @@ plt.show() # Display the plot.
 #| code-fold: false 
 
 plt.figure(figsize=(5, 5))
-sns.scatterplot(data = clustered_penguins, x = 'bill_length_mm', y = 'bill_depth_mm', 
+sns.scatterplot(data = clustered_penguins, y = 'bill_length_mm', x = 'bill_depth_mm', 
                 hue = 'Cluster', palette = 'Set1')
 plt.title('K-means Clustering of Penguins')
-plt.xlabel('Bill Length (mm)')
-plt.ylabel('Bill Depth (mm)')
+plt.ylabel('Bill Length (mm)')
+plt.xlabel('Bill Depth (mm)')
 plt.tight_layout()
 plt.show()
 ```
@@ -416,7 +429,7 @@ plt.show()
 #| fig-align: center
 #| code-fold: false 
 
-plt.figure(figsize=(6, 6))
+plt.figure(figsize=(5.6, 5.6))
 sns.scatterplot(data=penguins_data, x="bill_depth_mm", y="bill_length_mm",
                 hue="species", palette = 'Set1') # Define type of plot.
 plt.show() # Display the plot.
@@ -454,6 +467,8 @@ clustered_X = (X_penguins
 
 ## 
 
+</br>
+
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
@@ -464,10 +479,10 @@ clustered_X = (X_penguins
 #| code-fold: false 
 
 plt.figure(figsize=(5, 5))
-sns.scatterplot(data = clustered_X, x = 'bill_length_mm', y = 'bill_depth_mm', hue = 'Cluster', palette = 'Set1')
+sns.scatterplot(data = clustered_X, y = 'bill_length_mm', x = 'bill_depth_mm', hue = 'Cluster', palette = 'Set1')
 plt.title('K-means Clustering of Penguins')
-plt.xlabel('Bill Length (mm)')
-plt.ylabel('Bill Depth (mm)')
+plt.ylabel('Bill Length (mm)')
+plt.xlabel('Bill Depth (mm)')
 plt.tight_layout()
 plt.show()
 ```
@@ -480,7 +495,7 @@ plt.show()
 #| fig-align: center
 #| code-fold: false 
 
-plt.figure(figsize=(6, 6))
+plt.figure(figsize=(5.6, 5.6))
 sns.scatterplot(data=penguins_data, x="bill_depth_mm", y="bill_length_mm",
                 hue="species", palette = 'Set1') # Define type of plot.
 plt.show() # Display the plot.
@@ -517,7 +532,7 @@ Chinstrap
 
 </br>
 
-A simple way to determine the number of clusters is recording the quality of clustering for different numbers of clusters.
+A simple way to determine the number of clusters (*K*) is recording the quality of clustering for different numbers of clusters.
 
 In **sklearn**, we can record the [***inertia***]{style="color:#8B004F;"} of a partition into clusters. Technically, the inertia is the sum of squared distances of observations to their closest cluster center.
 
@@ -536,11 +551,12 @@ To record the intertias for different numbers of clusters, we use the code below
 #| code-fold: false 
 
 inertias = []
+k_max = 11 # Maximum number of clusters to test.
 
-for i in range(1,11):
-    kmeans = KMeans(n_clusters=i)
-    kmeans.fit(Xs_penguins)
-    inertias.append(kmeans.inertia_)
+for i in range(1,k_max):
+    kmeans = KMeans(n_clusters=i) # Define K-means.
+    kmeans.fit(Xs_penguins) # Fit K-means to data.
+    inertias.append(kmeans.inertia_) # Save the inertia.
 ```
 
 ## 
@@ -563,7 +579,7 @@ In this case, the number of clusters recommended by this *elbow* method is 3.
 #| code-fold: true 
 
 plt.figure(figsize=(6, 6))
-plt.plot(range(1,11), inertias, marker='o')
+plt.plot(range(1,k_max), inertias, marker='o')
 plt.title('Elbow method')
 plt.xlabel('Number of clusters')
 plt.ylabel('Inertia')

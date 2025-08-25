@@ -42,7 +42,7 @@
         "\n",
         "Before we start, let's import the data science libraries into Python.\n"
       ],
-      "id": "63dcd51b"
+      "id": "0ac2b450"
     },
     {
       "cell_type": "code",
@@ -60,7 +60,7 @@
         "from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay \n",
         "from sklearn.metrics import accuracy_score, recall_score, precision_score"
       ],
-      "id": "90eb564b",
+      "id": "c447b3d5",
       "execution_count": null,
       "outputs": []
     },
@@ -299,7 +299,7 @@
         "\n",
         "The data is located in the file \"banknotes.xlsx\".\n"
       ],
-      "id": "b9c22410"
+      "id": "c0c2a998"
     },
     {
       "cell_type": "code",
@@ -313,7 +313,7 @@
         "bank_data['Status'] = pd.Categorical(bank_data['Status'])\n",
         "bank_data.head()"
       ],
-      "id": "7b5fcb86",
+      "id": "25742dcf",
       "execution_count": null,
       "outputs": []
     },
@@ -337,7 +337,7 @@
         "\n",
         "We use the function `.filter()` from **pandas** to select two predictors: Top and Bottom.\n"
       ],
-      "id": "7efc2a1b"
+      "id": "deee142b"
     },
     {
       "cell_type": "code",
@@ -350,7 +350,7 @@
         "X_full = bank_data.filter(['Top', 'Bottom'])\n",
         "X_full.head(4)"
       ],
-      "id": "1ac1a333",
+      "id": "3114471b",
       "execution_count": null,
       "outputs": []
     },
@@ -362,7 +362,7 @@
         "\n",
         "We do the same to extract the column `Status` from the data frame. We store the result in `Y_full`.\n"
       ],
-      "id": "df65eb3b"
+      "id": "63cd6a2d"
     },
     {
       "cell_type": "code",
@@ -375,7 +375,7 @@
         "Y_full = bank_data['Status']\n",
         "Y_full.head(4)"
       ],
-      "id": "ce9975c6",
+      "id": "380f2740",
       "execution_count": null,
       "outputs": []
     },
@@ -387,7 +387,7 @@
         "\n",
         "To set the target category in the response we use the `get_dummies()` function.\n"
       ],
-      "id": "fab29779"
+      "id": "9fb4d6ec"
     },
     {
       "cell_type": "code",
@@ -405,7 +405,7 @@
         "# Show target variable.\n",
         "Y_target_full.head() "
       ],
-      "id": "ed3b2422",
+      "id": "56bcd4aa",
       "execution_count": null,
       "outputs": []
     },
@@ -417,7 +417,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "84d158cc"
+      "id": "79bae964"
     },
     {
       "cell_type": "code",
@@ -430,7 +430,7 @@
         "X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n",
         "                                                      test_size = 0.3, random_state=507134)"
       ],
-      "id": "5fd35a97",
+      "id": "4274898e",
       "execution_count": null,
       "outputs": []
     },
@@ -448,7 +448,7 @@
         "\n",
         "The predictors and response in the training dataset are in the objects `X_train` and `Y_train`, respectively. We compile these objects into a single dataset using the function `.concat()` from **pandas**. The argument `axis = 1` tells `.concat()` to concatenate the datasets by their rows.\n"
       ],
-      "id": "f82b9971"
+      "id": "da0ac2cc"
     },
     {
       "cell_type": "code",
@@ -460,7 +460,7 @@
         "training_dataset = pd.concat([X_train, Y_train], axis = 1)\n",
         "training_dataset.head(4)"
       ],
-      "id": "87d64928",
+      "id": "8bb8ec09",
       "execution_count": null,
       "outputs": []
     },
@@ -472,7 +472,7 @@
         "\n",
         "Equivalently, the predictors and response in the validation dataset are in the objects `X_valid` and `Y_valid`, respectively.\n"
       ],
-      "id": "f1c604e7"
+      "id": "236b6781"
     },
     {
       "cell_type": "code",
@@ -484,7 +484,7 @@
         "validation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\n",
         "validation_dataset.head()"
       ],
-      "id": "11352dc1",
+      "id": "9cf666a1",
       "execution_count": null,
       "outputs": []
     },
@@ -527,7 +527,7 @@
         "\n",
         "Stratify or segment the predictor space into several simpler regions.\n"
       ],
-      "id": "a8e8fdda"
+      "id": "18e6b8f3"
     },
     {
       "cell_type": "code",
@@ -570,7 +570,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "03781ef3",
+      "id": "61829a8e",
       "execution_count": null,
       "outputs": []
     },
@@ -586,7 +586,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "cfa106e0"
+      "id": "9aea2c12"
     },
     {
       "cell_type": "code",
@@ -629,7 +629,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "f195cbaf",
+      "id": "9625e4d2",
       "execution_count": null,
       "outputs": []
     },
@@ -683,7 +683,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "ae131008"
+      "id": "2f7f64de"
     },
     {
       "cell_type": "code",
@@ -718,7 +718,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "d7c88274",
+      "id": "c281e497",
       "execution_count": null,
       "outputs": []
     },
@@ -741,7 +741,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "ccef624a"
+      "id": "4260499f"
     },
     {
       "cell_type": "code",
@@ -776,7 +776,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "71e585fb",
+      "id": "8db35e76",
       "execution_count": null,
       "outputs": []
     },
@@ -799,7 +799,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "f6d8b423"
+      "id": "145aa6dc"
     },
     {
       "cell_type": "code",
@@ -834,7 +834,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "c45a317d",
+      "id": "6cd50fa9",
       "execution_count": null,
       "outputs": []
     },
@@ -857,7 +857,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "527076f6"
+      "id": "34a5b6e2"
     },
     {
       "cell_type": "code",
@@ -892,7 +892,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "210fa103",
+      "id": "940023da",
       "execution_count": null,
       "outputs": []
     },
@@ -915,7 +915,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "f1773e9e"
+      "id": "437c357e"
     },
     {
       "cell_type": "code",
@@ -950,7 +950,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "7499d802",
+      "id": "5b149bd6",
       "execution_count": null,
       "outputs": []
     },
@@ -973,7 +973,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "d51d1922"
+      "id": "5190e58c"
     },
     {
       "cell_type": "code",
@@ -1008,7 +1008,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "ed020d8c",
+      "id": "0ad75dfc",
       "execution_count": null,
       "outputs": []
     },
@@ -1031,7 +1031,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "2a728baa"
+      "id": "8f4a709c"
     },
     {
       "cell_type": "code",
@@ -1066,7 +1066,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "4a7bbc13",
+      "id": "57745573",
       "execution_count": null,
       "outputs": []
     },
@@ -1089,7 +1089,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "e3faeed2"
+      "id": "6cffbcbd"
     },
     {
       "cell_type": "code",
@@ -1124,7 +1124,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "1208929d",
+      "id": "1727694b",
       "execution_count": null,
       "outputs": []
     },
@@ -1147,7 +1147,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "0e9355f4"
+      "id": "690f821f"
     },
     {
       "cell_type": "code",
@@ -1182,7 +1182,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "97de6871",
+      "id": "5ef9344f",
       "execution_count": null,
       "outputs": []
     },
@@ -1205,7 +1205,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "39504417"
+      "id": "0422105c"
     },
     {
       "cell_type": "code",
@@ -1240,7 +1240,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "0c8befa8",
+      "id": "d0e95d34",
       "execution_count": null,
       "outputs": []
     },
@@ -1264,7 +1264,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "f4dd0316"
+      "id": "8794bde8"
     },
     {
       "cell_type": "code",
@@ -1300,7 +1300,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "cd33761c",
+      "id": "73ff9329",
       "execution_count": null,
       "outputs": []
     },
@@ -1324,7 +1324,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "b16188c3"
+      "id": "3c5a2be8"
     },
     {
       "cell_type": "code",
@@ -1360,7 +1360,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "4cbaa834",
+      "id": "c63783b0",
       "execution_count": null,
       "outputs": []
     },
@@ -1384,7 +1384,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "dbf21dc1"
+      "id": "1491384f"
     },
     {
       "cell_type": "code",
@@ -1420,7 +1420,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "70059f49",
+      "id": "73c9db5a",
       "execution_count": null,
       "outputs": []
     },
@@ -1444,7 +1444,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "9708f3d5"
+      "id": "b619716c"
     },
     {
       "cell_type": "code",
@@ -1480,7 +1480,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "b0259258",
+      "id": "dba81c58",
       "execution_count": null,
       "outputs": []
     },
@@ -1504,7 +1504,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "5851860d"
+      "id": "516cee9c"
     },
     {
       "cell_type": "code",
@@ -1544,7 +1544,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "2132dc65",
+      "id": "de23cf3e",
       "execution_count": null,
       "outputs": []
     },
@@ -1568,7 +1568,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "301dad19"
+      "id": "5ad17c67"
     },
     {
       "cell_type": "code",
@@ -1605,7 +1605,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "b26da8e9",
+      "id": "8c704131",
       "execution_count": null,
       "outputs": []
     },
@@ -1700,7 +1700,7 @@
         "\n",
         "In Python, we use the `DecisionTreeClassifier()` and `fit()` functions from **scikit-learn** to train a classification tree.\n"
       ],
-      "id": "3c749201"
+      "id": "d9978980"
     },
     {
       "cell_type": "code",
@@ -1716,7 +1716,7 @@
         "# We train the classification tree using the training data.\n",
         "clf.fit(X_train, Y_train)"
       ],
-      "id": "af179d30",
+      "id": "63d33fd0",
       "execution_count": null,
       "outputs": []
     },
@@ -1732,7 +1732,7 @@
         "\n",
         "To see the decision tree, we use the `plot_tree` function from **scikit-learn** and some commands from **matplotlib**. Specifically, we use the `plt.figure()` functions to define the size of the figure and `plt.show()` to display the figure.\n"
       ],
-      "id": "263acdb2"
+      "id": "88833e44"
     },
     {
       "cell_type": "code",
@@ -1746,7 +1746,7 @@
         "plot_tree(clf, filled=True, rounded=True)\n",
         "plt.show()"
       ],
-      "id": "8416e840",
+      "id": "fa4ad9f8",
       "execution_count": null,
       "outputs": []
     },
@@ -1758,7 +1758,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "158e3ea2"
+      "id": "871706bb"
     },
     {
       "cell_type": "code",
@@ -1772,7 +1772,7 @@
         "plot_tree(clf, filled=True, rounded=True)\n",
         "plt.show()"
       ],
-      "id": "017e797e",
+      "id": "4a3d88e7",
       "execution_count": null,
       "outputs": []
     },
@@ -1784,7 +1784,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "1dd4fd10"
+      "id": "2bcf2bfa"
     },
     {
       "cell_type": "code",
@@ -1822,7 +1822,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "d01fe87c",
+      "id": "657d79fb",
       "execution_count": null,
       "outputs": []
     },
@@ -1856,7 +1856,7 @@
         "\n",
         "Let $(\\hat{p}_0(\\boldsymbol{x}), \\hat{p}_1(\\boldsymbol{x}))$ be the estimated probabilities.\n"
       ],
-      "id": "6e4c97a0"
+      "id": "5d60c02c"
     },
     {
       "cell_type": "code",
@@ -1901,7 +1901,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "5d0dc200",
+      "id": "248a813d",
       "execution_count": null,
       "outputs": []
     },
@@ -1927,7 +1927,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "f5b13133"
+      "id": "cf5a448a"
     },
     {
       "cell_type": "code",
@@ -1967,7 +1967,7 @@
         "disp.ax_.set_title(\"Decision Boundary of Classification Tree\")\n",
         "plt.show()"
       ],
-      "id": "40720610",
+      "id": "2c30bfdf",
       "execution_count": null,
       "outputs": []
     },
@@ -1979,7 +1979,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "7f095290"
+      "id": "c17afe18"
     },
     {
       "cell_type": "code",
@@ -2022,7 +2022,7 @@
         "disp.ax_.set_title(\"Decision Boundary of Logistic Regression\")\n",
         "plt.show()"
       ],
-      "id": "c8c8e207",
+      "id": "e4cd4c0f",
       "execution_count": null,
       "outputs": []
     },
@@ -2052,7 +2052,7 @@
         "\n",
         "In Python, we use the commands:\n"
       ],
-      "id": "8273ff51"
+      "id": "e81d56d1"
     },
     {
       "cell_type": "code",
@@ -2063,7 +2063,7 @@
         "# Predict classes.\n",
         "predicted_class = clf.predict(X_valid)"
       ],
-      "id": "38e61fe7",
+      "id": "55d7e536",
       "execution_count": null,
       "outputs": []
     },
@@ -2077,7 +2077,7 @@
         "\n",
         "The `predict()` function generates actual classes to which each observation was assigned.\n"
       ],
-      "id": "abe1c994"
+      "id": "8efc3268"
     },
     {
       "cell_type": "code",
@@ -2088,7 +2088,7 @@
         "\n",
         "predicted_class"
       ],
-      "id": "09162438",
+      "id": "6ade398d",
       "execution_count": null,
       "outputs": []
     },
@@ -2100,7 +2100,7 @@
         "\n",
         "</br>\n"
       ],
-      "id": "387e1e5a"
+      "id": "18dfb272"
     },
     {
       "cell_type": "code",
@@ -2148,7 +2148,7 @@
         "disp.ax_.legend()\n",
         "plt.show()"
       ],
-      "id": "cce5f65a",
+      "id": "9cf6a67b",
       "execution_count": null,
       "outputs": []
     },
@@ -2160,7 +2160,7 @@
         "\n",
         "The `predict_proba()` function generates the probabilities used by the algorithm to assign the classes.\n"
       ],
-      "id": "2ae18eb7"
+      "id": "64a9abe6"
     },
     {
       "cell_type": "code",
@@ -2173,7 +2173,7 @@
         "predicted_probability = clf.predict_proba(X_valid)\n",
         "predicted_probability"
       ],
-      "id": "a8256c53",
+      "id": "6bd5f80d",
       "execution_count": null,
       "outputs": []
     },
@@ -2197,7 +2197,7 @@
         "\n",
         "We calculate the confusion matrix using the homonymous function **scikit-learn**.\n"
       ],
-      "id": "937a3247"
+      "id": "41d1aec8"
     },
     {
       "cell_type": "code",
@@ -2212,7 +2212,7 @@
         "# Show confusion matrix.\n",
         "print(cm)"
       ],
-      "id": "98095899",
+      "id": "e1d030da",
       "execution_count": null,
       "outputs": []
     },
@@ -2226,7 +2226,7 @@
         "\n",
         "We can display the confusion matrix using the `ConfusionMatrixDisplay()` function.\n"
       ],
-      "id": "49bef95a"
+      "id": "91089fa8"
     },
     {
       "cell_type": "code",
@@ -2238,7 +2238,7 @@
         "\n",
         "ConfusionMatrixDisplay(cm).plot()"
       ],
-      "id": "799a0716",
+      "id": "9d156e73",
       "execution_count": null,
       "outputs": []
     },
@@ -2254,7 +2254,7 @@
         "\n",
         "In Python, we calculate accuracy using the **scikit-learn** `accuracy_score()` function.\n"
       ],
-      "id": "b300a65d"
+      "id": "5c23e11c"
     },
     {
       "cell_type": "code",
@@ -2266,7 +2266,7 @@
         "accuracy = accuracy_score(Y_valid, predicted_class)\n",
         "print( round(accuracy, 2) )"
       ],
-      "id": "71418ea5",
+      "id": "7225894d",
       "execution_count": null,
       "outputs": []
     },
@@ -2290,7 +2290,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "9fa98b94"
+      "id": "01e37d92"
     },
     {
       "cell_type": "code",
@@ -2333,7 +2333,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "b1a899cf",
+      "id": "dbe1fae2",
       "execution_count": null,
       "outputs": []
     },
@@ -2357,7 +2357,7 @@
         "::::: columns\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "9744404c"
+      "id": "ba643ee6"
     },
     {
       "cell_type": "code",
@@ -2399,7 +2399,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "2b4f82dd",
+      "id": "9078b816",
       "execution_count": null,
       "outputs": []
     },
@@ -2441,7 +2441,7 @@
         "\n",
         "In Python, this is achieved using the `cost_complexity_pruning_path()` function with the following syntax.\n"
       ],
-      "id": "b469ca37"
+      "id": "fd259fd6"
     },
     {
       "cell_type": "code",
@@ -2453,7 +2453,7 @@
         "path = clf.cost_complexity_pruning_path(X_train, Y_train)\n",
         "ccp_alphas = path.ccp_alphas"
       ],
-      "id": "164a6a39",
+      "id": "c15af85a",
       "execution_count": null,
       "outputs": []
     },
@@ -2467,7 +2467,7 @@
         "\n",
         "The `ccp_alphas` object contains the different values of $\\alpha$ used. To train a decision tree using different $\\alpha$ values, we use the following code that iterates over the values contained in `ccp_alphas`.\n"
       ],
-      "id": "7bb05910"
+      "id": "9ebbab2e"
     },
     {
       "cell_type": "code",
@@ -2483,7 +2483,7 @@
         "    clf_alpha.fit(X_train, Y_train)\n",
         "    clfs.append(clf_alpha)"
       ],
-      "id": "73170b60",
+      "id": "6e2eec06",
       "execution_count": null,
       "outputs": []
     },
@@ -2497,7 +2497,7 @@
         "\n",
         "Now, for each of those trees contained in `clfs`, we evaluate the performance in terms of accuracy for the training and validation data.\n"
       ],
-      "id": "97b3ef93"
+      "id": "471c09f2"
     },
     {
       "cell_type": "code",
@@ -2509,7 +2509,7 @@
         "train_scores = [clf.score(X_train, Y_train) for clf in clfs]\n",
         "validation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]"
       ],
-      "id": "462b93d9",
+      "id": "4db3ef75",
       "execution_count": null,
       "outputs": []
     },
@@ -2523,7 +2523,7 @@
         "\n",
         "We visualize the results using the following plot.\n"
       ],
-      "id": "87f132a8"
+      "id": "92ed41bd"
     },
     {
       "cell_type": "code",
@@ -2543,7 +2543,7 @@
         "ax.legend()\n",
         "plt.show()"
       ],
-      "id": "604040b5",
+      "id": "144b6ed7",
       "execution_count": null,
       "outputs": []
     },
@@ -2559,7 +2559,7 @@
         "\n",
         "To train our new reduced tree, we use the `DecisionTreeClassifier()` function again with the `ccp_alpha` parameter set to the best $\\alpha$ value. The object containing this new tree is `clf_simple`.\n"
       ],
-      "id": "70772da3"
+      "id": "49939c81"
     },
     {
       "cell_type": "code",
@@ -2574,7 +2574,7 @@
         "# We train the classification tree using the training data.\n",
         "clf_simple.fit(X_train, Y_train)"
       ],
-      "id": "4ed5c9da",
+      "id": "6e1ce02f",
       "execution_count": null,
       "outputs": []
     },
@@ -2586,7 +2586,7 @@
         "\n",
         "Once this is done, we can visualize the small tree using the `plot_tree()` function.\n"
       ],
-      "id": "70f72a37"
+      "id": "d6928c5f"
     },
     {
       "cell_type": "code",
@@ -2600,7 +2600,7 @@
         "plot_tree(clf_simple, filled=True, rounded=True)\n",
         "plt.show()"
       ],
-      "id": "71e46758",
+      "id": "1039f194",
       "execution_count": null,
       "outputs": []
     },
@@ -2614,7 +2614,7 @@
         "\n",
         "The accuracy of the pruned tree is:\n"
       ],
-      "id": "274af17e"
+      "id": "aa4fb88f"
     },
     {
       "cell_type": "code",
@@ -2627,7 +2627,7 @@
         "accuracy = accuracy_score(Y_valid, single_tree_Y_pred)\n",
         "print( round(accuracy, 2) )"
       ],
-      "id": "497bc56b",
+      "id": "ec058504",
       "execution_count": null,
       "outputs": []
     },
@@ -2709,7 +2709,7 @@
         "\n",
         "In Python, we compute sensitivity and precision using the following commands:\n"
       ],
-      "id": "ec048c0d"
+      "id": "c724ef1f"
     },
     {
       "cell_type": "code",
@@ -2721,7 +2721,7 @@
         "recall = recall_score(Y_valid, predicted_class)\n",
         "print( round(recall, 2) )"
       ],
-      "id": "414094fc",
+      "id": "a160462b",
       "execution_count": null,
       "outputs": []
     },
@@ -2731,7 +2731,7 @@
       "source": [
         "</br>\n"
       ],
-      "id": "c2895040"
+      "id": "6b3cd752"
     },
     {
       "cell_type": "code",
@@ -2743,7 +2743,7 @@
         "precision = precision_score(Y_valid, predicted_class)\n",
         "print( round(precision, 2) )"
       ],
-      "id": "d4ff7b9d",
+      "id": "eb57a227",
       "execution_count": null,
       "outputs": []
     },
@@ -2763,7 +2763,7 @@
         "\n",
         "Unfortunately, there is no simple command to calculate the type-I error in **sklearn**. To overcome this issue, we must calculate it manually.\n"
       ],
-      "id": "e93eb7ec"
+      "id": "b79aa9a8"
     },
     {
       "cell_type": "code",
@@ -2779,7 +2779,7 @@
         "type_I_error = fp / (fp + tn)\n",
         "print( round(type_I_error, 2) )"
       ],
-      "id": "6b657d8e",
+      "id": "6526529c",
       "execution_count": null,
       "outputs": []
     },
@@ -2807,7 +2807,7 @@
         "\n",
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
       ],
-      "id": "6194f623"
+      "id": "b4df56db"
     }
   ],
   "metadata": {

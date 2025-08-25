@@ -39,7 +39,7 @@
         "\n",
         "Before we start, let's import the data science libraries into Python.\n"
       ],
-      "id": "e1c0d8b8"
+      "id": "48c4226b"
     },
     {
       "cell_type": "code",
@@ -55,7 +55,7 @@
         "from sklearn.preprocessing import StandardScaler\n",
         "from sklearn.decomposition import PCA"
       ],
-      "id": "c7b0c139",
+      "id": "1011da38",
       "execution_count": null,
       "outputs": []
     },
@@ -457,7 +457,7 @@
         "\n",
         "## The data\n"
       ],
-      "id": "f21c4aea"
+      "id": "76d7fea8"
     },
     {
       "cell_type": "code",
@@ -469,7 +469,7 @@
         "tiktok_data = pd.read_excel(\"TikTok_Songs_2020_Reduced.xlsx\")\n",
         "tiktok_data.head()"
       ],
-      "id": "b831fcc2",
+      "id": "c3ea32a8",
       "execution_count": null,
       "outputs": []
     },
@@ -483,7 +483,7 @@
         "\n",
         "Remember that PCA works with distances, so we must standardize the quantitative predictors to have an accurate analysis.\n"
       ],
-      "id": "78dc5c52"
+      "id": "58c0691f"
     },
     {
       "cell_type": "code",
@@ -501,7 +501,7 @@
         "scaler = StandardScaler()\n",
         "Xs_tiktok = scaler.fit_transform(X_tiktok)"
       ],
-      "id": "54711f58",
+      "id": "8480be14",
       "execution_count": null,
       "outputs": []
     },
@@ -515,7 +515,7 @@
         "\n",
         "We tell Python that we want to apply PCA using the function `PCA()` from **sklearn**. Next, we run the algorithm using `.fit_transform()`.\n"
       ],
-      "id": "588c5be1"
+      "id": "1287a26b"
     },
     {
       "cell_type": "code",
@@ -527,7 +527,7 @@
         "pca = PCA()\n",
         "PCA_tiktok = pca.fit_transform(Xs_tiktok)"
       ],
-      "id": "3162bb02",
+      "id": "a1057b59",
       "execution_count": null,
       "outputs": []
     },
@@ -549,7 +549,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "646b5083"
+      "id": "83bb0a40"
     },
     {
       "cell_type": "code",
@@ -571,7 +571,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "7c31b71c",
+      "id": "544b036c",
       "execution_count": null,
       "outputs": []
     },
@@ -589,7 +589,7 @@
         "\n",
         "The code to generate a scree plot is below.\n"
       ],
-      "id": "8e44222c"
+      "id": "ecc9aa4c"
     },
     {
       "cell_type": "code",
@@ -612,7 +612,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "523a78d8",
+      "id": "ad5471a2",
       "execution_count": null,
       "outputs": []
     },
@@ -632,7 +632,7 @@
         "\n",
         "::: {.column width=\"50%\"}"
       ],
-      "id": "fb42ccf8"
+      "id": "fda43760"
     },
     {
       "cell_type": "code",
@@ -665,7 +665,7 @@
         "plt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n",
         "plt.show()"
       ],
-      "id": "b96284e8",
+      "id": "d3580444",
       "execution_count": null,
       "outputs": []
     },
@@ -683,7 +683,7 @@
         "\n",
         "Step 1. Create a DataFrame with the PCA results\n"
       ],
-      "id": "976f52c7"
+      "id": "7e20645f"
     },
     {
       "cell_type": "code",
@@ -696,7 +696,7 @@
         "pca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\n",
         "pca_df.head()"
       ],
-      "id": "f0c2004a",
+      "id": "9a851f95",
       "execution_count": null,
       "outputs": []
     },
@@ -708,7 +708,7 @@
         "\n",
         "Step 2. Create biplot of first two principal components\n"
       ],
-      "id": "1b11d6f5"
+      "id": "684d15b8"
     },
     {
       "cell_type": "code",
@@ -730,7 +730,7 @@
         "plt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n",
         "plt.show()"
       ],
-      "id": "2d580ad1",
+      "id": "815f3a7d",
       "execution_count": null,
       "outputs": []
     },
@@ -742,7 +742,7 @@
         "\n",
         "Step 3. Add more information to the biplot.\n"
       ],
-      "id": "9cc88497"
+      "id": "4e169e87"
     },
     {
       "cell_type": "code",
@@ -772,7 +772,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "54bdc44d",
+      "id": "f41999ea",
       "execution_count": null,
       "outputs": []
     },
@@ -784,7 +784,7 @@
         "\n",
         "With some extra lines of code, we label the points in the plot.\n"
       ],
-      "id": "966970b5"
+      "id": "62dc8c66"
     },
     {
       "cell_type": "code",
@@ -825,7 +825,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "57309bc5",
+      "id": "3258b3de",
       "execution_count": null,
       "outputs": []
     },
@@ -835,7 +835,7 @@
       "source": [
         "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
       ],
-      "id": "3d8b747e"
+      "id": "1b88bf1c"
     }
   ],
   "metadata": {
