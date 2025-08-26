@@ -298,9 +298,19 @@ The $\mathbf{C}$ matrix is partitioned using the [*eigenvalue and eigenvector de
 
 ![](images/descomposition2.png)
 
--   The columns of $\mathbf{B}$ define the axes of the new coordinate system. These axes are called [***principal components***]{style="color:green;"}.
+-   The columns of $\mathbf{B}$ define the axes of the new coordinate system. These axes are called [***principal components (PCs)***]{style="color:green;"}.
+
+-   Technically, the *j*-th PC is $\mathbf{X} \mathbf{b}_j$ where $\mathbf{b}_j$is the *j*-th column of $\mathbf{B}$. 
+
+## 
+
+</br></br>
+
+![](images/descomposition2.png)
+
 
 -   The diagonal values in $\mathbf{A}$ define the individual importance of each principal component (axis).
+
 
 ## Proportion of the dispersion explained by the component
 
@@ -322,7 +332,9 @@ $$\mathbf{A} = \begin{pmatrix}
 </br></br>
 
 ::: {style="font-size: 90%;"}
-The proportion of the dispersion in the data that is captured by the first component is $\frac{a_{1,1}}{p} = \frac{1.60}{3} = 0.53$.
+The proportion of the dispersion in the data that is captured by the first component is $\frac{a_{1,1}}{p} = \frac{1.60}{3} = 0.53$ or 53%.
+
+- Recall that $p$ is the number of predictors.
 :::
 ::::
 :::::::
@@ -348,9 +360,9 @@ $$\mathbf{A} = \begin{pmatrix}
 </br></br>
 
 ::: {style="font-size: 90%;"}
-The proportion captured by the second component is $\frac{a_{2,2}}{p} = \frac{1.07}{3} = 0.36$.
+The proportion captured by the second component is $\frac{a_{2,2}}{p} = \frac{1.07}{3} = 0.36$ or 36%.
 
-The proportion captured by the third component is $\frac{a_{3,3}}{p} = \frac{0.33}{3} = 0.11.$
+The proportion captured by the third component is $\frac{a_{3,3}}{p} = \frac{0.33}{3} = 0.11$ or 11%.
 :::
 ::::
 :::::::
@@ -416,7 +428,7 @@ $$\approx \begin{pmatrix}
 
 </br>
 
-Consider a database of the 100 most popular songs on TikTok. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:
+Consider a database of the 100 most popular songs on TikTok in 2020. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:
 
 -   Danceability describes how suitable a track is for dancing based on a combination of musical elements.
 

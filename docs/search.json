@@ -1775,21 +1775,21 @@
     "href": "Module4/PCA.slides.html#section-3",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "The columns of \\(\\mathbf{B}\\) define the axes of the new coordinate system. These axes are called principal components.\nThe diagonal values in \\(\\mathbf{A}\\) define the individual importance of each principal component (axis)."
+    "text": "The columns of \\(\\mathbf{B}\\) define the axes of the new coordinate system. These axes are called principal components (PCs).\nTechnically, the j-th PC is \\(\\mathbf{X} \\mathbf{b}_j\\) where \\(\\mathbf{b}_j\\)is the j-th column of \\(\\mathbf{B}\\)."
   },
   {
     "objectID": "Module4/PCA.slides.html#proportion-of-the-dispersion-explained-by-the-component",
     "href": "Module4/PCA.slides.html#proportion-of-the-dispersion-explained-by-the-component",
     "title": "Principal Component Analysis",
     "section": "Proportion of the dispersion explained by the component",
-    "text": "Proportion of the dispersion explained by the component\n\n\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion of the dispersion in the data that is captured by the first component is \\(\\frac{a_{1,1}}{p} = \\frac{1.60}{3} = 0.53\\)."
+    "text": "Proportion of the dispersion explained by the component\n\n\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion of the dispersion in the data that is captured by the first component is \\(\\frac{a_{1,1}}{p} = \\frac{1.60}{3} = 0.53\\) or 53%.\n\nRecall that \\(p\\) is the number of predictors."
   },
   {
     "objectID": "Module4/PCA.slides.html#section-4",
     "href": "Module4/PCA.slides.html#section-4",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion captured by the second component is \\(\\frac{a_{2,2}}{p} = \\frac{1.07}{3} = 0.36\\).\nThe proportion captured by the third component is \\(\\frac{a_{3,3}}{p} = \\frac{0.33}{3} = 0.11.\\)"
+    "text": "The diagonal values in \\(\\mathbf{A}\\) define the individual importance of each principal component (axis)."
   },
   {
     "objectID": "Module4/PCA.slides.html#comments",
@@ -1803,21 +1803,21 @@
     "href": "Module4/PCA.slides.html#section-5",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Approximations are useful for storing large matrices.\nThis is because we only need to store the largest eigenvalues and their corresponding eigenvectors to recover a high-quality approximation of the entire matrix.\nThis is the idea behind image compression."
+    "text": "\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion captured by the second component is \\(\\frac{a_{2,2}}{p} = \\frac{1.07}{3} = 0.36\\) or 36%.\nThe proportion captured by the third component is \\(\\frac{a_{3,3}}{p} = \\frac{0.33}{3} = 0.11\\) or 11%."
   },
   {
     "objectID": "Module4/PCA.slides.html#example",
     "href": "Module4/PCA.slides.html#example",
     "title": "Principal Component Analysis",
     "section": "Example",
-    "text": "Example\n\nConsider a database of the 100 most popular songs on TikTok. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:\n\nDanceability describes how suitable a track is for dancing based on a combination of musical elements.\nEnergy is a measure from 0 to 1 and represents a perceptual measure of intensity and activity.\nThe overall volume of a track in decibels (dB). Loudness values are averaged across the entire track."
+    "text": "Example\n\nConsider a database of the 100 most popular songs on TikTok in 2020. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:\n\nDanceability describes how suitable a track is for dancing based on a combination of musical elements.\nEnergy is a measure from 0 to 1 and represents a perceptual measure of intensity and activity.\nThe overall volume of a track in decibels (dB). Loudness values are averaged across the entire track."
   },
   {
     "objectID": "Module4/PCA.slides.html#section-6",
     "href": "Module4/PCA.slides.html#section-6",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Other predictors are:\n\nSpeech detects the presence of spoken words in a track. The more exclusively speech-like the recording is.\nA confidence measure from 0 to 1 about whether the track is acoustic.\nDetects the presence of an audience in the recording.\nA measure from 0 to 1 that describes the musical positivity a track conveys."
+    "text": "Approximations are useful for storing large matrices.\nThis is because we only need to store the largest eigenvalues and their corresponding eigenvectors to recover a high-quality approximation of the entire matrix.\nThis is the idea behind image compression."
   },
   {
     "objectID": "Module4/PCA.slides.html#the-data",
@@ -1845,14 +1845,14 @@
     "href": "Module4/PCA.slides.html#section-7",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "The Scree or Summary Plot tells you the variability captured by each component. From 1 to 8 components.\nThe first component covers most of the data dispersion.\nThis graph is used to define the total number of components to use."
+    "text": "Other predictors are:\n\nSpeech detects the presence of spoken words in a track. The more exclusively speech-like the recording is.\nA confidence measure from 0 to 1 about whether the track is acoustic.\nDetects the presence of an audience in the recording.\nA measure from 0 to 1 that describes the musical positivity a track conveys."
   },
   {
     "objectID": "Module4/PCA.slides.html#section-8",
     "href": "Module4/PCA.slides.html#section-8",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "The code to generate a scree plot is below.\n\nexplained_var = pca.explained_variance_ratio_\n\nplt.figure(figsize=(5, 5))\nplt.plot(range(1, len(explained_var) + 1), explained_var, \n         marker='o', linestyle='-')\nplt.title('Scree Plot')\nplt.xlabel('Principal Component')\nplt.ylabel('Explained Variance Ratio')\nplt.xticks(range(1, len(explained_var) + 1))\nplt.grid(True)\nplt.tight_layout()\nplt.show()"
+    "text": "The Scree or Summary Plot tells you the variability captured by each component. From 1 to 8 components.\nThe first component covers most of the data dispersion.\nThis graph is used to define the total number of components to use."
   },
   {
     "objectID": "Module4/PCA.slides.html#biplot",
@@ -1866,28 +1866,28 @@
     "href": "Module4/PCA.slides.html#section-9",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "The code to generate the biplot is lenghty but it can be broken into three steps.\nStep 1. Create a DataFrame with the PCA results\n\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df.head()\n\n\n\n\n\n\n\n\nPC1\nPC2\nPC3\nPC4\nPC5\nPC6\nPC7\nPC8\n\n\n\n\n0\n1.103065\n0.558086\n-0.800688\n0.446496\n0.605944\n-0.044089\n0.287325\n-0.413604\n\n\n1\n0.805080\n-0.766973\n1.580513\n-2.215856\n0.359655\n0.708123\n-0.882761\n0.113058\n\n\n2\n1.330433\n0.728161\n-0.288982\n0.376298\n0.786185\n-1.134308\n0.178388\n-0.242497\n\n\n3\n1.496277\n2.095014\n1.351398\n-0.621691\n0.390949\n0.494101\n0.024648\n-0.080720\n\n\n4\n-1.973362\n-0.966108\n-0.302071\n-1.266269\n0.414639\n-0.335677\n-0.076711\n-0.140126"
+    "text": "The code to generate a scree plot is below.\n\nexplained_var = pca.explained_variance_ratio_\n\nplt.figure(figsize=(5, 5))\nplt.plot(range(1, len(explained_var) + 1), explained_var, \n         marker='o', linestyle='-')\nplt.title('Scree Plot')\nplt.xlabel('Principal Component')\nplt.ylabel('Explained Variance Ratio')\nplt.xticks(range(1, len(explained_var) + 1))\nplt.grid(True)\nplt.tight_layout()\nplt.show()"
   },
   {
     "objectID": "Module4/PCA.slides.html#section-10",
     "href": "Module4/PCA.slides.html#section-10",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Step 2. Create biplot of first two principal components\n\n\nCode\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.show()"
+    "text": "The code to generate the biplot is lenghty but it can be broken into three steps.\nStep 1. Create a DataFrame with the PCA results\n\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df.head()\n\n\n\n\n\n\n\n\nPC1\nPC2\nPC3\nPC4\nPC5\nPC6\nPC7\nPC8\n\n\n\n\n0\n1.103065\n0.558086\n-0.800688\n0.446496\n0.605944\n-0.044089\n0.287325\n-0.413604\n\n\n1\n0.805080\n-0.766973\n1.580513\n-2.215856\n0.359655\n0.708123\n-0.882761\n0.113058\n\n\n2\n1.330433\n0.728161\n-0.288982\n0.376298\n0.786185\n-1.134308\n0.178388\n-0.242497\n\n\n3\n1.496277\n2.095014\n1.351398\n-0.621691\n0.390949\n0.494101\n0.024648\n-0.080720\n\n\n4\n-1.973362\n-0.966108\n-0.302071\n-1.266269\n0.414639\n-0.335677\n-0.076711\n-0.140126"
   },
   {
     "objectID": "Module4/PCA.slides.html#section-11",
     "href": "Module4/PCA.slides.html#section-11",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "Step 3. Add more information to the biplot.\n\n\nCode\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
+    "text": "Step 2. Create biplot of first two principal components\n\n\nCode\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.show()"
   },
   {
     "objectID": "Module4/PCA.slides.html#section-12",
     "href": "Module4/PCA.slides.html#section-12",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "With some extra lines of code, we label the points in the plot.\n\n\nCode\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df = (pca_df\n          .assign(songs = tiktok_data['track_name'])\n          )\n\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add labels for each song\nfor i in range(pca_df.shape[0]):\n    plt.text(pca_df['PC1'][i] + 0.1, pca_df['PC2'][i] + 0.1,\n             pca_df['songs'][i], fontsize=8, alpha=0.7)\n\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
+    "text": "Step 3. Add more information to the biplot.\n\n\nCode\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
   },
   {
     "objectID": "Tools/Tools1.slides.html#agenda",
@@ -4040,5 +4040,12 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module4/PCA.slides.html#section-13",
+    "href": "Module4/PCA.slides.html#section-13",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "With some extra lines of code, we label the points in the plot.\n\n\nCode\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df = (pca_df\n          .assign(songs = tiktok_data['track_name'])\n          )\n\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add labels for each song\nfor i in range(pca_df.shape[0]):\n    plt.text(pca_df['PC1'][i] + 0.1, pca_df['PC2'][i] + 0.1,\n             pca_df['songs'][i], fontsize=8, alpha=0.7)\n\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
   }
 ]
