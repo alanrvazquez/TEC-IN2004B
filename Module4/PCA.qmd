@@ -30,6 +30,8 @@ jupyter: python3
 
 ## Load the libraries
 
+</br></br>
+
 Before we start, let's import the data science libraries into Python.
 
 ```{python}
@@ -410,7 +412,7 @@ $$\approx \begin{pmatrix}
 ::::::
 :::::::
 
-## Example 1
+## Example
 
 </br>
 
@@ -443,7 +445,7 @@ Other predictors are:
 #| echo: true
 
 tiktok_data = pd.read_excel("TikTok_Songs_2020_Reduced.xlsx")
-tiktok_data.head()
+tiktok_data.head(3)
 ```
 
 ## Standardize the data
@@ -485,7 +487,10 @@ PCA_tiktok = pca.fit_transform(Xs_tiktok)
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
--   The **Screen or Summary Plot** tells you the variability captured by each component. This variability is given by the *Eigenvalue*. From 1 to 8 components.
+
+</br>
+
+-   The ***Scree* or Summary Plot** tells you the variability captured by each component. From 1 to 8 components.
 
 -   The first component covers most of the data dispersion.
 
@@ -493,6 +498,9 @@ PCA_tiktok = pca.fit_transform(Xs_tiktok)
 :::
 
 ::: {.column width="50%"}
+
+</br></br>
+
 ```{python}
 #| output: true
 #| echo: false
@@ -544,8 +552,8 @@ plt.show()
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
--   Displays the graphical observations on the new coordinate axis given by the first two components.
--   Helps visualize data for three or more predictors using a two-dimensional scatter plot.
+-   Displays the observations on the new coordinate axis given by the first two components.
+-   Helps visualize data for 3 or more predictors using a two-dimensional scatter plot.
 -   A red line indicates the growth direction of the labeled variable.
 :::
 
