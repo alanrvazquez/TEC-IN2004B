@@ -1397,7 +1397,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 26 Aug 2025   AIC                             11.074\nTime:                        11:48:33   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 26 Aug 2025   AIC                             11.074\nTime:                        12:39:39   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
@@ -1579,7 +1579,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 26 Aug 2025   AIC                            756.482\nTime:                                   11:48:34   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 26 Aug 2025   AIC                            756.482\nTime:                                   12:39:41   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -1778,13 +1778,6 @@
     "text": "The columns of \\(\\mathbf{B}\\) define the axes of the new coordinate system. These axes are called principal components (PCs).\nTechnically, the j-th PC is \\(\\mathbf{X} \\mathbf{b}_j\\) where \\(\\mathbf{b}_j\\)is the j-th column of \\(\\mathbf{B}\\)."
   },
   {
-    "objectID": "Module4/PCA.slides.html#proportion-of-the-dispersion-explained-by-the-component",
-    "href": "Module4/PCA.slides.html#proportion-of-the-dispersion-explained-by-the-component",
-    "title": "Principal Component Analysis",
-    "section": "Proportion of the dispersion explained by the component",
-    "text": "Proportion of the dispersion explained by the component\n\n\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion of the dispersion in the data that is captured by the first component is \\(\\frac{a_{1,1}}{p} = \\frac{1.60}{3} = 0.53\\) or 53%.\n\nRecall that \\(p\\) is the number of predictors."
-  },
-  {
     "objectID": "Module4/PCA.slides.html#section-4",
     "href": "Module4/PCA.slides.html#section-4",
     "title": "Principal Component Analysis",
@@ -1792,11 +1785,11 @@
     "text": "The diagonal values in \\(\\mathbf{A}\\) define the individual importance of each principal component (axis)."
   },
   {
-    "objectID": "Module4/PCA.slides.html#comments",
-    "href": "Module4/PCA.slides.html#comments",
+    "objectID": "Module4/PCA.slides.html#proportion-of-the-dispersion-explained-by-the-component",
+    "href": "Module4/PCA.slides.html#proportion-of-the-dispersion-explained-by-the-component",
     "title": "Principal Component Analysis",
-    "section": "Comments",
-    "text": "Comments\n\nPrincipal components can be used to approximate a matrix.\nFor example, we can approximate the matrix \\(\\mathbf{C}\\) by setting the third component equal to zero.\n\n\\[\\begin{pmatrix}\n-0.68   &   0.35    &   0.00    \\\\\n-0.72   &   -0.13   &   0.00    \\\\\n0.16    &   0.93    &   0.00\\\\\n\\end{pmatrix} \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.00    \\\\\n\\end{pmatrix} \\begin{pmatrix}\n-0.68   &   -0.72   &   0.16    \\\\\n0.35    &   -0.13   &   0.93    \\\\\n0.00    &   0.00    &   0.00    \\\\\n\\end{pmatrix} = \\begin{pmatrix}\n0.86    &   0.73    &   0.18    \\\\\n0.73    &   0.85    &   -0.30   \\\\\n0.18    &   -0.30   &   0.96    \\\\\n\\end{pmatrix}\\]\n\n\n\\[\\approx \\begin{pmatrix}\n1.00    &   0.58    &   0.11    \\\\\n0.58    &   1.00    &   -0.23   \\\\\n0.11    &   -0.23   &   1.00    \\\\\n\\end{pmatrix} = \\mathbf{C}\\]"
+    "section": "Proportion of the dispersion explained by the component",
+    "text": "Proportion of the dispersion explained by the component\n\n\n\n\n\n\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion of the dispersion in the data that is captured by the first component is \\(\\frac{a_{1,1}}{p} = \\frac{1.60}{3} = 0.53\\) or 53%.\n\nRecall that \\(p\\) is the number of predictors."
   },
   {
     "objectID": "Module4/PCA.slides.html#section-5",
@@ -1806,11 +1799,11 @@
     "text": "\\[\\mathbf{A} = \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.33    \\\\\n\\end{pmatrix}\\]\n\n\n\n\nThe proportion captured by the second component is \\(\\frac{a_{2,2}}{p} = \\frac{1.07}{3} = 0.36\\) or 36%.\nThe proportion captured by the third component is \\(\\frac{a_{3,3}}{p} = \\frac{0.33}{3} = 0.11\\) or 11%."
   },
   {
-    "objectID": "Module4/PCA.slides.html#example",
-    "href": "Module4/PCA.slides.html#example",
+    "objectID": "Module4/PCA.slides.html#comments",
+    "href": "Module4/PCA.slides.html#comments",
     "title": "Principal Component Analysis",
-    "section": "Example",
-    "text": "Example\n\nConsider a database of the 100 most popular songs on TikTok in 2020. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:\n\nDanceability describes how suitable a track is for dancing based on a combination of musical elements.\nEnergy is a measure from 0 to 1 and represents a perceptual measure of intensity and activity.\nThe overall volume of a track in decibels (dB). Loudness values are averaged across the entire track."
+    "section": "Comments",
+    "text": "Comments\n\nPrincipal components can be used to approximate a matrix.\nFor example, we can approximate the matrix \\(\\mathbf{C}\\) by setting the third component equal to zero.\n\n\\[\\begin{pmatrix}\n-0.68   &   0.35    &   0.00    \\\\\n-0.72   &   -0.13   &   0.00    \\\\\n0.16    &   0.93    &   0.00\\\\\n\\end{pmatrix} \\begin{pmatrix}\n1.60     &  0.00    &   0.00    \\\\\n0.00     &  1.07     &  0.00    \\\\\n0.00     &  0.00     &  0.00    \\\\\n\\end{pmatrix} \\begin{pmatrix}\n-0.68   &   -0.72   &   0.16    \\\\\n0.35    &   -0.13   &   0.93    \\\\\n0.00    &   0.00    &   0.00    \\\\\n\\end{pmatrix} = \\begin{pmatrix}\n0.86    &   0.73    &   0.18    \\\\\n0.73    &   0.85    &   -0.30   \\\\\n0.18    &   -0.30   &   0.96    \\\\\n\\end{pmatrix}\\]\n\n\n\\[\\approx \\begin{pmatrix}\n1.00    &   0.58    &   0.11    \\\\\n0.58    &   1.00    &   -0.23   \\\\\n0.11    &   -0.23   &   1.00    \\\\\n\\end{pmatrix} = \\mathbf{C}\\]"
   },
   {
     "objectID": "Module4/PCA.slides.html#section-6",
@@ -1818,6 +1811,20 @@
     "title": "Principal Component Analysis",
     "section": "",
     "text": "Approximations are useful for storing large matrices.\nThis is because we only need to store the largest eigenvalues and their corresponding eigenvectors to recover a high-quality approximation of the entire matrix.\nThis is the idea behind image compression."
+  },
+  {
+    "objectID": "Module4/PCA.slides.html#example",
+    "href": "Module4/PCA.slides.html#example",
+    "title": "Principal Component Analysis",
+    "section": "Example",
+    "text": "Example\n\nConsider a database of the 100 most popular songs on TikTok in 2020. The data is in the file “TikTok 2020 reduced.xlsx”. There are observations of several predictors, such as:\n\nDanceability describes how suitable a track is for dancing based on a combination of musical elements.\nEnergy is a measure from 0 to 1 and represents a perceptual measure of intensity and activity.\nThe overall volume of a track in decibels (dB). Loudness values are averaged across the entire track."
+  },
+  {
+    "objectID": "Module4/PCA.slides.html#section-7",
+    "href": "Module4/PCA.slides.html#section-7",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "Other predictors are:\n\nSpeech detects the presence of spoken words in a track. The more exclusively speech-like the recording is.\nA confidence measure from 0 to 1 about whether the track is acoustic.\nDetects the presence of an audience in the recording.\nA measure from 0 to 1 that describes the musical positivity a track conveys."
   },
   {
     "objectID": "Module4/PCA.slides.html#the-data",
@@ -1841,13 +1848,6 @@
     "text": "PCA in Python\n\nWe tell Python that we want to apply PCA using the function PCA() from sklearn. Next, we run the algorithm using .fit_transform().\n\npca = PCA()\nPCA_tiktok = pca.fit_transform(Xs_tiktok)"
   },
   {
-    "objectID": "Module4/PCA.slides.html#section-7",
-    "href": "Module4/PCA.slides.html#section-7",
-    "title": "Principal Component Analysis",
-    "section": "",
-    "text": "Other predictors are:\n\nSpeech detects the presence of spoken words in a track. The more exclusively speech-like the recording is.\nA confidence measure from 0 to 1 about whether the track is acoustic.\nDetects the presence of an audience in the recording.\nA measure from 0 to 1 that describes the musical positivity a track conveys."
-  },
-  {
     "objectID": "Module4/PCA.slides.html#section-8",
     "href": "Module4/PCA.slides.html#section-8",
     "title": "Principal Component Analysis",
@@ -1855,18 +1855,18 @@
     "text": "The Scree or Summary Plot tells you the variability captured by each component. From 1 to 8 components.\nThe first component covers most of the data dispersion.\nThis graph is used to define the total number of components to use."
   },
   {
-    "objectID": "Module4/PCA.slides.html#biplot",
-    "href": "Module4/PCA.slides.html#biplot",
-    "title": "Principal Component Analysis",
-    "section": "Biplot",
-    "text": "Biplot\n\n\n\n\nDisplays the observations on the new coordinate axis given by the first two components.\nHelps visualize data for 3 or more predictors using a two-dimensional scatter plot.\nA red line indicates the growth direction of the labeled variable."
-  },
-  {
     "objectID": "Module4/PCA.slides.html#section-9",
     "href": "Module4/PCA.slides.html#section-9",
     "title": "Principal Component Analysis",
     "section": "",
     "text": "The code to generate a scree plot is below.\n\nexplained_var = pca.explained_variance_ratio_\n\nplt.figure(figsize=(5, 5))\nplt.plot(range(1, len(explained_var) + 1), explained_var, \n         marker='o', linestyle='-')\nplt.title('Scree Plot')\nplt.xlabel('Principal Component')\nplt.ylabel('Explained Variance Ratio')\nplt.xticks(range(1, len(explained_var) + 1))\nplt.grid(True)\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module4/PCA.slides.html#biplot",
+    "href": "Module4/PCA.slides.html#biplot",
+    "title": "Principal Component Analysis",
+    "section": "Biplot",
+    "text": "Biplot\n\n\n\n\nDisplays the observations on the new coordinate axis given by the first two components.\nHelps visualize data for 3 or more predictors using a two-dimensional scatter plot.\nA red line indicates the growth direction of the labeled variable."
   },
   {
     "objectID": "Module4/PCA.slides.html#section-10",
@@ -1888,6 +1888,13 @@
     "title": "Principal Component Analysis",
     "section": "",
     "text": "Step 3. Add more information to the biplot.\n\n\nCode\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
+  },
+  {
+    "objectID": "Module4/PCA.slides.html#section-13",
+    "href": "Module4/PCA.slides.html#section-13",
+    "title": "Principal Component Analysis",
+    "section": "",
+    "text": "With some extra lines of code, we label the points in the plot.\n\n\nCode\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df = (pca_df\n          .assign(songs = tiktok_data['track_name'])\n          )\n\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add labels for each song\nfor i in range(pca_df.shape[0]):\n    plt.text(pca_df['PC1'][i] + 0.1, pca_df['PC2'][i] + 0.1,\n             pca_df['songs'][i], fontsize=8, alpha=0.7)\n\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
   },
   {
     "objectID": "Tools/Tools1.slides.html#agenda",
@@ -4040,12 +4047,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module4/PCA.slides.html#section-13",
-    "href": "Module4/PCA.slides.html#section-13",
-    "title": "Principal Component Analysis",
-    "section": "",
-    "text": "With some extra lines of code, we label the points in the plot.\n\n\nCode\npca_df = pd.DataFrame(PCA_tiktok, columns=[f'PC{i+1}' for i in range(PCA_tiktok.shape[1])])\npca_df = (pca_df\n          .assign(songs = tiktok_data['track_name'])\n          )\n\nplt.figure(figsize=(10, 5.5))\nsns.scatterplot(x=pca_df['PC1'], y=pca_df['PC2'], alpha=0.7)\nplt.xlabel('PC1')\nplt.ylabel('PC2')\nplt.title('PCA Biplot')\nplt.grid(True)\nplt.tight_layout()\nplt.axhline(0, color='gray', linestyle='--', linewidth=0.5)\nplt.axvline(0, color='gray', linestyle='--', linewidth=0.5)\n\n# Add labels for each song\nfor i in range(pca_df.shape[0]):\n    plt.text(pca_df['PC1'][i] + 0.1, pca_df['PC2'][i] + 0.1,\n             pca_df['songs'][i], fontsize=8, alpha=0.7)\n\n\n# Add variable vectors\nloadings = pca.components_.T[:, :2]  # loadings for PC1 and PC2\nfor i, feature in enumerate(features):\n    plt.arrow(0, 0, loadings[i, 0]*3, loadings[i, 1]*3,\n              color='red', alpha=0.5, head_width=0.05)\n    plt.text(loadings[i, 0]*3.2, loadings[i, 1]*3.2, feature, color='red')\n\nplt.show()"
   }
 ]
