@@ -800,7 +800,67 @@ This line defines 5 groups.
 
 ## Dendrogram in Python
 
+</br></br>
+
 To produce a nice dendrogram in Python, we use the function `dendrogram` from **scipy**.
+
+```{python}
+#| output: false
+#| echo: true
+#| fig-align: center
+#| code-fold: false
+
+plt.figure(figsize=(8, 4))
+dendrogram(Clust_Cereal)
+plt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')
+plt.xlabel('Sample Index')
+plt.ylabel('Distance')
+plt.tight_layout()
+plt.show()
+```
+
+## 
+
+</br>
+
+```{python}
+#| output: true
+#| echo: false
+#| fig-align: center
+#| code-fold: true
+
+plt.figure(figsize=(12, 5))
+dendrogram(Clust_Cereal)
+plt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')
+plt.xlabel('Sample Index')
+plt.ylabel('Distance')
+plt.tight_layout()
+plt.show()
+```
+
+## Coloring clusters
+
+</br></br>
+
+The `dendrogram` function colors a specific number of groups by default, but we can alter this behavior and color two, three, or more groups. To this end, w must determine the threshold to cut the dendrogram using the code below.
+
+```{python}
+#| output: true
+#| echo: true
+#| fig-align: center
+#| code-fold: false
+
+# Define the number of clusters
+num_clusters = 4
+
+# Compute the color threshold to form exactly 3 clusters
+# Find the distance at which to cut the dendrogram
+distance_threshold = Clust_Cereal[-(num_clusters - 1), 2]
+```
+
+##
+
+We specify the threshold to *cut* the dendrogram and set the groups using the `color_threshold` argument in `dendrogram()`.
 
 ```{python}
 #| output: true
@@ -808,8 +868,8 @@ To produce a nice dendrogram in Python, we use the function `dendrogram` from **
 #| fig-align: center
 #| code-fold: true
 
-plt.figure(figsize=(8, 4))
-dendrogram(Clust_Cereal, color_threshold=None)
+plt.figure(figsize=(9, 4.5))
+dendrogram(Clust_Cereal, color_threshold = distance_threshold)
 plt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')
 plt.xlabel('Sample Index')
 plt.ylabel('Distance')

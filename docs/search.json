@@ -2776,7 +2776,7 @@
     "href": "Module4/Clustering.slides.html#dendrogram-in-python",
     "title": "Clustering Methods",
     "section": "Dendrogram in Python",
-    "text": "Dendrogram in Python\nTo produce a nice dendrogram in Python, we use the function dendrogram from scipy.\n\n\nCode\nplt.figure(figsize=(8, 4))\ndendrogram(Clust_Cereal, color_threshold=None)\nplt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')\nplt.xlabel('Sample Index')\nplt.ylabel('Distance')\nplt.tight_layout()\nplt.show()"
+    "text": "Dendrogram in Python\n\nTo produce a nice dendrogram in Python, we use the function dendrogram from scipy.\n\nplt.figure(figsize=(8, 4))\ndendrogram(Clust_Cereal)\nplt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')\nplt.xlabel('Sample Index')\nplt.ylabel('Distance')\nplt.tight_layout()\nplt.show()"
   },
   {
     "objectID": "Module4/Clustering.slides.html#comments-1",
@@ -4026,5 +4026,26 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module4/Clustering.slides.html#coloring-clusters",
+    "href": "Module4/Clustering.slides.html#coloring-clusters",
+    "title": "Clustering Methods",
+    "section": "Coloring clusters",
+    "text": "Coloring clusters\n\nThe dendrogram function colors a specific number of groups by default, but we can alter this behavior and color two, three, or more groups. To this end, w must determine the threshold to cut the dendrogram using the code below.\n\n# Define the number of clusters\nnum_clusters = 4\n\n# Compute the color threshold to form exactly 3 clusters\n# Find the distance at which to cut the dendrogram\ndistance_threshold = Clust_Cereal[-(num_clusters - 1), 2]"
+  },
+  {
+    "objectID": "Module4/Clustering.slides.html#section-14",
+    "href": "Module4/Clustering.slides.html#section-14",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "We specify the threshold to cut the dendrogram and set the groups using the color_threshold argument in dendrogram().\n\n\nCode\nplt.figure(figsize=(9, 4.5))\ndendrogram(Clust_Cereal, color_threshold = distance_threshold)\nplt.title('Hierarchical Clustering Dendrogram (Complete Linkage)')\nplt.xlabel('Sample Index')\nplt.ylabel('Distance')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "Module4/Clustering.slides.html#section-15",
+    "href": "Module4/Clustering.slides.html#section-15",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "With these methods, there is no single correct answer; any solution that exposes some interesting aspect of the data should be considered.\n\nJames et al. (2017)"
   }
 ]
