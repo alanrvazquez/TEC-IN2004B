@@ -223,7 +223,7 @@ Alan R. Vazquez
 <section id="load-the-libraries" class="slide level2">
 <h2>Load the libraries</h2>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="d6259fb1" class="cell" data-execution_count="1">
+<div id="925081b4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Importing necessary libraries</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -268,7 +268,7 @@ Alan R. Vazquez
 </ul>
 </div><div class="column" style="width:40%;">
 <p><br></p>
-<div id="d1ae38d1" class="cell" data-execution_count="2">
+<div id="95ea2f03" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -346,7 +346,7 @@ Alan R. Vazquez
 <section id="example-1" class="slide level2">
 <h2>Example 1</h2>
 <p>Let’s consider again the dataset in the file “Amtrak.xlsx.” The file contains records of Amtrak passenger numbers from January 1991 to March 2004.</p>
-<div id="65f5b441" class="cell" data-execution_count="3">
+<div id="41dd5249" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <style scoped="">
@@ -419,7 +419,7 @@ Alan R. Vazquez
 <section id="section" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="73b99b90" class="cell" data-execution_count="4">
+<div id="18863d08" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -442,7 +442,7 @@ Alan R. Vazquez
 <h2>Autocorrelation plot</h2>
 <p><br></p>
 <p>In Python, we use the <code>plot_acf</code> function from the <strong>statsmodels</strong> library.</p>
-<div id="10f8c7ea" class="cell" data-execution_count="5">
+<div id="65f2e9e5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb2-2"><a></a>plot_acf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
 <span id="cb2-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
@@ -454,7 +454,7 @@ Alan R. Vazquez
 <section id="the-resulting-plot" class="slide level2">
 <h2>The resulting plot</h2>
 <p><br></p>
-<div id="a9887404" class="cell" data-execution_count="6">
+<div id="b481ccb1" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -482,7 +482,7 @@ Alan R. Vazquez
 </div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
-<div id="0f09142f" class="cell" data-execution_count="7">
+<div id="84904283" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 384x384 with 0 Axes&gt;</code></pre>
 </div>
@@ -543,7 +543,7 @@ Alan R. Vazquez
 <li><p>The vertical axis shows the differences (or <em>lags</em>) between the periods considered, and the horizontal axis shows the partial correlations between observations at different lags.</p></li>
 </ul>
 <p>In Python, we use the <code>plot_pacf</code> function from <strong>statsmodels</strong>.</p>
-<div id="cb53d514" class="cell" data-execution_count="8">
+<div id="e10be779" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb5-2"><a></a>plot_pacf(Amtrak_data[<span class="st">'Ridership (in 000s)'</span>], lags <span class="op">=</span> <span class="dv">25</span>)</span>
 <span id="cb5-3"><a></a>plt.xlabel(<span class="st">"Lag"</span>)</span>
@@ -565,7 +565,7 @@ Alan R. Vazquez
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="9a4d82f0" class="cell" data-execution_count="9">
+<div id="99d8fc7c" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -625,7 +625,7 @@ Alan R. Vazquez
 <section id="example-2" class="slide level2">
 <h2>Example 2</h2>
 <p>We consider the time series “CanadianWorkHours.xlsx” that contains the average hours worked by a certain group of workers over a certain range of years.</p>
-<div id="49356c3c" class="cell" data-execution_count="10">
+<div id="336f7cec" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>CanadianWorkHours <span class="op">=</span> pd.read_excel(<span class="st">'CanadianWorkHours.xlsx'</span>)</span>
 <span id="cb7-2"><a></a>CanadianWorkHours.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -684,7 +684,7 @@ Alan R. Vazquez
 <h2>Creating a train and a validation data</h2>
 <p><br></p>
 <p>Recall that we would like to train the model on earlier time periods and test it on later ones. To this end, we make the split using the code below.</p>
-<div id="ba681fe9" class="cell" data-execution_count="11">
+<div id="35962067" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Define the split point</span></span>
 <span id="cb8-2"><a></a>split_ratio <span class="op">=</span> <span class="fl">0.8</span>  <span class="co"># 80% train, 20% test</span></span>
 <span id="cb8-3"><a></a>split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(CanadianWorkHours) <span class="op">*</span> split_ratio)</span>
@@ -697,7 +697,7 @@ Alan R. Vazquez
 </section>
 <section id="training-data" class="slide level2">
 <h2>Training data</h2>
-<div id="df9f2e6d" class="cell" data-execution_count="12">
+<div id="e330844c" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -722,14 +722,14 @@ Alan R. Vazquez
 <p>In <strong>statsmodels</strong>, we apply the integration operator using the pre-loaded <code>diff()</code> function. The function’s <code>k_diff</code> argument specifies the order or level of the operator.</p>
 <p><br></p>
 <p>First, let’s use a level-1 operator.</p>
-<div id="edc72ea2" class="cell" data-execution_count="13">
+<div id="2d5fa6eb" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>Z_series_one <span class="op">=</span> diff(Canadian_train[<span class="st">'Hours per Week'</span>], k_diff <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
 <p>The time series with a level-1 operator looks like this.</p>
-<div id="8d2c2380" class="cell" data-execution_count="14">
+<div id="cc4b62d7" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -750,10 +750,10 @@ Alan R. Vazquez
 <section id="section-8" class="slide level2">
 <h2></h2>
 <p>A level-2 operator would work like this.</p>
-<div id="904c4ade" class="cell" data-execution_count="15">
+<div id="43709e14" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>Z_series_two <span class="op">=</span> diff(Canadian_train[<span class="st">'Hours per Week'</span>], k_diff <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b184bb24" class="cell" data-execution_count="16">
+<div id="51a5673a" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
@@ -777,7 +777,7 @@ Alan R. Vazquez
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="8b4d422e" class="cell" data-execution_count="17">
+<div id="76c6e7da" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -787,7 +787,7 @@ Alan R. Vazquez
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="2223ec2e" class="cell" data-execution_count="18">
+<div id="5eba8d9d" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -839,7 +839,7 @@ Alan R. Vazquez
 <section id="section-10" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="eb6c7dfd" class="cell" data-execution_count="19">
+<div id="60caa02c" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
 </div>
@@ -855,7 +855,7 @@ Alan R. Vazquez
 <section id="section-11" class="slide level2">
 <h2></h2>
 <p>Using the PACF, we conclude that an autoregressive term of order 2 will be sufficient to capture the relationships between the elements of the series.</p>
-<div id="e17f0779" class="cell" data-execution_count="20">
+<div id="ea545a9d" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
 </div>
@@ -888,7 +888,7 @@ Alan R. Vazquez
 <section id="section-12" class="slide level2">
 <h2></h2>
 <p><span style="color:darkblue;"><em>Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.</em></span></p>
-<div id="cbda2128" class="cell" data-execution_count="21">
+<div id="8068586e" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
 </div>
@@ -945,7 +945,7 @@ Alan R. Vazquez
 <h2></h2>
 <p><br><br></p>
 <p>Once this is defined, we can train an ARIMA model using the training data with the following code:</p>
-<div id="22e7c35e" class="cell" data-execution_count="22">
+<div id="9f115473" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>Arima_Canadian <span class="op">=</span> ARIMA(Canadian_train[<span class="st">'Hours per Week'</span>], </span>
 <span id="cb17-2"><a></a>                       order<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
 <span id="cb17-3"><a></a>results_ARIMA_Canadian <span class="op">=</span> Arima_Canadian.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -955,15 +955,15 @@ Alan R. Vazquez
 <section id="section-15" class="slide level2">
 <h2></h2>
 <p>After fitting, we can get a summary of the model fit using the following code.</p>
-<div id="af7592f3" class="cell" data-execution_count="23">
+<div id="29c5460e" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="bu">print</span>(results_ARIMA_Canadian.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                               SARIMAX Results                                
 ==============================================================================
 Dep. Variable:         Hours per Week   No. Observations:                   28
 Model:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537
-Date:                Mon, 25 Aug 2025   AIC                             11.074
-Time:                        12:31:04   BIC                             14.849
+Date:                Tue, 26 Aug 2025   AIC                             11.074
+Time:                        11:48:33   BIC                             14.849
 Sample:                             0   HQIC                            12.161
                                  - 28                                         
 Covariance Type:                  opg                                         
@@ -990,7 +990,7 @@ Warnings:
 <p><strong>The next step in evaluating an ARIMA model is to study the model’s residuals to ensure there is nothing else to explain in the model.</strong></p>
 <p><br></p>
 <p>However, since the ARIMA model has two AR terms, we must inspect the residuals starting from the third observation. We achieve this using the code below.</p>
-<div id="56de3fb1" class="cell" data-execution_count="24">
+<div id="ce45b736" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># Extract the residuals.</span></span>
 <span id="cb20-2"><a></a>ARIMA_residuals <span class="op">=</span> results_ARIMA_Canadian.resid</span>
 <span id="cb20-3"><a></a></span>
@@ -1000,7 +1000,7 @@ Warnings:
 </section>
 <section id="time-series-of-residuals" class="slide level2">
 <h2>Time series of residuals</h2>
-<div id="e78ba580" class="cell" data-execution_count="25">
+<div id="cfde5ae6" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -1023,7 +1023,7 @@ Warnings:
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="b9ba99d1" class="cell" data-execution_count="26">
+<div id="7792ab45" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1033,7 +1033,7 @@ Warnings:
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="34e6a877" class="cell" data-execution_count="27">
+<div id="b0e37cb3" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1055,7 +1055,7 @@ Warnings:
 <p>Once the model is validated, we make predictions for elements in the time series.</p>
 <p><br></p>
 <p>To predict the average number of hours worked in the next, say, 3 years, we use the <code>.forecast()</code> function. The <code>steps</code> argument indicates the number of steps in the future to make the predictions.</p>
-<div id="c081d949" class="cell" data-execution_count="28">
+<div id="6f6c0125" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>results_ARIMA_Canadian.forecast(steps <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>28    36.102917
@@ -1075,7 +1075,7 @@ Name: predicted_mean, dtype: float64</code></pre>
 </section>
 <section id="validation-data" class="slide level2">
 <h2>Validation data</h2>
-<div id="aec6938f" class="cell" data-execution_count="29">
+<div id="9fd5a040" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>Canadian_validation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
@@ -1148,14 +1148,14 @@ Name: predicted_mean, dtype: float64</code></pre>
 <h2></h2>
 <p><br></p>
 <p>The validation data has 7 time periods that can be determined using the command below.</p>
-<div id="2d37502d" class="cell" data-execution_count="30">
+<div id="748eb45d" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="bu">len</span>(Canadian_validation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>7</code></pre>
 </div>
 </div>
 <p>So, we must forecast 7 periods ahead using our ARIMA model.</p>
-<div id="c22dcf61" class="cell" data-execution_count="31">
+<div id="a9d05cc9" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>forecast_Canadian <span class="op">=</span> results_ARIMA_Canadian.forecast(steps <span class="op">=</span> <span class="dv">7</span>)</span>
 <span id="cb27-2"><a></a>forecast_Canadian</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -1174,7 +1174,7 @@ Name: predicted_mean, dtype: float64</code></pre>
 <h2></h2>
 <p><br><br></p>
 <p>Using the forecast and validation data, we compute the RMSE.</p>
-<div id="1b84b860" class="cell" data-execution_count="32">
+<div id="00a9a421" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>mse <span class="op">=</span> mean_squared_error(Canadian_validation[<span class="st">"Hours per Week"</span>], </span>
 <span id="cb29-2"><a></a>                         forecast_Canadian)  </span>
 <span id="cb29-3"><a></a><span class="bu">print</span>(<span class="bu">round</span>(mse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1187,7 +1187,7 @@ Name: predicted_mean, dtype: float64</code></pre>
 <h2><em>Naive</em> forecast</h2>
 <p>To determine if the RMSE is high or small, we must compare it with a <em>naive</em> forecast that predicts the response <span class="math inline">\(Y_t\)</span> with the previous one <span class="math inline">\(Y_{t-1}\)</span>. To build this forecast, we follow three steps.</p>
 <p>First, we shift the time series in the validation data by one position using the <code>.shit(1)</code> function.</p>
-<div id="e295a286" class="cell" data-execution_count="33">
+<div id="13ae0932" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>naive_forecast <span class="op">=</span> Canadian_validation[<span class="st">"Hours per Week"</span>].shift(<span class="dv">1</span>)</span>
 <span id="cb31-2"><a></a>naive_forecast.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
@@ -1203,7 +1203,7 @@ Name: Hours per Week, dtype: float64</code></pre>
 <section id="section-20" class="slide level2">
 <h2></h2>
 <p>Second, we notice that the first element of the shifted series is missing or not available (<code>NaN</code>). We thus fill it in with the last observation in our training dataset, which we can obtain using the <code>.iloc()</code> function.</p>
-<div id="f1b7f3b3" class="cell" data-execution_count="34">
+<div id="c3035cbb" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>Canadian_train.iloc[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>Year              1993.0
@@ -1213,14 +1213,14 @@ Name: 27, dtype: float64</code></pre>
 </div>
 <p><br></p>
 <p>Third, we input 35.9 as the first record in <code>naive_forecast</code>. The first record of the object is indexed by a 28.</p>
-<div id="b3a3673a" class="cell" data-execution_count="35">
+<div id="93777717" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>naive_forecast[<span class="dv">28</span>] <span class="op">=</span> <span class="fl">35.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-21" class="slide level2">
 <h2></h2>
 <p>Our naive forecast of the time series in the validation data would be these one:</p>
-<div id="b1f43d15" class="cell" data-execution_count="36">
+<div id="ac55a301" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 <style scoped="">
@@ -1292,7 +1292,7 @@ Name: 27, dtype: float64</code></pre>
 <h2></h2>
 <p><br></p>
 <p>The RMSE of the naive forecast is calculated below.</p>
-<div id="f0962916" class="cell" data-execution_count="37">
+<div id="c1c00475" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a>naive_rmse <span class="op">=</span> mean_squared_error(Canadian_validation[<span class="st">"Hours per Week"</span>], </span>
 <span id="cb36-2"><a></a>                                naive_forecast)</span>
 <span id="cb36-3"><a></a><span class="bu">print</span>(<span class="bu">round</span>(naive_rmse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1306,7 +1306,7 @@ Name: 27, dtype: float64</code></pre>
 <section id="section-23" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="55bcb3b2" class="cell" data-execution_count="38">
+<div id="c74fa806" class="cell" data-execution_count="38">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1333,7 +1333,7 @@ Name: 27, dtype: float64</code></pre>
 <section id="example-3" class="slide level2">
 <h2>Example 3</h2>
 <p>We use the Airline data containing the number of passengers of an international airline per month between 1949 and 1960.</p>
-<div id="6b4fd153" class="cell" data-execution_count="39">
+<div id="ab46710a" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>Airline_data <span class="op">=</span> pd.read_excel(<span class="st">"Airline.xlsx"</span>)</span>
 <span id="cb38-2"><a></a>Airline_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
@@ -1397,7 +1397,7 @@ Name: 27, dtype: float64</code></pre>
 <h2>Create training and validation data</h2>
 <p><br><br></p>
 <p>We use 80% of the time series for training and the rest for validation.</p>
-<div id="1e76dc21" class="cell" data-execution_count="40">
+<div id="f739376f" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="co"># Define the split point</span></span>
 <span id="cb39-2"><a></a>split_ratio <span class="op">=</span> <span class="fl">0.8</span>  <span class="co"># 80% train, 20% test</span></span>
 <span id="cb39-3"><a></a>split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(Airline_data) <span class="op">*</span> split_ratio)</span>
@@ -1409,7 +1409,7 @@ Name: 27, dtype: float64</code></pre>
 </section>
 <section id="training-data-1" class="slide level2">
 <h2>Training data</h2>
-<div id="e295db39" class="cell" data-execution_count="41">
+<div id="166fe6a4" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
@@ -1432,10 +1432,10 @@ Name: 27, dtype: float64</code></pre>
 <section id="section-24" class="slide level2">
 <h2></h2>
 <p>First, let’s use a level-1 operator.</p>
-<div id="86f21abc" class="cell" data-execution_count="42">
+<div id="d91af49e" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a>Z_series_one <span class="op">=</span> diff(Airline_train[<span class="st">'Number of passengers'</span>], k_diff <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5674e7c9" class="cell" data-execution_count="43">
+<div id="3407cd87" class="cell" data-execution_count="43">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
@@ -1459,7 +1459,7 @@ Name: 27, dtype: float64</code></pre>
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="2ec3bc4b" class="cell" data-execution_count="44">
+<div id="90ac8523" class="cell" data-execution_count="44">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
 </div>
@@ -1472,7 +1472,7 @@ Name: 27, dtype: float64</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="cd636cd7" class="cell" data-execution_count="45">
+<div id="9d1237a6" class="cell" data-execution_count="45">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 288x288 with 0 Axes&gt;</code></pre>
 </div>
@@ -1553,7 +1553,7 @@ Name: 27, dtype: float64</code></pre>
 <h2></h2>
 <p><br><br><br></p>
 <p>Let’s fit a SARIMA model.</p>
-<div id="c46b0842" class="cell" data-execution_count="46">
+<div id="fd19ada5" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>SARIMA_model <span class="op">=</span> ARIMA(Airline_train[<span class="st">'Number of passengers'</span>], order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>), </span>
 <span id="cb45-2"><a></a>                      seasonal_order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">12</span>))</span>
 <span id="cb45-3"><a></a>SARIMA_Airline <span class="op">=</span> SARIMA_model.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1561,15 +1561,15 @@ Name: 27, dtype: float64</code></pre>
 </section>
 <section id="summary-of-fit" class="slide level2">
 <h2>Summary of fit</h2>
-<div id="b55cee52" class="cell" data-execution_count="47">
+<div id="c5a73e74" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="bu">print</span>(SARIMA_Airline.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                     SARIMAX Results                                     
 =========================================================================================
 Dep. Variable:              Number of passengers   No. Observations:                  115
 Model:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241
-Date:                           Mon, 25 Aug 2025   AIC                            756.482
-Time:                                   12:31:05   BIC                            766.943
+Date:                           Tue, 26 Aug 2025   AIC                            756.482
+Time:                                   11:48:34   BIC                            766.943
 Sample:                                        0   HQIC                           760.717
                                            - 115                                         
 Covariance Type:                             opg                                         
@@ -1595,11 +1595,11 @@ Warnings:
 <section id="residual-analysis" class="slide level2">
 <h2>Residual analysis</h2>
 <p>We can have a graphical evaluation of the model’s performance using a residual analysis.</p>
-<div id="8d9d491e" class="cell" data-execution_count="48">
+<div id="0e0b68b6" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>SARIMA_residuals <span class="op">=</span> SARIMA_Airline.resid</span>
 <span id="cb48-2"><a></a>SARIMA_residuals <span class="op">=</span> SARIMA_residuals[<span class="dv">2</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c223e569" class="cell" data-execution_count="49">
+<div id="2b491922" class="cell" data-execution_count="49">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>))</span>
@@ -1623,7 +1623,7 @@ Warnings:
 <div class="center">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="129b1527" class="cell" data-execution_count="50">
+<div id="c3a87ed6" class="cell" data-execution_count="50">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 576x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -1636,7 +1636,7 @@ Warnings:
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="5bf96377" class="cell" data-execution_count="51">
+<div id="766c9f72" class="cell" data-execution_count="51">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 576x576 with 0 Axes&gt;</code></pre>
 </div>
@@ -1654,7 +1654,7 @@ Warnings:
 <section id="validation" class="slide level2">
 <h2>Validation</h2>
 <p>The validation data has 29 time periods that can be determined using the command below.</p>
-<div id="dfad9e66" class="cell" data-execution_count="52">
+<div id="6b4687a9" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a><span class="bu">len</span>(Airline_validation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>29</code></pre>
@@ -1662,7 +1662,7 @@ Warnings:
 </div>
 <p><br></p>
 <p>So, we must forecast 7 periods ahead using our SARIMA model.</p>
-<div id="044a43e8" class="cell" data-execution_count="53">
+<div id="6e6e6764" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a></a>forecast_Airline <span class="op">=</span> SARIMA_Airline.forecast(steps <span class="op">=</span> <span class="dv">29</span>)</span>
 <span id="cb54-2"><a></a>forecast_Airline.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
@@ -1677,7 +1677,7 @@ Name: predicted_mean, dtype: float64</code></pre>
 <h2></h2>
 <p><br><br></p>
 <p>Using the forecast and validation data, we compute the RMSE.</p>
-<div id="deec925e" class="cell" data-execution_count="54">
+<div id="c737227e" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a>mse <span class="op">=</span> mean_squared_error(Airline_validation[<span class="st">"Number of passengers"</span>], </span>
 <span id="cb56-2"><a></a>                        forecast_Airline)  </span>
 <span id="cb56-3"><a></a><span class="bu">print</span>(<span class="bu">round</span>(mse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1690,7 +1690,7 @@ Name: predicted_mean, dtype: float64</code></pre>
 <h2>Comparison with a naive forecast</h2>
 <p><br><br></p>
 <p>Now, we build a naive forecast to study the performance of our SARIMA model. To this end, we shift the validation data by one period using the code below.</p>
-<div id="60934f69" class="cell" data-execution_count="55">
+<div id="93940e7c" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a>naive_forecast <span class="op">=</span> Airline_validation[<span class="st">"Number of passengers"</span>].shift(<span class="dv">1</span>)</span>
 <span id="cb58-2"><a></a>naive_forecast.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
@@ -1706,7 +1706,7 @@ Name: Number of passengers, dtype: float64</code></pre>
 <section id="section-29" class="slide level2">
 <h2></h2>
 <p>Next, we determine the last element of the training data.</p>
-<div id="af641b1d" class="cell" data-execution_count="56">
+<div id="87eb3a2b" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a></a>Airline_train.iloc[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>T                       115
@@ -1715,7 +1715,7 @@ Name: 114, dtype: int64</code></pre>
 </div>
 </div>
 <p>Finally, we assemble our naive forecast by replacing the first entry of <code>naive_forecast</code> with the last entry of the response in the training dataset.</p>
-<div id="e4cea45b" class="cell" data-execution_count="57">
+<div id="c03bd9eb" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a></a>naive_forecast[<span class="dv">115</span>] <span class="op">=</span> <span class="dv">491</span></span>
 <span id="cb62-2"><a></a>naive_forecast.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
@@ -1732,7 +1732,7 @@ Name: Number of passengers, dtype: float64</code></pre>
 <h2></h2>
 <p><br><br></p>
 <p>Let’s calculate the RMSE of the naive forecast.</p>
-<div id="11753c11" class="cell" data-execution_count="58">
+<div id="df6d008a" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a></a>naive_rmse <span class="op">=</span> mean_squared_error(Airline_validation[<span class="st">"Number of passengers"</span>], naive_forecast)</span>
 <span id="cb64-2"><a></a><span class="bu">print</span>(<span class="bu">round</span>(naive_rmse<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1744,7 +1744,7 @@ Name: Number of passengers, dtype: float64</code></pre>
 <section id="section-31" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="42048cb6" class="cell" data-execution_count="59">
+<div id="379054b2" class="cell" data-execution_count="59">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
