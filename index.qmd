@@ -21,7 +21,7 @@ author:
 2.  Introduction to Python and pandas ([slides](/Tools/Tools1.slides.html)) ([colab](https://drive.google.com/file/d/1AKBXUR7HE9c-WPPFVfydVbI3yh2Q3IQU/view?usp=sharing))
 3.  Data wrangling and visualization ([slides](/Tools/Tools2.slides.html)) ([colab](https://drive.google.com/file/d/1yXcf17sTwzz5HDOFMWDS467WIQhNJqTW/view?usp=sharing)) ([**pandas** cheat sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf))
 4.  Decision trees for classification ([slides](/Module2/Classification.slides.html)) ([colab](https://drive.google.com/file/d/1iqtGTsLj0qL_zWwdkyrMsKltqOjvM496/view?usp=sharing))
-5.  Ensemble methods ([slides](/Module2/EnsembleMethods.slides.html)) ([colab](https://drive.google.com/file/d/1HAn1pZL2oSJtISVfp2nrvNI8wYzwtAV9/view?usp=sharing))
+5.  Ensemble methods for classification ([slides](/Module2/EnsembleMethods.slides.html)) ([colab](https://drive.google.com/file/d/1HAn1pZL2oSJtISVfp2nrvNI8wYzwtAV9/view?usp=sharing))
 6.  *K*-nearest neighbours ([slides](/Module2/KNearestNeighbours.slides.html)) ([colab](https://drive.google.com/file/d/1ItiD4OZrk46WSBHhh_d0va7F-5lY6f25/view?usp=sharing))
 
 ### Module 3
@@ -29,7 +29,7 @@ author:
 1.  Introduction to predictive models ([slides](/Module3/PredictiveModels.slides.html)) ([colab](https://drive.google.com/file/d/1Taxu9SFkYc6VQkDFgFUNnvS1VqS1tClM/view?usp=sharing))
 2.  Introduction to time series ([slides](/Module3/TimeSeries.slides.html)) ([colab](https://drive.google.com/file/d/12x5bgN_Tt5DAO38DGbeqhPM36gEETCqb/view?usp=sharing))
 3.  Autocorrelation models ([slides](/Module3/Autocorrelation.slides.html)) ([colab](https://drive.google.com/file/d/1G2EzXu1iOV5UpP_qzU1nUknGJ5FPY0lg/view?usp=sharing))
-4.  Ensemble methods for time series
+4.  Ensemble methods for regression ([slides](/Module3/Nonparametric.slides.html))
 
 ### Module 4
 
