@@ -101,7 +101,7 @@ We refer to decision trees for regression as **regression trees**.
 
 </br></br>
 
-The "Hitters.xlsx" dataset contains data collected from Major League Baseball players. It includes information on various statistics such as number of hits, years in the league, and salary.
+The "Hitters.xlsx" dataset contains data collected from Major League Baseball players. It includes data on various statistics such as number of hits, years in the league, and salary.
 
 The **goal** is to predict a player's salary based on performance statistics.
 
@@ -200,7 +200,8 @@ To see the decision tree, we use the `plot_tree` function from **scikit-learn** 
 #| fig-align: center
 
 plt.figure(figsize=(6, 6))
-plot_tree(reg_tree, feature_names = X_train.columns, filled=True, rounded=True)
+plot_tree(reg_tree, feature_names = X_train.columns, filled=True, 
+          rounded=True)
 plt.show()
 ```
 
@@ -214,11 +215,12 @@ plt.show()
 #| fig-align: center
 
 plt.figure(figsize=(14, 7))
-plot_tree(reg_tree, feature_names = X_train.columns, filled=True, rounded=True)
+plot_tree(reg_tree, feature_names = X_train.columns, filled=True, 
+          rounded=True)
 plt.show()
 ```
 
-##
+## Visualize the regions
 
 ```{python}
 #| fig-align: center
@@ -241,17 +243,62 @@ sns.scatterplot(
 
 # Add decision boundaries
 plt.axhline(y=122.5, color='black', linewidth=3)     # Horizontal line
-plt.axvline(x=5.5, ymin=0.538, color='black', linewidth=3)  # Left vertical
+plt.axhline(y=72, xmin=0.230, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=5.5, ymax=0.538, color='black', linewidth=3)  # Left vertical
 plt.axvline(x=3.5, color='black', linewidth=3)  # Right vertical
+plt.axvline(x=12.5, ymin=0.538, color='black', linewidth=3)  # Right vertical
 
 # Add region labels
-#plt.text(8.5, 11.5, r"$R_1$", fontsize=30, fontweight='bold')
-#plt.text(8.5, 8.0, r"$R_2$", fontsize=30, fontweight='bold')
-#plt.text(10.95, 7.2, r"$R_3$", fontsize=20, fontweight='bold')
+plt.text(1, 200, r"$R_1$", fontsize=30, fontweight='bold')
+plt.text(1, 50, r"$R_2$", fontsize=30, fontweight='bold')
+plt.text(6, 200, r"$R_3$", fontsize=30, fontweight='bold')
+plt.text(20, 200, r"$R_4$", fontsize=30, fontweight='bold')
+plt.text(20, 100, r"$R_5$", fontsize=30, fontweight='bold')
+plt.text(20, 20, r"$R_6$", fontsize=30, fontweight='bold')
+plt.text(4.0, 3, r"$R_7$", fontsize=20, fontweight='bold')
 
-# Axis labels
-#plt.xlabel("Years")
-#plt.ylabel("Hits")
+# Clean layout
+plt.tight_layout()
+plt.show()
+```
+
+
+## Visualize the predictions
+
+```{python}
+#| fig-align: center
+#| 
+# Set plot style
+sns.set(style="whitegrid")
+
+
+train_data = pd.concat([X_train, Y_train], axis = 1)
+# Create the scatter plot using seaborn for discrete color mapping
+plt.figure(figsize=(6, 6))
+sns.scatterplot(
+    data=train_data,
+    x='Years',
+    y='Hits',
+    s=15,
+    edgecolor=None,
+    legend='full'
+)
+
+# Add decision boundaries
+plt.axhline(y=122.5, color='black', linewidth=3)     # Horizontal line
+plt.axhline(y=72, xmin=0.230, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=5.5, ymax=0.538, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=3.5, color='black', linewidth=3)  # Right vertical
+plt.axvline(x=12.5, ymin=0.538, color='black', linewidth=3)  # Right vertical
+
+# Add region labels
+plt.text(1, 200, r"233.3", fontsize=15, fontweight='bold')
+plt.text(1, 50, r"140.0", fontsize=15, fontweight='bold')
+plt.text(6, 200, r"917.8", fontsize=15, fontweight='bold')
+plt.text(20, 200, r"1190.4", fontsize=15, fontweight='bold')
+plt.text(20, 100, r"601.9", fontsize=15, fontweight='bold')
+plt.text(20, 20, r"371.6", fontsize=15, fontweight='bold')
+plt.text(4.0, 3, r"286.9", fontsize=8, fontweight='bold')
 
 # Clean layout
 plt.tight_layout()
@@ -272,6 +319,8 @@ Y_pred
 ```
 
 ## Validation RMSE
+
+</br></br>
 
 We compute the *root mean squared error* on the validation data using the `mse()` function. Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`.
 
@@ -435,9 +484,7 @@ X_other = X_full.drop(['CHAS', 'RAD'], axis=1)
 X_full = pd.concat([X_other, X_dummies], axis=1)
 ```
 
-## Generate the response in Python
-
-</br>
+## 
 
 Next, we use the function `.filter()` from **pandas** to extract the column `MEDV` from the data frame. We store the result in `Y_full`.
 
@@ -448,10 +495,6 @@ Next, we use the function `.filter()` from **pandas** to extract the column `MED
 # Set full matrix of responses.
 Y_full = Boston_data.filter(['MEDV'])
 ```
-
-## 
-
-</br></br>
 
 We partition the full dataset into 80% for training and the other 20% for validation.
 
@@ -469,6 +512,8 @@ X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full,
 
 
 ## Bagging in Python
+
+</br>
 
 We define a bagging algorithm for regression using the `BaggingRegressor` function from **scikit-learn**.
 
@@ -502,7 +547,9 @@ Y_pred
 
 ## Validation RMSE
 
-We compute the *root mean squared error* on the validation data using the `mse()` function. Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`.
+</br></br>
+
+We compute the *root mean squared error* on the validation data using the `mse()` function. 
 
 ```{python}
 #| echo: true
@@ -522,7 +569,7 @@ To compare the bagging, let's use a single deep tree.
 ```{python}
 #| echo: true
 #| output: false
-#| code-fold: true
+#| code-fold: false
 
 # We tell Python that we want a classification tree
 reg_tree = DecisionTreeRegressor(ccp_alpha=0.0,
@@ -545,7 +592,7 @@ print(round(mse**(1/2), 2))
 
 ## Advantages
 
-</br></br></br>
+</br></br>
 
 -   Bagging will have lower prediction errors than a single regression tree.
 
@@ -625,8 +672,6 @@ In practice, sometimes the best values for these parameters will depend on the p
 
 ## Random Forest in Python
 
-</br>
-
 In Python, we define a RandomForest algorithm for classification using the `RandomForestRegressor` function from **scikit-learn**. 
 
 ```{python}
@@ -645,7 +690,9 @@ RFalgorithm.fit(X_train, Y_train)
 
 `n_estimators` sets the number of decision trees to use, `min_samples_leaf` sets the minimum size for the terminal nodes, and `max_features` sets the maximum number of predictors to try in each split.
 
-## RMSE
+## Validation RMSE
+
+</br></br>
 
 Evaluate the performance of random forest.
 
@@ -752,6 +799,7 @@ plt.show()
 
 ##
 
+::: {style="font-size: 95%;"}
 Initially, the boosted tree is $\hat{f}(\boldsymbol{x}) = 0$ and the residuals of this tree are $r_i = y_i - f(\boldsymbol{x}_i)$ for all $i$ in the training data.
 
 At each step $b$ in the process ($b = 1, \ldots, B$), we
@@ -761,6 +809,7 @@ At each step $b$ in the process ($b = 1, \ldots, B$), we
 3. **Update** the residuals using shrunken tree, $r_i \leftarrow r_i - \lambda \hat{T}_b(x_i)$.
 
 The final boosted tree is: $\hat{f}(\boldsymbol{x}) = \sum_{b=1}^{B} \lambda \hat{T}_b (\boldsymbol{x}).$
+:::
 
 ::: notes
 D is 4 or 5, sometimes 1.
@@ -770,6 +819,7 @@ This algorithm is a gradient boosting method for regression.
 
 ## Why does this work?
 
+::: {style="font-size: 90%;"}
 - By using a small tree, we are deliberately leaving information out of the first round of the model. So what gets fit is the “easy” stuff.
 
 - The residuals have all of the information that we haven’t yet explained. We continue iterating on the residuals, fitting them with small trees, so that we slowly explain the bits of the variation that are harder to explain.
@@ -777,8 +827,11 @@ This algorithm is a gradient boosting method for regression.
 - This process is called “learning”: at each iteration, we get a better fit.
 
 - By multiplying by $\lambda <1$, we “slow down” the learning (by making it harder to fit all of the variation), and there is research that says that slower learning is better.
+:::
 
 ## Tuning parameters
+
+</br></br>
 
 The [**number of trees**]{style="color:brown;"} $B$. Unlike bagging and random forest, boosting can overfit if $B$ is too large. We use so-called *K-fold cross-validation* to select $B$.
 
@@ -806,7 +859,9 @@ GBalgorithm.fit(X_train, Y_train)
 
 `n_estimators` sets the number of decision trees to use, `learning_rate` sets the value of $\lambda$, and `max_depth` sets the depth of the tree.
 
-## Validation RMSE
+## Validation RMSE for boosting
+
+</br></br>
 
 Evaluate the performance of the boosting algorithm.
 
@@ -831,21 +886,11 @@ We can also apply predictor importance to the gradient boosting algorithm.
 ```{python}
 #| echo: true
 #| output: true
-#| code-fold: false
+#| code-fold: true
 #| fig-align: center
 
 # Compute permutation importance
 result = permutation_importance(GBalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)
-```
-
-##
-
-```{python}
-#| echo: true
-#| output: true
-#| code-fold: true
-#| fig-align: center
-
 # Create DataFrame
 importance_df = pd.DataFrame({
     'Feature': X_valid.columns,
@@ -853,12 +898,13 @@ importance_df = pd.DataFrame({
 }).sort_values(by='Importance', ascending=False)
 
 # Plot bar chart
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(5, 3))
 plt.bar(importance_df['Feature'], importance_df['Importance'])
 plt.xticks(rotation=90)
 plt.title('Permutation Feature Importance')
 plt.show()
 ```
+
 
 ## Issues with boosting
 
