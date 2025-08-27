@@ -557,7 +557,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.95"
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9833333333333333"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#discussion",
@@ -1397,7 +1397,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Wed, 27 Aug 2025   AIC                             11.074\nTime:                        11:06:18   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Wed, 27 Aug 2025   AIC                             11.074\nTime:                        13:16:15   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
@@ -1579,7 +1579,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Wed, 27 Aug 2025   AIC                            756.482\nTime:                                   11:06:19   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Wed, 27 Aug 2025   AIC                            756.482\nTime:                                   13:16:17   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -1715,6 +1715,20 @@
     "text": "Plotting the tree\n\nTo see the decision tree, we use the plot_tree function from scikit-learn and some commands from matplotlib.\n\nplt.figure(figsize=(6, 6))\nplot_tree(reg_tree, feature_names = X_train.columns, filled=True, \n          rounded=True)\nplt.show()"
   },
   {
+    "objectID": "Module3/Nonparametric.slides.html#visualize-the-regions",
+    "href": "Module3/Nonparametric.slides.html#visualize-the-regions",
+    "title": "Ensemble Methods for Regression",
+    "section": "Visualize the regions",
+    "text": "Visualize the regions"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#visualize-the-predictions",
+    "href": "Module3/Nonparametric.slides.html#visualize-the-predictions",
+    "title": "Ensemble Methods for Regression",
+    "section": "Visualize the predictions",
+    "text": "Visualize the predictions"
+  },
+  {
     "objectID": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data",
     "href": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data",
     "title": "Ensemble Methods for Regression",
@@ -1792,11 +1806,11 @@
     "text": "Read the dataset\n\nWe read the dataset and set the variable CHAS and RAD as categorical.\n\nBoston_data = pd.read_excel('BostonHousing.xlsx')\n\nBoston_data['CHAS'] = pd.Categorical(Boston_data['CHAS'])\nBoston_data['RAD'] = pd.Categorical(Boston_data['RAD'], \n                                      categories=[\"Low\", \"Medium\", \"High\"], \n                                      ordered=True)"
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#section-5",
-    "href": "Module3/Nonparametric.slides.html#section-5",
+    "objectID": "Module3/Nonparametric.slides.html#section-4",
+    "href": "Module3/Nonparametric.slides.html#section-4",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "Next, we use the function .filter() from pandas to extract the column MEDV from the data frame. We store the result in Y_full.\n\n# Set full matrix of responses.\nY_full = Boston_data.filter(['MEDV'])\n\nWe partition the full dataset into 80% for training and the other 20% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.2,\n                                                      random_state = 507134)"
+    "text": "Boston_data.head()\n\n\n\n\n\n\n\n\nCRIM\nZN\nINDUS\nCHAS\nNOX\nRM\nAGE\nDIS\nRAD\nTAX\nPTRATIO\nLSTAT\nMEDV\n\n\n\n\n0\n0.00632\n18.0\n2.31\nNo\n0.538\n6.575\n65.2\n4.0900\nLow\n296\n15.3\n4.98\n24.0\n\n\n1\n0.02731\n0.0\n7.07\nNo\n0.469\n6.421\n78.9\n4.9671\nLow\n242\n17.8\n9.14\n21.6\n\n\n2\n0.02729\n0.0\n7.07\nNo\n0.469\n7.185\n61.1\n4.9671\nLow\n242\n17.8\n4.03\n34.7\n\n\n3\n0.03237\n0.0\n2.18\nNo\n0.458\n6.998\n45.8\n6.0622\nLow\n222\n18.7\n2.94\n33.4\n\n\n4\n0.06905\n0.0\n2.18\nNo\n0.458\n7.147\n54.2\n6.0622\nLow\n222\n18.7\n5.33\n36.2"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#generating-predictors-in-python-1",
@@ -1806,18 +1820,11 @@
     "text": "Generating predictors in Python\nFirst, we use the function .drop() from pandas to drop the response column MEDV and store the result in X_full.\n\n# Set full matrix of predictors.\nX_full = Boston_data.drop(columns = ['MEDV']) \n\nUnfortunately, bagging does not work with categorical predictors such as CHAS and RAD. So, we must transform them into dummy variables using the code below.\n\n# Turn categorical predictors into dummy variables.\nX_dummies = pd.get_dummies(X_full[['CHAS', 'RAD']], drop_first = True, dtype = 'int')\n\n# Drop original predictors from the dataset.\nX_other = X_full.drop(['CHAS', 'RAD'], axis=1)\n\n# Update the predictor matrix.\nX_full = pd.concat([X_other, X_dummies], axis=1)"
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#generate-the-response-in-python",
-    "href": "Module3/Nonparametric.slides.html#generate-the-response-in-python",
-    "title": "Ensemble Methods for Regression",
-    "section": "Generate the response in Python",
-    "text": "Generate the response in Python\n\nNext, we use the function .filter() from pandas to extract the column MEDV from the data frame. We store the result in Y_full.\n\n# Set full matrix of responses.\nY_full = Boston_data.filter(['MEDV'])"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-6",
-    "href": "Module3/Nonparametric.slides.html#section-6",
+    "objectID": "Module3/Nonparametric.slides.html#section-5",
+    "href": "Module3/Nonparametric.slides.html#section-5",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "Bagging is unable to capture simple decision boundaries"
+    "text": "Next, we use the function .filter() from pandas to extract the column MEDV from the data frame. We store the result in Y_full.\n\n# Set full matrix of responses.\nY_full = Boston_data.filter(['MEDV'])\n\nWe partition the full dataset into 80% for training and the other 20% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.2,\n                                                      random_state = 507134)"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#bagging-in-python",
@@ -1869,11 +1876,11 @@
     "text": "Other issues\n\n\nSuppose a variable is very important and decisive.\n\nIt will probably appear near the top of a large number of trees.\nAnd these trees will tend to vote the same way.\nIn some sense, then, many of the trees are “correlated”.\nThis will degrade the performance of bagging."
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#section-7",
-    "href": "Module3/Nonparametric.slides.html#section-7",
+    "objectID": "Module3/Nonparametric.slides.html#section-6",
+    "href": "Module3/Nonparametric.slides.html#section-6",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)"
+    "text": "Bagging is unable to capture simple decision boundaries"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#random-forest-1",
@@ -1911,11 +1918,11 @@
     "text": "Random Forest in Python\nIn Python, we define a RandomForest algorithm for classification using the RandomForestRegressor function from scikit-learn.\n\n# Set the random forest algorithm.\nRFalgorithm = RandomForestRegressor(n_estimators = 500,\n                                    min_samples_leaf = 5,\n                                    max_features = \"sqrt\",\n                                    random_state = 59227)\n\n# Train the random forest algorithm.\nRFalgorithm.fit(X_train, Y_train)\n\nn_estimators sets the number of decision trees to use, min_samples_leaf sets the minimum size for the terminal nodes, and max_features sets the maximum number of predictors to try in each split."
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#rmse",
-    "href": "Module3/Nonparametric.slides.html#rmse",
+    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-2",
+    "href": "Module3/Nonparametric.slides.html#validation-rmse-2",
     "title": "Ensemble Methods for Regression",
-    "section": "RMSE",
-    "text": "RMSE\nEvaluate the performance of random forest.\n\n# Predict responses in validation data.\nRF_predicted = RFalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, RF_predicted) \nprint(round(mse**(1/2), 2))\n\n4.63"
+    "section": "Validation RMSE",
+    "text": "Validation RMSE\n\nEvaluate the performance of random forest.\n\n# Predict responses in validation data.\nRF_predicted = RFalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, RF_predicted) \nprint(round(mse**(1/2), 2))\n\n4.63"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#predictor-importance",
@@ -1932,18 +1939,18 @@
     "text": "Calculation of importance\n\n\nWe record the prediction error of the trained algorithm on the validation data. This serves as a baseline.\nNext, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.\nThe importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm."
   },
   {
+    "objectID": "Module3/Nonparametric.slides.html#section-7",
+    "href": "Module3/Nonparametric.slides.html#section-7",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)"
+  },
+  {
     "objectID": "Module3/Nonparametric.slides.html#section-8",
     "href": "Module3/Nonparametric.slides.html#section-8",
     "title": "Ensemble Methods for Regression",
     "section": "",
     "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-9",
-    "href": "Module3/Nonparametric.slides.html#section-9",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#boosting-1",
@@ -1960,18 +1967,18 @@
     "text": "Boosting for regression\n\nBoosting creates a sequence of trees, each one building upon the previous.\nEarlier trees are small, and the next tree is created with the residuals of the previous tree.\nIn other words, at each step, we try to explain the information that we didn’t explain in previous steps.\nGradually, the sequence “learns” to predict.\nSomething a little odd: earlier trees are deliberately “held back” to keep them from explaining too much. This creates “slow learning”."
   },
   {
+    "objectID": "Module3/Nonparametric.slides.html#section-9",
+    "href": "Module3/Nonparametric.slides.html#section-9",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
+  },
+  {
     "objectID": "Module3/Nonparametric.slides.html#section-10",
     "href": "Module3/Nonparametric.slides.html#section-10",
     "title": "Ensemble Methods for Regression",
     "section": "",
     "text": "Initially, the boosted tree is \\(\\hat{f}(\\boldsymbol{x}) = 0\\) and the residuals of this tree are \\(r_i = y_i - f(\\boldsymbol{x}_i)\\) for all \\(i\\) in the training data.\nAt each step \\(b\\) in the process (\\(b = 1, \\ldots, B\\)), we\n\nBuild a regression tree \\(\\hat{T}_b\\) with \\(d\\) splits to the training data \\((\\boldsymbol{X}, \\boldsymbol{r})\\). This tree has \\(d+1\\) terminal nodes.\nUpdate the boosted tree \\(\\hat{f}\\) by adding in a shrunken version of the new tree: \\(\\hat{f}(\\boldsymbol{x}) \\leftarrow \\hat{f}(\\boldsymbol{x}) + \\lambda \\hat{T}_b(\\boldsymbol{x})\\).\nUpdate the residuals using shrunken tree, \\(r_i \\leftarrow r_i - \\lambda \\hat{T}_b(x_i)\\).\n\nThe final boosted tree is: \\(\\hat{f}(\\boldsymbol{x}) = \\sum_{b=1}^{B} \\lambda \\hat{T}_b (\\boldsymbol{x}).\\)\n\n\nD is 4 or 5, sometimes 1. Lambda is 0.001 or 0.01 This algorithm is a gradient boosting method for regression."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-11",
-    "href": "Module3/Nonparametric.slides.html#section-11",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#why-does-this-work",
@@ -1995,11 +2002,11 @@
     "text": "Boosting in Python\nIn Python, we define a Boosting algorithm for classification using the GradientBoostingRegressor function from scikit-learn.\n\n# Set the boosting algorithm.\nGBalgorithm = GradientBoostingRegressor(learning_rate = 0.1,\n                                    n_estimators = 1000,\n                                    max_depth = 3,\n                                    random_state = 59227)\n\n# Train the algorithm.\nGBalgorithm.fit(X_train, Y_train)\n\nn_estimators sets the number of decision trees to use, learning_rate sets the value of \\(\\lambda\\), and max_depth sets the depth of the tree."
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-2",
-    "href": "Module3/Nonparametric.slides.html#validation-rmse-2",
+    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-for-boosting",
+    "href": "Module3/Nonparametric.slides.html#validation-rmse-for-boosting",
     "title": "Ensemble Methods for Regression",
-    "section": "Validation RMSE",
-    "text": "Validation RMSE\n\nEvaluate the performance of random forest.\n\n# Predict responses in validation data.\nRF_predicted = RFalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, RF_predicted) \nprint(round(mse**(1/2), 2))\n\n4.63"
+    "section": "Validation RMSE for boosting",
+    "text": "Validation RMSE for boosting\n\nEvaluate the performance of the boosting algorithm.\n\n# Predict responses in validation data.\nGB_predicted = GBalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, GB_predicted) \nprint(round(mse**(1/2), 2))\n\n3.85"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#predictor-importance-1",
@@ -2007,13 +2014,6 @@
     "title": "Ensemble Methods for Regression",
     "section": "Predictor importance",
     "text": "Predictor importance\nWe can also apply predictor importance to the gradient boosting algorithm.\n\n\nCode\n# Compute permutation importance\nresult = permutation_importance(GBalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(5, 3))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-12",
-    "href": "Module3/Nonparametric.slides.html#section-12",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#issues-with-boosting",
@@ -4211,7 +4211,7 @@
     "href": "index.slides.html#course-topics",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "Course topics",
-    "text": "Course topics\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods for classification (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for regression (slides)\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)"
+    "text": "Course topics\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods for classification (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for regression (slides) (colab)\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)"
   },
   {
     "objectID": "index.slides.html#about-the-author",
@@ -4225,7 +4225,7 @@
     "href": "index.html",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "",
-    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods for classification (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\n\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for regression (slides)\n\n\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)\n\n\n\n\nAbout the author\nAlan R. Vazquez is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense\nIN2004B Generation of Value with Data Analytics © 2025 by Alan R Vazquez is licensed under CC BY-NC-SA 4.0",
+    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods for classification (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\n\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for regression (slides) (colab)\n\n\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)\n\n\n\n\nAbout the author\nAlan R. Vazquez is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense\nIN2004B Generation of Value with Data Analytics © 2025 by Alan R Vazquez is licensed under CC BY-NC-SA 4.0",
     "crumbs": [
       "Home"
     ]
@@ -4432,40 +4432,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#visualize-the-regions",
-    "href": "Module3/Nonparametric.slides.html#visualize-the-regions",
-    "title": "Ensemble Methods for Regression",
-    "section": "Visualize the regions",
-    "text": "Visualize the regions"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#visualize-the-predictions",
-    "href": "Module3/Nonparametric.slides.html#visualize-the-predictions",
-    "title": "Ensemble Methods for Regression",
-    "section": "Visualize the predictions",
-    "text": "Visualize the predictions"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-4",
-    "href": "Module3/Nonparametric.slides.html#section-4",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Boston_data.head()\n\n\n\n\n\n\n\n\nCRIM\nZN\nINDUS\nCHAS\nNOX\nRM\nAGE\nDIS\nRAD\nTAX\nPTRATIO\nLSTAT\nMEDV\n\n\n\n\n0\n0.00632\n18.0\n2.31\nNo\n0.538\n6.575\n65.2\n4.0900\nLow\n296\n15.3\n4.98\n24.0\n\n\n1\n0.02731\n0.0\n7.07\nNo\n0.469\n6.421\n78.9\n4.9671\nLow\n242\n17.8\n9.14\n21.6\n\n\n2\n0.02729\n0.0\n7.07\nNo\n0.469\n7.185\n61.1\n4.9671\nLow\n242\n17.8\n4.03\n34.7\n\n\n3\n0.03237\n0.0\n2.18\nNo\n0.458\n6.998\n45.8\n6.0622\nLow\n222\n18.7\n2.94\n33.4\n\n\n4\n0.06905\n0.0\n2.18\nNo\n0.458\n7.147\n54.2\n6.0622\nLow\n222\n18.7\n5.33\n36.2"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-3",
-    "href": "Module3/Nonparametric.slides.html#validation-rmse-3",
-    "title": "Ensemble Methods for Regression",
-    "section": "Validation RMSE",
-    "text": "Validation RMSE\nEvaluate the performance of the boosting algorithm.\n\n# Predict responses in validation data.\nGB_predicted = GBalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, GB_predicted) \nprint(round(mse**(1/2), 2))\n\n3.85"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-for-boosting",
-    "href": "Module3/Nonparametric.slides.html#validation-rmse-for-boosting",
-    "title": "Ensemble Methods for Regression",
-    "section": "Validation RMSE for boosting",
-    "text": "Validation RMSE for boosting\n\nEvaluate the performance of the boosting algorithm.\n\n# Predict responses in validation data.\nGB_predicted = GBalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, GB_predicted) \nprint(round(mse**(1/2), 2))\n\n3.85"
   }
 ]
