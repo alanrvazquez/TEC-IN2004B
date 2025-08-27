@@ -557,7 +557,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9833333333333333"
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.95"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#discussion",
@@ -1397,7 +1397,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 26 Aug 2025   AIC                             11.074\nTime:                        12:39:39   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Wed, 27 Aug 2025   AIC                             11.074\nTime:                        11:06:18   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
@@ -1579,7 +1579,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 26 Aug 2025   AIC                            756.482\nTime:                                   12:39:41   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Wed, 27 Aug 2025   AIC                            756.482\nTime:                                   11:06:19   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -1636,6 +1636,391 @@
     "title": "Ensemble Methods for Regression",
     "section": "Agenda",
     "text": "Agenda\n\n\nIntroduction\nBagging\nRandom Forests\nBoosting\nEnsemble Methods for Time Series"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#load-the-libraries",
+    "href": "Module3/Nonparametric.slides.html#load-the-libraries",
+    "title": "Ensemble Methods for Regression",
+    "section": "Load the libraries",
+    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeRegressor, plot_tree\nfrom sklearn.ensemble import BaggingRegressor, RandomForestRegressor\nfrom sklearn.ensemble import  GradientBoostingRegressor\nfrom sklearn.metrics import mean_squared_error\nfrom sklearn.inspection import permutation_importance\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#decision-trees",
+    "href": "Module3/Nonparametric.slides.html#decision-trees",
+    "title": "Ensemble Methods for Regression",
+    "section": "Decision trees",
+    "text": "Decision trees\n\n\n\n\n\nSimple and useful for interpretations.\nCan handle continuous and categorical predictors and responses. So, they can be applied to both classification and regression problems.\nComputationally efficient."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#decision-trees-for-regression",
+    "href": "Module3/Nonparametric.slides.html#decision-trees-for-regression",
+    "title": "Ensemble Methods for Regression",
+    "section": "Decision trees for regression",
+    "text": "Decision trees for regression\n\n\nThe procedure for constructing a decision tree for regression is the same as for a classification tree.\nThat is, we use the CART algorithm for building large trees and cost complexity pruning to reduce them, if desired.\nHowever, instead of using impurity to evaluate splits, we use the mean squared error."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section",
+    "href": "Module3/Nonparametric.slides.html#section",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "To compute the mean squared error we use\n\nThe predicted response is the average response calculated in the node or region.\nThe actual responses are those of the observations in the region.\n\nWe refer to decision trees for regression as regression trees."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#example-1",
+    "href": "Module3/Nonparametric.slides.html#example-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe “Hitters.xlsx” dataset contains data collected from Major League Baseball players. It includes information on various statistics such as number of hits, years in the league, and salary.\nThe goal is to predict a player’s salary based on performance statistics."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-1",
+    "href": "Module3/Nonparametric.slides.html#section-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "The response is the player’s salary (in $), contained in the column Salary.\nFor this example, we will focus on two predictors:\n\nHits: Number of hits in the season\n\nYears: Number of years the player has been in the league"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#read-the-dataset",
+    "href": "Module3/Nonparametric.slides.html#read-the-dataset",
+    "title": "Ensemble Methods for Regression",
+    "section": "Read the dataset",
+    "text": "Read the dataset\nWe read the dataset\n\nHitters_data = pd.read_excel('Hitters.xlsx')\nHitters_data.head()\n\n\n\n\n\n\n\n\nAtBat\nHits\nHmRun\nRuns\nRBI\nWalks\nYears\nCAtBat\nCHits\nCHmRun\nCRuns\nCRBI\nCWalks\nLeague\nDivision\nPutOuts\nAssists\nErrors\nSalary\nNewLeague\n\n\n\n\n0\n293\n66\n1\n30\n29\n14\n1\n293\n66\n1\n30\n29\n14\nA\nE\n446\n33\n20\nNaN\nA\n\n\n1\n315\n81\n7\n24\n38\n39\n14\n3449\n835\n69\n321\n414\n375\nN\nW\n632\n43\n10\n475.0\nN\n\n\n2\n479\n130\n18\n66\n72\n76\n3\n1624\n457\n63\n224\n266\n263\nA\nW\n880\n82\n14\n480.0\nA\n\n\n3\n496\n141\n20\n65\n78\n37\n11\n5628\n1575\n225\n828\n838\n354\nN\nE\n200\n11\n3\n500.0\nN\n\n\n4\n321\n87\n10\n39\n42\n30\n2\n396\n101\n12\n48\n46\n33\nN\nE\n805\n40\n4\n91.5\nN"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-2",
+    "href": "Module3/Nonparametric.slides.html#section-2",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "The data set has some missing observations. So, we remove the observations with at least one missing value in a predictor.\n\nHitters_data_clean = Hitters_data.dropna()\nHitters_data_clean.head()\n\n\n\n\n\n\n\n\nAtBat\nHits\nHmRun\nRuns\nRBI\nWalks\nYears\nCAtBat\nCHits\nCHmRun\nCRuns\nCRBI\nCWalks\nLeague\nDivision\nPutOuts\nAssists\nErrors\nSalary\nNewLeague\n\n\n\n\n1\n315\n81\n7\n24\n38\n39\n14\n3449\n835\n69\n321\n414\n375\nN\nW\n632\n43\n10\n475.0\nN\n\n\n2\n479\n130\n18\n66\n72\n76\n3\n1624\n457\n63\n224\n266\n263\nA\nW\n880\n82\n14\n480.0\nA\n\n\n3\n496\n141\n20\n65\n78\n37\n11\n5628\n1575\n225\n828\n838\n354\nN\nE\n200\n11\n3\n500.0\nN\n\n\n4\n321\n87\n10\n39\n42\n30\n2\n396\n101\n12\n48\n46\n33\nN\nE\n805\n40\n4\n91.5\nN\n\n\n5\n594\n169\n4\n74\n51\n35\n11\n4408\n1133\n19\n501\n336\n194\nA\nW\n282\n421\n25\n750.0\nA"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#generating-predictors-in-python",
+    "href": "Module3/Nonparametric.slides.html#generating-predictors-in-python",
+    "title": "Ensemble Methods for Regression",
+    "section": "Generating predictors in Python",
+    "text": "Generating predictors in Python\n\nSelect the predictors and response\n\nX_full = Hitters_data_clean.filter([\"Years\", \"Hits\"])\nY_full = Hitters_data_clean.filter([\"Salary\"])\n\nWe partition the full dataset into 70% for training and the other 30% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.3,\n                                                      random_state = 507134)"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#regression-trees-in-python",
+    "href": "Module3/Nonparametric.slides.html#regression-trees-in-python",
+    "title": "Ensemble Methods for Regression",
+    "section": "Regression trees in Python",
+    "text": "Regression trees in Python\n\nWe train a regression tree using the DecisionTreeRegressor() function from regression.\n\n# We tell Python we want a regression tree\nreg_tree = DecisionTreeRegressor(min_samples_leaf = 5, max_depth=3, \n                              random_state=507134)\n\n# We train the regression tree using the training data.\nreg_tree.fit(X_train, Y_train)\n\nWe use max_depth = 3 to have a small tree as an example."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#plotting-the-tree",
+    "href": "Module3/Nonparametric.slides.html#plotting-the-tree",
+    "title": "Ensemble Methods for Regression",
+    "section": "Plotting the tree",
+    "text": "Plotting the tree\n\nTo see the decision tree, we use the plot_tree function from scikit-learn and some commands from matplotlib.\n\nplt.figure(figsize=(6, 6))\nplot_tree(reg_tree, feature_names = X_train.columns, filled=True, rounded=True)\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data",
+    "href": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data",
+    "title": "Ensemble Methods for Regression",
+    "section": "Predictions on the validation data",
+    "text": "Predictions on the validation data\nTo predict the responses on the validation data, we use the function .predict() using the predictor values in the validation dataset contained in X_valid.\n\nY_pred = reg_tree.predict(X_valid)\nY_pred\n\narray([ 917.80951163,  601.96761111,  286.9375    ,  286.9375    ,\n        286.9375    ,  140.04411765,  917.80951163,  371.67336   ,\n        917.80951163,  917.80951163,  286.9375    ,  140.04411765,\n        286.9375    ,  140.04411765,  140.04411765,  601.96761111,\n        917.80951163,  371.67336   ,  917.80951163,  917.80951163,\n       1190.42853846,  233.33333333,  286.9375    ,  140.04411765,\n        917.80951163,  917.80951163,  233.33333333,  917.80951163,\n        140.04411765,  140.04411765,  140.04411765,  601.96761111,\n        601.96761111, 1190.42853846,  917.80951163,  233.33333333,\n        371.67336   ,  371.67336   ,  286.9375    ,  601.96761111,\n        917.80951163, 1190.42853846,  601.96761111,  371.67336   ,\n        917.80951163, 1190.42853846,  233.33333333,  917.80951163,\n        601.96761111, 1190.42853846,  917.80951163,  371.67336   ,\n       1190.42853846,  233.33333333,  917.80951163,  286.9375    ,\n        601.96761111,  371.67336   ,  233.33333333,  140.04411765,\n        233.33333333,  140.04411765,  917.80951163,  371.67336   ,\n       1190.42853846,  917.80951163,  917.80951163,  917.80951163,\n        917.80951163,  140.04411765,  286.9375    ,  917.80951163,\n        601.96761111,  140.04411765,  601.96761111,  601.96761111,\n        601.96761111,  601.96761111,  917.80951163])"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#validation-rmse",
+    "href": "Module3/Nonparametric.slides.html#validation-rmse",
+    "title": "Ensemble Methods for Regression",
+    "section": "Validation RMSE",
+    "text": "Validation RMSE\nWe compute the root mean squared error on the validation data using the mse() function. Recall that the responses from the validation dataset are in Y_valid, and the model predictions are in Y_pred.\n\nmse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)\nprint(round(mse**(1/2), 2)) # RMSE\n\n399.49"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#limitations-of-decision-trees",
+    "href": "Module3/Nonparametric.slides.html#limitations-of-decision-trees",
+    "title": "Ensemble Methods for Regression",
+    "section": "Limitations of decision trees",
+    "text": "Limitations of decision trees\n\n\nIn general, decision trees do not work well for classification and regression problems.\nHowever, they can be combined to build effective algorithms for these problems."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#ensamble-methods",
+    "href": "Module3/Nonparametric.slides.html#ensamble-methods",
+    "title": "Ensemble Methods for Regression",
+    "section": "Ensamble methods",
+    "text": "Ensamble methods\n\nEnsemble methods are frameworks to combine decision trees.\nHere, we will cover two popular ensamble methods:\n\nBagging. Ensemble many deep trees.\n\nQuintessential method: Random Forests.\n\nBoosting. Ensemble small trees sequentially."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#bootstrap-samples",
+    "href": "Module3/Nonparametric.slides.html#bootstrap-samples",
+    "title": "Ensemble Methods for Regression",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\n\nBootstrap samples are samples obtained with replacement from the original sample. So, an observation can occur more than one in a bootstrap sample.\nBootstrap samples are the building block of the bootstrap method, which is a statistical technique for estimating quantities about a population by averaging estimates from multiple small data samples."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#bagging-1",
+    "href": "Module3/Nonparametric.slides.html#bagging-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Bagging",
+    "text": "Bagging\nGiven a training dataset, bagging averages the predictions from decision trees over a collection of bootstrap samples."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#predictions",
+    "href": "Module3/Nonparametric.slides.html#predictions",
+    "title": "Ensemble Methods for Regression",
+    "section": "Predictions",
+    "text": "Predictions\nLet \\(\\boldsymbol{x} = (x_1, x_2, \\ldots, x_p)\\) be a vector of new predictor values.\nFor regression problems:\n\nEach regression tree outputs the average value depending on the region \\(\\boldsymbol{x}\\) falls in. For the b-th tree, denote such average as \\(\\hat{T}_{b}(\\boldsymbol{x})\\).\nPredict using the average of all regression trees\n\n\\[\\hat{f}_{bag}(\\boldsymbol{x}) = \\frac{1}{B} \\sum_{b=1}^{B} \\hat{T}_{b}(\\boldsymbol{x}).  \\]"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#implementation",
+    "href": "Module3/Nonparametric.slides.html#implementation",
+    "title": "Ensemble Methods for Regression",
+    "section": "Implementation",
+    "text": "Implementation\n\n\n\nHow many trees? No risk of overfitting, so use plenty.\nNo pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.\nThe size of bootstrap samples is the same as the size of the training dataset, but we can use a different size."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#example-2",
+    "href": "Module3/Nonparametric.slides.html#example-2",
+    "title": "Ensemble Methods for Regression",
+    "section": "Example 2",
+    "text": "Example 2\n\nThe “BostonHousing.xlsx” contains data collected by the US Bureau of the Census concerning housing in the area of Boston, Massachusetts. The dataset includes data on 506 census housing tracts in the Boston area in 1970s.\nThe goal is to predict the median house price in new tracts based on information such as crime rate, pollution, and number of rooms.\nThe response is the median value of owner-occupied homes in $1000s, contained in the column MEDV."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#the-predictors",
+    "href": "Module3/Nonparametric.slides.html#the-predictors",
+    "title": "Ensemble Methods for Regression",
+    "section": "The predictors",
+    "text": "The predictors\n\n\nCRIM: per capita crime rate by town.\nZN: proportion of residential land zoned for lots over 25,000 sq.ft.\nINDUS: proportion of non-retail business acres per town.\nCHAS: Charles River (‘Yes’ if tract bounds river; ‘No’ otherwise).\nNOX: nitrogen oxides concentration (parts per 10 million).\nRM: average number of rooms per dwelling.\nAGE: proportion of owner-occupied units built prior to 1940.\nDIS: weighted mean of distances to five Boston employment centers\nRAD: index of accessibility to radial highways (‘Low’, ‘Medium’, ‘High’).\nTAX: full-value property-tax rate per $10,000.\nPTRATIO: pupil-teacher ratio by town.\nLSTAT: lower status of the population (percent)."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#read-the-dataset-1",
+    "href": "Module3/Nonparametric.slides.html#read-the-dataset-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Read the dataset",
+    "text": "Read the dataset\n\nWe read the dataset and set the variable CHAS and RAD as categorical.\n\nBoston_data = pd.read_excel('BostonHousing.xlsx')\n\nBoston_data['CHAS'] = pd.Categorical(Boston_data['CHAS'])\nBoston_data['RAD'] = pd.Categorical(Boston_data['RAD'], \n                                      categories=[\"Low\", \"Medium\", \"High\"], \n                                      ordered=True)"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-5",
+    "href": "Module3/Nonparametric.slides.html#section-5",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "Boston_data.head()\n\n\n\n\n\n\n\n\nCRIM\nZN\nINDUS\nCHAS\nNOX\nRM\nAGE\nDIS\nRAD\nTAX\nPTRATIO\nLSTAT\nMEDV\n\n\n\n\n0\n0.00632\n18.0\n2.31\nNo\n0.538\n6.575\n65.2\n4.0900\nLow\n296\n15.3\n4.98\n24.0\n\n\n1\n0.02731\n0.0\n7.07\nNo\n0.469\n6.421\n78.9\n4.9671\nLow\n242\n17.8\n9.14\n21.6\n\n\n2\n0.02729\n0.0\n7.07\nNo\n0.469\n7.185\n61.1\n4.9671\nLow\n242\n17.8\n4.03\n34.7\n\n\n3\n0.03237\n0.0\n2.18\nNo\n0.458\n6.998\n45.8\n6.0622\nLow\n222\n18.7\n2.94\n33.4\n\n\n4\n0.06905\n0.0\n2.18\nNo\n0.458\n7.147\n54.2\n6.0622\nLow\n222\n18.7\n5.33\n36.2"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#generating-predictors-in-python-1",
+    "href": "Module3/Nonparametric.slides.html#generating-predictors-in-python-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Generating predictors in Python",
+    "text": "Generating predictors in Python\nFirst, we use the function .drop() from pandas to drop the response column MEDV and store the result in X_full.\n\n# Set full matrix of predictors.\nX_full = Boston_data.drop(columns = ['MEDV']) \n\nUnfortunately, bagging does not work with categorical predictors such as CHAS and RAD. So, we must transform them into dummy variables using the code below.\n\n# Turn categorical predictors into dummy variables.\nX_dummies = pd.get_dummies(X_full[['CHAS', 'RAD']], drop_first = True, dtype = 'int')\n\n# Drop original predictors from the dataset.\nX_other = X_full.drop(['CHAS', 'RAD'], axis=1)\n\n# Update the predictor matrix.\nX_full = pd.concat([X_other, X_dummies], axis=1)"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#generate-the-response-in-python",
+    "href": "Module3/Nonparametric.slides.html#generate-the-response-in-python",
+    "title": "Ensemble Methods for Regression",
+    "section": "Generate the response in Python",
+    "text": "Generate the response in Python\n\nNext, we use the function .filter() from pandas to extract the column MEDV from the data frame. We store the result in Y_full.\n\n# Set full matrix of responses.\nY_full = Boston_data.filter(['MEDV'])"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-6",
+    "href": "Module3/Nonparametric.slides.html#section-6",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "We partition the full dataset into 80% for training and the other 20% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.2,\n                                                      random_state = 507134)"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#bagging-in-python",
+    "href": "Module3/Nonparametric.slides.html#bagging-in-python",
+    "title": "Ensemble Methods for Regression",
+    "section": "Bagging in Python",
+    "text": "Bagging in Python\nWe define a bagging algorithm for regression using the BaggingRegressor function from scikit-learn.\nThe n_estimators argument is the number of decision trees to generate in bagging. Ideally, it should be high, around 500.\n\n# Set the bagging algorithm.\nBaggingalgorithm = BaggingRegressor(n_estimators = 500, \n                                     random_state = 59227)\n\n# Train the bagging algorithm.\nBaggingalgorithm.fit(X_train, Y_train)\n\nrandom_state allows us to obtain the same bagging algorithm in different runs of the algorithm."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data-1",
+    "href": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Predictions on the validation data",
+    "text": "Predictions on the validation data\nTo predict the responses on the validation data, we use the function .predict() using the predictor values in the validation dataset contained in X_valid.\n\nY_pred = Baggingalgorithm.predict(X_valid)\nY_pred\n\narray([19.6658, 13.7368, 21.1204, 44.2054, 25.0334, 34.5046, 30.0714,\n       14.9126, 23.185 , 20.2232, 17.0034, 20.0364, 19.7258,  8.9552,\n       24.2136, 29.2074, 21.12  , 20.8784, 25.4168, 18.6084, 22.7604,\n       26.452 , 24.025 , 35.9372, 23.5698, 20.2344,  8.3688, 15.9038,\n       47.4466, 24.2666, 34.4922, 23.2298, 24.4656, 13.3668, 22.6112,\n       12.7678, 27.8812, 19.8882, 22.7836, 18.9106,  9.0864, 24.6914,\n       21.9024, 12.3184, 27.1866, 33.0508, 19.436 , 25.7136, 19.4562,\n       25.3064, 26.8094, 16.9618, 20.8276, 28.7036, 27.884 , 12.5904,\n       23.2554, 38.432 , 20.3296, 22.0288, 17.894 , 15.8226, 13.5456,\n       21.0472, 23.069 , 20.6296, 20.5934, 15.8522, 32.7326, 33.4602,\n       15.3956, 17.5128, 21.2734, 20.6626, 29.7304, 15.4016, 18.9904,\n       19.0864, 32.4364, 21.6208, 22.1254, 20.5334, 23.8114, 21.0438,\n       34.0556, 21.5676, 19.8904, 19.025 , 21.4108, 15.335 , 46.5098,\n       23.533 ,  8.2252, 14.905 , 25.672 , 16.1982, 22.2198, 45.0716,\n       14.5424, 21.2396, 14.9436, 22.3806])"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-1",
+    "href": "Module3/Nonparametric.slides.html#validation-rmse-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Validation RMSE",
+    "text": "Validation RMSE\nWe compute the root mean squared error on the validation data using the mse() function. Recall that the responses from the validation dataset are in Y_valid, and the model predictions are in Y_pred.\n\nmse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)\nprint(round(mse**(1/2), 2)) # RMSE\n\n4.62"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#a-single-deep-tree",
+    "href": "Module3/Nonparametric.slides.html#a-single-deep-tree",
+    "title": "Ensemble Methods for Regression",
+    "section": "A single deep tree",
+    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nreg_tree = DecisionTreeRegressor(ccp_alpha=0.0,\n                                 random_state=507134)\n\n# We train the classification tree using the training data.\nreg_tree.fit(X_train, Y_train)\n\n\nLet’s compute the validation RMSE of the tree.\n\nreg_tree_Y_pred = reg_tree.predict(X_valid)\nmse = mean_squared_error(Y_valid, reg_tree_Y_pred) \nprint(round(mse**(1/2), 2)) \n\n5.87"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#advantages",
+    "href": "Module3/Nonparametric.slides.html#advantages",
+    "title": "Ensemble Methods for Regression",
+    "section": "Advantages",
+    "text": "Advantages\n\n\nBagging will have lower prediction errors than a single regression tree.\nThe fact that, for each tree, not all of the original observations were used, can be exploited to produce an estimate of the accuracy for classification. This estimate is called the out-of-bag error estimate which is an estimate of the RMSE on the test dataset."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#limitations",
+    "href": "Module3/Nonparametric.slides.html#limitations",
+    "title": "Ensemble Methods for Regression",
+    "section": "Limitations",
+    "text": "Limitations\n\n\nLoss of interpretability: the final bagged classifier is not a tree, and so we forfeit the clear interpretative ability of a classification tree.\nComputational complexity: we are essentially multiplying the work of growing (and possibly pruning) a single tree by \\(B\\).\nFundamental issue: bagging a good model can improve predictive performance, but bagging a bad one can seriously degrade it."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#other-issues",
+    "href": "Module3/Nonparametric.slides.html#other-issues",
+    "title": "Ensemble Methods for Regression",
+    "section": "Other issues",
+    "text": "Other issues\n\n\nSuppose a variable is very important and decisive.\n\nIt will probably appear near the top of a large number of trees.\nAnd these trees will tend to vote the same way.\nIn some sense, then, many of the trees are “correlated”.\nThis will degrade the performance of bagging."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-7",
+    "href": "Module3/Nonparametric.slides.html#section-7",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "Bagging is unable to capture simple decision boundaries"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#random-forest-1",
+    "href": "Module3/Nonparametric.slides.html#random-forest-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nExactly as bagging, but…\n\nWhen splitting the nodes using the CART algorithm, instead of going through all possible splits for all possible variables, we go through all possible splits on a random sample of a small number of variables \\(m\\), where \\(m &lt; p\\).\n\nRandom forests can improve the performance of bagging."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#why-does-it-work",
+    "href": "Module3/Nonparametric.slides.html#why-does-it-work",
+    "title": "Ensemble Methods for Regression",
+    "section": "Why does it work?",
+    "text": "Why does it work?\n\n\nNot so dominant predictors will get a chance to appear by themselves and show “their stuff”.\nThis adds more diversity to the trees.\nThe fact that the trees in the forest are not (strongly) correlated means lower variability in the predictions and so, a bettter performance overall."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#tuning-parameter",
+    "href": "Module3/Nonparametric.slides.html#tuning-parameter",
+    "title": "Ensemble Methods for Regression",
+    "section": "Tuning parameter",
+    "text": "Tuning parameter\n\nHow do we set \\(m\\)?\n\nFor regression, can use \\(m = \\sqrt{p}\\) and a minimum leaf node size of 5.\n\nIn practice, sometimes the best values for these parameters will depend on the problem. So, we can treat \\(m\\) as a tuning parameter.\n\nNote that if \\(m = p\\), we get bagging."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#the-final-product-is-a-black-box",
+    "href": "Module3/Nonparametric.slides.html#the-final-product-is-a-black-box",
+    "title": "Ensemble Methods for Regression",
+    "section": "The final product is a black box",
+    "text": "The final product is a black box\n\n\nA black box. Inside the box are several hundred trees, each slightly different.\nYou put an observation into the black box, and the black box classifies it or predicts it for you."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#random-forest-in-python",
+    "href": "Module3/Nonparametric.slides.html#random-forest-in-python",
+    "title": "Ensemble Methods for Regression",
+    "section": "Random Forest in Python",
+    "text": "Random Forest in Python\n\nIn Python, we define a RandomForest algorithm for classification using the RandomForestRegressor function from scikit-learn.\n\n# Set the random forest algorithm.\nRFalgorithm = RandomForestRegressor(n_estimators = 500,\n                                    min_samples_leaf = 5,\n                                    max_features = \"sqrt\",\n                                    random_state = 59227)\n\n# Train the random forest algorithm.\nRFalgorithm.fit(X_train, Y_train)\n\nn_estimators sets the number of decision trees to use, min_samples_leaf sets the minimum size for the terminal nodes, and max_features sets the maximum number of predictors to try in each split."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#rmse",
+    "href": "Module3/Nonparametric.slides.html#rmse",
+    "title": "Ensemble Methods for Regression",
+    "section": "RMSE",
+    "text": "RMSE\nEvaluate the performance of random forest.\n\n# Predict responses in validation data.\nRF_predicted = RFalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, RF_predicted) \nprint(round(mse**(1/2), 2))\n\n4.63"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#predictor-importance",
+    "href": "Module3/Nonparametric.slides.html#predictor-importance",
+    "title": "Ensemble Methods for Regression",
+    "section": "Predictor importance",
+    "text": "Predictor importance\n\n\nRandom Forests and bagged trees are a black box. But “Importance” is a statistic that attempts to give us some insight.\nThe importance statistic assumes that we have trained a random forest and we have validation data."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#calculation-of-importance",
+    "href": "Module3/Nonparametric.slides.html#calculation-of-importance",
+    "title": "Ensemble Methods for Regression",
+    "section": "Calculation of importance",
+    "text": "Calculation of importance\n\n\nWe record the prediction error of the trained algorithm on the validation data. This serves as a baseline.\nNext, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.\nThe importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-8",
+    "href": "Module3/Nonparametric.slides.html#section-8",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-9",
+    "href": "Module3/Nonparametric.slides.html#section-9",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#boosting-1",
+    "href": "Module3/Nonparametric.slides.html#boosting-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Boosting",
+    "text": "Boosting\n\n\nIn boosting, we also grow multiple decision trees. But instead of growing trees randomly, each new tree depends on the previous one.\nBoosting is easier to understand in the context of regression, rather than classification.\nIdea: Explore cooperation between desicion trees, rather than diversity as in Bagging and Random Forest."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#boosting-for-regression",
+    "href": "Module3/Nonparametric.slides.html#boosting-for-regression",
+    "title": "Ensemble Methods for Regression",
+    "section": "Boosting for regression",
+    "text": "Boosting for regression\n\nBoosting creates a sequence of trees, each one building upon the previous.\nEarlier trees are small, and the next tree is created with the residuals of the previous tree.\nIn other words, at each step, we try to explain the information that we didn’t explain in previous steps.\nGradually, the sequence “learns” to predict.\nSomething a little odd: earlier trees are deliberately “held back” to keep them from explaining too much. This creates “slow learning”."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-10",
+    "href": "Module3/Nonparametric.slides.html#section-10",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-11",
+    "href": "Module3/Nonparametric.slides.html#section-11",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "Initially, the boosted tree is \\(\\hat{f}(\\boldsymbol{x}) = 0\\) and the residuals of this tree are \\(r_i = y_i - f(\\boldsymbol{x}_i)\\) for all \\(i\\) in the training data.\nAt each step \\(b\\) in the process (\\(b = 1, \\ldots, B\\)), we\n\nBuild a regression tree \\(\\hat{T}_b\\) with \\(d\\) splits to the training data \\((\\boldsymbol{X}, \\boldsymbol{r})\\). This tree has \\(d+1\\) terminal nodes.\nUpdate the boosted tree \\(\\hat{f}\\) by adding in a shrunken version of the new tree: \\(\\hat{f}(\\boldsymbol{x}) \\leftarrow \\hat{f}(\\boldsymbol{x}) + \\lambda \\hat{T}_b(\\boldsymbol{x})\\).\nUpdate the residuals using shrunken tree, \\(r_i \\leftarrow r_i - \\lambda \\hat{T}_b(x_i)\\).\n\nThe final boosted tree is: \\(\\hat{f}(\\boldsymbol{x}) = \\sum_{b=1}^{B} \\lambda \\hat{T}_b (\\boldsymbol{x}).\\)\n\nD is 4 or 5, sometimes 1. Lambda is 0.001 or 0.01 This algorithm is a gradient boosting method for regression."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#why-does-this-work",
+    "href": "Module3/Nonparametric.slides.html#why-does-this-work",
+    "title": "Ensemble Methods for Regression",
+    "section": "Why does this work?",
+    "text": "Why does this work?\n\nBy using a small tree, we are deliberately leaving information out of the first round of the model. So what gets fit is the “easy” stuff.\nThe residuals have all of the information that we haven’t yet explained. We continue iterating on the residuals, fitting them with small trees, so that we slowly explain the bits of the variation that are harder to explain.\nThis process is called “learning”: at each iteration, we get a better fit.\nBy multiplying by \\(\\lambda &lt;1\\), we “slow down” the learning (by making it harder to fit all of the variation), and there is research that says that slower learning is better."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#tuning-parameters",
+    "href": "Module3/Nonparametric.slides.html#tuning-parameters",
+    "title": "Ensemble Methods for Regression",
+    "section": "Tuning parameters",
+    "text": "Tuning parameters\nThe number of trees \\(B\\). Unlike bagging and random forest, boosting can overfit if \\(B\\) is too large. We use so-called K-fold cross-validation to select \\(B\\).\nThe shrinkage parameter \\(\\lambda\\), a small positive number. Typical values are 0.01 or 0.001. Very small \\(\\lambda\\) can require using a very large value of B to achieve good performance.\nThe number of splits \\(d\\) in each tree. Common choices are 1, 4 or 5. Often \\(d = 1\\), in which case each tree is a stump."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#boosting-in-python",
+    "href": "Module3/Nonparametric.slides.html#boosting-in-python",
+    "title": "Ensemble Methods for Regression",
+    "section": "Boosting in Python",
+    "text": "Boosting in Python\nIn Python, we define a Boosting algorithm for classification using the GradientBoostingRegressor function from scikit-learn.\n\n# Set the boosting algorithm.\nGBalgorithm = GradientBoostingRegressor(learning_rate = 0.1,\n                                    n_estimators = 1000,\n                                    max_depth = 3,\n                                    random_state = 59227)\n\n# Train the algorithm.\nGBalgorithm.fit(X_train, Y_train)\n\nn_estimators sets the number of decision trees to use, learning_rate sets the value of \\(\\lambda\\), and max_depth sets the depth of the tree."
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-2",
+    "href": "Module3/Nonparametric.slides.html#validation-rmse-2",
+    "title": "Ensemble Methods for Regression",
+    "section": "Validation RMSE",
+    "text": "Validation RMSE\nEvaluate the performance of the boosting algorithm.\n\n# Predict responses in validation data.\nGB_predicted = GBalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, GB_predicted) \nprint(round(mse**(1/2), 2))\n\n3.85"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#predictor-importance-1",
+    "href": "Module3/Nonparametric.slides.html#predictor-importance-1",
+    "title": "Ensemble Methods for Regression",
+    "section": "Predictor importance",
+    "text": "Predictor importance\nWe can also apply predictor importance to the gradient boosting algorithm.\n\n# Compute permutation importance\nresult = permutation_importance(GBalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#section-12",
+    "href": "Module3/Nonparametric.slides.html#section-12",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
+  },
+  {
+    "objectID": "Module3/Nonparametric.slides.html#issues-with-boosting",
+    "href": "Module3/Nonparametric.slides.html#issues-with-boosting",
+    "title": "Ensemble Methods for Regression",
+    "section": "Issues with boosting",
+    "text": "Issues with boosting\n\n\nLoss of interpretability: the final boosted model is a weighted sum of trees, which we cannot interpret easily.\nComputational complexity: since it uses slow learners, it can be time consuming. However, we are growing small trees, each step can be done relatively quickly in some cases (e.g. AdaBoost)."
   },
   {
     "objectID": "Module4/PCA.slides.html#agenda",
@@ -3511,7 +3896,7 @@
     "href": "Module2/EnsembleMethods.slides.html#training-and-validation-datasets",
     "title": "Ensemble Methods",
     "section": "Training and validation datasets",
-    "text": "Training and validation datasets\n\nTo evaluate a model’s performance on unobserved data, we split the current dataset into training and validation datasets. To do this, we use train_test_split() from scikit-learn.\n\n# Split into training and validation\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target, \n                                                      test_size = 0.2,\n                                                      random_state=507134)\n\nWe use 80% of the dataset for training and the rest for validation."
+    "text": "Training and validation datasets\n\nTo evaluate a model’s performance on unobserved data, we split the current dataset into training and validation datasets. To do this, we use train_test_split() from scikit-learn.\n\n# Split into training and validation\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target, \n                                                      test_size = 0.2,\n                                                      stratify = Y_target,\n                                                      random_state=507134)\n\nWe use 80% of the dataset for training and the rest for validation."
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#bagging-in-python",
@@ -3525,7 +3910,7 @@
     "href": "Module2/EnsembleMethods.slides.html#predictions-1",
     "title": "Ensemble Methods",
     "section": "Predictions",
-    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 0, ..., 0, 0, 0])"
+    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0, 0, 1, ..., 0, 0, 0])"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#confusion-matrix",
@@ -3539,14 +3924,14 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.78"
+    "text": "Accuracy\n\nThe accuracy of the bagging classifier is 78%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, predicted_class)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "href": "Module2/EnsembleMethods.slides.html#a-single-deep-tree",
     "title": "Ensemble Methods",
     "section": "A single deep tree",
-    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.77"
+    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0.0,\n                                    random_state=507134)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)\n\n\nLet’s compute the accuracy of the pruned tree.\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.76"
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#advantages",
@@ -3623,7 +4008,7 @@
     "href": "Module2/EnsembleMethods.slides.html#accuracy-1",
     "title": "Ensemble Methods",
     "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.78"
+    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#agenda",
@@ -3826,7 +4211,7 @@
     "href": "index.slides.html#course-topics",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "Course topics",
-    "text": "Course topics\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for time series\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)"
+    "text": "Course topics\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods for classification (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for regression (slides)\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)"
   },
   {
     "objectID": "index.slides.html#about-the-author",
@@ -3840,7 +4225,7 @@
     "href": "index.html",
     "title": "IN2004B Generation of Value with Data Analytics",
     "section": "",
-    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\n\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for time series\n\n\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)\n\n\n\n\nAbout the author\nAlan R. Vazquez is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense\nIN2004B Generation of Value with Data Analytics © 2025 by Alan R Vazquez is licensed under CC BY-NC-SA 4.0",
+    "text": "Course topics\n\nModule 1\n\nIndicators (slides)\nSelection of Indicators (slides)\n\n\n\nModule 2\n\nIntroduction to Data Science (slides)\nIntroduction to Python and pandas (slides) (colab)\nData wrangling and visualization (slides) (colab) (pandas cheat sheet)\nDecision trees for classification (slides) (colab)\nEnsemble methods for classification (slides) (colab)\nK-nearest neighbours (slides) (colab)\n\n\n\nModule 3\n\nIntroduction to predictive models (slides) (colab)\nIntroduction to time series (slides) (colab)\nAutocorrelation models (slides) (colab)\nEnsemble methods for regression (slides)\n\n\n\nModule 4\n\nClustering methods (slides) (colab)\nPrincipal component analysis (slides) (colab)\n\n\n\n\nAbout the author\nAlan R. Vazquez is a Research Professor at the Department of Industrial Engineering at Tecnologico de Monterrey, Monterrey campus.\n\nLicense\nIN2004B Generation of Value with Data Analytics © 2025 by Alan R Vazquez is licensed under CC BY-NC-SA 4.0",
     "crumbs": [
       "Home"
     ]
@@ -4047,488 +4432,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#load-the-libraries",
-    "href": "Module3/Nonparametric.slides.html#load-the-libraries",
-    "title": "Ensemble Methods for Regression",
-    "section": "Load the libraries",
-    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeRegressor, plot_tree\nfrom sklearn.ensemble import BaggingRegressor, RandomForestRegressor\nfrom sklearn.ensemble import  GradientBoostingRegressor\nfrom sklearn.metrics import mean_squared_error\nfrom sklearn.inspection import permutation_importance\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#decision-trees",
-    "href": "Module3/Nonparametric.slides.html#decision-trees",
-    "title": "Ensemble Methods for Regression",
-    "section": "Decision trees",
-    "text": "Decision trees\n\n\n\n\n\nSimple and useful for interpretations.\nCan handle continuous and categorical predictors and responses. So, they can be applied to both classification and regression problems.\nComputationally efficient."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#limitations-of-decision-trees",
-    "href": "Module3/Nonparametric.slides.html#limitations-of-decision-trees",
-    "title": "Ensemble Methods for Regression",
-    "section": "Limitations of decision trees",
-    "text": "Limitations of decision trees\n\n\nIn general, decision trees do not work well for classification and regression problems.\nHowever, they can be combined to build effective algorithms for these problems."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#ensamble-methods-1",
-    "href": "Module3/Nonparametric.slides.html#ensamble-methods-1",
-    "title": "Nonparametric Methods",
-    "section": "Ensamble methods",
-    "text": "Ensamble methods\n\nEnsemble methods are frameworks to combine decision trees.\nHere, we will cover two popular ensamble methods:\n\nBagging. Ensemble many deep trees.\n\nQuintessential method: Random Forests.\n\nBoosting. Ensemble small trees sequentially."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#bootstrap-samples",
-    "href": "Module3/Nonparametric.slides.html#bootstrap-samples",
-    "title": "Ensemble Methods for Regression",
-    "section": "Bootstrap samples",
-    "text": "Bootstrap samples\n\nBootstrap samples are samples obtained with replacement from the original sample. So, an observation can occur more than one in a bootstrap sample.\nBootstrap samples are the building block of the bootstrap method, which is a statistical technique for estimating quantities about a population by averaging estimates from multiple small data samples."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#bagging-1",
-    "href": "Module3/Nonparametric.slides.html#bagging-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Bagging",
-    "text": "Bagging\nGiven a training dataset, bagging averages the predictions from decision trees over a collection of bootstrap samples."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#predictions",
-    "href": "Module3/Nonparametric.slides.html#predictions",
-    "title": "Ensemble Methods for Regression",
-    "section": "Predictions",
-    "text": "Predictions\nLet \\(\\boldsymbol{x} = (x_1, x_2, \\ldots, x_p)\\) be a vector of new predictor values.\nFor regression problems:\n\nEach regression tree outputs the average value depending on the region \\(\\boldsymbol{x}\\) falls in. For the b-th tree, denote such average as \\(\\hat{T}_{b}(\\boldsymbol{x})\\).\nPredict using the average of all regression trees\n\n\\[\\hat{f}_{bag}(\\boldsymbol{x}) = \\frac{1}{B} \\sum_{b=1}^{B} \\hat{T}_{b}(\\boldsymbol{x}).  \\]"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section",
-    "href": "Module3/Nonparametric.slides.html#section",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "To compute the mean squared error we use\n\nThe predicted response is the average response calculated in the node or region.\nThe actual responses are those of the observations in the region.\n\nWe refer to decision trees for regression as regression trees."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-1",
-    "href": "Module3/Nonparametric.slides.html#section-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "The response is the player’s salary (in $), contained in the column Salary.\nFor this example, we will focus on two predictors:\n\nHits: Number of hits in the season\n\nYears: Number of years the player has been in the league"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-2",
-    "href": "Module3/Nonparametric.slides.html#section-2",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "The data set has some missing observations. So, we remove the observations with at least one missing value in a predictor.\n\nHitters_data_clean = Hitters_data.dropna()\nHitters_data_clean.head()\n\n\n\n\n\n\n\n\nAtBat\nHits\nHmRun\nRuns\nRBI\nWalks\nYears\nCAtBat\nCHits\nCHmRun\nCRuns\nCRBI\nCWalks\nLeague\nDivision\nPutOuts\nAssists\nErrors\nSalary\nNewLeague\n\n\n\n\n1\n315\n81\n7\n24\n38\n39\n14\n3449\n835\n69\n321\n414\n375\nN\nW\n632\n43\n10\n475.0\nN\n\n\n2\n479\n130\n18\n66\n72\n76\n3\n1624\n457\n63\n224\n266\n263\nA\nW\n880\n82\n14\n480.0\nA\n\n\n3\n496\n141\n20\n65\n78\n37\n11\n5628\n1575\n225\n828\n838\n354\nN\nE\n200\n11\n3\n500.0\nN\n\n\n4\n321\n87\n10\n39\n42\n30\n2\n396\n101\n12\n48\n46\n33\nN\nE\n805\n40\n4\n91.5\nN\n\n\n5\n594\n169\n4\n74\n51\n35\n11\n4408\n1133\n19\n501\n336\n194\nA\nW\n282\n421\n25\n750.0\nA"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#implementation",
-    "href": "Module3/Nonparametric.slides.html#implementation",
-    "title": "Ensemble Methods for Regression",
-    "section": "Implementation",
-    "text": "Implementation\n\n\n\nHow many trees? No risk of overfitting, so use plenty.\nNo pruning necessary to build the trees. However, one can still decide to apply some pruning or early stopping mechanism.\nThe size of bootstrap samples is the same as the size of the training dataset, but we can use a different size."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#example-1",
-    "href": "Module3/Nonparametric.slides.html#example-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Example 1",
-    "text": "Example 1\n\nThe “Hitters.xlsx” dataset contains data collected from Major League Baseball players. It includes information on various statistics such as number of hits, years in the league, and salary.\nThe goal is to predict a player’s salary based on performance statistics."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#read-the-dataset",
-    "href": "Module3/Nonparametric.slides.html#read-the-dataset",
-    "title": "Ensemble Methods for Regression",
-    "section": "Read the dataset",
-    "text": "Read the dataset\nWe read the dataset\n\nHitters_data = pd.read_excel('Hitters.xlsx')\nHitters_data.head()\n\n\n\n\n\n\n\n\nAtBat\nHits\nHmRun\nRuns\nRBI\nWalks\nYears\nCAtBat\nCHits\nCHmRun\nCRuns\nCRBI\nCWalks\nLeague\nDivision\nPutOuts\nAssists\nErrors\nSalary\nNewLeague\n\n\n\n\n0\n293\n66\n1\n30\n29\n14\n1\n293\n66\n1\n30\n29\n14\nA\nE\n446\n33\n20\nNaN\nA\n\n\n1\n315\n81\n7\n24\n38\n39\n14\n3449\n835\n69\n321\n414\n375\nN\nW\n632\n43\n10\n475.0\nN\n\n\n2\n479\n130\n18\n66\n72\n76\n3\n1624\n457\n63\n224\n266\n263\nA\nW\n880\n82\n14\n480.0\nA\n\n\n3\n496\n141\n20\n65\n78\n37\n11\n5628\n1575\n225\n828\n838\n354\nN\nE\n200\n11\n3\n500.0\nN\n\n\n4\n321\n87\n10\n39\n42\n30\n2\n396\n101\n12\n48\n46\n33\nN\nE\n805\n40\n4\n91.5\nN"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#selected-predictors.",
-    "href": "Module3/Nonparametric.slides.html#selected-predictors.",
-    "title": "Ensemble Methods for Regression",
-    "section": "Selected predictors.",
-    "text": "Selected predictors.\n\nage: Age of the individual.\nsex: Sex of the individual (male or female).\nrace: Race of the individual (W, B, Amer-Indian, Amer-Pacific, or Other).\neducation.num: number of years of education.\nhours.per.week: Number of work hours per week.\n\n\n# Choose the predictors.\nX_full = Adult_data.filter(['age', 'sex', 'race', 'education.num', \n                            'hours.per.week'])"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#pre-processing-categorical-predictors",
-    "href": "Module3/Nonparametric.slides.html#pre-processing-categorical-predictors",
-    "title": "Ensemble Methods for Regression",
-    "section": "Pre-processing categorical predictors",
-    "text": "Pre-processing categorical predictors\n\nUnfortunately, bagging does not work with categorical predictors. We must transform them into dummy variables using the code below.\n\n# Turn categorical predictors into dummy variables.\nX_dummies = pd.get_dummies(X_full[['sex', 'race']])\n\n# Drop original predictors from the dataset.\nX_other = X_full.drop(['sex', 'race'], axis=1)\n\n# Update the predictor matrix.\nX_full = pd.concat([X_other, X_dummies], axis=1)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#set-the-target-class",
-    "href": "Module3/Nonparametric.slides.html#set-the-target-class",
-    "title": "Ensemble Methods for Regression",
-    "section": "Set the target class",
-    "text": "Set the target class\nLet’s set the target class and the reference class using the get_dummies() function.\n\n# Select answer\nY = Adult_data.filter(['income'])\n\n# Create dummy variables.\nY_dummies = pd.get_dummies(Y, dtype = 'int')\n\n# Show.\nY_dummies.head(4)\n\n\n\n\n\n\n\n\nincome_large\nincome_small\n\n\n\n\n0\n0\n1\n\n\n1\n0\n1\n\n\n2\n0\n1\n\n\n3\n0\n1"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-3",
-    "href": "Module3/Nonparametric.slides.html#section-3",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "We partition the full dataset into 70% for training and the other 30% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.3,\n                                                      random_state = 507134)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#training-and-validation-datasets",
-    "href": "Module3/Nonparametric.slides.html#training-and-validation-datasets",
-    "title": "Ensemble Methods for Regression",
-    "section": "Training and validation datasets",
-    "text": "Training and validation datasets\n\nTo evaluate a model’s performance on unobserved data, we split the current dataset into training and validation datasets. To do this, we use train_test_split() from scikit-learn.\n\n# Split into training and validation\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target, \n                                                      test_size = 0.2,\n                                                      stratify = Y_target,\n                                                      random_state=507134)\n\nWe use 80% of the dataset for training and the rest for validation."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#bagging-in-python",
-    "href": "Module3/Nonparametric.slides.html#bagging-in-python",
-    "title": "Ensemble Methods for Regression",
-    "section": "Bagging in Python",
-    "text": "Bagging in Python\nWe define a bagging algorithm for regression using the BaggingRegressor function from scikit-learn.\nThe n_estimators argument is the number of decision trees to generate in bagging. Ideally, it should be high, around 500.\n\n# Set the bagging algorithm.\nBaggingalgorithm = BaggingRegressor(n_estimators = 500, \n                                     random_state = 59227)\n\n# Train the bagging algorithm.\nBaggingalgorithm.fit(X_train, Y_train)\n\nrandom_state allows us to obtain the same bagging algorithm in different runs of the algorithm."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#predictions-1",
-    "href": "Module3/Nonparametric.slides.html#predictions-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Predictions",
-    "text": "Predictions\nPredict the classes using bagging.\n\npredicted_class = Baggingalgorithm.predict(X_valid)\n\npredicted_class\n\narray([0.12623046, 0.38969062, 0.78473254, ..., 0.092     , 0.38647143,\n       0.        ])"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#a-single-deep-tree",
-    "href": "Module3/Nonparametric.slides.html#a-single-deep-tree",
-    "title": "Ensemble Methods for Regression",
-    "section": "A single deep tree",
-    "text": "A single deep tree\nTo compare the bagging, let’s use a single deep tree.\n\n\nCode\n# We tell Python that we want a classification tree\nreg_tree = DecisionTreeRegressor(ccp_alpha=0.0,\n                                 random_state=507134)\n\n# We train the classification tree using the training data.\nreg_tree.fit(X_train, Y_train)\n\n\nLet’s compute the validation RMSE of the tree.\n\nreg_tree_Y_pred = reg_tree.predict(X_valid)\nmse = mean_squared_error(Y_valid, reg_tree_Y_pred) \nprint(round(mse**(1/2), 2)) \n\n5.87"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#advantages",
-    "href": "Module3/Nonparametric.slides.html#advantages",
-    "title": "Ensemble Methods for Regression",
-    "section": "Advantages",
-    "text": "Advantages\n\n\nBagging will have lower prediction errors than a single regression tree.\nThe fact that, for each tree, not all of the original observations were used, can be exploited to produce an estimate of the accuracy for classification. This estimate is called the out-of-bag error estimate which is an estimate of the RMSE on the test dataset."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#limitations",
-    "href": "Module3/Nonparametric.slides.html#limitations",
-    "title": "Ensemble Methods for Regression",
-    "section": "Limitations",
-    "text": "Limitations\n\n\nLoss of interpretability: the final bagged classifier is not a tree, and so we forfeit the clear interpretative ability of a classification tree.\nComputational complexity: we are essentially multiplying the work of growing (and possibly pruning) a single tree by \\(B\\).\nFundamental issue: bagging a good model can improve predictive performance, but bagging a bad one can seriously degrade it."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#other-issues",
-    "href": "Module3/Nonparametric.slides.html#other-issues",
-    "title": "Ensemble Methods for Regression",
-    "section": "Other issues",
-    "text": "Other issues\n\n\nSuppose a variable is very important and decisive.\n\nIt will probably appear near the top of a large number of trees.\nAnd these trees will tend to vote the same way.\nIn some sense, then, many of the trees are “correlated”.\nThis will degrade the performance of bagging."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-4",
-    "href": "Module3/Nonparametric.slides.html#section-4",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Boston_data.head()\n\n\n\n\n\n\n\n\nCRIM\nZN\nINDUS\nCHAS\nNOX\nRM\nAGE\nDIS\nRAD\nTAX\nPTRATIO\nLSTAT\nMEDV\n\n\n\n\n0\n0.00632\n18.0\n2.31\nNo\n0.538\n6.575\n65.2\n4.0900\nLow\n296\n15.3\n4.98\n24.0\n\n\n1\n0.02731\n0.0\n7.07\nNo\n0.469\n6.421\n78.9\n4.9671\nLow\n242\n17.8\n9.14\n21.6\n\n\n2\n0.02729\n0.0\n7.07\nNo\n0.469\n7.185\n61.1\n4.9671\nLow\n242\n17.8\n4.03\n34.7\n\n\n3\n0.03237\n0.0\n2.18\nNo\n0.458\n6.998\n45.8\n6.0622\nLow\n222\n18.7\n2.94\n33.4\n\n\n4\n0.06905\n0.0\n2.18\nNo\n0.458\n7.147\n54.2\n6.0622\nLow\n222\n18.7\n5.33\n36.2"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#random-forest-1",
-    "href": "Module3/Nonparametric.slides.html#random-forest-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Random Forest",
-    "text": "Random Forest\n\nExactly as bagging, but…\n\nWhen splitting the nodes using the CART algorithm, instead of going through all possible splits for all possible variables, we go through all possible splits on a random sample of a small number of variables \\(m\\), where \\(m &lt; p\\).\n\nRandom forests can improve the performance of bagging."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#why-does-it-work",
-    "href": "Module3/Nonparametric.slides.html#why-does-it-work",
-    "title": "Ensemble Methods for Regression",
-    "section": "Why does it work?",
-    "text": "Why does it work?\n\n\nNot so dominant predictors will get a chance to appear by themselves and show “their stuff”.\nThis adds more diversity to the trees.\nThe fact that the trees in the forest are not (strongly) correlated means lower variability in the predictions and so, a bettter performance overall."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#tuning-parameter",
-    "href": "Module3/Nonparametric.slides.html#tuning-parameter",
-    "title": "Ensemble Methods for Regression",
-    "section": "Tuning parameter",
-    "text": "Tuning parameter\n\nHow do we set \\(m\\)?\n\nFor regression, can use \\(m = \\sqrt{p}\\) and a minimum leaf node size of 5.\n\nIn practice, sometimes the best values for these parameters will depend on the problem. So, we can treat \\(m\\) as a tuning parameter.\n\nNote that if \\(m = p\\), we get bagging."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#the-final-product-is-a-black-box",
-    "href": "Module3/Nonparametric.slides.html#the-final-product-is-a-black-box",
-    "title": "Ensemble Methods for Regression",
-    "section": "The final product is a black box",
-    "text": "The final product is a black box\n\n\nA black box. Inside the box are several hundred trees, each slightly different.\nYou put an observation into the black box, and the black box classifies it or predicts it for you."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#random-forest-in-python",
-    "href": "Module3/Nonparametric.slides.html#random-forest-in-python",
-    "title": "Ensemble Methods for Regression",
-    "section": "Random Forest in Python",
-    "text": "Random Forest in Python\n\nIn Python, we define a RandomForest algorithm for classification using the RandomForestRegressor function from scikit-learn.\n\n# Set the random forest algorithm.\nRFalgorithm = RandomForestRegressor(n_estimators = 500,\n                                    min_samples_leaf = 5,\n                                    max_features = \"sqrt\",\n                                    random_state = 59227)\n\n# Train the random forest algorithm.\nRFalgorithm.fit(X_train, Y_train)\n\nn_estimators sets the number of decision trees to use, min_samples_leaf sets the minimum size for the terminal nodes, and max_features sets the maximum number of predictors to try in each split."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#confusion-matrix",
-    "href": "Module3/Nonparametric.slides.html#confusion-matrix",
-    "title": "Nonparametric Methods",
-    "section": "Confusion matrix",
-    "text": "Confusion matrix\nEvaluate the performance of random forest.\n\n\nCode\n# Predict class.\n#RF_predicted = RFalgorithm.predict(X_valid)\n\n# Compute confusion matrix.\n#cm = confusion_matrix(Y_valid, RF_predicted)\n\n# Visualize the matrix.\n#ConfusionMatrixDisplay(cm).plot()"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#accuracy",
-    "href": "Module3/Nonparametric.slides.html#accuracy",
-    "title": "Nonparametric Methods",
-    "section": "Accuracy",
-    "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\n#accuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\n#print( round(accuracy, 2) )"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#ensamble-methods",
-    "href": "Module3/Nonparametric.slides.html#ensamble-methods",
-    "title": "Ensemble Methods for Regression",
-    "section": "Ensamble methods",
-    "text": "Ensamble methods\n\nEnsemble methods are frameworks to combine decision trees.\nHere, we will cover two popular ensamble methods:\n\nBagging. Ensemble many deep trees.\n\nQuintessential method: Random Forests.\n\nBoosting. Ensemble small trees sequentially."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#rmse",
-    "href": "Module3/Nonparametric.slides.html#rmse",
-    "title": "Ensemble Methods for Regression",
-    "section": "RMSE",
-    "text": "RMSE\nEvaluate the performance of random forest.\n\n# Predict responses in validation data.\nRF_predicted = RFalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, RF_predicted) \nprint(round(mse**(1/2), 2))\n\n4.63"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#predictor-importance",
-    "href": "Module3/Nonparametric.slides.html#predictor-importance",
-    "title": "Ensemble Methods for Regression",
-    "section": "Predictor importance",
-    "text": "Predictor importance\n\n\nRandom Forests and bagged trees are a black box. But “Importance” is a statistic that attempts to give us some insight.\nThe importance statistic assumes that we have trained a random forest and we have validation data."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#boosting-1",
-    "href": "Module3/Nonparametric.slides.html#boosting-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Boosting",
-    "text": "Boosting\n\n\nIn boosting, we also grow multiple decision trees. But instead of growing trees randomly, each new tree depends on the previous one.\nBoosting is easier to understand in the context of regression, rather than classification.\nIdea: Explore cooperation between desicion trees, rather than diversity as in Bagging and Random Forest."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#boosting-for-regression",
-    "href": "Module3/Nonparametric.slides.html#boosting-for-regression",
-    "title": "Ensemble Methods for Regression",
-    "section": "Boosting for regression",
-    "text": "Boosting for regression\n\nBoosting creates a sequence of trees, each one building upon the previous.\nEarlier trees are small, and the next tree is created with the residuals of the previous tree.\nIn other words, at each step, we try to explain the information that we didn’t explain in previous steps.\nGradually, the sequence “learns” to predict.\nSomething a little odd: earlier trees are deliberately “held back” to keep them from explaining too much. This creates “slow learning”."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#why-does-this-work",
-    "href": "Module3/Nonparametric.slides.html#why-does-this-work",
-    "title": "Ensemble Methods for Regression",
-    "section": "Why does this work?",
-    "text": "Why does this work?\n\nBy using a small tree, we are deliberately leaving information out of the first round of the model. So what gets fit is the “easy” stuff.\nThe residuals have all of the information that we haven’t yet explained. We continue iterating on the residuals, fitting them with small trees, so that we slowly explain the bits of the variation that are harder to explain.\nThis process is called “learning”: at each iteration, we get a better fit.\nBy multiplying by \\(\\lambda &lt;1\\), we “slow down” the learning (by making it harder to fit all of the variation), and there is research that says that slower learning is better."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#tuning-parameters",
-    "href": "Module3/Nonparametric.slides.html#tuning-parameters",
-    "title": "Ensemble Methods for Regression",
-    "section": "Tuning parameters",
-    "text": "Tuning parameters\nThe number of trees \\(B\\). Unlike bagging and random forest, boosting can overfit if \\(B\\) is too large. We use so-called K-fold cross-validation to select \\(B\\).\nThe shrinkage parameter \\(\\lambda\\), a small positive number. Typical values are 0.01 or 0.001. Very small \\(\\lambda\\) can require using a very large value of B to achieve good performance.\nThe number of splits \\(d\\) in each tree. Common choices are 1, 4 or 5. Often \\(d = 1\\), in which case each tree is a stump."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#boosting-in-python",
-    "href": "Module3/Nonparametric.slides.html#boosting-in-python",
-    "title": "Ensemble Methods for Regression",
-    "section": "Boosting in Python",
-    "text": "Boosting in Python\nIn Python, we define a Boosting algorithm for classification using the GradientBoostingRegressor function from scikit-learn.\n\n# Set the boosting algorithm.\nGBalgorithm = GradientBoostingRegressor(learning_rate = 0.1,\n                                    n_estimators = 1000,\n                                    max_depth = 3,\n                                    random_state = 59227)\n\n# Train the algorithm.\nGBalgorithm.fit(X_train, Y_train)\n\nn_estimators sets the number of decision trees to use, learning_rate sets the value of \\(\\lambda\\), and max_depth sets the depth of the tree."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#issues-with-boosting",
-    "href": "Module3/Nonparametric.slides.html#issues-with-boosting",
-    "title": "Ensemble Methods for Regression",
-    "section": "Issues with boosting",
-    "text": "Issues with boosting\n\n\nLoss of interpretability: the final boosted model is a weighted sum of trees, which we cannot interpret easily.\nComputational complexity: since it uses slow learners, it can be time consuming. However, we are growing small trees, each step can be done relatively quickly in some cases (e.g. AdaBoost)."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#example",
-    "href": "Module3/Nonparametric.slides.html#example",
-    "title": "Ensemble Methods for Regression",
-    "section": "Example",
-    "text": "Example"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#the-predictors",
-    "href": "Module3/Nonparametric.slides.html#the-predictors",
-    "title": "Ensemble Methods for Regression",
-    "section": "The predictors",
-    "text": "The predictors\n\n\nCRIM: per capita crime rate by town.\nZN: proportion of residential land zoned for lots over 25,000 sq.ft.\nINDUS: proportion of non-retail business acres per town.\nCHAS: Charles River (‘Yes’ if tract bounds river; ‘No’ otherwise).\nNOX: nitrogen oxides concentration (parts per 10 million).\nRM: average number of rooms per dwelling.\nAGE: proportion of owner-occupied units built prior to 1940.\nDIS: weighted mean of distances to five Boston employment centers\nRAD: index of accessibility to radial highways (‘Low’, ‘Medium’, ‘High’).\nTAX: full-value property-tax rate per $10,000.\nPTRATIO: pupil-teacher ratio by town.\nLSTAT: lower status of the population (percent)."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#split-into-training-and-validation-data",
-    "href": "Module3/Nonparametric.slides.html#split-into-training-and-validation-data",
-    "title": "Ensemble Methods for Regression",
-    "section": "Split into training and validation data",
-    "text": "Split into training and validation data\nWe use the function .drop() from pandas. This function drops one or more columns from a data frame. Let’s drop the response column MEDV and store the result in X_full.\n\n# Set full matrix of predictors.\nX_full = Boston_data.drop(columns = ['MEDV']) \n\nWe use the function .filter() from pandas to extract the column MEDV from the data frame. We store the result in Y_full.\n\n# Set full matrix of responses.\nY_full = Boston_data.filter(['MEDV'])"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#lets-partition-the-dataset",
-    "href": "Module3/Nonparametric.slides.html#lets-partition-the-dataset",
-    "title": "Ensemble Methods for Regression",
-    "section": "Let’s partition the dataset",
-    "text": "Let’s partition the dataset\n\nWe use 80% for training and the other 30% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.2,\n                                                      random_state = 507134)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#example-1-1",
-    "href": "Module3/Nonparametric.slides.html#example-1-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Example 1",
-    "text": "Example 1\n\n\nThe data “AdultReduced.xlsx” comes from the UCI Machine Learning Repository and is derived from US census records.\nIn this data, the goal is to predict whether a person’s income was high (defined in 1994 as more than $50,000) or low.\nPredictors include education level, job type (e.g., never worked and local government), capital gains/losses, hours worked per week, country of origin, etc.\nThe data contains 7,508 records."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#read-the-dataset-1",
-    "href": "Module3/Nonparametric.slides.html#read-the-dataset-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Read the dataset",
-    "text": "Read the dataset\n\nWe read the dataset and set the variable CHAS and RAD as categorical.\n\nBoston_data = pd.read_excel('BostonHousing.xlsx')\n\nBoston_data['CHAS'] = pd.Categorical(Boston_data['CHAS'])\nBoston_data['RAD'] = pd.Categorical(Boston_data['RAD'], \n                                      categories=[\"Low\", \"Medium\", \"High\"], \n                                      ordered=True)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#generating-predictors-in-python",
-    "href": "Module3/Nonparametric.slides.html#generating-predictors-in-python",
-    "title": "Ensemble Methods for Regression",
-    "section": "Generating predictors in Python",
-    "text": "Generating predictors in Python\n\nSelect the predictors and response\n\nX_full = Hitters_data_clean.filter([\"Years\", \"Hits\"])\nY_full = Hitters_data_clean.filter([\"Salary\"])\n\nWe partition the full dataset into 70% for training and the other 30% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.3,\n                                                      random_state = 507134)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#generate-the-response-in-python",
-    "href": "Module3/Nonparametric.slides.html#generate-the-response-in-python",
-    "title": "Ensemble Methods for Regression",
-    "section": "Generate the response in Python",
-    "text": "Generate the response in Python\n\nNext, we use the function .filter() from pandas to extract the column MEDV from the data frame. We store the result in Y_full.\n\n# Set full matrix of responses.\nY_full = Boston_data.filter(['MEDV'])"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data",
-    "href": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data",
-    "title": "Ensemble Methods for Regression",
-    "section": "Predictions on the validation data",
-    "text": "Predictions on the validation data\nTo predict the responses on the validation data, we use the function .predict() using the predictor values in the validation dataset contained in X_valid.\n\nY_pred = reg_tree.predict(X_valid)\nY_pred\n\narray([ 917.80951163,  601.96761111,  286.9375    ,  286.9375    ,\n        286.9375    ,  140.04411765,  917.80951163,  371.67336   ,\n        917.80951163,  917.80951163,  286.9375    ,  140.04411765,\n        286.9375    ,  140.04411765,  140.04411765,  601.96761111,\n        917.80951163,  371.67336   ,  917.80951163,  917.80951163,\n       1190.42853846,  233.33333333,  286.9375    ,  140.04411765,\n        917.80951163,  917.80951163,  233.33333333,  917.80951163,\n        140.04411765,  140.04411765,  140.04411765,  601.96761111,\n        601.96761111, 1190.42853846,  917.80951163,  233.33333333,\n        371.67336   ,  371.67336   ,  286.9375    ,  601.96761111,\n        917.80951163, 1190.42853846,  601.96761111,  371.67336   ,\n        917.80951163, 1190.42853846,  233.33333333,  917.80951163,\n        601.96761111, 1190.42853846,  917.80951163,  371.67336   ,\n       1190.42853846,  233.33333333,  917.80951163,  286.9375    ,\n        601.96761111,  371.67336   ,  233.33333333,  140.04411765,\n        233.33333333,  140.04411765,  917.80951163,  371.67336   ,\n       1190.42853846,  917.80951163,  917.80951163,  917.80951163,\n        917.80951163,  140.04411765,  286.9375    ,  917.80951163,\n        601.96761111,  140.04411765,  601.96761111,  601.96761111,\n        601.96761111,  601.96761111,  917.80951163])"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#validation-rmse",
-    "href": "Module3/Nonparametric.slides.html#validation-rmse",
-    "title": "Ensemble Methods for Regression",
-    "section": "Validation RMSE",
-    "text": "Validation RMSE\nWe compute the root mean squared error on the validation data using the mse() function. Recall that the responses from the validation dataset are in Y_valid, and the model predictions are in Y_pred.\n\nmse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)\nprint(round(mse**(1/2), 2)) # RMSE\n\n399.49"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-5",
-    "href": "Module3/Nonparametric.slides.html#section-5",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Boston_data.head()\n\n\n\n\n\n\n\n\nCRIM\nZN\nINDUS\nCHAS\nNOX\nRM\nAGE\nDIS\nRAD\nTAX\nPTRATIO\nLSTAT\nMEDV\n\n\n\n\n0\n0.00632\n18.0\n2.31\nNo\n0.538\n6.575\n65.2\n4.0900\nLow\n296\n15.3\n4.98\n24.0\n\n\n1\n0.02731\n0.0\n7.07\nNo\n0.469\n6.421\n78.9\n4.9671\nLow\n242\n17.8\n9.14\n21.6\n\n\n2\n0.02729\n0.0\n7.07\nNo\n0.469\n7.185\n61.1\n4.9671\nLow\n242\n17.8\n4.03\n34.7\n\n\n3\n0.03237\n0.0\n2.18\nNo\n0.458\n6.998\n45.8\n6.0622\nLow\n222\n18.7\n2.94\n33.4\n\n\n4\n0.06905\n0.0\n2.18\nNo\n0.458\n7.147\n54.2\n6.0622\nLow\n222\n18.7\n5.33\n36.2"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-1",
-    "href": "Module3/Nonparametric.slides.html#validation-rmse-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Validation RMSE",
-    "text": "Validation RMSE\nWe compute the root mean squared error on the validation data using the mse() function. Recall that the responses from the validation dataset are in Y_valid, and the model predictions are in Y_pred.\n\nmse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)\nprint(round(mse**(1/2), 2)) # RMSE\n\n4.62"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#predictor-importance-1",
-    "href": "Module3/Nonparametric.slides.html#predictor-importance-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Predictor importance",
-    "text": "Predictor importance\nWe can also apply predictor importance to the gradient boosting algorithm.\n\n# Compute permutation importance\nresult = permutation_importance(GBalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-6",
-    "href": "Module3/Nonparametric.slides.html#section-6",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "We partition the full dataset into 80% for training and the other 20% for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full, \n                                                      test_size = 0.2,\n                                                      random_state = 507134)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#decision-trees-for-regression",
-    "href": "Module3/Nonparametric.slides.html#decision-trees-for-regression",
-    "title": "Ensemble Methods for Regression",
-    "section": "Decision trees for regression",
-    "text": "Decision trees for regression\n\n\nThe procedure for constructing a decision tree for regression is the same as for a classification tree.\nThat is, we use the CART algorithm for building large trees and cost complexity pruning to reduce them, if desired.\nHowever, instead of using impurity to evaluate splits, we use the mean squared error."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#regression-trees-in-python",
-    "href": "Module3/Nonparametric.slides.html#regression-trees-in-python",
-    "title": "Ensemble Methods for Regression",
-    "section": "Regression trees in Python",
-    "text": "Regression trees in Python\n\nWe train a regression tree using the DecisionTreeRegressor() function from regression.\n\n# We tell Python we want a regression tree\nreg_tree = DecisionTreeRegressor(min_samples_leaf = 5, max_depth=3, \n                              random_state=507134)\n\n# We train the regression tree using the training data.\nreg_tree.fit(X_train, Y_train)\n\nWe use max_depth = 3 to have a small tree as an example."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#plotting-the-tree",
-    "href": "Module3/Nonparametric.slides.html#plotting-the-tree",
-    "title": "Ensemble Methods for Regression",
-    "section": "Plotting the tree",
-    "text": "Plotting the tree\n\nTo see the decision tree, we use the plot_tree function from scikit-learn and some commands from matplotlib.\n\nplt.figure(figsize=(6, 6))\nplot_tree(reg_tree, feature_names = X_train.columns, filled=True, rounded=True)\nplt.show()"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data-1",
-    "href": "Module3/Nonparametric.slides.html#predictions-on-the-validation-data-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Predictions on the validation data",
-    "text": "Predictions on the validation data\nTo predict the responses on the validation data, we use the function .predict() using the predictor values in the validation dataset contained in X_valid.\n\nY_pred = Baggingalgorithm.predict(X_valid)\nY_pred\n\narray([19.6658, 13.7368, 21.1204, 44.2054, 25.0334, 34.5046, 30.0714,\n       14.9126, 23.185 , 20.2232, 17.0034, 20.0364, 19.7258,  8.9552,\n       24.2136, 29.2074, 21.12  , 20.8784, 25.4168, 18.6084, 22.7604,\n       26.452 , 24.025 , 35.9372, 23.5698, 20.2344,  8.3688, 15.9038,\n       47.4466, 24.2666, 34.4922, 23.2298, 24.4656, 13.3668, 22.6112,\n       12.7678, 27.8812, 19.8882, 22.7836, 18.9106,  9.0864, 24.6914,\n       21.9024, 12.3184, 27.1866, 33.0508, 19.436 , 25.7136, 19.4562,\n       25.3064, 26.8094, 16.9618, 20.8276, 28.7036, 27.884 , 12.5904,\n       23.2554, 38.432 , 20.3296, 22.0288, 17.894 , 15.8226, 13.5456,\n       21.0472, 23.069 , 20.6296, 20.5934, 15.8522, 32.7326, 33.4602,\n       15.3956, 17.5128, 21.2734, 20.6626, 29.7304, 15.4016, 18.9904,\n       19.0864, 32.4364, 21.6208, 22.1254, 20.5334, 23.8114, 21.0438,\n       34.0556, 21.5676, 19.8904, 19.025 , 21.4108, 15.335 , 46.5098,\n       23.533 ,  8.2252, 14.905 , 25.672 , 16.1982, 22.2198, 45.0716,\n       14.5424, 21.2396, 14.9436, 22.3806])"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#validation-rmse-2",
-    "href": "Module3/Nonparametric.slides.html#validation-rmse-2",
-    "title": "Ensemble Methods for Regression",
-    "section": "Validation RMSE",
-    "text": "Validation RMSE\nEvaluate the performance of the boosting algorithm.\n\n# Predict responses in validation data.\nGB_predicted = GBalgorithm.predict(X_valid)\n\n# Compute RMSE.\nmse = mean_squared_error(Y_valid, GB_predicted) \nprint(round(mse**(1/2), 2))\n\n3.85"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-7",
-    "href": "Module3/Nonparametric.slides.html#section-7",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Bagging is unable to capture simple decision boundaries"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-8",
-    "href": "Module3/Nonparametric.slides.html#section-8",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#example-2",
-    "href": "Module3/Nonparametric.slides.html#example-2",
-    "title": "Ensemble Methods for Regression",
-    "section": "Example 2",
-    "text": "Example 2\n\nThe “BostonHousing.xlsx” contains data collected by the US Bureau of the Census concerning housing in the area of Boston, Massachusetts. The dataset includes data on 506 census housing tracts in the Boston area in 1970s.\nThe goal is to predict the median house price in new tracts based on information such as crime rate, pollution, and number of rooms.\nThe response is the median value of owner-occupied homes in $1000s, contained in the column MEDV."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#generating-predictors-in-python-1",
-    "href": "Module3/Nonparametric.slides.html#generating-predictors-in-python-1",
-    "title": "Ensemble Methods for Regression",
-    "section": "Generating predictors in Python",
-    "text": "Generating predictors in Python\nFirst, we use the function .drop() from pandas to drop the response column MEDV and store the result in X_full.\n\n# Set full matrix of predictors.\nX_full = Boston_data.drop(columns = ['MEDV']) \n\nUnfortunately, bagging does not work with categorical predictors such as CHAS and RAD. So, we must transform them into dummy variables using the code below.\n\n# Turn categorical predictors into dummy variables.\nX_dummies = pd.get_dummies(X_full[['CHAS', 'RAD']], drop_first = True, dtype = 'int')\n\n# Drop original predictors from the dataset.\nX_other = X_full.drop(['CHAS', 'RAD'], axis=1)\n\n# Update the predictor matrix.\nX_full = pd.concat([X_other, X_dummies], axis=1)"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-9",
-    "href": "Module3/Nonparametric.slides.html#section-9",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-10",
-    "href": "Module3/Nonparametric.slides.html#section-10",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-11",
-    "href": "Module3/Nonparametric.slides.html#section-11",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Initially, the boosted tree is \\(\\hat{f}(\\boldsymbol{x}) = 0\\) and the residuals of this tree are \\(r_i = y_i - f(\\boldsymbol{x}_i)\\) for all \\(i\\) in the training data.\nAt each step \\(b\\) in the process (\\(b = 1, \\ldots, B\\)), we\n\nBuild a regression tree \\(\\hat{T}_b\\) with \\(d\\) splits to the training data \\((\\boldsymbol{X}, \\boldsymbol{r})\\). This tree has \\(d+1\\) terminal nodes.\nUpdate the boosted tree \\(\\hat{f}\\) by adding in a shrunken version of the new tree: \\(\\hat{f}(\\boldsymbol{x}) \\leftarrow \\hat{f}(\\boldsymbol{x}) + \\lambda \\hat{T}_b(\\boldsymbol{x})\\).\nUpdate the residuals using shrunken tree, \\(r_i \\leftarrow r_i - \\lambda \\hat{T}_b(x_i)\\).\n\nThe final boosted tree is: \\(\\hat{f}(\\boldsymbol{x}) = \\sum_{b=1}^{B} \\lambda \\hat{T}_b (\\boldsymbol{x}).\\)\n\nD is 4 or 5, sometimes 1. Lambda is 0.001 or 0.01 This algorithm is a gradient boosting method for regression."
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-12",
-    "href": "Module3/Nonparametric.slides.html#section-12",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#calculation-of-importance",
-    "href": "Module3/Nonparametric.slides.html#calculation-of-importance",
-    "title": "Ensemble Methods for Regression",
-    "section": "Calculation of importance",
-    "text": "Calculation of importance\n\n\nWe record the prediction error of the trained algorithm on the validation data. This serves as a baseline.\nNext, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.\nThe importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm."
   }
 ]
