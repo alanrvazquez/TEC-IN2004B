@@ -356,10 +356,12 @@ Y_target_full.head()
 
 # Split the dataset into training and validation.
 X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, 
-                                                      test_size = 0.3, random_state=507134)
+                                                      test_size = 0.3, 
+                                                      stratify = Y_target_full,
+                                                      random_state=507134)
 ```
 
--   The function makes a clever partition of the data using the *empirical* distribution of the response.
+-   Thanks to the `stratify` parameter, the function makes a clever partition of the data using the *empirical* distribution of the response.
 
 -   Technically, it splits the data so that the distribution of the response under the training and validation sets is similar.
 
@@ -1373,7 +1375,8 @@ To see the decision tree, we use the `plot_tree` function from **scikit-learn** 
 #| fig-align: center
 
 plt.figure(figsize=(6, 6))
-plot_tree(clf, filled=True, rounded=True)
+plot_tree(clf, feature_names = X_train.columns,
+    class_names=["genuine", "counterfeit"], filled=True, rounded=True)
 plt.show()
 ```
 
@@ -1387,7 +1390,8 @@ plt.show()
 #| fig-align: center
 
 plt.figure(figsize=(8, 6))
-plot_tree(clf, filled=True, rounded=True)
+plot_tree(clf, feature_names = X_train.columns,
+    class_names=["genuine", "counterfeit"], filled=True, rounded=True)
 plt.show()
 ```
 
@@ -1736,7 +1740,8 @@ We can display the confusion matrix using the `ConfusionMatrixDisplay()` functio
 #| output: true
 #| fig-align: center
 
-ConfusionMatrixDisplay(cm).plot()
+CMplot = ConfusionMatrixDisplay(cm, display_labels = ["genuine", "counterfeit"])
+CMplot.plot()
 ```
 
 ## Accuracy
@@ -1985,7 +1990,8 @@ Once this is done, we can visualize the small tree using the `plot_tree()` funct
 #| fig-align: center
 
 plt.figure(figsize=(6, 6))
-plot_tree(clf_simple, filled=True, rounded=True)
+plot_tree(clf_simple, feature_names = X_train.columns,
+    class_names=["genuine", "counterfeit"], filled=True, rounded=True)
 plt.show()
 ```
 

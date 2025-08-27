@@ -508,7 +508,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#lets-partition-the-dataset",
     "title": "K nearest neighbors",
     "section": "Let’s partition the dataset",
-    "text": "Let’s partition the dataset\n\nWe use 70% for training and the rest for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n                                                      test_size = 0.3)"
+    "text": "Let’s partition the dataset\n\nWe use 70% for training and the rest for validation.\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full,\n                                                      stratify = Y_target_full,\n                                                      test_size = 0.3)"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#standardization-in-python",
@@ -739,21 +739,21 @@
     "href": "Module2/Classification.slides.html#lets-partition-the-dataset",
     "title": "Classification Trees",
     "section": "Let’s partition the dataset",
-    "text": "Let’s partition the dataset\n\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n                                                      test_size = 0.3, random_state=507134)\n\n\nThe function makes a clever partition of the data using the empirical distribution of the response.\nTechnically, it splits the data so that the distribution of the response under the training and validation sets is similar.\nUsually, the proportion of the dataset that goes to the validation set is 20% or 30%."
+    "text": "Let’s partition the dataset\n\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n                                                      test_size = 0.3, \n                                                      stratify = Y_target_full,\n                                                      random_state=507134)\n\n\nThanks to the stratify parameter, the function makes a clever partition of the data using the empirical distribution of the response.\nTechnically, it splits the data so that the distribution of the response under the training and validation sets is similar.\nUsually, the proportion of the dataset that goes to the validation set is 20% or 30%."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-5",
     "href": "Module2/Classification.slides.html#section-5",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n49\n9.8\n7.8\n0\n\n\n95\n9.5\n9.0\n0\n\n\n40\n9.4\n8.9\n0\n\n\n48\n10.3\n7.9\n0"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n187\n10.6\n11.4\n1\n\n\n54\n10.0\n7.9\n0\n\n\n33\n10.3\n8.4\n0\n\n\n180\n10.7\n11.4\n1"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-6",
     "href": "Module2/Classification.slides.html#section-6",
     "title": "Classification Trees",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n154\n11.5\n11.0\n1\n\n\n109\n11.2\n10.4\n1\n\n\n57\n9.0\n8.8\n0\n\n\n59\n10.3\n8.2\n0\n\n\n160\n12.2\n7.4\n1"
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n56\n10.4\n9.2\n0\n\n\n17\n9.0\n9.0\n0\n\n\n24\n10.8\n7.4\n0\n\n\n20\n10.0\n8.4\n0\n\n\n139\n10.2\n11.8\n1"
   },
   {
     "objectID": "Module2/Classification.slides.html#work-on-your-training-dataset",
@@ -830,7 +830,7 @@
     "href": "Module2/Classification.slides.html#plotting-the-tree",
     "title": "Classification Trees",
     "section": "Plotting the tree",
-    "text": "Plotting the tree\n\nTo see the decision tree, we use the plot_tree function from scikit-learn and some commands from matplotlib. Specifically, we use the plt.figure() functions to define the size of the figure and plt.show() to display the figure.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf, filled=True, rounded=True)\nplt.show()"
+    "text": "Plotting the tree\n\nTo see the decision tree, we use the plot_tree function from scikit-learn and some commands from matplotlib. Specifically, we use the plt.figure() functions to define the size of the figure and plt.show() to display the figure.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf, feature_names = X_train.columns,\n    class_names=[\"genuine\", \"counterfeit\"], filled=True, rounded=True)\nplt.show()"
   },
   {
     "objectID": "Module2/Classification.slides.html#the-tree-in-the-predictor-space",
@@ -900,14 +900,14 @@
     "href": "Module2/Classification.slides.html#section-28",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,\n       0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,\n       1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1])"
+    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,\n       0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0,\n       0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1])"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-30",
     "href": "Module2/Classification.slides.html#section-30",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [0.28571429, 0.71428571],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ]])"
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [0.71428571, 0.28571429],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.71428571, 0.28571429],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.71428571, 0.28571429],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ]])"
   },
   {
     "objectID": "Module2/Classification.slides.html#confusion-matrix",
@@ -921,21 +921,21 @@
     "href": "Module2/Classification.slides.html#in-python-1",
     "title": "Classification Trees",
     "section": "In Python",
-    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[19  4]\n [ 0 37]]"
+    "text": "In Python\n\nWe calculate the confusion matrix using the homonymous function scikit-learn.\n\n# Compute confusion matrix.\ncm = confusion_matrix(Y_valid, predicted_class)\n\n# Show confusion matrix.\nprint(cm)\n\n[[29  1]\n [ 1 29]]"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-31",
     "href": "Module2/Classification.slides.html#section-31",
     "title": "Classification Trees",
     "section": "",
-    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\nConfusionMatrixDisplay(cm).plot()"
+    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\nCMplot = ConfusionMatrixDisplay(cm, display_labels = [\"genuine\", \"counterfeit\"])\nCMplot.plot()"
   },
   {
     "objectID": "Module2/Classification.slides.html#accuracy",
     "href": "Module2/Classification.slides.html#accuracy",
     "title": "Classification Trees",
     "section": "Accuracy",
-    "text": "Accuracy\nIt is a simple metric for summarizing the information in the confusion matrix. It is the proportion of correct classifications for both classes, out of the total classifications performed.\n\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.93\n\n\nThe higher the accuracy, the better the performance of the classification algorithm."
+    "text": "Accuracy\nIt is a simple metric for summarizing the information in the confusion matrix. It is the proportion of correct classifications for both classes, out of the total classifications performed.\n\nIn Python, we calculate accuracy using the scikit-learn accuracy_score() function.\n\naccuracy = accuracy_score(Y_valid, predicted_class)\nprint( round(accuracy, 2) )\n\n0.97\n\n\nThe higher the accuracy, the better the performance of the classification algorithm."
   },
   {
     "objectID": "Module2/Classification.slides.html#pruning-the-tree",
@@ -991,14 +991,14 @@
     "href": "Module2/Classification.slides.html#section-38",
     "title": "Classification Trees",
     "section": "",
-    "text": "Once this is done, we can visualize the small tree using the plot_tree() function.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf_simple, filled=True, rounded=True)\nplt.show()"
+    "text": "Once this is done, we can visualize the small tree using the plot_tree() function.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf_simple, feature_names = X_train.columns,\n    class_names=[\"genuine\", \"counterfeit\"], filled=True, rounded=True)\nplt.show()"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-39",
     "href": "Module2/Classification.slides.html#section-39",
     "title": "Classification Trees",
     "section": "",
-    "text": "The accuracy of the pruned tree is:\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.93"
+    "text": "The accuracy of the pruned tree is:\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.97"
   },
   {
     "objectID": "Module2/Classification.slides.html#comments-on-accuracy",
@@ -1054,7 +1054,7 @@
     "href": "Module2/Classification.slides.html#section-43",
     "title": "Classification Trees",
     "section": "",
-    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n1.0\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.9"
+    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n0.97\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.97"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-44",
@@ -1068,7 +1068,7 @@
     "href": "Module2/Classification.slides.html#section-45",
     "title": "Classification Trees",
     "section": "",
-    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.17"
+    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.03"
   },
   {
     "objectID": "Module2/Classification.slides.html#discussion",

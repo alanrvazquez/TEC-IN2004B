@@ -272,6 +272,7 @@ To evaluate a model's performance on unobserved data, we split the current datas
 # Split into training and validation
 X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target, 
                                                       test_size = 0.2,
+                                                      stratify = Y_target,
                                                       random_state=507134)
 ```
 

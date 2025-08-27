@@ -390,7 +390,8 @@ We use 70% for training and the rest for validation.
 #| output: true
 
 # Split the dataset into training and validation.
-X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, 
+X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full,
+                                                      stratify = Y_target_full,
                                                       test_size = 0.3)
 ```
 
@@ -445,7 +446,7 @@ To evaluate KNN, we make predictions on the validation data (not used to train t
 Xs_valid = scaler.transform(X_valid)
 ```
 
-> Technicaly, the code above applies the standarization formulas (computed using training data) to the validation dataset. 
+> Technicaly, the code above applies the standarization formulas (computed using training data) to the validation dataset.
 
 Next, we make predictions.
 
