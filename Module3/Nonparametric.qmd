@@ -28,7 +28,7 @@ jupyter: python3
 4.  Boosting
 5.  Ensemble Methods for Time Series
 
-# Introduction 
+# Introduction
 
 ## Load the libraries
 
@@ -79,43 +79,36 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 </br></br>
 
-- The procedure for constructing a decision tree for regression is the same as for a classification tree. 
+-   The procedure for constructing a decision tree for regression is the same as for a classification tree.
 
-- That is, we use the CART algorithm for building large trees and cost complexity pruning to reduce them, if desired.
+-   That is, we use the CART algorithm for building large trees and cost complexity pruning to reduce them, if desired.
 
-- However, instead of using impurity to evaluate splits, we use the mean squared error.
+-   However, instead of using impurity to evaluate splits, we use the mean squared error.
 
-##
+## 
 
 </br></br>
 
 To compute the mean squared error we use
 
-  - The predicted response is the average response calculated in the node or region.
+-   The predicted response is the average response calculated in the node or region.
 
-  - The actual responses are those of the observations in the region. 
+-   The actual responses are those of the observations in the region.
 
 We refer to decision trees for regression as **regression trees**.
 
 ## Example 1
 
-</br></br>
+The "Hitters.xlsx" dataset contains data collected from Major League Baseball players. It includes data on various statistics such as number of hits, years in the league, and salary. The **goal** is to predict a player's salary based on performance statistics.
 
-The "Hitters.xlsx" dataset contains data collected from Major League Baseball players. It includes data on various statistics such as number of hits, years in the league, and salary.
+::: {style="font-size: 90%;"}
+The [response]{style="color:darkred;"} is the player's salary (in \$), contained in the column `Salary`.
 
-The **goal** is to predict a player's salary based on performance statistics.
+For this example, we will focus on two predictors:
 
-##
-
-</br></br>
-
-The [response]{style="color:darkred;"} is the player's salary (in \$), contained in the column `Salary`. 
-
-For this example, we will focus on two predictors: 
-
-- `Hits`: Number of hits in the season  
-- `Years`: Number of years the player has been in the league
-
+-   `Hits`: Number of hits in the season\
+-   `Years`: Number of years the player has been in the league
+:::
 
 ## Read the dataset
 
@@ -129,7 +122,7 @@ Hitters_data = pd.read_excel('Hitters.xlsx')
 Hitters_data.head()
 ```
 
-##
+## 
 
 The data set has some missing observations. So, we remove the observations with at least one missing value in a predictor.
 
@@ -141,9 +134,9 @@ Hitters_data_clean = Hitters_data.dropna()
 Hitters_data_clean.head()
 ```
 
-## Generating predictors in Python
+## Generating training and validation data
 
-</br></br>
+</br>
 
 Select the predictors and response
 
@@ -154,6 +147,8 @@ Select the predictors and response
 X_full = Hitters_data_clean.filter(["Years", "Hits"])
 Y_full = Hitters_data_clean.filter(["Salary"])
 ```
+
+</br>
 
 We partition the full dataset into 70% for training and the other 30% for validation.
 
@@ -166,7 +161,6 @@ X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full,
                                                       test_size = 0.3,
                                                       random_state = 507134)
 ```
-
 
 ## Regression trees in Python
 
@@ -192,7 +186,7 @@ We use `max_depth = 3` to have a small tree as an example.
 
 </br>
 
-To see the decision tree, we use the `plot_tree` function from **scikit-learn** and some commands from **matplotlib**. 
+To see the decision tree, we use the `plot_tree` function from **scikit-learn** and some commands from **matplotlib**.
 
 ```{python}
 #| echo: true
@@ -262,8 +256,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-
 ## Visualize the predictions
+
+We predict with the average response ($Y$) of the observations in each region.
 
 ```{python}
 #| fig-align: center
@@ -274,7 +269,7 @@ sns.set(style="whitegrid")
 
 train_data = pd.concat([X_train, Y_train], axis = 1)
 # Create the scatter plot using seaborn for discrete color mapping
-plt.figure(figsize=(6, 6))
+plt.figure(figsize=(5, 5))
 sns.scatterplot(
     data=train_data,
     x='Years',
@@ -292,21 +287,20 @@ plt.axvline(x=3.5, color='black', linewidth=3)  # Right vertical
 plt.axvline(x=12.5, ymin=0.538, color='black', linewidth=3)  # Right vertical
 
 # Add region labels
-plt.text(1, 200, r"233.3", fontsize=15, fontweight='bold')
-plt.text(1, 50, r"140.0", fontsize=15, fontweight='bold')
+plt.text(0.2, 200, r"233.3", fontsize=15, fontweight='bold')
+plt.text(0.2, 30, r"140.0", fontsize=15, fontweight='bold')
 plt.text(6, 200, r"917.8", fontsize=15, fontweight='bold')
 plt.text(20, 200, r"1190.4", fontsize=15, fontweight='bold')
 plt.text(20, 100, r"601.9", fontsize=15, fontweight='bold')
 plt.text(20, 20, r"371.6", fontsize=15, fontweight='bold')
-plt.text(4.0, 3, r"286.9", fontsize=8, fontweight='bold')
+plt.text(3.8, 3, r"286.9", fontsize=8, fontweight='bold')
 
 # Clean layout
 plt.tight_layout()
 plt.show()
 ```
 
-
-##  Predictions on the validation data
+## Predictions on the validation data
 
 To predict the responses on the validation data, we use the function `.predict()` using the predictor values in the validation dataset contained in `X_valid`.
 
@@ -322,7 +316,7 @@ Y_pred
 
 </br></br>
 
-We compute the *root mean squared error* on the validation data using the `mse()` function. Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`.
+Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`. We compute the *root mean squared error* on the validation data using the `mse()` function.
 
 ```{python}
 #| echo: true
@@ -333,7 +327,6 @@ We compute the *root mean squared error* on the validation data using the `mse()
 mse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)
 print(round(mse**(1/2), 2)) # RMSE
 ```
-
 
 ## Limitations of decision trees
 
@@ -356,7 +349,6 @@ Here, we will cover two popular ensamble methods:
     -   Quintessential method: [Random Forests]{style="color:purple;"}.
 
 -   [**Boosting**]{style="color:brown;"}. Ensemble small trees sequentially.
-
 
 # Bagging
 
@@ -447,7 +439,7 @@ Boston_data['RAD'] = pd.Categorical(Boston_data['RAD'],
 
 ## 
 
-</br>
+</br></br>
 
 ```{python}
 #| echo: true
@@ -458,7 +450,7 @@ Boston_data.head()
 
 ## Generating predictors in Python
 
-First, we use the function `.drop()` from **pandas** to drop the response column `MEDV` and store the result in `X_full`.
+We use the function `.drop()` from **pandas** to drop the response column `MEDV` and store the result in `X_full`.
 
 ```{python}
 #| echo: true
@@ -486,6 +478,8 @@ X_full = pd.concat([X_other, X_dummies], axis=1)
 
 ## 
 
+</br>
+
 Next, we use the function `.filter()` from **pandas** to extract the column `MEDV` from the data frame. We store the result in `Y_full`.
 
 ```{python}
@@ -495,6 +489,8 @@ Next, we use the function `.filter()` from **pandas** to extract the column `MED
 # Set full matrix of responses.
 Y_full = Boston_data.filter(['MEDV'])
 ```
+
+</br>
 
 We partition the full dataset into 80% for training and the other 20% for validation.
 
@@ -508,12 +504,7 @@ X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_full,
                                                       random_state = 507134)
 ```
 
-
-
-
 ## Bagging in Python
-
-</br>
 
 We define a bagging algorithm for regression using the `BaggingRegressor` function from **scikit-learn**.
 
@@ -549,7 +540,7 @@ Y_pred
 
 </br></br>
 
-We compute the *root mean squared error* on the validation data using the `mse()` function. 
+We compute the *root mean squared error* on the validation data using the `mse()` function.
 
 ```{python}
 #| echo: true
@@ -560,7 +551,6 @@ We compute the *root mean squared error* on the validation data using the `mse()
 mse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)
 print(round(mse**(1/2), 2)) # RMSE
 ```
-
 
 ## A single deep tree
 
@@ -579,7 +569,7 @@ reg_tree = DecisionTreeRegressor(ccp_alpha=0.0,
 reg_tree.fit(X_train, Y_train)
 ```
 
-Let's compute the validation RMSE of the tree.
+And compute the validation RMSE of that tree.
 
 ```{python}
 #| echo: true
@@ -589,6 +579,8 @@ reg_tree_Y_pred = reg_tree.predict(X_valid)
 mse = mean_squared_error(Y_valid, reg_tree_Y_pred) 
 print(round(mse**(1/2), 2)) 
 ```
+
+The validation RMSE of the tree is higher than that of the bagging algorithm. So, ensembeling several trees improves the prediction performance.
 
 ## Advantages
 
@@ -608,6 +600,12 @@ print(round(mse**(1/2), 2))
 
 -   *Fundamental issue*: bagging a good model can improve predictive performance, but bagging a bad one can seriously degrade it.
 
+## 
+
+-   Bagging is unable to capture simple decision boundaries
+
+![](images/bagging_decision_boundary.png){fig-align="center"}
+
 ## Other issues
 
 </br></br>
@@ -621,12 +619,6 @@ print(round(mse**(1/2), 2))
     -   In some sense, then, many of the trees are “correlated”.
 
     -   This will degrade the performance of bagging.
-
-## 
-
--   Bagging is unable to capture simple decision boundaries
-
-![](images/bagging_decision_boundary.png){fig-align="center"}
 
 # Random Forest
 
@@ -672,7 +664,7 @@ In practice, sometimes the best values for these parameters will depend on the p
 
 ## Random Forest in Python
 
-In Python, we define a RandomForest algorithm for classification using the `RandomForestRegressor` function from **scikit-learn**. 
+In Python, we define a RandomForest algorithm for classification using the `RandomForestRegressor` function from **scikit-learn**.
 
 ```{python}
 #| echo: true
@@ -688,7 +680,9 @@ RFalgorithm = RandomForestRegressor(n_estimators = 500,
 RFalgorithm.fit(X_train, Y_train)
 ```
 
+::: {style="font-size: 90%;"}
 `n_estimators` sets the number of decision trees to use, `min_samples_leaf` sets the minimum size for the terminal nodes, and `max_features` sets the maximum number of predictors to try in each split.
+:::
 
 ## Validation RMSE
 
@@ -714,23 +708,25 @@ print(round(mse**(1/2), 2))
 
 </br></br>
 
-- Random Forests and bagged trees are a black box. But “Importance” is a statistic that attempts to give us some insight.
+-   Random Forests and bagged trees are a black box. But “Importance” is a statistic that attempts to give us some insight.
 
-- The importance statistic assumes that we have trained a random forest and we have validation data.
+-   The importance statistic assumes that we have trained a random forest and we have validation data.
 
 ## Calculation of importance
 
 </br>
 
-1. We record the prediction error of the trained algorithm on the validation data. This serves as a baseline.
+::: incremental
+1.  We record the prediction error of the trained algorithm on the validation data. This serves as a baseline.
 
-2. Next, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.
+2.  Next, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.
 
-3. The importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm.
+3.  The importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm.
+:::
 
-##
+## 
 
-</br></br>
+</br></br></br>
 
 In Python, we use compute the predictor importance using the `permutation_importance()` function.
 
@@ -741,10 +737,13 @@ In Python, we use compute the predictor importance using the `permutation_import
 #| fig-align: center
 
 # Compute permutation importance
-result = permutation_importance(RFalgorithm, X_valid, Y_valid, n_repeats=5, random_state=59227)
+result = permutation_importance(RFalgorithm, X_valid, Y_valid,
+                                n_repeats=5, random_state=59227)
 ```
 
-##
+## 
+
+</br>
 
 ```{python}
 #| echo: true
@@ -792,41 +791,38 @@ plt.show()
 
 ## 
 
-![](images/clipboard-720176022.png)
+![](images/clipboard-720176022.png){fig-align="center"}
 
 <https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/>
 
-
-##
+## 
 
 ::: {style="font-size: 95%;"}
 Initially, the boosted tree is $\hat{f}(\boldsymbol{x}) = 0$ and the residuals of this tree are $r_i = y_i - f(\boldsymbol{x}_i)$ for all $i$ in the training data.
 
 At each step $b$ in the process ($b = 1, \ldots, B$), we
 
-1. **Build** a regression tree $\hat{T}_b$ with $d$ splits to the training data $(\boldsymbol{X}, \boldsymbol{r})$. This tree has $d+1$ terminal nodes.
-2. **Update** the boosted tree $\hat{f}$ by adding in a [***shrunken version***]{style="color:orange;"} of the new tree: $\hat{f}(\boldsymbol{x}) \leftarrow \hat{f}(\boldsymbol{x}) + \lambda \hat{T}_b(\boldsymbol{x})$.
-3. **Update** the residuals using shrunken tree, $r_i \leftarrow r_i - \lambda \hat{T}_b(x_i)$.
+1.  **Build** a regression tree $\hat{T}_b$ with $d$ splits to the training data $(\boldsymbol{X}, \boldsymbol{r})$. This tree has $d+1$ terminal nodes.
+2.  **Update** the boosted tree $\hat{f}$ by adding in a [***shrunken version***]{style="color:orange;"} of the new tree: $\hat{f}(\boldsymbol{x}) \leftarrow \hat{f}(\boldsymbol{x}) + \lambda \hat{T}_b(\boldsymbol{x})$.
+3.  **Update** the residuals using shrunken tree, $r_i \leftarrow r_i - \lambda \hat{T}_b(x_i)$.
 
 The final boosted tree is: $\hat{f}(\boldsymbol{x}) = \sum_{b=1}^{B} \lambda \hat{T}_b (\boldsymbol{x}).$
 :::
 
 ::: notes
-D is 4 or 5, sometimes 1.
-Lambda is 0.001 or 0.01
-This algorithm is a gradient boosting method for regression.
+D is 4 or 5, sometimes 1. Lambda is 0.001 or 0.01 This algorithm is a gradient boosting method for regression.
 :::
 
 ## Why does this work?
 
 ::: {style="font-size: 90%;"}
-- By using a small tree, we are deliberately leaving information out of the first round of the model. So what gets fit is the “easy” stuff.
+-   By using a small tree, we are deliberately leaving information out of the first round of the model. So what gets fit is the “easy” stuff.
 
-- The residuals have all of the information that we haven’t yet explained. We continue iterating on the residuals, fitting them with small trees, so that we slowly explain the bits of the variation that are harder to explain.
+-   The residuals have all of the information that we haven’t yet explained. We continue iterating on the residuals, fitting them with small trees, so that we slowly explain the bits of the variation that are harder to explain.
 
-- This process is called “learning”: at each iteration, we get a better fit.
+-   This process is called “learning”: at each iteration, we get a better fit.
 
-- By multiplying by $\lambda <1$, we “slow down” the learning (by making it harder to fit all of the variation), and there is research that says that slower learning is better.
+-   By multiplying by $\lambda <1$, we “slow down” the learning (by making it harder to fit all of the variation), and there is research that says that slower learning is better.
 :::
 
 ## Tuning parameters
@@ -841,7 +837,7 @@ The [**number of splits**]{style="color:brown;"} $d$ in each tree. Common choice
 
 ## Boosting in Python
 
-In Python, we define a Boosting algorithm for classification using the `GradientBoostingRegressor` function from **scikit-learn**. 
+In Python, we define a Boosting algorithm for classification using the `GradientBoostingRegressor` function from **scikit-learn**.
 
 ```{python}
 #| echo: true
@@ -905,16 +901,14 @@ plt.title('Permutation Feature Importance')
 plt.show()
 ```
 
-
 ## Issues with boosting
 
 </br></br>
 
-- Loss of interpretability: the final boosted model is a weighted sum of trees, which we cannot interpret easily. 
+-   Loss of interpretability: the final boosted model is a weighted sum of trees, which we cannot interpret easily.
 
-- Computational complexity: since it uses slow learners, it can be time consuming. However, we are growing small trees, each step can be done relatively quickly in some cases (e.g. AdaBoost). 
+-   Computational complexity: since it uses slow learners, it can be time consuming. However, we are growing small trees, each step can be done relatively quickly in some cases (e.g. AdaBoost).
 
 # Ensemble methods for Time Series
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

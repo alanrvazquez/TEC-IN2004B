@@ -1,0 +1,1837 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Introduction to Time Series\"\n",
+        "subtitle: \"IN2004B: Generation of Value with Data Analytics\"\n",
+        "author: \n",
+        "  - name: Alan R. Vazquez\n",
+        "    affiliations:\n",
+        "      - name: Department of Industrial Engineering\n",
+        "format: \n",
+        "  revealjs:\n",
+        "    chalkboard: false\n",
+        "    multiplex: false\n",
+        "    footer: \"Tecnologico de Monterrey\"\n",
+        "    logo: IN2004B_logo.png\n",
+        "    css: style.css\n",
+        "    slide-number: True\n",
+        "    html-math-method: mathjax\n",
+        "editor: visual\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "\n",
+        "## Agenda\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "1.  Time Series\n",
+        "2.  Linear Regression Model for Time Series\n",
+        "3.  Models with Seasonality\n",
+        "\n",
+        "# Time Series\n",
+        "\n",
+        "## Load the libraries\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Before we start, let's import the data science libraries into Python.\n"
+      ],
+      "id": "c46a4a8a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "\n",
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.linear_model import LinearRegression\n",
+        "from sklearn.metrics import mean_squared_error"
+      ],
+      "id": "669e52a7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.\n",
+        "\n",
+        "## What is a time series?\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "-   It is a sequence of observations collected at successive time intervals.\n",
+        "\n",
+        "-   Time series data is commonly used in finance, economics, weather forecasting, signal processing, and many others.\n",
+        "\n",
+        "-   Analyzing time series data helps us understand patterns, trends, and behaviors over time, enabling prediction, anomaly detection, and decision-making.\n",
+        "\n",
+        "## Example 1: Tesla's stock price\n",
+        "\n",
+        "![](images/Tesla_stock_price.jpg)\n",
+        "\n",
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"60%\"}\n",
+        "-   Technically, a time series is a set of observations about a (discrete) predictor $T$ and a response $Y$.\n",
+        "\n",
+        "-   Observations of $Y$ are recorded at the moments or times given by the predictor $T$.\n",
+        "\n",
+        "-   The special feature of the time series is that the [observations of $Y$ are not independent!]{style=\"color:#4682B4;\"}\n",
+        ":::\n",
+        "\n",
+        "::: {.column width=\"40%\"}\n",
+        "| Day       | T   | Temperature (Y) |\n",
+        "|-----------|-----|-----------------|\n",
+        "| Monday    | 1   | 10              |\n",
+        "| Tuesday   | 2   | 12              |\n",
+        "| Wednesday | 3   | 15              |\n",
+        "| Thursday  | 4   | 14              |\n",
+        "| Friday    | 5   | 18              |\n",
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "## Example 2: Amtrak data\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "-   The Amtrak train company in the USA collects data on the number of passengers traveling on its trains.\n",
+        "\n",
+        "-   Records are available from January 1991 to March 2004.\n",
+        "\n",
+        "-   The data is available in \"Amtrak.xlsx\" on Canvas.\n"
+      ],
+      "id": "8feed4f8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Amtrak_data = pd.read_excel('Amtrak.xlsx')"
+      ],
+      "id": "164ae6c8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n"
+      ],
+      "id": "5d68b52d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Amtrak_data.head()"
+      ],
+      "id": "8d64aa91",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Time series plot in Python\n",
+        "\n",
+        "We can create a line graph to visualize the evolution of Amtrak train ridership over time using `lineplot` from **seaborn**.\n"
+      ],
+      "id": "d546de13"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "plt.figure(figsize=(6, 4))\n",
+        "sns.lineplot(x='Month', y='Ridership (in 000s)', data = Amtrak_data)\n",
+        "plt.xlabel('Month')\n",
+        "plt.ylabel('Ridership')\n",
+        "plt.title('Amtrak Ridership Over Time')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "35b73ea8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Informative Series\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "An informative time series is a series that contains patterns that we can use to predict future values of the series.\n",
+        "\n",
+        "The three possible patterns are:\n",
+        "\n",
+        "::: incremental\n",
+        "-   [**Trend**]{style=\"color:darkgreen;\"}: the series has an **increasing/decreasing** behavior.\n",
+        "-   [**Seasonality**]{style=\"color:purple;\"}: the series has a repeating **cyclical** pattern in its values.\n",
+        "-   [**Autocorrelation**]{style=\"color:darkblue;\"}: the series follows a pattern that can be described by **previous** values of the series.\n",
+        ":::\n",
+        "\n",
+        "## Example 3: Airline data\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"50%\"}\n",
+        "-   This series has an upper **trend**.\n",
+        "\n",
+        "-   This series has **cyclical** patterns in its values.\n",
+        "\n",
+        "-   Although not immediately visible, we can use the previous values of the series to describe the future ones.\n",
+        ":::\n",
+        "\n",
+        "::: {.column width=\"50%\"}"
+      ],
+      "id": "12861e3e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Airline_data = pd.read_excel(\"Airline.xlsx\")\n",
+        "\n",
+        "plt.figure(figsize=(6, 4))\n",
+        "sns.lineplot(x='T', y='Number of passengers', data = Airline_data)\n",
+        "plt.xlabel('Time')\n",
+        "plt.ylabel('Number of passengers')\n",
+        "plt.title('Number of passengers across time')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "bcecc622",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "## Non-informative series: White noise\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"50%\"}\n",
+        "-   White noise is a series whose values, on average, are **0** and have a constant variation.\n",
+        "\n",
+        "-   Its values are also independent of each other.\n",
+        "\n",
+        "-   It is used to describe random or *natural* error.\n",
+        ":::\n",
+        "\n",
+        "::: {.column width=\"50%\"}"
+      ],
+      "id": "3ced9d69"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "\n",
+        "# Generate white noise series (mean 0, std dev 1)\n",
+        "np.random.seed(3301655)  # for reproducibility\n",
+        "white_noise = np.random.normal(loc=0, scale=1, size=100)\n",
+        "\n",
+        "# Create a DataFrame\n",
+        "df = pd.DataFrame({\n",
+        "    'Time': range(1, 101),\n",
+        "    'Value': white_noise\n",
+        "})\n",
+        "\n",
+        "# Plot using seaborn\n",
+        "sns.set(style=\"whitegrid\")\n",
+        "plt.figure(figsize=(6, 4))\n",
+        "sns.lineplot(data=df, x='Time', y='Value', marker='o', linewidth=1)\n",
+        "plt.axhline(y=0, color='red', linestyle='-', linewidth=1.5, label='Mean = 0')\n",
+        "plt.axhline(y=1, color='red', linestyle='--', linewidth=1, label='+1 SD')\n",
+        "plt.axhline(y=-1, color='red', linestyle='--', linewidth=1, label='-1 SD')\n",
+        "plt.title('White Noise Series (n = 100)')\n",
+        "plt.xlabel('Time')\n",
+        "plt.ylabel('Response')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "e86d847b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "# Linear Regression Model for Time Series\n",
+        "\n",
+        "## Linear regression model\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The linear regression model is useful for capturing patterns in a time series. In this context, the model takes the form:\n",
+        "\n",
+        "$$\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i$$\n",
+        "\n",
+        "-   Where $i = 1, \\ldots, n_t$ is the index of the $n_t$ training data.\n",
+        "\n",
+        "-   $\\hat{Y}_i$ is the prediction of the actual value of the response $Y_i$ *at time* $T_i$.\n",
+        "\n",
+        "## Trend\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The trend of the time series is captured by the value of $\\hat{\\beta}_1$ at\n",
+        "\n",
+        "$$\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i$$\n",
+        "\n",
+        "-   If $\\hat{\\beta}_1$ is positive, the series has an upward trend.\n",
+        "\n",
+        "-   If $\\hat{\\beta}_1$ is negative, the series has a downward trend.\n",
+        "\n",
+        "The values of $\\hat{\\beta}_0$ and $\\hat{\\beta}_1$ are obtained using the least squares method.\n",
+        "\n",
+        "## Model evaluation\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Remember that the errors of the linear regression model ($e_i = Y_i - \\hat{Y}_i$) must meet three conditions:\n",
+        "\n",
+        "1.  On average, they must be equal to 0.\n",
+        "\n",
+        "2.  They must have the same dispersion or variability.\n",
+        "\n",
+        "3.  They must be independent of each other.\n",
+        "\n",
+        "In the context of time series, **this means that the model errors** $e_i$ must behave like [white noise]{style=\"color:darkgray;\"} that contains no patterns.\n",
+        "\n",
+        "## Example 2: Amtrak data (cont.)\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Let's fit a linear regression model to the ridership data from Amtrak.\n"
+      ],
+      "id": "2e0f2b72"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "plt.figure(figsize=(6, 4))\n",
+        "sns.lineplot(x='Month', y='Ridership (in 000s)', data = Amtrak_data)\n",
+        "plt.xlabel('Month')\n",
+        "plt.ylabel('Ridership')\n",
+        "plt.title('Amtrak Ridership Over Time')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "06e60bbc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Creating a train and a validation data\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "-   In time series, the order of the data matters because each observation is tied to a specific point in time.\n",
+        "\n",
+        "-   Because of this, we cannot randomly split the data using a function like `train_test_split()`.\n",
+        "\n",
+        "-   Doing so might result in a situation where the model learns from future values to predict past ones—which doesn’t make sense and would lead to overly optimistic performance.\n",
+        "\n",
+        "## \n",
+        "\n",
+        "Instead, we want to train the model on earlier time periods and test it on later ones.\n",
+        "\n",
+        "To this end, we use the code below.\n"
+      ],
+      "id": "f432d332"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# Define the split point\n",
+        "split_ratio = 0.8  # 80% train, 20% validation\n",
+        "split_point = int(len(Amtrak_data) * split_ratio)\n",
+        "\n",
+        "# Split the data\n",
+        "Amtrak_train = Amtrak_data[:split_point]\n",
+        "Amtrak_validation = Amtrak_data[split_point:]"
+      ],
+      "id": "64672514",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "This code ensures that the training data always comes before the validation data in time, preserving the temporal order. The proportion of data that goes to training is set using `split_ratio`.\n",
+        "\n",
+        "## \n",
+        "\n",
+        "</br></br>\n"
+      ],
+      "id": "38560bac"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# Create the plot\n",
+        "plt.figure(figsize=(8, 5))\n",
+        "\n",
+        "# Plot training data\n",
+        "sns.lineplot(\n",
+        "    data=Amtrak_train,\n",
+        "    x='Month',\n",
+        "    y='Ridership (in 000s)',\n",
+        "    label='Training',\n",
+        "    color='blue'\n",
+        ")\n",
+        "\n",
+        "# Plot validation data\n",
+        "sns.lineplot(\n",
+        "    data=Amtrak_validation,\n",
+        "    x='Month',\n",
+        "    y='Ridership (in 000s)',\n",
+        "    label='Validation',\n",
+        "    color='orange'\n",
+        ")\n",
+        "\n",
+        "# Customize labels and title\n",
+        "plt.xlabel('Month')\n",
+        "plt.ylabel('Ridership (in 000s)')\n",
+        "plt.title('Amtrak Ridership: Training and Validation Split')\n",
+        "plt.legend()\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "920bbdd7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Fit linear regression model\n",
+        "\n",
+        "We first set the predictor and response.\n"
+      ],
+      "id": "4e6005ca"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# Set predictor.\n",
+        "X_train = Amtrak_train.filter(['t'])\n",
+        "\n",
+        "# Set response.\n",
+        "Y_train = Amtrak_train.filter(['Ridership (in 000s)'])"
+      ],
+      "id": "143af963",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "</br>\n",
+        "\n",
+        "Next, we fit the model using `LinearRegression()` and `fit()` from **scikit-learn**.\n"
+      ],
+      "id": "01c84499"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# 1. Create linear regression model.\n",
+        "LRmodelAmtrak = LinearRegression()\n",
+        "\n",
+        "# 2. Fit the model to the training data.\n",
+        "LRmodelAmtrak.fit(X_train, Y_train)"
+      ],
+      "id": "7efb08c0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Let's inspect the estimated coefficient for the predictor (*time*).\n"
+      ],
+      "id": "ae80d44e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "print(LRmodelAmtrak.coef_)"
+      ],
+      "id": "ee60c12c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "And the intercept.\n"
+      ],
+      "id": "90bb45c1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "print(LRmodelAmtrak.intercept_)"
+      ],
+      "id": "77b0258b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The estimated model then is:\n",
+        "\n",
+        "$$\\hat{Y}_i = 1810.777 - 1.281 T_i.$$\n",
+        "\n",
+        "## Residual analysis\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We can validate the model using a residual analysis on the training data. To this end, we first compute the predicted values and residuals of the model.\n"
+      ],
+      "id": "c6135082"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "\n",
+        "fitted = LRmodelAmtrak.predict(X_train) + Y_train*0\n",
+        "residuals = Y_train - fitted\n",
+        "\n",
+        "# Construct a pandas data.frame\n",
+        "residual_data = pd.DataFrame()\n",
+        "residual_data[\"Fitted\"] = fitted\n",
+        "residual_data[\"Residuals\"] = residuals\n",
+        "residual_data[\"Time\"] = residuals.index"
+      ],
+      "id": "b958ed21",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Remember that we are using `+ Y_train*0` to visualize the objects `fitted` and `residuals` effectively.\n",
+        "\n",
+        "## \n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"50%\"}"
+      ],
+      "id": "a3ba1b96"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "# Residual vs Fitted Values Plot\n",
+        "plt.figure(figsize=(8, 6))\n",
+        "sns.scatterplot(data = residual_data, x = \"Fitted\", y = \"Residuals\")\n",
+        "plt.axhline(y=0, color='red', linestyle='--')\n",
+        "plt.xlabel(\"Fitted Values (Y_pred)\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Fitted Values\")\n",
+        "plt.show()"
+      ],
+      "id": "e65487a3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: {.column width=\"50%\"}"
+      ],
+      "id": "8c5e905a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "plt.figure(figsize=(8, 6))\n",
+        "sns.scatterplot(data = residual_data, x = \"Time\", y = \"Residuals\")\n",
+        "plt.axhline(y=0, color='red', linestyle='--')\n",
+        "plt.xlabel(\"Time\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Time\")\n",
+        "plt.show()"
+      ],
+      "id": "5bc53098",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "## The model is more flexible than that\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "If necessary, the linear regression model can be extended to capture quadratic relationships. For this, the model takes the following form:\n",
+        "\n",
+        "$$\\hat{Y}_i = \\hat{\\beta}_0 + \\hat{\\beta}_1 T_i + \\hat{\\beta}_2 T^{2}_i $$\n",
+        "\n",
+        "-   Where $T^{2}_i$ is the squared value of the time index.\n",
+        "\n",
+        "-   $\\hat{\\beta}_2$ is a term that captures possible curvature in the time series.\n",
+        "\n",
+        "## In Python\n",
+        "\n",
+        "To include a quadratic term, we must augment our predictor matrix with an additional column. The following code shows how to augment `X_full` by the square of the `Amtrak_data['t']` column. This is done using the **pandas** `.concat()` function. The resulting matrix is stored in `X_quad`.\n"
+      ],
+      "id": "defd87b7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "X_quad = pd.concat([X_train, Amtrak_train['t']**2], axis = 1)"
+      ],
+      "id": "710f1746",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Next, we follow the same steps to fit this model.\n"
+      ],
+      "id": "381b077e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# 1. Create linear regression model\n",
+        "QuadmodelAmtrak = LinearRegression()\n",
+        "\n",
+        "# 2. Fit linear regression model\n",
+        "QuadmodelAmtrak.fit(X_quad, Y_train)"
+      ],
+      "id": "24c2468b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "We show the estimated coefficients in Python.\n"
+      ],
+      "id": "e2fc32e6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "print(\"Intercept = \", QuadmodelAmtrak.intercept_)\n",
+        "print(\"Coefficients = \", QuadmodelAmtrak.coef_)"
+      ],
+      "id": "fd3cde8b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "</br>\n",
+        "\n",
+        "The estimated model thus is\n",
+        "\n",
+        "$$\\hat{Y}_i = 1866.84 - 4.65 T_i + 0.03 T^2_i.$$\n",
+        "\n",
+        "## Residual analysis\n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"50%\"}"
+      ],
+      "id": "af09b7f6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "# Remember to use the same `X_quad`\n",
+        "Y_pred_quad = QuadmodelAmtrak.predict(X_quad) + Y_train*0\n",
+        "residuals_quad = Y_train - Y_pred_quad\n",
+        "# Construct a pandas data.frame\n",
+        "residual_data_quad = pd.DataFrame()\n",
+        "residual_data_quad[\"Fitted\"] = Y_pred_quad\n",
+        "residual_data_quad[\"Residuals\"] = residuals_quad\n",
+        "residual_data_quad[\"Time\"] = residuals_quad.index\n",
+        "\n",
+        "\n",
+        "plt.figure(figsize=(8, 6))\n",
+        "sns.scatterplot(data = residual_data_quad, x = \"Fitted\", y = \"Residuals\")\n",
+        "plt.axhline(y=0, color='red', linestyle='--')\n",
+        "plt.xlabel(\"Fitted Values (Y_pred_quad)\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Fitted Values\")\n",
+        "plt.show()"
+      ],
+      "id": "d4ee4392",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: {.column width=\"50%\"}"
+      ],
+      "id": "bf6d8d6a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "plt.figure(figsize=(8, 6))\n",
+        "sns.scatterplot(data = residual_data_quad, x = \"Time\", y = \"Residuals\")\n",
+        "plt.axhline(y=0, color='red', linestyle='--')\n",
+        "plt.xlabel(\"Time (t)\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Time\")\n",
+        "plt.show()"
+      ],
+      "id": "efc13eea",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "## Model evaluation using validation data\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Remember that another way to evaluate the performance of a model is using the $\\text{MSE}_v$ or $\\text{RMSE}_v$ on the validation data.\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "To this end, we need some Python objects.\n"
+      ],
+      "id": "94138cd4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# Set predictor.\n",
+        "X_valid = Amtrak_validation.filter(['t'])\n",
+        "\n",
+        "# Set response.\n",
+        "Y_valid = Amtrak_validation.filter(['Ridership (in 000s)'])"
+      ],
+      "id": "e905d172",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "Let's compute the $\\text{RMSE}_v$ for the linear regression model.\n"
+      ],
+      "id": "f0e3c914"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Y_val_pred_lin = LRmodelAmtrak.predict(X_valid)\n",
+        "mse = mean_squared_error(Y_valid, Y_val_pred_lin)  \n",
+        "print(round(mse**(1/2), 2))"
+      ],
+      "id": "29eb1e98",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Let's do the same for the the linear regression model with a quadratic term.\n"
+      ],
+      "id": "79324984"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "X_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)\n",
+        "Y_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)\n",
+        "mse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (MSE)\n",
+        "print(round(mse_quad**(1/2), 2))"
+      ],
+      "id": "d544b1b3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We conclude that the linear model with a quadratic term is better than the linear regression model because the $\\text{RMSE}_v$ of the former is smaller than for the latter.\n",
+        "\n",
+        "## \n",
+        "\n",
+        "Predictions of linear model.\n"
+      ],
+      "id": "35e6c8ee"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "\n",
+        "# Build a DataFrame for the forecast with corresponding years\n",
+        "forecast_years = Amtrak_validation['t'].values\n",
+        "forecast_df = pd.DataFrame({\n",
+        "    't': forecast_years,\n",
+        "    'Ridership (in 000s)': Y_val_pred_lin.reshape((25,)),\n",
+        "    'Type': 'Prediction'\n",
+        "})\n",
+        "\n",
+        "# Add 'Type' column to training and validation data\n",
+        "Amtrak_train_plot = Amtrak_train.copy()\n",
+        "Amtrak_train_plot['Type'] = 'Train'\n",
+        "\n",
+        "Amtrak_validation_plot = Amtrak_validation.copy()\n",
+        "Amtrak_validation_plot['Type'] = 'Validation'\n",
+        "\n",
+        "# Concatenate everything\n",
+        "plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])\n",
+        "\n",
+        "# Plot using seaborn\n",
+        "plt.figure(figsize=(10, 6))\n",
+        "sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)\n",
+        "plt.xlabel('Time')\n",
+        "plt.ylabel('Ridership (in 000s)')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "e62b1dc0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "Predictions of linear model with quadratic trend.\n"
+      ],
+      "id": "43d6c3fa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "\n",
+        "# Build a DataFrame for the forecast with corresponding years\n",
+        "forecast_years = Amtrak_validation['t'].values\n",
+        "forecast_df = pd.DataFrame({\n",
+        "    't': forecast_years,\n",
+        "    'Ridership (in 000s)': Y_val_pred_quad.reshape((25,)),\n",
+        "    'Type': 'Prediction'\n",
+        "})\n",
+        "\n",
+        "# Add 'Type' column to training and validation data\n",
+        "Amtrak_train_plot = Amtrak_train.copy()\n",
+        "Amtrak_train_plot['Type'] = 'Train'\n",
+        "\n",
+        "Amtrak_validation_plot = Amtrak_validation.copy()\n",
+        "Amtrak_validation_plot['Type'] = 'Validation'\n",
+        "\n",
+        "# Concatenate everything\n",
+        "plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])\n",
+        "\n",
+        "# Plot using seaborn\n",
+        "plt.figure(figsize=(10, 6))\n",
+        "sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)\n",
+        "plt.xlabel('Time')\n",
+        "plt.ylabel('Ridership (in 000s)')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "5cbd23af",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Activity (*solo* mode)\n",
+        "\n",
+        "The Office of Transportation Statistics of the Innovative Research and Technology Administration conducted a study to assess the impact of the September 11, 2001, terrorist attack on U.S. transportation. The report analyzes monthly passenger movement data from January 1990 to May 2004. Time series data are provided for (1) Real Revenue Passenger Miles Traveled (Air RPM), (2) Rail Passenger Miles Traveled (Rail PM), and (3) Car Miles Traveled (VMT).\n",
+        "\n",
+        "In this activity, you will fit different linear regression models to data in the file \"Sept11Travel.xlsx\" in CANVAS.\n",
+        "\n",
+        "## Identifying Heteroskedasticity\n",
+        "\n",
+        "</br></br>\n",
+        "\n",
+        "Heteroskedasticity arises when the dispersion of model errors is not constant over time.\n",
+        "\n",
+        "To see it, let's go back to the Airline data, which contains the number of passengers of an international airline per month between 1949 and 1960.\n"
+      ],
+      "id": "ec6c2506"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Airline_data = pd.read_excel(\"Airline.xlsx\")"
+      ],
+      "id": "7bb2dbd2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br></br>\n"
+      ],
+      "id": "1d0a0c8a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Airline_data.head()"
+      ],
+      "id": "dafd01b4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "For illustrative purposes, we will not split the time series into training and validation datasets.\n"
+      ],
+      "id": "a4d23b1d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "plt.figure(figsize=(10, 5))\n",
+        "sns.lineplot(x='T', y='Number of passengers', data = Airline_data)\n",
+        "plt.xlabel('Time')\n",
+        "plt.ylabel('Number of passengers')\n",
+        "plt.title('Number of passengers across time')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "a84bbee6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br></br>\n",
+        "\n",
+        "Let's fit a linear regression model.\n"
+      ],
+      "id": "744347b9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# Set predictor.\n",
+        "X_full = Airline_data.filter(['T'])\n",
+        "\n",
+        "# Set response.\n",
+        "Y_full = Airline_data.filter(['Number of passengers'])\n",
+        "\n",
+        "# 1. Create linear regression\n",
+        "LRmodelAirline = LinearRegression()\n",
+        "\n",
+        "# 2. Fit the model\n",
+        "LRmodelAirline.fit(X_full, Y_full)"
+      ],
+      "id": "4cdfe642",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Residual analysis\n",
+        "\n",
+        "::: {style=\"font-size: 90%;\"}\n",
+        "**Heteroskedasticity**: Dispersion of the residuals increases with the predicted value.\n",
+        ":::\n"
+      ],
+      "id": "18a0c80a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "# Remember to use the same `X_quad`\n",
+        "Y_pred = LRmodelAirline.predict(X_full) + Y_full*0\n",
+        "residuals = Y_full - Y_pred\n",
+        "\n",
+        "# Construct a pandas data.frame\n",
+        "residual_data = pd.DataFrame()\n",
+        "residual_data[\"Fitted\"] = Y_pred\n",
+        "residual_data[\"Residuals\"] = residuals\n",
+        "residual_data[\"Time\"] = residuals.index\n",
+        "\n",
+        "\n",
+        "plt.figure(figsize=(6, 4))\n",
+        "sns.scatterplot(data = residual_data, x = \"Fitted\", y = \"Residuals\")\n",
+        "plt.axhline(y=0, color='red', linestyle='--')\n",
+        "plt.xlabel(\"Fitted Values (Y_pred_quad)\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Fitted Values\")\n",
+        "plt.show()"
+      ],
+      "id": "b5ed0be5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Solution\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "If we identify heteroskedasticity in the regression model errors, we have several transformation options for our **original** series.\n",
+        "\n",
+        "-   A common transformations to the time series $Y_i$ is the **Natural Logarithm**\n",
+        "\n",
+        "-   If the original time series contains negative values, it can be **lagged** by adding the negative of its minimum value.\n",
+        "\n",
+        "## In Python\n",
+        "\n",
+        "The easiest way to apply the logarithm in Python is to use the `log()` function from the **numpy** library\n"
+      ],
+      "id": "9fa25740"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "log_Y_full = np.log( Y_full )"
+      ],
+      "id": "84e1b7fd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Now, the response to use is in `log_Y_full`.\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "The steps to fit a linear regression model are similar.\n"
+      ],
+      "id": "bca9d5c4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# 1. Create linear regression\n",
+        "LRmodelAirlineTransformed = LinearRegression()\n",
+        "\n",
+        "# 2. Fit the model\n",
+        "LRmodelAirlineTransformed.fit(X_full, log_Y_full)"
+      ],
+      "id": "dd1dd04e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Residual analysis\n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"50%\"}\n",
+        "With transformation\n"
+      ],
+      "id": "2df9016d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "# Remember to use the same `X_quad`\n",
+        "Y_pred_log = LRmodelAirlineTransformed.predict(X_full) + log_Y_full*0\n",
+        "residuals_log = log_Y_full - Y_pred_log\n",
+        "\n",
+        "# Construct a pandas data.frame\n",
+        "residual_data_log = pd.DataFrame()\n",
+        "residual_data_log[\"Fitted\"] = Y_pred_log\n",
+        "residual_data_log[\"Residuals\"] = residuals_log\n",
+        "residual_data_log[\"Time\"] = residuals_log.index\n",
+        "\n",
+        "\n",
+        "plt.figure(figsize=(6, 4))\n",
+        "sns.scatterplot(data = residual_data_log, x = \"Fitted\", y = \"Residuals\")\n",
+        "plt.axhline(y=0, color='red', linestyle='--')\n",
+        "plt.xlabel(\"Fitted Values (Y_pred_quad)\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Fitted Values\")\n",
+        "plt.show()"
+      ],
+      "id": "f31dcb6f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "::: {.column width=\"50%\"}\n",
+        "Without transformation\n"
+      ],
+      "id": "7b82e087"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "\n",
+        "# Remember to use the same `X_quad`\n",
+        "Y_pred = LRmodelAirline.predict(X_full) + Y_full*0\n",
+        "residuals = Y_full - Y_pred\n",
+        "\n",
+        "# Construct a pandas data.frame\n",
+        "residual_data = pd.DataFrame()\n",
+        "residual_data[\"Fitted\"] = Y_pred\n",
+        "residual_data[\"Residuals\"] = residuals\n",
+        "residual_data[\"Time\"] = residuals.index\n",
+        "\n",
+        "\n",
+        "plt.figure(figsize=(6, 4))\n",
+        "sns.scatterplot(data = residual_data, x = \"Fitted\", y = \"Residuals\")\n",
+        "plt.axhline(y=0, color='red', linestyle='--')\n",
+        "plt.xlabel(\"Fitted Values (Y_pred_quad)\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Fitted Values\")\n",
+        "plt.show()"
+      ],
+      "id": "0a6b052d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "## What do I do if the transformation doesn't work?\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "-   If the log transformation doesn't significantly reduce heteroskedasticity, there are models for modeling variance called GARCH.\n",
+        "\n",
+        "-   You can find literature on these models and their software implementations in a time series textbook such as *Time Series Analysis with Applications in R* by Cryer and Chan.\n",
+        "\n",
+        "# Models with Seasonality\n",
+        "\n",
+        "## Seasonality\n",
+        "\n",
+        "Seasonality refers to repetitive or cyclical behavior that occurs with a constant frequency.\n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"50%\"}\n",
+        "</br>\n",
+        "\n",
+        "Examples:\n",
+        "\n",
+        "-   Demand for winter clothing\n",
+        "\n",
+        "-   Demand for tourist travel\n",
+        "\n",
+        "-   Amount of rainfall throughout the year.\n",
+        ":::\n",
+        "\n",
+        "::: {.column width=\"50%\"}"
+      ],
+      "id": "f7eac75a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "plt.figure(figsize=(5, 5))\n",
+        "sns.lineplot(x='T', y='Number of passengers', data = Airline_data)\n",
+        "plt.xlabel('Time')\n",
+        "plt.ylabel('Number of passengers')\n",
+        "plt.title('Number of passengers across time')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "abc63e35",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "## Capturing seasonality\n",
+        "\n",
+        ":::::: center\n",
+        "::::: columns\n",
+        "::: {.column width=\"60%\"}\n",
+        "The linear regression model can be extended to capture seasonal patterns in the time series.\n",
+        "\n",
+        "To do this, an additional categorical predictor is created that indicates the season to which each data item belongs.\n",
+        "\n",
+        "The additional categorical predictor is transformed into several auxiliary numerical predictors.\n",
+        ":::\n",
+        "\n",
+        "::: {.column width=\"40%\"}\n",
+        "</br>\n",
+        "\n",
+        "![](images/clipboard-2320382344.png)\n",
+        ":::\n",
+        ":::::\n",
+        "::::::\n",
+        "\n",
+        "## Analyzing seasonal series in Python\n",
+        "\n",
+        "Consider the data in `Amtrak_train` with the additional predictor of `Season` to model seasonality.\n"
+      ],
+      "id": "ad5b886a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Amtrak_train.head()"
+      ],
+      "id": "ce3b4c5e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "To fit a linear regression model with a categorical variable like `Season`, we must transform the text categories into numbers. To do this, we use dummy variables constructed using the following commands.\n"
+      ],
+      "id": "ef75eba8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "dummy_data = pd.get_dummies(Amtrak_train['Season'], dtype = 'int')\n",
+        "dummy_data.head(4)"
+      ],
+      "id": "8bf1a9ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "The matrix above contains one column for each month. Each column indicates the observations that belong to the month of the column. For example, the column `Apr` has the values 0 and 1. The value 1 indicates that the corresponding observation belongs to the month of April. A 0 indicates otherwise.\n"
+      ],
+      "id": "d4b0a770"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "dummy_data.head(4)"
+      ],
+      "id": "60071a2c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "Unfortunately, we cannot use the matrix as is in the linear regression model due to **multicollinearity** issues. Technically, this happens because if you add all the columns, the resulting column is a column of 1s, which is already used by the intercept. Therefore, you cannot fit a model with the intercept and all the columns of the dummy variables.\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "To solve this problem, we arbitrarily remove a column from the matrix above. For example, let's remove `Dec`.\n"
+      ],
+      "id": "5c0cb8e1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "dummy_data = dummy_data.drop([\"Dec\"], axis = 1)"
+      ],
+      "id": "a021abd4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "Now, let's build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.\n"
+      ],
+      "id": "285c1f5b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "X_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, dummy_data], \n",
+        "                          axis = 1)"
+      ],
+      "id": "6d29317a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "</br>\n",
+        "\n",
+        "Next, we fit the model with all the terms in the matrix above.\n"
+      ],
+      "id": "ec8b2bc5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "# 0. Ensure that we have the response in `Y_full`.\n",
+        "Y_train = Amtrak_train['Ridership (in 000s)']\n",
+        "\n",
+        "# 1. Create linear regression model.\n",
+        "SeasonmodelAmtrak = LinearRegression()\n",
+        "\n",
+        "# 2. Fit the linear regression model.\n",
+        "SeasonmodelAmtrak.fit(X_quad_season, Y_train)"
+      ],
+      "id": "32ddcf5d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Estimated model coefficients\n",
+        "\n",
+        "</br>\n"
+      ],
+      "id": "9ca80ad2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "print(\"Intercept = \", SeasonmodelAmtrak.intercept_)\n",
+        "print(\"Coefficients = \", SeasonmodelAmtrak.coef_)"
+      ],
+      "id": "e5d48411",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Residual analysis\n"
+      ],
+      "id": "41b66d50"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: true\n",
+        "\n",
+        "Y_pred = SeasonmodelAmtrak.predict(X_quad_season)\n",
+        "residuals = Y_train - Y_pred\n",
+        "plt.figure(figsize=(8, 6))\n",
+        "sns.scatterplot(x=Amtrak_data['t'], y=residuals)\n",
+        "plt.xlabel(\"Time (t)\")\n",
+        "plt.ylabel(\"Residuals\")\n",
+        "plt.title(\"Residuals vs. Time\")\n",
+        "plt.show()"
+      ],
+      "id": "f9f72673",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Predictions on the validation dataset\n",
+        "\n",
+        "Prepare the validation data using dummy variables.\n"
+      ],
+      "id": "7823f7fb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: false\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Y_valid = Amtrak_validation['Ridership (in 000s)']\n",
+        "\n",
+        "dummy_valid = pd.get_dummies(Amtrak_validation['Season'], dtype = 'int')\n",
+        "dummy_valid = dummy_valid.drop([\"Dec\"], axis = 1)\n",
+        "\n",
+        "X_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2, \n",
+        "                        dummy_valid], axis = 1)"
+      ],
+      "id": "279ac04d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "</br>\n",
+        "\n",
+        "Now, we compute the validation $\\text{RMSE}_v$.\n"
+      ],
+      "id": "0199344f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "#| code-fold: false\n",
+        "\n",
+        "Y_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)\n",
+        "\n",
+        "mse_season = mean_squared_error(Y_valid, Y_pred_valid) \n",
+        "print(round(mse_season**(1/2), 2))"
+      ],
+      "id": "913484f3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## \n",
+        "\n",
+        "Predictions of the linear model with seasonality.\n"
+      ],
+      "id": "ed043350"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "#| output: true\n",
+        "#| fig-align: center\n",
+        "\n",
+        "# Build a DataFrame for the forecast with corresponding years\n",
+        "forecast_years = Amtrak_validation['t'].values\n",
+        "forecast_df = pd.DataFrame({\n",
+        "    't': forecast_years,\n",
+        "    'Ridership (in 000s)': Y_pred_valid.reshape((25,)),\n",
+        "    'Type': 'Prediction'\n",
+        "})\n",
+        "\n",
+        "# Add 'Type' column to training and validation data\n",
+        "Amtrak_train_plot = Amtrak_train.copy()\n",
+        "Amtrak_train_plot['Type'] = 'Train'\n",
+        "\n",
+        "Amtrak_validation_plot = Amtrak_validation.copy()\n",
+        "Amtrak_validation_plot['Type'] = 'Validation'\n",
+        "\n",
+        "# Concatenate everything\n",
+        "plot_df = pd.concat([Amtrak_train_plot, Amtrak_validation_plot, forecast_df])\n",
+        "\n",
+        "# Plot using seaborn\n",
+        "plt.figure(figsize=(10, 6))\n",
+        "sns.lineplot(data=plot_df, x='t', y='Ridership (in 000s)', hue='Type', style='Type', markers=False)\n",
+        "plt.xlabel('Time')\n",
+        "plt.ylabel('Ridership (in 000s)')\n",
+        "plt.tight_layout()\n",
+        "plt.show()"
+      ],
+      "id": "e9ae2a06",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Disadvantages of linear regression\n",
+        "\n",
+        "</br>\n",
+        "\n",
+        "-   Despite their simplicity and versatility, linear regression models are not the best for describing a time series.\n",
+        "\n",
+        "-   This is because they do not assume a dependency between consecutive values in the time series. That is, they do not use the fact that, for example, $Y_1$ can help us predict $Y_2$, and $Y_2$ can help us predict $Y_3$, etc.\n",
+        "\n",
+        "-   Models that help us use past observations to predict future values of the response variable $Y$ are **autoregressive models**.\n",
+        "\n",
+        "## Yogi Berra\n",
+        "\n",
+        "</br></br></br>\n",
+        "\n",
+        "> It’s though to make predictions, especially about the future.\n",
+        "\n",
+        "# [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)"
+      ],
+      "id": "4f3b4599"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
