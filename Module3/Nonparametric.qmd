@@ -43,7 +43,7 @@ Before we start, let's import the data science libraries into Python.
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, TimeSeriesSplit
 from sklearn.tree import DecisionTreeRegressor, plot_tree
 from sklearn.ensemble import BaggingRegressor, RandomForestRegressor
 from sklearn.ensemble import  GradientBoostingRegressor
@@ -849,7 +849,7 @@ GBalgorithm = GradientBoostingRegressor(learning_rate = 0.1,
                                     max_depth = 3,
                                     random_state = 59227)
 
-# Train the algorithm.
+# Train the boosting algorithm.
 GBalgorithm.fit(X_train, Y_train)
 ```
 
@@ -910,5 +910,12 @@ plt.show()
 -   Computational complexity: since it uses slow learners, it can be time consuming. However, we are growing small trees, each step can be done relatively quickly in some cases (e.g. AdaBoost).
 
 # Ensemble methods for Time Series
+
+## Example 3
+
+Let's consider the dataset consisting of weekly cases of chickenpox (a childhood disease) in Hungary. The dataset has the number of reported cases in Budapest from January 2005 to December 2013.
+
+The goal is to predict the number of reported cases weekly starting in 2014.
+
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
