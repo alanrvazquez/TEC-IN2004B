@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.42">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Alan R. Vazquez">
   <title>IN2004B Generation of Value with Data Analytics – Introduction to Python and Pandas</title>
@@ -29,8 +29,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -94,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="style.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -187,7 +188,7 @@
       margin-right: 0; 
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
   
   <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
@@ -308,8 +309,8 @@ Alan R. Vazquez
 <p>Fortunately, the <strong>pandas</strong> library is already pre-installed in Google Colab.</p>
 <p><br></p>
 <p>However, we need to inform Google Colab that we want to use <strong>pandas</strong> and its functions using the following command:</p>
-<div id="8bbe1653" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="375d97d4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <p>The command <code>as pd</code> allows us to have a short name for <strong>pandas</strong>. To use a function of <strong>pandas</strong>, we use the command <code>pd.function()</code>.</p>
@@ -318,17 +319,17 @@ Alan R. Vazquez
 <h2>Loading data using pandas</h2>
 <p><br></p>
 <p>The following code shows how to read the data in the file “penguins.xlsx” into Python.</p>
-<div id="143e3ad8" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Load the Excel file into a pandas DataFrame.</span></span>
-<span id="cb2-2"><a></a>penguins_data <span class="op">=</span> pd.read_excel(<span class="st">"penguins.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c3dd4353" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Load the Excel file into a pandas DataFrame.</span></span>
+<span id="cb2-2"><a></a>penguins_data <span class="op">=</span> pd.read_excel(<span class="st">"penguins.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="the-function-head" class="slide level2">
 <h2>The function head()</h2>
 <p>The function <code>head()</code> allows you to print the first rows of a pandas data frame.</p>
-<div id="c6a57e9c" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Print the first 4 rows of the dataset.</span></span>
-<span id="cb3-2"><a></a>penguins_data.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="89d57c61" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Print the first 4 rows of the dataset.</span></span>
+<span id="cb3-2"><a></a>penguins_data.head(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <style scoped="">
@@ -345,7 +346,7 @@ Alan R. Vazquez
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -361,7 +362,7 @@ Alan R. Vazquez
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.1</td>
@@ -372,7 +373,7 @@ Alan R. Vazquez
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.5</td>
@@ -383,7 +384,7 @@ Alan R. Vazquez
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>40.3</td>
@@ -394,7 +395,7 @@ Alan R. Vazquez
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>NaN</td>
@@ -414,8 +415,8 @@ Alan R. Vazquez
 <section id="indexing-variables-a-dataset" class="slide level2">
 <h2>Indexing variables a dataset</h2>
 <p>We can select a specific variables of a data frame using the syntaxis below.</p>
-<div id="bebbe13e" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>penguins_data[<span class="st">'bill_length_mm'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="243ecbe4" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>penguins_data[<span class="st">'bill_length_mm'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>0      39.1
 1      39.5
@@ -436,9 +437,9 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p>To index multiple variables of a data frame, we put the names of the variables in a list object. For example, we select <code>bill_length_mm</code>, <code>species</code>, and <code>island</code> as follows:</p>
-<div id="bf8d1a2c" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>sub_penguins_data <span class="op">=</span> penguins_data[ [<span class="st">'bill_length_mm'</span>,  <span class="st">'species'</span>, <span class="st">'island'</span>] ]</span>
-<span id="cb6-2"><a></a>sub_penguins_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="30e2613c" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>sub_penguins_data <span class="op">=</span> penguins_data[ [<span class="st">'bill_length_mm'</span>,  <span class="st">'species'</span>, <span class="st">'island'</span>] ]</span>
+<span id="cb6-2"><a></a>sub_penguins_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <style scoped="">
@@ -455,7 +456,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -466,31 +467,31 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>39.1</td>
 <td>Adelie</td>
 <td>Torgersen</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>39.5</td>
 <td>Adelie</td>
 <td>Torgersen</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>40.3</td>
 <td>Adelie</td>
 <td>Torgersen</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>NaN</td>
 <td>Adelie</td>
 <td>Torgersen</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>36.7</td>
 <td>Adelie</td>
 <td>Torgersen</td>
@@ -505,9 +506,9 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="indexing-rows" class="slide level2">
 <h2>Indexing rows</h2>
 <p>To index rows in a dataset, we use the argument <code>loc</code> from <strong>pandas</strong>. For example, we select the rows 3 to 6 of the <code>penguins_dataset</code> dataset:</p>
-<div id="abf9ffdf" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>rows_penguins_data <span class="op">=</span> penguins_data.loc[<span class="dv">2</span>:<span class="dv">5</span>]</span>
-<span id="cb7-2"><a></a>rows_penguins_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1743e275" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>rows_penguins_data <span class="op">=</span> penguins_data.loc[<span class="dv">2</span>:<span class="dv">5</span>]</span>
+<span id="cb7-2"><a></a>rows_penguins_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <style scoped="">
@@ -524,7 +525,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -540,7 +541,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>40.3</td>
@@ -551,7 +552,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>NaN</td>
@@ -562,7 +563,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>36.7</td>
@@ -573,7 +574,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.3</td>
@@ -593,8 +594,8 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="section-2" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="ed18d9bb" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>rows_penguins_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9ee71076" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>rows_penguins_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <style scoped="">
@@ -611,7 +612,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -627,7 +628,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>40.3</td>
@@ -638,7 +639,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>NaN</td>
@@ -649,7 +650,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>36.7</td>
@@ -660,7 +661,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.3</td>
@@ -681,9 +682,9 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="indexing-rows-and-columns" class="slide level2">
 <h2>Indexing rows and columns</h2>
 <p>Using <code>loc</code>, we can also retrieve a subset from the dataset by selecting specific columns and rows.</p>
-<div id="5f920e5c" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>sub_rows_pdata <span class="op">=</span> penguins_data.loc[<span class="dv">2</span>:<span class="dv">5</span>, [<span class="st">'bill_length_mm'</span>,  <span class="st">'species'</span>, <span class="st">'island'</span>] ]</span>
-<span id="cb9-2"><a></a>sub_rows_pdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e49c1910" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>sub_rows_pdata <span class="op">=</span> penguins_data.loc[<span class="dv">2</span>:<span class="dv">5</span>, [<span class="st">'bill_length_mm'</span>,  <span class="st">'species'</span>, <span class="st">'island'</span>] ]</span>
+<span id="cb9-2"><a></a>sub_rows_pdata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <style scoped="">
@@ -700,7 +701,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -711,25 +712,25 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>40.3</td>
 <td>Adelie</td>
 <td>Torgersen</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>NaN</td>
 <td>Adelie</td>
 <td>Torgersen</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>36.7</td>
 <td>Adelie</td>
 <td>Torgersen</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>39.3</td>
 <td>Adelie</td>
 <td>Torgersen</td>
@@ -755,7 +756,6 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="key-pandas-methods" class="slide level2">
 <h2>Key pandas methods</h2>
 <p><strong>pandas</strong> provides methods or functions to solve common data manipulation tasks:</p>
-<div>
 <ul>
 <li class="fragment"><p><code>.filter()</code> selects specific columns or rows.</p></li>
 <li class="fragment"><p><code>.query()</code> filters observations based on conditions.</p></li>
@@ -763,7 +763,6 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <li class="fragment"><p><code>.sort_values()</code> changes the order of rows.</p></li>
 <li class="fragment"><p><code>.agg()</code> reduces multiple values to a single numerical summary.</p></li>
 </ul>
-</div>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
@@ -773,9 +772,9 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="example-1" class="slide level2">
 <h2>Example 1</h2>
 <p>Let’s use the “penguins.xlsx” dataset.</p>
-<div id="f00fa2b6" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Preview the dataset.</span></span>
-<span id="cb10-2"><a></a>penguins_data.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4428e7e3" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Preview the dataset.</span></span>
+<span id="cb10-2"><a></a>penguins_data.head(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <style scoped="">
@@ -792,7 +791,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -808,7 +807,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.1</td>
@@ -819,7 +818,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.5</td>
@@ -830,7 +829,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>40.3</td>
@@ -841,7 +840,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>NaN</td>
@@ -861,10 +860,10 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="selecting-columns-with-.filter" class="slide level2">
 <h2>Selecting columns with <code>.filter()</code></h2>
 <p>Select the columns <code>species</code>, <code>body_mass_g</code> and <code>sex</code>.</p>
-<div id="1e547bde" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>(penguins_data</span>
+<div id="5290d821" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>(penguins_data</span>
 <span id="cb11-2"><a></a>  .<span class="bu">filter</span>([<span class="st">"species"</span>, <span class="st">"body_mass_g"</span>, <span class="st">"sex"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb11-3"><a></a>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a></a>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <style scoped="">
@@ -881,7 +880,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -892,31 +891,31 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Adelie</td>
 <td>3750.0</td>
 <td>male</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Adelie</td>
 <td>3800.0</td>
 <td>female</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Adelie</td>
 <td>3250.0</td>
 <td>female</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Adelie</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Adelie</td>
 <td>3450.0</td>
 <td>female</td>
@@ -932,10 +931,10 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <h2></h2>
 <p><br></p>
 <p>The <code>axis</code> argument tells <code>.filter()</code> whether to select rows (<code>0</code>) or columns (<code>1</code>) from the dataframe.</p>
-<div id="4aa9403b" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>(penguins_data</span>
+<div id="36b6014c" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>(penguins_data</span>
 <span id="cb12-2"><a></a>  .<span class="bu">filter</span>([<span class="st">"species"</span>, <span class="st">"body_mass_g"</span>, <span class="st">"sex"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb12-3"><a></a>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a></a>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <blockquote>
@@ -946,10 +945,10 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <h2></h2>
 <p><br></p>
 <p>We can also use <code>.filter()</code> to select rows too. To this end, we set <code>axis = 1</code>. We can select specific rows, such as 0 and 10.</p>
-<div id="0501033c" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>(penguins_data</span>
+<div id="ff008e7c" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>(penguins_data</span>
 <span id="cb13-2"><a></a>  .<span class="bu">filter</span>([<span class="dv">0</span>, <span class="dv">10</span>], axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb13-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <style scoped="">
@@ -966,7 +965,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -982,7 +981,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.1</td>
@@ -993,7 +992,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">10</td>
+<th data-quarto-table-cell-role="th">10</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>37.8</td>
@@ -1013,10 +1012,10 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="section-6" class="slide level2">
 <h2></h2>
 <p>Or, we can select a set of rows using the function <code>range()</code>. For example, let’s select the first 5 rows.</p>
-<div id="ec4ffd5b" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>(penguins_data</span>
+<div id="97ebd2e2" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>(penguins_data</span>
 <span id="cb14-2"><a></a>  .<span class="bu">filter</span>(<span class="bu">range</span>(<span class="dv">5</span>), axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb14-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <style scoped="">
@@ -1033,7 +1032,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1049,7 +1048,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.1</td>
@@ -1060,7 +1059,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>39.5</td>
@@ -1071,7 +1070,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>40.3</td>
@@ -1082,7 +1081,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>NaN</td>
@@ -1093,7 +1092,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>36.7</td>
@@ -1116,19 +1115,19 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <p>An alternative way of selecting rows is <code>.query()</code>. Compared to <code>.filter()</code>, <code>.query()</code> allows us to filter the data using statements or <em>queries</em> involving the variables.</p>
 <p><br></p>
 <p>For example, let’s filter the data for the species “Gentoo.”</p>
-<div id="95c842a3" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>(penguins_data</span>
+<div id="4b601cd4" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>(penguins_data</span>
 <span id="cb15-2"><a></a>  .query(<span class="st">"species == 'Gentoo'"</span>)</span>
-<span id="cb15-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
 <p><br></p>
-<div id="bb41cbf5" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>(penguins_data</span>
+<div id="52de8ed1" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>(penguins_data</span>
 <span id="cb16-2"><a></a>  .query(<span class="st">"species == 'Gentoo'"</span>)</span>
-<span id="cb16-3"><a></a>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a></a>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 <style scoped="">
@@ -1145,7 +1144,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1161,7 +1160,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">152</td>
+<th data-quarto-table-cell-role="th">152</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>46.1</td>
@@ -1172,7 +1171,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">153</td>
+<th data-quarto-table-cell-role="th">153</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>50.0</td>
@@ -1183,7 +1182,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">154</td>
+<th data-quarto-table-cell-role="th">154</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>48.7</td>
@@ -1194,7 +1193,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">155</td>
+<th data-quarto-table-cell-role="th">155</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>50.0</td>
@@ -1205,7 +1204,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">156</td>
+<th data-quarto-table-cell-role="th">156</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>47.6</td>
@@ -1225,10 +1224,10 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="section-8" class="slide level2">
 <h2></h2>
 <p>We can also filter the data to get penguins with a body mass greater than 5000g.</p>
-<div id="06ee0f62" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>(penguins_data</span>
+<div id="c17cb062" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>(penguins_data</span>
 <span id="cb17-2"><a></a>  .query(<span class="st">"body_mass_g &gt; 5000"</span>)</span>
-<span id="cb17-3"><a></a>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a></a>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 <style scoped="">
@@ -1245,7 +1244,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1261,7 +1260,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">153</td>
+<th data-quarto-table-cell-role="th">153</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>50.0</td>
@@ -1272,7 +1271,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">155</td>
+<th data-quarto-table-cell-role="th">155</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>50.0</td>
@@ -1283,7 +1282,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">156</td>
+<th data-quarto-table-cell-role="th">156</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>47.6</td>
@@ -1294,7 +1293,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">159</td>
+<th data-quarto-table-cell-role="th">159</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>46.7</td>
@@ -1305,7 +1304,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">161</td>
+<th data-quarto-table-cell-role="th">161</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>46.8</td>
@@ -1325,11 +1324,11 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="section-9" class="slide level2">
 <h2></h2>
 <p>We can even <strong>combine</strong> <code>.filter()</code> and <code>.query()</code>. For example, let’s select the columns <code>species</code>, <code>body_mass_g</code> and <code>sex</code>, then filter the data for the “Gentoo” species.</p>
-<div id="1ab6d228" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>(penguins_data</span>
+<div id="477732c3" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>(penguins_data</span>
 <span id="cb18-2"><a></a>  .<span class="bu">filter</span>([<span class="st">"species"</span>, <span class="st">"body_mass_g"</span>, <span class="st">"sex"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb18-3"><a></a>  .query(<span class="st">"species == 'Gentoo'"</span>)</span>
-<span id="cb18-4"><a></a>).head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-4"><a></a>).head(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 <style scoped="">
@@ -1346,7 +1345,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1357,25 +1356,25 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">152</td>
+<th data-quarto-table-cell-role="th">152</th>
 <td>Gentoo</td>
 <td>4500.0</td>
 <td>female</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">153</td>
+<th data-quarto-table-cell-role="th">153</th>
 <td>Gentoo</td>
 <td>5700.0</td>
 <td>male</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">154</td>
+<th data-quarto-table-cell-role="th">154</th>
 <td>Gentoo</td>
 <td>4450.0</td>
 <td>female</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">155</td>
+<th data-quarto-table-cell-role="th">155</th>
 <td>Gentoo</td>
 <td>5700.0</td>
 <td>male</td>
@@ -1391,31 +1390,31 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <h2>Create new columns with <code>.assign()</code></h2>
 <p>With <code>.assign()</code>, we can create new columns (variables) that are functions of existing ones. This function uses a special Python keyword called <code>lambda</code>. Technically, this keyword defines an <em>anonymous</em> function.</p>
 <p>For example, we create a new variable <code>LDRatio</code> equaling the ratio of <code>bill_length_mm</code> and <code>bill_depth_mm</code>.</p>
-<div id="66d1859c" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>(penguins_data</span>
+<div id="bfb823f3" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>(penguins_data</span>
 <span id="cb19-2"><a></a>  .assign(LDRatio <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">"bill_length_mm"</span>] <span class="op">/</span> df[<span class="st">"bill_depth_mm"</span>])</span>
-<span id="cb19-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>In this code, the <code>df</code> after <code>lambda</code> indicates that the dataframe (<code>penguins_data</code>) will be referred to as <code>df</code> inside the function. The colon <code>:</code> sets the start of the function.</p>
-<div id="80edff9d" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>(penguins_data</span>
+<div id="1e9664f9" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>(penguins_data</span>
 <span id="cb20-2"><a></a>  .assign(LDRatio <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">"bill_length_mm"</span>] <span class="op">/</span> df[<span class="st">"bill_depth_mm"</span>])</span>
-<span id="cb20-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The code appends the new variable to the end of the resulting dataframe.</p>
 </section>
 <section id="section-11" class="slide level2">
 <h2></h2>
 <p>We can see the new variable using <code>.filter()</code>.</p>
-<div id="941fe855" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>(penguins_data</span>
+<div id="c1fc8c84" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>(penguins_data</span>
 <span id="cb21-2"><a></a>  .assign(LDRatio <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">"bill_length_mm"</span>] <span class="op">/</span> df[<span class="st">"bill_depth_mm"</span>])</span>
 <span id="cb21-3"><a></a>  .<span class="bu">filter</span>([<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, <span class="st">"LDRatio"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb21-4"><a></a>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-4"><a></a>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 <style scoped="">
@@ -1432,7 +1431,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1443,31 +1442,31 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>39.1</td>
 <td>18.7</td>
 <td>2.090909</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>39.5</td>
 <td>17.4</td>
 <td>2.270115</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>40.3</td>
 <td>18.0</td>
 <td>2.238889</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>36.7</td>
 <td>19.3</td>
 <td>1.901554</td>
@@ -1482,10 +1481,10 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="sorting-with-.sort_values" class="slide level2">
 <h2>Sorting with <code>.sort_values()</code></h2>
 <p>We can sort the data based on a column like <code>bill_length_mm</code>.</p>
-<div id="cf40cc49" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>(penguins_data</span>
+<div id="eb046f1c" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>(penguins_data</span>
 <span id="cb22-2"><a></a>  .sort_values(<span class="st">"bill_length_mm"</span>)</span>
-<span id="cb22-3"><a></a>).head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a></a>).head(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 <style scoped="">
@@ -1502,7 +1501,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1518,7 +1517,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">142</td>
+<th data-quarto-table-cell-role="th">142</th>
 <td>Adelie</td>
 <td>Dream</td>
 <td>32.1</td>
@@ -1529,7 +1528,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2009</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">98</td>
+<th data-quarto-table-cell-role="th">98</th>
 <td>Adelie</td>
 <td>Dream</td>
 <td>33.1</td>
@@ -1540,7 +1539,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2008</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">70</td>
+<th data-quarto-table-cell-role="th">70</th>
 <td>Adelie</td>
 <td>Torgersen</td>
 <td>33.5</td>
@@ -1551,7 +1550,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2008</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">92</td>
+<th data-quarto-table-cell-role="th">92</th>
 <td>Adelie</td>
 <td>Dream</td>
 <td>34.0</td>
@@ -1571,10 +1570,10 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="section-12" class="slide level2">
 <h2></h2>
 <p>To sort in descending order, use <code>ascending=False</code> inside <code>sort_values()</code>.</p>
-<div id="2deba955" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>(penguins_data</span>
+<div id="25464d0b" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>(penguins_data</span>
 <span id="cb23-2"><a></a>  .sort_values(<span class="st">"bill_length_mm"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb23-3"><a></a>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a></a>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <style scoped="">
@@ -1591,7 +1590,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1607,7 +1606,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">185</td>
+<th data-quarto-table-cell-role="th">185</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>59.6</td>
@@ -1618,7 +1617,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">293</td>
+<th data-quarto-table-cell-role="th">293</th>
 <td>Chinstrap</td>
 <td>Dream</td>
 <td>58.0</td>
@@ -1629,7 +1628,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2007</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">253</td>
+<th data-quarto-table-cell-role="th">253</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>55.9</td>
@@ -1640,7 +1639,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2009</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">339</td>
+<th data-quarto-table-cell-role="th">339</th>
 <td>Chinstrap</td>
 <td>Dream</td>
 <td>55.8</td>
@@ -1651,7 +1650,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <td>2009</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">267</td>
+<th data-quarto-table-cell-role="th">267</th>
 <td>Gentoo</td>
 <td>Biscoe</td>
 <td>55.1</td>
@@ -1671,11 +1670,11 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <section id="summarizing-with-.agg" class="slide level2">
 <h2>Summarizing with <code>.agg()</code></h2>
 <p>We can calculate summary statistics of the columns <code>bill_length_mm</code>, <code>bill_depth_mm</code>, and <code>body_mass_g</code>.</p>
-<div id="48b6af0a" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>(penguins_data</span>
+<div id="e6321661" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>(penguins_data</span>
 <span id="cb24-2"><a></a>  .<span class="bu">filter</span>([<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, <span class="st">"body_mass_g"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb24-3"><a></a>  .agg([<span class="st">"mean"</span>])</span>
-<span id="cb24-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-4"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 <style scoped="">
@@ -1692,7 +1691,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1703,7 +1702,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">mean</td>
+<th data-quarto-table-cell-role="th">mean</th>
 <td>43.92193</td>
 <td>17.15117</td>
 <td>4201.754386</td>
@@ -1723,13 +1722,13 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 <h2>Saving results in new objects</h2>
 <p><br></p>
 <p>After performing operations on our data, we can save the modified dataset as a new object.</p>
-<div id="f812feab" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>mean_penguins_data <span class="op">=</span> (penguins_data</span>
+<div id="f521c93c" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>mean_penguins_data <span class="op">=</span> (penguins_data</span>
 <span id="cb25-2"><a></a>  .<span class="bu">filter</span>([<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, <span class="st">"body_mass_g"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb25-3"><a></a>  .agg([<span class="st">"mean"</span>])</span>
 <span id="cb25-4"><a></a>)</span>
 <span id="cb25-5"><a></a></span>
-<span id="cb25-6"><a></a>mean_penguins_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-6"><a></a>mean_penguins_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 <style scoped="">
@@ -1746,7 +1745,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
     }
 </style>
 
-<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -1757,7 +1756,7 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">mean</td>
+<th data-quarto-table-cell-role="th">mean</th>
 <td>43.92193</td>
 <td>17.15117</td>
 <td>4201.754386</td>
@@ -2001,190 +2000,173 @@ Name: bill_length_mm, Length: 344, dtype: float64</code></pre>
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>
