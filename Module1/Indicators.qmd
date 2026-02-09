@@ -25,7 +25,6 @@ jupyter: python3
 1.  Basic Indicator Concepts
 2.  Lagging and Leading Indicators
 
-
 # Basic Indicator Concepts
 
 ## Management
@@ -42,10 +41,10 @@ The management process is broken down into five management functions:
 
 :::: incremental
 ::: {style="font-size: 84%;"}
-1.  **Plan**: Choosing missions and objectives, and the actions to achieve them
-2.  **Organizing**: Establishing an intentional structure of roles for people to perform in an organization
-3.  **Staffing**: Filling and maintaining positions in the organizational structure
-4.  **Directing**: Influencing people to contribute to organizational and group goals
+1.  **Plan**: Choosing missions and objectives, and the actions to achieve them.
+2.  **Organizing**: Establishing an intentional structure of roles for people to perform in an organization.
+3.  **Staffing**: Filling and maintaining positions in the organizational structure.
+4.  **Directing**: Influencing people to contribute to organizational and group goals.
 5.  **Controlling**: Measuring and correcting individual and organizational performance to ensure that events conform to plans.
 :::
 ::::
@@ -61,8 +60,7 @@ The management process is broken down into five management functions:
 As a result of the planning process, some of the following types of plans can be generated:
 
 ::: {style="font-size: 90%;"}
--   Objectives or goals. These are specific and measurable results.
--   Strategies. Approaches or plans to achieve objectives.
+-   Strategies. Approaches or plans to achieve objectives, which are specific and measurable.
 -   Procedures. These detail the execution of an activity.
 -   Programs. Organized sets of activities to achieve objectives.
 -   Budgets. Detailed financial plans to facilitate economic decision-making.
@@ -77,8 +75,7 @@ As a result of the planning process, some of the following types of plans can be
 As a result of the planning process, some of the following types of plans can be generated:
 
 ::: {style="font-size: 90%;"}
--   [Objectives or goals. These are specific and measurable results.]{style="color:blue;"}
--   [Strategies. Approaches or plans to achieve objectives.]{style="color:blue;"}
+-   [Strategies. Approaches or plans to achieve objectives, which are specific and measurable.]{style="color:blue;"}
 -   Procedures. These detail the execution of an activity.
 -   Programs. Organized sets of activities to achieve objectives.
 -   Budgets. Detailed financial plans to facilitate economic decision-making.
@@ -112,7 +109,7 @@ Example 1:
 ::: {style="font-size: 90%;"}
 -   **Objective**: Complete staff training
 
--   **SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
+-   **SMART**: Complete at least 90% of the 2044 training program for all company operating personnel by November 30 of this year.
 :::
 ::::
 
@@ -124,7 +121,7 @@ Example 2
 ::: {style="font-size: 90%;"}
 -   **Objective**: Increase sales by 20%.
 
--   **SMART**: Achieve a sales increase of product X of at least 17% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
+-   **SMART**: Achieve a sales increase of product X of at least 20% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
 :::
 ::::
 
@@ -155,6 +152,12 @@ Franceschini, Fiorenzo & Galetto, Maurizio & Maisano, Domenico. (2007). Manageme
 ## Examples of indicators
 
 ![](images/clipboard-504148956.png){fig-align="center"}
+
+##
+
+Operating income: Profit generated from day-to-day operations.
+
+![](images/seahawks.jpg){fig-align="center"}
 
 ## 
 
@@ -246,53 +249,77 @@ A [leading indicator]{style="color:darkgreen;"} measures the performance of fact
 
 *Example*: Annual sales, market share, ROI.
 
--   Advantage: They are objectives.
+-   Advantage: They are objective and *easy* to define.
 
--   Disadvantage: They reflect the effect of past actions.
+-   Disadvantage: They reflect the effect of past actions and tend to be *expensive* to calculate.
 
 ## Leading Indicator
 
 </br></br>
 
-**Goal**: Measures processes, activities, behaviors that tend to change [before the system starts]{style="color:darkgreen;"} to follow a particular pattern or trend
+**Goal**: Measures processes, activities, behaviors that tend to change [during the process]{style="color:darkgreen;"} to capture particular patterns or trends.
 
 *Example*: \# of customers visited, \# of courses offered
 
--   Advantage: They are predictive, allowing for strategy corrections
+-   Advantage: They are predictive, allowing for strategy corrections. They tend to be *cheaper* to calculate.
 
--   Disadvantage: Based on cause-and-effect hypotheses.
+-   Disadvantage: You hope they help you to predict lagging indicators assuming a cause-and-effect relationship.
 
 ## Other examples
 
 In the context of a YouTuber:
 
--   Leading indicator: Number of views of a YouTube video in the first 24 hours.
+-   Leading indicator: Number of views in the first 24 hours after a video is published.
 
--   Lagging indicator: Monthly revenue generated from monetization.
+-   Lagging indicator: Total monthly monetization revenue after the month closes.
 
 . . .
 
 In the context of Netflix's sales department:
 
--   Leading indicator: Number of users who start a free trial in a given month.
+-   Leading indicator: Number (or conversion rate) of users starting a free trial during the month.
 
--   Lagging indicator: Monthly revenue from subscriptions.
+-   Lagging indicator: Annual subscription revenue after the fiscal year ends.
 
 ## 
 
 In the context of a GenAI company:
 
--   Leading indicator: Number of programmers hired with expertise in AI.
+-   Leading indicator: Leading indicator: Average response time to customer service requests during the month.
 
--   Lagging indicator: Number of licenses sold per year.
+-   Lagging indicator: Number (or proportion) of positive Google Maps reviews posted after service completion.
 
 . . .
 
 In the context of a mini-split maintenance company:
 
--   Leading indicator: Average response time from technical support to support requests.
+-   Leading indicator: Average response time to service requests during the month.
 
--   Lagging indicator: Number of positive reviews on Google Maps in a month.
+-   Lagging indicator: Monthly number of positive customer reviews after service completion.
+
+## More on indicators
+
+Lagging indicators measure [**outcomes**]{style="color:orange;"} after they occur and are used to evaluate performance. Leading indicators are observed earlier in the process and are used to anticipate future [**outcomes**]{style="color:orange;"}. 
+
+. . . 
+
+What is an [**outcome**]{style="color:orange;"}? It is the realized result of a process after uncertainty has resolved.
+
+- The value is known
+- The value is final for that time window
+- No further operational decisions can change it
+
+## 
+
+- In practice, leading indicators are often cheaper and faster to compute because they rely on partial or proxy information. 
+
+- The goal in analytics is to identify leading indicators that can reliably predict key lagging indicators. 
+
+- Importantly, the same variable (e.g., sales) can act as a leading or lagging indicator depending on its time resolution and decision context.
+
+. . . 
+
+> Leading indicators help you act; lagging indicators help you assess.
 
 ## How do I define an indicator?
 
@@ -322,23 +349,32 @@ A [derived indicator]{style="color:green;"} combines the information from two or
 
 . . .
 
+*Example 1:* In the context of a store.
+
+::: {style="font-size: 90%;"}
+-   Basic indicator: Number of customers who made a purchase today.
+
+-   Derived indicator: Daily conversion rate =
+(*Number of customers who made a purchase*) / (*Number of customers who visited the store*).
+:::
+
+##
+
 </br>
 
-*Example*: in Failure Modes and Effects Analysis
+*Example*: In the context of online content performance
 
--   Basic indicators: Severity, Occurrence, Detection
+</br>
 
--   Derived indicator: Risk Priority Number = S*O*D
+Basic indicators: Number of page views, Number of clicks, Time spent on the page.
 
-::: notes
--   **Severity** (S): Measures the impact or severity of the failure if it occurs. It is measured on a scale of 1 to 10, where 1 indicates a negligible effect and 10 represents a catastrophic effect for the user or the system.
+</br>
 
--   **Occurrence** (O): Evaluates the probability of the failure occurring. It is evaluated on a scale of 1 to 10, where 1 indicates that the occurrence is very rare and 10 indicates that it is highly probable or frequent.
+Derived indicators:
 
--   **Detection** (D): Represents the system's ability to detect the failure before it reaches the customer or end user. It is rated on a scale of 1 to 10, where 1 means that detection is almost certain and 10 means that it is very difficult or impossible to detect before a problem occurs.
+- Click-through rate (CTR) = Clicks / Page views.
 
-[Derived Indicator]{style="color:darkgreen;"}: Risk Priority Number = S$\times$O$\times$D
-:::
+- Average time per visit = Total time / Number of visits.
 
 ## The format of an indicator
 
@@ -362,9 +398,9 @@ An indicator should be measured numerically using:
 
 ## Activity 1.1 (cooperative mode)
 
-Get into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator:
+Get into teams of 3 and ask ChatGPT a question! For the following concepts, suggest at least one leading and one lagging quantitative indicator. Mention how the leading indicator can help predict the lagging indicator.
 
-::: {style="font-size: 90%;"}
+::: {style="font-size: 80%;"}
 1.  Monthly productivity of a furniture production line
 
 2.  Annual staff turnover in a manufacturing company
@@ -395,6 +431,5 @@ The purposes of an indicator are:
 ![](images/clipboard-3372273709.png){fig-align="center"}
 :::
 :::::
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
