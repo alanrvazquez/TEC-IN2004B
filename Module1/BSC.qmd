@@ -80,7 +80,7 @@ Three strategic planning frameworks are:
 
 1.  Management by Objectives (MBO; Peter Drucker, 1954)
 2.  Hoshin Kanri
-3.  **Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)**
+3.  [**Balanced Score Card (BSC; Kaplan & Norton, 1992, 1996)**]{style="color:#000080;"}
 
 ## Balanced Score Card (BSC)
 
@@ -264,23 +264,21 @@ Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de 
 
 ## Final comments
 
--   Once the BSC model has been designed for the company, specific models are developed by functional area.
+- Once the company-level Balanced Scorecard (BSC) is defined, each functional area develops its own BSC aligned with the overall strategy.
 
--   In the functional areas, work is based on the strategic objectives, identifying objectives specific to the functional area.
+- At the departmental level, leading indicators are more common than lagging indicators, since managers need timely signals to act.
 
--   It is more common to use performance indicators than impact indicators at the departmental level.
-
--   Not all strategic themes are necessarily maintained across functional areas, nor do all areas necessarily have objectives from all BSC perspectives.
+- Not all strategic themes or BSC perspectives must appear in every functional area; relevance depends on the area’s role in achieving company outcomes.
 
 ## 
 
 </br></br>
 
--   It is essential that functional managers fully understand the company's BSC and their area's contribution to the overall objectives.
+- Functional managers must clearly understand how their indicators contribute to organization-level outcomes.
 
--   The person responsible for BSC deployment must ensure the consistency and alignment of the functional BSCs.
+- The person responsible for BSC deployment must ensure alignment and coherence across functional BSCs, avoiding conflicting signals.
 
--   Some organizational-level indicators are simply aggregations of departmental indicators.
+- Some organization-level lagging indicators are obtained by aggregating or consolidating departmental indicators.
 
 # Indicator Documentation
 
