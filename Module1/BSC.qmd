@@ -262,11 +262,9 @@ Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de 
 
 ## 
 
-</br></br>
+</br></br></br>
 
 -   Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them.
-
--   You are also asked to select three of the objectives and propose at least one suggested metric for each.
 
 -   Finally, you will write the justification for the established causal relationships.
 

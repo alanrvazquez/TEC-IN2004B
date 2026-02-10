@@ -159,7 +159,7 @@ Operating income: Profit generated from day-to-day operations.
 
 ![](images/seahawks.jpg){fig-align="center"}
 
-##
+## 
 
 ![](images/KPI_tiktok.png){fig-align="center"}
 
@@ -205,7 +205,7 @@ Operating income: Profit generated from day-to-day operations.
 
 ![](images/usefulindicators.png){fig-align="center"}
 
-## Dimensions of analysis 
+## Dimensions of analysis
 
 </br>
 
@@ -287,13 +287,7 @@ In the context of Netflix's sales department:
 
 ## 
 
-In the context of a GenAI company:
-
--   Leading indicator: Leading indicator: Average response time to customer service requests during the month.
-
--   Lagging indicator: Number (or proportion) of positive Google Maps reviews posted after service completion.
-
-. . .
+</br></br>
 
 In the context of a mini-split maintenance company:
 
