@@ -218,6 +218,16 @@ where
 -   $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ is an estimate of $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
 -   $\hat{C}(\boldsymbol{X})$ is an estimate of the true Bayes Classifier $C(\boldsymbol{X})$
 
+## Let's play with classification algorithms.
+
+</br></br>
+
+1.  <https://quickdraw.withgoogle.com/>
+
+2.  <https://tenso.rs/demos/rock-paper-scissors/>
+
+3.  <https://teachablemachine.withgoogle.com/>
+
 # Training, Validation, and Test Data
 
 ## Two datasets
