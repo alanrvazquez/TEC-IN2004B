@@ -63,43 +63,6 @@ client_data = pd.read_excel("industrial_dataset.xlsx")
 client_data.head()
 ```
 
-## Add an index column
-
-</br>
-
-In some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function `.assign` with some extra syntax.
-
-```{python}
-#| echo: true
-
-client_data_single = (client_data
-                      .assign(ID = lambda x: x.index + 1)
-                      ) 
-```
-
-## 
-
-The new column is appended to the end of the dataframe.
-
-```{python}
-#| echo: true
-
-client_data_single.head()
-```
-
-## 
-
-To bring it to the begining of the array, we can use the `.filter()` function.
-
-```{python}
-#| echo: true
-
-client_data_single = (client_data_single
-.filter(['ID', 'Machine ID',	'Output (units)',	
-        'Maintenance Date', 'Operator', 'Comment'])
-)
-client_data_single.head(3)  
-```
 
 ## Fill blank cells
 
@@ -110,7 +73,7 @@ Let's fill in the missing entries of the columns `Operator`, `Maintenance Date`,
 ```{python}
 #| echo: true
 
-complete_data = (client_data_single
+complete_data = (client_data
                 .fillna({'Operator': 'Unknown', 
                 'Maintenance Date': '2023-01-01',
                 'Comment': 'None'})
@@ -371,7 +334,7 @@ There are nine predictors, including refractive index and percentages of eight e
 
 ## 
 
-</br>
+</br></br>
 
 The dataset is in the file "glass.xlsx". Let's load it using **pandas**.
 

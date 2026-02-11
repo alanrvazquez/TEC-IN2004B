@@ -2566,28 +2566,28 @@
     "href": "Tools/Tools2.slides.html#section-1",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "The new column is appended to the end of the dataframe.\n\nclient_data_single.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\nID\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\n1\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\n2\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n3\n\n\n3\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n4\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n\n5"
+    "text": "complete_data.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n\n\n3\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-2",
     "href": "Tools/Tools2.slides.html#section-2",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "To bring it to the begining of the array, we can use the .filter() function.\n\nclient_data_single = (client_data_single\n.filter(['ID', 'Machine ID',    'Output (units)',   \n        'Maintenance Date', 'Operator', 'Comment'])\n)\nclient_data_single.head(3)  \n\n\n\n\n\n\n\n\nID\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n2\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n3\n102\n1050\n2023-01-12\nBob\nNeeds oil!"
+    "text": "We can replace the “error” in this column by a user-specified value, say, 0. To this end, we use the function .replace(). The function has two inputs. The first one is the value to replace and the second one is the replacement value.\n\ncomplete_data['Output (units)'] = complete_data['Output (units)'].replace('error', 0)"
   },
   {
     "objectID": "Tools/Tools2.slides.html#fill-blank-cells",
     "href": "Tools/Tools2.slides.html#fill-blank-cells",
     "title": "Data Wrangling and Visualization",
     "section": "Fill blank cells",
-    "text": "Fill blank cells\nIn the dataset, there are columns with missing values. If we would like to fill them with specific values or text, we use the .fillna() function. In this function, we use the syntaxis 'Variable': 'Replace', where the Variable is the column in the dataset and Replace is the text or number to fill the entry in.\nLet’s fill in the missing entries of the columns Operator, Maintenance Date, and Comment.\n\ncomplete_data = (client_data_single\n                .fillna({'Operator': 'Unknown', \n                'Maintenance Date': '2023-01-01',\n                'Comment': 'None'})\n                )"
+    "text": "Fill blank cells\nIn the dataset, there are columns with missing values. If we would like to fill them with specific values or text, we use the .fillna() function. In this function, we use the syntaxis 'Variable': 'Replace', where the Variable is the column in the dataset and Replace is the text or number to fill the entry in.\nLet’s fill in the missing entries of the columns Operator, Maintenance Date, and Comment.\n\ncomplete_data = (client_data\n                .fillna({'Operator': 'Unknown', \n                'Maintenance Date': '2023-01-01',\n                'Comment': 'None'})\n                )"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-3",
     "href": "Tools/Tools2.slides.html#section-3",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "complete_data.head()\n\n\n\n\n\n\n\n\nID\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n2\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n3\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n\n\n3\n4\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n\n\n4\n5\n103\n950\n2023-01-13\nCharlie\nAll good\\n"
+    "text": "Let’s check the new column.\n\ncomplete_data['Output (units)']\n\n0     1200\n1     1200\n2     1050\n3        0\n4      950\n      ... \n95     800\n96    1100\n97     950\n98     950\n99    1100\nName: Output (units), Length: 100, dtype: int64\n\n\nNote that the new column is now numeric."
   },
   {
     "objectID": "Tools/Tools2.slides.html#replace-values",
@@ -2601,14 +2601,14 @@
     "href": "Tools/Tools2.slides.html#section-4",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "We can replace the “error” in this column by a user-specified value, say, 0. To this end, we use the function .replace(). The function has two inputs. The first one is the value to replace and the second one is the replacement value.\n\ncomplete_data['Output (units)'] = complete_data['Output (units)'].replace('error', 0)"
+    "text": "The column has some values such as “Requires part: valve” and “Delay: maintenance” that we may want to split into columns.\n\n\n0                       ok\n1                       ok\n2               Needs oil!\n3               All good\\n\n4               All good\\n\n              ...         \n95    Requires part: valve\n96                      ok\n97    Delay: maintenance\\n\n98              Needs oil!\n99              All good\\n\nName: Comment, Length: 100, dtype: object"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-5",
     "href": "Tools/Tools2.slides.html#section-5",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "Let’s check the new column.\n\ncomplete_data['Output (units)']\n\n0     1200\n1     1200\n2     1050\n3        0\n4      950\n      ... \n95     800\n96    1100\n97     950\n98     950\n99    1100\nName: Output (units), Length: 100, dtype: int64\n\n\nNote that the new column is now numeric."
+    "text": "We can split the values in the column according to the colon “:”.\nThat is, everything before the colon will be in a column. Everything after the colon will be in another column. To achieve this, we use the function str.split().\nOne input of the function is the symbol or character for which we cant to make a split. The other input, expand = True tells Python that we want to create new columns.\n\ncomplete_data['Comment'].str.split(':', expand = True)"
   },
   {
     "objectID": "Tools/Tools2.slides.html#split-column-into-multiple-ones",
@@ -2622,35 +2622,35 @@
     "href": "Tools/Tools2.slides.html#section-6",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "The column has some values such as “Requires part: valve” and “Delay: maintenance” that we may want to split into columns.\n\n\n0                       ok\n1                       ok\n2               Needs oil!\n3               All good\\n\n4               All good\\n\n              ...         \n95    Requires part: valve\n96                      ok\n97    Delay: maintenance\\n\n98              Needs oil!\n99              All good\\n\nName: Comment, Length: 100, dtype: object"
+    "text": "The result is two columns.\n\nsplit_column = complete_data['Comment'].str.split(':', expand = True)\nsplit_column.head()\n\n\n\n\n\n\n\n\n0\n1\n\n\n\n\n0\nok\nNone\n\n\n1\nok\nNone\n\n\n2\nNeeds oil!\nNone\n\n\n3\nAll good\\n\nNone\n\n\n4\nAll good\\n\nNone"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-7",
     "href": "Tools/Tools2.slides.html#section-7",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "We can split the values in the column according to the colon “:”.\nThat is, everything before the colon will be in a column. Everything after the colon will be in another column. To achieve this, we use the function str.split().\nOne input of the function is the symbol or character for which we cant to make a split. The other input, expand = True tells Python that we want to create new columns.\n\ncomplete_data['Comment'].str.split(':', expand = True)"
+    "text": "We can assign them to new columns in the dataset using the following code.\n\naugmented_data = (complete_data\n                  .assign(First_comment = split_column.filter([0]),\n                  Second_comment = split_column.filter([1]))\n                  )"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-8",
     "href": "Tools/Tools2.slides.html#section-8",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "The result is two columns.\n\nsplit_column = complete_data['Comment'].str.split(':', expand = True)\nsplit_column.head()\n\n\n\n\n\n\n\n\n0\n1\n\n\n\n\n0\nok\nNone\n\n\n1\nok\nNone\n\n\n2\nNeeds oil!\nNone\n\n\n3\nAll good\\n\nNone\n\n\n4\nAll good\\n\nNone"
+    "text": "augmented_data.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\nFirst_comment\nSecond_comment\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\nNeeds oil!\nNone\n\n\n3\n103\n0\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-9",
     "href": "Tools/Tools2.slides.html#section-9",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "We can assign them to new columns in the dataset using the following code.\n\naugmented_data = (complete_data\n                  .assign(First_comment = split_column.filter([0]),\n                  Second_comment = split_column.filter([1]))\n                  )"
+    "text": "Let’s see the cleaned column.\n\naugmented_data['First_comment']\n\n0                ok\n1                ok\n2        Needs oil!\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98       Needs oil!\n99         All good\nName: First_comment, Length: 100, dtype: object"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-10",
     "href": "Tools/Tools2.slides.html#section-10",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "augmented_data.head()\n\n\n\n\n\n\n\n\nID\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\nFirst_comment\nSecond_comment\n\n\n\n\n0\n1\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n1\n2\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n2\n3\n102\n1050\n2023-01-12\nBob\nNeeds oil!\nNeeds oil!\nNone\n\n\n3\n4\n103\n0\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone\n\n\n4\n5\n103\n950\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone"
+    "text": "We can also remove other characters.\n\naugmented_data['First_comment'].str.strip(\"!\")\n\n0                ok\n1                ok\n2         Needs oil\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98        Needs oil\n99         All good\nName: First_comment, Length: 100, dtype: object"
   },
   {
     "objectID": "Tools/Tools2.slides.html#remove-characters",
@@ -2664,14 +2664,14 @@
     "href": "Tools/Tools2.slides.html#section-11",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "Let’s see the cleaned column.\n\naugmented_data['First_comment']\n\n0                ok\n1                ok\n2        Needs oil!\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98       Needs oil!\n99         All good\nName: First_comment, Length: 100, dtype: object"
+    "text": "The dataset is in the file “glass.xlsx”. Let’s load it using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nglass_data = pd.read_excel(\"glass.xlsx\")\n\n\nThe variable Type is categorical. So, let’s ensure Python knows this using the code below.\n\nglass_data['Type'] = pd.Categorical(glass_data['Type'])"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-12",
     "href": "Tools/Tools2.slides.html#section-12",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "We can also remove other characters.\n\naugmented_data['First_comment'].str.strip(\"!\")\n\n0                ok\n1                ok\n2         Needs oil\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98        Needs oil\n99         All good\nName: First_comment, Length: 100, dtype: object"
+    "text": "We create the bar chart using the function countplot() from seaborn.\n\n\nCode\n# Create plot.\nplt.figure(figsize=(7,4)) # Create space for the plot.\nsns.countplot(data = glass_data, x = 'Type') # Show the plot.\nplt.title(\"Bar chart of Type of Glasses\") # Set plot title.\nplt.ylabel(\"Frequency\") # Set label for Y axis.\nplt.show() # Show plot."
   },
   {
     "objectID": "Tools/Tools2.slides.html#transform-text-case",
@@ -2727,7 +2727,7 @@
     "href": "Tools/Tools2.slides.html#section-13",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "The dataset is in the file “glass.xlsx”. Let’s load it using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nglass_data = pd.read_excel(\"glass.xlsx\")\n\n\nThe variable Type is categorical. So, let’s ensure Python knows this using the code below.\n\nglass_data['Type'] = pd.Categorical(glass_data['Type'])"
+    "text": "plt.figure(figsize=(5, 5))\nsns.countplot(data = glass_data, x = 'Type')\nplt.title('Relative Frequency of Each Category', fontsize = 12)\nplt.ylabel('Relative Frequency', fontsize = 12)\nplt.xlabel('Category', fontsize = 15)\nplt.xticks(fontsize = 12)\nplt.yticks(fontsize = 12)\nplt.savefig('bar_chart.png',dpi=300)"
   },
   {
     "objectID": "Tools/Tools2.slides.html#matplotlib-library",
