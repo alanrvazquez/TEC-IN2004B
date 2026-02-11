@@ -739,7 +739,7 @@
     "href": "Module2/Classification.slides.html#lets-partition-the-dataset",
     "title": "Classification Trees",
     "section": "Let’s partition the dataset",
-    "text": "Let’s partition the dataset\n\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n                                                      test_size = 0.3, \n                                                      stratify = Y_target_full,\n                                                      random_state=507134)\n\n\nThanks to the stratify parameter, the function makes a clever partition of the data using the empirical distribution of the response.\nTechnically, it splits the data so that the distribution of the response under the training and validation sets is similar.\nUsually, the proportion of the dataset that goes to the validation set is 20% or 30%."
+    "text": "Let’s partition the dataset\n\n# Split the dataset into training and validation.\nX_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full, \n                                                      test_size = 0.3, \n                                                      stratify = Y_target_full,\n                                                      random_state=507134)\n\n\nThanks to the stratify parameter, the function makes a clever partition of the data using the empirical distribution of the response.\nTechnically, it splits the data so that the distribution of the response under the training and validation sets is similar.\nUsually, the proportion of the dataset that goes to the validation set is 20% or 30%."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-5",
@@ -4113,7 +4113,7 @@
     "href": "Module2/IntrotoDataScience.slides.html#example",
     "title": "Introduction to Data Science",
     "section": "Example",
-    "text": "Example\n\n\nIn the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.\nBy 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).\nSignet Bank’s strategy: model profitability, not just probability of default, since a small fraction of customers generate most profits."
+    "text": "Example\n\n\nIn the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.\nBy 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).\nSignet Bank’s strategy: model profitability, not just probability of default, since a small fraction of customers generate most profits.\n\n\nProfitable clients are those who pay interest on outstanding balances, pay a lot with credit card (because paying with credit card incurs in fees paid by the merchant. annual memberships, opening other accounts.)"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#section-2",

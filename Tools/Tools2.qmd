@@ -63,7 +63,6 @@ client_data = pd.read_excel("industrial_dataset.xlsx")
 client_data.head()
 ```
 
-
 ## Add an index column
 
 </br>
@@ -357,7 +356,6 @@ operators = complete_data['Operator'].str.title()
 .drop_duplicates()
 )
 ```
-
 
 # Data Visualization
 

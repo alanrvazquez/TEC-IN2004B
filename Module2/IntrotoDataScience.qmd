@@ -221,6 +221,10 @@ Dillman said
 
 -   Signet Bank’s strategy: model **profitability**, not just probability of default, since a small fraction of customers generate most profits.
 
+::: {.notes}
+Profitable clients are those who pay interest on outstanding balances, pay a lot with credit card (because paying with credit card incurs in fees paid by the merchant. annual memberships, opening other accounts.)
+:::
+
 ## 
 
 </br></br></br>

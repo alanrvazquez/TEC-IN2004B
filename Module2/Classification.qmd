@@ -348,8 +348,6 @@ Y_target_full.head()
 
 ## Let's partition the dataset
 
-</br>
-
 ```{python}
 #| echo: true
 #| output: true
