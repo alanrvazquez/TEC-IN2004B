@@ -355,14 +355,4 @@ In technical terms, we want the algorithm to say something about the joint proba
 
 ![](images/clipboard-1531600765.png){fig-align="center"}
 
-## Let's play with supervised models.
-
-</br></br>
-
-1.  <https://quickdraw.withgoogle.com/>
-
-2.  <https://tenso.rs/demos/rock-paper-scissors/>
-
-3.  <https://teachablemachine.withgoogle.com/>
-
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
