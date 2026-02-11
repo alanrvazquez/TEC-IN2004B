@@ -218,7 +218,7 @@ where
 -   $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ is an estimate of $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
 -   $\hat{C}(\boldsymbol{X})$ is an estimate of the true Bayes Classifier $C(\boldsymbol{X})$
 
-## Let's play with classification algorithms.
+## Let's play with classification algorithms
 
 </br></br>
 
@@ -1428,9 +1428,9 @@ sns.scatterplot(
 
 # Add decision boundaries
 plt.axhline(y=9.25, color='black', linewidth=3)     # Horizontal line
-plt.axvline(x=10.95, ymin=0, ymax=0.41, color='black', linewidth=3)  # Left vertical
-plt.axvline(x=10.25, ymin=0.41, color='black', linewidth=3)  # Left vertical
-plt.axvline(x=11.3, ymin=0, ymax=0.41, color='black', linewidth=3)  # Right vertical
+plt.axvline(x=10.95, ymin=0, ymax=0.38, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=10.25, ymin=0.385, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.3, ymin=0, ymax=0.38, color='black', linewidth=3)  # Right vertical
 
 # Axis labels
 plt.xlabel("Top")
@@ -1488,9 +1488,9 @@ sns.scatterplot(
 
 # Add decision boundaries
 plt.axhline(y=9.25, color='black', linewidth=3)     # Horizontal line
-plt.axvline(x=10.95, ymin=0, ymax=0.41, color='black', linewidth=3)  # Left vertical
-plt.axvline(x=10.25, ymin=0.41, color='black', linewidth=3)  # Left vertical
-plt.axvline(x=11.3, ymin=0, ymax=0.41, color='black', linewidth=3)  # Right vertical
+plt.axvline(x=10.95, ymin=0, ymax=0.38, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=10.25, ymin=0.385, color='black', linewidth=3)  # Left vertical
+plt.axvline(x=11.3, ymin=0, ymax=0.38, color='black', linewidth=3)  # Right vertical
 
 # Add region labels
 plt.text(9.05, 11.5, r"(0.3, 0.7)", fontsize=30)
