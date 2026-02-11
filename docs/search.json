@@ -557,7 +557,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n1.0"
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.9833333333333333"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#discussion",
@@ -670,6 +670,13 @@
     "title": "Classification Trees",
     "section": "",
     "text": "Once we estimate \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) using one of these methods, we plug it into the Bayes classifier:\n\\[\\hat{C}(\\boldsymbol{X}) =\n    \\begin{cases}\n      1, & \\text{if}\\ \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}) &gt; 0.5 \\\\\n      0, & \\text{if}\\ \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}) \\leq 0.5\n    \\end{cases}.\\]\nwhere\n\n\\(\\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) is an estimate of \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\).\n\\(\\hat{C}(\\boldsymbol{X})\\) is an estimate of the true Bayes Classifier \\(C(\\boldsymbol{X})\\)"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#lets-play-with-classification-algorithms",
+    "href": "Module2/Classification.slides.html#lets-play-with-classification-algorithms",
+    "title": "Classification Trees",
+    "section": "Let’s play with classification algorithms",
+    "text": "Let’s play with classification algorithms\n\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
   },
   {
     "objectID": "Module2/Classification.slides.html#two-datasets",
@@ -1397,7 +1404,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Mon, 09 Feb 2026   AIC                             11.074\nTime:                        19:55:57   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Wed, 11 Feb 2026   AIC                             11.074\nTime:                        16:24:17   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
@@ -1579,7 +1586,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Mon, 09 Feb 2026   AIC                            756.482\nTime:                                   19:55:58   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Wed, 11 Feb 2026   AIC                            756.482\nTime:                                   16:24:18   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -2555,11 +2562,11 @@
     "text": "# Preview the dataset.\nclient_data.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n\n\n3\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n"
   },
   {
-    "objectID": "Tools/Tools2.slides.html#add-an-index-column",
-    "href": "Tools/Tools2.slides.html#add-an-index-column",
+    "objectID": "Tools/Tools2.slides.html#fill-blank-cells",
+    "href": "Tools/Tools2.slides.html#fill-blank-cells",
     "title": "Data Wrangling and Visualization",
-    "section": "Add an index column",
-    "text": "Add an index column\n\nIn some cases, it is useful to have a unique identifier for each row in the dataset. We can create an identifier using the function .assign with some extra syntax.\n\nclient_data_single = (client_data\n                      .assign(ID = lambda x: x.index + 1)\n                      )"
+    "section": "Fill blank cells",
+    "text": "Fill blank cells\nIn the dataset, there are columns with missing values. If we would like to fill them with specific values or text, we use the .fillna() function. In this function, we use the syntaxis 'Variable': 'Replace', where the Variable is the column in the dataset and Replace is the text or number to fill the entry in.\nLet’s fill in the missing entries of the columns Operator, Maintenance Date, and Comment.\n\ncomplete_data = (client_data\n                .fillna({'Operator': 'Unknown', \n                'Maintenance Date': '2023-01-01',\n                'Comment': 'None'})\n                )"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-1",
@@ -2569,18 +2576,18 @@
     "text": "complete_data.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\n\n\n3\n103\nerror\n2023-01-13\nCharlie\nAll good\\n\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n"
   },
   {
+    "objectID": "Tools/Tools2.slides.html#replace-values",
+    "href": "Tools/Tools2.slides.html#replace-values",
+    "title": "Data Wrangling and Visualization",
+    "section": "Replace values",
+    "text": "Replace values\n\nThere are some cases in which columns have some undesired or unwatned values. Consider the Output (units) as an example.\n\ncomplete_data['Output (units)'].head()\n\n0     1200\n1     1200\n2     1050\n3    error\n4      950\nName: Output (units), dtype: object\n\n\nThe column has the numbers of units but also text such as “error”."
+  },
+  {
     "objectID": "Tools/Tools2.slides.html#section-2",
     "href": "Tools/Tools2.slides.html#section-2",
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "We can replace the “error” in this column by a user-specified value, say, 0. To this end, we use the function .replace(). The function has two inputs. The first one is the value to replace and the second one is the replacement value.\n\ncomplete_data['Output (units)'] = complete_data['Output (units)'].replace('error', 0)"
-  },
-  {
-    "objectID": "Tools/Tools2.slides.html#fill-blank-cells",
-    "href": "Tools/Tools2.slides.html#fill-blank-cells",
-    "title": "Data Wrangling and Visualization",
-    "section": "Fill blank cells",
-    "text": "Fill blank cells\nIn the dataset, there are columns with missing values. If we would like to fill them with specific values or text, we use the .fillna() function. In this function, we use the syntaxis 'Variable': 'Replace', where the Variable is the column in the dataset and Replace is the text or number to fill the entry in.\nLet’s fill in the missing entries of the columns Operator, Maintenance Date, and Comment.\n\ncomplete_data = (client_data\n                .fillna({'Operator': 'Unknown', \n                'Maintenance Date': '2023-01-01',\n                'Comment': 'None'})\n                )"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-3",
@@ -2590,11 +2597,11 @@
     "text": "Let’s check the new column.\n\ncomplete_data['Output (units)']\n\n0     1200\n1     1200\n2     1050\n3        0\n4      950\n      ... \n95     800\n96    1100\n97     950\n98     950\n99    1100\nName: Output (units), Length: 100, dtype: int64\n\n\nNote that the new column is now numeric."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#replace-values",
-    "href": "Tools/Tools2.slides.html#replace-values",
+    "objectID": "Tools/Tools2.slides.html#split-column-into-multiple-ones",
+    "href": "Tools/Tools2.slides.html#split-column-into-multiple-ones",
     "title": "Data Wrangling and Visualization",
-    "section": "Replace values",
-    "text": "Replace values\n\nThere are some cases in which columns have some undesired or unwatned values. Consider the Output (units) as an example.\n\ncomplete_data['Output (units)'].head()\n\n0     1200\n1     1200\n2     1050\n3    error\n4      950\nName: Output (units), dtype: object\n\n\nThe column has the numbers of units but also text such as “error”."
+    "section": "Split column into multiple ones",
+    "text": "Split column into multiple ones\nThere are some cases in which we want to split a column according to a character. For example, consider the column Comment from the dataset.\n\ncomplete_data['Comment']\n\n0                       ok\n1                       ok\n2               Needs oil!\n3               All good\\n\n4               All good\\n\n              ...         \n95    Requires part: valve\n96                      ok\n97    Delay: maintenance\\n\n98              Needs oil!\n99              All good\\n\nName: Comment, Length: 100, dtype: object"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-4",
@@ -2609,13 +2616,6 @@
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "We can split the values in the column according to the colon “:”.\nThat is, everything before the colon will be in a column. Everything after the colon will be in another column. To achieve this, we use the function str.split().\nOne input of the function is the symbol or character for which we cant to make a split. The other input, expand = True tells Python that we want to create new columns.\n\ncomplete_data['Comment'].str.split(':', expand = True)"
-  },
-  {
-    "objectID": "Tools/Tools2.slides.html#split-column-into-multiple-ones",
-    "href": "Tools/Tools2.slides.html#split-column-into-multiple-ones",
-    "title": "Data Wrangling and Visualization",
-    "section": "Split column into multiple ones",
-    "text": "Split column into multiple ones\nThere are some cases in which we want to split a column according to a character. For example, consider the column Comment from the dataset.\n\ncomplete_data['Comment']\n\n0                       ok\n1                       ok\n2               Needs oil!\n3               All good\\n\n4               All good\\n\n              ...         \n95    Requires part: valve\n96                      ok\n97    Delay: maintenance\\n\n98              Needs oil!\n99              All good\\n\nName: Comment, Length: 100, dtype: object"
   },
   {
     "objectID": "Tools/Tools2.slides.html#section-6",
@@ -2639,6 +2639,13 @@
     "text": "augmented_data.head()\n\n\n\n\n\n\n\n\nMachine ID\nOutput (units)\nMaintenance Date\nOperator\nComment\nFirst_comment\nSecond_comment\n\n\n\n\n0\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n1\n101\n1200\n2023-01-10\nAna\nok\nok\nNone\n\n\n2\n102\n1050\n2023-01-12\nBob\nNeeds oil!\nNeeds oil!\nNone\n\n\n3\n103\n0\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone\n\n\n4\n103\n950\n2023-01-13\nCharlie\nAll good\\n\nAll good\\n\nNone"
   },
   {
+    "objectID": "Tools/Tools2.slides.html#remove-characters",
+    "href": "Tools/Tools2.slides.html#remove-characters",
+    "title": "Data Wrangling and Visualization",
+    "section": "Remove characters",
+    "text": "Remove characters\n\nSomething that we notice is that the column First_Comment has some extra characters like “” that may be useless when working with the data.\nWe can remove them using the function str.strip(). The input of the function is the character to remove.\n\naugmented_data['First_comment'] = augmented_data['First_comment'].str.strip(\"\\n\")"
+  },
+  {
     "objectID": "Tools/Tools2.slides.html#section-9",
     "href": "Tools/Tools2.slides.html#section-9",
     "title": "Data Wrangling and Visualization",
@@ -2651,27 +2658,6 @@
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "We can also remove other characters.\n\naugmented_data['First_comment'].str.strip(\"!\")\n\n0                ok\n1                ok\n2         Needs oil\n3          All good\n4          All good\n          ...      \n95    Requires part\n96               ok\n97            Delay\n98        Needs oil\n99         All good\nName: First_comment, Length: 100, dtype: object"
-  },
-  {
-    "objectID": "Tools/Tools2.slides.html#remove-characters",
-    "href": "Tools/Tools2.slides.html#remove-characters",
-    "title": "Data Wrangling and Visualization",
-    "section": "Remove characters",
-    "text": "Remove characters\n\nSomething that we notice is that the column First_Comment has some extra characters like “” that may be useless when working with the data.\nWe can remove them using the function str.strip(). The input of the function is the character to remove.\n\naugmented_data['First_comment'] = augmented_data['First_comment'].str.strip(\"\\n\")"
-  },
-  {
-    "objectID": "Tools/Tools2.slides.html#section-11",
-    "href": "Tools/Tools2.slides.html#section-11",
-    "title": "Data Wrangling and Visualization",
-    "section": "",
-    "text": "The dataset is in the file “glass.xlsx”. Let’s load it using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nglass_data = pd.read_excel(\"glass.xlsx\")\n\n\nThe variable Type is categorical. So, let’s ensure Python knows this using the code below.\n\nglass_data['Type'] = pd.Categorical(glass_data['Type'])"
-  },
-  {
-    "objectID": "Tools/Tools2.slides.html#section-12",
-    "href": "Tools/Tools2.slides.html#section-12",
-    "title": "Data Wrangling and Visualization",
-    "section": "",
-    "text": "We create the bar chart using the function countplot() from seaborn.\n\n\nCode\n# Create plot.\nplt.figure(figsize=(7,4)) # Create space for the plot.\nsns.countplot(data = glass_data, x = 'Type') # Show the plot.\nplt.title(\"Bar chart of Type of Glasses\") # Set plot title.\nplt.ylabel(\"Frequency\") # Set label for Y axis.\nplt.show() # Show plot."
   },
   {
     "objectID": "Tools/Tools2.slides.html#transform-text-case",
@@ -2723,11 +2709,11 @@
     "text": "Example 2\n\nA criminologist is developing a rule-based system to classify the types of glasses encountered in criminal investigations.\nThe data consist of 214 glass samples labeled as one of seven class categories.\nThere are nine predictors, including refractive index and percentages of eight elements: Na, Mg, AL, Is, K, Ca, Ba, and Fe. The response is the type of glass."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-13",
-    "href": "Tools/Tools2.slides.html#section-13",
+    "objectID": "Tools/Tools2.slides.html#section-11",
+    "href": "Tools/Tools2.slides.html#section-11",
     "title": "Data Wrangling and Visualization",
     "section": "",
-    "text": "plt.figure(figsize=(5, 5))\nsns.countplot(data = glass_data, x = 'Type')\nplt.title('Relative Frequency of Each Category', fontsize = 12)\nplt.ylabel('Relative Frequency', fontsize = 12)\nplt.xlabel('Category', fontsize = 15)\nplt.xticks(fontsize = 12)\nplt.yticks(fontsize = 12)\nplt.savefig('bar_chart.png',dpi=300)"
+    "text": "The dataset is in the file “glass.xlsx”. Let’s load it using pandas.\n\n# Load the Excel file into a pandas DataFrame.\nglass_data = pd.read_excel(\"glass.xlsx\")\n\n\nThe variable Type is categorical. So, let’s ensure Python knows this using the code below.\n\nglass_data['Type'] = pd.Categorical(glass_data['Type'])"
   },
   {
     "objectID": "Tools/Tools2.slides.html#matplotlib-library",
@@ -2814,8 +2800,8 @@
     "text": "Bar charts\nBar charts are commonly used to describe qualitative data classified into various categories based on sector, region, different time periods, or other such factors.\nDifferent sectors, different regions, or different time periods are then labeled as specific categories.\nA bar chart is constructed by creating categories that are represented by labeling each category and which are represented by intervals of equal length on a horizontal axis.\nThe count or frequency within the corresponding category is represented by a bar of height proportional to the frequency."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-14",
-    "href": "Tools/Tools2.slides.html#section-14",
+    "objectID": "Tools/Tools2.slides.html#section-12",
+    "href": "Tools/Tools2.slides.html#section-12",
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "We create the bar chart using the function countplot() from seaborn.\n\n\nCode\n# Create plot.\nplt.figure(figsize=(7,4)) # Create space for the plot.\nsns.countplot(data = glass_data, x = 'Type') # Show the plot.\nplt.title(\"Bar chart of Type of Glasses\") # Set plot title.\nplt.ylabel(\"Frequency\") # Set label for Y axis.\nplt.show() # Show plot."
@@ -2835,8 +2821,8 @@
     "text": "Improving the figure\n\nWe can also use other functions to improve the aspect of the figure:\n\nplt.title(fontsize): Font size of the title.\nplt.ylabel(fontsize): Font size of y axis title.\nplt.xlabel(fontsize): Font size of x axis title.\nplt.yticks(fontsize): Font size of the y axis labels.\nplt.xticks(fontsize): Font size of the x axis labels."
   },
   {
-    "objectID": "Tools/Tools2.slides.html#section-15",
-    "href": "Tools/Tools2.slides.html#section-15",
+    "objectID": "Tools/Tools2.slides.html#section-13",
+    "href": "Tools/Tools2.slides.html#section-13",
     "title": "Data Wrangling and Visualization",
     "section": "",
     "text": "plt.figure(figsize=(5, 5))\nsns.countplot(data = glass_data, x = 'Type')\nplt.title('Relative Frequency of Each Category', fontsize = 12)\nplt.ylabel('Relative Frequency', fontsize = 12)\nplt.xlabel('Category', fontsize = 15)\nplt.xticks(fontsize = 12)\nplt.yticks(fontsize = 12)\nplt.savefig('bar_chart.png',dpi=300)"
@@ -4200,13 +4186,6 @@
     "text": "Popular Unsupervised Algorithms"
   },
   {
-    "objectID": "Module2/IntrotoDataScience.slides.html#lets-play-with-supervised-models.",
-    "href": "Module2/IntrotoDataScience.slides.html#lets-play-with-supervised-models.",
-    "title": "Introduction to Data Science",
-    "section": "Let’s play with supervised models.",
-    "text": "Let’s play with supervised models.\n\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
-  },
-  {
     "objectID": "index.slides.html#course-topics",
     "href": "index.slides.html#course-topics",
     "title": "IN2004B Generation of Value with Data Analytics",
@@ -4460,19 +4439,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#lets-play-with-classification-algorithms.",
-    "href": "Module2/Classification.slides.html#lets-play-with-classification-algorithms.",
-    "title": "Classification Trees",
-    "section": "Let’s play with classification algorithms.",
-    "text": "Let’s play with classification algorithms.\n\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
-  },
-  {
-    "objectID": "Module2/Classification.slides.html#lets-play-with-classification-algorithms",
-    "href": "Module2/Classification.slides.html#lets-play-with-classification-algorithms",
-    "title": "Classification Trees",
-    "section": "Let’s play with classification algorithms",
-    "text": "Let’s play with classification algorithms\n\n\nhttps://quickdraw.withgoogle.com/\nhttps://tenso.rs/demos/rock-paper-scissors/\nhttps://teachablemachine.withgoogle.com/"
   }
 ]
