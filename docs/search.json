@@ -795,7 +795,7 @@
     "href": "Module2/Classification.slides.html#how-do-we-grow-a-tree",
     "title": "Classification Trees",
     "section": "How do we grow a tree?",
-    "text": "How do we grow a tree?\n\n\nUsing the CART algorithm!\n\nThe algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.\nBasically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that minimizes the so-called impurity."
+    "text": "How do we grow a tree?\n\n\nUsing the CART algorithm!\n\nThe algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.\nBasically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that minimize the so-called impurity."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-25",

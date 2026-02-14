@@ -553,7 +553,7 @@ After building a “good” tree, we can predict new observations that are not i
 ::: incremental
 -   The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
 
--   Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimizes** the so-called [***impurity***]{style="color:purple;"}.
+-   Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimize** the so-called [***impurity***]{style="color:purple;"}.
 :::
 
 ## 
