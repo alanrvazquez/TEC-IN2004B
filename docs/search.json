@@ -970,14 +970,14 @@
     "href": "Module2/Classification.slides.html#section-35",
     "title": "Classification Trees",
     "section": "",
-    "text": "The ccp_alphas object contains the different values of \\(\\alpha\\) used. To train a decision tree using different \\(\\alpha\\) values, we use the following code that iterates over the values contained in ccp_alphas.\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf_alpha = DecisionTreeClassifier(min_samples_leaf= 5, \n                                       ccp_alpha=ccp_alpha, random_state=507134)\n    clf_alpha.fit(X_train, Y_train)\n    clfs.append(clf_alpha)"
+    "text": "The ccp_alphas object contains the different values of \\(\\alpha\\) used. To train a decision tree using different \\(\\alpha\\) values, we use the following code that iterates over the values contained in ccp_alphas.\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf_alpha = DecisionTreeClassifier(min_samples_leaf= 5, \n                                       ccp_alpha=ccp_alpha, \n                                       random_state=507134)\n    clf_alpha.fit(X_train, Y_train)\n    clfs.append(clf_alpha)"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-36",
     "href": "Module2/Classification.slides.html#section-36",
     "title": "Classification Trees",
     "section": "",
-    "text": "Now, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the training and validation data.\n\ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\nThe .score() function computes the accuracy of a classification tree."
+    "text": "Now, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the training and validation data.\n\ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\n\nThe .score() function computes the accuracy of a classification tree."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-37",
@@ -991,7 +991,7 @@
     "href": "Module2/Classification.slides.html#choosing-the-best-tree",
     "title": "Classification Trees",
     "section": "Choosing the best tree",
-    "text": "Choosing the best tree\n\nWe can see that the best \\(\\alpha\\) value for the validation dataset is 0.\nTo train our new reduced tree, we use the DecisionTreeClassifier() function again with the ccp_alpha parameter set to the best \\(\\alpha\\) value. The object containing this new tree is clf_simple.\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha=0, min_samples_leaf= 5)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)"
+    "text": "Choosing the best tree\n\nWe can see that the best \\(\\alpha\\) value for the validation dataset is 0.\nTo train our new reduced tree, we use the DecisionTreeClassifier() function again with the ccp_alpha parameter set to the best \\(\\alpha\\) value. The object containing this new tree is clf_simple.\n\n# We tell Python that we want a classification tree\nclf_simple = DecisionTreeClassifier(ccp_alpha = 0, min_samples_leaf = 5)\n\n# We train the classification tree using the training data.\nclf_simple.fit(X_train, Y_train)"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-38",
