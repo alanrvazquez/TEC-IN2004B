@@ -3399,7 +3399,7 @@
     "href": "Module3/TimeSeries.slides.html#load-the-libraries",
     "title": "Introduction to Time Series",
     "section": "Load the libraries",
-    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, root_mean_squared_error\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
   },
   {
     "objectID": "Module3/TimeSeries.slides.html#what-is-a-time-series",
@@ -3574,7 +3574,7 @@
     "href": "Module3/TimeSeries.slides.html#section-7",
     "title": "Introduction to Time Series",
     "section": "",
-    "text": "Let’s compute the \\(\\text{RMSE}_v\\) for the linear regression model.\n\nY_val_pred_lin = LRmodelAmtrak.predict(X_valid)\nmse = mean_squared_error(Y_valid, Y_val_pred_lin)  \nprint(round(mse**(1/2), 2))\n\n250.03\n\n\nLet’s do the same for the the linear regression model with a quadratic term.\n\nX_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)\nY_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)\nmse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (MSE)\nprint(round(mse_quad**(1/2), 2))\n\n173.99\n\n\nWe conclude that the linear model with a quadratic term is better than the linear regression model because the \\(\\text{RMSE}_v\\) of the former is smaller than for the latter."
+    "text": "Let’s compute the \\(\\text{RMSE}_v\\) for the linear regression model.\n\nY_val_pred_lin = LRmodelAmtrak.predict(X_valid)\nrmse = root_mean_squared_error(Y_valid, Y_val_pred_lin)  \nprint(round(rmse, 2))\n\n250.03\n\n\nLet’s do the same for the the linear regression model with a quadratic term.\n\nX_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)\nY_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)\nrmse_quad = root_mean_squared_error(Y_valid, Y_val_pred_quad) \nprint(round(rmse_quad, 2))\n\n173.99\n\n\nWe conclude that the linear model with a quadratic term is better than the linear regression model because the \\(\\text{RMSE}_v\\) of the former is smaller than for the latter."
   },
   {
     "objectID": "Module3/TimeSeries.slides.html#section-8",
@@ -3707,7 +3707,7 @@
     "href": "Module3/TimeSeries.slides.html#section-16",
     "title": "Introduction to Time Series",
     "section": "",
-    "text": "Now, let’s build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.\n\nX_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, dummy_data], \n                          axis = 1)\n\n\nNext, we fit the model with all the terms in the matrix above.\n\n# 0. Ensure that we have the response in `Y_full`.\nY_train = Amtrak_train['Ridership (in 000s)']\n\n# 1. Create linear regression model.\nSeasonmodelAmtrak = LinearRegression()\n\n# 2. Fit the linear regression model.\nSeasonmodelAmtrak.fit(X_quad_season, Y_train)"
+    "text": "Now, let’s build the complete matrix of predictors, including the column for time, time squared, and the dummy variables.\n\nX_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, \n                          dummy_data], axis = 1)\n\n\nNext, we fit the model with all the terms in the matrix above.\n\n# 0. Ensure that we have the response in `Y_full`.\nY_train = Amtrak_train['Ridership (in 000s)']\n\n# 1. Create linear regression model.\nSeasonmodelAmtrak = LinearRegression()\n\n# 2. Fit the linear regression model.\nSeasonmodelAmtrak.fit(X_quad_season, Y_train)"
   },
   {
     "objectID": "Module3/TimeSeries.slides.html#estimated-model-coefficients",
@@ -3728,7 +3728,7 @@
     "href": "Module3/TimeSeries.slides.html#predictions-on-the-validation-dataset",
     "title": "Introduction to Time Series",
     "section": "Predictions on the validation dataset",
-    "text": "Predictions on the validation dataset\nPrepare the validation data using dummy variables.\n\nY_valid = Amtrak_validation['Ridership (in 000s)']\n\ndummy_valid = pd.get_dummies(Amtrak_validation['Season'], dtype = 'int')\ndummy_valid = dummy_valid.drop([\"Dec\"], axis = 1)\n\nX_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2, \n                        dummy_valid], axis = 1)\n\n\nNow, we compute the validation \\(\\text{RMSE}_v\\).\n\nY_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)\n\nmse_season = mean_squared_error(Y_valid, Y_pred_valid) \nprint(round(mse_season**(1/2), 2))\n\n69.93"
+    "text": "Predictions on the validation dataset\nPrepare the validation data using dummy variables.\n\nY_valid = Amtrak_validation['Ridership (in 000s)']\n\ndummy_valid = pd.get_dummies(Amtrak_validation['Season'], dtype = 'int')\ndummy_valid = dummy_valid.drop([\"Dec\"], axis = 1)\n\nX_qs_valid = pd.concat([Amtrak_validation['t'], Amtrak_validation['t']**2, \n                        dummy_valid], axis = 1)\n\n\nNow, we compute the validation \\(\\text{RMSE}_v\\).\n\nY_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)\n\nrmse_season = root_mean_squared_error(Y_valid, Y_pred_valid) \nprint(round(rmse_season, 2))\n\n69.93"
   },
   {
     "objectID": "Module3/TimeSeries.slides.html#section-17",

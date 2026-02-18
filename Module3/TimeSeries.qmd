@@ -44,7 +44,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, root_mean_squared_error
 ```
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
@@ -641,8 +641,8 @@ Let's compute the $\text{RMSE}_v$ for the linear regression model.
 #| code-fold: false
 
 Y_val_pred_lin = LRmodelAmtrak.predict(X_valid)
-mse = mean_squared_error(Y_valid, Y_val_pred_lin)  
-print(round(mse**(1/2), 2))
+rmse = root_mean_squared_error(Y_valid, Y_val_pred_lin)  
+print(round(rmse, 2))
 ```
 
 Let's do the same for the the linear regression model with a quadratic term.
@@ -655,8 +655,8 @@ Let's do the same for the the linear regression model with a quadratic term.
 
 X_quad_valid = pd.concat([X_valid, Amtrak_validation['t']**2], axis = 1)
 Y_val_pred_quad = QuadmodelAmtrak.predict(X_quad_valid)
-mse_quad = mean_squared_error(Y_valid, Y_val_pred_quad)  # Mean Squared Error (MSE)
-print(round(mse_quad**(1/2), 2))
+rmse_quad = root_mean_squared_error(Y_valid, Y_val_pred_quad) 
+print(round(rmse_quad, 2))
 ```
 
 We conclude that the linear model with a quadratic term is better than the linear regression model because the $\text{RMSE}_v$ of the former is smaller than for the latter.
@@ -1090,8 +1090,8 @@ Now, let's build the complete matrix of predictors, including the column for tim
 #| fig-align: center
 #| code-fold: false
 
-X_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, dummy_data], 
-                          axis = 1)
+X_quad_season = pd.concat([Amtrak_train['t'], Amtrak_train['t']**2, 
+                          dummy_data], axis = 1)
 ```
 
 </br>
@@ -1177,8 +1177,8 @@ Now, we compute the validation $\text{RMSE}_v$.
 
 Y_pred_valid = SeasonmodelAmtrak.predict(X_qs_valid)
 
-mse_season = mean_squared_error(Y_valid, Y_pred_valid) 
-print(round(mse_season**(1/2), 2))
+rmse_season = root_mean_squared_error(Y_valid, Y_pred_valid) 
+print(round(rmse_season, 2))
 ```
 
 ## 
