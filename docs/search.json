@@ -3189,7 +3189,7 @@
     "href": "Module3/PredictiveModels.slides.html#load-the-libraries",
     "title": "Introduction to Predictive Models",
     "section": "Load the libraries",
-    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
+    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, root_mean_squared_error\n\nHere, we use specific functions from the pandas, matplotlib, seaborn and sklearn libraries in Python."
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#main-data-science-problems",
@@ -3371,7 +3371,7 @@
     "href": "Module3/PredictiveModels.slides.html#section-7",
     "title": "Introduction to Predictive Models",
     "section": "",
-    "text": "Next, we use the mean squared error in the mse() function. Recall that the responses from the validation dataset are in Y_valid, and the model predictions are in Y_pred.\n\nmse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)\nprint(round(mse, 2))\n\n15.49\n\n\n\nTo obtain the root mean squared error (RMSE), we simply take the square root of the MSE.\n\nprint(round(mse**(1/2), 2))\n\n3.94"
+    "text": "Next, we compute the mean squared error using a function with the same name from scikit-learn. Recall that the responses from the validation dataset are in Y_valid, and the model predictions are in Y_pred.\n\nmse = mean_squared_error(Y_valid, Y_pred)  # Mean Squared Error (MSE)\nprint(round(mse, 2))\n\n15.49\n\n\n\nTo obtain the root mean squared error (RMSE), we use the function root_mean_squared_error().\n\nrmse = root_mean_squared_error(Y_valid, Y_pred)  # Root Mean Squared Error (MSE)\nprint(round(rmse, 2))\n\n3.94"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#mini-activity-solo-mode",

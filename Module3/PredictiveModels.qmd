@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, root_mean_squared_error
 ```
 
 Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn** and **sklearn** libraries in Python.
@@ -387,7 +387,7 @@ The smaller $\text{MSE}_v$, the better the predictions.
 
 ## 
 
-</br>
+</br></br>
 
 In practice, we use the square root of the mean squared error:
 
@@ -422,9 +422,7 @@ Y_pred = LRmodel.predict(X_valid)
 
 ## 
 
-</br>
-
-Next, we use the *mean squared error* in the `mse()` function. Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`.
+Next, we compute the *mean squared error* using a function with the same name from **scikit-learn**. Recall that the responses from the validation dataset are in `Y_valid`, and the model predictions are in `Y_pred`.
 
 ```{python}
 #| echo: true
@@ -438,7 +436,7 @@ print(round(mse, 2))
 
 </br>
 
-To obtain the **root mean squared error (RMSE)**, we simply take the square root of the MSE.
+To obtain the **root mean squared error (RMSE)**, we use the function `root_mean_squared_error()`.
 
 ```{python}
 #| echo: true
@@ -446,7 +444,8 @@ To obtain the **root mean squared error (RMSE)**, we simply take the square root
 #| fig-align: center
 #| code-fold: false
 
-print(round(mse**(1/2), 2))
+rmse = root_mean_squared_error(Y_valid, Y_pred)  # Root Mean Squared Error (MSE)
+print(round(rmse, 2))
 ```
 
 ## Mini-Activity (*solo* mode)
