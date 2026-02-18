@@ -41,7 +41,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, root_mean_squared_error
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.tools import diff
@@ -602,11 +602,11 @@ If necessary, we can exclude the constant coefficient $\hat{\beta}_0$ from the m
 
 Using the partial autocorrelation function (PACF) of the differenced series.
 
-- A first-order autoregressive model has a PACF with a single peak at the first period difference (lag).
+-   A first-order autoregressive model has a PACF with a single peak at the first period difference (lag).
 
-- A second-order autoregressive model has a PACF with two peaks at the first lags.
+-   A second-order autoregressive model has a PACF with two peaks at the first lags.
 
-- In general, the lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.
+-   In general, the lag at which the PACF cuts off from the confidence limits in the software is the indicated number of AR terms.
 
 ## 
 
@@ -623,7 +623,6 @@ plt.xlabel("Lag")
 plt.ylabel("Correlation")
 plt.show()
 ```
-
 
 ## 
 
@@ -656,9 +655,9 @@ where $\theta_0$ is a constant and $a_t$ are terms from a white noise series (i.
 
 Using the autocorrelation function (ACF) of the differenced series.
 
-- In general, the lag at which the ACF cuts off from the confidence limits in the software is the indicated number of MA terms.
+-   In general, the lag at which the ACF cuts off from the confidence limits in the software is the indicated number of MA terms.
 
-##
+## 
 
 [*Since there is no significant correlation for any lag above 0, we do not need any MA elements to model the series.*]{style="color:darkblue;"}
 
@@ -843,9 +842,9 @@ results_ARIMA_Canadian.forecast(steps = 3)
 
 </br></br>
 
-- Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more *data-driven* approach and evaluate the model using the root mean squared error (RMSE).
+-   Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more *data-driven* approach and evaluate the model using the root mean squared error (RMSE).
 
-- To this end, we use the `mean_squared_error()` function with the validation responses and our predictions. We take the square root of the result to obtain the RMSE.
+-   To this end, we use the `mean_squared_error()` function with the validation responses and our predictions. We take the square root of the result to obtain the RMSE.
 
 ## Validation data
 
@@ -893,14 +892,14 @@ Using the forecast and validation data, we compute the RMSE.
 #| output: true
 #| fig-align: center
 
-mse = mean_squared_error(Canadian_validation["Hours per Week"], 
+rmse = root_mean_squared_error(Canadian_validation["Hours per Week"], 
                          forecast_Canadian)  
-print(round(mse**(1/2), 2))
+print(round(rmse, 2))
 ```
 
 ## *Naive* forecast
 
-To determine if the RMSE is high or small, we must compare it with a *naive* forecast that predicts the response $Y_t$ with the previous one $Y_{t-1}$. To build this forecast, we follow three steps. 
+To determine if the RMSE is high or small, we must compare it with a *naive* forecast that predicts the response $Y_t$ with the previous one $Y_{t-1}$. To build this forecast, we follow three steps.
 
 First, we shift the time series in the validation data by one position using the `.shit(1)` function.
 
@@ -913,7 +912,7 @@ naive_forecast = Canadian_validation["Hours per Week"].shift(1)
 naive_forecast.head()
 ```
 
-##
+## 
 
 Second, we notice that the first element of the shifted series is missing or not available (`NaN`). We thus fill it in with the last observation in our training dataset, which we can obtain using the `.iloc()` function.
 
@@ -937,7 +936,7 @@ Third, we input 35.9 as the first record in `naive_forecast`. The first record o
 naive_forecast[28] = 35.9
 ```
 
-##
+## 
 
 Our naive forecast of the time series in the validation data would be these one:
 
@@ -968,9 +967,9 @@ The RMSE of the naive forecast is calculated below.
 #| output: true
 #| fig-align: center
 
-naive_rmse = mean_squared_error(Canadian_validation["Hours per Week"], 
+naive_rmse = root_mean_squared_error(Canadian_validation["Hours per Week"], 
                                 naive_forecast)
-print(round(naive_rmse**(1/2), 2))
+print(round(naive_rmse, 2))
 ```
 
 </br>
@@ -1328,9 +1327,9 @@ Using the forecast and validation data, we compute the RMSE.
 #| output: true
 #| fig-align: center
 
-mse = mean_squared_error(Airline_validation["Number of passengers"], 
+rmse = root_mean_squared_error(Airline_validation["Number of passengers"], 
                         forecast_Airline)  
-print(round(mse**(1/2), 2))
+print(round(rmse, 2))
 ```
 
 ## Comparison with a naive forecast
@@ -1348,7 +1347,7 @@ naive_forecast = Airline_validation["Number of passengers"].shift(1)
 naive_forecast.head()
 ```
 
-##
+## 
 
 Next, we determine the last element of the training data.
 
@@ -1359,7 +1358,6 @@ Next, we determine the last element of the training data.
 
 Airline_train.iloc[-1]
 ```
-
 
 Finally, we assemble our naive forecast by replacing the first entry of `naive_forecast` with the last entry of the response in the training dataset.
 
@@ -1383,8 +1381,8 @@ Let's calculate the RMSE of the naive forecast.
 #| output: true
 #| fig-align: center
 
-naive_rmse = mean_squared_error(Airline_validation["Number of passengers"], naive_forecast)
-print(round(naive_rmse**(1/2), 2))
+naive_rmse = root_mean_squared_error(Airline_validation["Number of passengers"], naive_forecast)
+print(round(naive_rmse, 2))
 ```
 
 The RMSE of the SARIMA model is 26.38, while that of the naive forecast is 54.15. Therefore, the SARIMA model is better than the naive forecast.
