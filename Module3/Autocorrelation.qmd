@@ -844,7 +844,7 @@ results_ARIMA_Canadian.forecast(steps = 3)
 
 -   Instead of evaluating the ARIMA model using graphical analyses of the residuals, we can take a more *data-driven* approach and evaluate the model using the root mean squared error (RMSE).
 
--   To this end, we use the `mean_squared_error()` function with the validation responses and our predictions. We take the square root of the result to obtain the RMSE.
+-   To this end, we use the `root_mean_squared_error()` function with the validation responses and our predictions. 
 
 ## Validation data
 
