@@ -2839,7 +2839,7 @@
     "href": "Module4/Clustering.slides.html#load-the-libraries",
     "title": "Clustering Methods",
     "section": "Load the libraries",
-    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans, AgglomerativeClustering\nfrom scipy.cluster.hierarchy import dendrogram, linkage\n\nHere, we use specific functions from the pandas, matplotlib, seaborn, sklearn, and scipy libraries in Python."
+    "text": "Load the libraries\n\nBefore we start, let’s import the data science libraries into Python.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\nfrom scipy.cluster.hierarchy import dendrogram, linkage, fcluster\n\nHere, we use specific functions from the pandas, matplotlib, seaborn, sklearn, and scipy libraries in Python."
   },
   {
     "objectID": "Module4/Clustering.slides.html#types-of-learning",
@@ -3182,7 +3182,7 @@
     "href": "Module4/Clustering.slides.html#section-15",
     "title": "Clustering Methods",
     "section": "",
-    "text": "With these methods, there is no single correct answer; any solution that exposes some interesting aspect of the data should be considered.\n\nJames et al. (2017)"
+    "text": "Finally, we assign the final clusters to the data as follows:\n\n# Add new variable with cluster assignment.\nX_cereal_clust = (X_cereal\n                  .assign(Clusters = cereal_clusters)\n                  )\n\n# Preview the new variable.\nX_cereal_clust.head(4)\n\n\n\n\n\n\n\n\ncalories\nprotein\nfat\nsodium\nfiber\ncarbo\nsugars\npotass\nvitamins\nClusters\n\n\n\n\n0\n70\n4\n1\n130\n10.0\n5.0\n6\n280\n25\n1\n\n\n1\n120\n3\n5\n15\n2.0\n8.0\n8\n135\n0\n4\n\n\n2\n70\n4\n1\n260\n9.0\n7.0\n5\n320\n25\n1\n\n\n3\n50\n4\n0\n140\n14.0\n8.0\n0\n330\n25\n1"
   },
   {
     "objectID": "Module3/PredictiveModels.slides.html#load-the-libraries",
@@ -4439,5 +4439,19 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module4/Clustering.slides.html#extracting-the-hierarchical-clusters",
+    "href": "Module4/Clustering.slides.html#extracting-the-hierarchical-clusters",
+    "title": "Clustering Methods",
+    "section": "Extracting the hierarchical clusters",
+    "text": "Extracting the hierarchical clusters\nUnfortunately, the previous functions do not allow us to easily extract the cluster assignments. To overcome this issue, we use the function fclusters from the scipy library in Python.\n\n# Extract the clusters using fcluster\ndistance_threshold = Clust_Cereal[-(num_clusters), 2]\ncereal_clusters = fcluster(Clust_Cereal, distance_threshold, criterion='distance')\n\n# Display the clusters\nprint(cereal_clusters)\n\n[1 4 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2\n 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 3 3 2 4 2 2 3 2 2 3 3 3 2 2 3 2 2 2 2 2\n 2 2 2]\n\n\n\nIn contrast with the creation of the dendrogram, here we use -(num_clusters) insetad of -(num_clusters - 1)"
+  },
+  {
+    "objectID": "Module4/Clustering.slides.html#section-16",
+    "href": "Module4/Clustering.slides.html#section-16",
+    "title": "Clustering Methods",
+    "section": "",
+    "text": "With these methods, there is no single correct answer; any solution that exposes some interesting aspect of the data should be considered.\n\nJames et al. (2017)"
   }
 ]
