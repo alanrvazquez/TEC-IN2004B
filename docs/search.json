@@ -2251,7 +2251,7 @@
     "href": "Module4/PCA.slides.html#section-9",
     "title": "Principal Component Analysis",
     "section": "",
-    "text": "The code to generate a scree plot is below.\n\nexplained_var = pca.explained_variance_ratio_\n\nplt.figure(figsize=(5, 5))\nplt.plot(range(1, len(explained_var) + 1), explained_var, \n         marker='o', linestyle='-')\nplt.title('Scree Plot')\nplt.xlabel('Principal Component')\nplt.ylabel('Explained Variance Ratio')\nplt.xticks(range(1, len(explained_var) + 1))\nplt.grid(True)\nplt.tight_layout()\nplt.show()"
+    "text": "The code to generate a scree plot is below.\n\nexplained_var = pca.explained_variance_ratio_\ncumulative_explained_var = np.cumsum(explained_var)\n\nplt.figure(figsize=(5, 5))\nplt.plot(range(1, len(explained_var) + 1), explained_var, marker='o', \n         color = 'blue', label='Individual')\nplt.plot(range(1, len(explained_var) + 1), cumulative_explained_var, \n         marker='o', color='orange', label='Cumulative')         \nplt.title('Scree Plot')\nplt.xlabel('Principal Component')\nplt.ylabel('Explained Variance Ratio')\nplt.xticks(range(1, len(explained_var) + 1))\nplt.grid(True)\nplt.legend()\nplt.tight_layout()\nplt.show()"
   },
   {
     "objectID": "Module4/PCA.slides.html#biplot",
