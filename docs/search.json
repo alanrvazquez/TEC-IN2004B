@@ -1404,7 +1404,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Wed, 25 Feb 2026   AIC                             11.074\nTime:                        15:49:35   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Mon, 09 Mar 2026   AIC                             11.074\nTime:                        16:59:48   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
@@ -1586,7 +1586,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Wed, 25 Feb 2026   AIC                            756.482\nTime:                                   15:49:36   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Mon, 09 Mar 2026   AIC                            756.482\nTime:                                   16:59:48   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -1869,13 +1869,6 @@
     "text": "Limitations\n\n\nLoss of interpretability: the final bagged classifier is not a tree, and so we forfeit the clear interpretative ability of a classification tree.\nComputational complexity: we are essentially multiplying the work of growing (and possibly pruning) a single tree by \\(B\\).\nFundamental issue: bagging a good model can improve predictive performance, but bagging a bad one can seriously degrade it."
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#section-5",
-    "href": "Module3/Nonparametric.slides.html#section-5",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid,\n                                n_repeats=5, random_state=59227)"
-  },
-  {
     "objectID": "Module3/Nonparametric.slides.html#other-issues",
     "href": "Module3/Nonparametric.slides.html#other-issues",
     "title": "Ensemble Methods for Regression",
@@ -1939,18 +1932,18 @@
     "text": "Calculation of importance\n\n\nWe record the prediction error of the trained algorithm on the validation data. This serves as a baseline.\nNext, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.\nThe importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm."
   },
   {
+    "objectID": "Module3/Nonparametric.slides.html#section-5",
+    "href": "Module3/Nonparametric.slides.html#section-5",
+    "title": "Ensemble Methods for Regression",
+    "section": "",
+    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid,\n                                n_repeats=5, random_state=59227)"
+  },
+  {
     "objectID": "Module3/Nonparametric.slides.html#section-6",
     "href": "Module3/Nonparametric.slides.html#section-6",
     "title": "Ensemble Methods for Regression",
     "section": "",
     "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
-  },
-  {
-    "objectID": "Module3/Nonparametric.slides.html#section-7",
-    "href": "Module3/Nonparametric.slides.html#section-7",
-    "title": "Ensemble Methods for Regression",
-    "section": "",
-    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#boosting-1",
@@ -1967,15 +1960,15 @@
     "text": "Boosting for regression\n\nBoosting creates a sequence of trees, each one building upon the previous.\nEarlier trees are small, and the next tree is created with the residuals of the previous tree.\nIn other words, at each step, we try to explain the information that we didn’t explain in previous steps.\nGradually, the sequence “learns” to predict.\nSomething a little odd: earlier trees are deliberately “held back” to keep them from explaining too much. This creates “slow learning”."
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#section-8",
-    "href": "Module3/Nonparametric.slides.html#section-8",
+    "objectID": "Module3/Nonparametric.slides.html#section-7",
+    "href": "Module3/Nonparametric.slides.html#section-7",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "Initially, the boosted tree is \\(\\hat{f}(\\boldsymbol{x}) = 0\\) and the residuals of this tree are \\(r_i = y_i - f(\\boldsymbol{x}_i)\\) for all \\(i\\) in the training data.\nAt each step \\(b\\) in the process (\\(b = 1, \\ldots, B\\)), we\n\nBuild a regression tree \\(\\hat{T}_b\\) with \\(d\\) splits to the training data \\((\\boldsymbol{X}, \\boldsymbol{r})\\). This tree has \\(d+1\\) terminal nodes.\nUpdate the boosted tree \\(\\hat{f}\\) by adding in a shrunken version of the new tree: \\(\\hat{f}(\\boldsymbol{x}) \\leftarrow \\hat{f}(\\boldsymbol{x}) + \\lambda \\hat{T}_b(\\boldsymbol{x})\\).\nUpdate the residuals using shrunken tree, \\(r_i \\leftarrow r_i - \\lambda \\hat{T}_b(x_i)\\).\n\nThe final boosted tree is: \\(\\hat{f}(\\boldsymbol{x}) = \\sum_{b=1}^{B} \\lambda \\hat{T}_b (\\boldsymbol{x}).\\)\n\n\nD is 4 or 5, sometimes 1. Lambda is 0.001 or 0.01 This algorithm is a gradient boosting method for regression."
+    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
   },
   {
-    "objectID": "Module3/Nonparametric.slides.html#section-9",
-    "href": "Module3/Nonparametric.slides.html#section-9",
+    "objectID": "Module3/Nonparametric.slides.html#section-8",
+    "href": "Module3/Nonparametric.slides.html#section-8",
     "title": "Ensemble Methods for Regression",
     "section": "",
     "text": "Initially, the boosted tree is \\(\\hat{f}(\\boldsymbol{x}) = 0\\) and the residuals of this tree are \\(r_i = y_i - f(\\boldsymbol{x}_i)\\) for all \\(i\\) in the training data.\nAt each step \\(b\\) in the process (\\(b = 1, \\ldots, B\\)), we\n\nBuild a regression tree \\(\\hat{T}_b\\) with \\(d\\) splits to the training data \\((\\boldsymbol{X}, \\boldsymbol{r})\\). This tree has \\(d+1\\) terminal nodes.\nUpdate the boosted tree \\(\\hat{f}\\) by adding in a shrunken version of the new tree: \\(\\hat{f}(\\boldsymbol{x}) \\leftarrow \\hat{f}(\\boldsymbol{x}) + \\lambda \\hat{T}_b(\\boldsymbol{x})\\).\nUpdate the residuals using shrunken tree, \\(r_i \\leftarrow r_i - \\lambda \\hat{T}_b(x_i)\\).\n\nThe final boosted tree is: \\(\\hat{f}(\\boldsymbol{x}) = \\sum_{b=1}^{B} \\lambda \\hat{T}_b (\\boldsymbol{x}).\\)\n\n\nD is 4 or 5, sometimes 1. Lambda is 0.001 or 0.01 This algorithm is a gradient boosting method for regression."
