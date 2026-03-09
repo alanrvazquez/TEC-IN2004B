@@ -1873,7 +1873,7 @@
     "href": "Module3/Nonparametric.slides.html#section-5",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "Bagging is unable to capture simple decision boundaries"
+    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid,\n                                n_repeats=5, random_state=59227)"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#other-issues",
@@ -1943,14 +1943,14 @@
     "href": "Module3/Nonparametric.slides.html#section-6",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid,\n                                n_repeats=5, random_state=59227)"
+    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#section-7",
     "href": "Module3/Nonparametric.slides.html#section-7",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
+    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#boosting-1",
@@ -1971,7 +1971,7 @@
     "href": "Module3/Nonparametric.slides.html#section-8",
     "title": "Ensemble Methods for Regression",
     "section": "",
-    "text": "https://pythongeeks.org/gradient-boosting-algorithm-in-machine-learning/"
+    "text": "Initially, the boosted tree is \\(\\hat{f}(\\boldsymbol{x}) = 0\\) and the residuals of this tree are \\(r_i = y_i - f(\\boldsymbol{x}_i)\\) for all \\(i\\) in the training data.\nAt each step \\(b\\) in the process (\\(b = 1, \\ldots, B\\)), we\n\nBuild a regression tree \\(\\hat{T}_b\\) with \\(d\\) splits to the training data \\((\\boldsymbol{X}, \\boldsymbol{r})\\). This tree has \\(d+1\\) terminal nodes.\nUpdate the boosted tree \\(\\hat{f}\\) by adding in a shrunken version of the new tree: \\(\\hat{f}(\\boldsymbol{x}) \\leftarrow \\hat{f}(\\boldsymbol{x}) + \\lambda \\hat{T}_b(\\boldsymbol{x})\\).\nUpdate the residuals using shrunken tree, \\(r_i \\leftarrow r_i - \\lambda \\hat{T}_b(x_i)\\).\n\nThe final boosted tree is: \\(\\hat{f}(\\boldsymbol{x}) = \\sum_{b=1}^{B} \\lambda \\hat{T}_b (\\boldsymbol{x}).\\)\n\n\nD is 4 or 5, sometimes 1. Lambda is 0.001 or 0.01 This algorithm is a gradient boosting method for regression."
   },
   {
     "objectID": "Module3/Nonparametric.slides.html#section-9",

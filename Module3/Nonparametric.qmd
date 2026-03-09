@@ -600,11 +600,6 @@ The validation RMSE of the tree is higher than that of the bagging algorithm. So
 
 -   *Fundamental issue*: bagging a good model can improve predictive performance, but bagging a bad one can seriously degrade it.
 
-## 
-
--   Bagging is unable to capture simple decision boundaries
-
-![](images/bagging_decision_boundary.png){fig-align="center"}
 
 ## Other issues
 
@@ -916,6 +911,5 @@ plt.show()
 Let's consider the dataset consisting of weekly cases of chickenpox (a childhood disease) in Hungary. The dataset has the number of reported cases in Budapest from January 2005 to December 2013.
 
 The goal is to predict the number of reported cases weekly starting in 2014.
-
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)
