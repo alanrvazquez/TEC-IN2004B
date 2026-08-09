@@ -4354,7 +4354,7 @@
     "href": "Module1/Indicators.slides.html#two-main-types-of-indicators",
     "title": "Indicators",
     "section": "Two main types of indicators",
-    "text": "Two main types of indicators\n\nA lagging indicator measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.\n\n\nA leading indicator measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators."
+    "text": "Two main types of indicators\n\nA lagging indicator measures the outcome of performance at the end of a period. It is backward-looking because it shows us the consequences of what has already been done. They are also known as result indicators.\n\n\nA leading indicator measures the performance of factors that are critical now to achieving a desired outcome in the future."
   },
   {
     "objectID": "Module1/Indicators.slides.html#lagging-indicator",
@@ -4894,5 +4894,19 @@
     "title": "Indicators",
     "section": "Return to main page",
     "text": "Return to main page"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-18",
+    "href": "Module1/BSC.slides.html#section-18",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "Change it to bars.\n\n\n\n\n\n\nShow the number too."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#section-21",
+    "href": "Module1/BSC.slides.html#section-21",
+    "title": "Selection of Indicators",
+    "section": "",
+    "text": "We can edit the properties or layout of the number."
   }
 ]
