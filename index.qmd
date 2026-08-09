@@ -1,6 +1,6 @@
 ---
 title: "IN2004B Generation of Value with Data Analytics"
-subtitle: "Materials for Semester AD 2025"
+subtitle: "Materials for Modules 1 to 4"
 author: 
   - name: Alan R. Vazquez
     orcid: 0000-0002-3658-0911
