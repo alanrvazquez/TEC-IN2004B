@@ -207,7 +207,7 @@
     "href": "Module1/BSC.slides.html#getting-started",
     "title": "Selection of Indicators",
     "section": "Getting started",
-    "text": "Getting started\n\nGo to https://lookerstudio.google.com/\nClick Blank Report"
+    "text": "Getting started\n\nGo to https://datastudio.google.com/\nClick Blank Report"
   },
   {
     "objectID": "Module1/BSC.slides.html#section-10",
@@ -249,7 +249,7 @@
     "href": "Module1/BSC.slides.html#section-14",
     "title": "Selection of Indicators",
     "section": "",
-    "text": "Let’s load the data into looker studio\n\n\n\n\n\nWe rename the report."
+    "text": "Let’s load the data into Data Studio\n\n\n\n\n\nWe rename the report."
   },
   {
     "objectID": "Module1/BSC.slides.html#section-15",
@@ -4446,5 +4446,19 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#data-studio",
+    "href": "Module1/BSC.slides.html#data-studio",
+    "title": "Selection of Indicators",
+    "section": "Data Studio",
+    "text": "Data Studio\nFree online tool by Google for building interactive dashboards and reports. Works directly in the web browser and it connects to many data sources:\n\n\n\nGoogle Sheets\nCSV files\nBigQuery\nOther cloud and database services"
+  },
+  {
+    "objectID": "Module1/BSC.slides.html#tutorials-on-data-studio-before-looker-studio",
+    "href": "Module1/BSC.slides.html#tutorials-on-data-studio-before-looker-studio",
+    "title": "Selection of Indicators",
+    "section": "Tutorials on Data Studio (before Looker Studio)",
+    "text": "Tutorials on Data Studio (before Looker Studio)"
   }
 ]

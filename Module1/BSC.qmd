@@ -342,20 +342,25 @@ Various strategies can be followed to implement the dashboards, for example:
 
 ![](images/clipboard-686396046.png){fig-align="center"}
 
-## Google Looker Studio
+## Data Studio
 
 Free online tool by Google for building interactive dashboards and reports. Works directly in the web browser and it connects to many data sources:
 
+::::: columns
+::: {.column width="40%"}
 - Google Sheets
 - CSV files
 - BigQuery
 - Other cloud and database services
-
-![](images/Looker-Studio-Logo.png){fig-align="center" width="422"}
+:::
+::: {.column width="60%"}
+![](images/data-studio-logo.png){fig-align="center" width="422"}
+:::
+:::
 
 ## Getting started
 
-1.  Go to <https://lookerstudio.google.com/>
+1.  Go to <https://datastudio.google.com/>
 2.  Click **Blank Report**
 
 ![](images/LS_1.png){fig-align="center"}
@@ -420,7 +425,7 @@ The dataset "McDonalds Financial Statements.xlsx" includes McDonald’s annual f
 
 ## 
 
-Let's load the data into looker studio
+Let's load the data into Data Studio
 
 ![](images/LS_7.png){fig-align="center" width="510"}
 
@@ -600,7 +605,7 @@ We can edit the properties or layout of the number.
 
 ![](images/LS_41.png){fig-align="center" width="452"}
 
-## Tutorials on looker studio
+## Tutorials on Data Studio (before Looker Studio)
 
 {{< video https://www.youtube.com/watch?v=1CXgd4pm1dA width="100%" height="85%">}}
 
