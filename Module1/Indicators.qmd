@@ -243,7 +243,7 @@ A [lagging indicator]{style="color:darkblue;"} measures the outcome of performan
 
 </br>
 
-A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future. 
+A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future.
 
 ## Lagging Indicator
 
