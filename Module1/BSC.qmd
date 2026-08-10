@@ -35,13 +35,13 @@ jupyter: python3
 Once we know what indicators are, their role in the management process, and the types of indicators that exist, we ask ourselves:
 
 ::: incremental
--   Which indicators should we use?
+- Which indicators should we use?
 
--   How many indicators should we have?
+- How many indicators should we have?
 
--   What is an appropriate set of indicators?
+- What is an appropriate set of indicators?
 
--   How do we document and share them?
+- How do we document and share them?
 :::
 
 ## 
@@ -207,23 +207,23 @@ BSC transforms strategy into an integrated system defined through four perspecti
 
 For each perspective, the following should be defined:
 
--   A small set of strategic objectives
+- A small set of strategic objectives
 
--   For each objective, one (or more if necessary) metric as a performance indicator
+- For each objective, one (or more if necessary) metric as a performance indicator
 
--   For each indicator, establish long- and short-term goals
+- For each indicator, establish long- and short-term goals
 
--   Initiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.
+- Initiatives (programs, projects, actions) to close the gaps between current and desired performance according to the goals.
 
 ## Strategy map
 
 </br>
 
--   The **strategy map** displays the strategic objectives within each perspective using a matrix.
+- The **strategy map** displays the strategic objectives within each perspective using a matrix.
 
--   Possible causal relationships between objectives are also shown using arrows.
+- Possible causal relationships between objectives are also shown using arrows.
 
--   If the organization's strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.
+- If the organization's strategic charter (Vision and Mission) is reviewed, Strategic Themes can be included to show whether the organization is explicitly addressing these themes in its planning.
 
 ## Strategy map structure
 
@@ -245,7 +245,7 @@ Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de 
 
 ## 
 
-![](images/clipboard-1644569448.png){fig-align="center"}
+![](images/BSC_banco.png){fig-align="center"}
 
 ## More on strategy maps
 
@@ -255,36 +255,36 @@ Seguimos la filosofia de BSC y lo definimos de arriba abajo. Pero se ejecuta de 
 
 </br></br>
 
--   Form teams of three.
--   Build a strategy map as part of the Balanced Scorecard model application.
--   Read the introduction to the Muebles Finos MF mini-case study in CANVAS.
--   The activity consists of mapping the company's objectives to the perspectives of the BSC model and to the business's strategic lines.
+- Form teams of three.
+- Build a strategy map as part of the Balanced Scorecard model application.
+- Read the introduction to the Muebles Finos MF mini-case study in CANVAS.
+- The activity consists of mapping the company's objectives to the perspectives of the BSC model and to the business's strategic lines.
 
 ## 
 
 </br></br></br>
 
--   Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them.
+- Once you have placed the objectives on the map, link them to each other, establishing cause-and-effect relationships between them.
 
--   Finally, you will write the justification for the established causal relationships.
+- Finally, you will write the justification for the established causal relationships.
 
 ## Final comments
 
--   Once the company-level Balanced Scorecard (BSC) is defined, each functional area develops its own BSC aligned with the overall strategy.
+- Once the company-level Balanced Scorecard (BSC) is defined, each functional area develops its own BSC aligned with the overall strategy.
 
--   At the departmental level, leading indicators are more common than lagging indicators, since managers need timely signals to act.
+- At the departmental level, leading indicators are more common than lagging indicators, since managers need timely signals to act.
 
--   Not all strategic themes or BSC perspectives must appear in every functional area; relevance depends on the area’s role in achieving company outcomes.
+- Not all strategic themes or BSC perspectives must appear in every functional area; relevance depends on the area’s role in achieving company outcomes.
 
 ## 
 
 </br></br>
 
--   Functional managers must clearly understand how their indicators contribute to organization-level outcomes.
+- Functional managers must clearly understand how their indicators contribute to organization-level outcomes.
 
--   The person responsible for BSC deployment must ensure alignment and coherence across functional BSCs, avoiding conflicting signals.
+- The person responsible for BSC deployment must ensure alignment and coherence across functional BSCs, avoiding conflicting signals.
 
--   Some organization-level lagging indicators are obtained by aggregating or consolidating departmental indicators.
+- Some organization-level lagging indicators are obtained by aggregating or consolidating departmental indicators.
 
 # Indicator Documentation
 
@@ -296,11 +296,11 @@ When selecting and/or designing indicators, it is necessary to formally document
 
 Documentation is very useful because:
 
--   It helps clarify the meaning of the indicators.
+- It helps clarify the meaning of the indicators.
 
--   It facilitates communication between users and indicator creators.
+- It facilitates communication between users and indicator creators.
 
--   It serves as a future reference when revising the system.
+- It serves as a future reference when revising the system.
 
 ## Basic documenting format
 
@@ -313,11 +313,11 @@ Documentation is very useful because:
 Once the indicators are defined using the Balanced Scorecard (BSC) and the documentation format, we design dashboards with:
 
 ::: {style="font-size: 90%;"}
--   Screens.
--   Chart and table styles.
--   Aggregation levels.
--   Default reports.
--   Drill-down requirements.
+- Screens.
+- Chart and table styles.
+- Aggregation levels.
+- Default reports.
+- Drill-down requirements.
 :::
 
 This applies to both the overall organizational level and the functional BSCs.
@@ -326,11 +326,11 @@ This applies to both the overall organizational level and the functional BSCs.
 
 Various strategies can be followed to implement the dashboards, for example:
 
--   Development on a specialized platform for indicator systems (<https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/>)
+- Development on a specialized platform for indicator systems (<https://www.predictiveanalyticstoday.com/open-source-balanced-scorecard-software/>)
 
--   Development with generic OLAP Online Analytical Processing tools (<https://www.softwaretestinghelp.com/best-olap-tools/>)
+- Development with generic OLAP Online Analytical Processing tools (<https://www.softwaretestinghelp.com/best-olap-tools/>)
 
--   Short-term, isolated implementations in spreadsheets.
+- Short-term, isolated implementations in spreadsheets.
 
 ## Tableu dashboard example
 
@@ -346,10 +346,10 @@ Various strategies can be followed to implement the dashboards, for example:
 
 Free online tool by Google for building interactive dashboards and reports. Works directly in the web browser and it connects to many data sources:
 
--   Google Sheets
--   CSV files
--   BigQuery
--   Other cloud and database services
+- Google Sheets
+- CSV files
+- BigQuery
+- Other cloud and database services
 
 ![](images/Looker-Studio-Logo.png){fig-align="center" width="422"}
 
@@ -407,15 +407,15 @@ The dataset "McDonalds Financial Statements.xlsx" includes McDonald’s annual f
 :::
 
 ::: {style="font-size: 75%;"}
--   Market cap (\$B)
--   Revenue (\$B)
--   Earnings (\$B)
--   P/E ratio
--   P/S ratio
--   P/B ratio
--   Operating Margin
--   EPS (\$)
--   Shares Outstanding
+- Market cap (\$B)
+- Revenue (\$B)
+- Earnings (\$B)
+- P/E ratio
+- P/S ratio
+- P/B ratio
+- Operating Margin
+- EPS (\$)
+- Shares Outstanding
 :::
 
 ## 
@@ -608,9 +608,9 @@ We can edit the properties or layout of the number.
 
 </br></br>
 
--   Keep it simple — focus on the **key indicators**.
--   Use color to draw attention, not decorate.
--   Provide context: compare current value vs. target.
--   Test your dashboard on different screen sizes.
+- Keep it simple — focus on the **key indicators**.
+- Use color to draw attention, not decorate.
+- Provide context: compare current value vs. target.
+- Test your dashboard on different screen sizes.
 
 # [Return to main page](https://alanrvazquez.github.io/TEC-IN2004B/)

@@ -60,10 +60,10 @@ The management process is broken down into five management functions:
 As a result of the planning process, some of the following types of plans can be generated:
 
 ::: {style="font-size: 90%;"}
--   Strategies. Approaches or plans to achieve objectives, which are specific and measurable.
--   Procedures. These detail the execution of an activity.
--   Programs. Organized sets of activities to achieve objectives.
--   Budgets. Detailed financial plans to facilitate economic decision-making.
+- Strategies. Approaches or plans to achieve objectives, which are specific and measurable.
+- Procedures. These detail the execution of an activity.
+- Programs. Organized sets of activities to achieve objectives.
+- Budgets. Detailed financial plans to facilitate economic decision-making.
 :::
 
 ::: center
@@ -75,10 +75,10 @@ As a result of the planning process, some of the following types of plans can be
 As a result of the planning process, some of the following types of plans can be generated:
 
 ::: {style="font-size: 90%;"}
--   [Strategies. Approaches or plans to achieve objectives, which are specific and measurable.]{style="color:blue;"}
--   Procedures. These detail the execution of an activity.
--   Programs. Organized sets of activities to achieve objectives.
--   Budgets. Detailed financial plans to facilitate economic decision-making.
+- [Strategies. Approaches or plans to achieve objectives, which are specific and measurable.]{style="color:blue;"}
+- Procedures. These detail the execution of an activity.
+- Programs. Organized sets of activities to achieve objectives.
+- Budgets. Detailed financial plans to facilitate economic decision-making.
 :::
 
 ::: center
@@ -89,15 +89,15 @@ As a result of the planning process, some of the following types of plans can be
 
 :::: incremental
 ::: {style="font-size: 90%;"}
--   [S]{style="color:green;"}pecific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.
+- [S]{style="color:green;"}pecific: An objective should be clear and specific, avoiding ambiguity. It should answer the questions what, who, when, where, and why.
 
--   [M]{style="color:green;"}easurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.
+- [M]{style="color:green;"}easurable: An objective should be quantifiable or at least evaluable to determine progress and success. It should be possible to measure it with tangible indicators or criteria.
 
--   [A]{style="color:green;"}chievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.
+- [A]{style="color:green;"}chievable: A goal should be realistic and achievable, considering available resources, time, and necessary skills.
 
--   [R]{style="color:green;"}elevant: A goal should be relevant and aligned with the broader goals of the organization or individual.
+- [R]{style="color:green;"}elevant: A goal should be relevant and aligned with the broader goals of the organization or individual.
 
--   [T]{style="color:green;"}ime-bounded: A goal should have a clearly defined timeframe or deadline.
+- [T]{style="color:green;"}ime-bounded: A goal should have a clearly defined timeframe or deadline.
 :::
 ::::
 
@@ -107,9 +107,9 @@ Example 1:
 
 :::: incremental
 ::: {style="font-size: 90%;"}
--   **Objective**: Complete staff training.
+- **Objective**: Complete staff training.
 
--   **SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
+- **SMART**: Complete at least 90% of the 2014 training program for all company operating personnel by November 30 of this year.
 :::
 ::::
 
@@ -119,9 +119,9 @@ Example 2
 
 :::: incremental
 ::: {style="font-size: 90%;"}
--   **Objective**: Increase sales by 20%.
+- **Objective**: Increase sales by 20%.
 
--   **SMART**: Achieve a sales increase of product X of at least 20% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
+- **SMART**: Achieve a sales increase of product X of at least 20% by the end of the first half of 2015, while maintaining a profitability for the company of at least 5%.
 :::
 ::::
 
@@ -185,9 +185,9 @@ Operating income: Profit generated from day-to-day operations.
 
 [*Fundamental*]{style="color:purple;"}:
 
--   **Validity**: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.
+- **Validity**: The indicator must accurately reflect the actual behavior of the phenomenon, variable, result, etc., to be measured.
 
--   **Stability**: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends).
+- **Stability**: The indicator must be defined, calculated, and interpreted in the same way over time (allowing for comparisons and observing trends).
 
 ## 
 
@@ -195,11 +195,11 @@ Operating income: Profit generated from day-to-day operations.
 
 [Ideal]{.underline}:
 
--   Simple and easy to interpret.
--   Able to indicate trends over time.
--   Sensitive to changes within and outside the organization.
--   Easy to collect and process data.
--   Quick and easy to update.
+- Simple and easy to interpret.
+- Able to indicate trends over time.
+- Sensitive to changes within and outside the organization.
+- Easy to collect and process data.
+- Quick and easy to update.
 
 ## Usefulness of indicators
 
@@ -209,9 +209,9 @@ Operating income: Profit generated from day-to-day operations.
 
 </br>
 
--   Indicators and the data that drive them are often stratified with respect to other variables.
+- Indicators and the data that drive them are often stratified with respect to other variables.
 
--   Variables used as stratification criteria are called "[Analysis Dimensions]{style="color:lightblue;"}" (they are dimensions from the perspective of data).
+- Variables used as stratification criteria are called "[Analysis Dimensions]{style="color:lightblue;"}" (they are dimensions from the perspective of data).
 
 . . .
 
@@ -243,7 +243,7 @@ A [lagging indicator]{style="color:darkblue;"} measures the outcome of performan
 
 </br>
 
-A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future. They are also known as leading indicators.
+A [leading indicator]{style="color:darkgreen;"} measures the performance of factors that are critical now to achieving a desired outcome in the future. 
 
 ## Lagging Indicator
 
@@ -253,9 +253,9 @@ A [leading indicator]{style="color:darkgreen;"} measures the performance of fact
 
 *Example*: Annual sales, market share, ROI.
 
--   Advantage: They are objective and *easy* to define.
+- Advantage: They are objective and *easy* to define.
 
--   Disadvantage: They reflect the effect of past actions and tend to be *expensive* to calculate.
+- Disadvantage: They reflect the effect of past actions and tend to be *expensive* to calculate.
 
 ## Leading Indicator
 
@@ -265,25 +265,25 @@ A [leading indicator]{style="color:darkgreen;"} measures the performance of fact
 
 *Example*: \# of customers visited, \# of courses offered
 
--   Advantage: They are predictive, allowing for strategy corrections. They tend to be *cheaper* to calculate.
+- Advantage: They are predictive, allowing for strategy corrections. They tend to be *cheaper* to calculate.
 
--   Disadvantage: You hope they help you to predict lagging indicators assuming a cause-and-effect relationship.
+- Disadvantage: You hope they help you to predict lagging indicators assuming a cause-and-effect relationship.
 
 ## Other examples
 
 In the context of a YouTuber:
 
--   Leading indicator: Number of views in the first 24 hours after a video is published.
+- Leading indicator: Number of views in the first 24 hours after a video is published.
 
--   Lagging indicator: Total monthly monetization revenue after the month closes.
+- Lagging indicator: Total monthly monetization revenue after the month closes.
 
 . . .
 
 In the context of Netflix's sales department:
 
--   Leading indicator: Number (or conversion rate) of users starting a free trial during the month.
+- Leading indicator: Number (or conversion rate) of users starting a free trial during the month.
 
--   Lagging indicator: Annual subscription revenue after the fiscal year ends.
+- Lagging indicator: Annual subscription revenue after the fiscal year ends.
 
 ## 
 
@@ -291,9 +291,9 @@ In the context of Netflix's sales department:
 
 In the context of a mini-split maintenance company:
 
--   Leading indicator: Average response time to service requests during the month.
+- Leading indicator: Average response time to service requests during the month.
 
--   Lagging indicator: Monthly number of positive customer reviews after service completion.
+- Lagging indicator: Monthly number of positive customer reviews after service completion.
 
 ## More on indicators
 
@@ -303,17 +303,17 @@ Lagging indicators measure [**outcomes**]{style="color:orange;"} after they occu
 
 What is an [**outcome**]{style="color:orange;"}? It is the realized result of a process after uncertainty has resolved.
 
--   The value is known
--   The value is final for that time window
--   No further operational decisions can change it
+- The value is known
+- The value is final for that time window
+- No further operational decisions can change it
 
 ## 
 
--   In practice, leading indicators are often cheaper and faster to compute because they rely on partial or proxy information.
+- In practice, leading indicators are often cheaper and faster to compute because they rely on partial or proxy information.
 
--   The goal in analytics is to identify leading indicators that can reliably predict key lagging indicators.
+- The goal in analytics is to identify leading indicators that can reliably predict key lagging indicators.
 
--   Importantly, the same variable (e.g., sales) can act as a leading or lagging indicator depending on its time resolution and decision context.
+- Importantly, the same variable (e.g., sales) can act as a leading or lagging indicator depending on its time resolution and decision context.
 
 . . .
 
@@ -325,19 +325,19 @@ What is an [**outcome**]{style="color:orange;"}? It is the realized result of a 
 
 Selection criteria:
 
--   Direct relationship with the objective to be measured
+- Direct relationship with the objective to be measured
 
--   Ease of communication focused on the strategy
+- Ease of communication focused on the strategy
 
--   Repeatability and reliability
+- Repeatability and reliability
 
--   Update frequency
+- Update frequency
 
--   Usefulness in goal setting
+- Usefulness in goal setting
 
--   Usefulness in assigning responsibilities
+- Usefulness in assigning responsibilities
 
--   Usefulness for downward deployment
+- Usefulness for downward deployment
 
 ## Basic and Derived Indicators
 
@@ -350,9 +350,9 @@ A [derived indicator]{style="color:green;"} combines the information from two or
 *Example 1:* In the context of a store.
 
 ::: {style="font-size: 90%;"}
--   Basic indicator: Number of customers who made a purchase today.
+- Basic indicator: Number of customers who made a purchase today.
 
--   Derived indicator: Daily conversion rate = (*Number of customers who made a purchase*) / (*Number of customers who visited the store*).
+- Derived indicator: Daily conversion rate = (*Number of customers who made a purchase*) / (*Number of customers who visited the store*).
 :::
 
 ## 
@@ -369,9 +369,9 @@ Basic indicators: Number of page views, Number of clicks, Time spent on the page
 
 Derived indicators:
 
--   Click-through rate (CTR) = Clicks / Page views.
+- Click-through rate (CTR) = Clicks / Page views.
 
--   Average time per visit = Total time / Number of visits.
+- Average time per visit = Total time / Number of visits.
 
 ## The format of an indicator
 
@@ -419,11 +419,11 @@ Mention how the leading indicator can help predict the lagging indicator.
 ::: {.column width="50%"}
 The purposes of an indicator are:
 
--   Establish quantitative goals.
+- Establish quantitative goals.
 
--   Organizational motivation, induction of desirable behaviors.
+- Organizational motivation, induction of desirable behaviors.
 
--   Strategy evaluation and strategic learning.
+- Strategy evaluation and strategic learning.
 :::
 
 ::: {.column width="50%"}
