@@ -4134,7 +4134,7 @@
     "href": "Module2/IntrotoDataScience.slides.html#terminology",
     "title": "Introduction to Data Science",
     "section": "Terminology",
-    "text": "Terminology\n\n\nPredictors. They are represented using the notation \\(X_1\\) for the first predictor, \\(X_p\\) for the second predictor, …, and \\(X_p\\) for the p-th predictor.\n\\(\\boldsymbol{X} = (X_1, X_2, \\ldots, X_p)\\) represents a whole collection of \\(p\\) predictors.\nResponse. \\(Y\\) represents the response variable, which we will attempt to predict."
+    "text": "Terminology\n\n\nPredictors. They are represented using the notation \\(X_1\\) for the first predictor, \\(X_2\\) for the second predictor, …, and \\(X_p\\) for the p-th predictor.\n\\(\\boldsymbol{X} = (X_1, X_2, \\ldots, X_p)\\) represents a whole collection of \\(p\\) predictors.\nResponse. \\(Y\\) represents the response variable, which we will attempt to predict."
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#types-of-learning",
@@ -4155,7 +4155,7 @@
     "href": "Module2/IntrotoDataScience.slides.html#mathematically",
     "title": "Introduction to Data Science",
     "section": "Mathematically",
-    "text": "Mathematically\n\nWe want to establish the following relationship\n\\[\nY = f(\\boldsymbol{X}) + \\epsilon,\n\\]\nwhere \\(f\\) is a function of the predictors and \\(\\epsilon\\) is a natural (random) error.\n\n\n\\(f(\\boldsymbol{X})\\) represents the true relationship between the response (\\(Y\\)) and predictors (\\(\\boldsymbol{X}\\)).\n\n\n\n\nHowever, \\(f(\\boldsymbol{X})\\) is unknown and very complex!"
+    "text": "Mathematically\n\nWe want to establish the following relationship\n\\[\nY = f(\\boldsymbol{X}) + \\epsilon,\\]\nwhere \\(f\\) is a function of the predictors and \\(\\epsilon\\) is a natural (random) error.\n\n\n\\(f(\\boldsymbol{X})\\) represents the true relationship between the response (\\(Y\\)) and predictors (\\(\\boldsymbol{X}\\)).\n\n\n\n\nHowever, \\(f(\\boldsymbol{X})\\) is unknown and very complex!"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#section-4",

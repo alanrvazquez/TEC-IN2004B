@@ -50,11 +50,11 @@ a multidisciplinary field that uses scientific methods, processes, algorithms, a
 </br>
 
 ::: incremental
--   **Data mining** is a process of discovering patterns in large [data sets]{style="color:purple;"} using methods at the intersection of statistics and database systems.
+- **Data mining** is a process of discovering patterns in large [data sets]{style="color:purple;"} using methods at the intersection of statistics and database systems.
 
--   **Predictive modeling** is the process of developing a model so that we can understand and quantify the accuracy of the model's prediction in yet-to-be-seen future [data sets]{style="color:purple;"}.
+- **Predictive modeling** is the process of developing a model so that we can understand and quantify the accuracy of the model's prediction in yet-to-be-seen future [data sets]{style="color:purple;"}.
 
--   **Statistical learning** refers to a set of tools (statistical models and data mining methods) for modeling and understanding complex [data sets]{style="color:purple;"}.
+- **Statistical learning** refers to a set of tools (statistical models and data mining methods) for modeling and understanding complex [data sets]{style="color:purple;"}.
 :::
 
 ## In 2004...
@@ -139,27 +139,27 @@ Dillman said
 
 </br>
 
--   **Business Understanding**: What does the business need?
+- **Business Understanding**: What does the business need?
 
--   **Data Understanding**: What data do we have or need? Is it clean?
+- **Data Understanding**: What data do we have or need? Is it clean?
 
--   **Data Preparation**: How do we organize the data for modeling?
+- **Data Preparation**: How do we organize the data for modeling?
 
--   **Modeling**: What modeling techniques should we apply?
+- **Modeling**: What modeling techniques should we apply?
 
--   **Evaluation**: Which model best meets business objectives?
+- **Evaluation**: Which model best meets business objectives?
 
--   **Deployment**: How do stakeholders access the results?
+- **Deployment**: How do stakeholders access the results?
 
 ## Business understanding
 
 </br></br>
 
--   Business understanding refers to defining the business problem you are trying to solve.
+- Business understanding refers to defining the business problem you are trying to solve.
 
--   The goal is to reframe the business problem as a data science problem.
+- The goal is to reframe the business problem as a data science problem.
 
--   Reframing the problem and designing a solution is often an iterative process.
+- Reframing the problem and designing a solution is often an iterative process.
 
 ## Problems in Data Science
 
@@ -181,47 +181,47 @@ Dillman said
 
 </br>
 
--   Often, reframing the problem and designing a solution is an iterative process.
+- Often, reframing the problem and designing a solution is an iterative process.
 
--   The initial formulation may not be complete or optimal, so multiple iterations may be necessary to formulate an acceptable solution.
+- The initial formulation may not be complete or optimal, so multiple iterations may be necessary to formulate an acceptable solution.
 
--   [The key to great success is creative problem formulation by an analyst on how to frame the business problem as one or more data science problems.]{style="color:brown;"}
+- [The key to great success is creative problem formulation by an analyst on how to frame the business problem as one or more data science problems.]{style="color:brown;"}
 
 ## Data understanding I
 
 </br>
 
 ::: incremental
--   If the goal is to solve a business problem, data constitutes the raw material available from which the solution will be built.
+- If the goal is to solve a business problem, data constitutes the raw material available from which the solution will be built.
 
--   The available data rarely matches the problem.
+- The available data rarely matches the problem.
 
--   For example, historical data is often collected for purposes unrelated to the current business problem or without any explicit purpose.
+- For example, historical data is often collected for purposes unrelated to the current business problem or without any explicit purpose.
 :::
 
 ## Data understanding II
 
 </br>
 
--   Data costs vary. Some data will be available for free, while others will require effort to obtain.
+- Data costs vary. Some data will be available for free, while others will require effort to obtain.
 
 ::: incremental
--   A key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.
+- A key part of the data understanding phase is estimating the costs and benefits of each data source and deciding whether further investment is justified.
 
--   Even after acquiring all the data sets, compiling them may require additional effort.
+- Even after acquiring all the data sets, compiling them may require additional effort.
 :::
 
 ## Example
 
 </br>
 
--   In the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.
+- In the 1980s, credit cards had uniform pricing — companies lacked the systems for mass differential pricing.
 
--   By 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).
+- By 1990, Richard Fairbanks and Nigel Morris saw that IT could power predictive models to customize offers (pricing, credit limits, low introductory rates, cash back, loyalty points).
 
--   Signet Bank’s strategy: model **profitability**, not just probability of default, since a small fraction of customers generate most profits.
+- Signet Bank’s strategy: model **profitability**, not just probability of default, since a small fraction of customers generate most profits.
 
-::: {.notes}
+::: notes
 Profitable clients are those who pay interest on outstanding balances, pay a lot with credit card (because paying with credit card incurs in fees paid by the merchant. annual memberships, opening other accounts.)
 :::
 
@@ -229,11 +229,11 @@ Profitable clients are those who pay interest on outstanding balances, pay a lot
 
 </br></br></br>
 
--   **Problem:** They lacked data on how different credit terms affected profitability.
+- **Problem:** They lacked data on how different credit terms affected profitability.
 
 . . .
 
--   **Solution:** Acquire data at a cost — run experiments offering varied terms to different customers. Losses from these offers were considered **investments in data**.
+- **Solution:** Acquire data at a cost — run experiments offering varied terms to different customers. Losses from these offers were considered **investments in data**.
 
 ## What happened?
 
@@ -265,11 +265,11 @@ Founders of
 
 </br></br>
 
--   [**Predictors**]{style="color:darkblue;"}. They are represented using the notation $X_1$ for the first predictor, $X_p$ for the second predictor, ..., and $X_p$ for the *p*-th predictor.
+- [**Predictors**]{style="color:darkblue;"}. They are represented using the notation $X_1$ for the first predictor, $X_2$ for the second predictor, ..., and $X_p$ for the *p*-th predictor.
 
--   $\boldsymbol{X} = (X_1, X_2, \ldots, X_p)$ represents a whole collection of $p$ predictors.
+- $\boldsymbol{X} = (X_1, X_2, \ldots, X_p)$ represents a whole collection of $p$ predictors.
 
--   [**Response**]{style="color:darkred;"}. $Y$ represents the response variable, which we will attempt to predict.
+- [**Response**]{style="color:darkred;"}. $Y$ represents the response variable, which we will attempt to predict.
 
 ## Types of learning
 
@@ -277,9 +277,9 @@ Founders of
 
 In data science (and machine learning), there are two main types of learning:
 
--   [Supervised learning]{style="color:blue;"}
+- [Supervised learning]{style="color:blue;"}
 
--   [Unsupervised learning]{style="color:green;"}
+- [Unsupervised learning]{style="color:green;"}
 
 ## 
 
@@ -302,18 +302,17 @@ The algorithm is *trained* to reach a high level of accuracy and performance for
 We want to establish the following relationship
 
 $$ 
-Y = f(\boldsymbol{X}) + \epsilon,
-$$
+Y = f(\boldsymbol{X}) + \epsilon,$$
 
 where $f$ is a function of the predictors and $\epsilon$ is a natural (random) error.
 
 . . .
 
--   $f(\boldsymbol{X})$ represents the true relationship between the response ($Y$) and predictors ($\boldsymbol{X}$).
+- $f(\boldsymbol{X})$ represents the true relationship between the response ($Y$) and predictors ($\boldsymbol{X}$).
 
 . . .
 
--   However, $f(\boldsymbol{X})$ is unknown and very complex!
+- However, $f(\boldsymbol{X})$ is unknown and very complex!
 
 ## 
 
@@ -327,9 +326,9 @@ Ideally, the algorithm builds an $\hat{f}(\boldsymbol{X})$ that is interpretable
 
 In supervised learning, there are two main types of data:
 
--   [**Training data**]{style="color:darkblue;"} is data used by the supervised algorithm to construct $\hat{f}(\boldsymbol{X})$.
+- [**Training data**]{style="color:darkblue;"} is data used by the supervised algorithm to construct $\hat{f}(\boldsymbol{X})$.
 
--   [**Test data**]{style="color:darkgreen;"} is data NOT used in the algorithm's training process, but is used to evaluate the quality of $\hat{f}(\boldsymbol{X})$.
+- [**Test data**]{style="color:darkgreen;"} is data NOT used in the algorithm's training process, but is used to evaluate the quality of $\hat{f}(\boldsymbol{X})$.
 
 ![](images/training_test.jpeg){fig-align="center" width="720"}
 
