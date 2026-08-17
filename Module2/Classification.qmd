@@ -53,10 +53,10 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 ## scikit-learn library
 
--   **scikit-learn** is a robust and popular library for machine learning in Python
--   It provides simple, efficient tools for data mining and data analysis
--   It is built on top of libraries such as **NumPy**, **SciPy**, and **Matplotlib**
--   <https://scikit-learn.org/stable/>
+- **scikit-learn** is a robust and popular library for machine learning in Python
+- It provides simple, efficient tools for data mining and data analysis
+- It is built on top of libraries such as **NumPy**, **SciPy**, and **Matplotlib**
+- <https://scikit-learn.org/stable/>
 
 ![](images/scikitlearn.png){fig-align="center"}
 
@@ -86,8 +86,8 @@ The predictors can be *numerical* or *categorical*.
 
 Recall that
 
--   $X$ represents a predictor or explanatory variable.
--   $\boldsymbol{X} = (X_1, X_2, \ldots, X_p)$ represents a collection of $p$ predictors.
+- $X$ represents a predictor or explanatory variable.
+- $\boldsymbol{X} = (X_1, X_2, \ldots, X_p)$ represents a collection of $p$ predictors.
 
 ## 
 
@@ -96,14 +96,14 @@ Recall that
 [Response]{style="text-decoration: underline;"}:
 
 ::: incremental
--   $Y$ is a [**categorical variable**]{style="color:darkgreen;"} that takes [**2 categories**]{style="color:darkgreen;"} or [**classes**]{style="color:darkgreen;"}.
+- $Y$ is a [**categorical variable**]{style="color:darkgreen;"} that takes [**2 categories**]{style="color:darkgreen;"} or [**classes**]{style="color:darkgreen;"}.
 
--   For example, $Y$ can take [0]{style="color:darkgreen;"} or [1]{style="color:darkgreen;"}, [A]{style="color:darkgreen;"} or [B]{style="color:darkgreen;"}, [no]{style="color:darkgreen;"} or [yes]{style="color:darkgreen;"}, [spam]{style="color:darkgreen;"} or [no spam]{style="color:darkgreen;"}.
+- For example, $Y$ can take [0]{style="color:darkgreen;"} or [1]{style="color:darkgreen;"}, [A]{style="color:darkgreen;"} or [B]{style="color:darkgreen;"}, [no]{style="color:darkgreen;"} or [yes]{style="color:darkgreen;"}, [spam]{style="color:darkgreen;"} or [no spam]{style="color:darkgreen;"}.
 
--   When classes are strings, they are usually encoded as 0 and 1.
+- When classes are strings, they are usually encoded as 0 and 1.
 
-    -   The **target class** is the one for which $Y = 1$.
-    -   The **reference class** is the one for which $Y = 0$.
+  - The **target class** is the one for which $Y = 1$.
+  - The **reference class** is the one for which $Y = 0$.
 :::
 
 ## Classification algorithms
@@ -138,8 +138,8 @@ A probability for each class can be very useful for gauging the model’s confid
 
 Consider a spam filter where $Y$ is the email type.
 
--   The target class is spam. In this case, $Y=1$.
--   The reference class is not spam. In this case, $Y=0$.
+- The target class is spam. In this case, $Y=1$.
+- The reference class is not spam. In this case, $Y=0$.
 
 . . .
 
@@ -196,9 +196,9 @@ This function classifies to the most probable class using the conditional distri
 To overcome this issue, we several methods:
 
 ::: incremental
--   [**Logistic Regression**]{style="color:brown;"}: Impose an structure on $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$. This was covered in IN1002B.
--   [**Classification Trees**]{style="color:darkblue;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. What we will cover today.
--   [**Ensemble methods**]{style="color:orange;"} and [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (If time permits).
+- [**Logistic Regression**]{style="color:brown;"}: Impose an structure on $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$. This was covered in IN1002B.
+- [**Classification Trees**]{style="color:darkblue;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. What we will cover today.
+- [**Ensemble methods**]{style="color:orange;"} and [***K*****-Nearest Neighbours**]{style="color:darkgreen;"}: Estimate $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ directly. (If time permits).
 :::
 
 ## 
@@ -215,8 +215,8 @@ $$\hat{C}(\boldsymbol{X}) =
 
 where
 
--   $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ is an estimate of $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
--   $\hat{C}(\boldsymbol{X})$ is an estimate of the true Bayes Classifier $C(\boldsymbol{X})$
+- $\hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$ is an estimate of $P(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$.
+- $\hat{C}(\boldsymbol{X})$ is an estimate of the true Bayes Classifier $C(\boldsymbol{X})$
 
 ## Let's play with classification algorithms
 
@@ -237,9 +237,9 @@ where
 The application of data science algorithms needs two data sets:
 
 ::: incremental
--   [**Training data**]{style="color:blue;"} is data that we use to train or construct the approximation $\hat{C}(\boldsymbol{X})$.
+- [**Training data**]{style="color:blue;"} is data that we use to train or construct the approximation $\hat{C}(\boldsymbol{X})$.
 
--   [**Test data**]{style="color:green;"} is data that we use to evaluate the classification performance of $\hat{C}(\boldsymbol{X})$ only.
+- [**Test data**]{style="color:green;"} is data that we use to evaluate the classification performance of $\hat{C}(\boldsymbol{X})$ only.
 :::
 
 ## 
@@ -308,9 +308,9 @@ We split the current dataset into a training and a validation dataset. To this e
 
 The function has three main inputs:
 
--   A pandas dataframe with the predictor columns only.
--   A pandas dataframe with the response column only.
--   The parameter `test_size` which sets the portion of the dataset that will go to the validation set.
+- A pandas dataframe with the predictor columns only.
+- A pandas dataframe with the response column only.
+- The parameter `test_size` which sets the portion of the dataset that will go to the validation set.
 
 ## Create the predictor matrix
 
@@ -369,11 +369,11 @@ X_train, X_valid, Y_train, Y_valid = train_test_split(X_full, Y_target_full,
                                                       random_state=507134)
 ```
 
--   Thanks to the `stratify` parameter, the function makes a clever partition of the data using the *empirical* distribution of the response.
+- Thanks to the `stratify` parameter, the function makes a clever partition of the data using the *empirical* distribution of the response.
 
--   Technically, it splits the data so that the distribution of the response under the training and validation sets is similar.
+- Technically, it splits the data so that the distribution of the response under the training and validation sets is similar.
 
--   Usually, the proportion of the dataset that goes to the validation set is 20% or 30%.
+- Usually, the proportion of the dataset that goes to the validation set is 20% or 30%.
 
 ## 
 
@@ -422,13 +422,13 @@ It is a supervised learning algorithm that predicts or classifies observations u
 
 Main characteristics:
 
--   Simple and useful for interpretation.
+- Simple and useful for interpretation.
 
--   Can handle numerical and categorical predictors and responses.
+- Can handle numerical and categorical predictors and responses.
 
--   Computationally efficient.
+- Computationally efficient.
 
--   Nonparametric technique.
+- Nonparametric technique.
 
 ## Basic idea of a decision tree
 
@@ -551,9 +551,9 @@ After building a “good” tree, we can predict new observations that are not i
 **Using the CART algorithm!**
 
 ::: incremental
--   The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
+- The algorithm uses a recursive binary splitting strategy that builds the tree using a greedy top-down approach.
 
--   Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimize** the so-called [***impurity***]{style="color:purple;"}.
+- Basically, at a given node, it considers all variables and all possible splits of that variable. Then, for classification, it chooses the best variable and splits it that **minimize** the so-called [***impurity***]{style="color:purple;"}.
 :::
 
 ## 
@@ -1287,8 +1287,8 @@ plt.show()
 ::: {.column width="40%"}
 We repeat the partitioning process until:
 
--   *impurity* does not improve in any of the terminal nodes, or
--   each terminal node has no less than, say, 5 observations.
+- *impurity* does not improve in any of the terminal nodes, or
+- each terminal node has no less than, say, 5 observations.
 :::
 
 ::: {.column width="60%"}
@@ -1324,11 +1324,11 @@ Node impurity refers to the homogeneity of the response classes at that node.
 
 There are three different metrics for impurity:
 
--   Misclassification risk.
+- Misclassification risk.
 
--   Cross entropy.
+- Cross entropy.
 
--   Gini impurity index.
+- Gini impurity index.
 :::
 
 :::: {.column width="60%"}
@@ -1347,11 +1347,11 @@ p: Proportion of elements in the target class
 
 Let $p_1$ and $p_2$ be the proportion of observations in the target and reference class, respectively, in a node.
 
--   Misclassification risk: $1 - \max\{p_1, p_2\}$
+- Misclassification risk: $1 - \max\{p_1, p_2\}$
 
--   Cross entropy: $- (p_1 \log(p_1) + p_2 \log(p_2))$
+- Cross entropy: $- (p_1 \log(p_1) + p_2 \log(p_2))$
 
--   Gini impurity index: $p_1(1 - p_1) + p_2(1 - p_2)$
+- Gini impurity index: $p_1(1 - p_1) + p_2(1 - p_2)$
 
 ## In Python
 
@@ -1449,8 +1449,8 @@ After training a classification tree, we can calculate the estimated conditional
 
 To this end, let
 
--   $\hat{p}_1(\boldsymbol{x}) = \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$
--   $\hat{p}_0(\boldsymbol{x}) = 1 - \hat{p}_1(\boldsymbol{x})$
+- $\hat{p}_1(\boldsymbol{x}) = \hat{P}(Y = 1 | \boldsymbol{X} = \boldsymbol{x})$
+- $\hat{p}_0(\boldsymbol{x}) = 1 - \hat{p}_1(\boldsymbol{x})$
 
 be the estimated probabilities that $\boldsymbol{x}$ belongs to class 1 or 0.
 
@@ -1608,13 +1608,13 @@ plt.show()
 
 ## Implementation details
 
--   Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
+- Categorical predictors with unordered levels $\{A, B, C\}$. We order the levels in a specific way (works for binary and regression problems).
 
--   Predictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new "NA" level.
+- Predictors with missing values. For quantitative predictors, we use multiple imputation. For categorical predictors, we create a new "NA" level.
 
--   Tertiary or quartary splits. There is not much improvement.
+- Tertiary or quartary splits. There is not much improvement.
 
--   Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
+- Diagonal splits (using a linear combination for partitioning). These can lead to improvement, but they impair interpretability.
 
 # Classification Metrics
 
@@ -1712,11 +1712,11 @@ predicted_probability
 
 ## Confusion matrix
 
--   Table to evaluate the performance of a classifier.
+- Table to evaluate the performance of a classifier.
 
--   Compares actual values with the predicted values of a classifier.
+- Compares actual values with the predicted values of a classifier.
 
--   Useful for binary and multiclass classification problems.
+- Useful for binary and multiclass classification problems.
 
 ![](images/confusion_matrix.png){fig-align="center"}
 
@@ -1895,9 +1895,9 @@ $$\text{Missclassification rate of tree} + \alpha (\text{\# terminal nodes}),$$
 
 where $\alpha$ is a tuning parameter that **places greater weight on the number of tree nodes** (or size).
 
--   Large values of $\alpha$ result in small trees with few nodes.
+- Large values of $\alpha$ result in small trees with few nodes.
 
--   Small values of $\alpha$ result in large trees with many nodes.
+- Small values of $\alpha$ result in large trees with many nodes.
 
 ## Apply penalty for large trees
 
@@ -2025,43 +2025,43 @@ print( round(accuracy, 2) )
 
 </br>
 
--   Accuracy is easy to calculate and interpret.
+- Accuracy is easy to calculate and interpret.
 
--   It works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).
+- It works well when the data set has a balanced class distribution (i.e., cases 1 and 0 are approximately equal).
 
--   However, there are situations in which identifying the target class is more important than the reference class.
+- However, there are situations in which identifying the target class is more important than the reference class.
 
--   For example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading.
+- For example, it is not ideal for unbalanced data sets. When one class is much more frequent than the other, accuracy can be misleading.
 
 ## An example
 
 </br>
 
--   Let's say we want to create a classifier that tells us whether a mobile phone company's customer will churn next month.
+- Let's say we want to create a classifier that tells us whether a mobile phone company's customer will churn next month.
 
--   Customers who churn significantly decrease the company's revenue. That's why it's important to retain these customers.
+- Customers who churn significantly decrease the company's revenue. That's why it's important to retain these customers.
 
--   To retain that customer, the company will send them a text message with an offer for a low-cost mobile plan.
+- To retain that customer, the company will send them a text message with an offer for a low-cost mobile plan.
 
--   Ideally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay.
+- Ideally, our classifier correctly identifies customers who will churn, so they get the offer and, hopefully, stay.
 
 ## 
 
 </br></br></br>
 
--   In other words, we want to avoid making wrong decisions about customers who will churn.
+- In other words, we want to avoid making wrong decisions about customers who will churn.
 
--   Wrong decisions about loyal customers aren't as relevant.
+- Wrong decisions about loyal customers aren't as relevant.
 
--   Because if we classify a loyal customer as one who will churn, the customer will get a good deal. They'll probably pay less but stay anyway.
+- Because if we classify a loyal customer as one who will churn, the customer will get a good deal. They'll probably pay less but stay anyway.
 
 ## Another example
 
--   Another example is developing an algorithm (classifier) that can quickly identify patients who may have a rare disease and need a more extensive and expensive medical evaluation.
+- Another example is developing an algorithm (classifier) that can quickly identify patients who may have a rare disease and need a more extensive and expensive medical evaluation.
 
--   The classifier must make correct decisions about patients with the rare disease, so they can be evaluated and eventually treated.
+- The classifier must make correct decisions about patients with the rare disease, so they can be evaluated and eventually treated.
 
--   A healthy patient who is misclassified with the disease will only incur a few extra dollars to pay for the next test, only to discover that the patient does not have the disease.
+- A healthy patient who is misclassified with the disease will only incur a few extra dollars to pay for the next test, only to discover that the patient does not have the disease.
 
 ## Classification-specific metrics
 
@@ -2069,11 +2069,11 @@ print( round(accuracy, 2) )
 
 To overcome this limitation of accuracy, there are several class-specific metrics. The most popular are:
 
--   [**Sensitivity**]{style="color:darkblue;"} or *recall*
+- [**Sensitivity**]{style="color:darkblue;"} or *recall*
 
--   [**Precision**]{style="color:darkgreen;"}
+- [**Precision**]{style="color:darkgreen;"}
 
--   **Type I error**
+- **Type I error**
 
 These metrics are calculated from the confusion matrix.
 
@@ -2141,17 +2141,17 @@ print( round(type_I_error, 2) )
 
 </br>
 
--   There is generally a trade-off between sensitivity and Type I error.
+- There is generally a trade-off between sensitivity and Type I error.
 
--   Intuitively, increasing the sensitivity of a classifier is likely to increase Type I error, because more observations are predicted as positive.
+- Intuitively, increasing the sensitivity of a classifier is likely to increase Type I error, because more observations are predicted as positive.
 
--   Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
+- Possible trade-offs between sensitivity and Type I error may be appropriate when there are different penalties or costs associated with each type of error.
 
 ## Disadvantages of decision trees
 
--   Decision trees have high variance. A small change in the training data can result in a very different tree.
+- Decision trees have high variance. A small change in the training data can result in a very different tree.
 
--   It has trouble identifying simple data structures.
+- It has trouble identifying simple data structures.
 
 ![](images/clipboard-3265772983.png){fig-align="center"}
 
