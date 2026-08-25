@@ -58,9 +58,9 @@ Here, we use specific functions from the **pandas**, **matplotlib**, **seaborn**
 
 In data science, there are two main types of learning:
 
--   [Supervised learning]{style="color:blue;"}. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.
+- [Supervised learning]{style="color:blue;"}. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.
 
--   [Unsupervised learning]{style="color:green;"}. In which we have only multiple predictors. The goal is to discover patterns in your data.
+- [Unsupervised learning]{style="color:green;"}. In which we have only multiple predictors. The goal is to discover patterns in your data.
 
 ## Types of learning
 
@@ -68,16 +68,16 @@ In data science, there are two main types of learning:
 
 In data science, there are two main types of learning:
 
--   [Supervised learning. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.]{style="color:gray;"}
+- [Supervised learning. In which we have multiple predictors and one response. The goal is to predict the response using the predictor values.]{style="color:gray;"}
 
--   [Unsupervised learning]{style="color:green;"}. In which we have only multiple predictors. The goal is to discover patterns in your data.
+- [Unsupervised learning]{style="color:green;"}. In which we have only multiple predictors. The goal is to discover patterns in your data.
 
 ## Unsupervised learning
 
 **Goal**: organize or *group* data to gain insights. It answers questions like these
 
--   Is there an informative way to visualize the data?
--   Can we discover subgroups among variables or observations?
+- Is there an informative way to visualize the data?
+- Can we discover subgroups among variables or observations?
 
 . . .
 
@@ -91,21 +91,21 @@ It is also known as *exploratory data analysis*.
 
 </br>
 
--   *Marketing.* Identify a segment of customers with a high tendency to purchase a specific product.
+- *Marketing.* Identify a segment of customers with a high tendency to purchase a specific product.
 
--   *Retail.* Group customers based on their preferences, style, clothing choices, and store preferences.
+- *Retail.* Group customers based on their preferences, style, clothing choices, and store preferences.
 
--   *Medical Science.* Facilitate the efficient diagnosis and treatment of patients, as well as the discovery of new drugs.
+- *Medical Science.* Facilitate the efficient diagnosis and treatment of patients, as well as the discovery of new drugs.
 
--   *Sociology.* Classify people based on their demographics, lifestyle, socioeconomic status, etc.
+- *Sociology.* Classify people based on their demographics, lifestyle, socioeconomic status, etc.
 
 ## Unsupervised learning methods
 
 </br></br>
 
--   [**Clustering Methods**]{style="color:#8B004F;"} aim to find subgroups with similar data in the database.
+- [**Clustering Methods**]{style="color:#8B004F;"} aim to find subgroups with similar data in the database.
 
--   [**Principal Component Analysis**]{style="color:#017373;"} seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.
+- [**Principal Component Analysis**]{style="color:#017373;"} seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.
 
 Here we will use these methods on predictors $X_1, X_2, \ldots, X_p,$ which are *numerical*.
 
@@ -113,9 +113,9 @@ Here we will use these methods on predictors $X_1, X_2, \ldots, X_p,$ which are 
 
 </br></br>
 
--   [**Clustering Methods**]{style="color:#8B004F;"} aim to find subgroups with similar data in the database.
+- [**Clustering Methods**]{style="color:#8B004F;"} aim to find subgroups with similar data in the database.
 
--   [**Principal Component Analysis** seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.]{style="color:gray;"}
+- [**Principal Component Analysis** seeks an alternative representation of the data to make it easier to understand when there are many predictors in the database.]{style="color:gray;"}
 
 Here we will use these methods on predictors $X_1, X_2, \ldots, X_p,$ which are *numerical*.
 
@@ -146,10 +146,10 @@ The “penguins.xlsx” database contains data on 342 penguins in Antarctica. Th
 :::::: center
 ::::: columns
 ::: {.column width="50%"}
--   Bill length in millimeters.
--   Bill depth in millimeters.
--   Flipper length in millimeters.
--   Body mass in grams.
+- Bill length in millimeters.
+- Bill depth in millimeters.
+- Flipper length in millimeters.
+- Body mass in grams.
 :::
 
 ::: {.column width="50%"}
@@ -253,13 +253,13 @@ $$d = \sqrt{(X_{1,1} - X_{2,1})^2 + (X_{1,2} - X_{2,2})^2 + (X_{1,3} - X_{2,3})^
 
 </br>
 
--   The Euclidean distance depends on the units of measurement of the predictors!
+- The Euclidean distance depends on the units of measurement of the predictors!
 
--   Predictors with certain units have greater importance in calculating the distance.
+- Predictors with certain units have greater importance in calculating the distance.
 
--   This is not good since we want all predictors to have equal importance when calculating the Euclidean distance between two observations.
+- This is not good since we want all predictors to have equal importance when calculating the Euclidean distance between two observations.
 
--   [The solution is to **standardize** the units of the predictors.]{style="color:darkgreen;"}
+- [The solution is to **standardize** the units of the predictors.]{style="color:darkgreen;"}
 
 ## K-Means algorithm
 
@@ -591,13 +591,13 @@ plt.show()
 
 ## Comments
 
--   Selecting the number of clusters *K* is more of an art than a science. You'd better get *K* right, or you'll be detecting patterns where none really exist.
+- Selecting the number of clusters *K* is more of an art than a science. You'd better get *K* right, or you'll be detecting patterns where none really exist.
 
--   We need to standardize all predictors.
+- We need to standardize all predictors.
 
--   The performance of *K*-means clustering is affected by the presence of outliers.
+- The performance of *K*-means clustering is affected by the presence of outliers.
 
--   The algorithm's solution is sensitive to the starting point. Because of this, it is typically run multiple times, and the best clustering among all runs is reported.
+- The algorithm's solution is sensitive to the starting point. Because of this, it is typically run multiple times, and the best clustering among all runs is reported.
 
 # Hierarchical Clustering
 
@@ -609,13 +609,13 @@ plt.show()
 :::::: columns
 :::: {.column width="50%"}
 ::: {style="font-size: 90%;"}
--   Start with each observation standing alone in its own group.
+- Start with each observation standing alone in its own group.
 
--   Then, gradually merge the groups that are close together.
+- Then, gradually merge the groups that are close together.
 
--   Continue this process until all the observations are in one large group.
+- Continue this process until all the observations are in one large group.
 
--   Finally, step back and see which grouping works best.
+- Finally, step back and see which grouping works best.
 :::
 ::::
 
@@ -634,9 +634,9 @@ plt.show()
 ::: incremental
 1.  Distance between two observations.
 
-    -   We use Euclidean distance.
+    - We use Euclidean distance.
 
-    -   We must standardize the predictors!
+    - We must standardize the predictors!
 
 2.  Distance between [**two groups**]{style="color:darkgreen;"}.
 :::
@@ -652,8 +652,8 @@ The distance between two groups of observations is called [***linkage***]{style=
 
 There are several types of linking. The most commonly used are:
 
--   Complete linkage
--   Average linkage
+- Complete linkage
+- Average linkage
 :::
 
 ::: {.column width="40%"}
@@ -751,15 +751,15 @@ The argument `method` sets the type of linkage to be used.
 :::::: columns
 :::: {.column width="40%"}
 ::: {style="font-size: 80%;"}
--   A dendrogram is a tree diagram that summarizes and visualizes the clustering process.
--   Observations are on the horizontal axis and at the bottom of the diagram.
--   The vertical axis shows the distance between groups.
--   It is read from top to bottom.
+- A dendrogram is a tree diagram that summarizes and visualizes the clustering process.
+- Observations are on the horizontal axis and at the bottom of the diagram.
+- The vertical axis shows the distance between groups.
+- It is read from top to bottom.
 :::
 ::::
 
 ::: {.column width="60%"}
-![](images/clipboard-2041051251.png)
+![](images/dendrograma1.png)
 :::
 ::::::
 :::::::
@@ -853,7 +853,7 @@ The `dendrogram` function colors a specific number of groups by default, but we 
 # Define the number of clusters
 num_clusters = 4
 
-# Compute the color threshold to form exactly 3 clusters
+# Compute the color threshold to form exactly 4 clusters
 # Find the distance at which to cut the dendrogram
 distance_threshold = Clust_Cereal[-(num_clusters - 1), 2]
 ```
@@ -897,7 +897,7 @@ print(cereal_clusters)
 
 > In contrast with the creation of the dendrogram, here we use `-(num_clusters)` insetad of `-(num_clusters - 1)`
 
-##
+## 
 
 Finally, we assign the final clusters to the data as follows:
 
@@ -920,16 +920,16 @@ X_cereal_clust.head(4)
 
 </br>
 
--   Remember to standardize the predictors!
+- Remember to standardize the predictors!
 
--   It's not easy to choose the correct number of clusters using the dendrogram.
+- It's not easy to choose the correct number of clusters using the dendrogram.
 
--   The results depend on the linkage measure used.
+- The results depend on the linkage measure used.
 
-    -   Complete linkage results in narrower clusters.
-    -   Average linkage strikes a balance between narrow and thinner clusters.
+  - Complete linkage results in narrower clusters.
+  - Average linkage strikes a balance between narrow and thinner clusters.
 
--   Hierarchical clustering is useful for detecting outliers.
+- Hierarchical clustering is useful for detecting outliers.
 
 ## 
 

@@ -3154,7 +3154,7 @@
     "href": "Module4/Clustering.slides.html#coloring-clusters",
     "title": "Clustering Methods",
     "section": "Coloring clusters",
-    "text": "Coloring clusters\n\nThe dendrogram function colors a specific number of groups by default, but we can alter this behavior and color two, three, or more groups. To this end, w must determine the threshold to cut the dendrogram using the code below.\n\n# Define the number of clusters\nnum_clusters = 4\n\n# Compute the color threshold to form exactly 3 clusters\n# Find the distance at which to cut the dendrogram\ndistance_threshold = Clust_Cereal[-(num_clusters - 1), 2]"
+    "text": "Coloring clusters\n\nThe dendrogram function colors a specific number of groups by default, but we can alter this behavior and color two, three, or more groups. To this end, w must determine the threshold to cut the dendrogram using the code below.\n\n# Define the number of clusters\nnum_clusters = 4\n\n# Compute the color threshold to form exactly 4 clusters\n# Find the distance at which to cut the dendrogram\ndistance_threshold = Clust_Cereal[-(num_clusters - 1), 2]"
   },
   {
     "objectID": "Module4/Clustering.slides.html#section-14",
