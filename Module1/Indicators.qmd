@@ -398,15 +398,15 @@ An indicator should be measured numerically using:
 For the following concepts, propose one leading and one lagging (basic and derived) quantitative indicators:
 
 ::: {style="font-size: 80%;"}
-1.  Monthly productivity of a furniture production line
+1. Equipment reliability in a manufacturing plant
 
-2.  Annual staff turnover in a manufacturing company
+2. On-time delivery performance of a logistics company
 
-3.  Customer service level of a company that manufactures plastic packaging and delivers regionally
+3. Product quality in a manufacturing process
 
-4.  Business profitability for a medium-sized wholesale grocery company
+4. Inventory management performance of a retail company
 
-5.  Performance of the fundraising process of an association supporting homeless children
+5. Workplace safety performance in a manufacturing plant. 
 :::
 
 Mention how the leading indicator can help predict the lagging indicator.
