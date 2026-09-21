@@ -353,10 +353,11 @@ Free online tool by Google for building interactive dashboards and reports. Work
 - BigQuery
 - Other cloud and database services
 :::
+
 ::: {.column width="60%"}
 ![](images/data-studio-logo.png){fig-align="center" width="422"}
 :::
-:::
+:::::
 
 ## Getting started
 
