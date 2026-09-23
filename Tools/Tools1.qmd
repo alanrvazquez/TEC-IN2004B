@@ -33,13 +33,13 @@ jupyter: python3
 
 ::::: columns
 ::: {.column width="70%"}
--   A versatile programming language.
+- A versatile programming language.
 
--   It is free!
+- It is free!
 
--   It is widely used for data cleaning, data visualization, and data modelling.
+- It is widely used for data cleaning, data visualization, and data modelling.
 
--   It can be extended with packages (libraries) developed by other users.
+- It can be extended with packages (libraries) developed by other users.
 :::
 
 ::: {.column width="30%"}
@@ -51,11 +51,11 @@ jupyter: python3
 
 *Google's free cloud collaboration platform for creating Python documents.*
 
--   Run Python and collaborate on Jupyter notebooks for free.
+- Run Python and collaborate on Jupyter notebooks for free.
 
--   Harness the power of GPUs for free to accelerate your data science projects.
+- Harness the power of GPUs for free to accelerate your data science projects.
 
--   Easily save and upload your notebooks to Google Drive.
+- Easily save and upload your notebooks to Google Drive.
 
 ![](images/Google_Colaboratory_SVG_Logo.svg.png){fig-align="right" width="2560"}
 
@@ -67,9 +67,9 @@ Libraries are the fundamental units of reproducible Python code. They include re
 
 In this course, we will be working mostly with the following libraries:
 
--   `pandas` for data manipulation
--   `matplotlib` and `seaborn` for data visualization
--   `statsmodels` and `scikit-learn` for data modelling
+- `pandas` for data manipulation
+- `matplotlib` and `seaborn` for data visualization
+- `statsmodels` and `scikit-learn` for data modelling
 
 # Reading data with Pandas
 
@@ -103,10 +103,10 @@ The dataset `penguins.xlsx` contains data from penguins living in three islands.
 :::
 
 ::: {.column width="70%"}
--   **pandas** is an open-source Python library for data manipulation and analysis.
--   It is built on top of **numpy** for high-performance data operations.
--   It allows the user to import, clean, transform, and analyze data efficiently.
--   <https://pandas.pydata.org/>
+- **pandas** is an open-source Python library for data manipulation and analysis.
+- It is built on top of **numpy** for high-performance data operations.
+- It allows the user to import, clean, transform, and analyze data efficiently.
+- <https://pandas.pydata.org/>
 :::
 :::::
 
@@ -223,15 +223,15 @@ The general structure of chaining looks like this:
 **pandas** provides methods or functions to solve common data manipulation tasks:
 
 ::: incremental
--   `.filter()` selects specific columns or rows.
+- `.filter()` selects specific columns or rows.
 
--   `.query()` filters observations based on conditions.
+- `.query()` filters observations based on conditions.
 
--   `.assign()` adds new variables that are functions of existing variables.
+- `.assign()` adds new variables that are functions of existing variables.
 
--   `.sort_values()` changes the order of rows.
+- `.sort_values()` changes the order of rows.
 
--   `.agg()` reduces multiple values to a single numerical summary.
+- `.agg()` reduces multiple values to a single numerical summary.
 :::
 
 ## 
@@ -452,7 +452,7 @@ We can calculate summary statistics of the columns `bill_length_mm`, `bill_depth
 
 (penguins_data
   .filter(["bill_length_mm", "bill_depth_mm", "body_mass_g"], axis = 1)
-  .agg(["mean"])
+  .agg(["mean", "median", "min", "max"])
 )
 ```
 
@@ -470,12 +470,25 @@ After performing operations on our data, we can save the modified dataset as a n
 #| eval: true
 #| echo: true
 
-mean_penguins_data = (penguins_data
+summary_penguins_data = (penguins_data
   .filter(["bill_length_mm", "bill_depth_mm", "body_mass_g"], axis = 1)
-  .agg(["mean"])
+  .agg(["mean", "median", "min", "max"])
 )
 
-mean_penguins_data
+summary_penguins_data
+```
+
+## Saving the objects into Excel
+
+</br></br></br>
+
+We can save the **pandas** data frames into Excel using the function `.to_excel()`.
+
+```{python}
+#| eval: true
+#| echo: true
+
+# summary_penguins_data.to_excel("summary_penguins_data.xlsx")
 ```
 
 ## More on pandas

@@ -31,11 +31,11 @@ jupyter: python3
 
 </br>
 
--   Data wrangling is the process of transforming raw data into a clean and structured format.
+- Data wrangling is the process of transforming raw data into a clean and structured format.
 
--   It involves merging, reshaping, filtering, and organizing data for analysis.
+- It involves merging, reshaping, filtering, and organizing data for analysis.
 
--   Here, we illustrate some special functions of the **pandas** for cleaning common issues with a dataset.
+- Here, we illustrate some special functions of the **pandas** for cleaning common issues with a dataset.
 
 ## Example 1
 
@@ -51,7 +51,7 @@ Let's load pandas and read the data set into Python.
 import pandas as pd
 
 # Load the Excel file into a pandas DataFrame.
-client_data = pd.read_excel("industrial_dataset.xlsx")
+industrial_data = pd.read_excel("industrial_dataset.xlsx")
 ```
 
 ## 
@@ -60,9 +60,8 @@ client_data = pd.read_excel("industrial_dataset.xlsx")
 #| echo: true
 
 # Preview the dataset.
-client_data.head()
+industrial_data.head()
 ```
-
 
 ## Fill blank cells
 
@@ -73,7 +72,7 @@ Let's fill in the missing entries of the columns `Operator`, `Maintenance Date`,
 ```{python}
 #| echo: true
 
-complete_data = (client_data
+complete_data = (industrial_data
                 .fillna({'Operator': 'Unknown', 
                 'Maintenance Date': '2023-01-01',
                 'Comment': 'None'})
@@ -359,19 +358,19 @@ glass_data['Type'] = pd.Categorical(glass_data['Type'])
 
 ## matplotlib library
 
--   **matplotlib** is a comprehensive library for creating static, animated, and interactive visualizations in Python.
--   It is widely used in the data science community for plotting data in various formats.
--   Ideal for creating simple visualizations like line plots, bar charts, scatter plots, and more.
--   <https://matplotlib.org/>
+- **matplotlib** is a comprehensive library for creating static, animated, and interactive visualizations in Python.
+- It is widely used in the data science community for plotting data in various formats.
+- Ideal for creating simple visualizations like line plots, bar charts, scatter plots, and more.
+- <https://matplotlib.org/>
 
 ![](images/matplotlib.png){fig-align="center"}
 
 ## seaborn library
 
--   **seaborn** is a Python library built on top of Matplotlib.
--   Designed to make statistical data visualization easy and beautiful.
--   Ideal for creating informative and attractive visualizations with minimal code.
--   <https://seaborn.pydata.org/index.html>
+- **seaborn** is a Python library built on top of Matplotlib.
+- Designed to make statistical data visualization easy and beautiful.
+- Ideal for creating informative and attractive visualizations with minimal code.
+- <https://seaborn.pydata.org/index.html>
 
 ![](images/seaborn.png){fig-align="center"}
 
@@ -539,11 +538,11 @@ plt.savefig('bar_chart.png',dpi=300)
 
 We can also use other functions to improve the aspect of the figure:
 
--   `plt.title(fontsize)`: Font size of the title.
--   `plt.ylabel(fontsize)`: Font size of y axis title.
--   `plt.xlabel(fontsize)`: Font size of x axis title.
--   `plt.yticks(fontsize)`: Font size of the y axis labels.
--   `plt.xticks(fontsize)`: Font size of the x axis labels.
+- `plt.title(fontsize)`: Font size of the title.
+- `plt.ylabel(fontsize)`: Font size of y axis title.
+- `plt.xlabel(fontsize)`: Font size of x axis title.
+- `plt.yticks(fontsize)`: Font size of the y axis labels.
+- `plt.xticks(fontsize)`: Font size of the x axis labels.
 
 ## 
 
