@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Alan R. Vazquez">
   <title>IN2004B Generation of Value with Data Analytics – Principal Component Analysis</title>
@@ -20,10 +20,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -206,7 +209,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Alan R. Vazquez 
+Alan R. Vazquez
 </div>
         <p class="quarto-title-affiliation">
             Department of Industrial Engineering
@@ -233,13 +236,13 @@ Alan R. Vazquez
 <h2>Load the libraries</h2>
 <p><br><br></p>
 <p>Before we start, let’s import the data science libraries into Python.</p>
-<div id="c13cbc2e" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><a></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb1-6"><a></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4184b622" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a aria-label="5"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-6"><a aria-label="6"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here, we use specific functions from the <strong>pandas</strong>, <strong>matplotlib</strong>, <strong>seaborn</strong>, and <strong>sklearn</strong> libraries in Python.</p>
 </section>
@@ -691,9 +694,9 @@ Alan R. Vazquez
 </section>
 <section id="the-data" class="slide level2">
 <h2>The data</h2>
-<div id="317d2348" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>tiktok_data <span class="op">=</span> pd.read_excel(<span class="st">"TikTok_Songs_2020_Reduced.xlsx"</span>)</span>
-<span id="cb2-2"><a></a>tiktok_data.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="67df1d93" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>tiktok_data <span class="op">=</span> pd.read_excel(<span class="st">"TikTok_Songs_2020_Reduced.xlsx"</span>)</span>
+<span id="cb2-2"><a aria-label="2"></a>tiktok_data.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <style scoped="">
@@ -781,24 +784,24 @@ Alan R. Vazquez
 <h2>Standardize the data</h2>
 <p><br></p>
 <p>Remember that PCA works with distances, so we must standardize the quantitative predictors to have an accurate analysis.</p>
-<div id="3ecb26e8" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Select the predictors</span></span>
-<span id="cb3-2"><a></a>features <span class="op">=</span> [<span class="st">'danceability'</span>, <span class="st">'energy'</span>, <span class="st">'loudness'</span>, <span class="st">'speechiness'</span>,</span>
-<span id="cb3-3"><a></a>            <span class="st">'acousticness'</span>, <span class="st">'liveness'</span>, <span class="st">'valence'</span>, <span class="st">'tempo'</span>]</span>
-<span id="cb3-4"><a></a>X_tiktok <span class="op">=</span> tiktok_data.<span class="bu">filter</span>(features)  </span>
-<span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a><span class="co"># Standardize the data</span></span>
-<span id="cb3-7"><a></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb3-8"><a></a>Xs_tiktok <span class="op">=</span> scaler.fit_transform(X_tiktok)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d054a93b" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="co"># Select the predictors</span></span>
+<span id="cb3-2"><a aria-label="2"></a>features <span class="op">=</span> [<span class="st">'danceability'</span>, <span class="st">'energy'</span>, <span class="st">'loudness'</span>, <span class="st">'speechiness'</span>,</span>
+<span id="cb3-3"><a aria-label="3"></a>            <span class="st">'acousticness'</span>, <span class="st">'liveness'</span>, <span class="st">'valence'</span>, <span class="st">'tempo'</span>]</span>
+<span id="cb3-4"><a aria-label="4"></a>X_tiktok <span class="op">=</span> tiktok_data.<span class="bu">filter</span>(features)  </span>
+<span id="cb3-5"><a aria-label="5"></a></span>
+<span id="cb3-6"><a aria-label="6"></a><span class="co"># Standardize the data</span></span>
+<span id="cb3-7"><a aria-label="7"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb3-8"><a aria-label="8"></a>Xs_tiktok <span class="op">=</span> scaler.fit_transform(X_tiktok)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="pca-in-python" class="slide level2">
 <h2>PCA in Python</h2>
 <p><br><br></p>
 <p>We tell Python that we want to apply PCA using the function <code>PCA()</code> from <strong>sklearn</strong>. Next, we run the algorithm using <code>.fit_transform()</code>.</p>
-<div id="2b84af06" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>pca <span class="op">=</span> PCA()</span>
-<span id="cb4-2"><a></a>PCA_tiktok <span class="op">=</span> pca.fit_transform(Xs_tiktok)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a1ebca3c" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>pca <span class="op">=</span> PCA()</span>
+<span id="cb4-2"><a aria-label="2"></a>PCA_tiktok <span class="op">=</span> pca.fit_transform(Xs_tiktok)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-8" class="slide level2">
@@ -814,7 +817,7 @@ Alan R. Vazquez
 </ul>
 </div><div class="column" style="width:50%;">
 <p><br><br></p>
-<div id="39a53ba8" class="cell" data-execution_count="5">
+<div id="f29279fd" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -830,23 +833,23 @@ Alan R. Vazquez
 <h2></h2>
 <p><br></p>
 <p>The code to generate a scree plot is below.</p>
-<div id="83dbf3fa" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>explained_var <span class="op">=</span> pca.explained_variance_ratio_</span>
-<span id="cb5-2"><a></a>cumulative_explained_var <span class="op">=</span> np.cumsum(explained_var)</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
-<span id="cb5-5"><a></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(explained_var) <span class="op">+</span> <span class="dv">1</span>), explained_var, marker<span class="op">=</span><span class="st">'o'</span>, </span>
-<span id="cb5-6"><a></a>         color <span class="op">=</span> <span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Individual'</span>)</span>
-<span id="cb5-7"><a></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(explained_var) <span class="op">+</span> <span class="dv">1</span>), cumulative_explained_var, </span>
-<span id="cb5-8"><a></a>         marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Cumulative'</span>)         </span>
-<span id="cb5-9"><a></a>plt.title(<span class="st">'Scree Plot'</span>)</span>
-<span id="cb5-10"><a></a>plt.xlabel(<span class="st">'Principal Component'</span>)</span>
-<span id="cb5-11"><a></a>plt.ylabel(<span class="st">'Explained Variance Ratio'</span>)</span>
-<span id="cb5-12"><a></a>plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(explained_var) <span class="op">+</span> <span class="dv">1</span>))</span>
-<span id="cb5-13"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb5-14"><a></a>plt.legend()</span>
-<span id="cb5-15"><a></a>plt.tight_layout()</span>
-<span id="cb5-16"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="91545b2a" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>explained_var <span class="op">=</span> pca.explained_variance_ratio_</span>
+<span id="cb5-2"><a aria-label="2"></a>cumulative_explained_var <span class="op">=</span> np.cumsum(explained_var)</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb5-5"><a aria-label="5"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(explained_var) <span class="op">+</span> <span class="dv">1</span>), explained_var, marker<span class="op">=</span><span class="st">'o'</span>, </span>
+<span id="cb5-6"><a aria-label="6"></a>         color <span class="op">=</span> <span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Individual'</span>)</span>
+<span id="cb5-7"><a aria-label="7"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(explained_var) <span class="op">+</span> <span class="dv">1</span>), cumulative_explained_var, </span>
+<span id="cb5-8"><a aria-label="8"></a>         marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Cumulative'</span>)         </span>
+<span id="cb5-9"><a aria-label="9"></a>plt.title(<span class="st">'Scree Plot'</span>)</span>
+<span id="cb5-10"><a aria-label="10"></a>plt.xlabel(<span class="st">'Principal Component'</span>)</span>
+<span id="cb5-11"><a aria-label="11"></a>plt.ylabel(<span class="st">'Explained Variance Ratio'</span>)</span>
+<span id="cb5-12"><a aria-label="12"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(explained_var) <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb5-13"><a aria-label="13"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb5-14"><a aria-label="14"></a>plt.legend()</span>
+<span id="cb5-15"><a aria-label="15"></a>plt.tight_layout()</span>
+<span id="cb5-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="biplot" class="slide level2">
@@ -860,7 +863,7 @@ Alan R. Vazquez
 <li>A red line indicates the growth direction of the labeled variable.</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="803abc4a" class="cell" data-execution_count="7">
+<div id="b4edca33" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -876,9 +879,9 @@ Alan R. Vazquez
 <h2></h2>
 <p>The code to generate the biplot is lenghty but it can be broken into three steps.</p>
 <p>Step 1. Create a DataFrame with the PCA results</p>
-<div id="6daf8248" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>pca_df <span class="op">=</span> pd.DataFrame(PCA_tiktok, columns<span class="op">=</span>[<span class="ss">f'PC</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(PCA_tiktok.shape[<span class="dv">1</span>])])</span>
-<span id="cb6-2"><a></a>pca_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2ba4edff" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>pca_df <span class="op">=</span> pd.DataFrame(PCA_tiktok, columns<span class="op">=</span>[<span class="ss">f'PC</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(PCA_tiktok.shape[<span class="dv">1</span>])])</span>
+<span id="cb6-2"><a aria-label="2"></a>pca_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <style scoped="">
@@ -975,19 +978,19 @@ Alan R. Vazquez
 <section id="section-11" class="slide level2">
 <h2></h2>
 <p>Step 2. Create biplot of first two principal components</p>
-<div id="19be0783" class="cell" data-execution_count="9">
+<div id="6e0542d8" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">5.5</span>))</span>
-<span id="cb7-2"><a></a>sns.scatterplot(x<span class="op">=</span>pca_df[<span class="st">'PC1'</span>], y<span class="op">=</span>pca_df[<span class="st">'PC2'</span>], alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb7-3"><a></a>plt.xlabel(<span class="st">'PC1'</span>)</span>
-<span id="cb7-4"><a></a>plt.ylabel(<span class="st">'PC2'</span>)</span>
-<span id="cb7-5"><a></a>plt.title(<span class="st">'PCA Biplot'</span>)</span>
-<span id="cb7-6"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb7-7"><a></a>plt.tight_layout()</span>
-<span id="cb7-8"><a></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb7-9"><a></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb7-10"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">5.5</span>))</span>
+<span id="cb7-2"><a aria-label="2"></a>sns.scatterplot(x<span class="op">=</span>pca_df[<span class="st">'PC1'</span>], y<span class="op">=</span>pca_df[<span class="st">'PC2'</span>], alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb7-3"><a aria-label="3"></a>plt.xlabel(<span class="st">'PC1'</span>)</span>
+<span id="cb7-4"><a aria-label="4"></a>plt.ylabel(<span class="st">'PC2'</span>)</span>
+<span id="cb7-5"><a aria-label="5"></a>plt.title(<span class="st">'PCA Biplot'</span>)</span>
+<span id="cb7-6"><a aria-label="6"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb7-7"><a aria-label="7"></a>plt.tight_layout()</span>
+<span id="cb7-8"><a aria-label="8"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-9"><a aria-label="9"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-10"><a aria-label="10"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1001,27 +1004,27 @@ Alan R. Vazquez
 <section id="section-12" class="slide level2">
 <h2></h2>
 <p>Step 3. Add more information to the biplot.</p>
-<div id="dfd1d687" class="cell" data-execution_count="10">
+<div id="7c11b46c" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">5.5</span>))</span>
-<span id="cb8-2"><a></a>sns.scatterplot(x<span class="op">=</span>pca_df[<span class="st">'PC1'</span>], y<span class="op">=</span>pca_df[<span class="st">'PC2'</span>], alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb8-3"><a></a>plt.xlabel(<span class="st">'PC1'</span>)</span>
-<span id="cb8-4"><a></a>plt.ylabel(<span class="st">'PC2'</span>)</span>
-<span id="cb8-5"><a></a>plt.title(<span class="st">'PCA Biplot'</span>)</span>
-<span id="cb8-6"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb8-7"><a></a>plt.tight_layout()</span>
-<span id="cb8-8"><a></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb8-9"><a></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb8-10"><a></a></span>
-<span id="cb8-11"><a></a><span class="co"># Add variable vectors</span></span>
-<span id="cb8-12"><a></a>loadings <span class="op">=</span> pca.components_.T[:, :<span class="dv">2</span>]  <span class="co"># loadings for PC1 and PC2</span></span>
-<span id="cb8-13"><a></a><span class="cf">for</span> i, feature <span class="kw">in</span> <span class="bu">enumerate</span>(features):</span>
-<span id="cb8-14"><a></a>    plt.arrow(<span class="dv">0</span>, <span class="dv">0</span>, loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="dv">3</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="dv">3</span>,</span>
-<span id="cb8-15"><a></a>              color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, head_width<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb8-16"><a></a>    plt.text(loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="fl">3.2</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="fl">3.2</span>, feature, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb8-17"><a></a></span>
-<span id="cb8-18"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">5.5</span>))</span>
+<span id="cb8-2"><a aria-label="2"></a>sns.scatterplot(x<span class="op">=</span>pca_df[<span class="st">'PC1'</span>], y<span class="op">=</span>pca_df[<span class="st">'PC2'</span>], alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb8-3"><a aria-label="3"></a>plt.xlabel(<span class="st">'PC1'</span>)</span>
+<span id="cb8-4"><a aria-label="4"></a>plt.ylabel(<span class="st">'PC2'</span>)</span>
+<span id="cb8-5"><a aria-label="5"></a>plt.title(<span class="st">'PCA Biplot'</span>)</span>
+<span id="cb8-6"><a aria-label="6"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb8-7"><a aria-label="7"></a>plt.tight_layout()</span>
+<span id="cb8-8"><a aria-label="8"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-9"><a aria-label="9"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-10"><a aria-label="10"></a></span>
+<span id="cb8-11"><a aria-label="11"></a><span class="co"># Add variable vectors</span></span>
+<span id="cb8-12"><a aria-label="12"></a>loadings <span class="op">=</span> pca.components_.T[:, :<span class="dv">2</span>]  <span class="co"># loadings for PC1 and PC2</span></span>
+<span id="cb8-13"><a aria-label="13"></a><span class="cf">for</span> i, feature <span class="kw">in</span> <span class="bu">enumerate</span>(features):</span>
+<span id="cb8-14"><a aria-label="14"></a>    plt.arrow(<span class="dv">0</span>, <span class="dv">0</span>, loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="dv">3</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="dv">3</span>,</span>
+<span id="cb8-15"><a aria-label="15"></a>              color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, head_width<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb8-16"><a aria-label="16"></a>    plt.text(loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="fl">3.2</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="fl">3.2</span>, feature, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb8-17"><a aria-label="17"></a></span>
+<span id="cb8-18"><a aria-label="18"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1035,38 +1038,38 @@ Alan R. Vazquez
 <section id="section-13" class="slide level2">
 <h2></h2>
 <p>With some extra lines of code, we label the points in the plot.</p>
-<div id="2b7b6f3b" class="cell" data-execution_count="11">
+<div id="82ed5b97" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>pca_df <span class="op">=</span> pd.DataFrame(PCA_tiktok, columns<span class="op">=</span>[<span class="ss">f'PC</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(PCA_tiktok.shape[<span class="dv">1</span>])])</span>
-<span id="cb9-2"><a></a>pca_df <span class="op">=</span> (pca_df</span>
-<span id="cb9-3"><a></a>          .assign(songs <span class="op">=</span> tiktok_data[<span class="st">'track_name'</span>])</span>
-<span id="cb9-4"><a></a>          )</span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">5.5</span>))</span>
-<span id="cb9-7"><a></a>sns.scatterplot(x<span class="op">=</span>pca_df[<span class="st">'PC1'</span>], y<span class="op">=</span>pca_df[<span class="st">'PC2'</span>], alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb9-8"><a></a>plt.xlabel(<span class="st">'PC1'</span>)</span>
-<span id="cb9-9"><a></a>plt.ylabel(<span class="st">'PC2'</span>)</span>
-<span id="cb9-10"><a></a>plt.title(<span class="st">'PCA Biplot'</span>)</span>
-<span id="cb9-11"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb9-12"><a></a>plt.tight_layout()</span>
-<span id="cb9-13"><a></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb9-14"><a></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb9-15"><a></a></span>
-<span id="cb9-16"><a></a><span class="co"># Add labels for each song</span></span>
-<span id="cb9-17"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(pca_df.shape[<span class="dv">0</span>]):</span>
-<span id="cb9-18"><a></a>    plt.text(pca_df[<span class="st">'PC1'</span>][i] <span class="op">+</span> <span class="fl">0.1</span>, pca_df[<span class="st">'PC2'</span>][i] <span class="op">+</span> <span class="fl">0.1</span>,</span>
-<span id="cb9-19"><a></a>             pca_df[<span class="st">'songs'</span>][i], fontsize<span class="op">=</span><span class="dv">8</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb9-20"><a></a></span>
-<span id="cb9-21"><a></a></span>
-<span id="cb9-22"><a></a><span class="co"># Add variable vectors</span></span>
-<span id="cb9-23"><a></a>loadings <span class="op">=</span> pca.components_.T[:, :<span class="dv">2</span>]  <span class="co"># loadings for PC1 and PC2</span></span>
-<span id="cb9-24"><a></a><span class="cf">for</span> i, feature <span class="kw">in</span> <span class="bu">enumerate</span>(features):</span>
-<span id="cb9-25"><a></a>    plt.arrow(<span class="dv">0</span>, <span class="dv">0</span>, loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="dv">3</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="dv">3</span>,</span>
-<span id="cb9-26"><a></a>              color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, head_width<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb9-27"><a></a>    plt.text(loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="fl">3.2</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="fl">3.2</span>, feature, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb9-28"><a></a></span>
-<span id="cb9-29"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>pca_df <span class="op">=</span> pd.DataFrame(PCA_tiktok, columns<span class="op">=</span>[<span class="ss">f'PC</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(PCA_tiktok.shape[<span class="dv">1</span>])])</span>
+<span id="cb9-2"><a aria-label="2"></a>pca_df <span class="op">=</span> (pca_df</span>
+<span id="cb9-3"><a aria-label="3"></a>          .assign(songs <span class="op">=</span> tiktok_data[<span class="st">'track_name'</span>])</span>
+<span id="cb9-4"><a aria-label="4"></a>          )</span>
+<span id="cb9-5"><a aria-label="5"></a></span>
+<span id="cb9-6"><a aria-label="6"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">5.5</span>))</span>
+<span id="cb9-7"><a aria-label="7"></a>sns.scatterplot(x<span class="op">=</span>pca_df[<span class="st">'PC1'</span>], y<span class="op">=</span>pca_df[<span class="st">'PC2'</span>], alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb9-8"><a aria-label="8"></a>plt.xlabel(<span class="st">'PC1'</span>)</span>
+<span id="cb9-9"><a aria-label="9"></a>plt.ylabel(<span class="st">'PC2'</span>)</span>
+<span id="cb9-10"><a aria-label="10"></a>plt.title(<span class="st">'PCA Biplot'</span>)</span>
+<span id="cb9-11"><a aria-label="11"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb9-12"><a aria-label="12"></a>plt.tight_layout()</span>
+<span id="cb9-13"><a aria-label="13"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb9-14"><a aria-label="14"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb9-15"><a aria-label="15"></a></span>
+<span id="cb9-16"><a aria-label="16"></a><span class="co"># Add labels for each song</span></span>
+<span id="cb9-17"><a aria-label="17"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(pca_df.shape[<span class="dv">0</span>]):</span>
+<span id="cb9-18"><a aria-label="18"></a>    plt.text(pca_df[<span class="st">'PC1'</span>][i] <span class="op">+</span> <span class="fl">0.1</span>, pca_df[<span class="st">'PC2'</span>][i] <span class="op">+</span> <span class="fl">0.1</span>,</span>
+<span id="cb9-19"><a aria-label="19"></a>             pca_df[<span class="st">'songs'</span>][i], fontsize<span class="op">=</span><span class="dv">8</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb9-20"><a aria-label="20"></a></span>
+<span id="cb9-21"><a aria-label="21"></a></span>
+<span id="cb9-22"><a aria-label="22"></a><span class="co"># Add variable vectors</span></span>
+<span id="cb9-23"><a aria-label="23"></a>loadings <span class="op">=</span> pca.components_.T[:, :<span class="dv">2</span>]  <span class="co"># loadings for PC1 and PC2</span></span>
+<span id="cb9-24"><a aria-label="24"></a><span class="cf">for</span> i, feature <span class="kw">in</span> <span class="bu">enumerate</span>(features):</span>
+<span id="cb9-25"><a aria-label="25"></a>    plt.arrow(<span class="dv">0</span>, <span class="dv">0</span>, loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="dv">3</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="dv">3</span>,</span>
+<span id="cb9-26"><a aria-label="26"></a>              color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, head_width<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb9-27"><a aria-label="27"></a>    plt.text(loadings[i, <span class="dv">0</span>]<span class="op">*</span><span class="fl">3.2</span>, loadings[i, <span class="dv">1</span>]<span class="op">*</span><span class="fl">3.2</span>, feature, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb9-28"><a aria-label="28"></a></span>
+<span id="cb9-29"><a aria-label="29"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1272,7 +1275,7 @@ Alan R. Vazquez
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

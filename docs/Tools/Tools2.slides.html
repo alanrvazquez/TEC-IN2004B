@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Alan R. Vazquez">
   <title>IN2004B Generation of Value with Data Analytics – Data Wrangling and Visualization</title>
@@ -20,10 +20,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -206,7 +209,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Alan R. Vazquez 
+Alan R. Vazquez
 </div>
         <p class="quarto-title-affiliation">
             Department of Industrial Engineering
@@ -242,18 +245,18 @@ Alan R. Vazquez
 <p>Consider an industrial engineer who receives a messy Excel file from a manufacturing client. The data file is called “industrial_dataset.xlsx”, which file includes data about machine maintenance logs, production output, and operator comments.</p>
 <p>The <strong>goal</strong> is to clean and prepare this dataset using pandas so it can be analyzed.</p>
 <p>Let’s load pandas and read the data set into Python.</p>
-<div id="51da6ffc" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co"># Load the Excel file into a pandas DataFrame.</span></span>
-<span id="cb1-4"><a></a>client_data <span class="op">=</span> pd.read_excel(<span class="st">"industrial_dataset.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f0aabb89" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="co"># Load the Excel file into a pandas DataFrame.</span></span>
+<span id="cb1-4"><a aria-label="4"></a>industrial_data <span class="op">=</span> pd.read_excel(<span class="st">"industrial_dataset.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<div id="e40bed05" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Preview the dataset.</span></span>
-<span id="cb2-2"><a></a>client_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="98fd4fb8" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Preview the dataset.</span></span>
+<span id="cb2-2"><a aria-label="2"></a>industrial_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <style scoped="">
@@ -333,18 +336,18 @@ Alan R. Vazquez
 <h2>Fill blank cells</h2>
 <p>In the dataset, there are columns with missing values. If we would like to fill them with specific values or text, we use the <code>.fillna()</code> function. In this function, we use the syntaxis <code>'Variable': 'Replace'</code>, where the <code>Variable</code> is the column in the dataset and <code>Replace</code> is the text or number to fill the entry in.</p>
 <p>Let’s fill in the missing entries of the columns <code>Operator</code>, <code>Maintenance Date</code>, and <code>Comment</code>.</p>
-<div id="27d91f75" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>complete_data <span class="op">=</span> (client_data</span>
-<span id="cb3-2"><a></a>                .fillna({<span class="st">'Operator'</span>: <span class="st">'Unknown'</span>, </span>
-<span id="cb3-3"><a></a>                <span class="st">'Maintenance Date'</span>: <span class="st">'2023-01-01'</span>,</span>
-<span id="cb3-4"><a></a>                <span class="st">'Comment'</span>: <span class="st">'None'</span>})</span>
-<span id="cb3-5"><a></a>                ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e0d26376" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>complete_data <span class="op">=</span> (industrial_data</span>
+<span id="cb3-2"><a aria-label="2"></a>                .fillna({<span class="st">'Operator'</span>: <span class="st">'Unknown'</span>, </span>
+<span id="cb3-3"><a aria-label="3"></a>                <span class="st">'Maintenance Date'</span>: <span class="st">'2023-01-01'</span>,</span>
+<span id="cb3-4"><a aria-label="4"></a>                <span class="st">'Comment'</span>: <span class="st">'None'</span>})</span>
+<span id="cb3-5"><a aria-label="5"></a>                ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
-<div id="f244937f" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>complete_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="594f0e24" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>complete_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <style scoped="">
@@ -424,8 +427,8 @@ Alan R. Vazquez
 <h2>Replace values</h2>
 <p><br></p>
 <p>There are some cases in which columns have some undesired or unwatned values. Consider the <code>Output (units)</code> as an example.</p>
-<div id="2adfc597" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>complete_data[<span class="st">'Output (units)'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="42f77bf3" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>complete_data[<span class="st">'Output (units)'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0     1200
 1     1200
@@ -441,16 +444,16 @@ Name: Output (units), dtype: object</code></pre>
 <h2></h2>
 <p><br></p>
 <p>We can replace the “error” in this column by a user-specified value, say, 0. To this end, we use the function <code>.replace()</code>. The function has two inputs. The first one is the value to replace and the second one is the replacement value.</p>
-<div id="c5f7fc98" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>complete_data[<span class="st">'Output (units)'</span>] <span class="op">=</span> complete_data[<span class="st">'Output (units)'</span>].replace(<span class="st">'error'</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ae24439e" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>complete_data[<span class="st">'Output (units)'</span>] <span class="op">=</span> complete_data[<span class="st">'Output (units)'</span>].replace(<span class="st">'error'</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>Let’s check the new column.</p>
-<div id="0ba80217" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>complete_data[<span class="st">'Output (units)'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ae8c51d9" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>complete_data[<span class="st">'Output (units)'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0     1200
 1     1200
@@ -471,8 +474,8 @@ Name: Output (units), Length: 100, dtype: int64</code></pre>
 <section id="split-column-into-multiple-ones" class="slide level2">
 <h2>Split column into multiple ones</h2>
 <p>There are some cases in which we want to split a column according to a character. For example, consider the column <code>Comment</code> from the dataset.</p>
-<div id="d61139f6" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>complete_data[<span class="st">'Comment'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c533cc8d" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>complete_data[<span class="st">'Comment'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>0                       ok
 1                       ok
@@ -493,7 +496,7 @@ Name: Comment, Length: 100, dtype: object</code></pre>
 <h2></h2>
 <p><br></p>
 <p>The column has some values such as “Requires part: valve” and “Delay: maintenance” that we may want to split into columns.</p>
-<div id="9e9e8ab9" class="cell" data-execution_count="9">
+<div id="7b560d95" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0                       ok
 1                       ok
@@ -516,17 +519,17 @@ Name: Comment, Length: 100, dtype: object</code></pre>
 <p>We can split the values in the column according to the colon “:”.</p>
 <p>That is, everything before the colon will be in a column. Everything after the colon will be in another column. To achieve this, we use the function <code>str.split()</code>.</p>
 <p>One input of the function is the symbol or character for which we cant to make a split. The other input, <code>expand = True</code> tells Python that we want to create new columns.</p>
-<div id="34bd80f2" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>complete_data[<span class="st">'Comment'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>, expand <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c2b1938d" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>complete_data[<span class="st">'Comment'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>, expand <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>The result is two columns.</p>
-<div id="5adb0270" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>split_column <span class="op">=</span> complete_data[<span class="st">'Comment'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>, expand <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb14-2"><a></a>split_column.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="35cb6208" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>split_column <span class="op">=</span> complete_data[<span class="st">'Comment'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>, expand <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb14-2"><a aria-label="2"></a>split_column.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <style scoped="">
@@ -588,17 +591,17 @@ Name: Comment, Length: 100, dtype: object</code></pre>
 <h2></h2>
 <p><br><br></p>
 <p>We can assign them to new columns in the dataset using the following code.</p>
-<div id="5dfe9ae6" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>augmented_data <span class="op">=</span> (complete_data</span>
-<span id="cb15-2"><a></a>                  .assign(First_comment <span class="op">=</span> split_column.<span class="bu">filter</span>([<span class="dv">0</span>]),</span>
-<span id="cb15-3"><a></a>                  Second_comment <span class="op">=</span> split_column.<span class="bu">filter</span>([<span class="dv">1</span>]))</span>
-<span id="cb15-4"><a></a>                  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="39e21696" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>augmented_data <span class="op">=</span> (complete_data</span>
+<span id="cb15-2"><a aria-label="2"></a>                  .assign(First_comment <span class="op">=</span> split_column.<span class="bu">filter</span>([<span class="dv">0</span>]),</span>
+<span id="cb15-3"><a aria-label="3"></a>                  Second_comment <span class="op">=</span> split_column.<span class="bu">filter</span>([<span class="dv">1</span>]))</span>
+<span id="cb15-4"><a aria-label="4"></a>                  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-8" class="slide level2">
 <h2></h2>
-<div id="0afe9b38" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>augmented_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="246e5188" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>augmented_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <style scoped="">
@@ -691,16 +694,16 @@ Name: Comment, Length: 100, dtype: object</code></pre>
 <p><br></p>
 <p>Something that we notice is that the column <code>First_Comment</code> has some extra characters like “” that may be useless when working with the data.</p>
 <p>We can remove them using the function <code>str.strip()</code>. The input of the function is the character to remove.</p>
-<div id="2f116d40" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>augmented_data[<span class="st">'First_comment'</span>] <span class="op">=</span> augmented_data[<span class="st">'First_comment'</span>].<span class="bu">str</span>.strip(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="824d102d" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>augmented_data[<span class="st">'First_comment'</span>] <span class="op">=</span> augmented_data[<span class="st">'First_comment'</span>].<span class="bu">str</span>.strip(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-9" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p>Let’s see the cleaned column.</p>
-<div id="4ac757c3" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>augmented_data[<span class="st">'First_comment'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cffb1367" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a>augmented_data[<span class="st">'First_comment'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>0                ok
 1                ok
@@ -721,8 +724,8 @@ Name: First_comment, Length: 100, dtype: object</code></pre>
 <h2></h2>
 <p><br></p>
 <p>We can also remove other characters.</p>
-<div id="6987fff7" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>augmented_data[<span class="st">'First_comment'</span>].<span class="bu">str</span>.strip(<span class="st">"!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f93041dc" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a>augmented_data[<span class="st">'First_comment'</span>].<span class="bu">str</span>.strip(<span class="st">"!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>0                ok
 1                ok
@@ -743,8 +746,8 @@ Name: First_comment, Length: 100, dtype: object</code></pre>
 <h2>Transform text case</h2>
 <p>When working with text columns such as those containing names, it might be possible to have different ways of writing. A common case is when having lower case or upper case names or a combination thereof.</p>
 <p>For example, consider the column <code>Operator</code> containing the names of the operators.</p>
-<div id="833ddc28" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>complete_data[<span class="st">'Operator'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d7fe3517" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>complete_data[<span class="st">'Operator'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>0       Ana 
 1        Ana
@@ -759,9 +762,9 @@ Name: Operator, dtype: object</code></pre>
 <h2>Remove extra spaces</h2>
 <p><br></p>
 <p>To deal with names, we first use the <code>.str.strip()</code> to remove leading and trailing characters from strings.</p>
-<div id="147d7b08" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>complete_data[<span class="st">'Operator'</span>] <span class="op">=</span> complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.strip()</span>
-<span id="cb24-2"><a></a>complete_data[<span class="st">'Operator'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7384d498" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>complete_data[<span class="st">'Operator'</span>] <span class="op">=</span> complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.strip()</span>
+<span id="cb24-2"><a aria-label="2"></a>complete_data[<span class="st">'Operator'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>0         Ana
 1         Ana
@@ -782,8 +785,8 @@ Name: Operator, Length: 100, dtype: object</code></pre>
 <h2>Change to lowercase letters</h2>
 <p><br></p>
 <p>We can turn all names to lowercase using the function <code>str.lower()</code>.</p>
-<div id="8d42e928" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.lower()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7333369c" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a>complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.lower()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>0         ana
 1         ana
@@ -804,8 +807,8 @@ Name: Operator, Length: 100, dtype: object</code></pre>
 <h2>Change to uppercase letters</h2>
 <p><br></p>
 <p>We can turn all names to lowercase using the function <code>str.upper()</code>.</p>
-<div id="cd9af9b2" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.upper()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4f16bed8" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.upper()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>0         ANA
 1         ANA
@@ -826,8 +829,8 @@ Name: Operator, Length: 100, dtype: object</code></pre>
 <h2>Capitalize the first letter</h2>
 <p><br></p>
 <p>We can convert all names to title case using the function <code>str.title()</code>.</p>
-<div id="95bf7c92" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.title()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a5666121" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.title()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>0         Ana
 1         Ana
@@ -847,12 +850,12 @@ Name: Operator, Length: 100, dtype: object</code></pre>
 <section id="remove-duplicate-rows" class="slide level2">
 <h2>Remove duplicate rows</h2>
 <p>Duplicate rows have the same entries in every column in the dataset. If only one row is needed for the analysis, we can remove the duplicates using <code>.drop_duplicates()</code>. For example, we can see the unique names of the operators.</p>
-<div id="0441a15c" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>operators <span class="op">=</span> complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.title()</span>
-<span id="cb32-2"><a></a></span>
-<span id="cb32-3"><a></a>(operators</span>
-<span id="cb32-4"><a></a>.drop_duplicates()</span>
-<span id="cb32-5"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d6708b5b" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>operators <span class="op">=</span> complete_data[<span class="st">'Operator'</span>].<span class="bu">str</span>.title()</span>
+<span id="cb32-2"><a aria-label="2"></a></span>
+<span id="cb32-3"><a aria-label="3"></a>(operators</span>
+<span id="cb32-4"><a aria-label="4"></a>.drop_duplicates()</span>
+<span id="cb32-5"><a aria-label="5"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>0         Ana
 2         Bob
@@ -880,14 +883,14 @@ Name: Operator, dtype: object</code></pre>
 <h2></h2>
 <p><br><br></p>
 <p>The dataset is in the file “glass.xlsx”. Let’s load it using <strong>pandas</strong>.</p>
-<div id="3fd0f8d2" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co"># Load the Excel file into a pandas DataFrame.</span></span>
-<span id="cb34-2"><a></a>glass_data <span class="op">=</span> pd.read_excel(<span class="st">"glass.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3834bd83" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a><span class="co"># Load the Excel file into a pandas DataFrame.</span></span>
+<span id="cb34-2"><a aria-label="2"></a>glass_data <span class="op">=</span> pd.read_excel(<span class="st">"glass.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <p>The variable <code>Type</code> is categorical. So, let’s ensure Python knows this using the code below.</p>
-<div id="90a752d0" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>glass_data[<span class="st">'Type'</span>] <span class="op">=</span> pd.Categorical(glass_data[<span class="st">'Type'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="53469e2f" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a aria-label="1"></a>glass_data[<span class="st">'Type'</span>] <span class="op">=</span> pd.Categorical(glass_data[<span class="st">'Type'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="matplotlib-library" class="slide level2">
@@ -914,9 +917,9 @@ Name: Operator, dtype: object</code></pre>
 <h2>Importing the libraries</h2>
 <p><br></p>
 <p>The <strong>matplotlib</strong> and <strong>seaborn</strong> libraries are pre-installed in Google Colab. However, we need to inform Google Colab that we want to use them and its functions using the following command:</p>
-<div id="7ea80a25" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb36-2"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b63de17c" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb36-2"><a aria-label="2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Similar to <strong>pandas</strong>, the command <code>as sns</code> allows us to have a short name for <strong>seaborn</strong>. Similarly, we rename <strong>matplotlib</strong> as <strong>plt</strong>.</p>
 </section>
@@ -930,14 +933,14 @@ Name: Operator, dtype: object</code></pre>
 <section id="histogram-of-na" class="slide level2">
 <h2>Histogram of Na</h2>
 <p>To create a histogram, we use the function <code>histplot()</code> from <strong>seabron</strong>.</p>
-<div id="a3075433" class="cell" data-execution_count="26">
+<div id="56285414" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for figure.</span></span>
-<span id="cb37-2"><a></a>sns.histplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Na'</span>) <span class="co"># Create the histogram.</span></span>
-<span id="cb37-3"><a></a>plt.title(<span class="st">"Histogram of Na"</span>) <span class="co"># Plot title.</span></span>
-<span id="cb37-4"><a></a>plt.xlabel(<span class="st">"Na"</span>) <span class="co"># X label</span></span>
-<span id="cb37-5"><a></a>plt.show() <span class="co"># Display the plot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for figure.</span></span>
+<span id="cb37-2"><a aria-label="2"></a>sns.histplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Na'</span>) <span class="co"># Create the histogram.</span></span>
+<span id="cb37-3"><a aria-label="3"></a>plt.title(<span class="st">"Histogram of Na"</span>) <span class="co"># Plot title.</span></span>
+<span id="cb37-4"><a aria-label="4"></a>plt.xlabel(<span class="st">"Na"</span>) <span class="co"># X label</span></span>
+<span id="cb37-5"><a aria-label="5"></a>plt.show() <span class="co"># Display the plot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -963,13 +966,13 @@ Name: Operator, dtype: object</code></pre>
 <section id="box-plot-of-na" class="slide level2">
 <h2>Box plot of Na</h2>
 <p>To create a boxplot, we use the function <code>boxplot()</code> from <strong>seabron</strong>.</p>
-<div id="10fb90ab" class="cell" data-execution_count="27">
+<div id="c1c3207f" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for the figure.</span></span>
-<span id="cb38-2"><a></a>sns.boxplot(data <span class="op">=</span> glass_data, y <span class="op">=</span> <span class="st">'Na'</span>) <span class="co"># Create boxplot.</span></span>
-<span id="cb38-3"><a></a>plt.title(<span class="st">"Box plot of Na"</span>) <span class="co"># Add title.</span></span>
-<span id="cb38-4"><a></a>plt.show() <span class="co"># Show the plot.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for the figure.</span></span>
+<span id="cb38-2"><a aria-label="2"></a>sns.boxplot(data <span class="op">=</span> glass_data, y <span class="op">=</span> <span class="st">'Na'</span>) <span class="co"># Create boxplot.</span></span>
+<span id="cb38-3"><a aria-label="3"></a>plt.title(<span class="st">"Box plot of Na"</span>) <span class="co"># Add title.</span></span>
+<span id="cb38-4"><a aria-label="4"></a>plt.show() <span class="co"># Show the plot.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -997,15 +1000,15 @@ Name: Operator, dtype: object</code></pre>
 <section id="scatter-plot-of-na-versus-ri" class="slide level2">
 <h2>Scatter plot of Na versus RI</h2>
 <p>To create a scatter plot, we use the function <code>scatter()</code> from <strong>seabron</strong>. In this function, you must state the</p>
-<div id="ac809f94" class="cell" data-execution_count="28">
+<div id="7b870ff8" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for the plot.</span></span>
-<span id="cb39-2"><a></a>sns.scatterplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Na'</span>, y <span class="op">=</span> <span class="st">'RI'</span>) <span class="co"># Show the plot.</span></span>
-<span id="cb39-3"><a></a>plt.title(<span class="st">"Scatter plot of Na vs RI"</span>) <span class="co"># Set plot title.</span></span>
-<span id="cb39-4"><a></a>plt.xlabel(<span class="st">"Na"</span>) <span class="co"># Set label for X axis.</span></span>
-<span id="cb39-5"><a></a>plt.ylabel(<span class="st">"RI"</span>) <span class="co"># Set label for Y axis.</span></span>
-<span id="cb39-6"><a></a>plt.show() <span class="co"># Show plot.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for the plot.</span></span>
+<span id="cb39-2"><a aria-label="2"></a>sns.scatterplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Na'</span>, y <span class="op">=</span> <span class="st">'RI'</span>) <span class="co"># Show the plot.</span></span>
+<span id="cb39-3"><a aria-label="3"></a>plt.title(<span class="st">"Scatter plot of Na vs RI"</span>) <span class="co"># Set plot title.</span></span>
+<span id="cb39-4"><a aria-label="4"></a>plt.xlabel(<span class="st">"Na"</span>) <span class="co"># Set label for X axis.</span></span>
+<span id="cb39-5"><a aria-label="5"></a>plt.ylabel(<span class="st">"RI"</span>) <span class="co"># Set label for Y axis.</span></span>
+<span id="cb39-6"><a aria-label="6"></a>plt.show() <span class="co"># Show plot.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1026,15 +1029,15 @@ Name: Operator, dtype: object</code></pre>
 <section id="section-12" class="slide level2">
 <h2></h2>
 <p>We create the bar chart using the function <code>countplot()</code> from <strong>seaborn</strong>.</p>
-<div id="048294c9" class="cell" data-execution_count="29">
+<div id="f1294f67" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="co"># Create plot.</span></span>
-<span id="cb40-2"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for the plot.</span></span>
-<span id="cb40-3"><a></a>sns.countplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Type'</span>) <span class="co"># Show the plot.</span></span>
-<span id="cb40-4"><a></a>plt.title(<span class="st">"Bar chart of Type of Glasses"</span>) <span class="co"># Set plot title.</span></span>
-<span id="cb40-5"><a></a>plt.ylabel(<span class="st">"Frequency"</span>) <span class="co"># Set label for Y axis.</span></span>
-<span id="cb40-6"><a></a>plt.show() <span class="co"># Show plot.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a aria-label="1"></a><span class="co"># Create plot.</span></span>
+<span id="cb40-2"><a aria-label="2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>)) <span class="co"># Create space for the plot.</span></span>
+<span id="cb40-3"><a aria-label="3"></a>sns.countplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Type'</span>) <span class="co"># Show the plot.</span></span>
+<span id="cb40-4"><a aria-label="4"></a>plt.title(<span class="st">"Bar chart of Type of Glasses"</span>) <span class="co"># Set plot title.</span></span>
+<span id="cb40-5"><a aria-label="5"></a>plt.ylabel(<span class="st">"Frequency"</span>) <span class="co"># Set label for Y axis.</span></span>
+<span id="cb40-6"><a aria-label="6"></a>plt.show() <span class="co"># Show plot.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1049,13 +1052,13 @@ Name: Operator, dtype: object</code></pre>
 <h2>Saving plots</h2>
 <p><br></p>
 <p>We save a figure using the <code>save.fig</code> function from <strong>matplotlib</strong>. The <code>dpi</code> argument of this function sets the resolution of the image. The higher the <code>dpi</code>, the better the resolution.</p>
-<div id="419dee8f" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">7</span>))</span>
-<span id="cb41-2"><a></a>sns.countplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Type'</span>)</span>
-<span id="cb41-3"><a></a>plt.title(<span class="st">'Frequency of Each Category'</span>)</span>
-<span id="cb41-4"><a></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
-<span id="cb41-5"><a></a>plt.xlabel(<span class="st">'Category'</span>)</span>
-<span id="cb41-6"><a></a>plt.savefig(<span class="st">'bar_chart.png'</span>,dpi<span class="op">=</span><span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c7c6bc98" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">7</span>))</span>
+<span id="cb41-2"><a aria-label="2"></a>sns.countplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Type'</span>)</span>
+<span id="cb41-3"><a aria-label="3"></a>plt.title(<span class="st">'Frequency of Each Category'</span>)</span>
+<span id="cb41-4"><a aria-label="4"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb41-5"><a aria-label="5"></a>plt.xlabel(<span class="st">'Category'</span>)</span>
+<span id="cb41-6"><a aria-label="6"></a>plt.savefig(<span class="st">'bar_chart.png'</span>,dpi<span class="op">=</span><span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="improving-the-figure" class="slide level2">
@@ -1072,15 +1075,15 @@ Name: Operator, dtype: object</code></pre>
 </section>
 <section id="section-13" class="slide level2">
 <h2></h2>
-<div id="1c8841d7" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
-<span id="cb42-2"><a></a>sns.countplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Type'</span>)</span>
-<span id="cb42-3"><a></a>plt.title(<span class="st">'Relative Frequency of Each Category'</span>, fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
-<span id="cb42-4"><a></a>plt.ylabel(<span class="st">'Relative Frequency'</span>, fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
-<span id="cb42-5"><a></a>plt.xlabel(<span class="st">'Category'</span>, fontsize <span class="op">=</span> <span class="dv">15</span>)</span>
-<span id="cb42-6"><a></a>plt.xticks(fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
-<span id="cb42-7"><a></a>plt.yticks(fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
-<span id="cb42-8"><a></a>plt.savefig(<span class="st">'bar_chart.png'</span>,dpi<span class="op">=</span><span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3a0e6c52" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb42-2"><a aria-label="2"></a>sns.countplot(data <span class="op">=</span> glass_data, x <span class="op">=</span> <span class="st">'Type'</span>)</span>
+<span id="cb42-3"><a aria-label="3"></a>plt.title(<span class="st">'Relative Frequency of Each Category'</span>, fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
+<span id="cb42-4"><a aria-label="4"></a>plt.ylabel(<span class="st">'Relative Frequency'</span>, fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
+<span id="cb42-5"><a aria-label="5"></a>plt.xlabel(<span class="st">'Category'</span>, fontsize <span class="op">=</span> <span class="dv">15</span>)</span>
+<span id="cb42-6"><a aria-label="6"></a>plt.xticks(fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
+<span id="cb42-7"><a aria-label="7"></a>plt.yticks(fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
+<span id="cb42-8"><a aria-label="8"></a>plt.savefig(<span class="st">'bar_chart.png'</span>,dpi<span class="op">=</span><span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1288,7 +1291,7 @@ Name: Operator, dtype: object</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
