@@ -106,16 +106,6 @@ Recall that
   - The **reference class** is the one for which $Y = 0$.
 :::
 
-## Classification algorithms
-
-</br></br>
-
-Classification algorithms use predictor values [*to predict the class*]{style="color:#4682B4;"} of the response (either target or reference).
-
-</br>
-
-That is, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not.
-
 ## The goal of classification algorithms
 
 </br>
@@ -126,11 +116,22 @@ That is, for an unseen record, they use predictor values to predict whether the 
 
 . . .
 
-To achieve this goal, most algorithms consider functions $C(\boldsymbol{X})$ that [**predict the probability**]{style="color:brown;"} that $Y$ takes the value of 1.
+That is, classification algorithms use predictor values [*to predict the class*]{style="color:#4682B4;"} of the response (either target or reference).
+
 
 </br>
 
 . . .
+
+So, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not.
+
+## 
+
+</br></br></br>
+
+To achieve this goal, most algorithms consider functions $C(\boldsymbol{X})$ that [**predict the probability**]{style="color:brown;"} that $Y$ takes the value of 1.
+
+</br>
 
 A probability for each class can be very useful for gauging the model’s confidence about the predicted classification.
 

@@ -634,7 +634,7 @@
     "href": "Module2/Classification.slides.html#the-goal-of-classification-algorithms",
     "title": "Classification Trees",
     "section": "The goal of classification algorithms",
-    "text": "The goal of classification algorithms\n\nGoal: Develop a function \\(C(\\boldsymbol{X})\\) for predicting \\(Y = \\{0, 1\\}\\) from \\(\\boldsymbol{X}\\).\n\n\nTo achieve this goal, most algorithms consider functions \\(C(\\boldsymbol{X})\\) that predict the probability that \\(Y\\) takes the value of 1.\n\n\n\nA probability for each class can be very useful for gauging the model’s confidence about the predicted classification."
+    "text": "The goal of classification algorithms\n\nGoal: Develop a function \\(C(\\boldsymbol{X})\\) for predicting \\(Y = \\{0, 1\\}\\) from \\(\\boldsymbol{X}\\).\n\n\nThat is, classification algorithms use predictor values to predict the class of the response (either target or reference).\n\n\n\nSo, for an unseen record, they use predictor values to predict whether the record belongs to the target class or not."
   },
   {
     "objectID": "Module2/Classification.slides.html#example-1",
@@ -648,7 +648,7 @@
     "href": "Module2/Classification.slides.html#section-1",
     "title": "Classification Trees",
     "section": "",
-    "text": "Technically, \\(C(\\boldsymbol{X})\\) works with the conditional probability:\n\n\\[P(Y = 1 | X_1 = x_1, X_2 = x_2, \\ldots, X_p = x_p) = P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\]\n\nIn words, this is the probability that \\(Y\\) takes a value of 1 given that the predictors \\(\\boldsymbol{X}\\) have taken the values \\(\\boldsymbol{x} = (x_1, x_2, \\ldots, x_p)\\).\n\n\nThe conditional probability that \\(Y\\) takes the value of 0 is\n\\[P(Y = 0 | \\boldsymbol{X} = \\boldsymbol{x}) = 1 - P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}).\\]"
+    "text": "To achieve this goal, most algorithms consider functions \\(C(\\boldsymbol{X})\\) that predict the probability that \\(Y\\) takes the value of 1.\n\nA probability for each class can be very useful for gauging the model’s confidence about the predicted classification."
   },
   {
     "objectID": "Module2/Classification.slides.html#bayes-classifier",
@@ -662,14 +662,14 @@
     "href": "Module2/Classification.slides.html#section-2",
     "title": "Classification Trees",
     "section": "",
-    "text": "HOWEVER, we don’t (and will never) know the true form of \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\)!\n\n\nTo overcome this issue, we several methods:\n\nLogistic Regression: Impose an structure on \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\). This was covered in IN1002B.\nClassification Trees: Estimate \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) directly. What we will cover today.\nEnsemble methods and K-Nearest Neighbours: Estimate \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) directly. (If time permits)."
+    "text": "Technically, \\(C(\\boldsymbol{X})\\) works with the conditional probability:\n\n\\[P(Y = 1 | X_1 = x_1, X_2 = x_2, \\ldots, X_p = x_p) = P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\]\n\nIn words, this is the probability that \\(Y\\) takes a value of 1 given that the predictors \\(\\boldsymbol{X}\\) have taken the values \\(\\boldsymbol{x} = (x_1, x_2, \\ldots, x_p)\\).\n\n\nThe conditional probability that \\(Y\\) takes the value of 0 is\n\\[P(Y = 0 | \\boldsymbol{X} = \\boldsymbol{x}) = 1 - P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}).\\]"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-3",
     "href": "Module2/Classification.slides.html#section-3",
     "title": "Classification Trees",
     "section": "",
-    "text": "Once we estimate \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) using one of these methods, we plug it into the Bayes classifier:\n\\[\\hat{C}(\\boldsymbol{X}) =\n    \\begin{cases}\n      1, & \\text{if}\\ \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}) &gt; 0.5 \\\\\n      0, & \\text{if}\\ \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}) \\leq 0.5\n    \\end{cases}.\\]\nwhere\n\n\\(\\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) is an estimate of \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\).\n\\(\\hat{C}(\\boldsymbol{X})\\) is an estimate of the true Bayes Classifier \\(C(\\boldsymbol{X})\\)"
+    "text": "HOWEVER, we don’t (and will never) know the true form of \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\)!\n\n\nTo overcome this issue, we several methods:\n\nLogistic Regression: Impose an structure on \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\). This was covered in IN1002B.\nClassification Trees: Estimate \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) directly. What we will cover today.\nEnsemble methods and K-Nearest Neighbours: Estimate \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) directly. (If time permits)."
   },
   {
     "objectID": "Module2/Classification.slides.html#lets-play-with-classification-algorithms",
@@ -690,7 +690,7 @@
     "href": "Module2/Classification.slides.html#section-4",
     "title": "Classification Trees",
     "section": "",
-    "text": "A random sample of \\(n\\) observations.\nUse it to construct \\(\\hat{C}(\\boldsymbol{X})\\).\n\n\n\n\n\nAnother random sample of \\(n_t\\) observations, which is independent of the training data.\nUse it to evaluate \\(\\hat{C}(\\boldsymbol{X})\\)."
+    "text": "Once we estimate \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) using one of these methods, we plug it into the Bayes classifier:\n\\[\\hat{C}(\\boldsymbol{X}) =\n    \\begin{cases}\n      1, & \\text{if}\\ \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}) &gt; 0.5 \\\\\n      0, & \\text{if}\\ \\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x}) \\leq 0.5\n    \\end{cases}.\\]\nwhere\n\n\\(\\hat{P}(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\) is an estimate of \\(P(Y = 1 | \\boldsymbol{X} = \\boldsymbol{x})\\).\n\\(\\hat{C}(\\boldsymbol{X})\\) is an estimate of the true Bayes Classifier \\(C(\\boldsymbol{X})\\)"
   },
   {
     "objectID": "Module2/Classification.slides.html#validation-dataset",
@@ -753,14 +753,14 @@
     "href": "Module2/Classification.slides.html#section-5",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n187\n10.6\n11.4\n1\n\n\n54\n10.0\n7.9\n0\n\n\n33\n10.3\n8.4\n0\n\n\n180\n10.7\n11.4\n1"
+    "text": "A random sample of \\(n\\) observations.\nUse it to construct \\(\\hat{C}(\\boldsymbol{X})\\).\n\n\n\n\n\nAnother random sample of \\(n_t\\) observations, which is independent of the training data.\nUse it to evaluate \\(\\hat{C}(\\boldsymbol{X})\\)."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-6",
     "href": "Module2/Classification.slides.html#section-6",
     "title": "Classification Trees",
     "section": "",
-    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n56\n10.4\n9.2\n0\n\n\n17\n9.0\n9.0\n0\n\n\n24\n10.8\n7.4\n0\n\n\n20\n10.0\n8.4\n0\n\n\n139\n10.2\n11.8\n1"
+    "text": "The predictors and response in the training dataset are in the objects X_train and Y_train, respectively. We compile these objects into a single dataset using the function .concat() from pandas. The argument axis = 1 tells .concat() to concatenate the datasets by their rows.\n\ntraining_dataset = pd.concat([X_train, Y_train], axis = 1)\ntraining_dataset.head(4)\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n187\n10.6\n11.4\n1\n\n\n54\n10.0\n7.9\n0\n\n\n33\n10.3\n8.4\n0\n\n\n180\n10.7\n11.4\n1"
   },
   {
     "objectID": "Module2/Classification.slides.html#work-on-your-training-dataset",
@@ -907,7 +907,7 @@
     "href": "Module2/Classification.slides.html#section-28",
     "title": "Classification Trees",
     "section": "",
-    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,\n       0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0,\n       0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1])"
+    "text": "Essentially, we calculate \\(\\hat{p}_1(\\boldsymbol{x})\\) and \\(\\hat{p}_0(\\boldsymbol{x})\\) as follows:\n\nSelect the region or terminal node where \\(\\boldsymbol{x}\\) belongs.\n\\(\\hat{p}_1(\\boldsymbol{x})\\) is the proportion of observations in that terminal node that belong to class 1. \\(\\hat{p}_0(\\boldsymbol{x})\\) is the proportion of observations that belong to class 0."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-30",
@@ -935,7 +935,7 @@
     "href": "Module2/Classification.slides.html#section-31",
     "title": "Classification Trees",
     "section": "",
-    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\nCMplot = ConfusionMatrixDisplay(cm, display_labels = [\"genuine\", \"counterfeit\"])\nCMplot.plot()"
+    "text": "The predict_proba() function generates the probabilities used by the algorithm to assign the classes.\n\n# Predict probabilities.\npredicted_probability = clf.predict_proba(X_valid)\npredicted_probability\n\narray([[1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [0.71428571, 0.28571429],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.71428571, 0.28571429],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.71428571, 0.28571429],\n       [1.        , 0.        ],\n       [0.11111111, 0.88888889],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [1.        , 0.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ],\n       [0.        , 1.        ]])"
   },
   {
     "objectID": "Module2/Classification.slides.html#accuracy",
@@ -970,21 +970,21 @@
     "href": "Module2/Classification.slides.html#section-35",
     "title": "Classification Trees",
     "section": "",
-    "text": "The ccp_alphas object contains the different values of \\(\\alpha\\) used. To train a decision tree using different \\(\\alpha\\) values, we use the following code that iterates over the values contained in ccp_alphas.\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf_alpha = DecisionTreeClassifier(min_samples_leaf= 5, \n                                       ccp_alpha=ccp_alpha, \n                                       random_state=507134)\n    clf_alpha.fit(X_train, Y_train)\n    clfs.append(clf_alpha)"
+    "text": "To prune a tree, we use an advanced algorithm to measure the contribution of the tree’s branches.\nThis algorithm minimizes the following function:\n\n\\[\\text{Missclassification rate of tree} + \\alpha (\\text{\\# terminal nodes}),\\]\n\nwhere \\(\\alpha\\) is a tuning parameter that places greater weight on the number of tree nodes (or size).\n\nLarge values of \\(\\alpha\\) result in small trees with few nodes.\nSmall values of \\(\\alpha\\) result in large trees with many nodes."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-36",
     "href": "Module2/Classification.slides.html#section-36",
     "title": "Classification Trees",
     "section": "",
-    "text": "Now, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the training and validation data.\n\ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\n\nThe .score() function computes the accuracy of a classification tree."
+    "text": "The ccp_alphas object contains the different values of \\(\\alpha\\) used. To train a decision tree using different \\(\\alpha\\) values, we use the following code that iterates over the values contained in ccp_alphas.\n\nclfs = []\nfor ccp_alpha in ccp_alphas:\n    clf_alpha = DecisionTreeClassifier(min_samples_leaf= 5, \n                                       ccp_alpha=ccp_alpha, \n                                       random_state=507134)\n    clf_alpha.fit(X_train, Y_train)\n    clfs.append(clf_alpha)"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-37",
     "href": "Module2/Classification.slides.html#section-37",
     "title": "Classification Trees",
     "section": "",
-    "text": "We visualize the results using the following plot.\n\n\nCode\nfig, ax = plt.subplots()\nax.set_xlabel(\"alpha\")\nax.set_ylabel(\"Accuracy\")\nax.set_title(\"Accuracy vs alpha for training and validation data\")\nax.plot(ccp_alphas, train_scores, marker=\"o\", label=\"train\", drawstyle=\"steps-post\")\nax.plot(ccp_alphas, validation_scores, marker=\"o\", label=\"validation\", drawstyle=\"steps-post\")\nax.legend()\nplt.show()"
+    "text": "Now, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the training and validation data.\n\ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\n\nThe .score() function computes the accuracy of a classification tree."
   },
   {
     "objectID": "Module2/Classification.slides.html#choosing-the-best-tree",
@@ -998,14 +998,14 @@
     "href": "Module2/Classification.slides.html#section-38",
     "title": "Classification Trees",
     "section": "",
-    "text": "Once this is done, we can visualize the small tree using the plot_tree() function.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf_simple, feature_names = X_train.columns,\n    class_names=[\"genuine\", \"counterfeit\"], filled=True, rounded=True)\nplt.show()"
+    "text": "We visualize the results using the following plot.\n\n\nCode\nfig, ax = plt.subplots()\nax.set_xlabel(\"alpha\")\nax.set_ylabel(\"Accuracy\")\nax.set_title(\"Accuracy vs alpha for training and validation data\")\nax.plot(ccp_alphas, train_scores, marker=\"o\", label=\"train\", drawstyle=\"steps-post\")\nax.plot(ccp_alphas, validation_scores, marker=\"o\", label=\"validation\", drawstyle=\"steps-post\")\nax.legend()\nplt.show()"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-39",
     "href": "Module2/Classification.slides.html#section-39",
     "title": "Classification Trees",
     "section": "",
-    "text": "The accuracy of the pruned tree is:\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.97"
+    "text": "Once this is done, we can visualize the small tree using the plot_tree() function.\n\nplt.figure(figsize=(6, 6))\nplot_tree(clf_simple, feature_names = X_train.columns,\n    class_names=[\"genuine\", \"counterfeit\"], filled=True, rounded=True)\nplt.show()"
   },
   {
     "objectID": "Module2/Classification.slides.html#comments-on-accuracy",
@@ -1026,7 +1026,7 @@
     "href": "Module2/Classification.slides.html#section-40",
     "title": "Classification Trees",
     "section": "",
-    "text": "In other words, we want to avoid making wrong decisions about customers who will churn.\nWrong decisions about loyal customers aren’t as relevant.\nBecause if we classify a loyal customer as one who will churn, the customer will get a good deal. They’ll probably pay less but stay anyway."
+    "text": "The accuracy of the pruned tree is:\n\nsingle_tree_Y_pred = clf_simple.predict(X_valid)\naccuracy = accuracy_score(Y_valid, single_tree_Y_pred)\nprint( round(accuracy, 2) )\n\n0.97"
   },
   {
     "objectID": "Module2/Classification.slides.html#another-example",
@@ -1047,35 +1047,35 @@
     "href": "Module2/Classification.slides.html#section-41",
     "title": "Classification Trees",
     "section": "",
-    "text": "Sensitivity or recall = OO/(OO + OR) “How many records of the target class did we predict correctly?”"
+    "text": "In other words, we want to avoid making wrong decisions about customers who will churn.\nWrong decisions about loyal customers aren’t as relevant.\nBecause if we classify a loyal customer as one who will churn, the customer will get a good deal. They’ll probably pay less but stay anyway."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-42",
     "href": "Module2/Classification.slides.html#section-42",
     "title": "Classification Trees",
     "section": "",
-    "text": "Precision = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?"
+    "text": "Sensitivity or recall = OO/(OO + OR) “How many records of the target class did we predict correctly?”"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-43",
     "href": "Module2/Classification.slides.html#section-43",
     "title": "Classification Trees",
     "section": "",
-    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n0.97\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.97"
+    "text": "Precision = OO/(OO + RO) How many of the records we predicted as target class were classified correctly?"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-44",
     "href": "Module2/Classification.slides.html#section-44",
     "title": "Classification Trees",
     "section": "",
-    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
+    "text": "In Python, we compute sensitivity and precision using the following commands:\n\nrecall = recall_score(Y_valid, predicted_class)\nprint( round(recall, 2) )\n\n0.97\n\n\n\n\nprecision = precision_score(Y_valid, predicted_class)\nprint( round(precision, 2) )\n\n0.97"
   },
   {
     "objectID": "Module2/Classification.slides.html#section-45",
     "href": "Module2/Classification.slides.html#section-45",
     "title": "Classification Trees",
     "section": "",
-    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.03"
+    "text": "Type I error = RO/(RO + RR) “How many of the reference records did we incorrectly predict as targets?”"
   },
   {
     "objectID": "Module2/Classification.slides.html#discussion",
@@ -4446,5 +4446,40 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-7",
+    "href": "Module2/Classification.slides.html#section-7",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Equivalently, the predictors and response in the validation dataset are in the objects X_valid and Y_valid, respectively.\n\nvalidation_dataset = pd.concat([X_valid, Y_valid], axis = 1)\nvalidation_dataset.head()\n\n\n\n\n\n\n\n\nTop\nBottom\ncounterfeit\n\n\n\n\n56\n10.4\n9.2\n0\n\n\n17\n9.0\n9.0\n0\n\n\n24\n10.8\n7.4\n0\n\n\n20\n10.0\n8.4\n0\n\n\n139\n10.2\n11.8\n1"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-26",
+    "href": "Module2/Classification.slides.html#section-26",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "We repeat the partitioning process until:\n\nimpurity does not improve in any of the terminal nodes, or\neach terminal node has no less than, say, 5 observations."
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-29",
+    "href": "Module2/Classification.slides.html#section-29",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "The predict() function generates actual classes to which each observation was assigned.\n\npredicted_class\n\narray([0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,\n       0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0,\n       0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1])"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-32",
+    "href": "Module2/Classification.slides.html#section-32",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "We can display the confusion matrix using the ConfusionMatrixDisplay() function.\n\nCMplot = ConfusionMatrixDisplay(cm, display_labels = [\"genuine\", \"counterfeit\"])\nCMplot.plot()"
+  },
+  {
+    "objectID": "Module2/Classification.slides.html#section-46",
+    "href": "Module2/Classification.slides.html#section-46",
+    "title": "Classification Trees",
+    "section": "",
+    "text": "Unfortunately, there is no simple command to calculate the type-I error in sklearn. To overcome this issue, we must calculate it manually.\n\n# Confusion matrix to compute Type-I error\ntn, fp, fn, tp = confusion_matrix(Y_valid, predicted_class).ravel()\n\n# Type-I error rate = False Positive Rate = FP / (FP + TN)\ntype_I_error = fp / (fp + tn)\nprint( round(type_I_error, 2) )\n\n0.03"
   }
 ]
