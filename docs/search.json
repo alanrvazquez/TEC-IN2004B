@@ -977,14 +977,14 @@
     "href": "Module2/Classification.slides.html#section-37",
     "title": "Classification Trees",
     "section": "",
-    "text": "Now, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the training and validation data.\n\ntrain_scores = [clf.score(X_train, Y_train) for clf in clfs]\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\n\nThe .score() function computes the accuracy of a classification tree."
+    "text": "Now, for each of those trees contained in clfs, we evaluate the performance in terms of accuracy for the validation data.\n\nvalidation_scores = [clf.score(X_valid, Y_valid) for clf in clfs]\n\n\nThe .score() function computes the accuracy of a classification tree."
   },
   {
     "objectID": "Module2/Classification.slides.html#section-38",
     "href": "Module2/Classification.slides.html#section-38",
     "title": "Classification Trees",
     "section": "",
-    "text": "We visualize the results using the following plot.\n\n\nCode\nfig, ax = plt.subplots()\nax.set_xlabel(\"alpha\")\nax.set_ylabel(\"Accuracy\")\nax.set_title(\"Accuracy vs alpha for training and validation data\")\nax.plot(ccp_alphas, train_scores, marker=\"o\", label=\"train\", drawstyle=\"steps-post\")\nax.plot(ccp_alphas, validation_scores, marker=\"o\", label=\"validation\", drawstyle=\"steps-post\")\nax.legend()\nplt.show()"
+    "text": "We visualize the results using the following plot.\n\n\nCode\nfig, ax = plt.subplots()\nax.set_xlabel(\"alpha\")\nax.set_ylabel(\"Accuracy\")\nax.set_title(\"Accuracy vs alpha for validation data\")\nax.plot(ccp_alphas, validation_scores, marker=\"o\", label=\"validation\", drawstyle=\"steps-post\")\nax.legend()\nplt.show()"
   },
   {
     "objectID": "Module2/Classification.slides.html#choosing-the-best-tree",
