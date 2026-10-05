@@ -1181,7 +1181,7 @@ In SARIMA, the seasonal AR and MA component terms predict the current response (
 
 For example, with monthly data $S = 12$,
 
-::: {style="font-size: 85%;"}
+::: {style="font-size: 80%;"}
 - The first-order seasonal AR model would use $Y_{t-12}$ to predict $Y_{t}$.
 - The second-order seasonal AR model would use $Y_{t-12}$ and $Y_{t-24}$ to predict $Y_{t}$.
 - The first-order seasonal MA model would use the stochastic term $a_{t-12}$ as a predictor.
@@ -1309,7 +1309,7 @@ len(Airline_validation)
 
 </br>
 
-So, we must forecast 7 periods ahead using our SARIMA model.
+So, we must forecast 29 periods ahead using our SARIMA model.
 
 ```{python}
 #| echo: true
