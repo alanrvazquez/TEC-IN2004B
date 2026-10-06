@@ -916,6 +916,40 @@ X_cereal_clust = (X_cereal
 X_cereal_clust.head(4)
 ```
 
+## Analyzing the clusters
+
+</br>
+
+An easy way to analyze and compare the different clusters is by computing the average values of the predictors by clusters. In this way, we are comparing the average performance of each cluster in terms of the predictors.
+
+To this end, let's calculate the averages of the 7 predictors by the clusters using some functions from **pandas**.
+
+```{python}
+#| output: false
+#| echo: true
+#| fig-align: center
+#| code-fold: false
+
+(X_cereal_clust
+ .groupby('Clusters')
+ .agg(['mean'])
+ )
+```
+
+## Average performance of clusters
+
+```{python}
+#| output: true
+#| echo: false
+#| fig-align: center
+#| code-fold: false
+
+(X_cereal_clust
+ .groupby('Clusters')
+ .agg(['mean'])
+ )
+```
+
 ## Comments
 
 </br>
