@@ -557,7 +557,7 @@
     "href": "Module2/KNearestNeighbours.slides.html#section-1",
     "title": "K nearest neighbors",
     "section": "",
-    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n1.0"
+    "text": "Finally, we select the best number of nearest neighbors contained in the best_k object.\n\nKNN_final = KNeighborsClassifier(n_neighbors = best_k)\nKNN_final.fit(Xs_train, Y_train)\n\n\nThe accuracy of the best KNN is\n\nY_pred_KNNfinal = KNN_final.predict(Xs_valid)\nvalid_accuracy = accuracy_score(Y_valid, Y_pred_KNNfinal)\nprint(valid_accuracy)\n\n0.95"
   },
   {
     "objectID": "Module2/KNearestNeighbours.slides.html#discussion",
@@ -1404,7 +1404,7 @@
     "href": "Module3/Autocorrelation.slides.html#section-15",
     "title": "Autocorrelation Models",
     "section": "",
-    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Tue, 06 Oct 2026   AIC                             11.074\nTime:                        14:15:51   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "After fitting, we can get a summary of the model fit using the following code.\n\nprint(results_ARIMA_Canadian.summary())\n\n                               SARIMAX Results                                \n==============================================================================\nDep. Variable:         Hours per Week   No. Observations:                   28\nModel:                 ARIMA(2, 2, 0)   Log Likelihood                  -2.537\nDate:                Wed, 07 Oct 2026   AIC                             11.074\nTime:                        10:32:03   BIC                             14.849\nSample:                             0   HQIC                            12.161\n                                 - 28                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.3236      0.403     -0.803      0.422      -1.113       0.466\nar.L2         -0.4401      0.250     -1.760      0.078      -0.930       0.050\nsigma2         0.0699      0.021      3.356      0.001       0.029       0.111\n===================================================================================\nLjung-Box (L1) (Q):                   0.26   Jarque-Bera (JB):                 3.02\nProb(Q):                              0.61   Prob(JB):                         0.22\nHeteroskedasticity (H):               1.48   Skew:                             0.74\nProb(H) (two-sided):                  0.57   Kurtosis:                         3.75\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#section-16",
@@ -1586,7 +1586,7 @@
     "href": "Module3/Autocorrelation.slides.html#summary-of-fit",
     "title": "Autocorrelation Models",
     "section": "Summary of fit",
-    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Tue, 06 Oct 2026   AIC                            756.482\nTime:                                   14:15:51   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
+    "text": "Summary of fit\n\nprint(SARIMA_Airline.summary())\n\n                                     SARIMAX Results                                     \n=========================================================================================\nDep. Variable:              Number of passengers   No. Observations:                  115\nModel:             ARIMA(1, 2, 1)x(1, 1, [], 12)   Log Likelihood                -374.241\nDate:                           Wed, 07 Oct 2026   AIC                            756.482\nTime:                                   10:32:04   BIC                            766.943\nSample:                                        0   HQIC                           760.717\n                                           - 115                                         \nCovariance Type:                             opg                                         \n==============================================================================\n                 coef    std err          z      P&gt;|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nar.L1         -0.1729      0.094     -1.833      0.067      -0.358       0.012\nma.L1         -0.9999     14.439     -0.069      0.945     -29.300      27.300\nar.S.L12      -0.1303      0.084     -1.543      0.123      -0.296       0.035\nsigma2        91.7900   1326.009      0.069      0.945   -2507.139    2690.719\n===================================================================================\nLjung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 3.18\nProb(Q):                              0.98   Prob(JB):                         0.20\nHeteroskedasticity (H):               1.13   Skew:                             0.39\nProb(H) (two-sided):                  0.73   Kurtosis:                         2.64\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step)."
   },
   {
     "objectID": "Module3/Autocorrelation.slides.html#residual-analysis",
@@ -3969,11 +3969,11 @@
     "text": "Other issues\n\nBagging is unable to capture simple decision boundaries"
   },
   {
-    "objectID": "Module2/EnsembleMethods.slides.html#section-4",
-    "href": "Module2/EnsembleMethods.slides.html#section-4",
+    "objectID": "Module2/EnsembleMethods.slides.html#other-issues-1",
+    "href": "Module2/EnsembleMethods.slides.html#other-issues-1",
     "title": "Ensemble Methods",
-    "section": "",
-    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid,\n                                n_repeats=5, random_state=59227)"
+    "section": "Other issues",
+    "text": "Other issues\n\n\nSuppose a variable is very important and decisive.\n\nIt will probably appear near the top of a large number of trees.\nAnd these trees will tend to vote the same way.\nIn some sense, then, many of the trees are “correlated”.\nThis will degrade the performance of bagging."
   },
   {
     "objectID": "Module2/EnsembleMethods.slides.html#random-forest-1",
@@ -4023,6 +4023,34 @@
     "title": "Ensemble Methods",
     "section": "Accuracy",
     "text": "Accuracy\n\nThe accuracy of the random forest classifier is 79%.\n\n# Compute accuracy.\naccuracy = accuracy_score(Y_valid, RF_predicted)\n\n# Show accuracy.\nprint( round(accuracy, 2) )\n\n0.77"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.slides.html#predictor-importance",
+    "href": "Module2/EnsembleMethods.slides.html#predictor-importance",
+    "title": "Ensemble Methods",
+    "section": "Predictor importance",
+    "text": "Predictor importance\n\n\nRandom Forests and bagged trees are a black box. But “Importance” is a statistic that attempts to give us some insight.\nThe importance statistic assumes that we have trained a random forest and we have validation data."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.slides.html#calculation-of-importance",
+    "href": "Module2/EnsembleMethods.slides.html#calculation-of-importance",
+    "title": "Ensemble Methods",
+    "section": "Calculation of importance",
+    "text": "Calculation of importance\n\n\nWe record the prediction error of the trained algorithm on the validation data. This serves as a baseline.\nNext, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.\nThe importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm."
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.slides.html#section-4",
+    "href": "Module2/EnsembleMethods.slides.html#section-4",
+    "title": "Ensemble Methods",
+    "section": "",
+    "text": "In Python, we use compute the predictor importance using the permutation_importance() function.\n\n# Compute permutation importance\nresult = permutation_importance(RFalgorithm, X_valid, Y_valid,\n                                n_repeats=5, random_state=59227)"
+  },
+  {
+    "objectID": "Module2/EnsembleMethods.slides.html#section-5",
+    "href": "Module2/EnsembleMethods.slides.html#section-5",
+    "title": "Ensemble Methods",
+    "section": "",
+    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
   },
   {
     "objectID": "Module2/IntrotoDataScience.slides.html#agenda",
@@ -4467,33 +4495,5 @@
     "title": "Indicators",
     "section": "Remember that…",
     "text": "Remember that…\n\n\n\nThe purposes of an indicator are:\n\nEstablish quantitative goals.\nOrganizational motivation, induction of desirable behaviors.\nStrategy evaluation and strategic learning."
-  },
-  {
-    "objectID": "Module2/EnsembleMethods.slides.html#other-issues-1",
-    "href": "Module2/EnsembleMethods.slides.html#other-issues-1",
-    "title": "Ensemble Methods",
-    "section": "Other issues",
-    "text": "Other issues\n\n\nSuppose a variable is very important and decisive.\n\nIt will probably appear near the top of a large number of trees.\nAnd these trees will tend to vote the same way.\nIn some sense, then, many of the trees are “correlated”.\nThis will degrade the performance of bagging."
-  },
-  {
-    "objectID": "Module2/EnsembleMethods.slides.html#predictor-importance",
-    "href": "Module2/EnsembleMethods.slides.html#predictor-importance",
-    "title": "Ensemble Methods",
-    "section": "Predictor importance",
-    "text": "Predictor importance\n\n\nRandom Forests and bagged trees are a black box. But “Importance” is a statistic that attempts to give us some insight.\nThe importance statistic assumes that we have trained a random forest and we have validation data."
-  },
-  {
-    "objectID": "Module2/EnsembleMethods.slides.html#calculation-of-importance",
-    "href": "Module2/EnsembleMethods.slides.html#calculation-of-importance",
-    "title": "Ensemble Methods",
-    "section": "Calculation of importance",
-    "text": "Calculation of importance\n\n\nWe record the prediction error of the trained algorithm on the validation data. This serves as a baseline.\nNext, a variable is “taken out” by having all of its values permuted in the validation dataset. We then compute the prediction error of the algorithm on the perturbed validation data.\nThe importance statistic is the difference between the error due to the perturbation and the baseline. A larger difference means an important predictor for the algorithm."
-  },
-  {
-    "objectID": "Module2/EnsembleMethods.slides.html#section-5",
-    "href": "Module2/EnsembleMethods.slides.html#section-5",
-    "title": "Ensemble Methods",
-    "section": "",
-    "text": "Code\n# Create DataFrame\nimportance_df = pd.DataFrame({\n    'Feature': X_valid.columns,\n    'Importance': result.importances_mean\n}).sort_values(by='Importance', ascending=False)\n\n# Plot bar chart\nplt.figure(figsize=(8, 5))\nplt.bar(importance_df['Feature'], importance_df['Importance'])\nplt.xticks(rotation=90)\nplt.title('Permutation Feature Importance')\nplt.show()"
   }
 ]
